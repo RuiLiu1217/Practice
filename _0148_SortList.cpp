@@ -16,7 +16,7 @@ ListNode<int>* LeetCode::_0148_SortList::sortList(ListNode<int>* head) {
 }
 
 
-void splitList(ListNode<int>*& head, ListNode<int>*& left, ListNode<int>*& right) {
+void LeetCode::_0148_SortList::splitList(ListNode<int>*& head, ListNode<int>*& left, ListNode<int>*& right) {
     ListNode<int>* slow = head;
     ListNode<int>* sprev = head;
     ListNode<int>* fast = head;
