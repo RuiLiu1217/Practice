@@ -213,4 +213,75 @@ namespace LeetCode{
             int top();
             int getMin();
     };
+
+
+    class _0190_ReverseBits {
+        /*
+            Reverse bits of a given 32 bits unsigned integer.
+            Example 1:
+            Input: 00000010100101000001111010011100
+            Output : 00111001011110000010100101000000
+            Explanation : The input binary string 00000010100101000001111010011100 
+            represents the unsigned integer 43261596, so return 964176192 which 
+            its binary representation is 00111001011110000010100101000000.
+            Example 2 :
+            Input : 11111111111111111111111111111101
+            Output : 10111111111111111111111111111111
+            Explanation : The input binary string 11111111111111111111111111111101 
+            represents the unsigned integer 4294967293, so return 3221225471 which 
+            its binary representation is 10101111110010110010011101101001.
+
+            Note :
+            Note that in some languages such as Java, there is no unsigned integer 
+            type. In this case, both input and output will be given as signed integer 
+            type and should not affect your implementation, as the internal binary 
+            representation of the integer is the same whether it is signed or unsigned.
+            In Java, the compiler represents the signed integers using 2's complement 
+            notation. Therefore, in Example 2 above the input represents the signed 
+            integer -3 and the output represents the signed integer -1073741825.
+        */
+    public:
+        uint32_t reverseBits(uint32_t n);
+    };
+
+
+
+    class _0235_LowestCommonAncestor{
+        /*
+            Given a binary search tree (BST), find the lowest common 
+            ancestor (LCA) of two given nodes in the BST.
+            
+            According to the definition of LCA on Wikipedia: The lowest 
+            common ancestor is defined between two nodes p and q as the 
+            lowest node in T that has both p and q as descendants (where 
+            we allow a node to be a descendant of itself).
+            
+            Given binary search tree:  root = [6,2,8,0,4,7,9,null,null,3,5]
+                _______6______
+               /              \
+            ___2__          ___8__
+           /      \        /      \
+           0       4       7       9
+         /  \
+        3   5
+
+        Example 1:
+            Input: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8
+            Output: 6
+            Explanation: The LCA of nodes 2 and 8 is 6.
+        Example 2:
+            Input: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 4
+            Output: 2
+            Explanation: The LCA of nodes 2 and 4 is 2, since a node 
+            can be a descendant of itself according to the LCA definition.
+        Note:
+            All of the nodes' values will be unique. p and q are different 
+            and both values will exist in the BST.
+        Challenge: 
+            Think about the case that the tree is not a binary search tree?
+        */
+        public:
+            TreeNode<int> *lowestCommonAncestorRecursive(TreeNode<int> *root, TreeNode<int> *p, TreeNode<int> *q);
+            TreeNode<int> *lowestCommonAncestorIterative(TreeNode<int> *root, TreeNode<int> *p, TreeNode<int> *q);
+    };
 }
