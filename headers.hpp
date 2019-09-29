@@ -2,6 +2,7 @@
 #include <string>
 #include <stack>
 #include <queue>
+
 #include "Tree.hpp"
 #include "LinkList.hpp"
 
@@ -20,10 +21,10 @@ namespace LeetCode
     */
     class _0001_TwoSum{
         public:
-            std::vector<int> twoSum(std::vector<int>& nums, int target) {
-                
-            }
+            std::vector<int> twoSum(std::vector<int>& nums, int target);
     };
+
+
 // class _0004_MedianOfTwoSortedArrays {
 //     public:
 //         double findMedianOfSortedArrays(
@@ -39,6 +40,25 @@ public:
 
 private:
     int expandAroundCenter(std::string &s, int i, int j);
+};
+
+/*
+Given a 32-bit signed integer, reverse digits of an integer.
+Example 1:
+Input: 123
+Output: 321
+
+Example 2:
+Input: -123
+Output: -321
+
+Example 3:
+Input: 120
+Output: 21
+*/
+class _0007_ReverseInteger{
+public:
+    int reverse(int x);
 };
 
 /*  
@@ -191,8 +211,9 @@ private:
 class _0116_PopulatingNextRightPointerInEachNode
 {
 public:
-    struct Node
+    class Node
     {
+    public:
         int val;
         Node *left;
         Node *right;
