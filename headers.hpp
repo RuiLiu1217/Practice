@@ -7,6 +7,23 @@
 
 namespace LeetCode
 {
+
+    /*
+    Given an array of integers, return indices of the two 
+    numbers such that they add up to a specific target.
+    You may assume that each input would have exactly one 
+    solution, and you may not use the same element twice.
+    Example:
+        Given nums = [2, 7, 11, 15], target = 9,
+        Because nums[0] + nums[1] = 2 + 7 = 9,
+    Return [0, 1].
+    */
+    class _0001_TwoSum{
+        public:
+            std::vector<int> twoSum(std::vector<int>& nums, int target) {
+                
+            }
+    };
 // class _0004_MedianOfTwoSortedArrays {
 //     public:
 //         double findMedianOfSortedArrays(
@@ -257,6 +274,7 @@ public:
     uint32_t reverseBits(uint32_t n);
 };
 
+
 class _0235_LowestCommonAncestor
 {
     /*
@@ -296,6 +314,33 @@ public:
     TreeNode<int> *lowestCommonAncestorRecursive(TreeNode<int> *root, TreeNode<int> *p, TreeNode<int> *q);
     TreeNode<int> *lowestCommonAncestorIterative(TreeNode<int> *root, TreeNode<int> *p, TreeNode<int> *q);
 };
+
+
+/*
+Write an efficient algorithm that searches for a value 
+in an m x n matrix. This matrix has the following properties:
+
+Integers in each row are sorted in ascending from left to right.
+Integers in each column are sorted in ascending from top to bottom.
+Example:
+
+    Consider the following matrix:
+    [
+        [1,   4,  7, 11, 15],
+        [2,   5,  8, 12, 19],
+        [3,   6,  9, 16, 22],
+        [10, 13, 14, 17, 24],
+        [18, 21, 23, 26, 30]
+    ]
+    Given target = 5, return true.
+    Given target = 20, return false.
+*/
+class _0240_SearchA2DMatrix_II {
+public:
+    bool searchMatrix(const std::vector<std::vector<int>>& matrix, int target);
+};
+
+
 
 class _0260_SingleNumberII
 {
@@ -455,6 +500,29 @@ public:
     int sumOfLeftLeaves(TreeNode<int>* root);
 };
 
+// We want to use quad trees to store an N x N boolean grid. Each cell in the
+// grid can only be true or false. The root node represents the whole grid. For
+// each node, it will be subdivided into four children nodes until the values in
+// the region it represents are all the same.
+// Each node has another two boolean attributes : isLeaf and val. isLeaf is true
+// if and only if the node is a leaf node. The valattribute for a leaf node contains
+// the value of the region it represents.
+// Your task is to use a quad tree to represent a given grid.
+
+// 这是一道比较简单的题目，主要注意点就是先判断一个矩阵中的值是否一致，在看分隔中是否一致
+class _0427_ConstructQuadTree {
+public:
+    QuadTreeNode* construct(std::vector<std::vector<int>>& grid);
+    QuadTreeNode* construct(std::vector<std::vector<int>>& grid, 
+    int rowStart, int rowEnd, int colStart, int colEnd);
+private:
+    bool areConsistent(std::vector<std::vector<int>>& grid);
+    bool areConsistent(std::vector<std::vector<int>>& grid, 
+    int rowStart, int rowEnd, int colStart, int colEnd);
+
+    std::vector<std::vector<std::vector<int>>> divideGrid(std::vector<std::vector<int>>& grid);
+};
+
 /*
 Given an n-ary tree, return the level order traversal 
 of its nodes' values. (ie, from left to right, level by level).
@@ -475,6 +543,29 @@ public:
     std::vector<std::vector<int>> levelOrder(NaryTreeNode<int>* root);
 };
 
+
+/*
+Given scores of N athletes, find their relative 
+ranks and the people with the top three highest scores, 
+who will be awarded medals: "Gold Medal", "Silver Medal" 
+and "Bronze Medal".
+
+Example 1:
+    Input: [5, 4, 3, 2, 1]
+    Output: ["Gold Medal", "Silver Medal", "Bronze Medal", "4", "5"]
+    Explanation: The first three athletes got the top three 
+    highest scores, so they got "Gold Medal", "Silver Medal" and 
+    "Bronze Medal".
+    For the left two athletes, you just need to output their relative 
+    ranks according to their scores.
+Note:
+    N is a positive integer and won't exceed 10,000.
+    All the scores of athletes are guaranteed to be unique.
+*/
+class _0506_RelativeRanks{
+public:
+    std::vector<std::string> findRelativeRanks(std::vector<int>& nums);
+};
 
 
 /*
