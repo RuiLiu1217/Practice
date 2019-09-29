@@ -5,25 +5,26 @@
 #include "Tree.hpp"
 #include "LinkList.hpp"
 
+namespace LeetCode
+{
+// class _0004_MedianOfTwoSortedArrays {
+//     public:
+//         double findMedianOfSortedArrays(
+//             std::vector<int>& nums1,
+//             std::vector<int>& nums2);
 
+// };
 
-namespace LeetCode{
-    // class _0004_MedianOfTwoSortedArrays {
-    //     public:
-    //         double findMedianOfSortedArrays(
-    //             std::vector<int>& nums1,
-    //             std::vector<int>& nums2);
+class _0005_LongestPalindromicSubstring
+{
+public:
+    std::string longestPalidrome(std::string s);
 
-    // };
+private:
+    int expandAroundCenter(std::string &s, int i, int j);
+};
 
-    class _0005_LongestPalindromicSubstring{
-        public:
-            std::string longestPalidrome(std::string s);
-        private:
-            int expandAroundCenter(std::string& s, int i , int j);
-    };
-
-    /*  
+/*  
     Given a set of candidate numbers (candidates without duplicates) 
     and a target number (target), find all unique combinations in 
     candidates where the candidate numbers sums to target.
@@ -41,44 +42,49 @@ namespace LeetCode{
     A solution set is:
         [  [2,2,2,2],  [2,3,3],  [3,5] ]
     */
-    class _0039_CombinationSum{
-        public:
-            std::vector<std::vector<int>> combinationSum(std::vector<int>& candidates, int target);
-        private:
-            void combinationSum(std::vector<int>& candidates, int target, std::vector<int>& tmp, std::vector<std::vector<int>>& res);
-    };
+class _0039_CombinationSum
+{
+public:
+    std::vector<std::vector<int>> combinationSum(std::vector<int> &candidates, int target);
 
+private:
+    void combinationSum(std::vector<int> &candidates, int target, std::vector<int> &tmp, std::vector<std::vector<int>> &res);
+};
 
-    /*
+/*
         Given a collection of [distinct] integers, return all possible permutations
     Example:
         Input: [1,2,3]
         Output: [[1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], [3,2,1]]
     */
-    class _0046_Permutations {
-        public:
-            std::vector<std::vector<int>> permute(std::vector<int> &nums);
-        private:
-            void permuteRecursive(std::vector<int> &nums, int begin, std::vector<std::vector<int>> &result);
-    };
+class _0046_Permutations
+{
+public:
+    std::vector<std::vector<int>> permute(std::vector<int> &nums);
 
-    /* 
+private:
+    void permuteRecursive(std::vector<int> &nums, int begin, std::vector<std::vector<int>> &result);
+};
+
+/* 
         You are given an n x n 2D matrix representing an image. Rotate the image by 90 degrees (clockwise).
         Note: You have to rotate the image in-place, which means you have to modify the input 2D matrix 
         directly. DO NOT allocate another 2D matrix and do the rotation.
     */
-    class _0048_RotateImage {
-        public:
-            void rotate(std::vector<std::vector<int>>& matrix);
-    };
+class _0048_RotateImage
+{
+public:
+    void rotate(std::vector<std::vector<int>> &matrix);
+};
 
-    // Validate a binary tree is BST or not
-    class _0098_ValidateBinarySearchTree {
-        public:
-            bool isValidBST(TreeNode<int>* root);
-    };
+// Validate a binary tree is BST or not
+class _0098_ValidateBinarySearchTree
+{
+public:
+    bool isValidBST(TreeNode<int> *root);
+};
 
-    /*
+/*
         Given a binary tree, check whether it is a mirror of itself(ie, symmetric around its center).
     For example, this binary tree[1, 2, 2, 3, 4, 4, 3] is symmetric :
 
@@ -99,16 +105,16 @@ namespace LeetCode{
 
     Solution:  utilize the preorder framework
     */
-    class _0101_SymmetricTree {
-        public:
-            bool isSymmetric(TreeNode<int>* root);
-        private:
-            bool preOrderIter(TreeNode<int>* root);
-    };
+class _0101_SymmetricTree
+{
+public:
+    bool isSymmetric(TreeNode<int> *root);
 
-    
+private:
+    bool preOrderIter(TreeNode<int> *root);
+};
 
-    /* Binary Tree Level Order Traversal II
+/* Binary Tree Level Order Traversal II
     Given a binary tree, return the bottom - up level order traversal of 
     its nodes' values. (ie, from left to right, level by level from leaf to root).
     
@@ -126,13 +132,13 @@ namespace LeetCode{
         [3]
     ]
     */
-    class _0107_BinaryTreeLevelOrderTraversalII {
-        public:
-            std::vector<std::vector<int>> levelOrderBottom(TreeNode<int>* root);
+class _0107_BinaryTreeLevelOrderTraversalII
+{
+public:
+    std::vector<std::vector<int>> levelOrderBottom(TreeNode<int> *root);
+};
 
-    };
-
-    /* Convert Sorted Array to Binary Search Tree
+/* Convert Sorted Array to Binary Search Tree
     Given an array where elements are sorted in ascending order, 
     convert it to a height balanced BST.
     
@@ -148,14 +154,16 @@ namespace LeetCode{
               /   /
             -10  5
     */
-    class _0108_ConvertSortedArrayToBinarySearchTree {
-        public:
-            TreeNode<int>* sortedArrayToBST(std::vector<int>& nums);
-        private:
-            TreeNode<int>* bst(std::vector<int>& nums, int start, int end);
-    };
+class _0108_ConvertSortedArrayToBinarySearchTree
+{
+public:
+    TreeNode<int> *sortedArrayToBST(std::vector<int> &nums);
 
-    /*
+private:
+    TreeNode<int> *bst(std::vector<int> &nums, int start, int end);
+};
+
+/*
     You are given a perfect binary tree where all leaves are on the same level, 
     and every parent has two children. The binary tree has the following definition:
 
@@ -163,29 +171,32 @@ namespace LeetCode{
     right node, the next pointer should be set to NULL.
     Initially, all next pointers are set to NULL.
     */
-    class _0116_PopulatingNextRightPointerInEachNode {
-        public:
-        struct Node {
-            int val;
-            Node *left;
-            Node *right;
-            Node *next;
-        };
-
-        void connect(Node* root);
+class _0116_PopulatingNextRightPointerInEachNode
+{
+public:
+    struct Node
+    {
+        int val;
+        Node *left;
+        Node *right;
+        Node *next;
     };
 
-    // Sort a linked list in O(NlogN) time using constant space complexity.
-    class _0148_SortList {
-        public:
-            ListNode<int>* sortList(ListNode<int>* head);
-        private:
-            ListNode<int>* merge(ListNode<int>* head1, ListNode<int>* head2);
-            void (ListNode<int>*& head, ListNode<int>*& left, ListNode<int>*& right)；
-    };
+    void connect(Node *root);
+};
 
+// Sort a linked list in O(NlogN) time using constant space complexity.
+class _0148_SortList
+{
+public:
+    ListNode<int> *sortList(ListNode<int> *head);
 
-    /*
+private:
+    ListNode<int> *merge(ListNode<int> *head1, ListNode<int> *head2);
+    void(ListNode<int> *&head, ListNode<int> *&left, ListNode<int> *&right) ；
+};
+
+/*
     Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
         push(x) -- Push element x onto stack.
         pop() -- Removes the element on top of the stack.
@@ -201,22 +212,24 @@ namespace LeetCode{
         minStack.top();      --> Returns 0.
         minStack.getMin();   --> Returns -2.
     */
-    class _0155_MinStack {
-        private:
-            std::stack<int> mainStack;
-            std::stack<int> minStack;
-        public:
-            /** initialize your data structure here. */
-            _0155_MinStack();
-            void push(int x);
-            void pop();
-            int top();
-            int getMin();
-    };
+class _0155_MinStack
+{
+private:
+    std::stack<int> mainStack;
+    std::stack<int> minStack;
 
+public:
+    /** initialize your data structure here. */
+    _0155_MinStack();
+    void push(int x);
+    void pop();
+    int top();
+    int getMin();
+};
 
-    class _0190_ReverseBits {
-        /*
+class _0190_ReverseBits
+{
+    /*
             Reverse bits of a given 32 bits unsigned integer.
             Example 1:
             Input: 00000010100101000001111010011100
@@ -240,14 +253,13 @@ namespace LeetCode{
             notation. Therefore, in Example 2 above the input represents the signed 
             integer -3 and the output represents the signed integer -1073741825.
         */
-    public:
-        uint32_t reverseBits(uint32_t n);
-    };
+public:
+    uint32_t reverseBits(uint32_t n);
+};
 
-
-
-    class _0235_LowestCommonAncestor{
-        /*
+class _0235_LowestCommonAncestor
+{
+    /*
             Given a binary search tree (BST), find the lowest common 
             ancestor (LCA) of two given nodes in the BST.
             
@@ -280,12 +292,13 @@ namespace LeetCode{
         Challenge: 
             Think about the case that the tree is not a binary search tree?
         */
-        public:
-            TreeNode<int> *lowestCommonAncestorRecursive(TreeNode<int> *root, TreeNode<int> *p, TreeNode<int> *q);
-            TreeNode<int> *lowestCommonAncestorIterative(TreeNode<int> *root, TreeNode<int> *p, TreeNode<int> *q);
-    };
+public:
+    TreeNode<int> *lowestCommonAncestorRecursive(TreeNode<int> *root, TreeNode<int> *p, TreeNode<int> *q);
+    TreeNode<int> *lowestCommonAncestorIterative(TreeNode<int> *root, TreeNode<int> *p, TreeNode<int> *q);
+};
 
-    class _0260_SingleNumberII{
+class _0260_SingleNumberII
+{
     /*
         Given an array of numbers nums, in which exactly two elements 
         appear only once and all the other elements appear exactly twice.
@@ -311,11 +324,11 @@ namespace LeetCode{
                 must fall into the two distrinct groups. XOR elements in eash 
                 group,get the A and B.
     */
-        public:
-            std::vector<int> singleNumber(const std::vector<int>& nums);
-    };
+public:
+    std::vector<int> singleNumber(const std::vector<int> &nums);
+};
 
-    /*
+/*
         Given a pattern and a string str, find if str follows the same pattern.
         Here follow means a full match, such that there is a bijection between a 
         letter in pattern and a non - empty word in str.
@@ -335,9 +348,161 @@ namespace LeetCode{
         Notes :
             You may assume pattern contains only lowercase letters, and str 
             contains lowercase letters separated by a single space.
-    */   
-    class _0290_WordPattern {
-        public:
-            bool wordPattern(std::string pattern, std::string str);
-    };
-}
+    */
+class _0290_WordPattern
+{
+public:
+    bool wordPattern(std::string pattern, std::string str);
+};
+
+/*
+    Given an integer (signed 32 bits), write a function 
+    to check whether it is a power of 4.
+    
+    Example 1:
+        Input: 16
+        Output: true
+    Example 2:
+        Input: 5
+        Output: false
+    Follow up: Could you solve it without loops/recursion?
+    */
+class _0342_PowerOfFour
+{
+public:
+    bool isPowerOfFour(int num);
+};
+
+/*
+        Given a non-negative integer n, count all numbers with unique 
+        digits, x, where 0 ≤ x < pow(10, n).
+        
+        Example:
+        Input: 2
+        Output: 91 
+        Explanation: The answer should be the total numbers in the range of 0 ≤ x < 100, 
+                     excluding 11,22,33,44,55,66,77,88,99
+    */
+class _0357_CountNumbersWithUniqueDigits
+{
+public:
+    int countNumbersWithUniqueDigits(int n);
+private:
+    // For n-digits, it is a simple combination problem
+    // The first digit has 9 choices.
+    // From the second digits, 9 , 8, 7 ... selections until 1
+    int countExactDigit(int n);
+};
+
+/*
+Calculate the sum of two integers a and b, but you 
+are not allowed to use the operator + and -.
+
+Example 1:
+    Input: a = 1, b = 2
+    Output: 3
+Example 2:
+    Input: a = -2, b = 3
+    Output: 1
+*/
+class _0371_SumOfTwoIntegers
+{
+public:
+    int getSum(int a, int b);
+};
+
+
+/*
+A binary watch has 4 LEDs on the top which represent
+the hours (0-11), and the 6 LEDs on the bottom represent
+the minutes (0-59).
+
+Each LED represents a zero or one, with the least significant
+bit on the right.
+
+For example, the above binary watch reads "3:25".
+Given a non-negative integer n which represents the number of
+LEDs that are currently on, return all possible times the watch
+could represent.
+
+Example:
+    Input: n = 1
+    Return: ["1:00", "2:00", "4:00", "8:00", "0:01", 
+            "0:02", "0:04", "0:08", "0:16", "0:32"]
+
+Note:
+    The order of output does not matter.
+    The hour must not contain a leading zero, for example "01:00"
+    is not valid, it should be "1:00". The minute must be consist 
+    of two digits and may contain a leading zero, for example 
+    "10:2" is not valid, it should be "10:02".
+
+Solution: 
+    Thinking about it in the forward way is difficult, it is better 
+    to think about it in an inverse way:
+    There are total 12 * 60 combinations, why not enum them one by one 
+    and pick up all satisfied items:
+*/
+class _0401_BinaryWatch{
+public:
+    std::vector<std::string> readBinaryWatch(int num);
+
+};
+
+
+class _0404_SumOfLeftLeaves{
+public:
+    int sumOfLeftLeaves(TreeNode<int>* root);
+};
+
+/*
+Given an n-ary tree, return the level order traversal 
+of its nodes' values. (ie, from left to right, level by level).
+
+For example, given a 3-ary tree:
+    We should return its level order traversal:
+    [
+        [1],
+        [3,2,4],
+        [5,6]
+    ]
+Note:
+    The depth of the tree is at most 1000.
+    The total number of nodes is at most 5000.
+*/
+class _0429_NaryTreelevelOrderTraversal{
+public:
+    std::vector<std::vector<int>> levelOrder(NaryTreeNode<int>* root);
+};
+
+
+
+/*
+Alice and Bob take turns playing a game, with Alice starting first.
+Initially, there is a number N on the chalkboard.  On each player's turn, 
+that player makes a move consisting of:
+Choosing any x with 0 < x < N and N % x == 0.
+Replacing the number N on the chalkboard with N - x.
+Also, if a player cannot make a move, they lose the game.
+
+Return True if and only if Alice wins the game, assuming both players play optimally.
+Example 1:
+Input: 2
+Output: true
+Explanation: Alice chooses 1, and Bob has no more moves.
+
+Example 2:
+Input: 3
+Output: false
+Explanation: Alice chooses 1, Bob chooses 1, and Alice has no more moves.
+
+Note:
+    1 <= N <= 1000
+*/
+class _1025_DivisorGame{
+    public:
+        bool divisorGame(int N);
+
+};
+
+} // namespace LeetCode
