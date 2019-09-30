@@ -86,6 +86,106 @@ public:
 };
 
 
+/*
+    Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
+    Symbol       Value
+    I             1
+    V             5
+    X             10
+    L             50
+    C             100
+    D             500
+    M             1000
+    For example, two is written as II in Roman numeral, just two one's added together. Twelve 
+    is written as, XII, which is simply X + II. The number twenty seven is written as XXVII, 
+    which is XX + V + II.
+    Roman numerals are usually written largest to smallest from left to right. However, the 
+    numeral for four is not IIII. Instead, the number four is written as IV. Because the one 
+    is before the five we subtract it making four. The same principle applies to the number 
+    nine, which is written as IX. There are six instances where subtraction is used:
+
+    I can be placed before V (5) and X (10) to make 4 and 9. 
+    X can be placed before L (50) and C (100) to make 40 and 90. 
+    C can be placed before D (500) and M (1000) to make 400 and 900.
+    Given a roman numeral, convert it to an integer. Input is guaranteed to be within the range 
+    from 1 to 3999.
+
+    Example:
+    Input: "III"     :      Output: 3
+    Input: "IV"      :      Output: 4
+    Input: "IX"      :      Output: 9
+    Input: "LVIII"   :      Output: 58     (Explanation: L = 50, V= 5, III = 3)
+    Input: "MCMXCIV" :      Output: 1994   (Explanation: M = 1000, CM = 900, XC = 90 and IV = 4)
+*/
+class _0013_RomanToInteger {
+public:
+    int romainToInt(std::string& s);
+private:
+    int charToInt(char c);
+};
+
+
+/*
+Write a function to find the longest common prefix string amongst an array of strings.
+If there is no common prefix, return an empty string "".
+
+Example 1:
+Input: ["flower","flow","flight"]
+Output: "fl"
+
+Example 2:
+Input: ["dog","racecar","car"]
+Output: ""
+
+Explanation: There is no common prefix among the input strings.
+*/
+class _0014_LongestCommonPrefix{
+public:
+    std::string longestCommonPrefix(std::vector<std::string>& strs);
+};
+
+
+/*
+Given an array nums of n integers, are there elements a, b, c in nums such 
+that a + b + c = 0? Find all unique triplets in the array which gives the 
+sum of zero.
+
+Note:
+The solution set must not contain duplicate triplets.
+
+Example:
+Given array nums = [-1, 0, 1, 2, -1, -4],
+
+A solution set is:
+[
+  [-1, 0, 1],
+  [-1, -1, 2]
+]
+TODO: Binary search based algorithm
+*/
+class _0015_3Sum{
+public:
+    std::vector<std::vector<int>> threeSum(std::vector<int>& nums);
+};
+
+/*
+Given a string containing digits from 2-9 inclusive, return all possible 
+letter combinations that the number could represent.
+A mapping of digit to letters (just like on the telephone buttons) is 
+given below. Note that 1 does not map to any letters.
+
+Example:
+Input: "23"
+Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
+Note:
+Although the above answer is in lexicographical order, your answer could 
+be in any order you want.
+*/
+class _0017_LetterCombinationsOfAPhoneNumber{
+public:
+    std::vector<std::string> letterCombinations(std::string& digits);
+};
+
 
 /*
 Suppose an array sorted in ascending order is rotated at some pivot 
