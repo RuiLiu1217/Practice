@@ -184,7 +184,74 @@ be in any order you want.
 class _0017_LetterCombinationsOfAPhoneNumber{
 public:
     std::vector<std::string> letterCombinations(std::string& digits);
+private:
+    void letterCombination(const std::string& digits, int i, int N, std::string tmp, std::vector<std::string>& res);
 };
+
+/*
+Given a linked list, remove the n-th node from the end of list and return its head.
+Example:
+Given linked list: 1->2->3->4->5, and n = 2.
+After removing the second node from the end, the linked list becomes 1->2->3->5.
+Note: Given n will always be valid.
+Follow up: Could you do this in one pass?
+*/
+class _0019_RemoveNthNodeFromEndToList {
+public:
+    ListNode<int>* removeNthFromEnd(ListNode<int>* head, int n);
+};
+
+/*
+Given a string containing just the characters '(', ')', '{', '}', '[' and ']', 
+determine if the input string is valid.
+An input string is valid if:
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+Note that an empty string is also considered valid.
+
+Input: "()"         :     Output: true
+Input: "()[]{}"     :     Output: true
+Input: "(]"         :     Output: false
+Input: "([)]"       :     Output: false
+Input: "{[]}"       :     Output: true
+*/
+class _0020_ValidParentheses {
+public:
+    bool isValid(std::string& s);
+};
+
+
+/*
+Merge two sorted linked lists and return it as a new list. The new list 
+should be made by splicing together the nodes of the first two lists.
+Example:
+Input:  1->2->4, 
+        1->3->4
+Output: 1->1->2->3->4->4
+*/
+class _0021_MergeTwoSortedLists{
+public:
+    ListNode<int>* mergeTwoLists(ListNode<int>* l1, ListNode<int>* l2);
+};
+
+/*
+Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+For example, given n = 3, a solution set is:
+[
+  "((()))",
+  "(()())",
+  "(())()",
+  "()(())",
+  "()()()"
+]
+*/
+class _0022_GenerateParentheses{
+public:
+    std::vector<std::string> generateParenthesis(int n);
+private:
+    void generateParenthesis(int l, int r, std::string v, std::vector<std::string>& res);
+};
+
 
 
 /*
