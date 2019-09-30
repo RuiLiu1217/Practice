@@ -61,6 +61,100 @@ public:
     int reverse(int x);
 };
 
+/*
+Determine whether an integer is a palindrome. An integer is a 
+palindrome when it reads the same backward as forward.
+
+Example 1:
+Input: 121
+Output: true
+Example 2:
+
+Input: -121
+Output: false
+Explanation: From left to right, it reads -121. From right to left, 
+it becomes 121-. Therefore it is not a palindrome.
+
+Example 3:
+Input: 10
+Output: false
+Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
+*/
+class _0009_PalindromeNumber{
+public:
+    bool isPalindrome(int x);
+};
+
+
+
+/*
+Suppose an array sorted in ascending order is rotated at some pivot 
+unknown to you beforehand. 
+(i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]).
+You are given a target value to search. If found in the array return 
+its index, otherwise return -1. You may assume no duplicate exists 
+in the array.
+Your algorithm's runtime complexity must be in the order of O(log n).
+
+Example 1:
+Input: nums = [4,5,6,7,0,1,2], target = 0
+Output: 4
+
+Example 2:
+Input: nums = [4,5,6,7,0,1,2], target = 3
+Output: -1
+*/
+// TODO: Modification of the binary search. Needs remember.
+class _0033_SearchInRotatedSortedArray {
+public:
+    int search(std::vector<int>& nums, int target);
+};
+
+
+
+/*
+    TODO: Modification of the binary search
+Given an array of integers nums sorted in ascending order, find the 
+starting and ending position of a given target value.
+Your algorithm's runtime complexity must be in the order of O(log n).
+
+If the target is not found in the array, return [-1, -1].
+
+Example 1:
+Input: nums = [5,7,7,8,8,10], target = 8
+Output: [3,4]
+Example 2:
+
+Input: nums = [5,7,7,8,8,10], target = 6
+Output: [-1,-1]
+*/
+class _0034_FindFirstAndLastPositionOfElementInSortedArray {
+public:
+    std::vector<int> searchRange(std::vector<int>& nums, int target);
+};
+
+/*
+The count-and-say sequence is the sequence of integers with the first five 
+terms as following:
+1.     1
+2.     11
+3.     21
+4.     1211
+5.     111221
+1 is read off as "one 1" or 11.
+11 is read off as "two 1s" or 21.
+21 is read off as "one 2, then one 1" or 1211.
+Given an integer n where 1 ≤ n ≤ 30, generate the nth term of the count-and-say sequence.
+Note: Each term of the sequence of integers will be represented as a string.
+*/
+class _0038_CountAndSay {
+public:
+    std::string countAndSay(int n);
+private:
+    std::string countOnce(std::string& s);
+};
+
+
 /*  
     Given a set of candidate numbers (candidates without duplicates) 
     and a target number (target), find all unique combinations in 
@@ -231,7 +325,7 @@ public:
 
 private:
     ListNode<int> *merge(ListNode<int> *head1, ListNode<int> *head2);
-    void(ListNode<int> *&head, ListNode<int> *&left, ListNode<int> *&right) ；
+    void splitList(ListNode<int> *&head, ListNode<int> *&left, ListNode<int> *&right);
 };
 
 /*
@@ -421,6 +515,59 @@ public:
     bool wordPattern(std::string pattern, std::string str);
 };
 
+
+/*
+    Given a nested list of integers, implement an iterator to flatten it.
+    Each element is either an integer, or a list -- whose elements may 
+    also be integers or other lists.
+
+    Example 1:
+    Input: [[1,1],2,[1,1]]
+    Output: [1,1,2,1,1]
+    Explanation: By calling next repeatedly until hasNext returns false, 
+    the order of elements returned by next should be: [1,1,2,1,1].
+
+    Example 2:
+    Input: [1,[4,[6]]]
+    Output: [1,4,6]
+    Explanation: By calling next repeatedly until hasNext returns false, 
+    the order of elements returned by next should be: [1,4,6].
+*/
+
+
+ // This is the interface that allows for creating nested lists.
+ // You should not implement it, or speculate about its implementation
+class NestedInteger {
+public:
+    // Return true if this NestedInteger holds a single integer, rather than a nested list.
+    bool isInteger() const;
+
+    // Return the single integer that this NestedInteger holds, if it holds a single integer
+    // The result is undefined if this NestedInteger holds a nested list
+    int getInteger() const;
+
+    // Return the nested list that this NestedInteger holds, if it holds a nested list
+    // The result is undefined if this NestedInteger holds a single integer
+    const std::vector<NestedInteger> &getList() const;
+};
+// TODO: COPY FROM A SOLUTION
+class _0341_FlattenNestedListIterator{
+    private:
+        std::vector<NestedInteger> nl;
+        _0341_FlattenNestedListIterator* itr = nullptr;
+        int index = -1;        
+    public:
+        _0341_FlattenNestedListIterator(std::vector<NestedInteger>& nestedList);
+
+        int next();
+        bool hasNext();
+        bool hasContent(std::vector<NestedInteger> V);
+        void increaseIndex();
+
+};
+
+
+
 /*
     Given an integer (signed 32 bits), write a function 
     to check whether it is a power of 4.
@@ -475,6 +622,30 @@ class _0371_SumOfTwoIntegers
 {
 public:
     int getSum(int a, int b);
+};
+
+/*
+    Given a n x n matrix where each of the rows and columns 
+    are sorted in ascending order, find the kth smallest element 
+    in the matrix.
+    
+    Note that it is the kth smallest element in the sorted order, 
+    not the kth distinct element.
+    
+    Example:
+    matrix = [
+            [ 1,  5,  9],
+            [10, 11, 13],
+            [12, 13, 15]
+    ], k = 8, 
+    
+    return 13.
+*/
+class _0378_KthSmallestElementInASortedMatrix {
+public:
+    int kthSmallest(std::vector<std::vector<int>>& matrix, int k);
+private:
+    int search_less_equal(std::vector<std::vector<int>>& matrix, int target);
 };
 
 
