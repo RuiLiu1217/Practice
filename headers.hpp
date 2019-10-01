@@ -8,8 +8,7 @@
 
 namespace LeetCode
 {
-
-    /*
+/* TOPIC: HASH MAP
     Given an array of integers, return indices of the two 
     numbers such that they add up to a specific target.
     You may assume that each input would have exactly one 
@@ -19,11 +18,63 @@ namespace LeetCode
         Because nums[0] + nums[1] = 2 + 7 = 9,
     Return [0, 1].
     */
-    class _0001_TwoSum{
-        public:
-            std::vector<int> twoSum(std::vector<int>& nums, int target);
-    };
+class _0001_TwoSum
+{
+public:
+    std::vector<int> twoSum(std::vector<int> &nums, int target);
+};
 
+/* TOPIC: LINK LIST
+    You are given two non-empty linked lists representing 
+    two non-negative integers. The digits are stored in 
+    reverse order and each of their nodes contain a single digit. 
+    Add the two numbers and return it as a linked list.
+    You may assume the two numbers do not contain any leading zero,
+    except the number 0 itself.
+    
+    Example:
+    Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+    Output: 7 -> 0 -> 8
+    Explanation: 342 + 465 = 807.
+    */
+class _0002_AddTwoNumbers
+{
+public:
+    ListNode<int> *addTwoNumbers(ListNode<int> *l1, ListNode<int> *l2);
+
+private:
+    ListNode<int> *AddTwoNodes(ListNode<int> *l1, ListNode<int> *l2, int wi);
+};
+
+/* TOPIC : SLIDING WINDOW
+    Given a string, find the length of the longest substring without repeating characters.
+    
+    Example 1:
+    Input: "abcabcbb"
+    Output: 3 
+    Explanation: The answer is "abc", with the length of 3. 
+    
+    Example 2:
+    Input: "bbbbb"
+    Output: 1
+    Explanation: The answer is "b", with the length of 1.
+    
+    Example 3:
+    Input: "pwwkew"
+    Output: 3
+    
+    Explanation: The answer is "wke", with the length of 3. 
+    Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
+    */
+// TODO: Copy the solution. Need to understand it better
+// HashTable + Sliding Window:
+// Using a hashtable to remember the last index of every char, And keep tracking the starting
+// point of a valid substring
+class _0003_LongestSubstringWithoutRepeatingCharacters
+{
+public:
+    int lengthOfLongestSubstring(std::string s);
+};
 
 // class _0004_MedianOfTwoSortedArrays {
 //     public:
@@ -33,6 +84,20 @@ namespace LeetCode
 
 // };
 
+
+
+/*
+Given a string s, find the longest palindromic substring in s. You may assume that 
+the maximum length of s is 1000.
+
+Example 1:
+Input: "babad"          :         Output: "bab"
+Note: "aba" is also a valid answer.
+
+Example 2:
+
+Input: "cbbd"           :         Output: "bb"
+*/
 class _0005_LongestPalindromicSubstring
 {
 public:
@@ -40,6 +105,38 @@ public:
 
 private:
     int expandAroundCenter(std::string &s, int i, int j);
+};
+
+/*
+The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows 
+like this: (you may want to display this pattern in a fixed font for better legibility)
+
+        P   A   H   N
+        A P L S I I G
+        Y   I   R
+And then read line by line: "PAHNAPLSIIGYIR"
+
+Write the code that will take a string and make this conversion given a number of rows:
+
+string convert(string s, int numRows);
+Example 1:
+
+Input: s = "PAYPALISHIRING", numRows = 3
+Output: "PAHNAPLSIIGYIR"
+Example 2:
+
+Input: s = "PAYPALISHIRING", numRows = 4
+Output: "PINALSIGYAHRPI"
+Explanation:
+
+        P     I    N
+        A   L S  I G
+        Y A   H R
+        P     I
+*/
+class _0006_ZigZagConversion {
+public:
+    std::string convert(std::string s, int numRows);
 };
 
 /*
@@ -56,12 +153,69 @@ Example 3:
 Input: 120
 Output: 21
 */
-class _0007_ReverseInteger{
+class _0007_ReverseInteger
+{
 public:
     int reverse(int x);
 };
 
+
+// Totally COPY FROM A SOLUTION
 /*
+Implement atoi which converts a string to an integer.
+The function first discards as many whitespace characters as 
+necessary until the first non-whitespace character is found. 
+Then, starting from this character, takes an optional initial 
+plus or minus sign followed by as many numerical digits as 
+possible, and interprets them as a numerical value.
+
+The string can contain additional characters after those that form 
+the integral number, which are ignored and have no effect on the 
+behavior of this function.
+
+If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed.
+
+If no valid conversion could be performed, a zero value is returned.
+
+Note:
+
+Only the space character ' ' is considered as whitespace character.
+Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231,  231 − 1]. If the numerical value is out of the range of representable values, INT_MAX (231 − 1) or INT_MIN (−231) is returned.
+Example 1:
+
+Input: "42"
+Output: 42
+Example 2:
+
+Input: "   -42"
+Output: -42
+Explanation: The first non-whitespace character is '-', which is the minus sign.
+             Then take as many numerical digits as possible, which gets 42.
+Example 3:
+
+Input: "4193 with words"
+Output: 4193
+Explanation: Conversion stops at digit '3' as the next character is not a numerical digit.
+Example 4:
+
+Input: "words and 987"
+Output: 0
+Explanation: The first non-whitespace character is 'w', which is not a numerical 
+             digit or a +/- sign. Therefore no valid conversion could be performed.
+Example 5:
+
+Input: "-91283472332"
+Output: -2147483648
+Explanation: The number "-91283472332" is out of the range of a 32-bit signed integer.
+             Thefore INT_MIN (−231) is returned.
+*/
+class _0008_StringToInteger {
+public:
+    int myAtoi(std::string str);
+};
+
+
+/* TOPIC: Palindrome
 Determine whether an integer is a palindrome. An integer is a 
 palindrome when it reads the same backward as forward.
 
@@ -80,9 +234,31 @@ Input: 10
 Output: false
 Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
 */
-class _0009_PalindromeNumber{
+class _0009_PalindromeNumber
+{
 public:
     bool isPalindrome(int x);
+};
+
+/* TOPIC: Greedy Algorithm
+Given n non-negative integers a1, a2, ..., an , where each represents a point 
+at coordinate (i, ai). n vertical lines are drawn such that the two endpoints 
+of line i is at (i, ai) and (i, 0). Find two lines, which together with x-axis 
+forms a container, such that the container contains the most water.
+
+Note: You may not slant the container and n is at least 2.
+The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this 
+case, the max area of water (blue section) the container can contain is 49. 
+
+Example:
+
+Input: [1,8,6,2,5,4,8,3,7]
+Output: 49
+
+*/
+
+class _0011_ContainerWithMostWater {
+
 };
 
 
@@ -117,13 +293,14 @@ public:
     Input: "LVIII"   :      Output: 58     (Explanation: L = 50, V= 5, III = 3)
     Input: "MCMXCIV" :      Output: 1994   (Explanation: M = 1000, CM = 900, XC = 90 and IV = 4)
 */
-class _0013_RomanToInteger {
+class _0013_RomanToInteger
+{
 public:
-    int romainToInt(std::string& s);
+    int romainToInt(std::string &s);
+
 private:
     int charToInt(char c);
 };
-
 
 /*
 Write a function to find the longest common prefix string amongst an array of strings.
@@ -139,11 +316,11 @@ Output: ""
 
 Explanation: There is no common prefix among the input strings.
 */
-class _0014_LongestCommonPrefix{
+class _0014_LongestCommonPrefix
+{
 public:
-    std::string longestCommonPrefix(std::vector<std::string>& strs);
+    std::string longestCommonPrefix(std::vector<std::string> &strs);
 };
-
 
 /*
 Given an array nums of n integers, are there elements a, b, c in nums such 
@@ -163,9 +340,10 @@ A solution set is:
 ]
 TODO: Binary search based algorithm
 */
-class _0015_3Sum{
+class _0015_3Sum
+{
 public:
-    std::vector<std::vector<int>> threeSum(std::vector<int>& nums);
+    std::vector<std::vector<int>> threeSum(std::vector<int> &nums);
 };
 
 /*
@@ -181,11 +359,13 @@ Note:
 Although the above answer is in lexicographical order, your answer could 
 be in any order you want.
 */
-class _0017_LetterCombinationsOfAPhoneNumber{
+class _0017_LetterCombinationsOfAPhoneNumber
+{
 public:
-    std::vector<std::string> letterCombinations(std::string& digits);
+    std::vector<std::string> letterCombinations(std::string &digits);
+
 private:
-    void letterCombination(const std::string& digits, int i, int N, std::string tmp, std::vector<std::string>& res);
+    void letterCombination(const std::string &digits, int i, int N, std::string tmp, std::vector<std::string> &res);
 };
 
 /*
@@ -196,9 +376,10 @@ After removing the second node from the end, the linked list becomes 1->2->3->5.
 Note: Given n will always be valid.
 Follow up: Could you do this in one pass?
 */
-class _0019_RemoveNthNodeFromEndToList {
+class _0019_RemoveNthNodeFromEndToList
+{
 public:
-    ListNode<int>* removeNthFromEnd(ListNode<int>* head, int n);
+    ListNode<int> *removeNthFromEnd(ListNode<int> *head, int n);
 };
 
 /*
@@ -215,11 +396,11 @@ Input: "(]"         :     Output: false
 Input: "([)]"       :     Output: false
 Input: "{[]}"       :     Output: true
 */
-class _0020_ValidParentheses {
+class _0020_ValidParentheses
+{
 public:
-    bool isValid(std::string& s);
+    bool isValid(std::string &s);
 };
-
 
 /*
 Merge two sorted linked lists and return it as a new list. The new list 
@@ -229,9 +410,10 @@ Input:  1->2->4,
         1->3->4
 Output: 1->1->2->3->4->4
 */
-class _0021_MergeTwoSortedLists{
+class _0021_MergeTwoSortedLists
+{
 public:
-    ListNode<int>* mergeTwoLists(ListNode<int>* l1, ListNode<int>* l2);
+    ListNode<int> *mergeTwoLists(ListNode<int> *l1, ListNode<int> *l2);
 };
 
 /*
@@ -245,11 +427,13 @@ For example, given n = 3, a solution set is:
   "()()()"
 ]
 */
-class _0022_GenerateParentheses{
+class _0022_GenerateParentheses
+{
 public:
     std::vector<std::string> generateParenthesis(int n);
+
 private:
-    void generateParenthesis(int l, int r, std::string v, std::vector<std::string>& res);
+    void generateParenthesis(int l, int r, std::string v, std::vector<std::string> &res);
 };
 
 /*
@@ -264,10 +448,11 @@ Input:
 Output: 1->1->2->3->4->4->5->6
 
 */
-class _0023_MergeKeSortedLists {
-    public:
-        ListNode<int>* mergeKLists(std::vector<ListNode<int>*>& lists);
-        bool finishSorting(std::vector<bool> notChoose);
+class _0023_MergeKeSortedLists
+{
+public:
+    ListNode<int> *mergeKLists(std::vector<ListNode<int> *> &lists);
+    bool finishSorting(std::vector<bool> notChoose);
 };
 
 /*
@@ -277,10 +462,10 @@ You may not modify the values in the list's nodes, only nodes itself may be chan
 Example:
 Given 1->2->3->4, you should return the list as 2->1->4->3.
 */
-class _0024_SwapNodesInPairs {
-    public:
-        ListNode<int>* swapPairs(ListNode<int>* head);
-
+class _0024_SwapNodesInPairs
+{
+public:
+    ListNode<int> *swapPairs(ListNode<int> *head);
 };
 
 /*
@@ -317,9 +502,10 @@ for (int i = 0; i < len; i++) {
     print(nums[i]);
 }
 */
-class _0026_RemoveDuplicatesFromSortedArray {
+class _0026_RemoveDuplicatesFromSortedArray
+{
 public:
-    int removeDuplicates(std::vector<int>& nums);
+    int removeDuplicates(std::vector<int> &nums);
 };
 
 /*
@@ -354,12 +540,11 @@ for (int i = 0; i < len; i++) {
     print(nums[i]);
 }
 */
-class _0027_RemoveElement{
+class _0027_RemoveElement
+{
 public:
-    int removeElement(std::vector<int>& nums, int val);
-
+    int removeElement(std::vector<int> &nums, int val);
 };
-
 
 /*
 Implement strStr().
@@ -381,9 +566,10 @@ great question to ask during an interview.
 For the purpose of this problem, we will return 0 when needle is 
 an empty string. This is consistent to C's strstr() and Java's indexOf().
 */
-class _0028_ImplementStrStr{
+class _0028_ImplementStrStr
+{
 public:
-    int strStr(std::string& haystack, std::string& needle);
+    int strStr(std::string &haystack, std::string &needle);
 };
 
 /*
@@ -397,11 +583,14 @@ corresponding outputs are in the right-hand column.
 3,2,1 → 1,2,3
 1,1,5 → 1,5,1
 */
-class _0031_NextPermutation{
+class _0031_NextPermutation
+{
 public:
-    void nextPermutation(std::vector<int>& nums);
-};
+    void nextPermutation(std::vector<int> &nums);
 
+private:
+    void reverse(std::vector<int> &nums, int start, int end);
+};
 
 /*
 Suppose an array sorted in ascending order is rotated at some pivot 
@@ -421,12 +610,11 @@ Input: nums = [4,5,6,7,0,1,2], target = 3
 Output: -1
 */
 // TODO: Modification of the binary search. Needs remember.
-class _0033_SearchInRotatedSortedArray {
+class _0033_SearchInRotatedSortedArray
+{
 public:
-    int search(std::vector<int>& nums, int target);
+    int search(std::vector<int> &nums, int target);
 };
-
-
 
 /*
     TODO: Modification of the binary search
@@ -444,9 +632,10 @@ Example 2:
 Input: nums = [5,7,7,8,8,10], target = 6
 Output: [-1,-1]
 */
-class _0034_FindFirstAndLastPositionOfElementInSortedArray {
+class _0034_FindFirstAndLastPositionOfElementInSortedArray
+{
 public:
-    std::vector<int> searchRange(std::vector<int>& nums, int target);
+    std::vector<int> searchRange(std::vector<int> &nums, int target);
 };
 
 /*
@@ -463,13 +652,14 @@ terms as following:
 Given an integer n where 1 ≤ n ≤ 30, generate the nth term of the count-and-say sequence.
 Note: Each term of the sequence of integers will be represented as a string.
 */
-class _0038_CountAndSay {
+class _0038_CountAndSay
+{
 public:
     std::string countAndSay(int n);
-private:
-    std::string countOnce(std::string& s);
-};
 
+private:
+    std::string countOnce(std::string &s);
+};
 
 /*  
     Given a set of candidate numbers (candidates without duplicates) 
@@ -705,7 +895,6 @@ public:
     uint32_t reverseBits(uint32_t n);
 };
 
-
 class _0235_LowestCommonAncestor
 {
     /*
@@ -746,7 +935,6 @@ public:
     TreeNode<int> *lowestCommonAncestorIterative(TreeNode<int> *root, TreeNode<int> *p, TreeNode<int> *q);
 };
 
-
 /*
 Write an efficient algorithm that searches for a value 
 in an m x n matrix. This matrix has the following properties:
@@ -766,12 +954,11 @@ Example:
     Given target = 5, return true.
     Given target = 20, return false.
 */
-class _0240_SearchA2DMatrix_II {
+class _0240_SearchA2DMatrix_II
+{
 public:
-    bool searchMatrix(const std::vector<std::vector<int>>& matrix, int target);
+    bool searchMatrix(const std::vector<std::vector<int>> &matrix, int target);
 };
-
-
 
 class _0260_SingleNumberII
 {
@@ -831,7 +1018,6 @@ public:
     bool wordPattern(std::string pattern, std::string str);
 };
 
-
 /*
     Given a nested list of integers, implement an iterator to flatten it.
     Each element is either an integer, or a list -- whose elements may 
@@ -850,10 +1036,10 @@ public:
     the order of elements returned by next should be: [1,4,6].
 */
 
-
- // This is the interface that allows for creating nested lists.
- // You should not implement it, or speculate about its implementation
-class NestedInteger {
+// This is the interface that allows for creating nested lists.
+// You should not implement it, or speculate about its implementation
+class NestedInteger
+{
 public:
     // Return true if this NestedInteger holds a single integer, rather than a nested list.
     bool isInteger() const;
@@ -867,22 +1053,21 @@ public:
     const std::vector<NestedInteger> &getList() const;
 };
 // TODO: COPY FROM A SOLUTION
-class _0341_FlattenNestedListIterator{
-    private:
-        std::vector<NestedInteger> nl;
-        _0341_FlattenNestedListIterator* itr = nullptr;
-        int index = -1;        
-    public:
-        _0341_FlattenNestedListIterator(std::vector<NestedInteger>& nestedList);
+class _0341_FlattenNestedListIterator
+{
+private:
+    std::vector<NestedInteger> nl;
+    _0341_FlattenNestedListIterator *itr = nullptr;
+    int index = -1;
 
-        int next();
-        bool hasNext();
-        bool hasContent(std::vector<NestedInteger> V);
-        void increaseIndex();
+public:
+    _0341_FlattenNestedListIterator(std::vector<NestedInteger> &nestedList);
 
+    int next();
+    bool hasNext();
+    bool hasContent(std::vector<NestedInteger> V);
+    void increaseIndex();
 };
-
-
 
 /*
     Given an integer (signed 32 bits), write a function 
@@ -916,6 +1101,7 @@ class _0357_CountNumbersWithUniqueDigits
 {
 public:
     int countNumbersWithUniqueDigits(int n);
+
 private:
     // For n-digits, it is a simple combination problem
     // The first digit has 9 choices.
@@ -957,13 +1143,14 @@ public:
     
     return 13.
 */
-class _0378_KthSmallestElementInASortedMatrix {
+class _0378_KthSmallestElementInASortedMatrix
+{
 public:
-    int kthSmallest(std::vector<std::vector<int>>& matrix, int k);
-private:
-    int search_less_equal(std::vector<std::vector<int>>& matrix, int target);
-};
+    int kthSmallest(std::vector<std::vector<int>> &matrix, int k);
 
+private:
+    int search_less_equal(std::vector<std::vector<int>> &matrix, int target);
+};
 
 /*
 A binary watch has 4 LEDs on the top which represent
@@ -996,16 +1183,16 @@ Solution:
     There are total 12 * 60 combinations, why not enum them one by one 
     and pick up all satisfied items:
 */
-class _0401_BinaryWatch{
+class _0401_BinaryWatch
+{
 public:
     std::vector<std::string> readBinaryWatch(int num);
-
 };
 
-
-class _0404_SumOfLeftLeaves{
+class _0404_SumOfLeftLeaves
+{
 public:
-    int sumOfLeftLeaves(TreeNode<int>* root);
+    int sumOfLeftLeaves(TreeNode<int> *root);
 };
 
 // We want to use quad trees to store an N x N boolean grid. Each cell in the
@@ -1018,17 +1205,19 @@ public:
 // Your task is to use a quad tree to represent a given grid.
 
 // 这是一道比较简单的题目，主要注意点就是先判断一个矩阵中的值是否一致，在看分隔中是否一致
-class _0427_ConstructQuadTree {
+class _0427_ConstructQuadTree
+{
 public:
-    QuadTreeNode* construct(std::vector<std::vector<int>>& grid);
-    QuadTreeNode* construct(std::vector<std::vector<int>>& grid, 
-    int rowStart, int rowEnd, int colStart, int colEnd);
-private:
-    bool areConsistent(std::vector<std::vector<int>>& grid);
-    bool areConsistent(std::vector<std::vector<int>>& grid, 
-    int rowStart, int rowEnd, int colStart, int colEnd);
+    QuadTreeNode *construct(std::vector<std::vector<int>> &grid);
+    QuadTreeNode *construct(std::vector<std::vector<int>> &grid,
+                            int rowStart, int rowEnd, int colStart, int colEnd);
 
-    std::vector<std::vector<std::vector<int>>> divideGrid(std::vector<std::vector<int>>& grid);
+private:
+    bool areConsistent(std::vector<std::vector<int>> &grid);
+    bool areConsistent(std::vector<std::vector<int>> &grid,
+                       int rowStart, int rowEnd, int colStart, int colEnd);
+
+    std::vector<std::vector<std::vector<int>>> divideGrid(std::vector<std::vector<int>> &grid);
 };
 
 /*
@@ -1046,11 +1235,11 @@ Note:
     The depth of the tree is at most 1000.
     The total number of nodes is at most 5000.
 */
-class _0429_NaryTreelevelOrderTraversal{
+class _0429_NaryTreelevelOrderTraversal
+{
 public:
-    std::vector<std::vector<int>> levelOrder(NaryTreeNode<int>* root);
+    std::vector<std::vector<int>> levelOrder(NaryTreeNode<int> *root);
 };
-
 
 /*
 Given scores of N athletes, find their relative 
@@ -1070,11 +1259,11 @@ Note:
     N is a positive integer and won't exceed 10,000.
     All the scores of athletes are guaranteed to be unique.
 */
-class _0506_RelativeRanks{
+class _0506_RelativeRanks
+{
 public:
-    std::vector<std::string> findRelativeRanks(std::vector<int>& nums);
+    std::vector<std::string> findRelativeRanks(std::vector<int> &nums);
 };
-
 
 /*
 Alice and Bob take turns playing a game, with Alice starting first.
@@ -1098,10 +1287,10 @@ Explanation: Alice chooses 1, Bob chooses 1, and Alice has no more moves.
 Note:
     1 <= N <= 1000
 */
-class _1025_DivisorGame{
-    public:
-        bool divisorGame(int N);
-
+class _1025_DivisorGame
+{
+public:
+    bool divisorGame(int N);
 };
 
 } // namespace LeetCode
