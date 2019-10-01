@@ -252,6 +252,155 @@ private:
     void generateParenthesis(int l, int r, std::string v, std::vector<std::string>& res);
 };
 
+/*
+Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
+Example:
+Input:
+[
+  1->4->5,
+  1->3->4,
+  2->6
+]
+Output: 1->1->2->3->4->4->5->6
+
+*/
+class _0023_MergeKeSortedLists {
+    public:
+        ListNode<int>* mergeKLists(std::vector<ListNode<int>*>& lists);
+        bool finishSorting(std::vector<bool> notChoose);
+};
+
+/*
+Given a linked list, swap every two adjacent nodes and return its head.
+You may not modify the values in the list's nodes, only nodes itself may be changed.
+
+Example:
+Given 1->2->3->4, you should return the list as 2->1->4->3.
+*/
+class _0024_SwapNodesInPairs {
+    public:
+        ListNode<int>* swapPairs(ListNode<int>* head);
+
+};
+
+/*
+Given a sorted array nums, remove the duplicates in-place such that each element 
+appear only once and return the new length.
+Do not allocate extra space for another array, you must do this by modifying the 
+input array in-place with O(1) extra memory.
+
+Example 1:
+Given nums = [1,1,2],
+Your function should return length = 2, with the first two elements of nums 
+being 1 and 2 respectively. It doesn't matter what you leave beyond the returned 
+length.
+
+Example 2:
+Given nums = [0,0,1,1,1,2,2,3,3,4],
+Your function should return length = 5, with the first five elements of nums 
+being modified to 0, 1, 2, 3, and 4 respectively.
+It doesn't matter what values are set beyond the returned length.
+Clarification:
+Confused why the returned value is an integer but your answer is an array?
+
+Note that the input array is passed in by reference, which means modification to 
+the input array will be known to the caller as well.
+
+Internally you can think of this:
+
+// nums is passed in by reference. (i.e., without making a copy)
+int len = removeDuplicates(nums);
+
+// any modification to nums in your function would be known by the caller.
+// using the length returned by your function, it prints the first len elements.
+for (int i = 0; i < len; i++) {
+    print(nums[i]);
+}
+*/
+class _0026_RemoveDuplicatesFromSortedArray {
+public:
+    int removeDuplicates(std::vector<int>& nums);
+};
+
+/*
+Given an array nums and a value val, remove all instances of that value in-place 
+and return the new length. Do not allocate extra space for another array, you must 
+do this by modifying the input array in-place with O(1) extra memory.
+The order of elements can be changed. It doesn't matter what you leave beyond 
+the new length.
+
+Example 1:
+Given nums = [3,2,2,3], val = 3,
+Your function should return length = 2, with the first two elements of nums being 2.
+It doesn't matter what you leave beyond the returned length.
+
+Example 2:
+Given nums = [0,1,2,2,3,0,4,2], val = 2,
+Your function should return length = 5, with the first five elements of nums 
+containing 0, 1, 3, 0, and 4. Note that the order of those five elements can be 
+arbitrary. It doesn't matter what values are set beyond the returned length.
+
+Clarification:
+Confused why the returned value is an integer but your answer is an array?
+Note that the input array is passed in by reference, which means modification 
+to the input array will be known to the caller as well.
+
+Internally you can think of this:
+// nums is passed in by reference. (i.e., without making a copy)
+int len = removeElement(nums, val);
+// any modification to nums in your function would be known by the caller.
+// using the length returned by your function, it prints the first len elements.
+for (int i = 0; i < len; i++) {
+    print(nums[i]);
+}
+*/
+class _0027_RemoveElement{
+public:
+    int removeElement(std::vector<int>& nums, int val);
+
+};
+
+
+/*
+Implement strStr().
+Return the index of the first occurrence of needle in haystack, 
+or -1 if needle is not part of haystack.
+
+Example 1:
+Input: haystack = "hello", needle = "ll"
+Output: 2
+
+Example 2:
+Input: haystack = "aaaaa", needle = "bba"
+Output: -1
+
+Clarification:
+What should we return when needle is an empty string? This is a 
+great question to ask during an interview.
+
+For the purpose of this problem, we will return 0 when needle is 
+an empty string. This is consistent to C's strstr() and Java's indexOf().
+*/
+class _0028_ImplementStrStr{
+public:
+    int strStr(std::string& haystack, std::string& needle);
+};
+
+/*
+Implement next permutation, which rearranges numbers into the lexicographically 
+next greater permutation of numbers. If such arrangement is not possible, it 
+must rearrange it as the lowest possible order (ie, sorted in ascending order).
+The replacement must be in-place and use only constant extra memory.
+Here are some examples. Inputs are in the left-hand column and its 
+corresponding outputs are in the right-hand column.
+1,2,3 → 1,3,2
+3,2,1 → 1,2,3
+1,1,5 → 1,5,1
+*/
+class _0031_NextPermutation{
+public:
+    void nextPermutation(std::vector<int>& nums);
+};
 
 
 /*
