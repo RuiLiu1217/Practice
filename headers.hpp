@@ -254,13 +254,17 @@ Example:
 
 Input: [1,8,6,2,5,4,8,3,7]
 Output: 49
-
 */
-
 class _0011_ContainerWithMostWater {
-
+public:
+    int maxArea(std::vector<int>& height);
 };
 
+
+class _0012_IntegerToRoman{
+public:
+    std::string intToRoman(int num);
+}
 
 /*
     Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
@@ -638,6 +642,213 @@ public:
     std::vector<int> searchRange(std::vector<int> &nums, int target);
 };
 
+
+/* TOPIC: Binary Search
+Given a sorted array and a target value, return the index if the target 
+is found. If not, return the index where it would be if it were inserted 
+in order.
+You may assume no duplicates in the array.
+
+Example 
+Input: [1,3,5,6], 5         :   Output: 2
+Input: [1,3,5,6], 2         :   Output: 1
+Input: [1,3,5,6], 7         :   Output: 4
+Input: [1,3,5,6], 0         :   Output: 0
+*/
+class _0035_SearchInsertPosition {
+public:
+    int searchInsert(std::vector<int>& nums, int target);
+};
+
+
+/*
+Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be 
+validated according to the following rules:
+
+Each row must contain the digits 1-9 without repetition.
+Each column must contain the digits 1-9 without repetition.
+Each of the 9 3x3 sub-boxes of the grid must contain the digits 1-9 without repetition.
+
+A partially filled sudoku which is valid.
+The Sudoku board could be partially filled, where empty cells are filled with the character '.'.
+
+Note:
+A Sudoku board (partially filled) could be valid but is not necessarily solvable.
+Only the filled cells need to be validated according to the mentioned rules.
+The given board contain only digits 1-9 and the character '.'.
+The given board size is always 9x9.
+*/
+class _0036_ValidSudoku{
+public:
+    bool isValidSudoku(std::vector<std::vector<<char>>& board);
+
+private:
+    bool existDuplicatePerSquare(std::vector<std::vector<char>>& board, int i, int j);
+    bool existDuplicatePerRow(std::vector<std::vector<char>>& board, int i);
+    bool existDuplicatePerColumn(std::vector<std::vector<char>>& board, int j);
+};
+
+/*
+Write a program to solve a Sudoku puzzle by filling the empty cells.
+
+A sudoku solution must satisfy all of the following rules:
+
+Each of the digits 1-9 must occur exactly once in each row.
+Each of the digits 1-9 must occur exactly once in each column.
+Each of the the digits 1-9 must occur exactly once in each of the 9 3x3 sub-boxes of the grid.
+Empty cells are indicated by the character '.'.
+*/
+class _0037_SudokuSolver {
+public:
+    // void solveSudoku(vector<vector<char>>& board) {
+    //     const int M = unfilled(board);
+    //     std::vector<int> rowMask(9, 0);
+    //     std::vector<int> colMask(9, 0);
+    //     std::vector<int> blkMask(9, 0);
+    //     calcualteMasks(board, rowMask, colMask, blkMask);
+    //     solveSudoku(board, 0, M, rowMask, colMask, blkMask);
+    // }
+    // void calcualteMasks(std::vector<std::vector<char>>& board, 
+    //                     std::vector<int>& rowMask,
+    //                    std::vector<int>& colMask,
+    //                    std::vector<int>& blkMask) {
+    //     const int M = 0x000003FF;
+        
+    //     for(int i = 0; i < 9; ++i) {
+    //         int v = 0;
+    //         for(int j = 0; j < 9; ++j) {
+    //             if(board[i][j] != '.') {
+    //                  v |= 1<<(board[i][j] - '0');
+    //             }
+    //         }
+    //         rowMask[i] = M ^ v;
+    //     }
+        
+    //     for(int j = 0; j < 9; ++j) {
+    //         int v = 0;
+    //         for(int i = 0; i < 9; ++i) {
+    //             if(board[i][j] != '.') {
+    //                 v |= 1<<(board[i][j] - '0');
+    //             }
+    //         }
+    //         colMask[j] = M ^ v;
+    //     }
+        
+    //     for(int i = 0; i < 3; ++i) {
+    //         for(int j = 0; j < 3; ++j) {
+    //             int v = 0;
+    //             for(int k1 = 0; k1 < 3; ++k1) {
+    //                 for(int k2 = 0; k2 < 3; ++k2) {
+    //                     if(board[i * 3 + k1][j * 3 + k2] != '.') {
+    //                         v |= 1 << (board[i * 3 + k1][j * 3 + k2] - '0');
+    //                     }
+    //                 }
+    //             }
+    //             blkMask[i * 3 + j] = M ^ v;
+    //         }
+    //     }
+    // }
+    
+    // std::vector<char> getSolutionSpace(std::vector<int>& rowMask, std::vector<int>& colMask, std::vector<int>& blkMask, int i, int j) {
+    //     int I = i / 3;
+    //     int J = j / 3;
+    //     int rm = rowMask[i];
+    //     int cm = colMask[j];
+    //     int bm = blkMask[I * 3 + J];
+    //     int s = (rm & cm & bm);
+    //     if(s == 0) {
+    //         return {};
+    //     } else {
+    //         int i = 0;
+    //         std::vector<char> res;
+    //         while(s) {
+    //             if(s & 1) {
+    //                 res.push_back('0' + i);
+    //             }
+    //             s = s >> 1;
+    //             ++i;
+    //         }
+    //         return res;
+    //     }
+    // }
+    
+    
+    // void solveSudoku(std::vector<std::vector<char>>& board, int k, int M, std::vector<int>& rowMask,
+    //                 std::vector<int>& colMask, std::vector<int>& blkMask) {
+    //     if(k == M) {
+    //         return;
+    //     }
+    //     const int Ms = 0x000003FF;
+    //     for(int i = 0; i < 9; ++i) {
+    //         for(int j = 0; j < 9; ++j) {
+    //             if(board[i][j] == '.') {
+    //                 std::vector<char> solvable = getSolutionSpace(rowMask, colMask, blkMask, i, j);
+    //                 if(solvable.size() > 0) {
+    //                     for(auto c : solvable) {
+    //                         board[i][j] = c;
+    //                         rowMask[i] &= ((1 << (c - '0')) ^ Ms);
+    //                         colMask[j] &= ((1 << (c - '0')) ^ Ms);
+    //                         blkMask[(i / 3) * 3 + j / 3] = blkMask[(i / 3) * 3 + j / 3] & ((1 << (c - '0')) ^ Ms);
+    //                         solveSudoku(board, k + 1, M, rowMask, colMask, blkMask);
+    //                         board[i][j] = '.';
+    //                         rowMask[i] |= (1 << (c - '0'));
+    //                         colMask[j] |= (1 << (c - '0'));
+    //                         blkMask[(i / 3) * 3 + j / 3] |= (1 << (c - '0'));
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+    // int unfilled(std::vector<std::vector<char>>& board) {
+    //     int res = 0;
+    //     for(int i = 0; i < 9; ++i) {
+    //         for(int j = 0; j < 9; ++j) {
+    //             if(board[i][j] == '.') {
+    //                 ++res;
+    //             }
+    //         }
+    //     }
+    //     return res;
+    // }
+    
+    
+    
+    // std::vector<char> getPotentialValues(std::vector<std::vector<char>>& board, int i, int j) {
+    //     std::vector<bool> used(9, false);
+    //     for(int k = 0; k < 9; ++k) {
+    //         if(board[i][k] != '.') {
+    //             used[board[i][k] - '0'] = true;
+    //         }
+    //     }
+        
+    //     for(int k = 0; k < 9; ++k) {
+    //         if(board[k][j] != '.') {
+    //             used[board[k][j] - '0'] = true;
+    //         }
+    //     }
+        
+    //     int I = i / 3;
+    //     int J = j / 3;
+    //     for(int k1 = 0; k1 < 3; ++k1) {
+    //         for(int k2 = 0; k2 < 3; ++k2) {
+    //             if(board[I + k1][J + k2] != '.') {
+    //                 used[board[I+k1][J+k2] - '0'] = true;
+    //             }
+    //         }
+    //     }
+        
+    //     std::vector<char> res;
+    //     for(int i = 0; i < 9; ++i) {
+    //         if(used[i] == false) {
+    //             res.push_back(static_cast<char>('0' + i));
+    //         }
+    //     }
+    //     return res;
+    // }
+};
+
+
 /*
 The count-and-say sequence is the sequence of integers with the first five 
 terms as following:
@@ -689,6 +900,61 @@ private:
 };
 
 /*
+    Given a collection of candidate numbers (candidates) and a target number (target), 
+    find all unique combinations in candidates where the candidate numbers sums to target.
+
+    Each number in candidates may only be used once in the combination.
+
+    Note:
+
+    All numbers (including target) will be positive integers.
+    The solution set must not contain duplicate combinations.
+    Example 1:
+
+    Input: candidates = [10,1,2,7,6,1,5], target = 8,
+    A solution set is:
+    [
+    [1, 7],
+    [1, 2, 5],
+    [2, 6],
+    [1, 1, 6]
+    ]
+    Example 2:
+
+    Input: candidates = [2,5,2,1,2], target = 5,
+    A solution set is:
+    [
+    [1,2,2],
+    [5]
+    ]
+*/
+class _0040_CombinationSumII{
+    private:
+        std::vector<std::vector<int>> res;
+        std::vector<int> temp;
+    public:
+        void choose(std::vector<int>& candidates, int target, int begin);
+        std::vector<std::vector<int>> combinationSum2(std::vector<int>& candidates, int target);
+};
+
+/*
+Given an unsorted integer array, find the smallest missing positive integer.
+
+Example 1:
+    Input: [1,2,0]         :         Output: 3
+    Input: [3,4,-1,1]      :         Output: 2
+    Input: [7,8,9,11,12]   :         Output: 1
+
+Your algorithm should run in O(n) time and uses constant extra space.
+*/
+class _0041_FirstMissingPositive{
+public:
+    int firstMissingPositive(std::vector<int>& nums);
+};
+
+
+
+/*
         Given a collection of [distinct] integers, return all possible permutations
     Example:
         Input: [1,2,3]
@@ -712,6 +978,112 @@ class _0048_RotateImage
 {
 public:
     void rotate(std::vector<std::vector<int>> &matrix);
+};
+
+/*
+62. Unique Paths
+A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below).
+The robot can only move either down or right at any point in time. The robot is trying to reach 
+the bottom-right corner of the grid (marked 'Finish' in the diagram below).
+How many possible unique paths are there?
+*/
+class _0062_UniquePaths{
+private:
+    std::vector<std::vector<int>> TABLE;
+public:
+    int uniquePaths(int m, int n);
+};
+class _0063_UniquePathsII{
+public:
+    int uniquePathsWithObstacles(std::vector<std::vector<int>>& obstacleGrid);
+};
+
+/*
+64. Minimum Path Sum
+Given a m x n grid filled with non-negative numbers, find a path from top left to bottom 
+right which minimizes the sum of all numbers along its path.
+Note: You can only move either down or right at any point in time.
+
+Input:
+[
+  [1,3,1],
+  [1,5,1],
+  [4,2,1]
+]
+Output: 7
+Explanation: Because the path 1→3→1→1→1 minimizes the sum.
+*/
+class _0064_MinimumPathSum {
+public:
+    int minPathSum(std::vector<std::vector<int>>& grid);
+};
+
+/*
+Given a non-empty array of digits representing a non-negative integer, 
+plus one to the integer. The digits are stored such that the most significant 
+digit is at the head of the list, and each element in the array contain 
+a single digit.
+You may assume the integer does not contain any leading zero, except 
+the number 0 itself.
+
+Input: [1,2,3]             :     Output: [1,2,4]
+Input: [4,3,2,1]           :     Output: [4,3,2,2]
+Explanation: The array represents the integer 4321.
+*/
+class _0066_PlusOne {
+public:
+    std::vector<int> plusOne(std::vector<int>& digits);
+};
+
+/*
+Given two binary strings, return their sum (also a binary string).
+The input strings are both non-empty and contains only characters 1 or 0.
+
+Input: a = "11", b = "1"           :        Output: "100"
+Input: a = "1010", b = "1011"      :        Output: "10101"
+*/
+class _0067_AddBinary {
+public:
+    std::string addBinary(std::string a, std::string b);
+};
+
+/*
+Implement int sqrt(int x).
+Compute and return the square root of x, where x is guaranteed to be a non-negative integer.
+Since the return type is an integer, the decimal digits are truncated and only the integer 
+part of the result is returned.
+
+Input: 4           :          Output: 2
+Input: 8           :          Output: 2
+
+Explanation: The square root of 8 is 2.82842..., and since 
+             the decimal part is truncated, 2 is returned.
+*/
+class _0069_SqrtX {
+public:
+    int mySqrt(int x);
+};
+
+
+/*
+You are climbing a stair case. It takes n steps to reach to the top. Each time you can either climb 1 or 2 
+steps. In how many distinct ways can you climb to the top?
+
+Note: Given n will be a positive integer.
+
+Input: 2            :            Output: 2
+1. 1 step + 1 step
+2. 2 steps
+
+
+Input: 3            :            Output: 3
+1. 1 step + 1 step + 1 step
+2. 1 step + 2 steps
+3. 2 steps + 1 step
+*/
+class _0070_ClimbingStairs {
+public:
+    int climbStairs(int n);
 };
 
 // Validate a binary tree is BST or not
