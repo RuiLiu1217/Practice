@@ -981,6 +981,31 @@ public:
 };
 
 /*
+Given a linked list, rotate the list to the right by k places, where k is non-negative.
+
+Example 1:
+
+Input: 1->2->3->4->5->NULL, k = 2
+Output: 4->5->1->2->3->NULL
+Explanation:
+rotate 1 steps to the right: 5->1->2->3->4->NULL
+rotate 2 steps to the right: 4->5->1->2->3->NULL
+Example 2:
+
+Input: 0->1->2->NULL, k = 4
+Output: 2->0->1->NULL
+Explanation:
+rotate 1 steps to the right: 2->0->1->NULL
+rotate 2 steps to the right: 1->2->0->NULL
+rotate 3 steps to the right: 0->1->2->NULL
+rotate 4 steps to the right: 2->0->1->NULL
+*/
+class _0061_RotateList{
+public:
+    ListNode<int>* rotateRight(ListNode<int>* head, int k);
+};
+
+/*
 62. Unique Paths
 A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below).
 The robot can only move either down or right at any point in time. The robot is trying to reach 
@@ -992,7 +1017,11 @@ private:
     std::vector<std::vector<int>> TABLE;
 public:
     int uniquePaths(int m, int n);
+    int uniquePaths_impl(int m, int n);
 };
+
+
+
 class _0063_UniquePathsII{
 public:
     int uniquePathsWithObstacles(std::vector<std::vector<int>>& obstacleGrid);
