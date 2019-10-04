@@ -269,7 +269,7 @@ public:
 class _0012_IntegerToRoman{
 public:
     std::string intToRoman(int num);
-}
+};
 
 /*
     Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
@@ -722,7 +722,7 @@ The given board size is always 9x9.
 */
 class _0036_ValidSudoku{
 public:
-    bool isValidSudoku(std::vector<std::vector<<char>>& board);
+    bool isValidSudoku(std::vector<std::vector<char>>& board);
 
 private:
     bool existDuplicatePerSquare(std::vector<std::vector<char>>& board, int i, int j);
@@ -1042,6 +1042,96 @@ public:
 };
 
 /*
+Group Anagrams :  Given an array of strings, group anagrams together.
+
+Input: ["eat", "tea", "tan", "ate", "nat", "bat"],
+Output:
+[
+  ["ate","eat","tea"],
+  ["nat","tan"],
+  ["bat"]
+]
+*/
+class _0049_GroupAnagrams { 
+public:
+    std::vector<std::vector<std::string>> groupAnagrams(std::vector<std::string>& strs);
+};
+
+/*
+Implement pow(x, n), which calculates x raised to the power n (x^n).
+
+Input: 2.00000, 10       :           Output: 1024.00000
+Input: 2.10000, 3        :           Output: 9.26100
+Input: 2.00000, -2       :           Output: 0.25000
+
+-100.0 < x < 100.0
+n is a 32-bit signed integer, within the range [−231, 231 − 1]
+*/
+class _0050_PowXN {
+public:
+    double myPow(double x, int n);
+};
+
+/*
+Maximum Subarray
+Given an integer array nums, find the contiguous subarray (containing at least one number) 
+which has the largest sum and return its sum.
+
+Input: [-2,1,-3,4,-1,2,1,-5,4],        :           Output: 6
+Explanation: [4,-1,2,1] has the largest sum = 6.
+Follow up:
+If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
+*/
+class _0053_MaximumSubarray {
+public:
+    int maxSubArray(std::vector<int>& nums);
+private:
+    int maxSubArrayHelp(std::vector<int>& nums, int start, int end);
+    int includeMid(std::vector<int>& nums, int start, int end, int mid);
+};
+
+
+/*
+Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order.
+
+Input:
+[
+ [ 1, 2, 3 ],
+ [ 4, 5, 6 ],
+ [ 7, 8, 9 ]
+]
+Output: [1,2,3,6,9,8,7,4,5]
+
+Input:
+[
+  [1, 2, 3, 4],
+  [5, 6, 7, 8],
+  [9,10,11,12]
+]
+Output: [1,2,3,4,8,12,11,10,9,5,6,7]
+*/
+class _0054_SpiralMatrix{
+public:
+    std::vector<int> spiralOrder(std::vector<std::vector<int>>& matrix);
+};
+
+/*
+Merge Intervals
+Given a collection of intervals, merge all overlapping intervals.
+
+Input: [[1,3],[2,6],[8,10],[15,18]]            :           Output: [[1,6],[8,10],[15,18]]
+Explanation: Since intervals [1,3] and [2,6] overlaps, merge them into [1,6].
+
+Input: [[1,4],[4,5]]                           :           Output: [[1,5]]
+Explanation: Intervals [1,4] and [4,5] are considered overlapping.
+*/
+class _0056_MergeIntervals{
+public:
+    std::vector<std::vector<int>> merge(std::vector<std::vector<int>>& intervals);
+};
+
+
+/*
 58. Length of Last Word
 Given a string s consists of upper/lower-case alphabets and empty space characters ' ', return the length of last word in the string.
 
@@ -1074,6 +1164,320 @@ class _0059_SpiralMatrixII{
 public:
     std::vector<std::vector<int>> generateMatrix(int n);
 };
-}
 
+
+/*
+Given a linked list, rotate the list to the right by k places, where k is non-negative.
+
+Example 1:
+
+Input: 1->2->3->4->5->NULL, k = 2
+Output: 4->5->1->2->3->NULL
+Explanation:
+rotate 1 steps to the right: 5->1->2->3->4->NULL
+rotate 2 steps to the right: 4->5->1->2->3->NULL
+Example 2:
+
+Input: 0->1->2->NULL, k = 4
+Output: 2->0->1->NULL
+Explanation:
+rotate 1 steps to the right: 2->0->1->NULL
+rotate 2 steps to the right: 1->2->0->NULL
+rotate 3 steps to the right: 0->1->2->NULL
+rotate 4 steps to the right: 2->0->1->NULL
+*/
+class _0061_RotateList{
+public:
+    ListNode<int>* rotateRight(ListNode<int>* head, int k);
+};
+
+/*
+62. Unique Paths
+A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below).
+The robot can only move either down or right at any point in time. The robot is trying to reach 
+the bottom-right corner of the grid (marked 'Finish' in the diagram below).
+How many possible unique paths are there?
+*/
+class _0062_UniquePaths{
+private:
+    std::vector<std::vector<int>> TABLE;
+public:
+    int uniquePaths(int m, int n);
+    int uniquePaths_impl(int m, int n);
+};
+
+
+
+class _0063_UniquePathsII{
+public:
+    int uniquePathsWithObstacles(std::vector<std::vector<int>>& obstacleGrid);
+};
+
+/*
+64. Minimum Path Sum
+Given a m x n grid filled with non-negative numbers, find a path from top left to bottom 
+right which minimizes the sum of all numbers along its path.
+Note: You can only move either down or right at any point in time.
+
+Input:
+[
+  [1,3,1],
+  [1,5,1],
+  [4,2,1]
+]
+Output: 7
+Explanation: Because the path 1→3→1→1→1 minimizes the sum.
+*/
+class _0064_MinimumPathSum {
+public:
+    int minPathSum(std::vector<std::vector<int>>& grid);
+};
+
+/*
+Given a non-empty array of digits representing a non-negative integer, 
+plus one to the integer. The digits are stored such that the most significant 
+digit is at the head of the list, and each element in the array contain 
+a single digit.
+You may assume the integer does not contain any leading zero, except 
+the number 0 itself.
+
+Input: [1,2,3]             :     Output: [1,2,4]
+Input: [4,3,2,1]           :     Output: [4,3,2,2]
+Explanation: The array represents the integer 4321.
+*/
+class _0066_PlusOne {
+public:
+    std::vector<int> plusOne(std::vector<int>& digits);
+};
+
+/*
+Given two binary strings, return their sum (also a binary string).
+The input strings are both non-empty and contains only characters 1 or 0.
+
+Input: a = "11", b = "1"           :        Output: "100"
+Input: a = "1010", b = "1011"      :        Output: "10101"
+*/
+class _0067_AddBinary {
+public:
+    std::string addBinary(std::string a, std::string b);
+};
+
+/*
+Implement int sqrt(int x).
+Compute and return the square root of x, where x is guaranteed to be a non-negative integer.
+Since the return type is an integer, the decimal digits are truncated and only the integer 
+part of the result is returned.
+
+Input: 4           :          Output: 2
+Input: 8           :          Output: 2
+
+Explanation: The square root of 8 is 2.82842..., and since 
+             the decimal part is truncated, 2 is returned.
+*/
+class _0069_SqrtX {
+public:
+    int mySqrt(int x);
+};
+
+
+/*
+You are climbing a stair case. It takes n steps to reach to the top. Each time you can either climb 1 or 2 
+steps. In how many distinct ways can you climb to the top?
+
+Note: Given n will be a positive integer.
+
+Input: 2            :            Output: 2
+1. 1 step + 1 step
+2. 2 steps
+
+
+Input: 3            :            Output: 3
+1. 1 step + 1 step + 1 step
+2. 1 step + 2 steps
+3. 2 steps + 1 step
+*/
+class _0070_ClimbingStairs {
+public:
+    int climbStairs(int n);
+};
+
+/*
+Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in-place.
+Input: 
+[
+  [0,1,2,0],
+  [3,4,5,2],
+  [1,3,1,5]
+]
+Output: 
+[
+  [0,0,0,0],
+  [0,4,5,0],
+  [0,3,1,0]
+]
+Follow up:
+
+A straight forward solution using O(mn) space is probably a bad idea.
+A simple improvement uses O(m + n) space, but still not the best solution.
+Could you devise a constant space solution?
+*/
+class _0073_SetMatrixZeros {
+public:
+    void setZeroes(std::vector<std::vector<int>>& matrix);
+};
+
+/*
+74. Search a 2D Matrix
+Write an efficient algorithm that searches for a value in an m x n matrix. 
+This matrix has the following properties:
+Integers in each row are sorted from left to right.
+The first integer of each row is greater than the last integer of the previous row.
+
+Input:
+matrix = [
+  [1,   3,  5,  7],
+  [10, 11, 16, 20],
+  [23, 30, 34, 50]
+]
+target = 3
+Output: true
+
+Input:
+matrix = [
+  [1,   3,  5,  7],
+  [10, 11, 16, 20],
+  [23, 30, 34, 50]
+]
+target = 13
+Output: false
+*/
+class _0074_SearchA2DMatrix {
+public:
+    bool searchMatrix(std::vector<std::vector<int>>& matrix, int target);
+};
+
+/*
+75. Sort Colors
+Given an array with n objects colored red, white or blue, sort them in-place 
+so that objects of the same color are adjacent, with the colors in the order 
+red, white and blue.
+Here, we will use the integers 0, 1, and 2 to represent the color red, white,
+and blue respectively.
+Note: You are not suppose to use the library's sort function for this problem.
+
+Example:
+
+Input: [2,0,2,1,1,0]
+Output: [0,0,1,1,2,2]
+Follow up:
+A rather straight forward solution is a two-pass algorithm using counting sort.
+First, iterate the array counting number of 0's, 1's, and 2's, then overwrite 
+array with total number of 0's, then 1's and followed by 2's.
+Could you come up with a one-pass algorithm using only constant space?
+*/
+class _0075_SortColors {
+public:
+    void sortColors(std::vector<int>& nums);
+};
+
+/*
+Given two integers n and k, return all possible combinations of k numbers out of 1 ... n.
+
+Example:
+
+Input: n = 4, k = 2
+Output:
+[  [2,4],  [3,4],  [2,3],  [1,2],  [1,3],  [1,4]  ]
+*/
+class _0077_Combinations{
+public:
+    std::vector<std::vector<int>> combine(int n, int k);
+private:
+    void combine(std::vector<int>& nums, std::vector<int>& used, 
+        int s, int k, std::vector<int>& tmp, std::vector<std::vector<int>>& res);
+};
+
+/*
+Given a binary tree, return the inorder traversal of its nodes' values.
+
+Input: [1,null,2,3]
+   1
+    \
+     2
+    /
+   3
+
+Output: [1,3,2]
+*/
+class _0094_BinaryTreeInorderTraversal {
+public:
+    std::vector<int> inorderTraversal(TreeNode<int>* root);
+};
+
+/*
+Given an integer n, generate all structurally unique BST's (binary search trees) that store values 1 ... n.
+
+Example:
+
+Input: 3
+Output:
+[
+  [1,null,3,2],
+  [3,2,null,1],
+  [3,1,null,null,2],
+  [2,1,3],
+  [1,null,2,null,3]
+]
+Explanation:
+The above output corresponds to the 5 unique BST's shown below:
+
+   1         3     3      2      1
+    \       /     /      / \      \
+     3     2     1      1   3      2
+    /     /       \                 \
+   2     1         2                 3
+*/
+class _0095_UniqueBinarySearchTreeII{
+public:
+    std::vector<TreeNode<int>*> generateTrees(int n);
+private:
+    std::vector<TreeNode<int>*> generateTreeHelper(int l, int r);
+};
+
+
+
+/*
+Given n, how many structurally unique BST's (binary search trees) that store values 1 ... n?
+
+Example:
+
+Input: 3
+Output: 5
+Explanation:
+Given n = 3, there are a total of 5 unique BST's:
+
+   1         3     3      2      1
+    \       /     /      / \      \
+     3     2     1      1   3      2
+    /     /       \                 \
+   2     1         2                 3
+*/
+class _0096_UniqueBinarySearchTree{
+private:
+    std::vector<int> DP;
+    int numTreesN(int n);
+public:
+    int numTrees(int n);
+};
+
+// Validate a binary tree is BST or not
+class _0098_ValidateBinarySearchTree
+{
+public:
+    bool isValidBST(TreeNode<int> *root);
+};
+
+
+
+} // End namespace LeetCode
 #endif
