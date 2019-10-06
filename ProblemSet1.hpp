@@ -9,7 +9,7 @@
 #include "Tree.hpp"
 #include "LinkList.hpp"
 
-// Problem 1 - 60
+// Problem 1 - 100
 
 namespace LeetCode
 {
@@ -1042,6 +1042,20 @@ public:
 };
 
 /*
+Given an array of non-negative integers, you are initially positioned at the first index of the array.
+Each element in the array represents your maximum jump length at that position.
+Determine if you are able to reach the last index.
+Example 1:
+
+Input: [2,3,1,1,4]           :          Output: true
+Input: [3,2,1,0,4]           :          Output: false
+*/
+class _0055_JumpGame {
+public:
+    bool canJump(std::vector<int>& nums);
+};
+
+/*
 58. Length of Last Word
 Given a string s consists of upper/lower-case alphabets and empty space characters ' ', return the length of last word in the string.
 
@@ -1074,6 +1088,151 @@ class _0059_SpiralMatrixII{
 public:
     std::vector<std::vector<int>> generateMatrix(int n);
 };
+
+
+
+/*
+Given a linked list, rotate the list to the right by k places, where k is non-negative.
+
+Example 1:
+
+Input: 1->2->3->4->5->NULL, k = 2
+Output: 4->5->1->2->3->NULL
+Explanation:
+rotate 1 steps to the right: 5->1->2->3->4->NULL
+rotate 2 steps to the right: 4->5->1->2->3->NULL
+Example 2:
+
+Input: 0->1->2->NULL, k = 4
+Output: 2->0->1->NULL
+Explanation:
+rotate 1 steps to the right: 2->0->1->NULL
+rotate 2 steps to the right: 1->2->0->NULL
+rotate 3 steps to the right: 0->1->2->NULL
+rotate 4 steps to the right: 2->0->1->NULL
+*/
+class _0061_RotateList{
+public:
+    ListNode<int>* rotateRight(ListNode<int>* head, int k);
+};
+
+/*
+62. Unique Paths
+A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below).
+The robot can only move either down or right at any point in time. The robot is trying to reach 
+the bottom-right corner of the grid (marked 'Finish' in the diagram below).
+How many possible unique paths are there?
+*/
+class _0062_UniquePaths{
+private:
+    std::vector<std::vector<int>> TABLE;
+public:
+    int uniquePaths(int m, int n);
+    int uniquePaths_impl(int m, int n);
+};
+
+
+
+class _0063_UniquePathsII{
+public:
+    int uniquePathsWithObstacles(std::vector<std::vector<int>>& obstacleGrid);
+};
+
+/*
+64. Minimum Path Sum
+Given a m x n grid filled with non-negative numbers, find a path from top left to bottom 
+right which minimizes the sum of all numbers along its path.
+Note: You can only move either down or right at any point in time.
+
+Input:
+[
+  [1,3,1],
+  [1,5,1],
+  [4,2,1]
+]
+Output: 7
+Explanation: Because the path 1→3→1→1→1 minimizes the sum.
+*/
+class _0064_MinimumPathSum {
+public:
+    int minPathSum(std::vector<std::vector<int>>& grid);
+};
+
+/*
+Given a non-empty array of digits representing a non-negative integer, 
+plus one to the integer. The digits are stored such that the most significant 
+digit is at the head of the list, and each element in the array contain 
+a single digit.
+You may assume the integer does not contain any leading zero, except 
+the number 0 itself.
+
+Input: [1,2,3]             :     Output: [1,2,4]
+Input: [4,3,2,1]           :     Output: [4,3,2,2]
+Explanation: The array represents the integer 4321.
+*/
+class _0066_PlusOne {
+public:
+    std::vector<int> plusOne(std::vector<int>& digits);
+};
+
+/*
+Given two binary strings, return their sum (also a binary string).
+The input strings are both non-empty and contains only characters 1 or 0.
+
+Input: a = "11", b = "1"           :        Output: "100"
+Input: a = "1010", b = "1011"      :        Output: "10101"
+*/
+class _0067_AddBinary {
+public:
+    std::string addBinary(std::string a, std::string b);
+};
+
+/*
+Implement int sqrt(int x).
+Compute and return the square root of x, where x is guaranteed to be a non-negative integer.
+Since the return type is an integer, the decimal digits are truncated and only the integer 
+part of the result is returned.
+
+Input: 4           :          Output: 2
+Input: 8           :          Output: 2
+
+Explanation: The square root of 8 is 2.82842..., and since 
+             the decimal part is truncated, 2 is returned.
+*/
+class _0069_SqrtX {
+public:
+    int mySqrt(int x);
+};
+
+
+/*
+You are climbing a stair case. It takes n steps to reach to the top. Each time you can either climb 1 or 2 
+steps. In how many distinct ways can you climb to the top?
+
+Note: Given n will be a positive integer.
+
+Input: 2            :            Output: 2
+1. 1 step + 1 step
+2. 2 steps
+
+
+Input: 3            :            Output: 3
+1. 1 step + 1 step + 1 step
+2. 1 step + 2 steps
+3. 2 steps + 1 step
+*/
+class _0070_ClimbingStairs {
+public:
+    int climbStairs(int n);
+};
+
+// Validate a binary tree is BST or not
+class _0098_ValidateBinarySearchTree
+{
+public:
+    bool isValidBST(TreeNode<int> *root);
+};
+
 }
 
 #endif

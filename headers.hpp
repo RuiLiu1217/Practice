@@ -6,153 +6,12 @@
 #include "Tree.hpp"
 #include "LinkList.hpp"
 
-#include "ProblemSet1.hpp" // Problem 1 - 60
+#include "ProblemSet1.hpp" // Problem 1 - 100
 
 
 namespace LeetCode
 {
 
-/*
-Given a linked list, rotate the list to the right by k places, where k is non-negative.
-
-Example 1:
-
-Input: 1->2->3->4->5->NULL, k = 2
-Output: 4->5->1->2->3->NULL
-Explanation:
-rotate 1 steps to the right: 5->1->2->3->4->NULL
-rotate 2 steps to the right: 4->5->1->2->3->NULL
-Example 2:
-
-Input: 0->1->2->NULL, k = 4
-Output: 2->0->1->NULL
-Explanation:
-rotate 1 steps to the right: 2->0->1->NULL
-rotate 2 steps to the right: 1->2->0->NULL
-rotate 3 steps to the right: 0->1->2->NULL
-rotate 4 steps to the right: 2->0->1->NULL
-*/
-class _0061_RotateList{
-public:
-    ListNode<int>* rotateRight(ListNode<int>* head, int k);
-};
-
-/*
-62. Unique Paths
-A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below).
-The robot can only move either down or right at any point in time. The robot is trying to reach 
-the bottom-right corner of the grid (marked 'Finish' in the diagram below).
-How many possible unique paths are there?
-*/
-class _0062_UniquePaths{
-private:
-    std::vector<std::vector<int>> TABLE;
-public:
-    int uniquePaths(int m, int n);
-    int uniquePaths_impl(int m, int n);
-};
-
-
-
-class _0063_UniquePathsII{
-public:
-    int uniquePathsWithObstacles(std::vector<std::vector<int>>& obstacleGrid);
-};
-
-/*
-64. Minimum Path Sum
-Given a m x n grid filled with non-negative numbers, find a path from top left to bottom 
-right which minimizes the sum of all numbers along its path.
-Note: You can only move either down or right at any point in time.
-
-Input:
-[
-  [1,3,1],
-  [1,5,1],
-  [4,2,1]
-]
-Output: 7
-Explanation: Because the path 1→3→1→1→1 minimizes the sum.
-*/
-class _0064_MinimumPathSum {
-public:
-    int minPathSum(std::vector<std::vector<int>>& grid);
-};
-
-/*
-Given a non-empty array of digits representing a non-negative integer, 
-plus one to the integer. The digits are stored such that the most significant 
-digit is at the head of the list, and each element in the array contain 
-a single digit.
-You may assume the integer does not contain any leading zero, except 
-the number 0 itself.
-
-Input: [1,2,3]             :     Output: [1,2,4]
-Input: [4,3,2,1]           :     Output: [4,3,2,2]
-Explanation: The array represents the integer 4321.
-*/
-class _0066_PlusOne {
-public:
-    std::vector<int> plusOne(std::vector<int>& digits);
-};
-
-/*
-Given two binary strings, return their sum (also a binary string).
-The input strings are both non-empty and contains only characters 1 or 0.
-
-Input: a = "11", b = "1"           :        Output: "100"
-Input: a = "1010", b = "1011"      :        Output: "10101"
-*/
-class _0067_AddBinary {
-public:
-    std::string addBinary(std::string a, std::string b);
-};
-
-/*
-Implement int sqrt(int x).
-Compute and return the square root of x, where x is guaranteed to be a non-negative integer.
-Since the return type is an integer, the decimal digits are truncated and only the integer 
-part of the result is returned.
-
-Input: 4           :          Output: 2
-Input: 8           :          Output: 2
-
-Explanation: The square root of 8 is 2.82842..., and since 
-             the decimal part is truncated, 2 is returned.
-*/
-class _0069_SqrtX {
-public:
-    int mySqrt(int x);
-};
-
-
-/*
-You are climbing a stair case. It takes n steps to reach to the top. Each time you can either climb 1 or 2 
-steps. In how many distinct ways can you climb to the top?
-
-Note: Given n will be a positive integer.
-
-Input: 2            :            Output: 2
-1. 1 step + 1 step
-2. 2 steps
-
-
-Input: 3            :            Output: 3
-1. 1 step + 1 step + 1 step
-2. 1 step + 2 steps
-3. 2 steps + 1 step
-*/
-class _0070_ClimbingStairs {
-public:
-    int climbStairs(int n);
-};
-
-// Validate a binary tree is BST or not
-class _0098_ValidateBinarySearchTree
-{
-public:
-    bool isValidBST(TreeNode<int> *root);
-};
 
 /*
         Given a binary tree, check whether it is a mirror of itself(ie, symmetric around its center).
@@ -254,6 +113,30 @@ public:
     };
 
     void connect(Node *root);
+};
+
+
+/*
+Say you have an array for which the ith element is the price of a given stock on day i.
+If you were only permitted to complete at most one transaction (i.e., buy one and sell 
+one share of the stock), design an algorithm to find the maximum profit.
+
+Note that you cannot sell a stock before you buy one.
+Input: [7,1,5,3,6,4]                   :                   Output: 5
+Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+             Not 7-1 = 6, as selling price needs to be larger than buying price.
+
+Input: [7,6,4,3,1]                     :                   Output: 0
+Explanation: In this case, no transaction is done, i.e. max profit = 0.
+*/
+class _0121_BestTimeToBuyAndSellStock {
+public:
+// Solution : 
+// The points of interest are the peaks and valleys in the given graph. We need to find 
+// the largest peak following the smallest valley. We can maintain two variables - minprice 
+// and maxprofit corresponding to the smallest valley and maximum profit (maximum 
+// difference between selling price and minprice) obtained so far respectively.
+    int maxProfit(std::vector<int>& prices);
 };
 
 // Sort a linked list in O(NlogN) time using constant space complexity.
@@ -521,6 +404,25 @@ public:
 };
 
 /*
+Given two arrays, write a function to compute their intersection.
+
+Input: nums1 = [1,2,2,1], nums2 = [2,2]           :          Output: [2,2]
+Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]       :          Output: [4,9]
+
+Note:
+Each element in the result should appear as many times as it shows in both arrays.
+The result can be in any order.
+Follow up:
+What if the given array is already sorted? How would you optimize your algorithm?
+What if nums1's size is small compared to nums2's size? Which algorithm is better?
+What if elements of nums2 are stored on disk, and the memory is limited such that you cannot load all elements into the memory at once?
+*/
+class _0350_IntersectionOfTwoArraysII {
+public:
+    std::vector<int> intersect(std::vector<int>& nums1, std::vector<int>& nums2);
+};
+
+/*
         Given a non-negative integer n, count all numbers with unique 
         digits, x, where 0 ≤ x < pow(10, n).
         
@@ -627,6 +529,29 @@ class _0404_SumOfLeftLeaves
 public:
     int sumOfLeftLeaves(TreeNode<int> *root);
 };
+
+
+/*
+Given an integer, write an algorithm to convert it to hexadecimal. For 
+negative integer, two’s complement method is used.
+All letters in hexadecimal (a-f) must be in lowercase.
+The hexadecimal string must not contain extra leading 0s. If the number is 
+zero, it is represented by a single zero character '0'; otherwise, the first 
+character in the hexadecimal string will not be the zero character.
+The given number is guaranteed to fit within the range of a 32-bit signed 
+integer.
+You must not use any method provided by the library which converts/formats 
+the number to hex directly.
+Input:  26         Output:  "1a"
+Input:  -1         Output:  "ffffffff"
+*/
+class _0405_ConvertANumberToHexadecimal{
+public:
+    std::string toHex(int num);
+};
+
+
+
 
 // We want to use quad trees to store an N x N boolean grid. Each cell in the
 // grid can only be true or false. The root node represents the whole grid. For
