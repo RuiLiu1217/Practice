@@ -1,5 +1,5 @@
 #include "headers.hpp"
-
+#include <bitset>
 std::vector<std::string> LeetCode::_0401_BinaryWatch::readBinaryWatch(int num) {
     std::vector<std::string> res;
     for(int h = 0; h < 12; ++h) {

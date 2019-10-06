@@ -487,6 +487,167 @@ public:
     int sumOfLeftLeaves(TreeNode<int> *root);
 };
 
+/*
+Given an integer, write an algorithm to convert it to hexadecimal. 
+For negative integer, two’s complement method is used.
+Note:
+
+All letters in hexadecimal (a-f) must be in lowercase.
+The hexadecimal string must not contain extra leading 0s. If the number 
+is zero, it is represented by a single zero character '0'; otherwise, the 
+first character in the hexadecimal string will not be the zero character.
+The given number is guaranteed to fit within the range of a 32-bit signed integer.
+You must not use any method provided by the library which converts/formats the number to hex directly.
+Example 1:
+
+Input:
+26
+
+Output:
+"1a"
+Example 2:
+
+Input:
+-1
+
+Output:
+"ffffffff"
+*/
+class _0405_ConvertANumberToHexadecimal {
+public:
+    std::string toHex(int num);
+};
+
+/*
+Suppose you have a random list of people standing in a queue. 
+Each person is described by a pair of integers (h, k), where h 
+is the height of the person and k is the number of people in 
+front of this person who have a height greater than or equal to 
+h. Write an algorithm to reconstruct the queue.
+
+Note:
+The number of people is less than 1,100.
+ 
+Example
+
+Input:
+[[7,0], [4,4], [7,1], [5,0], [6,1], [5,2]]
+
+Output:
+[[5,0], [7,0], [5,2], [6,1], [4,4], [7,1]]
+*/
+class _0406_QueueReconstructionByHeight {
+public:
+    std::vector<std::pair<int, int>> reconstructQueue(
+        std::vector<std::pair<int, int>>& people);
+};
+
+/*
+Given a string which consists of lowercase or uppercase letters, 
+find the length of the longest palindromes that can be built with 
+those letters.
+This is case sensitive, for example "Aa" is not considered a 
+palindrome here.
+
+Note:
+Assume the length of given string will not exceed 1,010.
+Example:
+Input: "abccccdd"       Output:   7
+Explanation:
+One longest palindrome that can be built is "dccaccd", whose length is 7.
+*/
+class _0409_LongestPalindrome {
+public:
+    int longestPalindrome(std::string s);
+};
+
+/*
+Write a program that outputs the string representation of 
+numbers from 1 to n. But for multiples of three it should 
+output “Fizz” instead of the number and for the multiples 
+of five output “Buzz”. For numbers which are multiples of 
+both three and five output “FizzBuzz”.
+
+n = 15,
+Return:
+[ "1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz",
+  "Buzz", "11",  "Fizz",  "13",  "14",  "FizzBuzz" ]
+*/
+class _0412_FizzBuzz {
+public:
+    std::vector<std::string> fizzBuzz(int n);
+};
+
+/*
+A sequence of number is called arithmetic if it consists of at 
+least three elements and if the difference between any two 
+consecutive elements is the same.
+For example, these are arithmetic sequence:
+
+1, 3, 5, 7, 9
+7, 7, 7, 7
+3, -1, -5, -9
+The following sequence is not arithmetic.
+
+1, 1, 2, 5, 7
+
+A zero-indexed array A consisting of N numbers is given. A slice of that array is any pair of integers (P, Q) such that 0 <= P < Q < N.
+
+A slice (P, Q) of array A is called arithmetic if the sequence:
+A[P], A[p + 1], ..., A[Q - 1], A[Q] is arithmetic. In particular, this means that P + 1 < Q.
+
+The function should return the number of arithmetic slices in the array A.
+Example:
+
+A = [1, 2, 3, 4]
+
+return: 3, for 3 arithmetic slices in A: [1, 2, 3], [2, 3, 4] and [1, 2, 3, 4] itself.
+*/
+class _0413_ArighmeticSlices{
+public:
+    int numberOfArithmeticSlices(std::vector<int>& A);
+private:
+    int numberOfSubArith(int N);
+};
+
+/*
+Given a non-empty array of integers, return the third maximum number 
+in this array. If it does not exist, return the maximum number. The 
+time complexity must be in O(n).
+
+Input: [3, 2, 1]         :        Output: 1
+Explanation: The third maximum is 1.
+
+Input: [1, 2]            :        Output: 2
+Explanation: The third maximum does not exist, so the maximum (2) is 
+returned instead.
+
+Input: [2, 2, 3, 1]      :        Output: 1
+Explanation: Note that the third maximum here means the third maximum 
+distinct number. Both numbers with value 2 are both considered as 
+second maximum.
+*/
+class _0414_ThirdMaximumNumber{
+public:
+    int thirdMax(std::vector<int>& nums);
+};
+
+/*
+Given two non-negative integers num1 and num2 represented as string, 
+return the sum of num1 and num2.
+
+Note:
+The length of both num1 and num2 is < 5100.
+Both num1 and num2 contains only digits 0-9.
+Both num1 and num2 does not contain any leading zero.
+You must not use any built-in BigInteger library or convert the inputs 
+to integer directly.
+*/
+class _0415_AddStrings {
+public:
+    std::string addStrings(std::string num1, std::string num2);
+};
+
 // We want to use quad trees to store an N x N boolean grid. Each cell in the
 // grid can only be true or false. The root node represents the whole grid. For
 // each node, it will be subdivided into four children nodes until the values in
@@ -531,6 +692,141 @@ class _0429_NaryTreelevelOrderTraversal
 {
 public:
     std::vector<std::vector<int>> levelOrder(NaryTreeNode<int> *root);
+};
+
+/*
+Count the number of segments in a string, where a segment is defined 
+to be a contiguous sequence of non-space characters.
+Please note that the string does not contain any non-printable 
+characters.
+
+Input: "Hello, my name is John"        :        Output: 5
+*/
+class _0434_NumberOfSegmentsInAString {
+public:
+    int countSegments(std::string s);
+};
+
+
+/*
+Given a string s and a non-empty string p, find all the start 
+indices of p's anagrams in s.
+Strings consists of lowercase English letters only and the length 
+of both strings s and p will not be larger than 20,100.
+The order of output does not matter.
+Example 1:
+
+Input:
+s: "cbaebabacd" p: "abc"
+
+Output:
+[0, 6]
+
+Explanation:
+The substring with start index = 0 is "cba", which is an anagram of "abc".
+The substring with start index = 6 is "bac", which is an anagram of "abc".
+Example 2:
+
+Input:
+s: "abab" p: "ab"
+
+Output:
+[0, 1, 2]
+
+Explanation:
+The substring with start index = 0 is "ab", which is an anagram of "ab".
+The substring with start index = 1 is "ba", which is an anagram of "ab".
+The substring with start index = 2 is "ab", which is an anagram of "ab".
+*/
+class _0438_FindAllAnagramsInAString {
+public:
+    std::vector<int> findAnagrams(std::string s, std::string p);
+};
+
+/*
+You have a total of n coins that you want to form in a staircase shape, 
+where every k-th row must have exactly k coins. Given n, find the total 
+number of full staircase rows that can be formed. n is a non-negative 
+integer and fits within the range of a 32-bit signed integer.
+
+n = 5
+The coins can form the following rows:
+x
+x x
+x x
+Because the 3rd row is incomplete, we return 2.
+
+n = 8
+The coins can form the following rows:
+x
+x x
+x x x
+x x
+Because the 4th row is incomplete, we return 3.
+*/
+class _0441_ArrangingCoins {
+public:
+    int arrangeCoins(int n);
+};
+
+
+/*
+Given an array of integers, 1 ≤ a[i] ≤ n (n = size of array), some 
+elements appear twice and others appear once.
+Find all the elements that appear twice in this array.
+Could you do it without extra space and in O(n) runtime?
+
+Example:
+Input: [4,3,2,7,8,2,3,1]     :     Output: [2,3]
+*/
+class _0442_FindAllDuplicatesInAnArray {
+public:
+    std::vector<int> findDuplicates(std::vector<int>& nums);
+};
+
+/*
+Given an array of characters, compress it in-place. The length after 
+compression must always be smaller than or equal to the original 
+array. Every element of the array should be a character (not int) of 
+length 1. After you are done modifying the input array in-place, return 
+the new length of the array.
+
+Follow up:
+Could you solve it using only O(1) extra space?
+Input:
+["a","a","b","b","c","c","c"]
+Output:
+Return 6, and the first 6 characters of the input array should be: 
+["a","2","b","2","c","3"]
+Explanation:
+"aa" is replaced by "a2". "bb" is replaced by "b2". "ccc" is replaced by "c3".
+ 
+Example 2:
+Input:
+["a"]
+Output:
+Return 1, and the first 1 characters of the input array should be: ["a"]
+Explanation:
+Nothing is replaced.
+
+Example 3:
+Input:
+["a","b","b","b","b","b","b","b","b","b","b","b","b"]
+Output:
+Return 4, and the first 4 characters of the input array should be: 
+["a","b","1","2"].
+Explanation:
+Since the character "a" does not repeat, it is not compressed. 
+"bbbbbbbbbbbb" is replaced by "b12". Notice each digit has it's own entry 
+in the array.
+
+Note:
+All characters have an ASCII value in [35, 126].
+1 <= len(chars) <= 1000.
+*/
+class _0443_StringCompression {
+public:
+    int compress(std::vector<char>& chars);
 };
 
 /*
