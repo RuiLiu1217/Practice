@@ -1,6 +1,5 @@
 #include "headers.hpp"
 
-
 std::string LeetCode::_0405_ConvertANumberToHexadecimal::toHex(int num) {
     std::string res;
     int count = 0;
@@ -16,3 +15,4 @@ std::string LeetCode::_0405_ConvertANumberToHexadecimal::toHex(int num) {
     } while (count < 8 && num);
     return res;
 }
+

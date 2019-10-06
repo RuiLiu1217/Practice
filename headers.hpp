@@ -600,6 +600,28 @@ public:
 };
 
 /*
+Given n points in the plane that are all pairwise distinct, a 
+"boomerang" is a tuple of points (i, j, k) such that the distance between 
+i and j equals the distance between i and k (the order of the tuple matters).
+
+Find the number of boomerangs. You may assume that n will be at most 500 and 
+coordinates of points are all in the range [-10000, 10000] (inclusive).
+Example:
+
+Input:
+[[0,0],[1,0],[2,0]]
+
+Output:
+2
+Explanation:
+The two boomerangs are [[1,0],[0,0],[2,0]] and [[1,0],[2,0],[0,0]]
+*/
+class _0447_NumberOfBoomerangs {
+public:
+    int numberOfBoomerangs(std::vector<std::vector<int>>& points);
+};
+
+/*
 Given scores of N athletes, find their relative 
 ranks and the people with the top three highest scores, 
 who will be awarded medals: "Gold Medal", "Silver Medal" 
@@ -622,6 +644,23 @@ class _0506_RelativeRanks
 public:
     std::vector<std::string> findRelativeRanks(std::vector<int> &nums);
 };
+
+/*
+Given two strings A and B, find the minimum number of times A has to be 
+repeated such that B is a substring of it. If no such solution, return -1.
+
+For example, with A = "abcd" and B = "cdabcdab".
+Return 3, because by repeating A three times (“abcdabcdabcd”), B is a substring 
+of it; and B is not a substring of A repeated two times ("abcdabcd").
+
+Note:
+The length of A and B will be between 1 and 10000.
+*/
+class _0686_RepeatedStringMatch {
+public:
+    int repeatedStringMatch(std::string A, std::string B);
+};
+
 
 /*
 Alice and Bob take turns playing a game, with Alice starting first.

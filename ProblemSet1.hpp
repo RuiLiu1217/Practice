@@ -269,7 +269,7 @@ public:
 class _0012_IntegerToRoman{
 public:
     std::string intToRoman(int num);
-}
+};
 
 /*
     Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
@@ -618,6 +618,7 @@ public:
     int strStr(std::string &haystack, std::string &needle);
 };
 
+
 /*
 Implement next permutation, which rearranges numbers into the lexicographically 
 next greater permutation of numbers. If such arrangement is not possible, it 
@@ -722,7 +723,7 @@ The given board size is always 9x9.
 */
 class _0036_ValidSudoku{
 public:
-    bool isValidSudoku(std::vector<std::vector<<char>>& board);
+    bool isValidSudoku(std::vector<std::vector<char>>& board);
 
 private:
     bool existDuplicatePerSquare(std::vector<std::vector<char>>& board, int i, int j);
@@ -1056,6 +1057,96 @@ public:
 };
 
 /*
+=======
+Group Anagrams :  Given an array of strings, group anagrams together.
+
+Input: ["eat", "tea", "tan", "ate", "nat", "bat"],
+Output:
+[
+  ["ate","eat","tea"],
+  ["nat","tan"],
+  ["bat"]
+]
+*/
+class _0049_GroupAnagrams { 
+public:
+    std::vector<std::vector<std::string>> groupAnagrams(std::vector<std::string>& strs);
+};
+
+/*
+Implement pow(x, n), which calculates x raised to the power n (x^n).
+
+Input: 2.00000, 10       :           Output: 1024.00000
+Input: 2.10000, 3        :           Output: 9.26100
+Input: 2.00000, -2       :           Output: 0.25000
+
+-100.0 < x < 100.0
+n is a 32-bit signed integer, within the range [−231, 231 − 1]
+*/
+class _0050_PowXN {
+public:
+    double myPow(double x, int n);
+};
+
+/*
+Maximum Subarray
+Given an integer array nums, find the contiguous subarray (containing at least one number) 
+which has the largest sum and return its sum.
+
+Input: [-2,1,-3,4,-1,2,1,-5,4],        :           Output: 6
+Explanation: [4,-1,2,1] has the largest sum = 6.
+Follow up:
+If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
+*/
+class _0053_MaximumSubarray {
+public:
+    int maxSubArray(std::vector<int>& nums);
+private:
+    int maxSubArrayHelp(std::vector<int>& nums, int start, int end);
+    int includeMid(std::vector<int>& nums, int start, int end, int mid);
+};
+
+
+/*
+Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order.
+
+Input:
+[
+ [ 1, 2, 3 ],
+ [ 4, 5, 6 ],
+ [ 7, 8, 9 ]
+]
+Output: [1,2,3,6,9,8,7,4,5]
+
+Input:
+[
+  [1, 2, 3, 4],
+  [5, 6, 7, 8],
+  [9,10,11,12]
+]
+Output: [1,2,3,4,8,12,11,10,9,5,6,7]
+*/
+class _0054_SpiralMatrix{
+public:
+    std::vector<int> spiralOrder(std::vector<std::vector<int>>& matrix);
+};
+
+/*
+Merge Intervals
+Given a collection of intervals, merge all overlapping intervals.
+
+Input: [[1,3],[2,6],[8,10],[15,18]]            :           Output: [[1,6],[8,10],[15,18]]
+Explanation: Since intervals [1,3] and [2,6] overlaps, merge them into [1,6].
+
+Input: [[1,4],[4,5]]                           :           Output: [[1,5]]
+Explanation: Intervals [1,4] and [4,5] are considered overlapping.
+*/
+class _0056_MergeIntervals{
+public:
+    std::vector<std::vector<int>> merge(std::vector<std::vector<int>>& intervals);
+};
+
+
 58. Length of Last Word
 Given a string s consists of upper/lower-case alphabets and empty space characters ' ', return the length of last word in the string.
 
@@ -1225,6 +1316,42 @@ class _0070_ClimbingStairs {
 public:
     int climbStairs(int n);
 };
+
+
+/*
+Given an absolute path for a file (Unix-style), simplify it. Or in other words, 
+convert it to the canonical path. In a UNIX-style file system, a period . refers to 
+the current directory. Furthermore, a double period .. moves the directory up a 
+level. For more information, see: Absolute path vs relative path in Linux/Unix
+
+Note that the returned canonical path must always begin with a slash /, and there 
+must be only a single slash / between two directory names. The last directory name 
+(if it exists) must not end with a trailing /. Also, the canonical path must be 
+the shortest string representing the absolute path. 
+
+Input: "/home/"                :           Output: "/home"
+Explanation: Note that there is no trailing slash after the last directory name.
+
+Input: "/../"                  :           Output: "/"
+Explanation: Going one level up from the root directory is a no-op, as the 
+root level is the highest level you can go.
+
+Input: "/home//foo/"           :           Output: "/home/foo"
+Explanation: In the canonical path, multiple consecutive slashes are replaced 
+by a single one.
+
+Input: "/a/./b/../../c/"       :           Output: "/c"
+
+Input: "/a/../../b/../c//.//"  :           Output: "/c"
+
+Input: "/a//b////c/d//././/.."
+Output: "/a/b/c"
+*/
+class _0071_SimplifyPath{
+public:
+    std::string simplifyPath(std::string path);
+};
+
 
 // Validate a binary tree is BST or not
 class _0098_ValidateBinarySearchTree
