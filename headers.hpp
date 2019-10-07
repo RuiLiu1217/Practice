@@ -661,6 +661,74 @@ public:
     int repeatedStringMatch(std::string A, std::string B);
 };
 
+/*
+Given an array of integers nums, sort the array in ascending order.
+*/
+class _0912_SortAnArray {
+public:
+    std::vector<int> sortArray(std::vector<int>& nums);
+private:
+    void sortArray(std::vector<int>& nums, int start, int end);
+    void merge(std::vector<int>& nums, int start, int end, int mid);
+};
+
+/*
+Given two sequences pushed and popped with distinct values, return true 
+if and only if this could have been the result of a sequence of push and 
+pop operations on an initially empty stack.
+
+Input: pushed = [1,2,3,4,5], popped = [4,5,3,2,1]
+Output: true
+Explanation: We might do the following sequence:
+push(1), push(2), push(3), push(4), pop() -> 4,
+push(5), pop() -> 5, pop() -> 3, pop() -> 2, pop() -> 1
+Example 2:
+
+Input: pushed = [1,2,3,4,5], popped = [4,3,5,1,2]
+Output: false
+Explanation: 1 cannot be popped before 2.
+*/
+class _0946_ValidateStackSequences {
+public:
+    bool validateStackSequences(std::vector<int>& pushed, std::vector<int>& popped);
+};
+
+/*
+Given a 2D array A, each cell is 0 (representing sea) or 1 (representing 
+land) A move consists of walking from one land square 4-directionally to 
+another land square, or off the boundary of the grid. Return the number of 
+land squares in the grid for which we cannot walk off the boundary of the 
+grid in any number of moves. 
+
+Example 1:
+
+Input: [[0,0,0,0],[1,0,1,0],[0,1,1,0],[0,0,0,0]]
+Output: 3
+Explanation: 
+There are three 1s that are enclosed by 0s, and one 1 that isn't enclosed 
+because its on the boundary.
+Example 2:
+
+Input: [[0,1,1,0],[0,0,1,0],[0,0,1,0],[0,0,0,0]]
+Output: 0
+Explanation: 
+All 1s are either on the boundary or can reach the boundary.
+
+Note:
+
+1 <= A.length <= 500
+1 <= A[i].length <= 500
+0 <= A[i][j] <= 1
+All rows have the same size.
+*/
+class _1020_NumberOfEnclaves {
+public:
+    int numEnclaves(std::vector<std::vector<int>>& A);
+
+private:
+    void DFS(std::vector<std::vector<int>>& A, std::vector<std::vector<int>>& visited, int i, int j);
+};
+
 
 /*
 Alice and Bob take turns playing a game, with Alice starting first.
@@ -689,5 +757,121 @@ class _1025_DivisorGame
 public:
     bool divisorGame(int N);
 };
+
+/*
+We are given a matrix with R rows and C columns has cells with integer coordinates
+(r, c), where 0 <= r < R and 0 <= c < C.
+Additionally, we are given a cell in that matrix with coordinates (r0, c0).
+
+Return the coordinates of all cells in the matrix, sorted by their distance from (r0, c0) 
+from smallest distance to largest distance. Here, the distance between two cells (r1, c1) 
+and (r2, c2) is the Manhattan distance, |r1 - r2| + |c1 - c2|.  (You may return the answer 
+in any order that satisfies this condition.) 
+
+Input: R = 1, C = 2, r0 = 0, c0 = 0
+Output: [[0,0],[0,1]]
+Explanation: The distances from (r0, c0) to other cells are: [0,1]
+
+Input: R = 2, C = 2, r0 = 0, c0 = 1
+Output: [[0,1],[0,0],[1,1],[1,0]]
+Explanation: The distances from (r0, c0) to other cells are: [0,1,1,2]
+The answer [[0,1],[1,1],[0,0],[1,0]] would also be accepted as correct.
+
+Input: R = 2, C = 3, r0 = 1, c0 = 2
+Output: [[1,2],[0,2],[1,1],[0,1],[1,0],[0,0]]
+Explanation: The distances from (r0, c0) to other cells are: [0,1,1,2,2,3]
+There are other answers that would also be accepted as correct, such as 
+[[1,2],[1,1],[0,2],[1,0],[0,1],[0,0]].
+*/
+class _1030_MatrixCellsInDistanceOrder {
+public:
+    std::vector<std::vector<int>> allCellsDistOrder(int R, int C, int r0, int c0);
+private:
+    int ManhattonDis(int i, int j, int r0, int c0);
+};
+
+
+/*
+We have a collection of rocks, each rock has a positive integer weight.
+Each turn, we choose the two heaviest rocks and smash them together.  Suppose 
+the stones have weights x and y with x <= y.  The result of this smash is:
+
+If x == y, both stones are totally destroyed;
+If x != y, the stone of weight x is totally destroyed, and the stone of weight 
+y has new weight y-x.
+At the end, there is at most 1 stone left.  Return the weight of this stone (or 
+0 if there are no stones left.)
+*/
+class _1046_LastStoneWeight {
+public:
+    int lastStoneWeight(std::vector<int>& stones) {
+        std::priority_queue<int> pq;
+        for(auto s : stones) {
+            pq.push(s);
+        }
+        while(pq.size() >= 2) {
+            int a = pq.top();
+            pq.pop();
+            int b = pq.top();
+            pq.pop();
+            if(a == b) {
+                continue;
+            } else {
+                pq.push(a - b);
+            }
+        }
+        if(pq.empty()) {
+            return 0;
+        }
+        return pq.top();
+    }
+};
+
+/*
+Given two arrays arr1 and arr2, the elements of arr2 are distinct, and all 
+elements in arr2 are also in arr1.
+Sort the elements of arr1 such that the relative ordering of items in arr1 are 
+the same as in arr2.  Elements that don't appear in arr2 should be placed at 
+the end of arr1 in ascending order.
+
+Input: arr1 = [2,3,1,3,2,4,6,7,9,2,19], arr2 = [2,1,4,3,9,6]
+Output: [2,2,2,1,4,3,3,9,6,7,19]
+ 
+Constraints:
+
+arr1.length, arr2.length <= 1000
+0 <= arr1[i], arr2[i] <= 1000
+Each arr2[i] is distinct.
+Each arr2[i] is in arr1.
+*/
+class _1122_RelativeSortArray {
+public:
+    std::vector<int> relativeSortArray(std::vector<int>& arr1, std::vector<int>& arr2);
+};
+
+
+/*
+Given an array of integers arr, write a function that returns true if and only if the 
+number of occurrences of each value in the array is unique.
+
+Input: arr = [1,2,2,1,1,3]
+Output: true
+Explanation: The value 1 has 3 occurrences, 2 has 2 and 3 has 1. No two values have the 
+same number of occurrences.
+
+Example 2:
+
+Input: arr = [1,2]
+Output: false
+Example 3:
+
+Input: arr = [-3,0,1,-3,1,1,1,-3,10,0]
+Output: true
+*/
+class _1207_UniqueNumberOfOccurances {
+public:
+    bool uniqueOccurrences(std::vector<int>& arr);
+};
+
 
 } // namespace LeetCode
