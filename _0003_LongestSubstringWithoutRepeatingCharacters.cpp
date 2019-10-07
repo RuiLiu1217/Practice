@@ -10,8 +10,8 @@ int LeetCode::_0003_LongestSubstringWithoutRepeatingCharacters::lengthOfLongestS
     int res = 0;
     int start = 0;
     for(int i = 0; i < l; ++i) {
-        if(idx[s[i]] != INT_MIN) {
-            start = std::max(start, idx[s[i]] + 1);
+        if(idx[s[i]] != INT_MIN) { // We already see that character
+            start = std::max(start, idx[s[i]] + 1); // update the new start postion of substring
         }
         res = std::max(res, i - start + 1);
         idx[s[i]] = i;

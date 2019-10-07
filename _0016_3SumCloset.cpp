@@ -24,4 +24,5 @@ int LeetCode::_0016_3SumCloset::threeSumCloset(std::vector<int>& nums, int targe
             }
         }
     }
+    return closet;
 }

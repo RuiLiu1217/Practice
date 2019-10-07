@@ -4,7 +4,7 @@ ListNode<int>* LeetCode::_0002_AddTwoNumbers::addTwoNumbers(ListNode<int>* l1, L
     return AddTwoNodes(l1, l2, 0);
 }
 
-ListNode<int>* AddTwoNodes(ListNode<int>* l1, ListNode<int>* l2, int wi) {
+ListNode<int>* LeetCode::_0002_AddTwoNumbers::AddTwoNodes(ListNode<int>* l1, ListNode<int>* l2, int wi) {
     if(l1 == nullptr && l2 == nullptr && wi == 0) {
         return nullptr;
     } else if(l1 == nullptr && l2 == nullptr && wi != 0) {
