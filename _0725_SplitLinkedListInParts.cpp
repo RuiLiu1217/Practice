@@ -2,7 +2,7 @@
 
 std::vector<ListNode<int>*> LeetCode::_0725_SplitLinkedListInParts::splitListToParts(ListNode<int>* root, int k) {
     if(!root) {
-        return std::vector<ListNode*>(k, nullptr);
+        return std::vector<ListNode<int>*>(k, nullptr);
     }
     int ListLength = 0;
     ListNode<int>* p = root;
@@ -27,7 +27,7 @@ std::vector<ListNode<int>*> LeetCode::_0725_SplitLinkedListInParts::splitListToP
 
     std::vector<ListNode<int>*> res(k, nullptr);
     for(int i = 0; i < k; ++i) {
-        ListNode<int>* nh = new ListNode(-1);
+        ListNode<int>* nh = new ListNode<int>(-1);
         nh->next = h;
         ListNode<int>* p = nh;
         while(ithLength[i] && p) {

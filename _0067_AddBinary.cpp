@@ -65,7 +65,7 @@ std::string LeetCode::_0067_AddBinary::addBinary(std::string a, std::string b) {
     {
         resst.push('1');
     }
-    string res;
+    std::string res;
     while(!resst.empty())
     {
         res = res + resst.top();

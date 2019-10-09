@@ -1146,7 +1146,7 @@ public:
     std::vector<std::vector<int>> merge(std::vector<std::vector<int>>& intervals);
 };
 
-
+/*
 58. Length of Last Word
 Given a string s consists of upper/lower-case alphabets and empty space characters ' ', return the length of last word in the string.
 
@@ -1350,6 +1350,41 @@ Output: "/a/b/c"
 class _0071_SimplifyPath{
 public:
     std::string simplifyPath(std::string path);
+};
+
+class _0073_SetMatrixZeros {
+public:
+    void setZeroes(std::vector<std::vector<int>>& matrix);
+};
+
+
+
+
+class _0075_SortColors {
+public:
+    void sortColors(std::vector<int>& nums);
+};
+
+
+
+class _0077_Combinations {
+public:
+    std::vector<std::vector<int>> combine(int n, int k);
+    void combine(std::vector<int>& nums, std::vector<int>& used, int s, int k, std::vector<int>& tmp, std::vector<std::vector<int>>& res);
+};
+
+
+class _0095_UniqueBinarySearchTreeII {
+public:
+    std::vector<TreeNode<int>*> generateTrees(int n);
+    std::vector<TreeNode<int>*> generateTreeHelper(int l, int r);
+};
+
+
+class _0096_UniqueBinarySearchTree {
+public:
+    int numTrees(int n);
+    int numTreesN(int n);
 };
 
 

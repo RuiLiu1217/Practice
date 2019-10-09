@@ -31,7 +31,7 @@ void LeetCode::_0148_SortList::splitList(ListNode<int>*& head, ListNode<int>*& l
 }
 
 
-ListNode<int>* LeetCode::_0148_SortList::merge(ListNode<int>* head1, ListNode<int>* head2) {
+ListNode<int>* LeetCode::_0148_SortList::merge(ListNode<int>* a, ListNode<int>* b) {
     ListNode<int>* h = new ListNode(-1);
     ListNode<int>* p = h;
     while(a && b) {

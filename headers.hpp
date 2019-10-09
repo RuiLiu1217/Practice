@@ -1,3 +1,5 @@
+#ifndef HEADERS_HPP
+#define HEADERS_HPP
 #include <vector>
 #include <string>
 #include <stack>
@@ -251,6 +253,8 @@ public:
     TreeNode<int> *lowestCommonAncestorRecursive(TreeNode<int> *root, TreeNode<int> *p, TreeNode<int> *q);
     TreeNode<int> *lowestCommonAncestorIterative(TreeNode<int> *root, TreeNode<int> *p, TreeNode<int> *q);
 };
+
+
 
 /*
 Write an efficient algorithm that searches for a value 
@@ -569,6 +573,43 @@ public:
 };
 
 
+class _0406_QueueReconstructionByHeight {
+public:
+    std::vector<std::pair<int, int>> reconstructQueue(std::vector<std::pair<int, int>>& people);
+};
+
+
+
+class _0409_LongestPalindrome {
+public:
+    int longestPalindrome(std::string s);
+};
+
+
+
+class _0412_FizzBuzz {
+public:
+    std::vector<std::string> fizzBuzz(int n);
+};
+
+
+class _0413_ArighmeticSlices {
+    public:
+        int numberOfArithmeticSlices(std::vector<int>& A);
+    private:
+        int numberOfSubArith(int N);
+};
+ 
+class _0414_ThirdMaximumNumber {
+    public:
+        int thirdMax(std::vector<int>& nums);
+};
+ 
+
+class _0415_AddStrings {
+public:
+    std::string addStrings(std::string num1, std::string num2);
+};
 
 
 // We want to use quad trees to store an N x N boolean grid. Each cell in the
@@ -616,6 +657,25 @@ class _0429_NaryTreelevelOrderTraversal
 public:
     std::vector<std::vector<int>> levelOrder(NaryTreeNode<int> *root);
 };
+
+class _0434_NumberOfSegmentsInAString {
+public:
+    int countSegments(std::string s);
+};
+
+
+class _0441_ArrangingCoins {
+public:
+    int arrangeCoins(int n);
+};
+
+
+
+class _0442_FindAllDuplicatesInAnArray {
+public:
+    std::vector<int> findDuplicates(std::vector<int>& nums);
+};
+
 
 /*
 Given n points in the plane that are all pairwise distinct, a 
@@ -882,7 +942,8 @@ The total minimum cost is 10 + 30 + 50 + 20 = 110 to have half the people interv
 */
 // Inspired by the solution
 class _1029_TwoCityScheduling {
-
+public:
+    int twoCitySchedCost(std::vector<std::vector<int>>& costs);
 };
 
 /*
@@ -931,27 +992,7 @@ At the end, there is at most 1 stone left.  Return the weight of this stone (or
 */
 class _1046_LastStoneWeight {
 public:
-    int lastStoneWeight(std::vector<int>& stones) {
-        std::priority_queue<int> pq;
-        for(auto s : stones) {
-            pq.push(s);
-        }
-        while(pq.size() >= 2) {
-            int a = pq.top();
-            pq.pop();
-            int b = pq.top();
-            pq.pop();
-            if(a == b) {
-                continue;
-            } else {
-                pq.push(a - b);
-            }
-        }
-        if(pq.empty()) {
-            return 0;
-        }
-        return pq.top();
-    }
+    int lastStoneWeight(std::vector<int>& stones);
 };
 
 /*
@@ -1019,3 +1060,5 @@ public:
 
 
 } // namespace LeetCode
+
+#endif

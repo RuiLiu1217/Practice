@@ -1,4 +1,5 @@
-
+#ifndef TREE_HPP
+#define TREE_HPP
 // Tree Node
 template <typename T>
 struct TreeNode
@@ -46,3 +47,5 @@ public:
         bottomRight = br;
     }
 };
+
+#endif

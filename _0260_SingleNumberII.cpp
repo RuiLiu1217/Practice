@@ -1,5 +1,5 @@
 #include "headers.hpp"
-
+#include <algorithm>
  std::vector<int> LeetCode::_0260_SingleNumberII::singleNumber(const std::vector<int> &nums)
 {
     int r = 0;

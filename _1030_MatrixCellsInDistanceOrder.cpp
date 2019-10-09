@@ -1,5 +1,5 @@
 #include "headers.hpp"
-
+#include <algorithm>
 std::vector<std::vector<int>> LeetCode::_1030_MatrixCellsInDistanceOrder::allCellsDistOrder(int R, int C, int r0, int c0) {
     std::vector<std::pair<int, std::vector<int>>> tab(R * C, std::pair<int, std::vector<int>>());
     for(int i = 0; i < R; ++i) {

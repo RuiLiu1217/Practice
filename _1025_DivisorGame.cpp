@@ -1,5 +1,5 @@
 #include "headers.hpp"
-
+#include <cmath>
 bool LeetCode::_1025_DivisorGame::divisorGame(int N) {
     if(N == 1) {
         return false;
@@ -13,7 +13,7 @@ bool LeetCode::_1025_DivisorGame::divisorGame(int N) {
     winTable[2] = true;
 
     for(int i = 3; i <= N; ++i) {
-        int sq = sqrt(i);
+        int sq = std::sqrt(i);
         bool willWin = false;
         for(int j = 1; j <= sq; ++j) {
             if(i % j == 0) {

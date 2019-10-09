@@ -1,5 +1,5 @@
 #include "headers.hpp"
-
+#include <algorithm>
 std::vector<int> LeetCode::_0066_PlusOne::plusOne(std::vector<int>& digits) {
     std::vector<int> res = digits;
     std::reverse(res.begin(), res.end());

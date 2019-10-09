@@ -1,6 +1,6 @@
 #include "headers.hpp"
 
-TreeNode<int> *_0235_LowestCommonAncestor::lowestCommonAncestorRecursive(TreeNode<int> *root, TreeNode<int> *p, TreeNode<int> *q)
+TreeNode<int> *LeetCode::_0235_LowestCommonAncestor::lowestCommonAncestorRecursive(TreeNode<int> *root, TreeNode<int> *p, TreeNode<int> *q)
 {
     if (!root)
     {
@@ -17,7 +17,7 @@ TreeNode<int> *_0235_LowestCommonAncestor::lowestCommonAncestorRecursive(TreeNod
     return root;
 }
 
-TreeNode<int> *_0235_LowestCommonAncestor::lowestCommonAncestorIterative(TreeNode<int> *root, TreeNode<int> *p, TreeNode<int> *q)
+TreeNode<int> * LeetCode::_0235_LowestCommonAncestor::lowestCommonAncestorIterative(TreeNode<int> *root, TreeNode<int> *p, TreeNode<int> *q)
 {
     if (!root)
     {

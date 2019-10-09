@@ -1,8 +1,8 @@
 #include "headers.hpp"
-
+#include <cmath>
 std::vector<std::vector<int>> LeetCode::_0059_SpiralMatrixII::generateMatrix(int n)
 {
-    vector<vector<int>> res;
+    std::vector<std::vector<int>> res;
     if (n == 0)
     {
         return res;
@@ -29,29 +29,29 @@ std::vector<std::vector<int>> LeetCode::_0059_SpiralMatrixII::generateMatrix(int
             res[i][j] = t++;
             if (isCountingRow)
             {
-                i = i + pow(-1, rowPowIdx);
+                i = i + std::pow(-1, rowPowIdx);
                 ++count;
                 if (count == rowCount)
                 {
                     isCountingRow = false;
                     ++rowPowIdx;
                     rowCount = rowCount - 1;
-                    i = i + pow(-1, rowPowIdx);
-                    j = j + pow(-1, colPowIdx);
+                    i = i + std::pow(-1, rowPowIdx);
+                    j = j + std::pow(-1, colPowIdx);
                     count = 0;
                 }
             }
             else
             {
-                j = j + pow(-1, colPowIdx);
+                j = j + std::pow(-1, colPowIdx);
                 ++count;
                 if (count == colCount)
                 {
                     isCountingRow = true;
                     ++colPowIdx;
                     colCount = colCount - 1;
-                    i = i + pow(-1, rowPowIdx);
-                    j = j + pow(-1, colPowIdx);
+                    i = i + std::pow(-1, rowPowIdx);
+                    j = j + std::pow(-1, colPowIdx);
                     count = 0;
                 }
             }

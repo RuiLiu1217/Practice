@@ -1,14 +1,15 @@
 #include "headers.hpp"
 
-_0155_MinStack::_0155_MinStack() {}
-void _0155_MinStack::push(int x) {
+LeetCode::_0155_MinStack::_0155_MinStack() {}
+
+void LeetCode::_0155_MinStack::push(int x) {
     mainStack.push(x);
     if(minStack.empty() || minStack.top() >= x) {
         minStack.push(x);
     }
 }
 
-void _0155_MinStack::pop() {
+void LeetCode::_0155_MinStack::pop() {
     if(!mainStack.empty()) {
         int topV = mainStack.top();
         mainStack.pop();
@@ -18,13 +19,13 @@ void _0155_MinStack::pop() {
     }
 }
 
-int _0155_MinStack::top() {
+int LeetCode::_0155_MinStack::top() {
     if(!mainStack.empty()) {
         return mainStack.top();
     }
 }
 
-int _0155_MinStack::getMin() {
+int LeetCode::_0155_MinStack::getMin() {
     if(!minStack.empty()) {
         return minStack.top();
     }
