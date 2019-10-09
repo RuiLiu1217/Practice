@@ -1382,6 +1382,8 @@ public:
 
 
 class _0096_UniqueBinarySearchTree {
+private:
+    std::vector<int> DP;
 public:
     int numTrees(int n);
     int numTreesN(int n);
