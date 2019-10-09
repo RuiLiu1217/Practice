@@ -2,7 +2,8 @@
 #include <string>
 #include <stack>
 #include <queue>
-
+#include <unordered_map>
+#include <unordered_set>
 #include "Tree.hpp"
 #include "LinkList.hpp"
 
@@ -404,6 +405,23 @@ public:
 };
 
 /*
+Given a positive integer n, break it into the sum of at least two 
+positive integers and maximize the product of those integers. Return 
+the maximum product you can get.
+
+Input: 2      :       Output: 1
+Explanation: 2 = 1 + 1, 1 × 1 = 1.
+
+Input: 10     :       Output: 36
+Explanation: 10 = 3 + 3 + 4, 3 × 3 × 4 = 36.
+Note: You may assume that n is not less than 2 and not larger than 58.
+*/
+class _0343_IntegerBreak {
+public:
+    int intergerBreak(int n);
+};
+
+/*
 Given two arrays, write a function to compute their intersection.
 
 Input: nums1 = [1,2,2,1], nums2 = [2,2]           :          Output: [2,2]
@@ -646,6 +664,37 @@ public:
 };
 
 /*
+Implement a magic directory with buildDict, and search methods.
+For the method buildDict, you'll be given a list of non-repetitive 
+words to build a dictionary.
+For the method search, you'll be given a word, and judge whether if you 
+modify exactly one character into another character in this word, the 
+modified word is in the dictionary you just built.
+
+Example 1:
+Input: buildDict(["hello", "leetcode"]), Output: Null
+Input: search("hello"), Output: False
+Input: search("hhllo"), Output: True
+Input: search("hell"), Output: False
+Input: search("leetcoded"), Output: False
+Note:
+You may assume that all the inputs are consist of lowercase letters a-z.
+For contest purpose, the test data is rather small by now. You could think 
+about highly efficient algorithm after the contest. Please remember to RESET 
+your class variables declared in class MagicDictionary, as static/class 
+variables are persisted across multiple test cases. Please see here for 
+more details.
+*/
+class _0676_ImplementMagicDictionary {
+public:
+    _0676_ImplementMagicDictionary();
+    void buildDict(std::vector<std::string> dict);
+    bool search(std::string word);
+private:
+    std::unordered_map<int, std::unordered_set<std::string>> _dict;
+};
+
+/*
 Given two strings A and B, find the minimum number of times A has to be 
 repeated such that B is a substring of it. If no such solution, return -1.
 
@@ -660,6 +709,50 @@ class _0686_RepeatedStringMatch {
 public:
     int repeatedStringMatch(std::string A, std::string B);
 };
+
+/*
+Given a (singly) linked list with head node root, write a 
+function to split the linked list into k consecutive linked 
+list "parts".
+The length of each part should be as equal as possible: no 
+two parts should have a size differing by more than 1. This 
+may lead to some parts being null.
+The parts should be in order of occurrence in the input list, 
+and parts occurring earlier should always have a size greater 
+than or equal parts occurring later.
+Return a List of ListNode's representing the linked list parts 
+that are formed.
+
+Examples 1->2->3->4, k = 5 // 5 equal parts [ [1], [2], [3], [4], null ]
+Example 1:
+Input:
+root = [1, 2, 3], k = 5
+Output: [[1],[2],[3],[],[]]
+Explanation:
+The input and each element of the output are ListNodes, not arrays.
+For example, the input root has root.val = 1, root.next.val = 2, 
+root.next.next.val = 3, and root.next.next.next = null.
+The first element output[0] has output[0].val = 1, output[0].next = null.
+The last element output[4] is null, but it's string representation
+ as a ListNode is [].
+Example 2:
+Input: 
+root = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], k = 3
+Output: [[1, 2, 3, 4], [5, 6, 7], [8, 9, 10]]
+Explanation:
+The input has been split into consecutive parts with size difference
+ at most 1, and earlier parts are a larger size than the later parts.
+Note:
+
+The length of root will be in the range [0, 1000].
+Each value of a node in the input will be an integer in the range [0, 999].
+k will be an integer in the range [1, 50].
+*/
+class _0725_SplitLinkedListInParts {
+public:
+    std::vector<ListNode<int>*> splitListToParts(ListNode<int>* root, int k);
+};
+
 
 /*
 Given an array of integers nums, sort the array in ascending order.
@@ -691,6 +784,18 @@ Explanation: 1 cannot be popped before 2.
 class _0946_ValidateStackSequences {
 public:
     bool validateStackSequences(std::vector<int>& pushed, std::vector<int>& popped);
+};
+
+/*
+Given a binary tree, determine if it is a complete binary tree.
+Definition of a complete binary tree from Wikipedia:
+In a complete binary tree every level, except possibly the last, is completely 
+filled, and all nodes in the last level are as far left as possible. It can have 
+between 1 and 2h nodes inclusive at the last level h.
+*/
+class _0958_CheckCompletenessOfABinaryTree {
+public:
+    bool siCompleteTree(TreeNode<int>* root);
 };
 
 /*
@@ -756,6 +861,28 @@ class _1025_DivisorGame
 {
 public:
     bool divisorGame(int N);
+};
+
+
+/*
+There are 2N people a company is planning to interview. The cost of flying 
+the i-th person to city A is costs[i][0], and the cost of flying the i-th 
+person to city B is costs[i][1].
+Return the minimum cost to fly every person to a city such that exactly N 
+people arrive in each city.
+
+Input: [[10,20],[30,200],[400,50],[30,20]]          :         Output: 110
+Explanation: 
+The first person goes to city A for a cost of 10.
+The second person goes to city A for a cost of 30.
+The third person goes to city B for a cost of 50.
+The fourth person goes to city B for a cost of 20.
+
+The total minimum cost is 10 + 30 + 50 + 20 = 110 to have half the people interviewing in each city.
+*/
+// Inspired by the solution
+class _1029_TwoCityScheduling {
+
 };
 
 /*

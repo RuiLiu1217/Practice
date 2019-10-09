@@ -47,3 +47,39 @@ void LeetCode::_0341_FlattenNestedListIterator::increaseIndex() {
     }
     return;
 }
+
+
+// Another Solution
+
+// class NestedIterator {
+// public:
+//     // copy from the solution
+//     NestedIterator(vector<NestedInteger> &nestedList) {
+//         for(auto it = nestedList.rbegin(); it != nestedList.rend(); ++it){
+//             s.push(*it);
+//         }
+//     }
+
+//     int next() {
+//         NestedInteger t = s.top();
+//         s.pop();
+//         return t.getInteger();
+//     }
+
+//     bool hasNext() {
+//         while(!s.empty()) {
+//             NestedInteger t = s.top();
+//             if(t.isInteger()) {
+//                 return true;
+//             }
+//             s.pop();
+//             auto& list = t.getList();
+//             for(auto it = list.rbegin(); it != list.rend(); ++it) {
+//                 s.push(*it);
+//             }
+//         }
+//         return false;
+//     }
+// private:
+//     std::stack<NestedInteger> s;
+// };
