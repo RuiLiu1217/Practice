@@ -1,5 +1,3 @@
-#ifndef HEADERS_HPP
-#define HEADERS_HPP
 #include <vector>
 #include <string>
 #include <stack>
@@ -253,8 +251,6 @@ public:
     TreeNode<int> *lowestCommonAncestorRecursive(TreeNode<int> *root, TreeNode<int> *p, TreeNode<int> *q);
     TreeNode<int> *lowestCommonAncestorIterative(TreeNode<int> *root, TreeNode<int> *p, TreeNode<int> *q);
 };
-
-
 
 /*
 Write an efficient algorithm that searches for a value 
@@ -573,43 +569,6 @@ public:
 };
 
 
-class _0406_QueueReconstructionByHeight {
-public:
-    std::vector<std::pair<int, int>> reconstructQueue(std::vector<std::pair<int, int>>& people);
-};
-
-
-
-class _0409_LongestPalindrome {
-public:
-    int longestPalindrome(std::string s);
-};
-
-
-
-class _0412_FizzBuzz {
-public:
-    std::vector<std::string> fizzBuzz(int n);
-};
-
-
-class _0413_ArighmeticSlices {
-    public:
-        int numberOfArithmeticSlices(std::vector<int>& A);
-    private:
-        int numberOfSubArith(int N);
-};
- 
-class _0414_ThirdMaximumNumber {
-    public:
-        int thirdMax(std::vector<int>& nums);
-};
- 
-
-class _0415_AddStrings {
-public:
-    std::string addStrings(std::string num1, std::string num2);
-};
 
 
 // We want to use quad trees to store an N x N boolean grid. Each cell in the
@@ -657,25 +616,6 @@ class _0429_NaryTreelevelOrderTraversal
 public:
     std::vector<std::vector<int>> levelOrder(NaryTreeNode<int> *root);
 };
-
-class _0434_NumberOfSegmentsInAString {
-public:
-    int countSegments(std::string s);
-};
-
-
-class _0441_ArrangingCoins {
-public:
-    int arrangeCoins(int n);
-};
-
-
-
-class _0442_FindAllDuplicatesInAnArray {
-public:
-    std::vector<int> findDuplicates(std::vector<int>& nums);
-};
-
 
 /*
 Given n points in the plane that are all pairwise distinct, a 
@@ -992,8 +932,69 @@ At the end, there is at most 1 stone left.  Return the weight of this stone (or
 */
 class _1046_LastStoneWeight {
 public:
-    int lastStoneWeight(std::vector<int>& stones);
+    int lastStoneWeight(std::vector<int>& stones) {
+        std::priority_queue<int> pq;
+        for(auto s : stones) {
+            pq.push(s);
+        }
+        while(pq.size() >= 2) {
+            int a = pq.top();
+            pq.pop();
+            int b = pq.top();
+            pq.pop();
+            if(a == b) {
+                continue;
+            } else {
+                pq.push(a - b);
+            }
+        }
+        if(pq.empty()) {
+            return 0;
+        }
+        return pq.top();
+    }
 };
+
+/* 1103. distribute candies to people:
+We distribute some number of candies, to a row of n = num_people 
+people in the following way:
+We then give 1 candy to the first person, 2 candies to the second 
+person, and so on until we give n candies to the last person.Then, 
+we go back to the start of the row, giving n + 1 candies to the 
+first person, n + 2 candies to the second person, and so on until 
+we give 2 * n candies to the last person.
+This process repeats (with us giving one more candy each time, and 
+moving to the start of the row after we reach the end) until we run 
+out of candies. The last person will receive all of our remaining 
+candies (not necessarily one more than the previous gift).
+Return an array (of length num_people and sum candies) that represents 
+the final distribution of candies. 
+
+Example 1:
+
+Input: candies = 7, num_people = 4
+Output: [1,2,3,1]
+Explanation:
+On the first turn, ans[0] += 1, and the array is [1,0,0,0].
+On the second turn, ans[1] += 2, and the array is [1,2,0,0].
+On the third turn, ans[2] += 3, and the array is [1,2,3,0].
+On the fourth turn, ans[3] += 1 (because there is only one candy left), and the final array is [1,2,3,1].
+Example 2:
+
+Input: candies = 10, num_people = 3
+Output: [5,2,3]
+Explanation: 
+On the first turn, ans[0] += 1, and the array is [1,0,0].
+On the second turn, ans[1] += 2, and the array is [1,2,0].
+On the third turn, ans[2] += 3, and the array is [1,2,3].
+On the fourth turn, ans[0] += 4, and the final array is [5,2,3].
+*/
+class _1103_DistributeCandiesToPeople {
+public:
+    std::vector<int> distributeCandies(int candies, int num_people);
+};
+
+
 
 /*
 Given two arrays arr1 and arr2, the elements of arr2 are distinct, and all 
@@ -1060,5 +1061,3 @@ public:
 
 
 } // namespace LeetCode
-
-#endif
