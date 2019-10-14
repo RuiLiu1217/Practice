@@ -1059,11 +1059,53 @@ public:
     bool uniqueOccurrences(std::vector<int>& arr);
 };
 
+/*
+Balanced strings are those who have equal quantity of 'L' and 'R' characters.
+Given a balanced string s split it in the maximum amount of balanced strings.
+Return the maximum amount of splitted balanced strings. 
+
+Input: s = "RLRRLLRLRL"           :         Output: 4
+Explanation: s can be split into "RL", "RRLL", "RL", "RL", each substring contains same number of 'L' and 'R'.
+
+Input: s = "RLLLLRRRLR"           :         Output: 3
+Explanation: s can be split into "RL", "LLLRRR", "LR", each substring contains same number of 'L' and 'R'.
+
+Input: s = "LLLLRRRR"             :         Output: 1
+Explanation: s can be split into "LLLLRRRR".
+*/
+class _1221_SplitAStringInBalancedStrings {
+public:
+    int balancedStringSplit(std::string s);
+};
+
 
 } // namespace LeetCode
 
 
 namespace LintCode {
+    /*
+    Write a function that add two numbers A and B.
+    There is no need to read data from standard input stream. 
+    Both parameters are given in function aplusb, your job is to calculate the sum and return it.
+    
+    Clarification : Are a and b both 32-bit integers?
+    Yes.
+    
+    Can I use bit operation?
+    Sure you can.
+    
+    
+    Example 1: Input:  a = 1, b = 2    Output: 3	
+               Input:  a = -1, b = 1   Output: 0	
+
+    Challenge
+    Can you challenge not do it like that?(You should not use + or any arithmetic operators.)
+    */
+    class _0001_APlusBProblem {
+        public:
+            int aplusb(int a, int b);
+    };
+
     /*
     Description
     In a 2D array grid, each value grid[i][j] represents the height of a building 
