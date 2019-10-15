@@ -1057,6 +1057,70 @@ public:
 };
 
 /*
+Given a collection of numbers that might contain duplicates, return all possible unique permutations.
+
+Example:
+
+Input: [1,1,2]
+Output:
+[
+  [1,1,2],
+  [1,2,1],
+  [2,1,1]
+]
+*/
+class _0047_PermutationsII{
+public:
+/*
+    vector<vector<int>> permuteUnique(vector<int>& nums) {
+        std::sort(nums.begin(), nums.end());
+        std::vector<std::vector<int>> res;
+        genPermute(nums, 0, nums.size() - 1, res);
+        return res;
+    }
+    */
+    
+    // This function is not correct 
+    /*void genPermute(std::vector<int>& nums, int start, int end, std::vector<std::vector<int>>& res) {
+        if(start == end) {
+            res.push_back(nums);
+            return;
+        }
+        for(int i = start; i <= end; ++i) {
+            if(i != start && nums[i] == nums[start]) {
+                continue;
+            }
+            std::swap(nums[i], nums[start]);
+            genPermute(nums, start+1, end, res);
+            std::swap(nums[i], nums[start]);
+        }
+    }*/
+    // However, this is correct, I have no idea why.
+    /*
+    void genPermute(std::vector<int> nums, int start, int end, std::vector<std::vector<int>>& res) {
+        if(start == end) {
+            res.push_back(nums);
+            return;
+        }
+        for(int i = start; i <= end; ++i) {
+            if(i != start && nums[i] == nums[start]) {
+                continue;
+            }
+            std::swap(nums[i], nums[start]);
+            genPermute(nums, start+1, end, res);
+        }
+    }
+    */
+    
+    
+    std::vector<std::vector<int>> permuteUnique(std::vector<int>& nums);
+    
+    void genPermute(std::unordered_map<int, int>& Map, int N, 
+                     std::vector<int>& tmp,
+                     std::vector<std::vector<int>>& res);
+};
+
+/*
 =======
 Group Anagrams :  Given an array of strings, group anagrams together.
 
@@ -1373,6 +1437,29 @@ public:
     void combine(std::vector<int>& nums, std::vector<int>& used, int s, int k, std::vector<int>& tmp, std::vector<std::vector<int>>& res);
 };
 
+/*
+The gray code is a binary numeral system where two successive values differ in only one bit.
+Given a non-negative integer n representing the total number of bits in the code, print the 
+sequence of gray code. A gray code sequence must begin with 0.
+
+
+Input: 2   Output: [0,1,3,2]
+Explanation:
+00 - 0
+01 - 1
+11 - 3
+10 - 2
+
+Example 2:
+Input: 0
+Output: [0]
+Explanation: We define the gray code sequence to begin with 0. A gray code sequence of n has 
+size = 2n, which for n = 0 the size is 20 = 1. Therefore, for n = 0 the gray code sequence is [0].
+*/
+class _0089_GrayCode{
+public:
+    std::vector<int> grayCode(int n);
+};
 
 class _0095_UniqueBinarySearchTreeII {
 public:

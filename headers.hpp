@@ -116,6 +116,24 @@ public:
     void connect(Node *root);
 };
 
+/*
+Given a triangle, find the minimum path sum from top to bottom. Each step you may move to adjacent numbers on the row below.
+For example, given the following triangle
+
+[
+     [2],
+    [3,4],
+   [6,5,7],
+  [4,1,8,3]
+]
+The minimum path sum from top to bottom is 11 (i.e., 2 + 3 + 5 + 1 = 11).
+Bonus point if you are able to do this using only O(n) extra space, where n is the total number of rows in the triangle.
+*/
+class _0120_Triangle{
+public:
+    int minimumTotal(std::vector<std::vector<int>>& triangle);
+};
+
 
 /*
 Say you have an array for which the ith element is the price of a given stock on day i.
@@ -139,6 +157,23 @@ public:
 // difference between selling price and minprice) obtained so far respectively.
     int maxProfit(std::vector<int>& prices);
 };
+
+
+class _0133_CloneGraph {
+    
+public:
+    class Node {
+        public:
+            int val;
+            std::vector<Node*> neighbors;
+            Node(){}
+            Node(int _val, std::vector<Node*> _neighbors): val(_val), neighbors(_neighbors) {}
+    };
+    Node* cloneGraph(Node* node);
+private:
+    std::unordered_map<Node*, Node*> map;
+};
+
 
 // Sort a linked list in O(NlogN) time using constant space complexity.
 class _0148_SortList
@@ -180,6 +215,38 @@ public:
     void pop();
     int top();
     int getMin();
+};
+
+/*
+Implement an iterator over a binary search tree (BST). Your iterator will be initialized 
+with the root node of a BST. Calling next() will return the next smallest number in the BST.
+BSTIterator iterator = new BSTIterator(root);
+iterator.next();    // return 3
+iterator.next();    // return 7
+iterator.hasNext(); // return true
+iterator.next();    // return 9
+iterator.hasNext(); // return true
+iterator.next();    // return 15
+iterator.hasNext(); // return true
+iterator.next();    // return 20
+iterator.hasNext(); // return false
+ 
+Note:
+next() and hasNext() should run in average O(1) time and uses O(h) memory, where h is the 
+height of the tree. You may assume that next() call will always be valid, that is, there 
+will be at least a next smallest number in the BST when next() is called.
+*/
+class _0173_BinarySearchTreeIterator {
+public:
+    _0173_BinarySearchTreeIterator(TreeNode<int>* root);
+    
+    /** @return the next smallest number */
+    int next();
+    
+    /** @return whether we have a next smallest number */
+    bool hasNext();
+private:
+    std::stack<TreeNode<int>*> st;
 };
 
 class _0190_ReverseBits
@@ -1059,53 +1126,11 @@ public:
     bool uniqueOccurrences(std::vector<int>& arr);
 };
 
-/*
-Balanced strings are those who have equal quantity of 'L' and 'R' characters.
-Given a balanced string s split it in the maximum amount of balanced strings.
-Return the maximum amount of splitted balanced strings. 
-
-Input: s = "RLRRLLRLRL"           :         Output: 4
-Explanation: s can be split into "RL", "RRLL", "RL", "RL", each substring contains same number of 'L' and 'R'.
-
-Input: s = "RLLLLRRRLR"           :         Output: 3
-Explanation: s can be split into "RL", "LLLRRR", "LR", each substring contains same number of 'L' and 'R'.
-
-Input: s = "LLLLRRRR"             :         Output: 1
-Explanation: s can be split into "LLLLRRRR".
-*/
-class _1221_SplitAStringInBalancedStrings {
-public:
-    int balancedStringSplit(std::string s);
-};
-
 
 } // namespace LeetCode
 
 
 namespace LintCode {
-    /*
-    Write a function that add two numbers A and B.
-    There is no need to read data from standard input stream. 
-    Both parameters are given in function aplusb, your job is to calculate the sum and return it.
-    
-    Clarification : Are a and b both 32-bit integers?
-    Yes.
-    
-    Can I use bit operation?
-    Sure you can.
-    
-    
-    Example 1: Input:  a = 1, b = 2    Output: 3	
-               Input:  a = -1, b = 1   Output: 0	
-
-    Challenge
-    Can you challenge not do it like that?(You should not use + or any arithmetic operators.)
-    */
-    class _0001_APlusBProblem {
-        public:
-            int aplusb(int a, int b);
-    };
-
     /*
     Description
     In a 2D array grid, each value grid[i][j] represents the height of a building 
@@ -1239,10 +1264,10 @@ namespace LintCode {
 	  / \   \ 
 	 5   4   7
     */
-   
+
     class _1126_MergeTwoBinaryTrees{
         public:
-
+            TreeNode<int> * mergeTrees(TreeNode<int> * t1, TreeNode<int> * t2);
     };
 
     /*
