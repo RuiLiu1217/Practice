@@ -726,7 +726,10 @@ public:
     int arrangeCoins(int n);
 };
 
-
+class _0442_FindAllDuplicatesInAnArray {
+public:
+    std::vector<int> findDuplicates(std::vector<int>& nums);
+};
 
 /*
 Given n points in the plane that are all pairwise distinct, a 
@@ -974,6 +977,10 @@ public:
     bool divisorGame(int N);
 };
 
+class _1207_UniqueNumberOfOccurances {
+public:
+    bool uniqueOccurrences(std::vector<int>& arr);
+};
 
 /*
 There are 2N people a company is planning to interview. The cost of flying 
@@ -1043,27 +1050,7 @@ At the end, there is at most 1 stone left.  Return the weight of this stone (or
 */
 class _1046_LastStoneWeight {
 public:
-    int lastStoneWeight(std::vector<int>& stones) {
-        std::priority_queue<int> pq;
-        for(auto s : stones) {
-            pq.push(s);
-        }
-        while(pq.size() >= 2) {
-            int a = pq.top();
-            pq.pop();
-            int b = pq.top();
-            pq.pop();
-            if(a == b) {
-                continue;
-            } else {
-                pq.push(a - b);
-            }
-        }
-        if(pq.empty()) {
-            return 0;
-        }
-        return pq.top();
-    }
+    int lastStoneWeight(std::vector<int>& stones);
 };
 
 /* 1103. distribute candies to people:
@@ -1170,11 +1157,22 @@ public:
     bool uniqueOccurrences(std::vector<int>& arr);
 };
 
+class _1221_SplitAStringInBalancedStrings {
+public:
+    int balancedStringSplit(std::string s);
+};
+
+
 
 } // namespace LeetCode
 
 
 namespace LintCode {
+class _0001_APlusBProblem{
+    public:
+        int aplusb(int a, int b);
+};
+
     /*
     Description
     In a 2D array grid, each value grid[i][j] represents the height of a building 
