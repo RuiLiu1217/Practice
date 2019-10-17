@@ -1,5 +1,5 @@
 #include "headers.hpp"
-
+#include <algorithm>
 std::string LeetCode::_0043_MultiplyStrings::multiply(std::string num1, std::string num2)
 {
     const int L1 = num1.size();

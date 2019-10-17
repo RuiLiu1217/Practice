@@ -653,6 +653,22 @@ public:
     std::vector<std::string> fizzBuzz(int n);
 };
  
+class _0413_ArighmeticSlices {
+public:
+    int numberOfArithmeticSlices(std::vector<int>& A);
+private:
+    int numberOfSubArith(int N);
+};
+ 
+class _0414_ThirdMaximumNumber{
+public:
+    int thirdMax(std::vector<int>& nums);
+};
+
+class _0415_AddStrings {
+public:
+    std::string addStrings(std::string num1, std::string num2);
+};
 
 // We want to use quad trees to store an N x N boolean grid. Each cell in the
 // grid can only be true or false. The root node represents the whole grid. For
@@ -699,6 +715,18 @@ class _0429_NaryTreelevelOrderTraversal
 public:
     std::vector<std::vector<int>> levelOrder(NaryTreeNode<int> *root);
 };
+
+class _0434_NumberOfSegmentsInAString {
+public:
+    int countSegments(std::string s);
+};
+
+class _0441_ArrangingCoins {
+public:
+    int arrangeCoins(int n);
+};
+
+
 
 /*
 Given n points in the plane that are all pairwise distinct, a 
@@ -1187,6 +1215,11 @@ namespace LintCode {
             int maxIncreaseKeepingSkyline(std::vector<std::vector<int>> &grid);
     };
 
+    class _1207_UniqueNumberOfOccurances {
+        public:
+            bool uniqueOccurrences(std::vector<int>& arr);
+    };
+    
     /* Description
     You're given strings J representing the types of stones that are jewels, and S 
     representing the stones you have. Each character in S is a type of stone you have. 
