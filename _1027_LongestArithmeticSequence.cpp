@@ -1,7 +1,7 @@
 #include "headers.hpp"
 
 // Copy from the solution.
-int LeetCode::_1027_LongestArithmeticSequence::longestArithSeqLength(vector<int>& A) {
+int LeetCode::_1027_LongestArithmeticSequence::longestArithSeqLength(std::vector<int>& A) {
     // 建立一个hash map，key 是 两个元素之间的差，value 也是一个hash map， 他的key是序列开始的index，他的value就是当前这个序列已经多长了。那么
     using Diff = int;
     using StartIndex = int;

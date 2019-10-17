@@ -977,9 +977,10 @@ public:
     bool divisorGame(int N);
 };
 
-class _1207_UniqueNumberOfOccurances {
-public:
-    bool uniqueOccurrences(std::vector<int>& arr);
+class _1027_LongestArithmeticSequence{
+    public:
+    // Copy from the solution.
+    int longestArithSeqLength(std::vector<int>& A);
 };
 
 /*

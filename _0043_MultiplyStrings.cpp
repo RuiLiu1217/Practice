@@ -59,7 +59,7 @@ std::string LeetCode::_0043_MultiplyStrings::multiply(const std::string &num1, c
     return res;
 }
 
-std::string add(std::string num1, std::string num2)
+std::string LeetCode::_0043_MultiplyStrings::add(std::string num1, std::string num2)
 {
     std::reverse(num1.begin(), num1.end());
     std::reverse(num2.begin(), num2.end());

@@ -1582,7 +1582,7 @@ Given word = "ABCB", return false.
 */
 class _0079_WordSearch{
 public:
-    bool exist(std::vector<std::vector<int>>& board, std::string word);
+    bool exist(std::vector<std::vector<char>>& board, std::string word);
     void exist(std::vector<std::vector<char>>& board, int i, int j, std::string& word, int start, int end, bool& res);
 };
 

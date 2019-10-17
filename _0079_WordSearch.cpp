@@ -1,6 +1,6 @@
 #include "headers.hpp"
 
-bool LeetCode::_0079_WordSearch::exist(std::vector<std::vector<int>>& board, std::string word) {
+bool LeetCode::_0079_WordSearch::exist(std::vector<std::vector<char>>& board, std::string word) {
     bool res = false;
     for(int i = 0; i < board.size(); ++i) {
         for(int j = 0; j < board[i].size(); ++j) {
