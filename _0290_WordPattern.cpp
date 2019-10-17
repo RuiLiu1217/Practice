@@ -1,6 +1,7 @@
 #include "headers.hpp"
 #include <sstream>
 #include <iterator>
+
 bool LeetCode::_0290_WordPattern::wordPattern(std::string pattern, std::string str) {
     std::istringstream iss(str);
 

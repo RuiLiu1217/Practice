@@ -1,7 +1,7 @@
 #include "headers.hpp"
 #include <stack>
 
-bool LeetCode::_0020_ValidParentheses::isValid(std:string& s) {
+bool LeetCode::_0020_ValidParentheses::isValid(std::string& s) {
     // () 1 [] 2 {} 3
     std::stack<int> st;
     for(int i = 0 ; i!= s.size(); ++i)

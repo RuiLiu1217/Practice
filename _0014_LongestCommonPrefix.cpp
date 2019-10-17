@@ -2,7 +2,7 @@
 
 std::string LeetCode::_0014_LongestCommonPrefix::longestCommonPrefix(std::vector<std::string>& strs) {
     std::string res;
-    if(strs.empty){
+    if(strs.empty()){
         return res;
     }
 

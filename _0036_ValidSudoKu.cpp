@@ -32,9 +32,9 @@ bool LeetCode::_0036_ValidSudoku::isValidSudoku(std::vector<std::vector<char>> &
     return valid;
 }
 
-bool LeetCode::_0036_ValidSudoku::existDuplicatePerSquare(vector<vector<char>> &board, int i, int j)
+bool LeetCode::_0036_ValidSudoku::existDuplicatePerSquare(std::vector<std::vector<char>> &board, int i, int j)
 {
-    vector<int> ext(9, 0);
+    std::vector<int> ext(9, 0);
     for (int ii = 0; ii != 3; ++ii)
     {
         for (int jj = 0; jj != 3; ++jj)
@@ -55,9 +55,9 @@ bool LeetCode::_0036_ValidSudoku::existDuplicatePerSquare(vector<vector<char>> &
     }
     return false;
 }
-bool LeetCode::_0036_ValidSudoku::existDuplicatePerRow(vector<vector<char>> &board, int i)
+bool LeetCode::_0036_ValidSudoku::existDuplicatePerRow(std::vector<std::vector<char>> &board, int i)
 {
-    vector<int> ext(9, 0);
+    std::vector<int> ext(9, 0);
     for (int ii = 0; ii != 9; ++ii)
     {
         char tmp = board[i][ii];
@@ -75,9 +75,9 @@ bool LeetCode::_0036_ValidSudoku::existDuplicatePerRow(vector<vector<char>> &boa
     }
     return false;
 }
-bool LeetCode::_0036_ValidSudoku::existDuplicatePerColumn(vector<vector<char>> &board, int j)
+bool LeetCode::_0036_ValidSudoku::existDuplicatePerColumn(std::vector<std::vector<char>> &board, int j)
 {
-    vector<int> ext(9, 0);
+    std::vector<int> ext(9, 0);
     for (int ii = 0; ii != 9; ++ii)
     {
         char tmp = board[ii][j];

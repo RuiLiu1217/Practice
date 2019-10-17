@@ -1,5 +1,5 @@
 #include "headers.hpp"
-
+#include <algorithm>
 std::vector<std::vector<int>> LeetCode::_0015_3Sum::threeSum(std::vector<int>& nums) {
     std::vector<std::vector<int>> res;
     std::sort(nums.begin(), nums.end());

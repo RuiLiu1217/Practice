@@ -1,5 +1,5 @@
 #include "headers.hpp"
-
+#include <algorithm>
 void LeetCode::_0040_CombinationSumII::choose(std::vector<int>& candidates, int target, int begin) {
     if(target == 0) {
         res.push_back(temp);

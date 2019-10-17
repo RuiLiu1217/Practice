@@ -43,7 +43,7 @@ void LeetCode::_0031_NextPermutation::nextPermutation(std::vector<int>& nums) {
     }
 
     if(firstSmall == -1) {
-        revserse(num, 0, nums.size() - 1);
+        reverse(nums, 0, nums.size() - 1);
         return;
     }
 
@@ -55,7 +55,7 @@ void LeetCode::_0031_NextPermutation::nextPermutation(std::vector<int>& nums) {
         }
     }
 
-    swap(nums[firstLarge], nums[firstSmall]);
+    std::swap(nums[firstLarge], nums[firstSmall]);
     reverse(nums, firstSmall + 1, nums.size() - 1);
 }
 

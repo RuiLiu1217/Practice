@@ -1,6 +1,6 @@
 #include "headers.hpp"
 
-int LeetCode::_0026_RemoveDuplicatesFromSortedArray::removeDuplicates(vector<int>& nums) {
+int LeetCode::_0026_RemoveDuplicatesFromSortedArray::removeDuplicates(std::vector<int>& nums) {
     int slow = 0;
     int fast = 0;
     while(fast < nums.size()) {

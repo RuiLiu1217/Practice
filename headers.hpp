@@ -400,6 +400,9 @@ class _0290_WordPattern
 {
 public:
     bool wordPattern(std::string pattern, std::string str);
+private:
+    std::unordered_map<char, std::string> map;
+    std::unordered_map<std::string, char> map2;
 };
 
 /*
@@ -635,8 +638,21 @@ public:
     std::string toHex(int num);
 };
 
+class _0406_QueueReconstructionByHeight {
+    public:
+        std::vector<std::pair<int, int>> reconstructQueue(std::vector<std::pair<int, int>>& people);
+};
 
+class _0409_LongestPalindrome {
+public:
+    int longestPalindrome(std::string s);
+};
 
+class _0412_FizzBuzz {
+public:
+    std::vector<std::string> fizzBuzz(int n);
+};
+ 
 
 // We want to use quad trees to store an N x N boolean grid. Each cell in the
 // grid can only be true or false. The root node represents the whole grid. For
