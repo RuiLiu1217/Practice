@@ -1031,31 +1031,6 @@ private:
     void permuteRecursive(std::vector<int> &nums, int begin, std::vector<std::vector<int>> &result);
 };
 
-/* 
-        You are given an n x n 2D matrix representing an image. Rotate the image by 90 degrees (clockwise).
-        Note: You have to rotate the image in-place, which means you have to modify the input 2D matrix 
-        directly. DO NOT allocate another 2D matrix and do the rotation.
-    */
-class _0048_RotateImage
-{
-public:
-    void rotate(std::vector<std::vector<int>> &matrix);
-};
-
-/*
-Given an array of non-negative integers, you are initially positioned at the first index of the array.
-Each element in the array represents your maximum jump length at that position.
-Determine if you are able to reach the last index.
-Example 1:
-
-Input: [2,3,1,1,4]           :          Output: true
-Input: [3,2,1,0,4]           :          Output: false
-*/
-class _0055_JumpGame {
-public:
-    bool canJump(std::vector<int>& nums);
-};
-
 /*
 Given a collection of numbers that might contain duplicates, return all possible unique permutations.
 
@@ -1119,6 +1094,18 @@ public:
                      std::vector<int>& tmp,
                      std::vector<std::vector<int>>& res);
 };
+
+/* 
+        You are given an n x n 2D matrix representing an image. Rotate the image by 90 degrees (clockwise).
+        Note: You have to rotate the image in-place, which means you have to modify the input 2D matrix 
+        directly. DO NOT allocate another 2D matrix and do the rotation.
+    */
+class _0048_RotateImage
+{
+public:
+    void rotate(std::vector<std::vector<int>> &matrix);
+};
+
 
 /*
 =======
@@ -1193,6 +1180,22 @@ Output: [1,2,3,4,8,12,11,10,9,5,6,7]
 class _0054_SpiralMatrix{
 public:
     std::vector<int> spiralOrder(std::vector<std::vector<int>>& matrix);
+};
+
+
+
+/*
+Given an array of non-negative integers, you are initially positioned at the first index of the array.
+Each element in the array represents your maximum jump length at that position.
+Determine if you are able to reach the last index.
+Example 1:
+
+Input: [2,3,1,1,4]           :          Output: true
+Input: [3,2,1,0,4]           :          Output: false
+*/
+class _0055_JumpGame {
+public:
+    bool canJump(std::vector<int>& nums);
 };
 
 /*
@@ -1416,26 +1419,259 @@ public:
     std::string simplifyPath(std::string path);
 };
 
+
+/*
+Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in-place.
+
+Example 1:
+
+Input: 
+[
+  [1,1,1],
+  [1,0,1],
+  [1,1,1]
+]
+Output: 
+[
+  [1,0,1],
+  [0,0,0],
+  [1,0,1]
+]
+Example 2:
+
+Input: 
+[
+  [0,1,2,0],
+  [3,4,5,2],
+  [1,3,1,5]
+]
+Output: 
+[
+  [0,0,0,0],
+  [0,4,5,0],
+  [0,3,1,0]
+]
+Follow up:
+
+A straight forward solution using O(mn) space is probably a bad idea.
+A simple improvement uses O(m + n) space, but still not the best solution.
+Could you devise a constant space solution?
+*/
 class _0073_SetMatrixZeros {
 public:
     void setZeroes(std::vector<std::vector<int>>& matrix);
 };
 
+/*
+Write an efficient algorithm that searches for a value in an m x n matrix. 
+This matrix has the following properties:
+Integers in each row are sorted from left to right. The first integer of 
+each row is greater than the last integer of the previous row.
+
+Example 1:
+
+Input:
+matrix = [
+  [1,   3,  5,  7],
+  [10, 11, 16, 20],
+  [23, 30, 34, 50]
+]
+target = 3
+Output: true
+Example 2:
+
+Input:
+matrix = [
+  [1,   3,  5,  7],
+  [10, 11, 16, 20],
+  [23, 30, 34, 50]
+]
+target = 13
+Output: false
+*/
+class _0074_SearchA2DMatrix {
+public:
+    bool searchMatrix(std::vector<std::vector<int>>& matrix, int target);
+};
 
 
+/*
+Given an array with n objects colored red, white or blue, sort them 
+in-place so that objects of the same color are adjacent, with the colors 
+in the order red, white and blue.
+Here, we will use the integers 0, 1, and 2 to represent the color red, white, 
+and blue respectively.
+Note: You are not suppose to use the library's sort function for this problem.
+Example:
+Input: [2,0,2,1,1,0]
+Output: [0,0,1,1,2,2]
+Follow up:
 
+A rather straight forward solution is a two-pass algorithm using counting sort.
+First, iterate the array counting number of 0's, 1's, and 2's, then overwrite 
+array with total number of 0's, then 1's and followed by 2's.
+Could you come up with a one-pass algorithm using only constant space?
+*/
 class _0075_SortColors {
 public:
     void sortColors(std::vector<int>& nums);
 };
 
 
-
+/*
+Given two integers n and k, return all possible combinations of k numbers out of 1 ... n.
+Example:
+Input: n = 4, k = 2
+Output:
+[
+  [2,4],
+  [3,4],
+  [2,3],
+  [1,2],
+  [1,3],
+  [1,4],
+]
+*/
 class _0077_Combinations {
 public:
     std::vector<std::vector<int>> combine(int n, int k);
     void combine(std::vector<int>& nums, std::vector<int>& used, int s, int k, std::vector<int>& tmp, std::vector<std::vector<int>>& res);
 };
+
+/*
+Given a set of distinct integers, nums, return all possible subsets (the power set).
+Note: The solution set must not contain duplicate subsets.
+Example:
+Input: nums = [1,2,3]
+Output:
+[
+  [3],
+  [1],
+  [2],
+  [1,2,3],
+  [1,3],
+  [2,3],
+  [1,2],
+  []
+]
+*/
+class _0078_Subsets{
+public:
+    std::vector<std::vector<int>> subsets(std::vector<int>& nums);
+    std::vector<std::vector<int>> subsets(std::vector<int>& nums, int beg, int end);
+};
+
+/*
+Given a 2D board and a word, find if the word exists in the grid.
+The word can be constructed from letters of sequentially adjacent 
+cell, where "adjacent" cells are those horizontally or vertically 
+neighboring. The same letter cell may not be used more than once.
+
+Example:
+
+board =
+[
+  ['A','B','C','E'],
+  ['S','F','C','S'],
+  ['A','D','E','E']
+]
+
+Given word = "ABCCED", return true.
+Given word = "SEE", return true.
+Given word = "ABCB", return false.
+*/
+class _0079_WordSearch{
+public:
+    bool exist(std::vector<std::vector<int>>& board, std::string word);
+    void exist(std::vector<std::vector<char>>& board, int i, int j, std::string& word, int start, int end, bool& res);
+};
+
+
+/*
+80. Remove Duplicates from Sorted Array II
+Given a sorted array nums, remove the duplicates in-place such that 
+duplicates appeared at most twice and return the new length.
+Do not allocate extra space for another array, you must do this by
+modifying the input array in-place with O(1) extra memory.
+
+Given nums = [1,1,1,2,2,3],
+Your function should return length = 5, with the first five elements
+of nums being 1, 1, 2, 2 and 3 respectively. It doesn't matter what 
+you leave beyond the returned length.
+
+Given nums = [0,0,1,1,1,1,2,3,3],
+Your function should return length = 7, with the first seven elements
+of nums being modified to 0, 0, 1, 1, 2, 3 and 3 respectively.
+It doesn't matter what values are set beyond the returned length.
+
+Clarification:
+Confused why the returned value is an integer but your answer is an array?
+Note that the input array is passed in by reference, which means 
+modification to the input array will be known to the caller as well.
+
+Internally you can think of this:
+// nums is passed in by reference. (i.e., without making a copy)
+int len = removeDuplicates(nums);
+*/
+class _0080_RemoveDuplicatesFromSortedArrayII {
+public:
+    int removeDuplicates(std::vector<int>& nums);
+};
+
+/*
+82. Remove Duplicates from Sorted List II
+Given a sorted linked list, delete all nodes that have duplicate numbers, 
+leaving only distinct numbers from the original list.
+
+Input: 1->2->3->3->4->4->5
+Output: 1->2->5
+
+Input: 1->1->1->2->3
+Output: 2->3
+*/
+class _0082_RemoveDuplicatesFromSortedListII{
+public:
+    ListNode<int>* deleteDuplicates(ListNode<int>* head);
+};
+
+
+
+/*
+Given a sorted linked list, delete all duplicates such that each element 
+appear only once.
+
+Input: 1->1->2
+Output: 1->2
+
+Input: 1->1->2->3->3
+Output: 1->2->3
+*/
+class _0083_RemoveDuplicatesFromSortedList{
+public:
+    ListNode<int>* deleteDuplicates(ListNode<int>* head);
+};
+
+
+/*
+88. Merge Sorted Array
+Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.
+
+Note:
+The number of elements initialized in nums1 and nums2 are m and n respectively.
+You may assume that nums1 has enough space (size that is greater or equal to m + n) to hold additional elements from nums2.
+Example:
+
+Input:
+nums1 = [1,2,3,0,0,0], m = 3
+nums2 = [2,5,6],       n = 3
+
+Output: [1,2,2,3,5,6]
+*/
+class _0088_MergeSortedArray {
+public: 
+    void merge(std::vector<int>& nums1, int m, std::vector<int>& nums2, int n);
+};
+
 
 /*
 The gray code is a binary numeral system where two successive values differ in only one bit.
@@ -1461,13 +1697,89 @@ public:
     std::vector<int> grayCode(int n);
 };
 
+/*
+A message containing letters from A-Z is being encoded to numbers using the following mapping:
+'A' -> 1
+'B' -> 2
+...
+'Z' -> 26
+Given a non-empty string containing only digits, determine the total number of ways to decode it.
+
+Input: "12"
+Output: 2
+Explanation: It could be decoded as "AB" (1 2) or "L" (12).
+
+Input: "226"
+Output: 3
+Explanation: It could be decoded as "BZ" (2 26), "VF" (22 6), or "BBF" (2 2 6).
+*/
+class _0091_DecodeWays{
+public:
+    int numDecodings(std::string s);
+};
+
+/*
+93. Restore IP Addresses
+Given a string containing only digits, restore it by returning all possible valid IP address combinations.
+
+Example:
+Input: "25525511135"
+Output: ["255.255.11.135", "255.255.111.35"]
+*/
+class _0093_RestoreIPAddress{
+public:
+    std::vector<std::string> restoreIPAddress(std::string s);
+private:
+    void restoreIpAddress(std::string s, int level, std::string out, std::vector<std::string>& res);
+    bool isValid(std::string s);
+};
+
+/*
+Given an integer n, generate all structurally unique BST's (binary search trees) that store values 1 ... n.
+
+Example:
+
+Input: 3
+Output:
+[
+  [1,null,3,2],
+  [3,2,null,1],
+  [3,1,null,null,2],
+  [2,1,3],
+  [1,null,2,null,3]
+]
+Explanation:
+The above output corresponds to the 5 unique BST's shown below:
+
+   1         3     3      2      1
+    \       /     /      / \      \
+     3     2     1      1   3      2
+    /     /       \                 \
+   2     1         2                 3
+*/
+
 class _0095_UniqueBinarySearchTreeII {
 public:
     std::vector<TreeNode<int>*> generateTrees(int n);
     std::vector<TreeNode<int>*> generateTreeHelper(int l, int r);
 };
 
+/*
+Given n, how many structurally unique BST's (binary search trees) that store values 1 ... n?
 
+Example:
+
+Input: 3
+Output: 5
+Explanation:
+Given n = 3, there are a total of 5 unique BST's:
+
+   1         3     3      2      1
+    \       /     /      / \      \
+     3     2     1      1   3      2
+    /     /       \                 \
+   2     1         2                 3
+*/
 class _0096_UniqueBinarySearchTree {
 private:
     std::vector<int> DP;
@@ -1477,11 +1789,78 @@ public:
 };
 
 
-// Validate a binary tree is BST or not
+/*
+Given a binary tree, determine if it is a valid binary search tree (BST).
+
+Assume a BST is defined as follows:
+
+The left subtree of a node contains only nodes with keys less than the node's key.
+The right subtree of a node contains only nodes with keys greater than the node's key.
+Both the left and right subtrees must also be binary search trees.
+ 
+
+Example 1:
+
+    2
+   / \
+  1   3
+
+Input: [2,1,3]
+Output: true
+Example 2:
+
+    5
+   / \
+  1   4
+     / \
+    3   6
+
+Input: [5,1,4,null,null,3,6]
+Output: false
+Explanation: The root node's value is 5 but its right child's value is 4.
+*/
 class _0098_ValidateBinarySearchTree
 {
 public:
     bool isValidBST(TreeNode<int> *root);
+};
+
+/*
+Given two binary trees, write a function to check if they are the same or not.
+
+Two binary trees are considered the same if they are structurally identical and the nodes have the same value.
+
+Example 1:
+
+Input:     1         1
+          / \       / \
+         2   3     2   3
+
+        [1,2,3],   [1,2,3]
+
+Output: true
+Example 2:
+
+Input:     1         1
+          /           \
+         2             2
+
+        [1,2],     [1,null,2]
+
+Output: false
+Example 3:
+
+Input:     1         1
+          / \       / \
+         2   1     1   2
+
+        [1,2,1],   [1,1,2]
+
+Output: false
+*/
+class _0100_SameTree{
+public:
+    bool isSameTree(TreeNode<int>* p, TreeNode<int>* q);
 };
 
 }

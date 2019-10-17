@@ -1,7 +1,22 @@
 #include "headers.hpp"
 
 int LintCode::_1508_ScoreAfterFlippingMatrix::matrixScore(std::vector<std::vector<int>>& A) {
-
+    for(int i = 0; i < A.size(); ++i) {
+        if(A[i][0] == 0) {
+            flipRow(A, i);
+        }
+    }
+    
+    for(int j = 1; j < A[0].size(); ++j) {
+        if (countOnes(A, j) < A[0].size() / 2) {
+            flipCol(A, j);
+        }
+    }
+    int res = 0;
+    for(int i = 0; i < A.size(); ++i) {
+        res += toNum(A[i]);
+    }
+    return res;
 }
 
 void LintCode::_1508_ScoreAfterFlippingMatrix::flipRow(std::vector<std::vector<int>>& A, int rowIdx) {
