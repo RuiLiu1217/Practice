@@ -12,7 +12,7 @@ ListNode<int>* LeetCode::_0002_AddTwoNumbers::AddTwoNodes(ListNode<int>* l1, Lis
         res->next = nullptr;
         return res;
     } else if(l1 != nullptr && l2 == nullptr) {
-        ListNode<int>* res = new ListNode(l1->val + wi);
+        ListNode<int>* res = new ListNode<int>(l1->val + wi);
         if(res->val < 10) {
             res->next = AddTwoNodes(l1->next, nullptr, 0);
             return res;
@@ -22,7 +22,7 @@ ListNode<int>* LeetCode::_0002_AddTwoNumbers::AddTwoNodes(ListNode<int>* l1, Lis
             return res;
         }
     } else if(l1 == nullptr && l2 != nullptr) {
-        ListNode<int>* res = new ListNode(l2->val + wi);
+        ListNode<int>* res = new ListNode<int>(l2->val + wi);
         if(res->val < 10) {
             res->next = AddTwoNodes(nullptr, l2->next, 0);
             return res;
