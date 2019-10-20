@@ -900,6 +900,43 @@ public:
     bool validateStackSequences(std::vector<int>& pushed, std::vector<int>& popped);
 };
 
+
+/*
+You are installing a billboard and want it to have the largest 
+height. The billboard will have two steel supports, one on each 
+side. Each steel support must be an equal height. You have a 
+collection of rods which can be welded together. For example, if 
+you have rods of lengths 1, 2, and 3, you can weld them together
+to make a support of length 6.
+
+Return the largest possible height of your billboard installation.
+If you cannot support the billboard, return 0.
+
+Input: [1,2,3,6]             :            Output: 6
+Explanation: We have two disjoint subsets {1,2,3} and {6}, which have the same sum = 6.
+
+Input: [1,2,3,4,5,6]         :            Output: 10
+Explanation: We have two disjoint subsets {2,3,5} and {4,6}, which have the same sum = 10.
+
+Input: [1,2]                 :            Output: 0
+Explanation: The billboard cannot be supported, so we return 0.
+
+这道题如果用Backtracing 比较直观但是会超时，数据的大小是 0 <= rods.length <= 20
+每个rod 有三个情况， 0， 不选， 1， 放左边， 2 放右边。
+
+这道题的解法仍然是动态规划，不过状态转移还是很难想出来的。
+DP[n][i] --> 表示当用到n个柱子的时候，两边的差为 i 可以达到的最大公共高度
+因此状态转移方程就是：
+
+DP[n][i + h] = max(DP[n][i], DP[n-1][i]);           当用到n个柱子时把柱子放在高的那一边，公共高度跟用n-1个柱子一样，可是高度差变成了 i + h
+DP[n][|i-h|] = max(DP[n][|i-h|], DP[n-1][i] + min(h, i)); // 如果把第n个柱子放在矮的那边，公共高度一定是增长了 min(i, h), 高度差就变成了 |i-h| 
+因为不知道h大还是原先的i大。
+*/
+class _0956_TallestBillboard {
+
+};
+
+
 /*
 Given a binary tree, determine if it is a complete binary tree.
 Definition of a complete binary tree from Wikipedia:
