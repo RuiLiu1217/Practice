@@ -218,6 +218,26 @@ public:
 };
 
 /*
+A peak element is an element that is greater than its neighbors. Given an input array 
+nums, where nums[i] ≠ nums[i+1], find a peak element and return its index. The array 
+may contain multiple peaks, in that case return the index to any one of the peaks is fine.
+
+You may imagine that nums[-1] = nums[n] = -∞.
+Example 1:
+
+Input: nums = [1,2,3,1]          :         Output: 2
+Explanation: 3 is a peak element and your function should return the index number 2.
+
+Input: nums = [1,2,1,3,5,6,4]    :         Output: 1 or 5 
+Explanation: Your function can return either index number 1 where the peak element is 2, 
+or index number 5 where the peak element is 6.
+*/
+class _0162_FindPeakElement {
+public:
+    int findPeakElement(std::vector<int>& nums);
+};
+
+/*
 Implement an iterator over a binary search tree (BST). Your iterator will be initialized 
 with the root node of a BST. Calling next() will return the next smallest number in the BST.
 BSTIterator iterator = new BSTIterator(root);
@@ -277,6 +297,42 @@ class _0190_ReverseBits
         */
 public:
     uint32_t reverseBits(uint32_t n);
+};
+
+/*
+Implement the following operations of a queue using stacks.
+
+push(x) -- Push element x to the back of queue.
+pop() -- Removes the element from in front of queue.
+peek() -- Get the front element.
+empty() -- Return whether the queue is empty.
+Example:
+
+MyQueue queue = new MyQueue();
+
+queue.push(1);
+queue.push(2);  
+queue.peek();  // returns 1
+queue.pop();   // returns 1
+queue.empty(); // returns false
+Notes:
+
+You must use only standard operations of a stack -- which means only push to top, peek/pop
+from top, size, and is empty operations are valid. Depending on your language, stack may 
+not be supported natively. You may simulate a stack by using a list or deque (double-ended 
+queue), as long as you use only standard operations of a stack. You may assume that all 
+operations are valid (for example, no pop or peek operations will be called on an empty queue).
+*/
+class _0232_ImplementQueueUsingStacks {
+private:
+    std::stack<int> left;
+    std::stack<int> right;
+public:
+    _0232_ImplementQueueUsingStacks();
+    void push(int x);
+    int pop();
+    int peek();
+    bool empty();
 };
 
 class _0235_LowestCommonAncestor
@@ -403,6 +459,67 @@ public:
 private:
     std::unordered_map<char, std::string> map;
     std::unordered_map<std::string, char> map2;
+};
+
+
+/*
+Given an unsorted array of integers, find the length of longest increasing 
+subsequence.
+Example:
+Input: [10,9,2,5,3,7,101,18]       :       Output: 4 
+Explanation: The longest increasing subsequence is [2,3,7,101], therefore the length is 4. 
+Note:
+There may be more than one LIS combination, it is only necessary for you to return 
+the length. Your algorithm should run in O(n2) complexity. 
+Follow up: Could you improve it to O(n log n) time complexity?
+*/
+class _0300_LongestIncreasingSubsequence {
+public:
+    int lengthOfLIS(std::vector<int>& nums);
+private:
+    int lengthOfLIS_N2(std::vector<int>& nums);
+    int lengthOfLIS_NlogN(std::vector<int>& nums);
+};
+
+/*
+The thief has found himself a new place for his thievery again. There is only one 
+entrance to this area, called the "root." Besides the root, each house has one and 
+only one parent house. After a tour, the smart thief realized that "all houses in 
+this place forms a binary tree". It will automatically contact the police if two 
+directly-linked houses were broken into on the same night.
+
+Determine the maximum amount of money the thief can rob tonight without alerting 
+the police.
+
+Input: [3,2,3,null,3,null,1]
+
+     3
+    / \
+   2   3
+    \   \ 
+     3   1
+
+Output: 7 
+Explanation: Maximum amount of money the thief can rob = 3 + 3 + 1 = 7.
+
+Input: [3,4,5,1,3,null,1]
+
+     3
+    / \
+   4   5
+  / \   \ 
+ 1   3   1
+
+Output: 9
+Explanation: Maximum amount of money the thief can rob = 4 + 5 = 9.
+*/
+class _0337_HouseRobberIII {
+private:
+    std::unordered_map<TreeNode<int>*, int> Map;
+public:
+    int rob(TreeNode<int>* root);
+private:
+    int robHelper(TreeNode<int>* root);
 };
 
 /*
@@ -778,6 +895,24 @@ public:
 };
 
 /*
+Given a string, your task is to count how many palindromic substrings in this string.
+The substrings with different start indexes or end indexes are counted as different 
+substrings even they consist of same characters.
+
+Input: "abc"        :        Output: 3
+Explanation: Three palindromic strings: "a", "b", "c".
+ 
+Input: "aaa"        :        Output: 6
+Explanation: Six palindromic strings: "a", "a", "a", "aa", "aa", "aaa".
+*/
+class _0647_PalindromicSubstrings{
+public:
+    int countSubstrings(std::string s);
+private:
+    int sub(const std::string& s, int k);
+};
+
+/*
 Implement a magic directory with buildDict, and search methods.
 For the method buildDict, you'll be given a list of non-repetitive 
 words to build a dictionary.
@@ -931,9 +1066,11 @@ DP[n][i] --> 表示当用到n个柱子的时候，两边的差为 i 可以达到
 DP[n][i + h] = max(DP[n][i], DP[n-1][i]);           当用到n个柱子时把柱子放在高的那一边，公共高度跟用n-1个柱子一样，可是高度差变成了 i + h
 DP[n][|i-h|] = max(DP[n][|i-h|], DP[n-1][i] + min(h, i)); // 如果把第n个柱子放在矮的那边，公共高度一定是增长了 min(i, h), 高度差就变成了 |i-h| 
 因为不知道h大还是原先的i大。
+因此，解为 DP[N][0]
 */
 class _0956_TallestBillboard {
-
+public:
+    int tallestBillboard(std::vector<int>& rods);
 };
 
 
@@ -947,6 +1084,25 @@ between 1 and 2h nodes inclusive at the last level h.
 class _0958_CheckCompletenessOfABinaryTree {
 public:
     bool siCompleteTree(TreeNode<int>* root);
+};
+
+/*
+Given two lists of closed intervals, each list of intervals is pairwise disjoint and in 
+sorted order. Return the intersection of these two interval lists.
+
+(Formally, a closed interval [a, b] (with a <= b) denotes the set of real numbers x with 
+a <= x <= b. The intersection of two closed intervals is a set of real numbers that is 
+either empty, or can be represented as a closed interval.  For example, the intersection 
+of [1, 3] and [2, 4] is [2, 3].)
+
+Input: A = [[0,2],[5,10],[13,23],[24,25]], B = [[1,5],[8,12],[15,24],[25,26]]
+Output: [[1,2],[5,5],[8,10],[15,23],[24,24],[25,25]]
+Reminder: The inputs and the desired output are lists of Interval objects, and not 
+arrays or lists.
+*/
+class _0986_IntervalListIntersections {
+public:
+    std::vector<std::vector<int>> intervalIntersection(std::vector<std::vector<int>>& A, std::vector<std::vector<int>>& B);
 };
 
 /*
@@ -1195,6 +1351,31 @@ public:
     bool uniqueOccurrences(std::vector<int>& arr);
 };
 
+
+/*
+Hint: 祖玛
+Given a string s, a k duplicate removal consists of choosing k adjacent and 
+equal letters from s and removing them causing the left and the right side 
+of the deleted substring to concatenate together.
+We repeatedly make k duplicate removals on s until we no longer can.
+Return the final string after all such duplicate removals have been made.
+It is guaranteed that the answer is unique.
+
+Input: s = "abcd", k = 2                  :                Output: "abcd"
+Input: s = "deeedbbcccbdaa", k = 3        :                Output: "aa"
+Input: s = "pbbcggttciiippooaais", k = 2  :                Output: "ps"
+
+Constraints:
+
+1 <= s.length <= 10^5
+2 <= k <= 10^4
+s only contains lower case English letters.
+*/
+class _1209_RemoveAllAdjacentDuplicatesInStringII {
+public:
+    std::string removeDuplicates(std::string s, int k);
+};
+
 class _1221_SplitAStringInBalancedStrings {
 public:
     int balancedStringSplit(std::string s);
@@ -1203,6 +1384,57 @@ public:
 
 
 } // namespace LeetCode
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 namespace LintCode {
