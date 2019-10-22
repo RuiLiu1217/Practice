@@ -94,6 +94,27 @@ private:
 };
 
 /*
+Given a singly linked list where elements are sorted in ascending order, convert 
+it to a height balanced BST. For this problem, a height-balanced binary tree is 
+defined as a binary tree in which the depth of the two subtrees of every node 
+never differ by more than 1.
+
+Example:
+Given the sorted linked list: [-10,-3,0,5,9], 
+One possible answer is: [0,-3,9,-10,null,5], which represents the following 
+height balanced BST:
+
+      0
+     / \
+   -3   9
+   /   /
+ -10  5
+*/
+class _0109_ConvertSortedListToBinarySearchTree {
+
+};
+
+/*
     You are given a perfect binary tree where all leaves are on the same level, 
     and every parent has two children. The binary tree has the following definition:
 
@@ -297,6 +318,35 @@ class _0190_ReverseBits
         */
 public:
     uint32_t reverseBits(uint32_t n);
+};
+
+
+/*
+You are a professional robber planning to rob houses along a street. Each house 
+has a certain amount of money stashed. All houses at this place are arranged in 
+a circle. That means the first house is the neighbor of the last one. Meanwhile, 
+adjacent houses have security system connected and it will automatically contact 
+the police if two adjacent houses were broken into on the same night.
+
+Given a list of non-negative integers representing the amount of money of each 
+house, determine the maximum amount of money you can rob tonight without alerting 
+the police.
+
+Input: [2,3,2]            :            Output: 3
+Explanation: You cannot rob house 1 (money = 2) and then rob house 3 (money = 2),
+because they are adjacent houses.
+
+Input: [1,2,3,1]          :            Output: 4
+Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3).
+Total amount you can rob = 1 + 3 = 4.
+这道题也是一下子蒙住了，实际上很简单，因为第一个房子和最后一个房子不能都抢，因此分别算两次，
+即排除第一个房子的情况，以及排除最后一个房子的情况。然后取大的。
+*/
+class _0213_HouseRobberII {
+public:
+    int rob(std::vector<int>& nums);
+private:
+    int robHelp(std::vector<int>& nums);
 };
 
 /*
@@ -895,6 +945,78 @@ public:
 };
 
 /*
+Design your implementation of the circular double-ended queue (deque).
+
+Your implementation should support following operations:
+
+MyCircularDeque(k): Constructor, set the size of the deque to be k.
+insertFront(): Adds an item at the front of Deque. Return true if the operation is successful.
+insertLast(): Adds an item at the rear of Deque. Return true if the operation is successful.
+deleteFront(): Deletes an item from the front of Deque. Return true if the operation is successful.
+deleteLast(): Deletes an item from the rear of Deque. Return true if the operation is successful.
+getFront(): Gets the front item from the Deque. If the deque is empty, return -1.
+getRear(): Gets the last item from Deque. If the deque is empty, return -1.
+isEmpty(): Checks whether Deque is empty or not. 
+isFull(): Checks whether Deque is full or not.
+ 
+
+Example:
+
+MyCircularDeque circularDeque = new MycircularDeque(3); // set the size to be 3
+circularDeque.insertLast(1);			// return true
+circularDeque.insertLast(2);			// return true
+circularDeque.insertFront(3);			// return true
+circularDeque.insertFront(4);			// return false, the queue is full
+circularDeque.getRear();  			// return 2
+circularDeque.isFull();				// return true
+circularDeque.deleteLast();			// return true
+circularDeque.insertFront(4);			// return true
+circularDeque.getFront();			// return 4
+ 
+
+Note:
+
+All values will be in the range of [0, 1000].
+The number of operations will be in the range of [1, 1000].
+Please do not use the built-in Deque library.
+*/
+class _0641_DesignCircularDeque{
+private:
+    std::vector<int> q;
+    int start;
+    int end;
+    int K;
+public:
+    /** Initialize your data structure here. Set the size of the deque to be k. */
+    _0641_DesignCircularDeque(int k);
+    
+    /** Adds an item at the front of Deque. Return true if the operation is successful. */
+    bool insertFront(int value);
+
+    /** Adds an item at the rear of Deque. Return true if the operation is successful. */
+    bool insertLast(int value);
+    
+    /** Deletes an item from the front of Deque. Return true if the operation is successful. */
+    bool deleteFront();
+    
+    /** Deletes an item from the rear of Deque. Return true if the operation is successful. */
+    bool deleteLast();
+    
+    /** Get the front item from the deque. */
+    int getFront();
+    
+    /** Get the last item from the deque. */
+    int getRear();
+
+    /** Checks whether the circular deque is empty or not. */
+    bool isEmpty();
+    
+    /** Checks whether the circular deque is full or not. */
+    bool isFull();
+};
+
+
+/*
 Given a string, your task is to count how many palindromic substrings in this string.
 The substrings with different start indexes or end indexes are counted as different 
 substrings even they consist of same characters.
@@ -910,6 +1032,69 @@ public:
     int countSubstrings(std::string s);
 private:
     int sub(const std::string& s, int k);
+};
+
+/*
+Print a binary tree in an m*n 2D string array following these rules:
+
+The row number m should be equal to the height of the given binary tree.
+The column number n should always be an odd number.
+The root node's value (in string format) should be put in the exactly middle of 
+the first row it can be put. The column and the row where the root node belongs 
+will separate the rest space into two parts (left-bottom part and right-bottom 
+part). You should print the left subtree in the left-bottom part and print the 
+right subtree in the right-bottom part. The left-bottom part and the right-bottom 
+part should have the same size. Even if one subtree is none while the other is 
+not, you don't need to print anything for the none subtree but still need to 
+leave the space as large as that for the other subtree. However, if two subtrees 
+are none, then you don't need to leave space for both of them.
+Each unused space should contain an empty string "".
+Print the subtrees following the same rules.
+Example 1:
+Input:
+     1
+    /
+   2
+Output:
+[["", "1", ""],
+ ["2", "", ""]]
+Example 2:
+Input:
+     1
+    / \
+   2   3
+    \
+     4
+Output:
+[["", "", "", "1", "", "", ""],
+ ["", "2", "", "", "", "3", ""],
+ ["", "", "4", "", "", "", ""]]
+Example 3:
+Input:
+      1
+     / \
+    2   5
+   / 
+  3 
+ / 
+4 
+Output:
+
+[["",  "",  "", "",  "", "", "", "1", "",  "",  "",  "",  "", "", ""]
+ ["",  "",  "", "2", "", "", "", "",  "",  "",  "",  "5", "", "", ""]
+ ["",  "3", "", "",  "", "", "", "",  "",  "",  "",  "",  "", "", ""]
+ ["4", "",  "", "",  "", "", "", "",  "",  "",  "",  "",  "", "", ""]]
+Note: The height of binary tree is in the range of [1, 10].
+这道题一下子蒙住了，实际上这道题很简单，还是一个递归调用，首先要建立起整个矩阵，用空字符串填满
+这里就需要计算好本身这棵树有多高，那么有多宽就可以算出来，
+每层都是在正中间填充数字，递归调用把左右两边的范围分别变成 [l mid-1]， [mid + 1, r] 就可以了
+*/
+class _0655_PrintBinaryTree {
+public:
+    std::vector<std::vector<std::string>> printTree(TreeNode<int>* root);
+private:
+    int getHeight(TreenNode<int>* root);
+    void fill(TreeNode<int>* root, std::vector<std::vector<std::string>>& res, int h, int l, int r);
 };
 
 /*
@@ -960,6 +1145,29 @@ public:
 };
 
 /*
+We have two special characters. The first character can be represented by 
+one bit 0. The second character can be represented by two bits (10 or 11).
+Now given a string represented by several bits. Return whether the last 
+character must be a one-bit character or not. The given string will always 
+end with a zero.
+
+
+Input:  bits = [1, 0, 0]        :        Output: True
+Explanation: 
+The only way to decode it is two-bit character and one-bit character. So the last character is one-bit character.
+
+Input:  bits = [1, 1, 1, 0]     :        Output: False
+Explanation: 
+The only way to decode it is two-bit character and two-bit character. So the last character is NOT one-bit character.
+*/
+class _0717_OneBitAndTwoBitsCharacters{
+public:
+    bool isOneBitCharacter(std::vector<int>& bits);
+private:
+    bool isOneBitCharacter(std::vector<int>& bits, int start, int end);
+};
+
+/*
 Given a (singly) linked list with head node root, write a 
 function to split the linked list into k consecutive linked 
 list "parts".
@@ -1002,6 +1210,105 @@ public:
     std::vector<ListNode<int>*> splitListToParts(ListNode<int>* root, int k);
 };
 
+/*
+We are given an array asteroids of integers representing asteroids in a row.
+For each asteroid, the absolute value represents its size, and the sign represents
+its direction (positive meaning right, negative meaning left). Each asteroid moves
+at the same speed. Find out the state of the asteroids after all collisions. If 
+two asteroids meet, the smaller one will explode. If both are the same size, both 
+will explode. Two asteroids moving in the same direction will never meet.
+
+Example 1:
+Input: asteroids = [5, 10, -5]           :      Output: [5, 10]
+
+Example 2:
+Input: asteroids = [8, -8]               :      Output: []
+
+Example 3:
+Input: asteroids = [10, 2, -5]           :      Output: [10]
+
+Example 4:
+Input: asteroids = [-2, -1, 1, 2]        :      Output: [-2, -1, 1, 2]
+Explanation: 
+The -2 and -1 are moving left, while the 1 and 2 are moving right.
+Asteroids moving the same direction never meet, so no asteroids will meet each other.
+*/
+class _0735_AsteroidCollision {
+public:
+    std::vector<int> asteroidCollision(std::vector<int>& asteroids);
+};
+
+/*
+We are stacking blocks to form a pyramid. Each block has a color which is a 
+one letter string. We are allowed to place any color block C on top of two 
+adjacent blocks of colors A and B, if and only if ABC is an allowed triple.
+We start with a bottom row of bottom, represented as a single string. We also
+start with a list of allowed triples allowed. Each allowed triple is represented 
+as a string of length 3. 
+
+Return true if we can build the pyramid all the way to the top, otherwise false.
+
+Input: bottom = "BCD", allowed = ["BCG", "CDE", "GEA", "FFF"]        :        Output: true
+Explanation:
+We can stack the pyramid like this:
+    A
+   / \
+  G   E
+ / \ / \
+B   C   D
+
+We are allowed to place G on top of B and C because BCG is an allowed triple.
+Similarly, we can place E on top of C and D, then A on top of G and E.
+
+Input: bottom = "AABA", allowed = ["AAA", "AAB", "ABA", "ABB", "BAC"]       :      Output: false
+Explanation:
+We can't stack the pyramid to the top.
+Note that there could be allowed triples (A, B, C) and (A, B, D) with C != D.
+
+Note:
+
+bottom will be a string with length in range [2, 8].
+allowed will have length in range [0, 200].
+Letters in all strings will be chosen from the set {'A', 'B', 'C', 'D', 'E', 'F', 'G'}.
+*/
+class _0756_PyramidTransitionMatrix {
+public:
+    bool pyramidTransition(std::string bottom, std::vector<std::string>& allowed);
+private:
+    bool pyramidTransition(std::string bottom, int start, std::string res, std::unordered_map<std::string, std::unordered_set<char>>& Map);
+};
+
+/*
+Alex and Lee play a game with piles of stones. There are an even number 
+of piles arranged in a row, and each pile has a positive integer number
+of stones piles[i]. The objective of the game is to end with the most 
+stones.  The total number of stones is odd, so there are no ties. Alex 
+and Lee take turns, with Alex starting first.  Each turn, a player takes 
+the entire pile of stones from either the beginning or the end of the row.  
+This continues until there are no more piles left, at which point the 
+person with the most stones wins.
+
+Assuming Alex and Lee play optimally, return True if and only if Alex 
+wins the game.
+
+Input: [5,3,4,5]           :           Output: true
+Explanation: 
+Alex starts first, and can only take the first 5 or the last 5.
+Say he takes the first 5, so that the row becomes [3, 4, 5].
+If Lee takes 3, then the board is [4, 5], and Alex takes 5 to win with 10 points.
+If Lee takes the last 5, then the board is [3, 4], and Alex takes 4 to win with 9 points.
+This demonstrated that taking the first 5 was a winning move for Alex, so we return true.
+*/
+class _0877_StoneGame {
+private:
+    std::vector<int> totStone;
+    std::vector<std::vector<int>> alexMap;
+    std::vector<std::vector<int>> leeMap;
+public:
+    bool stoneGame(vector<int>& piles);
+    int AlexMax(std::vector<int>& piles, int start, int end);
+    int LeeMax(std::vector<int>& piles, int start, int end);
+}
 
 /*
 Given an array of integers nums, sort the array in ascending order.
@@ -1247,6 +1554,22 @@ public:
     int lastStoneWeight(std::vector<int>& stones);
 };
 
+/*
+Return the lexicographically smallest subsequence of text that contains all the distinct characters of text exactly once.
+
+Input: "cdadabcc"         :         Output: "adbc"
+Input: "abcd"             :         Output: "abcd"
+Input: "ecbacba"          :         Output: "eacb"
+Input: "leetcode"         :         Output: "letcod"
+
+1 <= text.length <= 1000
+text consists of lowercase English letters.
+*/
+class _1081_SmallestSubsequenceOfDistinctCharacters {
+public:
+    std::string smallestSubsequenc(std::string text);
+};
+
 /* 1103. distribute candies to people:
 We distribute some number of candies, to a row of n = num_people 
 people in the following way:
@@ -1287,6 +1610,47 @@ public:
 };
 
 
+/*
+Return the result of evaluating a given boolean expression, represented as a string.
+
+An expression can either be:
+
+"t", evaluating to True;
+"f", evaluating to False;
+"!(expr)", evaluating to the logical NOT of the inner expression expr;
+"&(expr1,expr2,...)", evaluating to the logical AND of 2 or more inner expressions expr1, expr2, ...;
+"|(expr1,expr2,...)", evaluating to the logical OR of 2 or more inner expressions expr1, expr2, ...
+ 
+
+Example 1:
+
+Input: expression = "!(f)"
+Output: true
+Example 2:
+
+Input: expression = "|(f,t)"
+Output: true
+Example 3:
+
+Input: expression = "&(t,f)"
+Output: false
+Example 4:
+
+Input: expression = "|(&(t,f,t),!(t))"
+Output: false
+ 
+
+Constraints:
+
+1 <= expression.length <= 20000
+expression[i] consists of characters in {'(', ')', '&', '|', '!', 't', 'f', ','}.
+expression is a valid expression representing a boolean, as given in the description.
+*/
+class _1106_ParsingABolleanExpression {
+public:
+    bool parseBoolExpr(string expression);
+};
+
 
 /*
 Given two arrays arr1 and arr2, the elements of arr2 are distinct, and all 
@@ -1311,6 +1675,25 @@ public:
 };
 
 /*
+Return the number of permutations of 1 to n so that prime numbers are at prime 
+indices (1-indexed.) (Recall that an integer is prime if and only if it is greater 
+than 1, and cannot be written as a product of two positive integers both smaller than it.)
+Since the answer may be large, return the answer modulo 10^9 + 7.
+
+Input: n = 5             :              Output: 12
+Explanation: For example [1,2,5,4,3] is a valid permutation, but [5,2,3,4,1] is not because the prime number 5 is at index 1.
+
+Input: n = 100           :              Output: 682289015
+*/
+class _1175_PrimeArrangements {
+public:
+    constexpr static auto MOD = static_cast<int>(1e9+7); // Use C++11 constexpr
+    int numPrimeArrangements(int n, int primes=1, long long ans=1);
+private:
+    bool isPrime(int n);
+};
+
+/*
 Given a string text, you want to use the characters of text to form as many instances 
 of the word "balloon" as possible.
 You can use each character in text at most once. Return the maximum number of instances 
@@ -1326,6 +1709,27 @@ public:
     bool updateBallon(std::vector<int>& map);
 };
 
+/*
+You are given a string s that consists of lower case English letters and brackets. 
+Reverse the strings in each pair of matching parentheses, starting from the innermost 
+one. Your result should not contain any brackets.
+
+Input: s = "(abcd)"                    :         Output: "dcba"
+Input: s = "(u(love)i)"                :         Output: "iloveu"
+Explanation: The substring "love" is reversed first, then the whole string is reversed.
+
+Input: s = "(ed(et(oc))el)"            :         Output: "leetcode"
+Input: s = "a(bcdefghijkl(mno)p)q"     :         Output: "apmnolkjihgfedcbq"
+
+Constraints:
+0 <= s.length <= 2000
+s only contains lower case English characters and parentheses.
+It's guaranteed that all parentheses are balanced.
+*/
+class _1190_ReverseSubstringsBetweenEachPairOfParentheses {
+public:
+    std::string reverseParentheses(std::string s);
+};
 
 
 /*

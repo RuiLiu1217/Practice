@@ -1139,6 +1139,15 @@ public:
     double myPow(double x, int n);
 };
 
+class _0052_NQueensII{
+public:
+    int totalNQueens(int n);
+private:
+    void totalNQueens(std::vector<std::vector<int>>& board, int nIdx, const int totalRows, int& totalSolution);
+    void updateBoard(std::vector<std::vector<int>>& board, int i, int j);
+    void dedateBoard(std::vector<std::vector<int>>& board, int i, int j);
+};
+
 /*
 Maximum Subarray
 Given an integer array nums, find the contiguous subarray (containing at least one number) 
@@ -1651,6 +1660,20 @@ public:
     ListNode<int>* deleteDuplicates(ListNode<int>* head);
 };
 
+
+/*
+Given a linked list and a value x, partition it such that all nodes less 
+than x come before nodes greater than or equal to x.
+You should preserve the original relative order of the nodes in each of 
+the two partitions.
+
+Input: head = 1->4->3->2->5->2, x = 3
+Output: 1->2->2->4->3->5
+*/
+class _0086_PartitionList {
+    public:
+        ListNode<int>* partition(ListNode<int>* head, int x);
+};
 
 /*
 88. Merge Sorted Array
