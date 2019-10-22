@@ -1,5 +1,6 @@
 #include "headers.hpp"
 #include <unordered_set>
+#include <unordered_map>
 bool LeetCode::_0756_PyramidTransitionMatrix::pyramidTransition(string bottom, vector<string>& allowed) {
     std::unordered_map<std::string, std::unordered_set<char>> Map;
     for(auto& s : allowed) {
@@ -9,7 +10,8 @@ bool LeetCode::_0756_PyramidTransitionMatrix::pyramidTransition(string bottom, v
     return pyramidTransition(bottom, 0, "", Map);
     
 }
-bool pyramidTransition(std::string bottom, int start, std::string res, std::unordered_map<std::string, std::unordered_set<char>>& Map) {
+bool LeetCode::_0756_PyramidTransitionMatrix::pyramidTransition(
+    std::string bottom, int start, std::string res, std::unordered_map<std::string, std::unordered_set<char>>& Map) {
     if(bottom.size() == 1) {
         return true;
     }
