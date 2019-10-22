@@ -1146,6 +1146,28 @@ private:
     void fill(TreeNode<int>* root, std::vector<std::vector<std::string>>& res, int h, int l, int r);
 };
 
+
+/*
+Given two integers n and k, you need to construct a list which contains 
+n different positive integers ranging from 1 to n and obeys the following 
+requirement:
+Suppose this list is [a1, a2, a3, ... , an], then the list [|a1 - a2|, 
+|a2 - a3|, |a3 - a4|, ... , |an-1 - an|] has exactly k distinct integers.
+
+If there are multiple answers, print any of them.
+
+Input: n = 3, k = 1           :            Output: [1, 2, 3]
+Input: n = 3, k = 2           :            Output: [1, 3, 2]
+Note:
+The n and k are in the range 1 <= k < n <= 104.
+*/
+class _0667_BeautifulArrangementII {
+public:
+    std::vector<int> constructArray(int n, int k);
+};
+
+
+
 /*
 Implement a magic directory with buildDict, and search methods.
 For the method buildDict, you'll be given a list of non-repetitive 
@@ -1497,6 +1519,46 @@ private:
     void DFS(std::vector<std::vector<int>>& A, std::vector<std::vector<int>>& visited, int i, int j);
 };
 
+/*
+A query word matches a given pattern if we can insert lowercase letters to 
+the pattern word so that it equals the query. (We may insert each character 
+at any position, and may insert 0 characters.)
+Given a list of queries, and a pattern, return an answer list of booleans, 
+where answer[i] is true if and only if queries[i] matches the pattern. 
+
+
+Input: queries = ["FooBar","FooBarTest","FootBall","FrameBuffer","ForceFeedBack"], pattern = "FB"
+Output: [true,false,true,true,false]
+Explanation: 
+"FooBar" can be generated like this "F" + "oo" + "B" + "ar".
+"FootBall" can be generated like this "F" + "oot" + "B" + "all".
+"FrameBuffer" can be generated like this "F" + "rame" + "B" + "uffer".
+
+Input: queries = ["FooBar","FooBarTest","FootBall","FrameBuffer","ForceFeedBack"], pattern = "FoBa"
+Output: [true,false,true,false,false]
+Explanation: 
+"FooBar" can be generated like this "Fo" + "o" + "Ba" + "r".
+"FootBall" can be generated like this "Fo" + "ot" + "Ba" + "ll".
+
+Input: queries = ["FooBar","FooBarTest","FootBall","FrameBuffer","ForceFeedBack"], pattern = "FoBaT"
+Output: [false,true,false,false,false]
+Explanation: 
+"FooBarTest" can be generated like this "Fo" + "o" + "Ba" + "r" + "T" + "est".
+
+Note:
+
+1 <= queries.length <= 100
+1 <= queries[i].length <= 100
+1 <= pattern.length <= 100
+All strings consists only of lower and upper case English letters.
+*/
+class _1023_CamelcaseMatching {
+public:
+    std::vector<bool> camelMatch(std::vector<std::string>& queries, std::string pattern);
+private:
+    std::vector<bool> prefixMatchingBased(std::vector<std::string>& queries, std::string pattern);
+    std::vector<bool> regularExpressionBased(std::vector<std::string>& queries, std::string pattern);
+};
 
 /*
 Alice and Bob take turns playing a game, with Alice starting first.
@@ -1832,6 +1894,27 @@ public:
 class _1221_SplitAStringInBalancedStrings {
 public:
     int balancedStringSplit(std::string s);
+};
+
+
+/*
+n passengers board an airplane with exactly n seats. The first passenger has 
+lost the ticket and picks a seat randomly. But after that, the rest of 
+passengers will:
+
+Take their own seat if it is still available, 
+Pick other seats randomly when they find their seat occupied 
+What is the probability that the n-th person can get his own seat?
+
+Input: n = 1                   :             Output: 1.00000
+Input: n = 2                   ：            Output: 0.50000
+Explanation: The second person has a probability of 0.5 to get the second 
+seat (when first person gets the first seat).
+*/
+class _1227_AirplaneSeatAssignmentProbability {
+    public:
+        double nthPersionGetsNthSeat(int n);
+
 };
 
 
