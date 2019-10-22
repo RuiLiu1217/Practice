@@ -111,7 +111,56 @@ height balanced BST:
  -10  5
 */
 class _0109_ConvertSortedListToBinarySearchTree {
-
+public:
+    TreeNode<int>* sortedListToBST(ListNode<int>* head) {
+        if(!head) {
+            return nullptr;
+        }
+        ListNode* lRoot = nullptr;
+        ListNode* lleft = nullptr;
+        ListNode* lright= nullptr;
+        split(head, lRoot, lleft, lright);
+        
+        TreeNode* root = new TreeNode(lRoot->val);
+        root->left = sortedListToBST(lleft);
+        root->right = sortedListToBST(lright);
+        return root;
+    }
+    
+    void split(ListNode<int>* head, ListNode<int>*& root, ListNode<int>*& left, ListNode<int>*& right) {
+        if(!head) {
+            root = nullptr;
+            left = nullptr;
+            right = nullptr;
+            return;
+        }
+        
+        if(!head->next) {
+            root = head;
+            left = nullptr;
+            right = nullptr;
+            return;
+        }
+        
+        ListNode* nh = new ListNode(INT_MAX);
+        nh->next = head;
+        
+        ListNode* slow = nh;
+        ListNode* fast = nh;
+        while(fast && fast->next && fast->next->next) {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        root = slow->next;
+        slow->next = nullptr;
+        right = root->next;
+        root->next = nullptr;
+        left = nh->next;
+        nh->next = nullptr;
+        delete nh;
+        return;
+        
+    }
 };
 
 /*
