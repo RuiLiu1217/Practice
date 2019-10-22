@@ -28,7 +28,7 @@ bool LeetCode::_1023_CamelcaseMatching::canMatch_prefixMatchingBased(std::string
     int i = 0;
     for (char & c : query)
         if (i < pattern.length() && c == pattern[i]) i++;
-        else if (c < 'a') return false;
+        else if (c < 'a') return false; // if it is a captial char but not matched, return false immediately.
     return i == pattern.length();
 }
 

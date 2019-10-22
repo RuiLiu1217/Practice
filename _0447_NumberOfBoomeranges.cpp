@@ -29,3 +29,19 @@ int LeetCode::_0447_NumberOfBoomerangs::numberOfBoomerangs(std::vector<std::vect
     }
     return res;
 }
+
+/* 抄的答案： 
+int numberOfBoomerangs(vector<pair<int, int>>& points) {
+    int booms = 0;
+    for (auto &p : points) {
+        unordered_map<double, int> ctr(points.size());
+        for (auto &q : points)
+            booms += 2 * ctr[hypot(p.first - q.first, p.second - q.second)]++;
+    }
+    return booms;
+}
+Try each point as the "axis" of the boomerang, i.e., the "i" part of the triple. Group its distances to all other points by distance, counting the boomerangs as we go. No need to avoid q == p, as it'll be alone in the distance == 0 group and thus won't influence the outcome.
+
+Submitted five times, accepted in 1059, 1022, 1102, 1026 and 1052 ms, average is 1052.2 ms. The initial capacity for ctr isn't necessary, just helps make it fast. Without it, I got accepted in 1542, 1309, 1302, 1306 and 1338 ms.
+
+*/

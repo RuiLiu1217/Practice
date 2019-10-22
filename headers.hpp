@@ -257,6 +257,28 @@ private:
 };
 
 /*
+Given an integer array nums, find the contiguous subarray within an array (containing 
+at least one number) which has the largest product.
+
+Example 1:
+
+Input: [2,3,-2,4]
+Output: 6
+Explanation: [2,3] has the largest product 6.
+Example 2:
+
+Input: [-2,0,-1]
+Output: 0
+Explanation: The result cannot be 2, because [-2,-1] is not a subarray.
+
+抄答案的
+*/
+class _0152_MaximumProductSubarray {
+public:
+    int maxProduct(std::vector<int>& nums);
+};
+
+/*
     Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
         push(x) -- Push element x onto stack.
         pop() -- Removes the element on top of the stack.
@@ -1555,6 +1577,8 @@ All strings consists only of lower and upper case English letters.
 class _1023_CamelcaseMatching {
 public:
     std::vector<bool> camelMatch(std::vector<std::string>& queries, std::string pattern);
+    bool canMatch_prefixMatchingBased(std::string query, std::string pattern);
+    bool canMatch_regularExpressionBased(std::string query, std::string pattern);
 private:
     std::vector<bool> prefixMatchingBased(std::vector<std::string>& queries, std::string pattern);
     std::vector<bool> regularExpressionBased(std::vector<std::string>& queries, std::string pattern);
@@ -1974,10 +1998,90 @@ class _1227_AirplaneSeatAssignmentProbability {
 
 
 namespace LintCode {
-class _0001_APlusBProblem{
-    public:
-        int aplusb(int a, int b);
+
+    /*
+    Write a function that add two numbers A and B. There is no need to read data 
+    from standard input stream. Both parameters are given in function aplusb, your 
+    job is to calculate the sum and return it.
+    
+    Have you met this question in a real interview?  
+    Clarification
+    Are a and b both 32-bit integers? Yes.
+    
+    Can I use bit operation? Sure you can.
+    
+    Input:  a = 1, b = 2
+    Output: 3	
+    Explanation: return the result of a + b.
+    
+    Example 2:
+    Input:  a = -1, b = 1
+    Output: 0	
+    Explanation: return the result of a + b.
+    Challenge
+    Of course you can just return a + b to get accepted. But Can you challenge not 
+    do it like that?(You should not use + or any arithmetic operators.)
+    */    
+    class _0001_APlusBProblem {
+        public:
+            int aplusb(int a, int b);
+    };
+
+    /*
+    Write an algorithm which computes the number of trailing zeros in n factorial. 
+    
+    Example 1:
+	Input:  11         :        Output: 2	
+	Explanation: 
+	11! = 39916800, so the output should be 2
+
+	Input:  5          :        Output: 1	
+	Explanation: 
+	5! = 120, so the output should be 1.
+
+    Challenge   O(log N) time
+    还没有理解为什么，可以用笔一点一点照着solution写出来看看
+    */
+    class _0002_TrailingZeros {
+        public:
+            long long trailingZeros(long long n) {
+                long res = 0;
+                long t = n;
+                long fac = 5;
+                while(fac < n) {
+                    res += t / fac;
+                    fac = fac * 5;
+                }
+                return res;
+            }
+    };
+
+/*
+Ugly number is a number that only have prime factors 2, 3 and 5.
+
+Design an algorithm to find the nth ugly number. The first 10 ugly numbers are 1, 2, 3, 4, 5, 6, 8, 9, 10, 12...
+
+Note that 1 is typically treated as an ugly number.
+
+Have you met this question in a real interview?  
+Example
+Example 1:
+
+Input: 9
+Output: 10
+Example 2:
+
+Input: 1
+Output: 1
+Challenge
+O(n log n) or O(n) time.
+*/
+class _0004_UglyNumberII {
+public:
+
 };
+
+
 
     /*
     Description
