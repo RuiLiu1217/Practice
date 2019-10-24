@@ -112,55 +112,9 @@ height balanced BST:
 */
 class _0109_ConvertSortedListToBinarySearchTree {
 public:
-    TreeNode<int>* sortedListToBST(ListNode<int>* head) {
-        if(!head) {
-            return nullptr;
-        }
-        ListNode* lRoot = nullptr;
-        ListNode* lleft = nullptr;
-        ListNode* lright= nullptr;
-        split(head, lRoot, lleft, lright);
-        
-        TreeNode* root = new TreeNode(lRoot->val);
-        root->left = sortedListToBST(lleft);
-        root->right = sortedListToBST(lright);
-        return root;
-    }
+    TreeNode<int>* sortedListToBST(ListNode<int>* head);
     
-    void split(ListNode<int>* head, ListNode<int>*& root, ListNode<int>*& left, ListNode<int>*& right) {
-        if(!head) {
-            root = nullptr;
-            left = nullptr;
-            right = nullptr;
-            return;
-        }
-        
-        if(!head->next) {
-            root = head;
-            left = nullptr;
-            right = nullptr;
-            return;
-        }
-        
-        ListNode* nh = new ListNode(INT_MAX);
-        nh->next = head;
-        
-        ListNode* slow = nh;
-        ListNode* fast = nh;
-        while(fast && fast->next && fast->next->next) {
-            slow = slow->next;
-            fast = fast->next->next;
-        }
-        root = slow->next;
-        slow->next = nullptr;
-        right = root->next;
-        root->next = nullptr;
-        left = nh->next;
-        nh->next = nullptr;
-        delete nh;
-        return;
-        
-    }
+    void split(ListNode<int>* head, ListNode<int>*& root, ListNode<int>*& left, ListNode<int>*& right);
 };
 
 /*
@@ -934,6 +888,27 @@ private:
 };
 
 /*
+Given a non-empty string containing an out-of-order English representation of digits 0-9, output the digits in ascending order.
+
+Note:
+Input contains only lowercase English letters.
+Input is guaranteed to be valid and can be transformed to its original digits. That means invalid inputs such as "abc" or "zerone" are not permitted.
+Input length is less than 50,000.
+Example 1:
+Input: "owoztneoer"
+
+Output: "012"
+Example 2:
+Input: "fviefuro"
+
+Output: "45"
+*/
+class _0423_ReconstructOriginalDigitFromEnglish {
+public:
+    std::string originalDigits(std::string s);
+};
+
+/*
 Given an n-ary tree, return the level order traversal 
 of its nodes' values. (ie, from left to right, level by level).
 
@@ -989,6 +964,53 @@ The two boomerangs are [[1,0],[0,0],[2,0]] and [[1,0],[2,0],[0,0]]
 class _0447_NumberOfBoomerangs {
 public:
     int numberOfBoomerangs(std::vector<std::vector<int>>& points);
+};
+
+/*
+There are a number of spherical balloons spread in two-dimensional space. 
+For each balloon, provided input is the start and end coordinates of the 
+horizontal diameter. Since it's horizontal, y-coordinates don't matter 
+and hence the x-coordinates of start and end of the diameter suffice. Start 
+is always smaller than end. There will be at most 104 balloons.
+An arrow can be shot up exactly vertically from different points along the 
+x-axis. A balloon with xstart and xend bursts by an arrow shot at x if 
+xstart ≤ x ≤ xend. There is no limit to the number of arrows that can be 
+shot. An arrow once shot keeps travelling up infinitely. The problem is to 
+find the minimum number of arrows that must be shot to burst all balloons.
+
+Example:
+
+Input: [[10,16], [2,8], [1,6], [7,12]] :   Output:  2
+
+Explanation:
+One way is to shoot one arrow for example at x = 6 (bursting the balloons [2,8] and [1,6]) and another arrow at x = 11 (bursting the other two balloons).
+*/
+class _0452_MinimumNumberOfArrowsToBusrtBalloons {
+    public:
+        int findMinArrowShots(std::vector<std::vector<int>>& points);
+};
+
+/*
+A magical string S consists of only '1' and '2' and obeys the following rules:
+The string S is magical because concatenating the number of contiguous occurrences 
+of characters '1' and '2' generates the string S itself.
+The first few elements of string S is the following: S = 
+"1221121221221121122……"
+If we group the consecutive '1's and '2's in S, it will be:
+1 22 11 2 1 22 1 22 11 2 11 22 ......
+and the occurrences of '1's or '2's in each group are:
+1 2 2 1 1 2 1 2 2 1 2 2 ......
+You can see that the occurrence sequence above is the S itself.
+Given an integer N as input, return the number of '1's in the first N number in the magical string S.
+Note: N will not exceed 100,000.
+Example 1:
+Input: 6
+Output: 3
+Explanation: The first 6 elements of magical string S is "12211" and it contains three 1's, so return 3.
+*/
+class _0481_MagicalString {
+public:
+    int magicalString(int n);
 };
 
 /*
@@ -1164,7 +1186,7 @@ class _0655_PrintBinaryTree {
 public:
     std::vector<std::vector<std::string>> printTree(TreeNode<int>* root);
 private:
-    int getHeight(TreenNode<int>* root);
+    int getHeight(TreeNode<int>* root);
     void fill(TreeNode<int>* root, std::vector<std::vector<std::string>>& res, int h, int l, int r);
 };
 
@@ -1411,10 +1433,10 @@ private:
     std::vector<std::vector<int>> alexMap;
     std::vector<std::vector<int>> leeMap;
 public:
-    bool stoneGame(vector<int>& piles);
+    bool stoneGame(std::vector<int>& piles);
     int AlexMax(std::vector<int>& piles, int start, int end);
     int LeeMax(std::vector<int>& piles, int start, int end);
-}
+};
 
 /*
 Given an array of integers nums, sort the array in ascending order.
@@ -1796,7 +1818,7 @@ expression is a valid expression representing a boolean, as given in the descrip
 */
 class _1106_ParsingABolleanExpression {
 public:
-    bool parseBoolExpr(string expression);
+    bool parseBoolExpr(std::string expression);
 };
 
 
@@ -1823,6 +1845,25 @@ public:
 };
 
 /*
+Given two arrays of integers with equal lengths, return the 
+maximum value of:
+
+|arr1[i] - arr1[j]| + |arr2[i] - arr2[j]| + |i - j|
+where the maximum is taken over all 0 <= i, j < arr1.length. 
+
+Input: arr1 = [1,2,3,4], arr2 = [-1,4,5,6]           :   Output: 13
+Input: arr1 = [1,-2,-5,0,10], arr2 = [0,-2,-1,-7,-4] :   Output: 20
+
+Constraints:
+2 <= arr1.length == arr2.length <= 40000
+-10^6 <= arr1[i], arr2[i] <= 10^6
+*/
+class _1131_MaximumOfAbsoluteValueExpression {
+public:
+    int maxAbsValExpr(std::vector<int>& arr1, std::vector<int>& arr2);
+};
+
+/*
 Let's define a function f(s) over a non-empty string s, which calculates the frequency 
 of the smallest character in s. For example, if s = "dcce" then f(s) = 2 because the 
 smallest character is "c" and its frequency is 2.
@@ -1845,7 +1886,10 @@ queries[i][j], words[i][j] are English lowercase letters.
 class _1170_CompareStringByFrequencyOfTheSmallestCharacter {
 public:
     std::vector<int> numSmallerByFrequency(std::vector<std::string>& queries, std::vector<std::string>& words);
+    
 };
+
+
 
 /*
 Return the number of permutations of 1 to n so that prime numbers are at prime 
