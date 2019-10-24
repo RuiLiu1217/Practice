@@ -1303,6 +1303,19 @@ public:
     std::vector<ListNode<int>*> splitListToParts(ListNode<int>* root, int k);
 };
 
+
+class _0729_MyCalendarI {
+public:
+    _0729_MyCalendarI();
+    bool book(int start, int end);
+private:
+    std::vector<std::pair<int,int>> a;
+    std::map<int, int> booked;              // use binary search:  |     [10        (20)]      |     [(15)    20]
+    // floor:    largest entry whose key <= query key         |       [(12)   18]         |  [12    (18)]
+    // ceiling:  smallest entry whose key > query key         |    floor.end > q.start    |     ceiling.start < q.end
+    // Time complexity: O(nlogn)   Space complexity: O(n)
+};
+
 /*
 We are given an array asteroids of integers representing asteroids in a row.
 For each asteroid, the absolute value represents its size, and the sign represents
@@ -1807,6 +1820,31 @@ Each arr2[i] is in arr1.
 class _1122_RelativeSortArray {
 public:
     std::vector<int> relativeSortArray(std::vector<int>& arr1, std::vector<int>& arr2);
+};
+
+/*
+Let's define a function f(s) over a non-empty string s, which calculates the frequency 
+of the smallest character in s. For example, if s = "dcce" then f(s) = 2 because the 
+smallest character is "c" and its frequency is 2.
+Now, given string arrays queries and words, return an integer array answer, where each 
+answer[i] is the number of words such that f(queries[i]) < f(W), where W is a word in words. 
+
+Input: queries = ["cbd"], words = ["zaaaz"]      :      Output: [1]
+Explanation: On the first query we have f("cbd") = 1, f("zaaaz") = 3 so f("cbd") < f("zaaaz").
+
+Input: queries = ["bbb","cc"], words = ["a","aa","aaa","aaaa"]   :   Output: [1,2]
+Explanation: On the first query only f("bbb") < f("aaaa"). On the second query both f("aaa") and f("aaaa") are both > f("cc").
+
+Constraints:
+
+1 <= queries.length <= 2000
+1 <= words.length <= 2000
+1 <= queries[i].length, words[i].length <= 10
+queries[i][j], words[i][j] are English lowercase letters.
+*/
+class _1170_CompareStringByFrequencyOfTheSmallestCharacter {
+public:
+    std::vector<int> numSmallerByFrequency(std::vector<std::string>& queries, std::vector<std::string>& words);
 };
 
 /*
