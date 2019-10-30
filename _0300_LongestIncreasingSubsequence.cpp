@@ -1,5 +1,10 @@
 #include "headers.hpp"
-// 还是没看懂，需要重新分析再看，尤其是NlogN的解法
+
+int LeetCode::_0300_LongestIncreasingSubsequence::lengthOfLIS(std::vector<int>& nums) {
+    return lengthOfLIS_N2(nums);
+}
+
+// 递归计算最长子数组, 就是计算最长子数组以 nums[i-1] 结尾的长度。
 int LeetCode::_0300_LongestIncreasingSubsequence::lengthOfLIS_N2(std::vector<int>& nums) {
     if(nums.size() == 0) {
         return 0;
@@ -9,18 +14,19 @@ int LeetCode::_0300_LongestIncreasingSubsequence::lengthOfLIS_N2(std::vector<int
     DP[0] = 1;
     int res = 1;
     for(int i = 1; i < nums.size(); ++i) {
-        int maxVal = 0;
+        int maxLen = 0;
         for(int j = i - 1; j >= 0; --j) {
             if(nums[i] > nums[j]) {
-                maxVal = std::max(maxVal, DP[j]);
+                maxLen = std::max(maxVal, DP[j]);
             }
         }
-        DP[i] = maxVal + 1;
+        DP[i] = maxLen + 1;
         res = std::max(res, DP[i]);
     }
+    return DP.backO();
 }
 
-    int lengthOfLIS(std::vector<int>& nums);
+    
 
 // NlogN solution:
 /*
