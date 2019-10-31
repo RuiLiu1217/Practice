@@ -8,41 +8,12 @@
 #include "LinkList.hpp"
 
 #include "ProblemSet1.hpp" // Problem 1 - 100
-
+#include "ProblemSet2.hpp"
 
 namespace LeetCode
 {
 
 
-/*
-        Given a binary tree, check whether it is a mirror of itself(ie, symmetric around its center).
-    For example, this binary tree[1, 2, 2, 3, 4, 4, 3] is symmetric :
-
-          1
-         / \
-        2   2
-       / \ / \
-      3  4 4  3
-
-    But the following[1, 2, 2, null, 3, null, 3] is not:
-           1
-          / \
-         2   2
-          \   \
-           3   3
-    Note:
-    Bonus points if you could solve it both recursively and iteratively.
-
-    Solution:  utilize the preorder framework
-    */
-class _0101_SymmetricTree
-{
-public:
-    bool isSymmetric(TreeNode<int> *root);
-
-private:
-    bool preOrderIter(TreeNode<int> *root);
-};
 
 /* Binary Tree Level Order Traversal II
     Given a binary tree, return the bottom - up level order traversal of 
@@ -1190,6 +1161,36 @@ private:
     void fill(TreeNode<int>* root, std::vector<std::vector<std::string>>& res, int h, int l, int r);
 };
 
+/*
+You are given an integer array sorted in ascending order (may contain 
+duplicates), you need to split them into several subsequences, where 
+each subsequences consist of at least 3 consecutive integers. Return 
+whether you can make such a split.
+
+Example 1:
+
+Input: [1,2,3,3,4,5] :  Output: True
+You can split them into two consecutive subsequences : 
+1, 2, 3
+3, 4, 5
+
+Example 2:
+Input: [1,2,3,3,4,4,5,5] : Output: True
+You can split them into two consecutive subsequences : 
+1, 2, 3, 4, 5
+3, 4, 5
+ 
+
+Example 3:
+Input: [1,2,3,4,4,5]  :  Output: False
+
+Note:
+The length of the input is in range of [1, 10000]
+*/
+class _0659_SplitArrayIntoConsecutiveSubsequences {
+public:
+    bool isPossible(std::vector<int>& nums);
+};
 
 /*
 Given two integers n and k, you need to construct a list which contains 
@@ -1241,6 +1242,32 @@ public:
     bool search(std::string word);
 private:
     std::unordered_map<int, std::unordered_set<std::string>> _dict;
+};
+
+
+/*
+You have 4 cards each containing a number from 1 to 9. You need to judge whether they could operated 
+through *, /, +, -, (, ) to get the value of 24.
+
+Example 1:
+Input: [4, 1, 8, 7]
+Output: True
+Explanation: (8-4) * (7-1) = 24
+Example 2:
+Input: [1, 2, 1, 2]
+Output: False
+Note:
+The division operator / represents real division, not integer division. For example, 4 / (1 - 2/3) = 12.
+Every operation done is between two numbers. In particular, we cannot use - as a unary operator. For example, with [1, 1, 1, 1] as input, the expression -1 - 1 - 1 - 1 is not allowed.
+You cannot concatenate numbers together. For example, if the input is [1, 2, 1, 2], we cannot write this as 12 + 12.
+*/
+class _0679_24Games{
+public:
+    bool judgePoint24(std::vector<int>& nums);
+private:
+    bool valid(std::vector<int>& nums);
+    bool valid(double a, double b, double c);
+    bool valid(double a, double b); 
 };
 
 /*
@@ -1364,6 +1391,47 @@ Asteroids moving the same direction never meet, so no asteroids will meet each o
 class _0735_AsteroidCollision {
 public:
     std::vector<int> asteroidCollision(std::vector<int>& asteroids);
+};
+
+/*
+You have a lock in front of you with 4 circular wheels. Each wheel has 10 slots: 
+'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'. The wheels can rotate freely and 
+wrap around: for example we can turn '9' to be '0', or '0' to be '9'. Each move 
+consists of turning one wheel one slot.
+
+The lock initially starts at '0000', a string representing the state of the 4 wheels.
+You are given a list of deadends dead ends, meaning if the lock displays any of these 
+codes, the wheels of the lock will stop turning and you will be unable to open it.
+Given a target representing the value of the wheels that will unlock the lock, return 
+the minimum total number of turns required to open the lock, or -1 if it is impossible.
+
+Example 1:
+Input: deadends = ["0201","0101","0102","1212","2002"], target = "0202"
+Output: 6
+Explanation:
+A sequence of valid moves would be "0000" -> "1000" -> "1100" -> "1200" -> "1201" -> "1202" -> "0202".
+Note that a sequence like "0000" -> "0001" -> "0002" -> "0102" -> "0202" would be invalid,
+because the wheels of the lock become stuck after the display becomes the dead end "0102".
+Example 2:
+Input: deadends = ["8888"], target = "0009"
+Output: 1
+Explanation:
+We can turn the last wheel in reverse to move from "0000" -> "0009".
+Example 3:
+Input: deadends = ["8887","8889","8878","8898","8788","8988","7888","9888"], target = "8888"
+Output: -1
+Explanation:
+We can't reach the target without getting stuck.
+Example 4:
+Input: deadends = ["0000"], target = "8888"
+Output: -1
+*/
+
+class _0752_OpenTheLock {
+public:
+    int openLock(std::vector<std::string>& deadends, std::string target);
+private:
+    std::vector<std::string> nextNeighborString(std::string& key);
 };
 
 /*
@@ -1996,6 +2064,40 @@ class _1209_RemoveAllAdjacentDuplicatesInStringII {
 public:
     std::string removeDuplicates(std::string s, int k);
 };
+
+
+/*
+Given an integer array arr and an integer difference, return the length of the 
+longest subsequence in arr which is an arithmetic sequence such that the 
+difference between adjacent elements in the subsequence equals difference.
+
+Example 1:
+Input: arr = [1,2,3,4], difference = 1
+Output: 4
+Explanation: The longest arithmetic subsequence is [1,2,3,4].
+
+Example 2:
+Input: arr = [1,3,5,7], difference = 1
+Output: 1
+Explanation: The longest arithmetic subsequence is any single element.
+
+Example 3:
+Input: arr = [1,5,7,8,5,3,4,2,1], difference = -2
+Output: 4
+Explanation: The longest arithmetic subsequence is [7,5,3,1].
+ 
+Constraints:
+
+1 <= arr.length <= 10^5
+-10^4 <= arr[i], difference <= 10^4
+*/
+class _1218_LongestArithmeticSubsequenceOfGivenDifference {
+public:
+    int longestSubsequence(std::vector<int>& arr, int difference);
+};
+
+
+
 
 class _1221_SplitAStringInBalancedStrings {
 public:
