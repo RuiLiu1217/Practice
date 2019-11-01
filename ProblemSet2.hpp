@@ -5,7 +5,7 @@
 #include <string>
 #include <stack>
 #include <queue>
-
+#include <map>
 #include "Tree.hpp"
 #include "LinkList.hpp"
 
@@ -604,6 +604,146 @@ public:
     int singleNumber(std::vector<int>& nums);
 };
 
+/*
+A linked list is given such that each node contains an additional random pointer which could point to 
+any node in the list or null. Return a deep copy of the list.
+
+Example 1:
+Input:
+{"$id":"1","next":{"$id":"2","next":null,"random":{"$ref":"2"},"val":2},"random":{"$ref":"2"},"val":1}
+
+Explanation:
+Node 1's value is 1, both of its next and random pointer points to Node 2.
+Node 2's value is 2, its next pointer points to null and its random pointer points to itself.
+ 
+
+Note:
+
+You must return the copy of the given head as a reference to the cloned list.
+*/
+class _0138_CopyListWithRandomPointer {
+public:
+    struct Node {
+        public:
+            int val;
+            Node* next;
+            Node* random;
+            Node() {}
+            Node(int _val, Node* _next, Node* _random) : val(_val), next(_next), random(_random) {}
+    };
+
+    Node* copyRandomList(Node* head);
+    std::map<Node*, Node*> visit;
+};
+
+/*
+Given a linked list, determine if it has a cycle in it.
+
+To represent a cycle in the given linked list, we use an integer pos which represents the position (0-indexed) in the linked list where tail connects to. If pos is -1, then there is no cycle in the linked list.
+
+Input: head = [3,2,0,-4], pos = 1
+Output: true
+Explanation: There is a cycle in the linked list, where tail connects to the second node.
+
+Input: head = [1,2], pos = 0
+Output: true
+Explanation: There is a cycle in the linked list, where tail connects to the first node.
+
+Input: head = [1], pos = -1
+Output: false
+Explanation: There is no cycle in the linked list.
+
+Follow up:
+
+Can you solve it using O(1) (i.e. constant) memory?
+*/
+class _0141_LinkedListCycle {
+public:
+    bool hasCycle(ListNode<int>* head);
+};
+
+
+/*
+Given a linked list, return the node where the cycle begins. If there is no cycle, return null.
+To represent a cycle in the given linked list, we use an integer pos which represents the position 
+(0-indexed) in the linked list where tail connects to. If pos is -1, then there is no cycle in 
+the linked list.
+
+Note: Do not modify the linked list.
+
+Input: head = [3,2,0,-4], pos = 1
+Output: tail connects to node index 1
+Explanation: There is a cycle in the linked list, where tail connects to the second node.
+
+Input: head = [1,2], pos = 0
+Output: tail connects to node index 0
+Explanation: There is a cycle in the linked list, where tail connects to the first node.
+
+Input: head = [1], pos = -1
+Output: no cycle
+Explanation: There is no cycle in the linked list.
+*/
+class _0142_LinkedListCycleII {
+public:
+    ListNode<int>* detectCycle(ListNode<int>* head);
+};
+
+/*
+Given a singly linked list L: L0→L1→…→Ln-1→Ln,
+reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…
+
+You may not modify the values in the list's nodes, only nodes itself may be changed.
+
+Given 1->2->3->4, reorder it to 1->4->2->3.
+Given 1->2->3->4->5, reorder it to 1->5->2->4->3.
+*/
+class _0143_ReorderList {
+public:
+    void reorderList(ListNode<int>* head);
+};
+
+
+/*
+Given a binary tree, return the preorder traversal of its nodes' values.
+
+Example:
+
+Input: [1,null,2,3]
+   1
+    \
+     2
+    /
+   3
+
+Output: [1,2,3]
+Follow up: Recursive solution is trivial, could you do it iteratively?
+*/
+class _0144_BinaryTreePreOrderTraversal {
+public:
+    std::vector<int> preorderTraversal(TreeNode<int>* root);
+};
+
+
+/*
+Given a binary tree, return the postorder traversal of its nodes' values.
+
+Example:
+
+Input: [1,null,2,3]
+   1
+    \
+     2
+    /
+   3
+
+Output: [3,2,1]
+Follow up: Recursive solution is trivial, could you do it iteratively?
+*/
+class _0145_BinaryTreePostorderTraversal {
+public:
+    std::vector<int> postorderTraversal(TreeNode<int>* root);
+};
+
 
 
 // Sort a linked list in O(NlogN) time using constant space complexity.
@@ -615,6 +755,48 @@ public:
 private:
     ListNode<int> *merge(ListNode<int> *head1, ListNode<int> *head2);
     void splitList(ListNode<int> *&head, ListNode<int> *&left, ListNode<int> *&right);
+};
+
+
+/*
+Given n points on a 2D plane, find the maximum number of points that lie on the same straight line.
+*/
+class _0149_MaxPointsOnALine {
+public:
+    int maxPoints(std::vector<std::vector<int>>& points);
+};
+
+/*
+Evaluate the value of an arithmetic expression in Reverse Polish Notation.
+Valid operators are +, -, *, /. Each operand may be an integer or another expression.
+
+Division between two integers should truncate toward zero.
+The given RPN expression is always valid. That means the expression would always evaluate to a 
+result and there won't be any divide by zero operation.
+
+
+Input: ["2", "1", "+", "3", "*"]
+Output: 9
+Explanation: ((2 + 1) * 3) = 9
+
+Input: ["4", "13", "5", "/", "+"]
+Output: 6
+Explanation: (4 + (13 / 5)) = 6
+
+Input: ["10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"]
+Output: 22
+Explanation: 
+  ((10 * (6 / ((9 + 3) * -11))) + 17) + 5
+= ((10 * (6 / (12 * -11))) + 17) + 5
+= ((10 * (6 / -132)) + 17) + 5
+= ((10 * 0) + 17) + 5
+= (0 + 17) + 5
+= 17 + 5
+= 22
+*/
+class _0150_EvaluateReversePolishNotation {
+public:
+    int evalRPN(std::vector<std::string>& tokens);
 };
 
 /*
@@ -671,6 +853,48 @@ public:
 };
 
 /*
+Write a program to find the node at which the intersection of two singly linked lists begins.
+
+Input: intersectVal = 8, listA = [4,1,8,4,5], listB = [5,0,1,8,4,5], skipA = 2, skipB = 3
+Output: Reference of the node with value = 8
+Input Explanation: The intersected node's value is 8 (note that this must not be 0 if the two 
+lists intersect). From the head of A, it reads as [4,1,8,4,5]. From the head of B, it reads as 
+[5,0,1,8,4,5]. There are 2 nodes before the intersected node in A; There are 3 nodes before the
+intersected node in B.
+ 
+
+Input: intersectVal = 2, listA = [0,9,1,2,4], listB = [3,2,4], skipA = 3, skipB = 1
+Output: Reference of the node with value = 2
+Input Explanation: The intersected node's value is 2 (note that this must not be 0 if the two 
+lists intersect). From the head of A, it reads as [0,9,1,2,4]. From the head of B, it reads as 
+[3,2,4]. There are 3 nodes before the intersected node in A; There are 1 node before the 
+intersected node in B.
+
+
+Input: intersectVal = 0, listA = [2,6,4], listB = [1,5], skipA = 3, skipB = 2
+Output: null
+Input Explanation: From the head of A, it reads as [2,6,4]. From the head of B, it reads as [1,5].
+Since the two lists do not intersect, intersectVal must be 0, while skipA and skipB can be 
+arbitrary values. Explanation: The two lists do not intersect, so return null.
+
+Notes:
+
+If the two linked lists have no intersection at all, return null.
+The linked lists must retain their original structure after the function returns.
+You may assume there are no cycles anywhere in the entire linked structure.
+Your code should preferably run in O(n) time and use only O(1) memory.
+*/
+class _0160_IntersectionOfTwoLinkedLists {
+public:
+    ListNode<int>* getIntersectionNode(ListNode<int>* headA, ListNode<int>* headB);
+private:
+    int length(ListNode<int>* root);
+};
+
+
+
+
+/*
 A peak element is an element that is greater than its neighbors. Given an input array 
 nums, where nums[i] ≠ nums[i+1], find a peak element and return its index. The array 
 may contain multiple peaks, in that case return the index to any one of the peaks is fine.
@@ -689,6 +913,126 @@ class _0162_FindPeakElement {
 public:
     int findPeakElement(std::vector<int>& nums);
 };
+
+
+/*
+Given an array of integers that is already sorted in ascending order, find two numbers such
+that they add up to a specific target number. The function twoSum should return indices of 
+the two numbers such that they add up to the target, where index1 must be less than index2.
+
+Note:
+
+Your returned answers (both index1 and index2) are not zero-based.
+You may assume that each input would have exactly one solution and you may not use the same
+element twice.
+
+Input: numbers = [2,7,11,15], target = 9
+Output: [1,2]
+Explanation: The sum of 2 and 7 is 9. Therefore index1 = 1, index2 = 2.
+*/
+class _0167_TwoSumII_InputArrayIsSorted {
+public:
+    std::vector<int> twoSum(std::vector<int>& numbers, int target);
+};
+
+/*
+Given a positive integer, return its corresponding column title as appear in an Excel sheet.
+
+For example:
+
+    1 -> A
+    2 -> B
+    3 -> C
+    ...
+    26 -> Z
+    27 -> AA
+    28 -> AB 
+    ...
+Example 1:
+
+Input: 1
+Output: "A"
+Example 2:
+
+Input: 28
+Output: "AB"
+Example 3:
+
+Input: 701
+Output: "ZY"
+*/
+class _0168_ExcelSheetColumnTitle {
+public:
+    std::string convertToTitle(int n);
+};
+
+
+/*
+Given an array of size n, find the majority element. The majority element is the 
+element that appears more than ⌊ n/2 ⌋ times.
+You may assume that the array is non-empty and the majority element always exist 
+in the array.
+
+Input: [3,2,3]            :            Output: 3
+Input: [2,2,1,1,1,2,2]    :            Output: 2
+*/
+class _0169_MajorityElement {
+public:
+    int majorityElement(std::vector<int>& nums);
+};
+
+/*
+Given a column title as appear in an Excel sheet, return its corresponding column number.
+For example:
+
+    A -> 1
+    B -> 2
+    C -> 3
+    ...
+    Z -> 26
+    AA -> 27
+    AB -> 28 
+    ...
+Example 1:
+
+Input: "A"
+Output: 1
+Example 2:
+
+Input: "AB"
+Output: 28
+Example 3:
+
+Input: "ZY"
+Output: 701
+*/
+class _0171_ExcellSheetColumnNumber {
+public:
+    int titleToNumber(std::string s);
+};
+
+
+/*
+Given an integer n, return the number of trailing zeroes in n!.
+
+Example 1:
+
+Input: 3
+Output: 0
+Explanation: 3! = 6, no trailing zero.
+Example 2:
+
+Input: 5
+Output: 1
+Explanation: 5! = 120, one trailing zero.
+Note: Your solution should be in logarithmic time complexity.
+*/
+class _0172_FactorialTrailingZeroes {
+public:
+    int trailingZeroes(int n);
+};
+
+
 
 /*
 Implement an iterator over a binary search tree (BST). Your iterator will be initialized 
