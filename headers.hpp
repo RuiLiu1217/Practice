@@ -226,6 +226,28 @@ private:
 };
 
 /*
+Remove the minimum number of invalid parentheses in order to make the input string valid. 
+Return all possible results. Note: The input string may contain letters other than the 
+parentheses ( and ).
+
+Input: "()())()"
+Output: ["()()()", "(())()"]
+
+Input: "(a)())()"
+Output: ["(a)()()", "(a())()"]
+
+Input: ")("
+Output: [""]
+*/
+class _0301_RemoveInvalidParentheses {
+public:
+    std::vector<std::string> removeInvalidParentheses(const std::string& parentheses);
+private:
+    bool isValid(const std::string& s);
+    void DFS(std::string s, int , int l, int r, std::vector<std::string>& ans);
+};
+
+/*
 The thief has found himself a new place for his thievery again. There is only one 
 entrance to this area, called the "root." Besides the root, each house has one and 
 only one parent house. After a tour, the smart thief realized that "all houses in 
