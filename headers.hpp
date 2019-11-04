@@ -244,7 +244,7 @@ public:
     std::vector<std::string> removeInvalidParentheses(const std::string& parentheses);
 private:
     bool isValid(const std::string& s);
-    void DFS(std::string s, int , int l, int r, std::vector<std::string>& ans);
+    void DFS(const std::string& s, int , int l, int r, std::vector<std::string>& ans);
 };
 
 /*
@@ -1150,6 +1150,7 @@ Output: -1
 class _0752_OpenTheLock {
 public:
     int openLock(std::vector<std::string>& deadends, std::string target);
+    int bidirectionalBFS(std::vector<std::string>& deadends, std::string target);
 private:
     std::vector<std::string> nextNeighborString(std::string& key);
 };
@@ -1693,7 +1694,7 @@ Input: n = 100           :              Output: 682289015
 class _1175_PrimeArrangements {
 public:
     constexpr static auto MOD = static_cast<int>(1e9+7); // Use C++11 constexpr
-    int numPrimeArrangements(int n, int primes=1, long long ans=1);
+    int numPrimeArrangements(int n, int primes, long long ans);
 private:
     bool isPrime(int n);
 };
@@ -1948,16 +1949,7 @@ namespace LintCode {
     */
     class _0002_TrailingZeros {
         public:
-            long long trailingZeros(long long n) {
-                long res = 0;
-                long t = n;
-                long fac = 5;
-                while(fac < n) {
-                    res += t / fac;
-                    fac = fac * 5;
-                }
-                return res;
-            }
+            long long trailingZeros(long long n);
     };
 
 /*
@@ -1986,25 +1978,7 @@ public:
      * @param n: An integer
      * @return: return a  integer as description.
      */
-    int nthUglyNumber(int n) {
-        // write your code here
-        
-        std::vector<int> ugly{1};
-        int i2 = 0;
-        int i3 = 0;
-        int i5 = 0;
-        while(ugly.size() < n) {
-            const int next2 = ugly[i2] * 2;
-            const int next3 = ugly[i3] * 3;
-            const int next5 = ugly[i5] * 5;
-            const int next = std::min(next2, std::min(next3, next5));
-            if(next == next2) ++i2;   // 这种写法，当我们有多个ugly数与翻新相对应时，要同时更新多个index. 我自己的实现就是没有这样的考虑，导致程序错误
-            if(next == next3) ++i3; 
-            if(next == next5) ++i5;
-            ugly.push_back(next);
-        }
-        return ugly.back();    
-    }
+    int nthUglyNumber(int n);
 };
 
 /*

@@ -1,6 +1,6 @@
 #include "headers.hpp"
-
-TreeNode<int>* LeetCode::_0105_ConstructBinaryTreeFromPreorderAndInorderTraversal::buildTree(vector<int>& preorder, vector<int>& inorder) {
+#include <algorithm>
+TreeNode<int>* LeetCode::_0105_ConstructBinaryTreeFromPreorderAndInorderTraversal::buildTree(std::vector<int>& preorder, std::vector<int>& inorder) {
     if(preorder.size() == 0 || inorder.size() == 0) {
         return nullptr;
     } else {

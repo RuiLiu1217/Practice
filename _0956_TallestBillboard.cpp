@@ -1,6 +1,7 @@
 #include "headers.hpp"
 #include <algorithm>
 #include <unordered_map>
+#include <numeric>
 int LeetCode::_0956_TallestBillboard::tallestBillboard(std::vector<int>& rods) {
     const int n = rods.size();
     const int s = std::accumulate(rods.begin(), rods.end(), 0);

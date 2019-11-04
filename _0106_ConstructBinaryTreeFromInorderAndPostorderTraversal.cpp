@@ -1,5 +1,5 @@
 #include "headers.hpp"
-
+#include <algorithm>
 TreeNode<int>* LeetCode::_0106_ConstructBinaryTreeFromInorderAndPostorderTraversal::buildTree(std::vector<int>& inorder, std::vector<int>& postorder) {
     return buildTree(inorder, 0, inorder.size(), postorder, 0, postorder.size());
 }

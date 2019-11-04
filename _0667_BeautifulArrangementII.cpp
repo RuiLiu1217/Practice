@@ -9,4 +9,5 @@ std::vector<int> LeetCode::_0667_BeautifulArrangementII::constructArray(int n, i
             res.push_back(i++);
         }
     }
+    return res;
 }

@@ -1,6 +1,8 @@
 #include "headers.hpp"
 #include <stack>
-bool LeetCode::_1106_ParsingABolleanExpression::parseBoolExpr(string expression) {
+#include <string>
+#include <cassert>
+bool LeetCode::_1106_ParsingABolleanExpression::parseBoolExpr(std::string expression) {
     std::stack<char> operation;
     std::stack<char> values;
     for(char c : expression) {

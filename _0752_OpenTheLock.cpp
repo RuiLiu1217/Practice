@@ -32,7 +32,7 @@ int LeetCode::_0752_OpenTheLock::openLock(std::vector<std::string>& deadends, st
                 if(visited.find(s) != visited.end()) {
                     continue;
                 }
-                if(dds.find(s) == dds.end()) {
+                if(deadEnds.find(s) == deadEnds.end()) {
                     bfs.push(s);
                     visited.insert(s);
                 }
@@ -44,49 +44,51 @@ int LeetCode::_0752_OpenTheLock::openLock(std::vector<std::string>& deadends, st
 }
 
 // Bidirectional BFS
-int bidirectionalBFS(std::vector<std::string>& deadends, std::string target) {
-    std::unordered_set<std::string> deadEnds(deadends.begin(), deadends.end());
-    std::unordered_set<std::string> visited;
+int LeetCode::_0752_OpenTheLock::bidirectionalBFS(std::vector<std::string>& deadends, std::string target) {
+    // std::unordered_set<std::string> deadEnds(deadends.begin(), deadends.end());
+    // std::unordered_set<std::string> visited;
 
-    std::unordered_set<std::string> q1;
-    std::unordered_set<std::string> q2;
-    std::unordered_set<std::string> pass;
+    // std::unordered_set<std::string> q1;
+    // std::unordered_set<std::string> q2;
+    // std::unordered_set<std::string> pass;
 
-    std::string init = "0000";
-    if(deadEnds.find(init) != deadEnds.end() || deadEnds.find(target) != deadEnds.end()) {
-        return -1;
-    }
+    // std::string init = "0000";
+    // if(deadEnds.find(init) != deadEnds.end() || deadEnds.find(target) != deadEnds.end()) {
+    //     return -1;
+    // }
 
-    visited.insert(init);
-    q1.insert(init);
-    q2.insert(target);
+    // visited.insert(init);
+    // q1.insert(init);
+    // q2.insert(target);
 
-    int res = 0;
-    while(!q1.empty() && !q2.empty()) {
-        if(q1.size() > q2.size()) {
-            std::swap(q1, q2);
-        }
-        pass.clear();
+    // int res = 0;
+    // while(!q1.empty() && !q2.empty()) {
+    //     if(q1.size() > q2.size()) {
+    //         std::swap(q1, q2);
+    //     }
+    //     pass.clear();
 
-        for(auto ss : q1) {
-            std::vector<std::string> nbrStr = nextNeighborString(ss);
+    //     for(auto& ss : q1) {
+    //         std::vector<std::string> nbrStr = nextNeighborString(ss);
 
-            for(auto a : nbrStr) {
-                if(q2.find(a) != q2.end()) {
-                    return res + 1;
-                }
-                if(visited.find(a) != visited.end()) {
-                    continue;
-                }
-                if(deadEnds.find(a) == deadEnds.end()) {
-                    pass.insert(a);
-                    visited.insert(s);
-                }
-            }    
-        }
-        std::swap(q1, pass);
-        ++res;
-    }
+    //         for(auto a : nbrStr) {
+    //             if(q2.find(a) != q2.end()) {
+    //                 return res + 1;
+    //             }
+    //             if(visited.find(a) != visited.end()) {
+    //                 continue;
+    //             }
+    //             if(deadEnds.find(a) == deadEnds.end()) {
+    //                 pass.insert(a);
+    //                 visited.insert(a);
+    //             }
+    //         }    
+    //     }
+    //     std::swap(q1, pass);
+    //     ++res;
+    // }
+    // return -1;
+
     return -1;
 }
 

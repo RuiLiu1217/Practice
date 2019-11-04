@@ -22,11 +22,16 @@ void LeetCode::_0155_MinStack::pop() {
 int LeetCode::_0155_MinStack::top() {
     if(!mainStack.empty()) {
         return mainStack.top();
+    } else {
+        return -1;
     }
+
 }
 
 int LeetCode::_0155_MinStack::getMin() {
     if(!minStack.empty()) {
         return minStack.top();
+    } else {
+        return -1;
     }
 }

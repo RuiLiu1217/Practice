@@ -1,5 +1,5 @@
 #include "headers.hpp"
-
+#include <algorithm>
 std::vector<std::vector<int>> LeetCode::_0103_BinaryTreeZigzagLevelOrderTraversal::zigzagLevelOrder(TreeNode<int>* root) {
     TreeNode<int>* p = root;
     if(!p) {

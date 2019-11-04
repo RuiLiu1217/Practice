@@ -17,13 +17,13 @@ int LeetCode::_0300_LongestIncreasingSubsequence::lengthOfLIS_N2(std::vector<int
         int maxLen = 0;
         for(int j = i - 1; j >= 0; --j) {
             if(nums[i] > nums[j]) {
-                maxLen = std::max(maxVal, DP[j]);
+                maxLen = std::max(maxLen, DP[j]);
             }
         }
         DP[i] = maxLen + 1;
         res = std::max(res, DP[i]);
     }
-    return DP.backO();
+    return DP.back();
 }
 
     

@@ -1,5 +1,7 @@
 #include "headers.hpp"
 #include <stack>
+#include <algorithm>
+
 std::string LeetCode::_1209_RemoveAllAdjacentDuplicatesInStringII::removeDuplicates(std::string s, int k) {
     std::stack<char> charStack;
     std::stack<int> countStack;

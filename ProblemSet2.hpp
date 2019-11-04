@@ -128,7 +128,7 @@ Return the following binary tree:
 */
 class _0105_ConstructBinaryTreeFromPreorderAndInorderTraversal {
 public:
-    TreeNode<int>* buildTree(vector<int>& preorder, vector<int>& inorder);
+    TreeNode<int>* buildTree(std::vector<int>& preorder, std::vector<int>& inorder);
 };
 
 /*
@@ -336,7 +336,7 @@ The flattened tree should look like:
 */
 class _0114_FlattenBinaryTreeToLinkedList {
 public:
-    void flatten(TreeNode* root);
+    void flatten(TreeNode<int>* root);
 };
 
 /*

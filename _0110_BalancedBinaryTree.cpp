@@ -7,7 +7,7 @@ bool LeetCode::_0110_BalancedBinaryTree::isBalanced(TreeNode<int>* root) {
     {
         return true;
     }
-    if(root->left! = nullptr && root->right == nullptr)
+    if(root->left != nullptr && root->right == nullptr)
     {
         if(height(root->left) == 1)
         {
