@@ -1,6 +1,6 @@
 #include "headers.hpp"
 
-bool LeetCode::_0877_StoneGame::stoneGame(vector<int>& piles) {
+bool LeetCode::_0877_StoneGame::stoneGame(std::vector<int>& piles) {
     alexMap = std::vector<std::vector<int>>(piles.size(), std::vector<int>(piles.size(), -1));
     leeMap = std::vector<std::vector<int>>(piles.size(), std::vector<int>(piles.size(), -1));
     if(piles.size() <= 2) {

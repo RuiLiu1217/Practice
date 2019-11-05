@@ -32,7 +32,7 @@ int LeetCode::_0752_OpenTheLock::openLock(std::vector<std::string>& deadends, st
                 if(visited.find(s) != visited.end()) {
                     continue;
                 }
-                if(dds.find(s) == dds.end()) {
+                if(deadEnds.find(s) == deadEnds.end()) {
                     bfs.push(s);
                     visited.insert(s);
                 }
@@ -80,7 +80,7 @@ int bidirectionalBFS(std::vector<std::string>& deadends, std::string target) {
                 }
                 if(deadEnds.find(a) == deadEnds.end()) {
                     pass.insert(a);
-                    visited.insert(s);
+                    visited.insert(a);
                 }
             }    
         }

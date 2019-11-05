@@ -1,4 +1,7 @@
 #include "headers.hpp"
+#include <climits>
+#include <cmath>
+#include <algorithm>
 
 int LeetCode::_0111_MinimumDepthOfBinaryTree::minDepth(TreeNode<int>* root) {
     if(!root) {
@@ -8,6 +11,6 @@ int LeetCode::_0111_MinimumDepthOfBinaryTree::minDepth(TreeNode<int>* root) {
     } else if(!root->right) {
         return minDepth(root->left) + 1;
     } else {
-        return min(minDepth(root->left), minDepth(root->right)) + 1;
+        return std::min(minDepth(root->left), minDepth(root->right)) + 1;
     }
 }

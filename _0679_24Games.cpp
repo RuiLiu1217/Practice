@@ -1,11 +1,11 @@
 #include "headers.hpp"
-
-bool LeetCode::_0679_24Grames::judgePoint24(std::vector<int>& nums) {
-sort(nums.begin(), nums.end());
-        do {
-            if (valid(nums)) return true;
-        } while(next_permutation(nums.begin(), nums.end()));
-        return false;
+#include <algorithm>
+bool LeetCode::_0679_24Games::judgePoint24(std::vector<int>& nums) {
+    std::sort(nums.begin(), nums.end());
+    do {
+        if (valid(nums)) return true;
+    } while(next_permutation(nums.begin(), nums.end()));
+    return false;
 }
 
 bool LeetCode::_0679_24Games::valid(std::vector<int>& nums) {

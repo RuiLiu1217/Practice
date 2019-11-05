@@ -8,7 +8,7 @@ std::vector<std::vector<std::string>> LeetCode::_0655_PrintBinaryTree::printTree
     return res;
 }
 
-int LeetCode::_0655_PrintBinaryTree::getHeight(TreenNode<int>* root) {
+int LeetCode::_0655_PrintBinaryTree::getHeight(TreeNode<int>* root) {
     if(!root) {
         return 0;
     }

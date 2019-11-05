@@ -8,7 +8,7 @@ int LeetCode::_0647_PalindromicSubstrings::countSubstrings(std::string s) {
     return sum;
 }
 
-int LeetCode::_0647_PalindromicSubstrings::sub(const std::string& s, int k) {
+int LeetCode::_0647_PalindromicSubstrings::sub(const std::string& s, int i) {
     int oddN = 1;
     int li = i-1;
     int ri = i+1;

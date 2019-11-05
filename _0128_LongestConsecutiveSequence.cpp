@@ -1,6 +1,9 @@
 #include "headers.hpp"
 #include <unordered_map>
 #include <unordered_set>
+#include <cmath>
+#include <climits>
+#include <algorithm>
 
 // 由于需要在O(N)时间复杂度内完成，
 // 这道题要求求最长连续序列，并给定了O(n)复杂度限制，我们的思路是，使用一个集合HashSet存入所有的数字，
@@ -21,7 +24,7 @@ int LeetCode::_0128_LongestConsecutiveSequence::longestConsecutive(std::vector<i
         int pre = val - 1, next = val + 1;
         while (s.count(pre)) s.erase(pre--);
         while (s.count(next)) s.erase(next++);
-        res = max(res, next - pre - 1);
+        res = std::max(res, next - pre - 1);
     }
     return res;
 }

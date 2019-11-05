@@ -25,7 +25,7 @@ bool LeetCode::_0659_SplitArrayIntoConsecutiveSubsequences::isPossible(std::vect
             --freq[n+1];
             --freq[n+2];
             ++need[n+3];
-        } else {
+        } else { // 如果既不能作为数组末尾，也不能作为开头，肯定不能找到三个连续的数。
             return false;
         }
         --freq[n]; 

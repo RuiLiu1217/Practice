@@ -12,7 +12,7 @@ void LeetCode::_0143_ReorderList::reorderList(ListNode<int>* head) {
     int i = 0;
     int j = vec.size() - 1;
     int count = 1;
-    ListNode<int>* nh = new ListNode(-1);
+    ListNode<int>* nh = new ListNode<int>(-1);
     ListNode<int>* q = nh;
     while(i < j) {
         if(count % 2) {

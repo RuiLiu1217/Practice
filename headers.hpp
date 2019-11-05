@@ -2,6 +2,7 @@
 #include <string>
 #include <stack>
 #include <queue>
+#include <map>
 #include <unordered_map>
 #include <unordered_set>
 #include "Tree.hpp"
@@ -244,7 +245,7 @@ public:
     std::vector<std::string> removeInvalidParentheses(const std::string& parentheses);
 private:
     bool isValid(const std::string& s);
-    void DFS(std::string s, int , int l, int r, std::vector<std::string>& ans);
+    void DFS(const std::string& s, int start, int l, int r, std::vector<std::string>& ans);
 };
 
 /*
@@ -681,6 +682,48 @@ class _0452_MinimumNumberOfArrowsToBusrtBalloons {
         int findMinArrowShots(std::vector<std::vector<int>>& points);
 };
 
+
+/*
+In the "100 game," two players take turns adding, to a running total, any 
+integer from 1..10. The player who first causes the running total to reach 
+or exceed 100 wins.
+What if we change the game so that players cannot re-use integers?
+For example, two players might take turns drawing from a common pool of 
+numbers of 1..15 without replacement until they reach a total >= 100.
+
+Given an integer maxChoosableInteger and another integer desiredTotal, 
+determine if the first player to move can force a win, assuming both 
+players play optimally.
+
+You can always assume that maxChoosableInteger will not be larger than 
+20 and desiredTotal will not be larger than 300.
+
+Input:
+maxChoosableInteger = 10
+desiredTotal = 11
+
+Output:
+false
+
+Explanation:
+No matter which integer the first player choose, the first player will lose.
+The first player can choose an integer from 1 up to 10.
+If the first player choose 1, the second player can only choose integers 
+from 2 up to 10.
+The second player will win by choosing 10 and get a total = 11, which is 
+>= desiredTotal. Same with other integers chosen by the first player, the 
+second player will always win.
+*/
+class _0464_CanIWin {
+public:
+    bool canIWin(int maxChoosableInteger, int desiredTotal);
+private:
+    std::vector<char> m_; //
+    bool canIWin(int M, int T, int state);
+};
+
+
+
 /*
 A magical string S consists of only '1' and '2' and obeys the following rules:
 The string S is magical because concatenating the number of contiguous occurrences 
@@ -726,6 +769,47 @@ class _0506_RelativeRanks
 {
 public:
     std::vector<std::string> findRelativeRanks(std::vector<int> &nums);
+};
+
+/*
+Given two non-empty binary trees s and t, check whether tree t has exactly 
+the same structure and node values with a subtree of s. A subtree of s is 
+a tree consists of a node in s and all of this node's descendants. The tree 
+s could also be considered as a subtree of itself.
+Example 1:
+Given tree s:
+
+     3
+    / \
+   4   5
+  / \
+ 1   2
+Given tree t:
+   4 
+  / \
+ 1   2
+Return true, because t has the same structure and node values with a subtree 
+of s.
+Example 2:
+Given tree s:
+
+     3
+    / \
+   4   5
+  / \
+ 1   2
+    /
+   0
+Given tree t:
+   4
+  / \
+ 1   2
+*/
+class _0572_SubtreeOfAnotherTree {
+public:
+    bool isSubtree(TreeNode<int>* s, TreeNode<int>* t);
+private:
+    bool isSame(TreeNode<int>* s, TreeNode<int>* t);
 };
 
 /*
@@ -913,6 +997,35 @@ public:
 };
 
 /*
+Given a 2D integer matrix M representing the gray scale of an image, 
+you need to design a smoother to make the gray scale of each cell 
+becomes the average gray scale (rounding down) of all the 8 surrounding 
+cells and itself. If a cell has less than 8 surrounding cells, then 
+use as many as you can.
+
+Example 1:
+Input:
+[[1,1,1],
+ [1,0,1],
+ [1,1,1]]
+Output:
+[[0, 0, 0],
+ [0, 0, 0],
+ [0, 0, 0]]
+Explanation:
+For the point (0,0), (0,2), (2,0), (2,2): floor(3/4) = floor(0.75) = 0
+For the point (0,1), (1,0), (1,2), (2,1): floor(5/6) = floor(0.83333333) = 0
+For the point (1,1): floor(8/9) = floor(0.88888889) = 0
+Note:
+The value in the given matrix is in the range of [0, 255].
+The length and width of the given matrix are in the range of [1, 150].
+*/
+class _0661_ImageSmoother {
+public:
+    std::vector<std::vector<int>> imageSmoother(std::vector<std::vector<int>>& M);
+};
+
+/*
 Given two integers n and k, you need to construct a list which contains 
 n different positive integers ranging from 1 to n and obeys the following 
 requirement:
@@ -1004,6 +1117,36 @@ The length of A and B will be between 1 and 10000.
 class _0686_RepeatedStringMatch {
 public:
     int repeatedStringMatch(std::string A, std::string B);
+};
+
+/*
+Given a binary tree, find the length of the longest path where each 
+node in the path has the same value. This path may or may not pass 
+through the root.
+The length of path between two nodes is represented by the number 
+of edges between them.
+
+              5
+             / \
+            4   5
+           / \   \
+          1   1   5
+Output: 2
+
+              1
+             / \
+            4   5
+           / \   \
+          4   4   5
+Output: 2
+Note: The given binary tree has not more than 10000 nodes. The 
+height of the tree is not more than 1000.
+*/
+class _0687_LongestUnivaluePath {
+public:
+    int longestUnivaluePath(TreeNode<int>* root);
+private:
+    int univaluePath(TreeNode<int>* root, int* ans);
 };
 
 /*
@@ -1195,6 +1338,34 @@ private:
 };
 
 /*
+A robot on an infinite grid starts at point (0, 0) and faces 
+north. The robot can receive one of three possible types of 
+commands:
+
+-2: turn left 90 degrees
+-1: turn right 90 degrees
+1 <= x <= 9: move forward x units
+Some of the grid squares are obstacles. 
+
+The i-th obstacle is at grid point (obstacles[i][0], obstacles[i][1])
+If the robot would try to move onto them, the robot stays on the 
+previous grid square instead (but still continues following the 
+rest of the route.)
+Return the square of the maximum Euclidean distance that the robot 
+will be from the origin.
+
+Input: commands = [4,-1,3], obstacles = []    :    Output: 25
+Explanation: robot will go to (3, 4)
+
+Input: commands = [4,-1,4,-2,4], obstacles = [[2,4]]    :   Output: 65
+Explanation: robot will be stuck at (1, 4) before turning left and going to (1, 8)
+*/
+class _0874_WalkingRobotSimulation {
+public:
+    int robotSim(std::vector<int>& commands, std::vector<std::vector<int>>& obstacles);
+};
+
+/*
 Alex and Lee play a game with piles of stones. There are an even number 
 of piles arranged in a row, and each pile has a positive integer number
 of stones piles[i]. The objective of the game is to end with the most 
@@ -1224,6 +1395,38 @@ public:
     bool stoneGame(std::vector<int>& piles);
     int AlexMax(std::vector<int>& piles, int start, int end);
     int LeeMax(std::vector<int>& piles, int start, int end);
+};
+
+
+/*
+In an election, the i-th vote was cast for persons[i] at time times[i].
+Now, we would like to implement the following query function: 
+TopVotedCandidate.q(int t) will return the number of the person that was 
+leading the election at time t.  
+Votes cast at time t will count towards our query.  In the case of a 
+tie, the most recent vote (among tied candidates) wins.
+
+Input: ["TopVotedCandidate","q","q","q","q","q","q"], 
+[[[0,1,1,0,0,1,0],[0,5,10,15,20,25,30]],[3],[12],[25],[15],[24],[8]]
+Output: [null,0,1,1,0,0,1]
+Explanation: 
+At time 3, the votes are [0], and 0 is leading.
+At time 12, the votes are [0,1,1], and 1 is leading.
+At time 25, the votes are [0,1,1,0,0,1], and 1 is leading (as ties go to the most recent vote.)
+This continues for 3 more queries at time 15, 24, and 8.
+ 
+1 <= persons.length = times.length <= 5000
+0 <= persons[i] <= persons.length
+times is a strictly increasing array with all elements in [0, 10^9].
+TopVotedCandidate.q is called at most 10000 times per test case.
+TopVotedCandidate.q(int t) is always called with t >= times[0].
+*/
+class _0911_OnlineElection {
+public:
+    _0911_OnlineElection(std::vector<int>& persons, std::vector<int>& times);
+    int q(int t);
+private:
+    std::map<int, int> Map;
 };
 
 /*
@@ -1513,6 +1716,31 @@ public:
 };
 
 /*
+Given a string S of lowercase letters, a duplicate removal consists of 
+choosing two adjacent and equal letters, and removing them.
+We repeatedly make duplicate removals on S until we no longer can.
+Return the final string after all such duplicate removals have been 
+made.  It is guaranteed the answer is unique.
+
+Input: "abbaca"
+Output: "ca"
+Explanation: 
+For example, in "abbaca" we could remove "bb" since the letters are 
+adjacent and equal, and this is the only possible move. The result 
+of this move is that the string is "aaca", of which only "aa" is possible,
+so the final string is "ca".
+
+1 <= S.length <= 20000
+S consists only of English lowercase letters.
+*/
+class _1047_RemoveAllAdjacentDuplicatesInString {
+public:
+    std::string removeDuplicates(std::string S);
+};
+
+
+
+/*
 Return the lexicographically smallest subsequence of text that contains all the distinct characters of text exactly once.
 
 Input: "cdadabcc"         :         Output: "adbc"
@@ -1565,6 +1793,42 @@ On the fourth turn, ans[0] += 4, and the final array is [5,2,3].
 class _1103_DistributeCandiesToPeople {
 public:
     std::vector<int> distributeCandies(int candies, int num_people);
+};
+
+/*
+We have a sequence of books: the i-th book has thickness books[i][0] 
+and height books[i][1]. 
+We want to place these books in order onto bookcase shelves that have 
+total width shelf_width.
+We choose some of the books to place on this shelf (such that the sum 
+of their thickness is <= shelf_width), then build another level of 
+shelf of the bookcase so that the total height of the bookcase has 
+increased by the maximum height of the books we just put down. We repeat 
+this process until there are no more books to place.
+
+Note again that at each step of the above process, the order of the 
+books we place is the same order as the given sequence of books. 
+For example, if we have an ordered list of 5 books, we might place the 
+first and second book onto the first shelf, the third book on the second 
+shelf, and the fourth and fifth book on the last shelf.
+
+Return the minimum possible height that the total bookshelf can be after 
+placing shelves in this manner.
+
+Input: books = [[1,1],[2,3],[2,3],[1,1],[1,1],[1,1],[1,2]], shelf_width = 4
+Output: 6
+Explanation:
+The sum of the heights of the 3 shelves are 1 + 3 + 2 = 6.
+Notice that book number 2 does not have to be on the first shelf.
+
+Constraints:
+1 <= books.length <= 1000
+1 <= books[i][0] <= shelf_width <= 1000
+1 <= books[i][1] <= 1000
+*/
+class _1105_FillingBookcaseShelves {
+public:
+    int minHeightShelves(std::vector<std::vector<int>>& books, int shelf_width);
 };
 
 

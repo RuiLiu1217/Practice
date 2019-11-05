@@ -1,4 +1,8 @@
 #include "headers.hpp"
+#include <cmath>
+#include <climits>
+#include <algorithm>
+
 // Copy from the solution.
 /*
 Let me try to give some explanations for this solution.
@@ -23,7 +27,7 @@ the prefix product is 0, we start over and compute prefix
 profuct from the current element instead. And this is exactly 
 what A[i] *= (A[i - 1]) or 1 does.
 */
-int LeetCode::_0152_MaximumProductSubarray::maxProduct(std::vector<int>& nums) {
+int LeetCode::_0152_MaximumProductSubarray::maxProduct(std::vector<int>& A) {
     int n = A.size();
     int res = A[0];
     int l = 0;
