@@ -641,7 +641,7 @@ For the purpose of this problem, assume that your function returns
 */
 class _0029_DivideTwoIntegers {
 public:
-
+    int divide(int dividend, int divisor);
 };
 
 /*
