@@ -27,5 +27,6 @@ int LeetCode::_0091_DecodeWays::numDecodings(std::string s) {
             }
         }
     }
+    return DP.back();
 }
 

@@ -22,6 +22,6 @@ std::vector<int> LeetCode::_0145_BinaryTreePostorderTraversal::postorderTraversa
                 p = nullptr; // need to set it as null, otherwise, there will be an error.
             }
         }
-        return res;
     }
+    return res;
 }

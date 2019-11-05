@@ -2,6 +2,9 @@
 #include <climits>
 #include <cmath>
 #include <algorithm>
+#include <algorithm>
+#include <cmath>
+#include <numeric>
 
 int LeetCode::_0111_MinimumDepthOfBinaryTree::minDepth(TreeNode<int>* root) {
     if(!root) {

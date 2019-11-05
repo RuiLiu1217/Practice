@@ -1,8 +1,8 @@
 #include "headers.hpp"
 #include <regex>
 std::vector<bool> LeetCode::_1023_CamelcaseMatching::camelMatch(std::vector<std::string>& queries, std::string pattern) {
-    std::vector<int> res1 = prefixMatchingBased(queries, pattern);
-    std::vector<int> res2 = regularExpressionBased(queries, pattern);
+    std::vector<bool> res1 = prefixMatchingBased(queries, pattern);
+    std::vector<bool> res2 = regularExpressionBased(queries, pattern);
     return res2;
 }
 

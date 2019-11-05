@@ -4,6 +4,7 @@
 #include <cmath>
 #include <climits>
 #include <algorithm>
+#include <numeric>
 
 // 由于需要在O(N)时间复杂度内完成，
 // 这道题要求求最长连续序列，并给定了O(n)复杂度限制，我们的思路是，使用一个集合HashSet存入所有的数字，

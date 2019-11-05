@@ -9,7 +9,8 @@ TreeNode<int>* LeetCode::_0108_ConvertSortedArrayToBinarySearchTree::bst(std::ve
         return nullptr;
     }
     if(start == end) {
-        TreeNode<int>*p = new TreeNode<int>(nums[start]);
+        TreeNode<int>* p = new TreeNode<int>(nums[start]);
+        return p;
     } else {
         int mid = start + (end - start) / 2;
         TreeNode<int>* root = new TreeNode<int>(nums[mid]);

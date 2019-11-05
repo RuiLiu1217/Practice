@@ -7,7 +7,7 @@ LeetCode::_0138_CopyListWithRandomPointer::Node* LeetCode::_0138_CopyListWithRan
     if(visit.find(head) != visit.end()) {
         return visit[head];
     }
-    LeetCode::_0138_CopyListWithRandomPointer::Node* res = new Node();
+    LeetCode::_0138_CopyListWithRandomPointer::Node* res = new LeetCode::_0138_CopyListWithRandomPointer::Node();
     res->val = head->val;
     res->next = copyRandomList(head->next);   // 跟 cloneGraph 一个意思只不过没那么多而已;
     res->random = copyRandomList(head->random);

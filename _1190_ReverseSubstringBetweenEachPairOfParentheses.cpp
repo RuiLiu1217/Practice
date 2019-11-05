@@ -1,7 +1,8 @@
 #include "headers.hpp"
 #include <stack>
+#include <algorithm>
 #include <queue>
-string reverseParentheses(string s) {
+std::string reverseParentheses(std::string s) {
     std::stack<char> cache;
     for(char c : s) {
         if(c == '(' || (c <= 'z' && c >= 'a')) {

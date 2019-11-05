@@ -2,6 +2,8 @@
 #include <iterator>
 #include <functional>
 #include <algorithm>
+#include <numeric>
+
 // 抄答案的，不过这道题还是挺无聊的
 // Since all strings are limited to 10 characters, we can do two linear scans to detect/count the occurance of the smallest character.
 // For longer strings, we would do a single scan, counting each of 26 chars.

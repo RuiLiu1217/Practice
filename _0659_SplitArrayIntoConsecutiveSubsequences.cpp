@@ -21,7 +21,7 @@ bool LeetCode::_0659_SplitArrayIntoConsecutiveSubsequences::isPossible(std::vect
         if(need.find(n) != need.end() && need[n] > 0) { // 这个数作为末尾
             --need[n];
             ++need[n+1]; //  n 放完之后 后面就需要接 n+1
-        } else if(freq.find(n+1) != freq.end() freq[n+1] > 0 && freq.find(n+2) != freq.end() && freq[n+2] > 0) { // 当前这个数n作为数组开头
+        } else if(freq.find(n+1) != freq.end() && freq[n+1] > 0 && freq.find(n+2) != freq.end() && freq[n+2] > 0) { // 当前这个数n作为数组开头
             --freq[n+1];
             --freq[n+2];
             ++need[n+3];

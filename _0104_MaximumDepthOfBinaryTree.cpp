@@ -1,6 +1,7 @@
 #include "headers.hpp"
-#include <algorithm>
+#include <numeric>
 #include <cmath>
+#include <algorithm>
 int LeetCode::_0104_MaximumDepthOfBinaryTree::maxDepth(TreeNode<int>* root) {
     if(root == nullptr) {
         return 0;

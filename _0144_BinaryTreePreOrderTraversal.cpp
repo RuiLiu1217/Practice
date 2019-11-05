@@ -15,4 +15,5 @@ std::vector<int> LeetCode::_0144_BinaryTreePreOrderTraversal::preorderTraversal(
             p = q->right;
         }
     }
+    return res;
 }

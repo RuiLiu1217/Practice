@@ -1,4 +1,6 @@
 #include "headers.hpp"
+#include <numeric>
+#include <algorithm>
 
 std::vector<std::vector<std::string>> LeetCode::_0655_PrintBinaryTree::printTree(TreeNode<int>* root) {
     int h = getHeight(root);
