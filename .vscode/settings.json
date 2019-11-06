@@ -48,7 +48,8 @@
         "random": "cpp",
         "set": "cpp",
         "string": "cpp",
-        "regex": "cpp"
+        "regex": "cpp",
+        "cstring": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }

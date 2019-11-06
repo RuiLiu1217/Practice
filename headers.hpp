@@ -14,8 +14,6 @@
 namespace LeetCode
 {
 
-
-
 /*
 You are a professional robber planning to rob houses along a street. Each house 
 has a certain amount of money stashed. All houses at this place are arranged in 
@@ -246,6 +244,261 @@ public:
 private:
     bool isValid(const std::string& s);
     void DFS(const std::string& s, int start, int l, int r, std::vector<std::string>& ans);
+};
+
+/*
+Given an integer array nums, find the sum of the elements 
+between indices i and j (i ≤ j), inclusive.
+
+Example:
+Given nums = [-2, 0, 3, -5, 2, -1]
+
+sumRange(0, 2) -> 1
+sumRange(2, 5) -> -1
+sumRange(0, 5) -> -3
+Note:
+You may assume that the array does not change. There are 
+many calls to sumRange function.
+*/
+class _0303_RangeSumQuery_Immutable {
+public:
+    _0303_RangeSumQuery_Immutable(std::vector<int>& nums);
+    int sumRange(int i, int j);
+private:
+    std::vector<int> mSum;
+};
+
+/*
+Given a 2D matrix matrix, find the sum of the elements inside 
+the rectangle defined by its upper left corner (row1, col1) 
+and lower right corner (row2, col2).
+
+Range Sum Query 2D
+The above rectangle (with the red border) is defined by (row1, 
+col1) = (2, 1) and (row2, col2) = (4, 3), which contains sum = 8.
+
+Example:
+Given matrix = [
+  [3, 0, 1, 4, 2],
+  [5, 6, 3, 2, 1],
+  [1, 2, 0, 1, 5],
+  [4, 1, 0, 1, 7],
+  [1, 0, 3, 0, 5]
+]
+
+sumRegion(2, 1, 4, 3) -> 8
+sumRegion(1, 1, 2, 2) -> 11
+sumRegion(1, 2, 2, 4) -> 12
+Note:
+You may assume that the matrix does not change.
+There are many calls to sumRegion function.
+You may assume that row1 ≤ row2 and col1 ≤ col2.
+*/
+class _0304_RangeSumQuery2D_Immutable {
+public:
+    _0304_RangeSumQuery2D_Immutable(std::vector<std::vector<int>>& matrix);    
+    int sumRegion(int row1, int col1, int row2, int col2);
+private:
+    std::vector<std::vector<int>> prefixSum;
+};
+
+/*
+Additive number is a string whose digits can form additive sequence.
+A valid additive sequence should contain at least three numbers. Except 
+for the first two numbers, each subsequent number in the sequence must 
+be the sum of the preceding two.
+
+Given a string containing only digits '0'-'9', write a function to 
+determine if it's an additive number.
+
+Note: Numbers in the additive sequence cannot have leading zeros, so 
+sequence 1, 2, 03 or 1, 02, 3 is invalid.
+
+Input: "112358"
+Output: true
+Explanation: The digits can form an additive sequence: 1, 1, 2, 3, 5, 8. 
+             1 + 1 = 2, 1 + 2 = 3, 2 + 3 = 5, 3 + 5 = 8
+
+Input: "199100199"
+Output: true
+Explanation: The additive sequence is: 1, 99, 100, 199. 
+    1 + 99 = 100, 99 + 100 = 199
+
+Constraints:
+num consists only of digits '0'-'9'.
+1 <= num.length <= 35
+Follow up:
+How would you handle overflow for very large input integers?
+*/
+class _0306_AdditiveNumber {
+public:
+    bool isAdditiveNumber(std::string num);
+    bool isAdditiveNumber(std::string& num, int start1, int start2, int start3);
+    std::string add(std::string a, std::string b);
+};
+
+/*
+Given an integer array nums, find the sum of the elements between indices i and j (i ≤ j), inclusive.
+The update(i, val) function modifies nums by updating the element at index i to val.
+
+Given nums = [1, 3, 5]
+
+sumRange(0, 2) -> 9
+update(1, 2)
+sumRange(0, 2) -> 8
+Note:
+
+The array is only modifiable by the update function.
+You may assume the number of calls to update and sumRange function is distributed evenly.
+*/
+class _0307_RangeSumQuery_Mutable {
+private:
+    std::vector<int> data;
+    int arrayLength;
+public:
+    _0307_RangeSumQuery_Mutable(std::vector<int>& nums);
+    void update(int i, int val);
+    int sumRange(int i, int j);
+};
+
+/*
+Write a program to find the nth super ugly number.
+Super ugly numbers are positive numbers whose all prime factors are in the given 
+prime list primes of size k.
+
+Input: n = 12, primes = [2,7,13,19]
+Output: 32 
+Explanation: [1,2,4,7,8,13,14,16,19,26,28,32] is the sequence of the first 12 
+    super ugly numbers given primes = [2,7,13,19] of size 4.
+Note:
+
+1 is a super ugly number for any given primes.
+The given numbers in primes are in ascending order.
+0 < k ≤ 100, 0 < n ≤ 106, 0 < primes[i] < 1000.
+The nth super ugly number is guaranteed to fit in a 32-bit signed integer.
+*/
+class _0313_SuperUglyNumber {
+public:
+    int nthSuperUglyNumber(int n, std::vector<int>& primes);
+private:
+    int _min(std::vector<int>& res, std::vector<int>& idx, std::vector<int>& primes);
+};
+
+/*
+Given a string which contains only lowercase letters, remove duplicate letters 
+so that every letter appears once and only once. You must make sure your result 
+is the smallest in lexicographical order among all possible results.
+
+Input: "bcabc"          :           Output: "abc"
+Input: "cbacdcbc"       :           Output: "acdb"
+
+// https://www.youtube.com/watch?v=SrlvMmfG8sA
+// 分别用两个数组来记录，第一个数组统计各个字母出现的次数
+// 第二个数组用于记录这个字符是否用过了
+*/
+class _0316_RemoveDuplicateLetters {
+public:   
+    std::string removeDuplicateLetters(std::string s);
+};
+
+/*
+Given a string array words, find the maximum value of 
+length(word[i]) * length(word[j]) where the two words do not share common letters. 
+You may assume that each word will contain only lower case letters. 
+If no such two words exist, return 0.
+
+Input: ["abcw","baz","foo","bar","xtfn","abcdef"]
+Output: 16 
+Explanation: The two words can be "abcw", "xtfn".
+Example 2:
+
+Input: ["a","ab","abc","d","cd","bcd","abcd"]
+Output: 4 
+Explanation: The two words can be "ab", "cd".
+Example 3:
+
+Input: ["a","aa","aaa","aaaa"]
+Output: 0 
+Explanation: No such pair of words.
+*/
+class _0318_MaximumProductOfWordLengths {
+public:
+    int maxProduct(std::vector<std::string>& words);
+};
+
+/*
+There are n bulbs that are initially off. You first turn on all the bulbs. Then, you 
+turn off every second bulb. On the third round, you toggle every third bulb (turning 
+on if it's off or turning off if it's on). For the i-th round, you toggle every i bulb. 
+For the n-th round, you only toggle the last bulb. Find how many bulbs are on after 
+n rounds.
+
+Example:
+
+Input: 3
+Output: 1 
+Explanation: 
+At first, the three bulbs are [off, off, off].
+After first round, the three bulbs are [on, on, on].
+After second round, the three bulbs are [on, off, on].
+After third round, the three bulbs are [on, off, off]. 
+
+So you should return 1, because there is only one bulb is on.
+*/
+class _0319_BulbSwitcher {
+public:
+    int bulbSwitch(int n);
+};
+
+/*
+You are given coins of different denominations and a total amount of 
+money amount. Write a function to compute the fewest number of coins 
+that you need to make up that amount. If that amount of money cannot 
+be made up by any combination of the coins, return -1.
+
+Example 1:
+
+Input: coins = [1, 2, 5], amount = 11
+Output: 3 
+Explanation: 11 = 5 + 5 + 1
+Example 2:
+
+Input: coins = [2], amount = 3
+Output: -1
+*/
+class _0322_CoinChange {
+public:
+    int coinChange(std::vector<int>& coins, int amount);
+private:
+    int coinChange_Help(const std::vector<int>& coins, int amout);
+    std::vector<int> DP;
+};
+
+/*
+Given an integer, write a function to determine if it is a power of three.
+
+Example 1:
+
+Input: 27
+Output: true
+Example 2:
+
+Input: 0
+Output: false
+Example 3:
+
+Input: 9
+Output: true
+Example 4:
+
+Input: 45
+Output: false
+Follow up:
+Could you do it without using any loop / recursion?
+*/
+class _0326_PowerOfThree{
+public:
+    bool isPowerOfThree(int n);
 };
 
 /*
