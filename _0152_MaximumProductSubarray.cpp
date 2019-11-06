@@ -1,4 +1,8 @@
 #include "headers.hpp"
+#include <cmath>
+#include <climits>
+#include <algorithm>
+
 // Copy from the solution.
 /*
 Let me try to give some explanations for this solution.

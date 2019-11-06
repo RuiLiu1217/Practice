@@ -2,6 +2,7 @@
 #include <string>
 #include <stack>
 #include <queue>
+#include <map>
 #include <unordered_map>
 #include <unordered_set>
 #include "Tree.hpp"
@@ -12,8 +13,6 @@
 
 namespace LeetCode
 {
-
-
 
 /*
 You are a professional robber planning to rob houses along a street. Each house 
@@ -244,7 +243,262 @@ public:
     std::vector<std::string> removeInvalidParentheses(const std::string& parentheses);
 private:
     bool isValid(const std::string& s);
-    void DFS(const std::string& s, int , int l, int r, std::vector<std::string>& ans);
+    void DFS(const std::string& s, int start, int l, int r, std::vector<std::string>& ans);
+};
+
+/*
+Given an integer array nums, find the sum of the elements 
+between indices i and j (i ≤ j), inclusive.
+
+Example:
+Given nums = [-2, 0, 3, -5, 2, -1]
+
+sumRange(0, 2) -> 1
+sumRange(2, 5) -> -1
+sumRange(0, 5) -> -3
+Note:
+You may assume that the array does not change. There are 
+many calls to sumRange function.
+*/
+class _0303_RangeSumQuery_Immutable {
+public:
+    _0303_RangeSumQuery_Immutable(std::vector<int>& nums);
+    int sumRange(int i, int j);
+private:
+    std::vector<int> mSum;
+};
+
+/*
+Given a 2D matrix matrix, find the sum of the elements inside 
+the rectangle defined by its upper left corner (row1, col1) 
+and lower right corner (row2, col2).
+
+Range Sum Query 2D
+The above rectangle (with the red border) is defined by (row1, 
+col1) = (2, 1) and (row2, col2) = (4, 3), which contains sum = 8.
+
+Example:
+Given matrix = [
+  [3, 0, 1, 4, 2],
+  [5, 6, 3, 2, 1],
+  [1, 2, 0, 1, 5],
+  [4, 1, 0, 1, 7],
+  [1, 0, 3, 0, 5]
+]
+
+sumRegion(2, 1, 4, 3) -> 8
+sumRegion(1, 1, 2, 2) -> 11
+sumRegion(1, 2, 2, 4) -> 12
+Note:
+You may assume that the matrix does not change.
+There are many calls to sumRegion function.
+You may assume that row1 ≤ row2 and col1 ≤ col2.
+*/
+class _0304_RangeSumQuery2D_Immutable {
+public:
+    _0304_RangeSumQuery2D_Immutable(std::vector<std::vector<int>>& matrix);    
+    int sumRegion(int row1, int col1, int row2, int col2);
+private:
+    std::vector<std::vector<int>> prefixSum;
+};
+
+/*
+Additive number is a string whose digits can form additive sequence.
+A valid additive sequence should contain at least three numbers. Except 
+for the first two numbers, each subsequent number in the sequence must 
+be the sum of the preceding two.
+
+Given a string containing only digits '0'-'9', write a function to 
+determine if it's an additive number.
+
+Note: Numbers in the additive sequence cannot have leading zeros, so 
+sequence 1, 2, 03 or 1, 02, 3 is invalid.
+
+Input: "112358"
+Output: true
+Explanation: The digits can form an additive sequence: 1, 1, 2, 3, 5, 8. 
+             1 + 1 = 2, 1 + 2 = 3, 2 + 3 = 5, 3 + 5 = 8
+
+Input: "199100199"
+Output: true
+Explanation: The additive sequence is: 1, 99, 100, 199. 
+    1 + 99 = 100, 99 + 100 = 199
+
+Constraints:
+num consists only of digits '0'-'9'.
+1 <= num.length <= 35
+Follow up:
+How would you handle overflow for very large input integers?
+*/
+class _0306_AdditiveNumber {
+public:
+    bool isAdditiveNumber(std::string num);
+    bool isAdditiveNumber(std::string& num, int start1, int start2, int start3);
+    std::string add(std::string a, std::string b);
+};
+
+/*
+Given an integer array nums, find the sum of the elements between indices i and j (i ≤ j), inclusive.
+The update(i, val) function modifies nums by updating the element at index i to val.
+
+Given nums = [1, 3, 5]
+
+sumRange(0, 2) -> 9
+update(1, 2)
+sumRange(0, 2) -> 8
+Note:
+
+The array is only modifiable by the update function.
+You may assume the number of calls to update and sumRange function is distributed evenly.
+*/
+class _0307_RangeSumQuery_Mutable {
+private:
+    std::vector<int> data;
+    int arrayLength;
+public:
+    _0307_RangeSumQuery_Mutable(std::vector<int>& nums);
+    void update(int i, int val);
+    int sumRange(int i, int j);
+};
+
+/*
+Write a program to find the nth super ugly number.
+Super ugly numbers are positive numbers whose all prime factors are in the given 
+prime list primes of size k.
+
+Input: n = 12, primes = [2,7,13,19]
+Output: 32 
+Explanation: [1,2,4,7,8,13,14,16,19,26,28,32] is the sequence of the first 12 
+    super ugly numbers given primes = [2,7,13,19] of size 4.
+Note:
+
+1 is a super ugly number for any given primes.
+The given numbers in primes are in ascending order.
+0 < k ≤ 100, 0 < n ≤ 106, 0 < primes[i] < 1000.
+The nth super ugly number is guaranteed to fit in a 32-bit signed integer.
+*/
+class _0313_SuperUglyNumber {
+public:
+    int nthSuperUglyNumber(int n, std::vector<int>& primes);
+private:
+    int _min(std::vector<int>& res, std::vector<int>& idx, std::vector<int>& primes);
+};
+
+/*
+Given a string which contains only lowercase letters, remove duplicate letters 
+so that every letter appears once and only once. You must make sure your result 
+is the smallest in lexicographical order among all possible results.
+
+Input: "bcabc"          :           Output: "abc"
+Input: "cbacdcbc"       :           Output: "acdb"
+
+// https://www.youtube.com/watch?v=SrlvMmfG8sA
+// 分别用两个数组来记录，第一个数组统计各个字母出现的次数
+// 第二个数组用于记录这个字符是否用过了
+*/
+class _0316_RemoveDuplicateLetters {
+public:   
+    std::string removeDuplicateLetters(std::string s);
+};
+
+/*
+Given a string array words, find the maximum value of 
+length(word[i]) * length(word[j]) where the two words do not share common letters. 
+You may assume that each word will contain only lower case letters. 
+If no such two words exist, return 0.
+
+Input: ["abcw","baz","foo","bar","xtfn","abcdef"]
+Output: 16 
+Explanation: The two words can be "abcw", "xtfn".
+Example 2:
+
+Input: ["a","ab","abc","d","cd","bcd","abcd"]
+Output: 4 
+Explanation: The two words can be "ab", "cd".
+Example 3:
+
+Input: ["a","aa","aaa","aaaa"]
+Output: 0 
+Explanation: No such pair of words.
+*/
+class _0318_MaximumProductOfWordLengths {
+public:
+    int maxProduct(std::vector<std::string>& words);
+};
+
+/*
+There are n bulbs that are initially off. You first turn on all the bulbs. Then, you 
+turn off every second bulb. On the third round, you toggle every third bulb (turning 
+on if it's off or turning off if it's on). For the i-th round, you toggle every i bulb. 
+For the n-th round, you only toggle the last bulb. Find how many bulbs are on after 
+n rounds.
+
+Example:
+
+Input: 3
+Output: 1 
+Explanation: 
+At first, the three bulbs are [off, off, off].
+After first round, the three bulbs are [on, on, on].
+After second round, the three bulbs are [on, off, on].
+After third round, the three bulbs are [on, off, off]. 
+
+So you should return 1, because there is only one bulb is on.
+*/
+class _0319_BulbSwitcher {
+public:
+    int bulbSwitch(int n);
+};
+
+/*
+You are given coins of different denominations and a total amount of 
+money amount. Write a function to compute the fewest number of coins 
+that you need to make up that amount. If that amount of money cannot 
+be made up by any combination of the coins, return -1.
+
+Example 1:
+
+Input: coins = [1, 2, 5], amount = 11
+Output: 3 
+Explanation: 11 = 5 + 5 + 1
+Example 2:
+
+Input: coins = [2], amount = 3
+Output: -1
+*/
+class _0322_CoinChange {
+public:
+    int coinChange(std::vector<int>& coins, int amount);
+private:
+    int coinChange_Help(const std::vector<int>& coins, int amout);
+    std::vector<int> DP;
+};
+
+/*
+Given an integer, write a function to determine if it is a power of three.
+
+Example 1:
+
+Input: 27
+Output: true
+Example 2:
+
+Input: 0
+Output: false
+Example 3:
+
+Input: 9
+Output: true
+Example 4:
+
+Input: 45
+Output: false
+Follow up:
+Could you do it without using any loop / recursion?
+*/
+class _0326_PowerOfThree{
+public:
+    bool isPowerOfThree(int n);
 };
 
 /*
@@ -681,6 +935,48 @@ class _0452_MinimumNumberOfArrowsToBusrtBalloons {
         int findMinArrowShots(std::vector<std::vector<int>>& points);
 };
 
+
+/*
+In the "100 game," two players take turns adding, to a running total, any 
+integer from 1..10. The player who first causes the running total to reach 
+or exceed 100 wins.
+What if we change the game so that players cannot re-use integers?
+For example, two players might take turns drawing from a common pool of 
+numbers of 1..15 without replacement until they reach a total >= 100.
+
+Given an integer maxChoosableInteger and another integer desiredTotal, 
+determine if the first player to move can force a win, assuming both 
+players play optimally.
+
+You can always assume that maxChoosableInteger will not be larger than 
+20 and desiredTotal will not be larger than 300.
+
+Input:
+maxChoosableInteger = 10
+desiredTotal = 11
+
+Output:
+false
+
+Explanation:
+No matter which integer the first player choose, the first player will lose.
+The first player can choose an integer from 1 up to 10.
+If the first player choose 1, the second player can only choose integers 
+from 2 up to 10.
+The second player will win by choosing 10 and get a total = 11, which is 
+>= desiredTotal. Same with other integers chosen by the first player, the 
+second player will always win.
+*/
+class _0464_CanIWin {
+public:
+    bool canIWin(int maxChoosableInteger, int desiredTotal);
+private:
+    std::vector<char> m_; //
+    bool canIWin(int M, int T, int state);
+};
+
+
+
 /*
 A magical string S consists of only '1' and '2' and obeys the following rules:
 The string S is magical because concatenating the number of contiguous occurrences 
@@ -726,6 +1022,47 @@ class _0506_RelativeRanks
 {
 public:
     std::vector<std::string> findRelativeRanks(std::vector<int> &nums);
+};
+
+/*
+Given two non-empty binary trees s and t, check whether tree t has exactly 
+the same structure and node values with a subtree of s. A subtree of s is 
+a tree consists of a node in s and all of this node's descendants. The tree 
+s could also be considered as a subtree of itself.
+Example 1:
+Given tree s:
+
+     3
+    / \
+   4   5
+  / \
+ 1   2
+Given tree t:
+   4 
+  / \
+ 1   2
+Return true, because t has the same structure and node values with a subtree 
+of s.
+Example 2:
+Given tree s:
+
+     3
+    / \
+   4   5
+  / \
+ 1   2
+    /
+   0
+Given tree t:
+   4
+  / \
+ 1   2
+*/
+class _0572_SubtreeOfAnotherTree {
+public:
+    bool isSubtree(TreeNode<int>* s, TreeNode<int>* t);
+private:
+    bool isSame(TreeNode<int>* s, TreeNode<int>* t);
 };
 
 /*
@@ -913,6 +1250,35 @@ public:
 };
 
 /*
+Given a 2D integer matrix M representing the gray scale of an image, 
+you need to design a smoother to make the gray scale of each cell 
+becomes the average gray scale (rounding down) of all the 8 surrounding 
+cells and itself. If a cell has less than 8 surrounding cells, then 
+use as many as you can.
+
+Example 1:
+Input:
+[[1,1,1],
+ [1,0,1],
+ [1,1,1]]
+Output:
+[[0, 0, 0],
+ [0, 0, 0],
+ [0, 0, 0]]
+Explanation:
+For the point (0,0), (0,2), (2,0), (2,2): floor(3/4) = floor(0.75) = 0
+For the point (0,1), (1,0), (1,2), (2,1): floor(5/6) = floor(0.83333333) = 0
+For the point (1,1): floor(8/9) = floor(0.88888889) = 0
+Note:
+The value in the given matrix is in the range of [0, 255].
+The length and width of the given matrix are in the range of [1, 150].
+*/
+class _0661_ImageSmoother {
+public:
+    std::vector<std::vector<int>> imageSmoother(std::vector<std::vector<int>>& M);
+};
+
+/*
 Given two integers n and k, you need to construct a list which contains 
 n different positive integers ranging from 1 to n and obeys the following 
 requirement:
@@ -1004,6 +1370,36 @@ The length of A and B will be between 1 and 10000.
 class _0686_RepeatedStringMatch {
 public:
     int repeatedStringMatch(std::string A, std::string B);
+};
+
+/*
+Given a binary tree, find the length of the longest path where each 
+node in the path has the same value. This path may or may not pass 
+through the root.
+The length of path between two nodes is represented by the number 
+of edges between them.
+
+              5
+             / \
+            4   5
+           / \   \
+          1   1   5
+Output: 2
+
+              1
+             / \
+            4   5
+           / \   \
+          4   4   5
+Output: 2
+Note: The given binary tree has not more than 10000 nodes. The 
+height of the tree is not more than 1000.
+*/
+class _0687_LongestUnivaluePath {
+public:
+    int longestUnivaluePath(TreeNode<int>* root);
+private:
+    int univaluePath(TreeNode<int>* root, int* ans);
 };
 
 /*
@@ -1196,6 +1592,34 @@ private:
 };
 
 /*
+A robot on an infinite grid starts at point (0, 0) and faces 
+north. The robot can receive one of three possible types of 
+commands:
+
+-2: turn left 90 degrees
+-1: turn right 90 degrees
+1 <= x <= 9: move forward x units
+Some of the grid squares are obstacles. 
+
+The i-th obstacle is at grid point (obstacles[i][0], obstacles[i][1])
+If the robot would try to move onto them, the robot stays on the 
+previous grid square instead (but still continues following the 
+rest of the route.)
+Return the square of the maximum Euclidean distance that the robot 
+will be from the origin.
+
+Input: commands = [4,-1,3], obstacles = []    :    Output: 25
+Explanation: robot will go to (3, 4)
+
+Input: commands = [4,-1,4,-2,4], obstacles = [[2,4]]    :   Output: 65
+Explanation: robot will be stuck at (1, 4) before turning left and going to (1, 8)
+*/
+class _0874_WalkingRobotSimulation {
+public:
+    int robotSim(std::vector<int>& commands, std::vector<std::vector<int>>& obstacles);
+};
+
+/*
 Alex and Lee play a game with piles of stones. There are an even number 
 of piles arranged in a row, and each pile has a positive integer number
 of stones piles[i]. The objective of the game is to end with the most 
@@ -1225,6 +1649,38 @@ public:
     bool stoneGame(std::vector<int>& piles);
     int AlexMax(std::vector<int>& piles, int start, int end);
     int LeeMax(std::vector<int>& piles, int start, int end);
+};
+
+
+/*
+In an election, the i-th vote was cast for persons[i] at time times[i].
+Now, we would like to implement the following query function: 
+TopVotedCandidate.q(int t) will return the number of the person that was 
+leading the election at time t.  
+Votes cast at time t will count towards our query.  In the case of a 
+tie, the most recent vote (among tied candidates) wins.
+
+Input: ["TopVotedCandidate","q","q","q","q","q","q"], 
+[[[0,1,1,0,0,1,0],[0,5,10,15,20,25,30]],[3],[12],[25],[15],[24],[8]]
+Output: [null,0,1,1,0,0,1]
+Explanation: 
+At time 3, the votes are [0], and 0 is leading.
+At time 12, the votes are [0,1,1], and 1 is leading.
+At time 25, the votes are [0,1,1,0,0,1], and 1 is leading (as ties go to the most recent vote.)
+This continues for 3 more queries at time 15, 24, and 8.
+ 
+1 <= persons.length = times.length <= 5000
+0 <= persons[i] <= persons.length
+times is a strictly increasing array with all elements in [0, 10^9].
+TopVotedCandidate.q is called at most 10000 times per test case.
+TopVotedCandidate.q(int t) is always called with t >= times[0].
+*/
+class _0911_OnlineElection {
+public:
+    _0911_OnlineElection(std::vector<int>& persons, std::vector<int>& times);
+    int q(int t);
+private:
+    std::map<int, int> Map;
 };
 
 /*
@@ -1514,6 +1970,31 @@ public:
 };
 
 /*
+Given a string S of lowercase letters, a duplicate removal consists of 
+choosing two adjacent and equal letters, and removing them.
+We repeatedly make duplicate removals on S until we no longer can.
+Return the final string after all such duplicate removals have been 
+made.  It is guaranteed the answer is unique.
+
+Input: "abbaca"
+Output: "ca"
+Explanation: 
+For example, in "abbaca" we could remove "bb" since the letters are 
+adjacent and equal, and this is the only possible move. The result 
+of this move is that the string is "aaca", of which only "aa" is possible,
+so the final string is "ca".
+
+1 <= S.length <= 20000
+S consists only of English lowercase letters.
+*/
+class _1047_RemoveAllAdjacentDuplicatesInString {
+public:
+    std::string removeDuplicates(std::string S);
+};
+
+
+
+/*
 Return the lexicographically smallest subsequence of text that contains all the distinct characters of text exactly once.
 
 Input: "cdadabcc"         :         Output: "adbc"
@@ -1566,6 +2047,42 @@ On the fourth turn, ans[0] += 4, and the final array is [5,2,3].
 class _1103_DistributeCandiesToPeople {
 public:
     std::vector<int> distributeCandies(int candies, int num_people);
+};
+
+/*
+We have a sequence of books: the i-th book has thickness books[i][0] 
+and height books[i][1]. 
+We want to place these books in order onto bookcase shelves that have 
+total width shelf_width.
+We choose some of the books to place on this shelf (such that the sum 
+of their thickness is <= shelf_width), then build another level of 
+shelf of the bookcase so that the total height of the bookcase has 
+increased by the maximum height of the books we just put down. We repeat 
+this process until there are no more books to place.
+
+Note again that at each step of the above process, the order of the 
+books we place is the same order as the given sequence of books. 
+For example, if we have an ordered list of 5 books, we might place the 
+first and second book onto the first shelf, the third book on the second 
+shelf, and the fourth and fifth book on the last shelf.
+
+Return the minimum possible height that the total bookshelf can be after 
+placing shelves in this manner.
+
+Input: books = [[1,1],[2,3],[2,3],[1,1],[1,1],[1,1],[1,2]], shelf_width = 4
+Output: 6
+Explanation:
+The sum of the heights of the 3 shelves are 1 + 3 + 2 = 6.
+Notice that book number 2 does not have to be on the first shelf.
+
+Constraints:
+1 <= books.length <= 1000
+1 <= books[i][0] <= shelf_width <= 1000
+1 <= books[i][1] <= 1000
+*/
+class _1105_FillingBookcaseShelves {
+public:
+    int minHeightShelves(std::vector<std::vector<int>>& books, int shelf_width);
 };
 
 
