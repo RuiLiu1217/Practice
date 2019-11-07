@@ -451,6 +451,50 @@ public:
 };
 
 /*
+Given two arrays of length m and n with digits 0-9 representing two 
+numbers. Create the maximum number of length k <= m + n from digits
+of the two. The relative order of the digits from the same array 
+must be preserved. Return an array of the k digits.
+
+Note: You should try to optimize your time and space complexity.
+
+Example 1:
+
+Input:
+nums1 = [3, 4, 6, 5]
+nums2 = [9, 1, 2, 5, 8, 3]
+k = 5
+Output:
+[9, 8, 6, 5, 3]
+Example 2:
+
+Input:
+nums1 = [6, 7]
+nums2 = [6, 0, 4]
+k = 5
+Output:
+[6, 7, 6, 0, 4]
+Example 3:
+
+Input:
+nums1 = [3, 9]
+nums2 = [8, 9]
+k = 3
+Output:
+[9, 8, 9]
+// 经典题，必会的，DP + Greedy
+//将问题拆分成两步，第一步两个数组合并，如果都用上，如何得到最大，第二步，在一个数组中拿k个数，怎么得到最大。
+// 第三步，分别在两个数组中拿k1，k-k1 个元素，各自最大，然后合并出最大于当前的，直到遍历所有可能的k1
+*/
+class _0321_CreateMaximumNumber {
+public:
+    std::vector<int> maxNumber(std::vector<int>& nums1, std::vector<int>& nums2, int k);
+private:
+    std::vector<int> maxNumber(const std::vector<int>& nums1, std::vector<int>& nums2);
+    std::vector<int> maxNumber(const std::vector<int>& nums, int k);
+};
+
+/*
 You are given coins of different denominations and a total amount of 
 money amount. Write a function to compute the fewest number of coins 
 that you need to make up that amount. If that amount of money cannot 
