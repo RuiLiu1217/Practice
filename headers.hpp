@@ -490,7 +490,7 @@ class _0321_CreateMaximumNumber {
 public:
     std::vector<int> maxNumber(std::vector<int>& nums1, std::vector<int>& nums2, int k);
 private:
-    std::vector<int> maxNumber(const std::vector<int>& nums1, std::vector<int>& nums2);
+    std::vector<int> maxNumber(const std::vector<int>& nums1,const std::vector<int>& nums2);
     std::vector<int> maxNumber(const std::vector<int>& nums, int k);
 };
 

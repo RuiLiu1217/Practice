@@ -18,7 +18,7 @@ std::vector<int> LeetCode::_0321_CreateMaximumNumber::maxNumber(std::vector<int>
     return res;
 }
 
-std::vector<int> LeetCode::_0321_CreateMaximumNumber::maxNumber(const std::vector<int>& nums1, std::vector<int>& nums2) {
+std::vector<int> LeetCode::_0321_CreateMaximumNumber::maxNumber(const std::vector<int>& nums1,const std::vector<int>& nums2) {
     std::vector<int> ans;
     auto start1 = nums1.cbegin();
     auto start2 = nums2.cbegin();
