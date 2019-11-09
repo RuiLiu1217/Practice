@@ -36,7 +36,7 @@ bool LeetCode::_0301_RemoveInvalidParentheses::isValid(const std::string& s) {
 
 
 void LeetCode::_0301_RemoveInvalidParentheses::DFS(const std::string& s, int start, int l, int r, std::vector<std::string>& ans) {
-    if(l == 0 && r == 0) {
+    if(l == 0 && r == 0) { // 当多余的左右括号都删除干净了，判断这个结果是不是合法的括号
         if(isValid(s)) {
             ans.push_back(s);
             return;
@@ -44,7 +44,7 @@ void LeetCode::_0301_RemoveInvalidParentheses::DFS(const std::string& s, int sta
     }
 
     for(int i = start; i < s.length(); ++i) {
-        if(i != start && s[i] == s[i-1]) continue; // remove duplicate for example: "))))))"
+        if(i != start && s[i] == s[i-1]) continue; // remove duplicate for example: "))))))" /如果有多个相同的左，或者右括号，那么删除任何一个都是一样的效果，为了避免重复计算，每次都删除第一个。
 
         if(s[i] == '(' || s[i] == ')') {
             std::string curr = s;

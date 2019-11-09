@@ -787,6 +787,46 @@ public:
 };
 
 
+/*
+Design and implement a data structure for Least Recently Used (LRU) cache. 
+It should support the following operations: get and put.
+
+get(key) - Get the value (will always be positive) of the key if the key 
+exists in the cache, otherwise return -1. 
+put(key, value) - Set or insert the value if the key is not already present. 
+When the cache reached its capacity, it should invalidate the least recently 
+used item before inserting a new item.
+
+The cache is initialized with a positive capacity.
+
+Follow up:
+Could you do both operations in O(1) time complexity?
+
+Example:
+
+LRUCache cache = new LRUCache(2);
+
+cache.put(1, 1);
+cache.put(2, 2);
+cache.get(1);       // returns 1
+cache.put(3, 3);    // evicts key 2
+cache.get(2);       // returns -1 (not found)
+cache.put(4, 4);    // evicts key 1
+cache.get(1);       // returns -1 (not found)
+cache.get(3);       // returns 3
+cache.get(4);       // returns 4
+*/
+class _0146_LRUCache {
+private:
+    int mCapacity;
+    std::list<std::pair<int, int>> mCache;
+    std::unordered_map<int, std::list<int, int>::iterator> mMap;
+public:
+    _0146_LRUCache(int capacity);
+    int get(int key);
+    void put(int key, int value);
+};
+
 
 // Sort a linked list in O(NlogN) time using constant space complexity.
 class _0148_SortList
@@ -862,6 +902,26 @@ class _0152_MaximumProductSubarray {
 public:
     int maxProduct(std::vector<int>& nums);
 };
+
+
+/*
+Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
+(i.e.,  [0,1,2,4,5,6,7] might become  [4,5,6,7,0,1,2]).
+
+Find the minimum element. You may assume no duplicate exists in the array.
+
+Input: [3,4,5,1,2] 
+Output: 1
+
+Input: [4,5,6,7,0,1,2]
+Output: 0
+*/
+class _0153_FindMinimumInRotatedSortedArray {
+public:
+    int findMin(std::vector<int>& nums);
+};
+
+
 
 /*
     Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
@@ -1107,6 +1167,34 @@ public:
 private:
     std::stack<TreeNode<int>*> st;
 };
+
+
+/*
+Given an array, rotate the array to the right by k steps, where k is non-negative.
+
+Input: [1,2,3,4,5,6,7] and k = 3
+Output: [5,6,7,1,2,3,4]
+Explanation:
+rotate 1 steps to the right: [7,1,2,3,4,5,6]
+rotate 2 steps to the right: [6,7,1,2,3,4,5]
+rotate 3 steps to the right: [5,6,7,1,2,3,4]
+
+Input: [-1,-100,3,99] and k = 2
+Output: [3,99,-1,-100]
+Explanation: 
+rotate 1 steps to the right: [99,-1,-100,3]
+rotate 2 steps to the right: [3,99,-1,-100]
+Note:
+
+Try to come up as many solutions as you can, there are at least 3 different ways to solve this problem.
+Could you do it in-place with O(1) extra space?
+*/
+class _0189_RotateArray {
+public:
+    void rotate(std::vector<int>& nums, int k);
+};
+
+
 
 class _0190_ReverseBits
 {

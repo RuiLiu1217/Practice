@@ -546,6 +546,68 @@ public:
 };
 
 /*
+328. Odd Even Linked List
+
+Given a singly linked list, group all odd nodes together followed by 
+the even nodes. Please note here we are talking about the node number 
+and not the value in the nodes.
+
+You should try to do it in place. The program should run in O(1) space 
+complexity and O(nodes) time complexity.
+
+Input: 1->2->3->4->5->NULL
+Output: 1->3->5->2->4->NULL
+Example 2:
+
+Input: 2->1->3->5->6->4->7->NULL
+Output: 2->3->6->7->1->5->4->NULL
+Note:
+
+The relative order inside both the even and odd groups should remain as it was in the input.
+The first node is considered odd, the second node even and so on ...
+*/
+class _0328_OddEvenLinkedList {
+public:
+    ListNode<int>* oddEvenList(ListNode<int>* head);
+};
+
+/*
+Given an integer matrix, find the length of the longest increasing path.
+From each cell, you can either move to four directions: left, right, up or down. You may NOT 
+move diagonally or move outside of the boundary (i.e. wrap-around is not allowed).
+
+Example 1:
+
+Input: nums = 
+[
+  [9,9,4],
+  [6,6,8],
+  [2,1,1]
+] 
+Output: 4 
+Explanation: The longest increasing path is [1, 2, 6, 9].
+Example 2:
+
+Input: nums = 
+[
+  [3,4,5],
+  [3,2,6],
+  [2,2,1]
+] 
+Output: 4 
+Explanation: The longest increasing path is [3, 4, 5, 6]. Moving diagonally is not allowed.
+*/
+class _0329_LongestIncreasingPathInAMatrix {
+private:
+    std::vector<std::vector<int>> DP;
+    int mRow;
+    int mCol;
+    int DFS(const std::vector<std::vector<int>>& matrix, int I, int J);
+public:
+    int longestIncreasingPath(std::vector<std::vector<int>>& matrix);
+};
+
+/*
 The thief has found himself a new place for his thievery again. There is only one 
 entrance to this area, called the "root." Besides the root, each house has one and 
 only one parent house. After a tour, the smart thief realized that "all houses in 
@@ -584,6 +646,26 @@ public:
     int rob(TreeNode<int>* root);
 private:
     int robHelper(TreeNode<int>* root);
+};
+
+/*
+Given a non negative integer number num. For every numbers i in the range 
+0 ≤ i ≤ num calculate the number of 1's in their binary representation and 
+return them as an array.
+
+Input: 2  :  Output: [0,1,1]
+
+Input: 5  :  Output: [0,1,1,2,1,2]
+
+It is very easy to come up with a solution with run time O(n*sizeof(integer)). 
+But can you do it in linear time O(n) /possibly in a single pass?
+Space complexity should be O(n).
+Can you do it like a boss? Do it without using any builtin function like 
+__builtin_popcount in c++ or in any other language.
+*/
+class _0338_CountingBits {
+public:
+    std::vector<int> countBits(int num);
 };
 
 /*
@@ -670,6 +752,64 @@ Note: You may assume that n is not less than 2 and not larger than 58.
 class _0343_IntegerBreak {
 public:
     int intergerBreak(int n);
+};
+
+/*
+Write a function that reverses a string. The input string is given as 
+an array of characters char[].
+Do not allocate extra space for another array, you must do this by 
+modifying the input array in-place with O(1) extra memory.
+
+You may assume all the characters consist of printable ascii characters.
+
+Input: ["h","e","l","l","o"]
+Output: ["o","l","l","e","h"]
+
+Input: ["H","a","n","n","a","h"]
+Output: ["h","a","n","n","a","H"]
+*/
+class _0344_ReverseString {
+public:
+    void reverseString(std::vector<char>& s);
+};
+
+
+/*
+Write a function that takes a string as input and reverse only the vowels of a string.
+
+Input: "hello"
+Output: "holle"
+
+Input: "leetcode"
+Output: "leotcede"
+Note:
+The vowels does not include the letter "y".
+*/
+class _0345_ReverseVowelsOfAString {
+public:
+    std::string reverseVowels(std::string s);
+};
+
+
+/*
+Given a non-empty array of integers, return the k most frequent elements.
+
+Example 1:
+
+Input: nums = [1,1,1,2,2,3], k = 2
+Output: [1,2]
+Example 2:
+
+Input: nums = [1], k = 1
+Output: [1]
+Note:
+
+You may assume k is always valid, 1 ≤ k ≤ number of unique elements.
+Your algorithm's time complexity must be better than O(n log n), where n is the array's size.
+*/
+class _0347_TopKFrequentElements {
+public:
+    std::vector<int> topKFrequent(std::vector<int>& nums, int k);
 };
 
 /*
@@ -1693,6 +1833,55 @@ public:
     bool stoneGame(std::vector<int>& piles);
     int AlexMax(std::vector<int>& piles, int start, int end);
     int LeeMax(std::vector<int>& piles, int start, int end);
+};
+
+/*
+Implement FreqStack, a class which simulates the operation of a stack-like data structure.
+
+FreqStack has two functions:
+
+push(int x), which pushes an integer x onto the stack.
+pop(), which removes and returns the most frequent element in the stack.
+If there is a tie for most frequent element, the element closest to the top of the stack is removed and returned.
+ 
+Input: 
+["FreqStack","push","push","push","push","push","push","pop","pop","pop","pop"],
+[[],[5],[7],[5],[7],[4],[5],[],[],[],[]]
+Output: [null,null,null,null,null,null,null,5,7,5,4]
+Explanation:
+After making six .push operations, the stack is [5,7,5,7,4,5] from bottom to top.  Then:
+
+pop() -> returns 5, as 5 is the most frequent.
+The stack becomes [5,7,5,7,4].
+
+pop() -> returns 7, as 5 and 7 is the most frequent, but 7 is closest to the top.
+The stack becomes [5,7,5,4].
+
+pop() -> returns 5.
+The stack becomes [5,7,4].
+
+pop() -> returns 4.
+The stack becomes [5,7].
+ 
+
+Note:
+
+Calls to FreqStack.push(int x) will be such that 0 <= x <= 10^9.
+It is guaranteed that FreqStack.pop() won't be called if the stack has zero elements.
+The total number of FreqStack.push calls will not exceed 10000 in a single test case.
+The total number of FreqStack.pop calls will not exceed 10000 in a single test case.
+The total number of FreqStack.push and FreqStack.pop calls will not exceed 150000 across all test cases.
+*/
+class _0895_MaximumFrequencyStack {
+private:
+    // Copy inspired by the solution
+    std::map<int, int> freq; // A Map from x to the number of frequency occurences of x
+    std::map<int, std::stack<int>> group; // group data according to their frequency. If push 5, 5 -->  group[1]->5,  group[2]->5 respectively.
+    int maxFreq; // Keep the maximum frequency
+public:
+    _0895_MaximumFrequencyStack();
+    void push(int x);
+    int pop();
 };
 
 
