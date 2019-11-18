@@ -13,7 +13,7 @@ std::vector<int> LeetCode::_0315_CountOfSmallerNumberAfterSelf::countSmaller(std
     std::vector<int> res;
     FenWickTree tree(rank.size());
 
-    for(int i = 0; nums.size() - 1; i >= 0; --i) {
+    for(int i = nums.size() - 1; i >= 0; --i) {
         // check how many numbers are smaller than the current number;
         res.push_back(tree.query(ranks[nums[i]] - 1)); // rank[nums[i]]-1 means query how many numbers are smaller than nums[i].
 
@@ -63,6 +63,8 @@ int insert(BSTNode* root, int val) {
         return root->lessOrEqual() + insert(root->right, val);
     }
 }
+
+
 static std::vector<int> countSmaller_BST(std::vector<int>& nums) {
     if(nums.empty()) {
         return {};

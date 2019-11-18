@@ -24,6 +24,7 @@ public:
             sum += sums_[i];
             i -= lowbit(i);
         }
+        return sum;
     }
 private:
     static inline int lowbit(int i) {

@@ -362,6 +362,48 @@ public:
 };
 
 /*
+For an undirected graph with tree characteristics, we can choose any node as 
+the root. The result graph is then a rooted tree. Among all possible rooted 
+trees, those with minimum height are called minimum height trees (MHTs). Given 
+such a graph, write a function to find all the MHTs and return a list of their 
+root labels.
+
+Format
+The graph contains n nodes which are labeled from 0 to n - 1. You will be given 
+the number n and a list of undirected edges (each edge is a pair of labels).
+
+You can assume that no duplicate edges will appear in edges. Since all edges are
+undirected, [0, 1] is the same as [1, 0] and thus will not appear together in edges.
+
+Input: n = 4, edges = [[1, 0], [1, 2], [1, 3]]
+
+        0
+        |
+        1
+       / \
+      2   3 
+
+Output: [1]
+
+Input: n = 6, edges = [[0, 3], [1, 3], [2, 3], [4, 3], [5, 4]]
+
+     0  1  2
+      \ | /
+        3
+        |
+        4
+        |
+        5 
+
+Output: [3, 4]
+*/
+class _0310_MinimumHeightTrees {
+public:
+    std::vector<int> findMinHeightTrees(int n, std::vector<std::vector<int>>& edges);
+};
+
+
+/*
 Write a program to find the nth super ugly number.
 Super ugly numbers are positive numbers whose all prime factors are in the given 
 prime list primes of size k.
@@ -398,7 +440,7 @@ To the right of 2 there is only 1 smaller element (1).
 To the right of 6 there is 1 smaller element (1).
 To the right of 1 there is 0 smaller element.
 */
-class _CountOfSmallerNumberAfterSelf {
+class _0315_CountOfSmallerNumberAfterSelf {
 public:
     std::vector<int> countSmaller(std::vector<int>& nums);
 };
