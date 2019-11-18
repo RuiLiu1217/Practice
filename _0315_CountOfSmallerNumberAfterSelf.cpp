@@ -2,6 +2,8 @@
 #include "FenwickTree.hpp"
 #include <set>
 #include <unordered_map>
+#include <algorithm> 
+#include <memory>
 std::vector<int> LeetCode::_0315_CountOfSmallerNumberAfterSelf::countSmaller(std::vector<int>& nums) {
     std::set<int> sortedNum(nums.begin(), nums.end());
     std::unordered_map<int, int> ranks;
@@ -11,7 +13,7 @@ std::vector<int> LeetCode::_0315_CountOfSmallerNumberAfterSelf::countSmaller(std
     }
 
     std::vector<int> res;
-    FenWickTree tree(rank.size());
+    FenWickTree tree(ranks.size());
 
     for(int i = nums.size() - 1; i >= 0; --i) {
         // check how many numbers are smaller than the current number;
@@ -21,7 +23,7 @@ std::vector<int> LeetCode::_0315_CountOfSmallerNumberAfterSelf::countSmaller(std
         tree.update(ranks[nums[i]], 1); // there are one more number number[i] locates at rank[nums[i]].
     }
 
-    std::reverse(res.begin(), reverse.end());
+    std::reverse(res.begin(), res.end());
     return res;
 }
 
