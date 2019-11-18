@@ -8,31 +8,29 @@
 // How to get the last set bit?
 // Solution:   (x & (-x))
 
-class FenwickTree {
-private:
-    std::vector<int> BIT;
-    int N;
+class FenWickTree {
 public:
-    FenwickTree(const std::vector<int>& a) {
-        BIT.resize(a.size() + 1);
-        N = a.size();
-        for(int i = 1; i <= N; ++i) {
-            update(i, a[i-1]);
-        }
-    }
-    void update(int x, int val) {
-        for(; x <= N; x += (x & -x)) {
-            BIT[x] += val;
+    FenWickTree(int n) : sums_(n+1, 0){}
+    void update(int i, int delta) {
+        while(i < sums_.size()) {
+            sums_[i] += delta;
+            i += lowbit(i);
         }
     }
 
-    void query(int x) {
+    int query(int i) const {
         int sum = 0;
-        for(; x >= 0; x -= (x &(-x))) {
-            sum += BIT[x];
+        while(i > 0) {
+            sum += sums_[i];
+            i -= lowbit(i);
         }
     }
-}
+private:
+    static inline int lowbit(int i) {
+        return i & (-i);
+    }
+    std::vector<int> sums_;
+};
 
 
 #endif
