@@ -1687,6 +1687,22 @@ public:
 
 
 /*
+Given n non-negative integers representing the histogram's bar height where 
+the width of each bar is 1, find the area of largest rectangle in the histogram.
+Above is a histogram where width of each bar is 1, given height = [2,1,5,6,2,3].
+The largest rectangle is shown in the shaded area, which has area = 10 unit.
+
+Example:
+
+Input: [2,1,5,6,2,3]
+Output: 10
+*/
+class _0084_LargestRectangleInHistogram {
+public:
+    int largestRectangleArea(std::vector<int>& heights);
+};
+
+/*
 Given a linked list and a value x, partition it such that all nodes less 
 than x come before nodes greater than or equal to x.
 You should preserve the original relative order of the nodes in each of 
