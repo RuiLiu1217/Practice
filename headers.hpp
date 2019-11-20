@@ -668,6 +668,41 @@ public:
     int longestIncreasingPath(std::vector<std::vector<int>>& matrix);
 };
 
+
+/*
+One way to serialize a binary tree is to use pre-order traversal. When we encounter a 
+non-null node, we record the node's value. If it is a null node, we record using a 
+sentinel value such as #.
+
+     _9_
+    /   \
+   3     2
+  / \   / \
+ 4   1  #  6
+/ \ / \   / \
+# # # #   # #
+For example, the above binary tree can be serialized to the string "9,3,4,#,#,1,#,#,2,#,6,#,#", 
+where # represents a null node.
+Given a string of comma separated values, verify whether it is a correct preorder traversal 
+serialization of a binary tree. Find an algorithm without reconstructing the tree.
+Each comma separated value in the string must be either an integer or a character '#' representing null pointer.
+You may assume that the input format is always valid, for example it could never contain two 
+consecutive commas such as "1,,3".
+
+Input: "9,3,4,#,#,1,#,#,2,#,6,#,#"
+Output: true
+
+Input: "1,#"
+Output: false
+
+Input: "9,#,#,1"
+Output: false
+*/
+class _0331_VerifyPreorderSerializationOfABinaryTree {
+public:
+    bool isValidSerialization(std::string preorder);
+};
+
 /*
 The thief has found himself a new place for his thievery again. There is only one 
 entrance to this area, called the "root." Besides the root, each house has one and 
@@ -1834,6 +1869,62 @@ public:
     bool pyramidTransition(std::string bottom, std::vector<std::string>& allowed);
 private:
     bool pyramidTransition(std::string bottom, int start, std::string res, std::unordered_map<std::string, std::unordered_set<char>>& Map);
+};
+
+/*
+In a string composed of 'L', 'R', and 'X' characters, like "RXXLRXRXL", a move 
+consists of either replacing one occurrence of "XL" with "LX", or replacing one 
+occurrence of "RX" with "XR". Given the starting string start and the ending string 
+end, return True if and only if there exists a sequence of moves to transform one
+string to the other.
+
+Input: start = "RXXLRXRXL", end = "XRLXXRRLX"
+Output: True
+Explanation:
+We can transform start to end following these steps:
+RXXLRXRXL ->
+XRXLRXRXL ->
+XRLXRXRXL ->
+XRLXXRRXL ->
+XRLXXRRLX
+Note:
+
+1 <= len(start) = len(end) <= 10000.
+Both start and end will only consist of characters in {'L', 'R', 'X'}.
+这道题由于理解错误，以为XL 和 LX 是可以互相变的， RX 和 XR 也是可以互相变的。
+实际上，题目中给出的条件是 XL 只能单向变成 LX， 而 RX 只能单向变成 XR。
+那么问题就变得简单了许多，这样想，如果只是单向变化，那么L在start中的位置相对于
+end只能靠后，而 R 在start 中的位置相对于end只能靠前。换句话说，L 只能往前走，
+而R 只能往后走。而且L, R 在两个字符串中的相对位置无法变化。
+*/
+class _0777_SwapAdjacentInLRString {
+public:
+    bool canTransform(const std::string& start, const std::string& end);
+};
+
+
+/*
+Return the length of the shortest, non-empty, contiguous subarray of A 
+with sum at least K.
+If there is no non-empty subarray with sum at least K, return -1.
+
+Input: A = [1], K = 1
+Output: 1
+
+Input: A = [1,2], K = 4
+Output: -1
+
+Input: A = [2,-1,2], K = 3
+Output: 3
+
+1 <= A.length <= 50000
+-10 ^ 5 <= A[i] <= 10 ^ 5
+1 <= K <= 10 ^ 9
+这道题完全没有头绪，是抄答案的，关键点需要使用一个双向队列
+*/
+class _0862_ShortestSubarrayWithSumAtLeastK {
+public:
+    int shortestSubarray(std::vector<int>& A, int K);
 };
 
 /*
