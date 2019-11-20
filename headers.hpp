@@ -10,6 +10,7 @@
 
 #include "ProblemSet1.hpp" // Problem 1 - 100
 #include "ProblemSet2.hpp"
+#include "ProblemSet3.hpp"
 
 namespace LeetCode
 {
@@ -2573,10 +2574,16 @@ winner is the player that colored more nodes.
 
 You are the second player.  If it is possible to choose such a y to ensure 
 you win the game, return true.  If it is not possible, return false.
+这道题赢的条件是谁拿到更多的节点而不是节点的和。当时看到这个题有点懵，以为是算节点
+的和。
 */
 class _1145_BinaryTreeColoringGame {
-
-
+public:
+    bool btreeGameWinningMove(TreeNode<int>* root, int n, int x);
+private:
+    int l_;
+    int r_;
+    int nodes(TreeNode<int>* root, int x);
 };
 
 /*

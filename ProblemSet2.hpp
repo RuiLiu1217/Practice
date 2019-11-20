@@ -908,6 +908,36 @@ public:
 };
 
 /*
+Given an input string, reverse the string word by word.
+
+Example 1:
+
+Input: "the sky is blue"
+Output: "blue is sky the"
+Example 2:
+
+Input: "  hello world!  "
+Output: "world! hello"
+Explanation: Your reversed string should not contain leading or trailing spaces.
+Example 3:
+
+Input: "a good   example"
+Output: "example good a"
+Explanation: You need to reduce multiple spaces between two words to a single space in the reversed string.
+
+Note:
+
+A word is defined as a sequence of non-space characters.
+Input string may contain leading or trailing spaces. However, your reversed string should not contain leading or trailing spaces.
+You need to reduce multiple spaces between two words to a single space in the reversed string.
+*/
+class _0151_ReverseWordsInAString {
+public:
+    std::string reverseWords(std::string s);
+};
+
+
+/*
 Given an integer array nums, find the contiguous subarray within an array (containing 
 at least one number) which has the largest product.
 
@@ -1194,6 +1224,44 @@ private:
     std::stack<TreeNode<int>*> st;
 };
 
+/*
+The demons had captured the princess (P) and imprisoned her in the bottom-right 
+corner of a dungeon. The dungeon consists of M x N rooms laid out in a 2D grid. 
+Our valiant knight (K) was initially positioned in the top-left room and must 
+fight his way through the dungeon to rescue the princess.
+The knight has an initial health point represented by a positive integer. If at
+any point his health point drops to 0 or below, he dies immediately.
+
+Some of the rooms are guarded by demons, so the knight loses health (negative 
+integers) upon entering these rooms; other rooms are either empty (0's) or 
+contain magic orbs that increase the knight's health (positive integers).
+
+In order to reach the princess as quickly as possible, the knight decides to 
+move only rightward or downward in each step.
+
+Write a function to determine the knight's minimum initial health so that he 
+is able to rescue the princess.
+
+For example, given the dungeon below, the initial health of the knight must 
+be at least 7 if he follows the optimal path RIGHT-> RIGHT -> DOWN -> DOWN.
+________________________
+|-2 (K)	|  -3  |  3    |
+------------------------
+|  -5   | -10  |  1    |
+------------------------
+|  10	| 30   | -5 (P)|
+------------------------
+
+Note:
+
+The knight's health has no upper bound.
+Any room can contain threats or power-ups, even the first room the knight 
+enters and the bottom-right room where the princess is imprisoned.
+*/
+class _0174_DungeonGame {
+public:
+    int calculateMinimumHP(std::vector<std::vector<int>>& dungeon);
+};
 
 /*
 Given an array, rotate the array to the right by k steps, where k is non-negative.
@@ -1292,6 +1360,84 @@ public:
     int hammingWeight(uint32_t n);
 };
 
+
+/*
+You are a professional robber planning to rob houses along 
+a street. Each house has a certain amount of money stashed, 
+the only constraint stopping you from robbing each of them 
+is that adjacent houses have security system connected and 
+it will automatically contact the police if two adjacent 
+houses were broken into on the same night.
+
+Given a list of non-negative integers representing the amount of money of each house, determine the maximum amount of money you can rob tonight without alerting the police.
+
+Example 1:
+
+Input: [1,2,3,1]
+Output: 4
+Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3).
+             Total amount you can rob = 1 + 3 = 4.
+Example 2:
+
+Input: [2,7,9,3,1]
+Output: 12
+Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (money = 1).
+             Total amount you can rob = 2 + 9 + 1 = 12.
+*/
+class _0198_HouseRobber {
+public:
+    int rob(std::vector<int>& nums);
+};
+
+
+/*
+Given a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.
+
+Example:
+
+Input: [1,2,3,null,5,null,4]
+Output: [1, 3, 4]
+Explanation:
+
+   1            <---
+ /   \
+2     3         <---
+ \     \
+  5     4       <---
+*/
+class _0199_BinaryTreeRightSideView {
+public:
+    std::vector<int> rightSideView(TreeNode<int>* root);
+};
+
+
+/*
+Given a 2d grid map of '1's (land) and '0's (water), count the number of 
+islands. An island is surrounded by water and is formed by connecting 
+adjacent lands horizontally or vertically. You may assume all four edges 
+of the grid are all surrounded by water.
+
+Input:
+11110
+11010
+11000
+00000
+
+Output: 1
+
+Input:
+11000
+11000
+00100
+00011
+
+Output: 3
+*/
+class _0200_NumberOfIslands {
+public:
+    int numIslands(std::vector<std::vector<char>>& grid);
+    void eraseIsland(std::vector<std::vector<char>>& grid, int i, int j);
+};
 
 } // end namespace leetcode
 
