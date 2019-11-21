@@ -2,6 +2,7 @@
 #include <deque>
 #include <vector>
 #include <algorithm>
+// 抄答案的，
 // 解题思路
 // 显然，我们会想到使用dp[i]记录sum(A[:i])，那么这道题就变成了，给定一个数组dp,找到一组i,j，使得dp[j]-dp[i]>=K，且j-i尽量小！
 // 数据长度达到50000，显然不能使用O(n^2)复杂度的方法，我们得想办法让i,j只走一遍
@@ -28,7 +29,7 @@ int LeetCode::_0862_ShortestSubarrayWithSumAtLeastK::shortestSubarray(std::vecto
 
     std::deque<int> Q;
     int res = INT_MAX;
-    for(int i = 0; i < DP.size(); ++i) {
+    for(int i = 1; i < DP.size(); ++i) {
         while(!Q.empty() && DP[i] - DP[Q.front()] >= K) {
             res = std::min(res, i - Q.front());
             Q.pop_front();
