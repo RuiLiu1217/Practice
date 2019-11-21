@@ -1306,6 +1306,40 @@ public:
 };
 
 /*
+You are given coins of different denominations and a total amount of money. 
+Write a function to compute the number of combinations that make up that 
+amount. You may assume that you have infinite number of each kind of coin.
+
+Input: amount = 5, coins = [1, 2, 5]
+Output: 4
+Explanation: there are four ways to make up the amount:
+5=5
+5=2+2+1
+5=2+1+1+1
+5=1+1+1+1+1
+
+Input: amount = 3, coins = [2]
+Output: 0
+Explanation: the amount of 3 cannot be made up just with coins of 2.
+
+Input: amount = 10, coins = [10] 
+Output: 1
+
+Note:
+
+You can assume that
+
+0 <= amount <= 5000
+1 <= coin <= 5000
+the number of coins is less than 500
+the answer is guaranteed to fit into signed 32-bit integer
+*/
+class _0518_CoinChange2 {
+public:
+    int change(int amount, std::vector<int>& coins);
+};
+
+/*
 Given two non-empty binary trees s and t, check whether tree t has exactly 
 the same structure and node values with a subtree of s. A subtree of s is 
 a tree consists of a node in s and all of this node's descendants. The tree 
@@ -2172,6 +2206,69 @@ public:
 };
 
 /*
+We are given that the string "abc" is valid.
+From any valid string V, we may split V into two pieces X and Y such that X + Y 
+(X concatenated with Y) is equal to V.  (X or Y may be empty.)  Then, X + "abc" + Y 
+is also valid.
+If for example S = "abc", then examples of valid strings are: "abc", "aabcbc", 
+"abcabc", "abcabcababcc".  Examples of invalid strings are: "abccba", "ab", "cababc", 
+"bac". Return true if and only if the given string S is valid.
+
+Input: "aabcbc"
+Output: true
+Explanation: 
+We start with the valid string "abc".
+Then we can insert another "abc" between "a" and "bc", resulting in "a" + "abc" + "bc" which is "aabcbc".
+
+Input: "abcabcababcc"
+Output: true
+Explanation: 
+"abcabcabc" is valid after consecutive insertings of "abc".
+Then we can insert "abc" before the last letter, resulting in "abcabcab" + "abc" + "c" which is "abcabcababcc".
+
+Input: "abccba"
+Output: false
+
+Input: "cababc"
+Output: false
+
+Note:
+1 <= S.length <= 20000
+S[i] is 'a', 'b', or 'c'
+*/
+class _1003_CheckIfWordIsValidAfterSubstitutions {
+public:
+    bool isValid(std::string S);
+};
+
+/*
+Given a number N, return a string consisting of "0"s and 
+"1"s that represents its value in base -2 (negative two).
+The returned string must have no leading zeroes, unless 
+the string is "0".
+
+Input: 2
+Output: "110"
+Explantion: (-2) ^ 2 + (-2) ^ 1 = 2
+
+Input: 3
+Output: "111"
+Explantion: (-2) ^ 2 + (-2) ^ 1 + (-2) ^ 0 = 3
+
+Input: 4
+Output: "100"
+Explantion: (-2) ^ 2 = 4
+
+Note:
+
+0 <= N <= 10^9
+*/
+class _1017_ConvertToBase_Negative2 {
+public:
+    std::string baseNeg2(int N);
+};
+
+/*
 Given a 2D array A, each cell is 0 (representing sea) or 1 (representing 
 land) A move consists of walking from one land square 4-directionally to 
 another land square, or off the boundary of the grid. Return the number of 
@@ -2587,6 +2684,43 @@ private:
 };
 
 /*
+Implement a SnapshotArray that supports the following interface:
+SnapshotArray(int length) initializes an array-like data structure with the 
+given length.  Initially, each element equals 0.
+
+void set(index, val) sets the element at the given index to be equal to val.
+int snap() takes a snapshot of the array and returns the snap_id: the total number of times we called snap() minus 1.
+int get(index, snap_id) returns the value at the given index, at the time we took the snapshot with the given snap_id
+
+Input: ["SnapshotArray","set","snap","set","get"]
+[[3],[0,5],[],[0,6],[0,0]]
+Output: [null,null,0,null,5]
+Explanation: 
+SnapshotArray snapshotArr = new SnapshotArray(3); // set the length to be 3
+snapshotArr.set(0,5);  // Set array[0] = 5
+snapshotArr.snap();  // Take a snapshot, return snap_id = 0
+snapshotArr.set(0,6);
+snapshotArr.get(0,0);  // Get the value of array[0] with snap_id = 0, return 5
+
+Constraints:
+1 <= length <= 50000
+At most 50000 calls will be made to set, snap, and get.
+0 <= index < length
+0 <= snap_id < (the total number of times we call snap())
+0 <= val <= 10^9
+*/
+class _1146_SnapshotArray {
+private:
+    std::vector<std::map<int, int>> A;
+    int snap_id = 0;
+public:
+    _1146_SnapshotArray(int length);
+    void set(int index, int val);
+    int snap();
+    int get(int index, int snaid);
+};
+
+/*
 Let's define a function f(s) over a non-empty string s, which calculates the frequency 
 of the smallest character in s. For example, if s = "dcce" then f(s) = 2 because the 
 smallest character is "c" and its frequency is 2.
@@ -2780,6 +2914,42 @@ class _1227_AirplaneSeatAssignmentProbability {
 
 };
 
+/*
+You are given two strings s1 and s2 of equal length consisting of 
+letters "x" and "y" only. Your task is to make these two strings 
+equal to each other. You can swap any two characters that belong 
+to different strings, which means: swap s1[i] and s2[j].
+
+Return the minimum number of swaps required to make s1 and s2 equal, 
+or return -1 if it is impossible to do so.
+
+Input: s1 = "xx", s2 = "yy"
+Output: 1
+Explanation: 
+Swap s1[0] and s2[1], s1 = "yx", s2 = "yx".
+
+Input: s1 = "xy", s2 = "yx"
+Output: 2
+Explanation: 
+Swap s1[0] and s2[0], s1 = "yy", s2 = "xx".
+Swap s1[0] and s2[1], s1 = "xy", s2 = "xy".
+Note that you can't swap s1[0] and s1[1] to make s1 equal to "yx", cause we can only swap chars in different strings.
+
+Input: s1 = "xx", s2 = "xy"
+Output: -1
+
+Input: s1 = "xxyyxyxyxx", s2 = "xyyxyxxxyx"
+Output: 4
+
+Constraints:
+
+1 <= s1.length, s2.length <= 1000
+s1, s2 only contain 'x' or 'y'.
+*/
+class _1247_MinimumSwapsToMakeStringsEqual {
+public:
+    int minimumSwap(std::string s1, std::string s2);
+};
 
 
 } // namespace LeetCode
