@@ -1,5 +1,6 @@
 #include "headers.hpp"
 #include <cmath>
+#include <algorithm>
 int LeetCode::_0204_CountPrimes::countPrimes(int n) {
     if(n <= 2) {
         return 0;
@@ -23,5 +24,5 @@ int LeetCode::_0204_CountPrimes::countPrimes(int n) {
             }
         }
     }
-    return count(isPrime.begin(), isPrime.end(), true);   
+    return std::count(isPrime.begin(), isPrime.end(), true);   
 }

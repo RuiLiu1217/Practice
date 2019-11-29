@@ -40,3 +40,4 @@ bool LeetCode::_0208_ImplementTrie::startsWith(std::string prefix) {
     }
     return (p != nullptr);
 }
+

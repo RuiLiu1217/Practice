@@ -8,7 +8,7 @@ std::vector<int> LeetCode::_0310_MinimumHeightTrees::findMinHeightTrees(int n, s
     }
 
     std::vector<int> res;
-    std::vector<std::unordered_set> adj(n);
+    std::vector<std::unordered_set<int>> adj(n);
 
     for(auto edge : edges) {
         adj[edge[0]].insert(edge[1]);

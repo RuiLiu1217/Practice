@@ -21,7 +21,7 @@ int LeetCode::_0146_LRUCache::get(int key) {
 
 void LeetCode::_0146_LRUCache::put(int key, int value) {
     const auto it = mMap.find(key);
-    if(it != mMap.end(0)) {
+    if(it != mMap.end()) {
         it->second->second = value;
         mCache.splice(mCache.begin(), mCache, it->second);
         return;

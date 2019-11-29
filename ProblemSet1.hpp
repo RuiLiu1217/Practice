@@ -1762,6 +1762,31 @@ public:
 };
 
 /*
+Given a collection of integers that might contain duplicates, nums, return all possible subsets 
+(the power set).
+Note: The solution set must not contain duplicate subsets.
+Example:
+
+Input: [1,2,2]
+Output:
+[
+  [2],
+  [1],
+  [1,2,2],
+  [2,2],
+  [1,2],
+  []
+]
+*/
+class _0090_SubsetII {
+public:
+    std::vector<std::vector<int>> subsetsWithDup(std::vector<int>& nums);
+    
+    void generateAllSubsets(std::vector<int>& nums, std::vector<int>& subset,
+                           int index, std::vector<std::vector<int>>& res);
+};
+
+/*
 A message containing letters from A-Z is being encoded to numbers using the following mapping:
 'A' -> 1
 'B' -> 2
