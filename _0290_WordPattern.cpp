@@ -5,9 +5,9 @@
 bool LeetCode::_0290_WordPattern::wordPattern(std::string pattern, std::string str) {
     std::istringstream iss(str);
 
-    // Split a string into a string vector
+    // Split a string into a string vector 
     std::vector<std::string> strVec(std::istream_iterator<std::string>{iss}, 
-                                    std::istream_iterator<std::string>()); 
+                                    std::istream_iterator<std::string>());  // Learn how to make the space-separated string to string vector
 
     if (pattern.size() != strVec.size())
     {

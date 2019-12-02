@@ -833,6 +833,36 @@ public:
 };
 
 /*
+_390_ Elimination Game
+There is a list of sorted integers from 1 to n. Starting from left to right,
+remove the first number and every other number afterward until you reach the
+end of the list.
+
+Repeat the previous step again, but this time from right to left, remove the
+right most number and every other number from the remaining numbers.
+
+We keep repeating the steps again, alternating left to right and right to left,
+until a single number remains.
+
+Find the last number that remains starting with a list of length n.
+
+Input:
+n = 9,
+1 2 3 4 5 6 7 8 9
+2 4 6 8
+2 6
+6
+
+Output:
+6
+*/
+class _0390_EliminationGame {
+public:
+    int lastRemaining(int n);
+};
+
+
+/*
 A binary watch has 4 LEDs on the top which represent
 the hours (0-11), and the 6 LEDs on the bottom represent
 the minutes (0-59).
@@ -1095,7 +1125,27 @@ private:
     bool canIWin(int M, int T, int state);
 };
 
+/*
+The Hamming distance between two integers is the number of positions at which the corresponding bits are different.
 
+Now your job is to find the total Hamming distance between all pairs of the given numbers.
+
+Example:
+Input: 4, 14, 2
+
+Output: 6
+
+Explanation: In binary representation, the 4 is 0100, 14 is 1110, and 2 is 0010 (just
+showing the four bits relevant in this case). So the answer will be:
+HammingDistance(4, 14) + HammingDistance(4, 2) + HammingDistance(14, 2) = 2 + 2 + 2 = 6.
+Note:
+Elements of the given array are in the range of 0 to 10^9
+Length of the array will not exceed 10^4.
+*/
+class _0477_TotalHammingDistance {
+public:
+    int totalHammingDistance(std::vector<int>& nums);
+};
 
 /*
 A magical string S consists of only '1' and '2' and obeys the following rules:
@@ -1164,6 +1214,33 @@ public:
 };
 
 /*
+509. Fibonacci Number
+The Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci 
+sequence, such that each number is the sum of the two preceding ones, starting from 
+0 and 1. That is,
+F(0) = 0,   F(1) = 1
+F(N) = F(N - 1) + F(N - 2), for N > 1.
+Given N, calculate F(N).
+
+Input: 2
+Output: 1
+Explanation: F(2) = F(1) + F(0) = 1 + 0 = 1.
+
+Input: 3
+Output: 2
+Explanation: F(3) = F(2) + F(1) = 1 + 1 = 2.
+
+Input: 4
+Output: 3
+Explanation: F(4) = F(3) + F(2) = 2 + 1 = 3.
+*/
+class _0509_FibonacciNumber {
+public:
+    int fib(int N);
+};
+
+
+/*
 You are given coins of different denominations and a total amount of money. 
 Write a function to compute the number of combinations that make up that 
 amount. You may assume that you have infinite number of each kind of coin.
@@ -1195,6 +1272,98 @@ the answer is guaranteed to fit into signed 32-bit integer
 class _0518_CoinChange2 {
 public:
     int change(int amount, std::vector<int>& coins);
+};
+
+/*
+Given a Binary Search Tree (BST), convert it to a Greater Tree such that 
+every key of the original BST is changed to the original key plus sum of 
+all keys greater than the original key in BST.
+
+Input: The root of a Binary Search Tree like this:
+              5
+            /   \
+           2     13
+
+Output: The root of a Greater Tree like this:
+             18
+            /   \
+          20     13
+*/
+class _0538_ConvertBSTToGreaterTree {
+public:
+    TreeNode<int>* convertBST(TreeNode<int>* root);
+    void inOrder(TreeNode<int>* root);
+};
+
+/*
+You are given a sorted array consisting of only integers where every 
+element appears exactly twice, except for one element which appears 
+exactly once. Find this single element that appears only once.
+
+Input: [1,1,2,3,3,4,4,8,8]
+Output: 2
+
+Input: [3,3,7,7,10,11,11]
+Output: 10
+*/
+class _0540_SingleElementInASortedArray {
+public:
+    int singleNonDuplicate(std::vector<int>& nums);
+private:
+    int singleNoDuplicate(std::vector<int>& nums, int bet, int end);
+};
+
+/*
+Given a string and an integer k, you need to reverse the first k 
+characters for every 2k characters counting from the start of the string. 
+If there are less than k characters left, reverse all of them. If there 
+are less than 2k but greater than or equal to k characters, then reverse 
+the first k characters and left the other as original.
+
+Input: s = "abcdefg", k = 2
+Output: "bacdfeg"
+Restrictions:
+The string consists of lower English letters only.
+Length of the given string and k will in the range [1, 10000]
+*/
+class _0541_ReverseStringII {
+public:
+    std::string reverseStr(std::string s, int k);
+};
+
+
+/*
+553. Optimal Division
+Given a list of positive integers, the adjacent integers will 
+perform the float division. For example, [2,3,4] -> 2 / 3 / 4.
+
+However, you can add any number of parenthesis at any position 
+to change the priority of operations. You should find out how 
+to add parenthesis to get the maximum result, and return the 
+corresponding expression in string format. Your expression should NOT contain redundant parenthesis.
+
+Example:
+Input: [1000,100,10,2]
+Output: "1000/(100/10/2)"
+Explanation:
+1000/(100/10/2) = 1000/((100/10)/2) = 200
+However, the bold parenthesis in "1000/((100/10)/2)" are redundant, 
+since they don't influence the operation priority. So you should return "1000/(100/10/2)". 
+
+Other cases:
+1000/(100/10)/2 = 50
+1000/(100/(10/2)) = 50
+1000/100/10/2 = 0.5
+1000/100/(10/2) = 2
+Note:
+
+The length of the input array is [1, 10].
+Elements in the given array will be in range [2, 1000].
+There is only one optimal division for each test case.
+*/
+class _0553_OptimalDivision {
+public:
+    std::string optimalDivision(std::vector<int>& nums);
 };
 
 /*
@@ -1286,6 +1455,110 @@ public:
 private:
     bool isSame(TreeNode<int>* s, TreeNode<int>* t);
 };
+
+
+/*
+Given an n-ary tree, return the postorder traversal of its nodes' values.
+Nary-Tree input serialization is represented in their level order traversal, 
+each group of children is separated by the null value (See examples).
+
+Recursive solution is trivial, could you do it iteratively?
+Input: root = [1,null,3,2,4,null,5,6]
+Output: [5,6,3,2,4,1]
+
+Input: root = [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]
+Output: [2,6,14,11,7,3,12,8,4,13,9,10,5,1]
+*/
+class _0590_Node;
+class _0590_NaryTreePostOrderTraversal {
+public:
+    std::vector<int> postorder(_0590_Node* root);
+};
+
+
+/*
+622. Design Circular Queue
+Design your implementation of the circular queue. The circular queue is a 
+linear data structure in which the operations are performed based on FIFO 
+(First In First Out) principle and the last position is connected back to 
+the first position to make a circle. It is also called "Ring Buffer".
+
+One of the benefits of the circular queue is that we can make use of the 
+spaces in front of the queue. In a normal queue, once the queue becomes full, 
+we cannot insert the next element even if there is a space in front of the 
+queue. But using the circular queue, we can use the space to store new values.
+
+Your implementation should support following operations:
+
+MyCircularQueue(k): Constructor, set the size of the queue to be k.
+Front: Get the front item from the queue. If the queue is empty, return -1.
+Rear: Get the last item from the queue. If the queue is empty, return -1.
+enQueue(value): Insert an element into the circular queue. Return true if the operation is successful.
+deQueue(): Delete an element from the circular queue. Return true if the operation is successful.
+isEmpty(): Checks whether the circular queue is empty or not.
+isFull(): Checks whether the circular queue is full or not.
+ 
+
+Example:
+
+MyCircularQueue circularQueue = new MyCircularQueue(3); // set the size to be 3
+circularQueue.enQueue(1);  // return true
+circularQueue.enQueue(2);  // return true
+circularQueue.enQueue(3);  // return true
+circularQueue.enQueue(4);  // return false, the queue is full
+circularQueue.Rear();  // return 3
+circularQueue.isFull();  // return true
+circularQueue.deQueue();  // return true
+circularQueue.enQueue(4);  // return true
+circularQueue.Rear();  // return 4
+*/
+class _0622_DesignCircularQueue {
+    std::vector<int> q;
+    int head, tail, N;
+    bool empty;
+public:
+    /** Initialize your data structure here. Set the size of the queue to be k. */
+    _0622_DesignCircularQueue(int k);
+    
+    /** Insert an element into the circular queue. Return true if the operation is successful. */
+    bool enQueue(int value);
+    
+    /** Delete an element from the circular queue. Return true if the operation is successful. */
+    bool deQueue();
+    
+    /** Get the front item from the queue. */
+    int Front();
+    
+    /** Get the last item from the queue. */
+    int Rear();
+    
+    /** Checks whether the circular queue is empty or not. */
+    bool isEmpty();
+    
+    /** Checks whether the circular queue is full or not. */
+    bool isFull();
+};
+
+/*
+Given a non-empty binary tree, return the average value of the nodes on each level in the form of an array.
+Input:
+    3
+   / \
+  9  20
+    /  \
+   15   7
+Output: [3, 14.5, 11]
+Explanation:
+The average value of nodes on level 0 is 3,  on level 1 is 14.5, and on level 2 is 11. Hence return [3, 14.5, 11].
+Note:
+The range of node's value is in the range of 32-bit signed integer.
+*/
+class _0637_AverageOfLevelsInBinaryTree {
+public:
+    std::vector<double> averageOfLevels(TreeNode<int>* root);
+};
+
+
 
 /*
 Design your implementation of the circular double-ended queue (deque).

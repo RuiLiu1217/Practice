@@ -62,5 +62,4 @@ ListNode<int>* LeetCode::_0002_AddTwoNumbers::AddTwoNodes(ListNode<int>* l1, Lis
         }
         
     }
-    
 }
