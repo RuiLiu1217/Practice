@@ -861,6 +861,26 @@ public:
     int lastRemaining(int n);
 };
 
+/*
+Given an encoded string, return its decoded string.
+The encoding rule is: k[encoded_string], where the encoded_string 
+inside the square brackets is being repeated exactly k times. Note 
+that k is guaranteed to be a positive integer.
+You may assume that the input string is always valid; No extra 
+white spaces, square brackets are well-formed, etc.
+Furthermore, you may assume that the original data does not contain 
+any digits and that digits are only for those repeat numbers, k. 
+For example, there won't be input like 3a or 2[4].
+
+    s = "3[a]2[bc]", return "aaabcbc".
+    s = "3[a2[c]]", return "accaccacc".
+    s = "2[abc]3[cd]ef", return "abcabccdcdcdef".
+*/
+class _0394_DecodeString {
+public:
+    std::string decodeString(std::string s);
+};
+
 
 /*
 A binary watch has 4 LEDs on the top which represent
@@ -1085,7 +1105,37 @@ class _0452_MinimumNumberOfArrowsToBusrtBalloons {
         int findMinArrowShots(std::vector<std::vector<int>>& points);
 };
 
+/*
+Assume you are an awesome parent and want to give your children some cookies. 
+But, you should give each child at most one cookie. Each child i has a greed 
+factor gi, which is the minimum size of a cookie that the child will be content 
+with; and each cookie j has a size sj. If sj >= gi, we can assign the cookie 
+j to the child i, and the child i will be content. Your goal is to maximize 
+the number of your content children and output the maximum number.
 
+Note:
+You may assume the greed factor is always positive.
+You cannot assign more than one cookie to one child.
+
+Input: [1,2,3], [1,1]
+Output: 1
+
+Explanation: You have 3 children and 2 cookies. The greed factors of 3 children 
+are 1, 2, 3. And even though you have 2 cookies, since their size is both 1, 
+you could only make the child whose greed factor is 1 content. 
+You need to output 1.
+
+Input: [1,2], [1,2,3]
+Output: 2
+
+Explanation: You have 2 children and 3 cookies. The greed factors of 2 children are 1, 2. 
+You have 3 cookies and their sizes are big enough to gratify all of the children, 
+You need to output 2.
+*/
+class _0455_AssignCookies {
+public:
+    int findContentChildren(std::vector<int>& g, std::vector<int>& s);
+};
 /*
 In the "100 game," two players take turns adding, to a running total, any 
 integer from 1..10. The player who first causes the running total to reach 
@@ -1273,6 +1323,26 @@ class _0518_CoinChange2 {
 public:
     int change(int amount, std::vector<int>& coins);
 };
+
+/*
+Note: This is a companion problem to the System Design problem: Design TinyURL.
+TinyURL is a URL shortening service where you enter a URL such as 
+https://leetcode.com/problems/design-tinyurl and it returns a short URL 
+such as http://tinyurl.com/4e9iAk.
+Design the encode and decode methods for the TinyURL service. There is no 
+restriction on how your encode/decode algorithm should work. You just need 
+to ensure that a URL can be encoded to a tiny URL and the tiny URL can be 
+decoded to the original URL.
+*/
+class _0535_EncodeAndDecodeTinyURL {
+public:
+    // Encodes a URL to a shortened URL
+    std::string encode(std::string longUrl);
+
+    // Decodes a shortened URL to its original URL
+    std::string decode(std::string shortUrl);
+};
+
 
 /*
 Given a Binary Search Tree (BST), convert it to a Greater Tree such that 
@@ -1475,6 +1545,45 @@ public:
     std::vector<int> postorder(_0590_Node* root);
 };
 
+/*
+Given an m * n matrix M initialized with all 0's and several update operations.
+Operations are represented by a 2D array, and each operation is represented by 
+an array with two positive integers a and b, which means M[i][j] should be added 
+by one for all 0 <= i < a and 0 <= j < b.
+
+You need to count and return the number of maximum integers in the matrix after performing all the operations.
+
+Example 1:
+Input: 
+m = 3, n = 3
+operations = [[2,2],[3,3]]
+Output: 4
+Explanation: 
+Initially, M = 
+[[0, 0, 0],
+ [0, 0, 0],
+ [0, 0, 0]]
+
+After performing [2,2], M = 
+[[1, 1, 0],
+ [1, 1, 0],
+ [0, 0, 0]]
+
+After performing [3,3], M = 
+[[2, 2, 1],
+ [2, 2, 1],
+ [1, 1, 1]]
+
+So the maximum integer in M is 2, and there are four of it in M. So return 4.
+Note:
+The range of m and n is [1,40000].
+The range of a is [1,m], and the range of b is [1,n].
+The range of operations size won't exceed 10,000.
+*/
+class _0598_RangeAdditionII {
+public:
+    int maxCount(int m, int n, std::vector<std::vector<int>>& ops);
+};
 
 /*
 622. Design Circular Queue
@@ -2118,6 +2227,30 @@ public:
 };
 
 /*
+In a string S of lowercase letters, these letters form consecutive groups of the same character.
+For example, a string like S = "abbxxxxzyy" has the groups "a", "bb", "xxxx", "z" and "yy".
+Call a group large if it has 3 or more characters.  We would like the starting and ending positions of every large group.
+The final answer should be in lexicographic order.
+
+Input: "abbxxxxzzy"
+Output: [[3,6]]
+Explanation: "xxxx" is the single large group with starting  3 and ending positions 6.
+Example 2:
+
+Input: "abc"
+Output: []
+Explanation: We have "a","b" and "c" but no large group.
+Example 3:
+
+Input: "abcdddeeeeaabbbcd"
+Output: [[3,5],[6,9],[12,14]]
+*/
+class _0830_PositionsOfLargeGroups {
+public:
+    std::vector<std::vector<int>> largetGroupPositions(std::string S);
+};
+
+/*
  838 Push Dominoes
 There are N dominoes in a line, and we place each domino vertically upright.
 In the beginning, we simultaneously push some of the dominoes either to the 
@@ -2150,6 +2283,38 @@ class _0838_PushDominoes {
     std::string pushDominoes(std::string dominoes);
 };
 
+
+/*
+There are N rooms and you start in room 0. Each room has a distinct number in 0, 
+1, 2, ..., N-1, and each room may have some keys to access the next room. 
+Formally, each room i has a list of keys rooms[i], and each key rooms[i][j] is an 
+integer in [0, 1, ..., N-1] where N = rooms.length. A key rooms[i][j] = v opens 
+the room with number v.
+Initially, all the rooms start locked (except for room 0). You can walk back and 
+forth between rooms freely.
+Return true if and only if you can enter every room.
+
+Input: [[1],[2],[3],[]]
+Output: true
+Explanation:  
+We start in room 0, and pick up key 1.
+We then go to room 1, and pick up key 2.
+We then go to room 2, and pick up key 3.
+We then go to room 3.  Since we were able to go to every room, we return true.
+
+Input: [[1,3],[3,0,1],[2],[0]]
+Output: false
+Explanation: We can't enter the room with number 2.
+Note:
+
+1 <= rooms.length <= 1000
+0 <= rooms[i].length <= 1000
+The number of keys in all rooms combined is at most 3000.
+*/
+class _0841_KeysAndRooms {
+public:
+     bool canVisitAllRooms(std::vector<std::vector<int>>& rooms);
+};
 
 /*
 Return the length of the shortest, non-empty, contiguous subarray of A 
@@ -2233,6 +2398,52 @@ public:
     bool stoneGame(std::vector<int>& piles);
     int AlexMax(std::vector<int>& piles, int start, int end);
     int LeeMax(std::vector<int>& piles, int start, int end);
+};
+
+
+/*
+You have a list of words and a pattern, and you want to know which words in words 
+matches the pattern. A word matches the pattern if there exists a permutation of 
+letters p so that after replacing every letter x in the pattern with p(x), we get 
+the desired word. (Recall that a permutation of letters is a bijection from letters 
+to letters: every letter maps to another letter, and no two letters map to the 
+same letter.)
+Return a list of the words in words that match the given pattern. 
+You may return the answer in any order.
+
+Input: words = ["abc","deq","mee","aqq","dkd","ccc"], pattern = "abb"
+Output: ["mee","aqq"]
+Explanation: "mee" matches the pattern because there is a permutation {a -> m, b -> e, ...}. 
+"ccc" does not match the pattern because {a -> c, b -> c, ...} is not a permutation,
+since a and b map to the same letter.
+
+Note:
+
+1 <= words.length <= 50
+1 <= pattern.length = words[i].length <= 20
+*/
+class _0890_FindAndReplacePattern {
+public:
+    std::vector<std::string> findAndReplacePattern(std::vector<std::string>& words, std::string pattern);
+};
+
+
+/*
+A full binary tree is a binary tree where each node has exactly 0 or 2 children.
+Return a list of all possible full binary trees with N nodes.  Each element of the 
+answer is the root node of one possible tree.
+
+Each node of each tree in the answer must have node.val = 0.
+You may return the final list of trees in any order. 
+
+Example 1:
+
+Input: 7
+Output: [[0,0,0,null,null,0,0,null,null,0,0],[0,0,0,null,null,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,null,null,null,null,0,0],[0,0,0,0,0,null,null,0,0]]
+*/
+class _0894_AllPossibleFullBinaryTrees {
+public:
+    std::vector<TreeNode*> allPossibleFBT(int N);
 };
 
 /*
@@ -2399,6 +2610,35 @@ public:
     bool siCompleteTree(TreeNode<int>* root);
 };
 
+/*
+Given two positive integers x and y, an integer is powerful if it is equal to 
+x^i + y^j for some integers i >= 0 and j >= 0.
+Return a list of all powerful integers that have value less than or equal to bound.
+You may return the answer in any order.  In your answer, each value should occur at 
+most once.
+
+Input: x = 2, y = 3, bound = 10
+Output: [2,3,4,5,7,9,10]
+Explanation: 
+2 = 2^0 + 3^0
+3 = 2^1 + 3^0
+4 = 2^0 + 3^1
+5 = 2^1 + 3^1
+7 = 2^2 + 3^1
+9 = 2^3 + 3^0
+10 = 2^0 + 3^2
+
+Input: x = 3, y = 5, bound = 15
+Output: [2,4,6,8,10,14]
+
+1 <= x <= 100
+1 <= y <= 100
+0 <= bound <= 10^6
+*/
+class _0970_PowerfulIntegers {
+public:
+    std::vector<int> powerfulIntegers(int x, int y, int bound);
+};
 
 
 /*
@@ -2480,6 +2720,27 @@ public:
 };
 
 /*
+Given a binary string S (a string consisting only of '0' and '1's) and a positive integer N, 
+return true if and only if for every integer X from 1 to N, the binary representation of X 
+is a substring of S.
+
+Input: S = "0110", N = 3
+Output: true
+
+Input: S = "0110", N = 4
+Output: false
+
+Note:
+
+1 <= S.length <= 1000
+1 <= N <= 10^9
+*/
+class _1016_BinaryStringWithSubstringsRepresenting1ToN {
+public:
+    bool queryString(std::string S, int N);
+};
+
+/*
 Given a number N, return a string consisting of "0"s and 
 "1"s that represents its value in base -2 (negative two).
 The returned string must have no leading zeroes, unless 
@@ -2504,6 +2765,37 @@ Note:
 class _1017_ConvertToBase_Negative2 {
 public:
     std::string baseNeg2(int N);
+};
+
+
+/*
+Given an array A of 0s and 1s, consider N_i: the i-th subarray from A[0] to 
+A[i] interpreted as a binary number (from most-significant-bit to least-significant-bit.)
+Return a list of booleans answer, where answer[i] is true if and only if N_i is divisible by 5.
+
+Input: [0,1,1]
+Output: [true,false,false]
+Explanation: 
+The input numbers in binary are 0, 01, 011; which are 0, 1, and 3 in base-10. 
+Only the first number is divisible by 5, so answer[0] is true.
+
+Input: [1,1,1]
+Output: [false,false,false]
+
+Input: [0,1,1,1,1,1]
+Output: [true,false,false,false,true,false]
+
+Input: [1,1,1,0,1]
+Output: [false,false,false,false,false]
+
+Note:
+
+1 <= A.length <= 30000
+A[i] is 0 or 1
+*/
+class _1018_BinaryPrefixDivisibleBy5 {
+public:
+    std::vector<bool> prefixesDivBy5(std::vector<int>& A);
 };
 
 /*
@@ -3383,6 +3675,69 @@ class _1254_NumberOfClosedIslands {
   public:
     int closedIsland(std::vector<std::vector<int>>& grid);
     void DFS(std::vector<std::vector<int>>& grid, int I, int J, bool& touchEdge);
+};
+
+
+/*
+You are given a map of a server center, represented as a m * n integer matrix grid, 
+where 1 means that on that cell there is a server and 0 means that it is no server. 
+Two servers are said to communicate if they are on the same row or on the same column.
+Return the number of servers that communicate with any other server.
+
+Input: grid = [[1,0],[0,1]]
+Output: 0
+Explanation: No servers can communicate with others.
+
+Input: grid = [[1,0],[1,1]]
+Output: 3
+Explanation: All three servers can communicate with at least one other server.
+
+Input: grid = [[1,1,0,0],[0,0,1,0],[0,0,1,0],[0,0,0,1]]
+Output: 4
+Explanation: The two servers in the first row can communicate with each other. 
+The two servers in the third column can communicate with each other. The server 
+at right bottom corner can't communicate with any other server.
+*/
+class _1267_CountServersThatCommunicate {
+public:
+    int countServers(std::vector<std::vector<int>>& grid);
+};
+
+/*
+Given a m * n matrix of ones and zeros, return how many square submatrices have all ones.
+
+Input: matrix =
+[
+  [0,1,1,1],
+  [1,1,1,1],
+  [0,1,1,1]
+]
+Output: 15
+There are 10 squares of side 1.
+There are 4 squares of side 2.
+There is  1 square of side 3.
+Total number of squares = 10 + 4 + 1 = 15.
+
+Input: matrix = 
+[
+  [1,0,1],
+  [1,1,0],
+  [1,1,0]
+]
+Output: 7
+Explanation: 
+There are 6 squares of side 1.  
+There is 1 square of side 2. 
+Total number of squares = 6 + 1 = 7.
+
+Constraints:
+1 <= arr.length <= 300
+1 <= arr[0].length <= 300
+0 <= arr[i][j] <= 1
+*/
+class _1277_CountSquareSubmatricesWithAllOnes {
+public:
+    int countSquares(std::vector<std::vector<int>>& matrix);
 };
 
 

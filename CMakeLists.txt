@@ -1,3 +1,5 @@
+PROJECT(Practice)
+
 ADD_LIBRARY(Practice STATIC
     BinaryHeap.hpp
     DataStructures.hpp
@@ -208,6 +210,7 @@ ADD_LIBRARY(Practice STATIC
     _0378_KthSmallestElementInASortedMatrix.cpp
     _0380_RandomizedSet.cpp
     _0390_EliminationGame.cpp
+    _0394_DecodeString.cpp
     _0401_BinaryWatch.cpp
     _0404_SumOfLeftLeaves.cpp
     _0405_ConvertANumberToHexadecimal.cpp
@@ -227,6 +230,7 @@ ADD_LIBRARY(Practice STATIC
     _0443_StringCompression.cpp
     _0447_NumberOfBoomeranges.cpp    
     _0452_MinimumNumberOfArrowsToBurstBalloons.cpp
+    _0455_AssignCookies.cpp
     _0464_CanIWin.cpp
     _0477_TotalHammingDistance.cpp
     _0481_MagicalString.cpp
@@ -234,6 +238,7 @@ ADD_LIBRARY(Practice STATIC
     _0506_RelativeRanks.cpp
     _0509_FibonacciNumber.cpp
     _0518_CoinChange2.cpp
+    _0535_EncodeAndDecodeTinyURL.cpp
     _0538_ConvertBSTToGreaterTree.cpp
     _0540_SingleElementInASortedArray.cpp
     _0541_ReverseStringII.cpp
@@ -242,6 +247,7 @@ ADD_LIBRARY(Practice STATIC
     _0560_SubarraySubEqualK.cpp
     _0572_SubtreeOfAnotherTree.cpp
     _0590_NaryTreePostOrderTraversal.cpp
+    _0598_RangeAdditionII.cpp
     _0622_DesignCircularQueue.cpp
     _0637_AverageOfLevelInBinaryTree.cpp
     _0641_DesignCircularDeque.cpp
@@ -261,20 +267,27 @@ ADD_LIBRARY(Practice STATIC
     _0752_OpenTheLock.cpp
     _0756_PyramidTransitionMatrix.cpp
     _0777_SwapAdjacentInLRString.cpp
+    _0830_PositionsOfLargeGroups.cpp
     _0838_PushDominoes.cpp
+    _0841_KeysAndRooms.cpp
     _0862_ShortestSubarrayWithSumAtLeastK.cpp
     _0874_WalkingRobotSimulation.cpp
     _0877_StoneGame.cpp
+    _0890_FindAndReplacePattern.cpp
+    _0894_AllPossibleFullBinaryTrees.cpp
     _0895_MaximumFrequencyStack.cpp
     _0911_OnlineElection.cpp
     _0912_SortAnArray.cpp
     _0946_ValidateStackSequences.cpp
     _0956_TallestBillboard.cpp
     _0958_CheckCompletenessOfABinaryTree.cpp
+    _0970_PowerfulIntegers.cpp
     _0971_FlipBinaryTreeToMatchPreorderTraversal.cpp
     _0986_IntervalListIntersections.cpp
     _1003_checkIfWordIsValidAfterSubstitutions.cpp
+    _1016_BinaryStringWithSubstringsRepresenting1ToN.cpp
     _1017_ConvertToBase_Negative2.cpp
+    _1018_BinaryPrefixDivisibleBy5.cpp
     _1020_NumberOfEnclaves.cpp
     _1023_CamelcaseMatching.cpp
     _1025_DivisorGame.cpp
@@ -307,4 +320,6 @@ ADD_LIBRARY(Practice STATIC
     _1238_CircularPermutationInBinaryRepresentation.cpp
     _1247_MinimumSwapsToMakeStringsEqual.cpp
     _1254_NumberOfClosedIslands.cpp
+    _1267_CountServersThatCommunicate.cpp
+    _1277_CountSquareSubmatricesWithAllOnes.cpp
     )
