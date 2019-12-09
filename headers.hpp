@@ -3889,6 +3889,73 @@ public:
     std::vector<int> mergeSortedArray(std::vector<int> &A, std::vector<int> &B);
 };
 
+/*
+Description
+Given a string(Given in the way of char array) and an offset, rotate the string by offset in place. (rotate from left to right).
+
+offset >= 0
+the length of str >= 0
+Make changes on the original input data
+
+Have you met this question in a real interview?  
+Example
+
+Input: str="abcdefg", offset = 3
+Output: str = "efgabcd"	
+
+Input: str="abcdefg", offset = 0
+Output: str = "abcdefg"	
+
+Input: str="abcdefg", offset = 1
+Output: str = "gabcdef"	
+
+Input: str="abcdefg", offset =2
+Output: str = "fgabcde"	
+
+Input: str="abcdefg", offset = 10
+Output: str = "efgabcd"	
+Explanation: Note that it is rotated in place, that is, after str is rotated, it becomes "efgabcd".
+Challenge
+Rotate in-place with O(1) extra memory.
+*/
+class _0008_RotateString {
+public:
+    void rotateString(string &str, int offset);
+};
+
+
+/*
+Description
+Given number n. Print number from 1 to n. But:
+
+when number is divided by 3, print "fizz".
+when number is divided by 5, print "buzz".
+when number is divided by both 3 and 5, print "fizz buzz".
+when number can't be divided by either 3 or 5, print the number itself.
+Have you met this question in a real interview?  
+Example
+If n = 15, you should return:
+[
+  "1", "2", "fizz",
+  "4", "buzz", "fizz",
+  "7", "8", "fizz",
+  "buzz", "11", "fizz",
+  "13", "14", "fizz buzz"
+]
+
+If n = 10, you should return:
+[
+  "1", "2", "fizz",
+  "4", "buzz", "fizz",
+  "7", "8", "fizz",
+  "buzz"
+]
+Challenge : Can you do it with only one if statement?
+*/
+class _0009_FizzBuzz {
+public:
+    std::vector<std::string> fizzBuzz(int n);
+};
 
 
     /*
