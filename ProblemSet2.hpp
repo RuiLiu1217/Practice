@@ -822,7 +822,7 @@ class _0146_LRUCache {
 private:
     int mCapacity;
     std::list<std::pair<int, int>> mCache;
-    std::unordered_map<int, std::list<int, int>::iterator> mMap;
+    std::unordered_map<int, std::list<std::pair<int, int>>::iterator> mMap;
 public:
     _0146_LRUCache(int capacity);
     int get(int key);

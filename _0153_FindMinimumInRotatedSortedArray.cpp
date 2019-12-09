@@ -22,11 +22,11 @@ int LeetCode::_0153_FindMinimumInRotatedSortedArray::findMin(std::vector<int>& n
         }
         int mid = start + (end - start) / 2;
 
-        if(nums[mid] >= num[start]) {
+        if(nums[mid] >= nums[start]) {
             start = mid + 1;
         } else {
             end = mid;
         }
     }
-    return num[start];
+    return nums[start];
 }

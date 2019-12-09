@@ -8,7 +8,7 @@
 #include <unordered_map>
 #include "Tree.hpp"
 #include "LinkList.hpp"
-
+#include "Trie.hpp"
 namespace LeetCode {
 
 /*
@@ -131,7 +131,7 @@ public:
     /** Returns if there is any word in the trie that starts with the given prefix. */
     bool startsWith(std::string prefix);
 private:
-    std::unordered_map<char, Trie*> children;
+    std::unordered_map<char, _0208_ImplementTrie*> children;
     bool isWord;
 };
 
@@ -346,6 +346,4 @@ private:
 };
 
 }
-
-
 #endif

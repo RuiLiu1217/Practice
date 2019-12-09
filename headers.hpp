@@ -1,3 +1,5 @@
+#ifndef HEADERS_HPP
+#define HEADERS_HPP
 #include <vector>
 #include <string>
 #include <stack>
@@ -15,215 +17,6 @@
 namespace LeetCode
 {
 
-/*
-You are a professional robber planning to rob houses along a street. Each house 
-has a certain amount of money stashed. All houses at this place are arranged in 
-a circle. That means the first house is the neighbor of the last one. Meanwhile, 
-adjacent houses have security system connected and it will automatically contact 
-the police if two adjacent houses were broken into on the same night.
-
-Given a list of non-negative integers representing the amount of money of each 
-house, determine the maximum amount of money you can rob tonight without alerting 
-the police.
-
-Input: [2,3,2]            :            Output: 3
-Explanation: You cannot rob house 1 (money = 2) and then rob house 3 (money = 2),
-because they are adjacent houses.
-
-Input: [1,2,3,1]          :            Output: 4
-Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3).
-Total amount you can rob = 1 + 3 = 4.
-这道题也是一下子蒙住了，实际上很简单，因为第一个房子和最后一个房子不能都抢，因此分别算两次，
-即排除第一个房子的情况，以及排除最后一个房子的情况。然后取大的。
-*/
-class _0213_HouseRobberII {
-public:
-    int rob(std::vector<int>& nums);
-private:
-    int robHelp(std::vector<int>& nums);
-};
-
-/*
-Implement the following operations of a queue using stacks.
-
-push(x) -- Push element x to the back of queue.
-pop() -- Removes the element from in front of queue.
-peek() -- Get the front element.
-empty() -- Return whether the queue is empty.
-Example:
-
-MyQueue queue = new MyQueue();
-
-queue.push(1);
-queue.push(2);  
-queue.peek();  // returns 1
-queue.pop();   // returns 1
-queue.empty(); // returns false
-Notes:
-
-You must use only standard operations of a stack -- which means only push to top, peek/pop
-from top, size, and is empty operations are valid. Depending on your language, stack may 
-not be supported natively. You may simulate a stack by using a list or deque (double-ended 
-queue), as long as you use only standard operations of a stack. You may assume that all 
-operations are valid (for example, no pop or peek operations will be called on an empty queue).
-*/
-class _0232_ImplementQueueUsingStacks {
-private:
-    std::stack<int> left;
-    std::stack<int> right;
-public:
-    _0232_ImplementQueueUsingStacks();
-    void push(int x);
-    int pop();
-    int peek();
-    bool empty();
-};
-
-class _0235_LowestCommonAncestor
-{
-    /*
-            Given a binary search tree (BST), find the lowest common 
-            ancestor (LCA) of two given nodes in the BST.
-            
-            According to the definition of LCA on Wikipedia: The lowest 
-            common ancestor is defined between two nodes p and q as the 
-            lowest node in T that has both p and q as descendants (where 
-            we allow a node to be a descendant of itself).
-            
-            Given binary search tree:  root = [6,2,8,0,4,7,9,null,null,3,5]
-                _______6______
-               /              \
-            ___2__          ___8__
-           /      \        /      \
-           0       4       7       9
-         /  \
-        3   5
-
-        Example 1:
-            Input: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8
-            Output: 6
-            Explanation: The LCA of nodes 2 and 8 is 6.
-        Example 2:
-            Input: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 4
-            Output: 2
-            Explanation: The LCA of nodes 2 and 4 is 2, since a node 
-            can be a descendant of itself according to the LCA definition.
-        Note:
-            All of the nodes' values will be unique. p and q are different 
-            and both values will exist in the BST.
-        Challenge: 
-            Think about the case that the tree is not a binary search tree?
-        */
-public:
-    TreeNode<int> *lowestCommonAncestorRecursive(TreeNode<int> *root, TreeNode<int> *p, TreeNode<int> *q);
-    TreeNode<int> *lowestCommonAncestorIterative(TreeNode<int> *root, TreeNode<int> *p, TreeNode<int> *q);
-};
-
-/*
-Write an efficient algorithm that searches for a value 
-in an m x n matrix. This matrix has the following properties:
-
-Integers in each row are sorted in ascending from left to right.
-Integers in each column are sorted in ascending from top to bottom.
-Example:
-
-    Consider the following matrix:
-    [
-        [1,   4,  7, 11, 15],
-        [2,   5,  8, 12, 19],
-        [3,   6,  9, 16, 22],
-        [10, 13, 14, 17, 24],
-        [18, 21, 23, 26, 30]
-    ]
-    Given target = 5, return true.
-    Given target = 20, return false.
-*/
-class _0240_SearchA2DMatrix_II
-{
-public:
-    bool searchMatrix(const std::vector<std::vector<int>> &matrix, int target);
-};
-
-class _0260_SingleNumberII
-{
-    /*
-        Given an array of numbers nums, in which exactly two elements 
-        appear only once and all the other elements appear exactly twice.
-        Find the two elements that appear only once.
-        
-        Example:
-            Input:  [1,2,1,3,2,5]
-            Output: [3,5]
-        Note:
-        The order of the result is not important. So in the above example, 
-        [5, 3] is also correct. Your algorithm should run in linear runtime 
-        complexity. Could you implement it using only constant space 
-        complexity?
-        
-        Solution
-            1. assume that A and B are the two elements which we want to find;
-            2. use XOR for all elements,the result is : r = A^B,we just need 
-            to distinguish A from B next step;
-            3. if we can find a bit '1' in r,then the bit in corresponding 
-                position in A and B must be different.We can use 
-                {last = r & (~(r-1))} to get the last bit 1 int r;
-            4. we use last to divide all numbers into two groups,then A and B 
-                must fall into the two distrinct groups. XOR elements in eash 
-                group,get the A and B.
-    */
-public:
-    std::vector<int> singleNumber(const std::vector<int> &nums);
-};
-
-/*
-        Given a pattern and a string str, find if str follows the same pattern.
-        Here follow means a full match, such that there is a bijection between a 
-        letter in pattern and a non - empty word in str.
-        
-        Example 1:
-            Input: pattern = "abba", str = "dog cat cat dog"
-            Output : true
-        Example 2 :
-            Input : pattern = "abba", str = "dog cat cat fish"
-            Output : false
-        Example 3 :
-            Input : pattern = "aaaa", str = "dog cat cat dog"
-            Output : false
-        Example 4 :
-            Input : pattern = "abba", str = "dog dog dog dog"
-            Output : false
-        Notes :
-            You may assume pattern contains only lowercase letters, and str 
-            contains lowercase letters separated by a single space.
-    */
-class _0290_WordPattern
-{
-public:
-    bool wordPattern(std::string pattern, std::string str);
-private:
-    std::unordered_map<char, std::string> map;
-    std::unordered_map<std::string, char> map2;
-};
-
-
-/*
-Given an unsorted array of integers, find the length of longest increasing 
-subsequence.
-Example:
-Input: [10,9,2,5,3,7,101,18]       :       Output: 4 
-Explanation: The longest increasing subsequence is [2,3,7,101], therefore the length is 4. 
-Note:
-There may be more than one LIS combination, it is only necessary for you to return 
-the length. Your algorithm should run in O(n2) complexity. 
-Follow up: Could you improve it to O(n log n) time complexity?
-*/
-class _0300_LongestIncreasingSubsequence {
-public:
-    int lengthOfLIS(std::vector<int>& nums);
-private:
-    int lengthOfLIS_N2(std::vector<int>& nums);
-    int lengthOfLIS_NlogN(std::vector<int>& nums);
-};
 
 /*
 Remove the minimum number of invalid parentheses in order to make the input string valid. 
@@ -994,6 +787,102 @@ private:
 };
 
 /*
+Insert Delete GetRandom O(1) 
+Design a data structure that supports all following operations in average O(1) time.
+insert(val): Inserts an item val to the set if not already present.
+remove(val): Removes an item val from the set if present.
+getRandom: Returns a random element from current set of elements. Each element must have the same probability of being returned.
+
+// Init an empty set.
+RandomizedSet randomSet = new RandomizedSet();
+
+// Inserts 1 to the set. Returns true as 1 was inserted successfully.
+randomSet.insert(1);
+
+// Returns false as 2 does not exist in the set.
+randomSet.remove(2);
+
+// Inserts 2 to the set, returns true. Set now contains [1,2].
+randomSet.insert(2);
+
+// getRandom should return either 1 or 2 randomly.
+randomSet.getRandom();
+
+// Removes 1 from the set, returns true. Set now contains [2].
+randomSet.remove(1);
+
+// 2 was already in the set, so return false.
+randomSet.insert(2);
+
+// Since 2 is the only number in the set, getRandom always return 2.
+randomSet.getRandom();
+*/
+class _0380_RandomizedSet {
+private:
+    std::unordered_map<int, int> valueIndex;
+    std::vector<int> values;
+public:
+    /** Initialize your data structure here. */
+    _0380_RandomizedSet();    
+    /** Inserts a value to the set. Returns true if the set did not already contain the specified element. */
+    bool insert(int val);    
+    /** Removes a value from the set. Returns true if the set contained the specified element. */
+    bool remove(int val);    
+    /** Get a random element from the set. */
+    int getRandom();
+};
+
+/*
+_390_ Elimination Game
+There is a list of sorted integers from 1 to n. Starting from left to right,
+remove the first number and every other number afterward until you reach the
+end of the list.
+
+Repeat the previous step again, but this time from right to left, remove the
+right most number and every other number from the remaining numbers.
+
+We keep repeating the steps again, alternating left to right and right to left,
+until a single number remains.
+
+Find the last number that remains starting with a list of length n.
+
+Input:
+n = 9,
+1 2 3 4 5 6 7 8 9
+2 4 6 8
+2 6
+6
+
+Output:
+6
+*/
+class _0390_EliminationGame {
+public:
+    int lastRemaining(int n);
+};
+
+/*
+Given an encoded string, return its decoded string.
+The encoding rule is: k[encoded_string], where the encoded_string 
+inside the square brackets is being repeated exactly k times. Note 
+that k is guaranteed to be a positive integer.
+You may assume that the input string is always valid; No extra 
+white spaces, square brackets are well-formed, etc.
+Furthermore, you may assume that the original data does not contain 
+any digits and that digits are only for those repeat numbers, k. 
+For example, there won't be input like 3a or 2[4].
+
+    s = "3[a]2[bc]", return "aaabcbc".
+    s = "3[a2[c]]", return "accaccacc".
+    s = "2[abc]3[cd]ef", return "abcabccdcdcdef".
+*/
+class _0394_DecodeString {
+public:
+    std::string decodeString(std::string s);
+};
+
+
+/*
 A binary watch has 4 LEDs on the top which represent
 the hours (0-11), and the 6 LEDs on the bottom represent
 the minutes (0-59).
@@ -1216,7 +1105,37 @@ class _0452_MinimumNumberOfArrowsToBusrtBalloons {
         int findMinArrowShots(std::vector<std::vector<int>>& points);
 };
 
+/*
+Assume you are an awesome parent and want to give your children some cookies. 
+But, you should give each child at most one cookie. Each child i has a greed 
+factor gi, which is the minimum size of a cookie that the child will be content 
+with; and each cookie j has a size sj. If sj >= gi, we can assign the cookie 
+j to the child i, and the child i will be content. Your goal is to maximize 
+the number of your content children and output the maximum number.
 
+Note:
+You may assume the greed factor is always positive.
+You cannot assign more than one cookie to one child.
+
+Input: [1,2,3], [1,1]
+Output: 1
+
+Explanation: You have 3 children and 2 cookies. The greed factors of 3 children 
+are 1, 2, 3. And even though you have 2 cookies, since their size is both 1, 
+you could only make the child whose greed factor is 1 content. 
+You need to output 1.
+
+Input: [1,2], [1,2,3]
+Output: 2
+
+Explanation: You have 2 children and 3 cookies. The greed factors of 2 children are 1, 2. 
+You have 3 cookies and their sizes are big enough to gratify all of the children, 
+You need to output 2.
+*/
+class _0455_AssignCookies {
+public:
+    int findContentChildren(std::vector<int>& g, std::vector<int>& s);
+};
 /*
 In the "100 game," two players take turns adding, to a running total, any 
 integer from 1..10. The player who first causes the running total to reach 
@@ -1256,7 +1175,27 @@ private:
     bool canIWin(int M, int T, int state);
 };
 
+/*
+The Hamming distance between two integers is the number of positions at which the corresponding bits are different.
 
+Now your job is to find the total Hamming distance between all pairs of the given numbers.
+
+Example:
+Input: 4, 14, 2
+
+Output: 6
+
+Explanation: In binary representation, the 4 is 0100, 14 is 1110, and 2 is 0010 (just
+showing the four bits relevant in this case). So the answer will be:
+HammingDistance(4, 14) + HammingDistance(4, 2) + HammingDistance(14, 2) = 2 + 2 + 2 = 6.
+Note:
+Elements of the given array are in the range of 0 to 10^9
+Length of the array will not exceed 10^4.
+*/
+class _0477_TotalHammingDistance {
+public:
+    int totalHammingDistance(std::vector<int>& nums);
+};
 
 /*
 A magical string S consists of only '1' and '2' and obeys the following rules:
@@ -1282,6 +1221,25 @@ public:
 };
 
 /*
+498. Diagonal Traverse
+Given a matrix of M x N elements (M rows, N columns), return all elements of the matrix in diagonal order as shown in the below image.
+
+Input:
+[
+ [ 1, 2, 3 ],
+ [ 4, 5, 6 ],
+ [ 7, 8, 9 ]
+]
+
+Output:  [1,2,4,7,5,3,6,8,9]
+The total number of elements of the given matrix will not exceed 10,000.
+*/
+class _0498_DiagonalTraverse {
+    public:
+        std::vector<int> findDiagonalOrder(std::vector<std::vector<int>>& matrix);
+};
+
+/*
 Given scores of N athletes, find their relative 
 ranks and the people with the top three highest scores, 
 who will be awarded medals: "Gold Medal", "Silver Medal" 
@@ -1304,6 +1262,33 @@ class _0506_RelativeRanks
 public:
     std::vector<std::string> findRelativeRanks(std::vector<int> &nums);
 };
+
+/*
+509. Fibonacci Number
+The Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci 
+sequence, such that each number is the sum of the two preceding ones, starting from 
+0 and 1. That is,
+F(0) = 0,   F(1) = 1
+F(N) = F(N - 1) + F(N - 2), for N > 1.
+Given N, calculate F(N).
+
+Input: 2
+Output: 1
+Explanation: F(2) = F(1) + F(0) = 1 + 0 = 1.
+
+Input: 3
+Output: 2
+Explanation: F(3) = F(2) + F(1) = 1 + 1 = 2.
+
+Input: 4
+Output: 3
+Explanation: F(4) = F(3) + F(2) = 2 + 1 = 3.
+*/
+class _0509_FibonacciNumber {
+public:
+    int fib(int N);
+};
+
 
 /*
 You are given coins of different denominations and a total amount of money. 
@@ -1337,6 +1322,167 @@ the answer is guaranteed to fit into signed 32-bit integer
 class _0518_CoinChange2 {
 public:
     int change(int amount, std::vector<int>& coins);
+};
+
+/*
+Note: This is a companion problem to the System Design problem: Design TinyURL.
+TinyURL is a URL shortening service where you enter a URL such as 
+https://leetcode.com/problems/design-tinyurl and it returns a short URL 
+such as http://tinyurl.com/4e9iAk.
+Design the encode and decode methods for the TinyURL service. There is no 
+restriction on how your encode/decode algorithm should work. You just need 
+to ensure that a URL can be encoded to a tiny URL and the tiny URL can be 
+decoded to the original URL.
+*/
+class _0535_EncodeAndDecodeTinyURL {
+public:
+    // Encodes a URL to a shortened URL
+    std::string encode(std::string longUrl);
+
+    // Decodes a shortened URL to its original URL
+    std::string decode(std::string shortUrl);
+};
+
+
+/*
+Given a Binary Search Tree (BST), convert it to a Greater Tree such that 
+every key of the original BST is changed to the original key plus sum of 
+all keys greater than the original key in BST.
+
+Input: The root of a Binary Search Tree like this:
+              5
+            /   \
+           2     13
+
+Output: The root of a Greater Tree like this:
+             18
+            /   \
+          20     13
+*/
+class _0538_ConvertBSTToGreaterTree {
+public:
+    TreeNode<int>* convertBST(TreeNode<int>* root);
+    void inOrder(TreeNode<int>* root);
+};
+
+/*
+You are given a sorted array consisting of only integers where every 
+element appears exactly twice, except for one element which appears 
+exactly once. Find this single element that appears only once.
+
+Input: [1,1,2,3,3,4,4,8,8]
+Output: 2
+
+Input: [3,3,7,7,10,11,11]
+Output: 10
+*/
+class _0540_SingleElementInASortedArray {
+public:
+    int singleNonDuplicate(std::vector<int>& nums);
+private:
+    int singleNoDuplicate(std::vector<int>& nums, int bet, int end);
+};
+
+/*
+Given a string and an integer k, you need to reverse the first k 
+characters for every 2k characters counting from the start of the string. 
+If there are less than k characters left, reverse all of them. If there 
+are less than 2k but greater than or equal to k characters, then reverse 
+the first k characters and left the other as original.
+
+Input: s = "abcdefg", k = 2
+Output: "bacdfeg"
+Restrictions:
+The string consists of lower English letters only.
+Length of the given string and k will in the range [1, 10000]
+*/
+class _0541_ReverseStringII {
+public:
+    std::string reverseStr(std::string s, int k);
+};
+
+
+/*
+553. Optimal Division
+Given a list of positive integers, the adjacent integers will 
+perform the float division. For example, [2,3,4] -> 2 / 3 / 4.
+
+However, you can add any number of parenthesis at any position 
+to change the priority of operations. You should find out how 
+to add parenthesis to get the maximum result, and return the 
+corresponding expression in string format. Your expression should NOT contain redundant parenthesis.
+
+Example:
+Input: [1000,100,10,2]
+Output: "1000/(100/10/2)"
+Explanation:
+1000/(100/10/2) = 1000/((100/10)/2) = 200
+However, the bold parenthesis in "1000/((100/10)/2)" are redundant, 
+since they don't influence the operation priority. So you should return "1000/(100/10/2)". 
+
+Other cases:
+1000/(100/10)/2 = 50
+1000/(100/(10/2)) = 50
+1000/100/10/2 = 0.5
+1000/100/(10/2) = 2
+Note:
+
+The length of the input array is [1, 10].
+Elements in the given array will be in range [2, 1000].
+There is only one optimal division for each test case.
+*/
+class _0553_OptimalDivision {
+public:
+    std::string optimalDivision(std::vector<int>& nums);
+};
+
+/*
+There is a brick wall in front of you. The wall is rectangular and has 
+several rows of bricks. The bricks have the same height but different 
+width. You want to draw a vertical line from the top to the bottom and 
+cross the least bricks.
+The brick wall is represented by a list of rows. Each row is a list of 
+integers representing the width of each brick in this row from left to right.
+If your line go through the edge of a brick, then the brick is not 
+considered as crossed. You need to find out how to draw the line to cross 
+the least bricks and return the number of crossed bricks.
+You cannot draw a line just along one of the two vertical edges of the 
+wall, in which case the line will obviously cross no bricks.
+
+Input: [[1,2,2,1],
+        [3,1,2],
+        [1,3,2],
+        [2,4],
+        [3,1,2],
+        [1,3,1,1]]
+Output: 2
+
+Note:
+The width sum of bricks in different rows are the same and won't exceed 
+INT_MAX. The number of bricks in each row is in range [1,10,000]. The height 
+of wall is in range [1,10,000]. Total number of bricks of the wall won't 
+exceed 20,000.
+*/
+class _0554_BrickWall {
+public:
+    int leastBricks(std::vector<std::vector<int>>& wall);
+};
+
+
+/*
+560. Subarray Sum Equals K
+Given an array of integers and an integer k, you need to find 
+the total number of continuous subarrays whose sum equals to k.
+Input:nums = [1,1,1], k = 2
+Output: 2
+Note:
+    The length of the array is in range [1, 20,000].
+    The range of numbers in the array is [-1000, 1000] and the 
+    range of the integer k is [-1e7, 1e7].
+ */
+class _0560_SubarraySumEqualsK {
+    public:
+    int subarraySum(std::vector<int>& nums, int k);
 };
 
 /*
@@ -1379,6 +1525,149 @@ public:
 private:
     bool isSame(TreeNode<int>* s, TreeNode<int>* t);
 };
+
+
+/*
+Given an n-ary tree, return the postorder traversal of its nodes' values.
+Nary-Tree input serialization is represented in their level order traversal, 
+each group of children is separated by the null value (See examples).
+
+Recursive solution is trivial, could you do it iteratively?
+Input: root = [1,null,3,2,4,null,5,6]
+Output: [5,6,3,2,4,1]
+
+Input: root = [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]
+Output: [2,6,14,11,7,3,12,8,4,13,9,10,5,1]
+*/
+class _0590_Node;
+class _0590_NaryTreePostOrderTraversal {
+public:
+    std::vector<int> postorder(_0590_Node* root);
+};
+
+/*
+Given an m * n matrix M initialized with all 0's and several update operations.
+Operations are represented by a 2D array, and each operation is represented by 
+an array with two positive integers a and b, which means M[i][j] should be added 
+by one for all 0 <= i < a and 0 <= j < b.
+
+You need to count and return the number of maximum integers in the matrix after performing all the operations.
+
+Example 1:
+Input: 
+m = 3, n = 3
+operations = [[2,2],[3,3]]
+Output: 4
+Explanation: 
+Initially, M = 
+[[0, 0, 0],
+ [0, 0, 0],
+ [0, 0, 0]]
+
+After performing [2,2], M = 
+[[1, 1, 0],
+ [1, 1, 0],
+ [0, 0, 0]]
+
+After performing [3,3], M = 
+[[2, 2, 1],
+ [2, 2, 1],
+ [1, 1, 1]]
+
+So the maximum integer in M is 2, and there are four of it in M. So return 4.
+Note:
+The range of m and n is [1,40000].
+The range of a is [1,m], and the range of b is [1,n].
+The range of operations size won't exceed 10,000.
+*/
+class _0598_RangeAdditionII {
+public:
+    int maxCount(int m, int n, std::vector<std::vector<int>>& ops);
+};
+
+/*
+622. Design Circular Queue
+Design your implementation of the circular queue. The circular queue is a 
+linear data structure in which the operations are performed based on FIFO 
+(First In First Out) principle and the last position is connected back to 
+the first position to make a circle. It is also called "Ring Buffer".
+
+One of the benefits of the circular queue is that we can make use of the 
+spaces in front of the queue. In a normal queue, once the queue becomes full, 
+we cannot insert the next element even if there is a space in front of the 
+queue. But using the circular queue, we can use the space to store new values.
+
+Your implementation should support following operations:
+
+MyCircularQueue(k): Constructor, set the size of the queue to be k.
+Front: Get the front item from the queue. If the queue is empty, return -1.
+Rear: Get the last item from the queue. If the queue is empty, return -1.
+enQueue(value): Insert an element into the circular queue. Return true if the operation is successful.
+deQueue(): Delete an element from the circular queue. Return true if the operation is successful.
+isEmpty(): Checks whether the circular queue is empty or not.
+isFull(): Checks whether the circular queue is full or not.
+ 
+
+Example:
+
+MyCircularQueue circularQueue = new MyCircularQueue(3); // set the size to be 3
+circularQueue.enQueue(1);  // return true
+circularQueue.enQueue(2);  // return true
+circularQueue.enQueue(3);  // return true
+circularQueue.enQueue(4);  // return false, the queue is full
+circularQueue.Rear();  // return 3
+circularQueue.isFull();  // return true
+circularQueue.deQueue();  // return true
+circularQueue.enQueue(4);  // return true
+circularQueue.Rear();  // return 4
+*/
+class _0622_DesignCircularQueue {
+    std::vector<int> q;
+    int head, tail, N;
+    bool empty;
+public:
+    /** Initialize your data structure here. Set the size of the queue to be k. */
+    _0622_DesignCircularQueue(int k);
+    
+    /** Insert an element into the circular queue. Return true if the operation is successful. */
+    bool enQueue(int value);
+    
+    /** Delete an element from the circular queue. Return true if the operation is successful. */
+    bool deQueue();
+    
+    /** Get the front item from the queue. */
+    int Front();
+    
+    /** Get the last item from the queue. */
+    int Rear();
+    
+    /** Checks whether the circular queue is empty or not. */
+    bool isEmpty();
+    
+    /** Checks whether the circular queue is full or not. */
+    bool isFull();
+};
+
+/*
+Given a non-empty binary tree, return the average value of the nodes on each level in the form of an array.
+Input:
+    3
+   / \
+  9  20
+    /  \
+   15   7
+Output: [3, 14.5, 11]
+Explanation:
+The average value of nodes on level 0 is 3,  on level 1 is 14.5, and on level 2 is 11. Hence return [3, 14.5, 11].
+Note:
+The range of node's value is in the range of 32-bit signed integer.
+*/
+class _0637_AverageOfLevelsInBinaryTree {
+public:
+    std::vector<double> averageOfLevels(TreeNode<int>* root);
+};
+
+
 
 /*
 Design your implementation of the circular double-ended queue (deque).
@@ -1937,6 +2226,95 @@ public:
     bool canTransform(const std::string& start, const std::string& end);
 };
 
+/*
+In a string S of lowercase letters, these letters form consecutive groups of the same character.
+For example, a string like S = "abbxxxxzyy" has the groups "a", "bb", "xxxx", "z" and "yy".
+Call a group large if it has 3 or more characters.  We would like the starting and ending positions of every large group.
+The final answer should be in lexicographic order.
+
+Input: "abbxxxxzzy"
+Output: [[3,6]]
+Explanation: "xxxx" is the single large group with starting  3 and ending positions 6.
+Example 2:
+
+Input: "abc"
+Output: []
+Explanation: We have "a","b" and "c" but no large group.
+Example 3:
+
+Input: "abcdddeeeeaabbbcd"
+Output: [[3,5],[6,9],[12,14]]
+*/
+class _0830_PositionsOfLargeGroups {
+public:
+    std::vector<std::vector<int>> largetGroupPositions(std::string S);
+};
+
+/*
+ 838 Push Dominoes
+There are N dominoes in a line, and we place each domino vertically upright.
+In the beginning, we simultaneously push some of the dominoes either to the 
+left or to the right. After each second, each domino that is falling to the 
+left pushes the adjacent domino on the left. Similarly, the dominoes falling 
+to the right push their adjacent dominoes standing on the right.
+When a vertical domino has dominoes falling on it from both sides, it stays 
+still due to the balance of the forces. For the purposes of this question, 
+we will consider that a falling domino expends no additional force to a 
+falling or already fallen domino.
+Given a string "S" representing the initial state. S[i] = 'L', if the i-th 
+domino has been pushed to the left; S[i] = 'R', if the i-th domino has been 
+pushed to the right; S[i] = '.', if the i-th domino has not been pushed.
+
+Return a string representing the final state. 
+
+Input: ".L.R...LR..L.."
+Output: "LL.RR.LLRRLL.."
+
+Input: "RR.L"
+Output: "RR.L"
+Explanation: The first domino expends no additional force on the second domino.
+
+Note:
+    0 <= N <= 10^5
+    String dominoes contains only 'L', 'R' and '.'
+*/
+class _0838_PushDominoes {
+  public:
+    std::string pushDominoes(std::string dominoes);
+};
+
+
+/*
+There are N rooms and you start in room 0. Each room has a distinct number in 0, 
+1, 2, ..., N-1, and each room may have some keys to access the next room. 
+Formally, each room i has a list of keys rooms[i], and each key rooms[i][j] is an 
+integer in [0, 1, ..., N-1] where N = rooms.length. A key rooms[i][j] = v opens 
+the room with number v.
+Initially, all the rooms start locked (except for room 0). You can walk back and 
+forth between rooms freely.
+Return true if and only if you can enter every room.
+
+Input: [[1],[2],[3],[]]
+Output: true
+Explanation:  
+We start in room 0, and pick up key 1.
+We then go to room 1, and pick up key 2.
+We then go to room 2, and pick up key 3.
+We then go to room 3.  Since we were able to go to every room, we return true.
+
+Input: [[1,3],[3,0,1],[2],[0]]
+Output: false
+Explanation: We can't enter the room with number 2.
+Note:
+
+1 <= rooms.length <= 1000
+0 <= rooms[i].length <= 1000
+The number of keys in all rooms combined is at most 3000.
+*/
+class _0841_KeysAndRooms {
+public:
+     bool canVisitAllRooms(std::vector<std::vector<int>>& rooms);
+};
 
 /*
 Return the length of the shortest, non-empty, contiguous subarray of A 
@@ -2020,6 +2398,52 @@ public:
     bool stoneGame(std::vector<int>& piles);
     int AlexMax(std::vector<int>& piles, int start, int end);
     int LeeMax(std::vector<int>& piles, int start, int end);
+};
+
+
+/*
+You have a list of words and a pattern, and you want to know which words in words 
+matches the pattern. A word matches the pattern if there exists a permutation of 
+letters p so that after replacing every letter x in the pattern with p(x), we get 
+the desired word. (Recall that a permutation of letters is a bijection from letters 
+to letters: every letter maps to another letter, and no two letters map to the 
+same letter.)
+Return a list of the words in words that match the given pattern. 
+You may return the answer in any order.
+
+Input: words = ["abc","deq","mee","aqq","dkd","ccc"], pattern = "abb"
+Output: ["mee","aqq"]
+Explanation: "mee" matches the pattern because there is a permutation {a -> m, b -> e, ...}. 
+"ccc" does not match the pattern because {a -> c, b -> c, ...} is not a permutation,
+since a and b map to the same letter.
+
+Note:
+
+1 <= words.length <= 50
+1 <= pattern.length = words[i].length <= 20
+*/
+class _0890_FindAndReplacePattern {
+public:
+    std::vector<std::string> findAndReplacePattern(std::vector<std::string>& words, std::string pattern);
+};
+
+
+/*
+A full binary tree is a binary tree where each node has exactly 0 or 2 children.
+Return a list of all possible full binary trees with N nodes.  Each element of the 
+answer is the root node of one possible tree.
+
+Each node of each tree in the answer must have node.val = 0.
+You may return the final list of trees in any order. 
+
+Example 1:
+
+Input: 7
+Output: [[0,0,0,null,null,0,0,null,null,0,0],[0,0,0,null,null,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,null,null,null,null,0,0],[0,0,0,0,0,null,null,0,0]]
+*/
+class _0894_AllPossibleFullBinaryTrees {
+public:
+    std::vector<TreeNode<int>*> allPossibleFBT(int N);
 };
 
 /*
@@ -2187,6 +2611,60 @@ public:
 };
 
 /*
+Given two positive integers x and y, an integer is powerful if it is equal to 
+x^i + y^j for some integers i >= 0 and j >= 0.
+Return a list of all powerful integers that have value less than or equal to bound.
+You may return the answer in any order.  In your answer, each value should occur at 
+most once.
+
+Input: x = 2, y = 3, bound = 10
+Output: [2,3,4,5,7,9,10]
+Explanation: 
+2 = 2^0 + 3^0
+3 = 2^1 + 3^0
+4 = 2^0 + 3^1
+5 = 2^1 + 3^1
+7 = 2^2 + 3^1
+9 = 2^3 + 3^0
+10 = 2^0 + 3^2
+
+Input: x = 3, y = 5, bound = 15
+Output: [2,4,6,8,10,14]
+
+1 <= x <= 100
+1 <= y <= 100
+0 <= bound <= 10^6
+*/
+class _0970_PowerfulIntegers {
+public:
+    std::vector<int> powerfulIntegers(int x, int y, int bound);
+};
+
+
+/*
+Flip Binary Tree To Match Preorder Traversal
+Given a binary tree with N nodes, each node has a different value from 
+{1, ..., N}. A node in this binary tree can be flipped by swapping the 
+left child and the right child of that node. Consider the sequence of 
+N values reported by a preorder traversal starting from the root. Call 
+such a sequence of N values the voyage of the tree. (Recall that a preorder 
+traversal of a node means we report the current node's value, then preorder
+-traverse the left child, then preorder-traverse the right child.)
+Our goal is to flip the least number of nodes in the tree so that the 
+voyage of the tree matches the voyage we are given. If we can do so, then 
+return a list of the values of all nodes flipped.  You may return the answer 
+in any order.
+
+If we cannot do so, then return the list [-1].
+*/
+class _0971_FlipBinaryTreeToMatchPreorderTraversal {
+public:
+	std::vector<int> flipMatchVoyage(TreeNode<int>* root, std::vector<int>& voyage);
+};
+
+
+
+/*
 Given two lists of closed intervals, each list of intervals is pairwise disjoint and in 
 sorted order. Return the intersection of these two interval lists.
 
@@ -2242,6 +2720,27 @@ public:
 };
 
 /*
+Given a binary string S (a string consisting only of '0' and '1's) and a positive integer N, 
+return true if and only if for every integer X from 1 to N, the binary representation of X 
+is a substring of S.
+
+Input: S = "0110", N = 3
+Output: true
+
+Input: S = "0110", N = 4
+Output: false
+
+Note:
+
+1 <= S.length <= 1000
+1 <= N <= 10^9
+*/
+class _1016_BinaryStringWithSubstringsRepresenting1ToN {
+public:
+    bool queryString(std::string S, int N);
+};
+
+/*
 Given a number N, return a string consisting of "0"s and 
 "1"s that represents its value in base -2 (negative two).
 The returned string must have no leading zeroes, unless 
@@ -2266,6 +2765,37 @@ Note:
 class _1017_ConvertToBase_Negative2 {
 public:
     std::string baseNeg2(int N);
+};
+
+
+/*
+Given an array A of 0s and 1s, consider N_i: the i-th subarray from A[0] to 
+A[i] interpreted as a binary number (from most-significant-bit to least-significant-bit.)
+Return a list of booleans answer, where answer[i] is true if and only if N_i is divisible by 5.
+
+Input: [0,1,1]
+Output: [true,false,false]
+Explanation: 
+The input numbers in binary are 0, 01, 011; which are 0, 1, and 3 in base-10. 
+Only the first number is divisible by 5, so answer[0] is true.
+
+Input: [1,1,1]
+Output: [false,false,false]
+
+Input: [0,1,1,1,1,1]
+Output: [true,false,false,false,true,false]
+
+Input: [1,1,1,0,1]
+Output: [false,false,false,false,false]
+
+Note:
+
+1 <= A.length <= 30000
+A[i] is 0 or 1
+*/
+class _1018_BinaryPrefixDivisibleBy5 {
+public:
+    std::vector<bool> prefixesDivBy5(std::vector<int>& A);
 };
 
 /*
@@ -2478,6 +3008,37 @@ public:
 
 
 /*
+1074. Number of Submatrices That Sum to Target
+
+Given a matrix, and a target, return the number of non-empty submatrices 
+that sum to target. A submatrix x1, y1, x2, y2 is the set of all cells 
+matrix[x][y] with x1 <= x <= x2 and y1 <= y <= y2.
+
+Two submatrices (x1, y1, x2, y2) and (x1', y1', x2', y2') are different 
+if they have some coordinate that is different: for example, if x1 != x1'.
+
+Input: matrix = [[0,1,0],[1,1,1],[0,1,0]], target = 0
+Output: 4
+Explanation: The four 1x1 submatrices that only contain 0.
+
+Input: matrix = [[1,-1],[-1,1]], target = 0
+Output: 5
+Explanation: The two 1x2 submatrices, plus the two 2x1 submatrices, plus the 2x2 submatrix.
+
+Note:
+
+    1 <= matrix.length <= 300
+    1 <= matrix[0].length <= 300
+    -1000 <= matrix[i] <= 1000
+    -10^8 <= target <= 10^8
+ */
+class _1074_NumberOfSubmatricesThatSumToTarget {
+  public:
+    int numSubmatrixSumTarget(std::vector<std::vector<int>>&A, int target);
+};
+
+
+/*
 Return the lexicographically smallest subsequence of text that contains all the distinct characters of text exactly once.
 
 Input: "cdadabcc"         :         Output: "adbc"
@@ -2492,6 +3053,35 @@ class _1081_SmallestSubsequenceOfDistinctCharacters {
 public:
     std::string smallestSubsequenc(std::string text);
 };
+
+/*
+You are driving a vehicle that has capacity empty seats initially available 
+for passengers. The vehicle only drives east (ie. it cannot turn around and 
+drive west.)
+Given a list of trips, trip[i] = [num_passengers, start_location, end_location] 
+contains information about the i-th trip: the number of passengers that must 
+be picked up, and the locations to pick them up and drop them off. The locations 
+are given as the number of kilometers due east from your vehicle's initial location.
+
+Return true if and only if it is possible to pick up and drop off all passengers for all the given trips. 
+
+Input: trips = [[2,1,5],[3,3,7]], capacity = 4
+Output: false
+
+Input: trips = [[2,1,5],[3,3,7]], capacity = 5
+Output: true
+
+Input: trips = [[2,1,5],[3,5,7]], capacity = 3
+Output: true
+
+Input: trips = [[3,2,7],[3,7,9],[8,3,9]], capacity = 11
+Output: true
+*/
+class _1094_CarPooling {
+public:
+    bool carPooling(std::vector<std::vector<int>>& trips, int capacity);
+};
+
 
 /* 1103. distribute candies to people:
 We distribute some number of candies, to a row of n = num_people 
@@ -2608,6 +3198,35 @@ expression is a valid expression representing a boolean, as given in the descrip
 class _1106_ParsingABolleanExpression {
 public:
     bool parseBoolExpr(std::string expression);
+};
+
+
+/*
+  Given the root of a binary tree, each node in the tree has a distinct value.
+  After deleting all nodes with a value in to_delete, we are left with a forest 
+  (a disjoint union of trees). 
+  Return the roots of the trees in the remaining forest. You may return the 
+  result in any order.
+
+  Input: root = [1,2,3,4,5,6,7], to_delete = [3,5]
+  Output: [[1,2,null,4],[6],[7]]
+
+Constraints:
+
+    The number of nodes in the given tree is at most 1000.
+    Each node has a distinct value between 1 and 1000.
+    to_delete.length <= 1000
+    to_delete contains distinct values between 1 and 1000.
+*/
+class _1110_DeleteNodesAndReturnForest {
+    // Copy from a solution
+private:
+    std::vector<TreeNode<int>*> result;
+    std::unordered_set<int> toDeleteSet;
+public:
+    std::vector<TreeNode<int>*> delNodes(TreeNode<int>* root, std::vector<int>& to_delete);
+    TreeNode<int>* helper(TreeNode<int>* node, std::vector<TreeNode<int>*>& result,
+                    std::unordered_set<int>& toDeleteSet, bool isRoot);
 };
 
 
@@ -2767,6 +3386,44 @@ private:
     bool isPrime(int n);
 };
 
+
+/*
+ 1186 Maximum Subarray Sum With One Deletion
+Given an array of integers, return the maximum sum for a non-empty subarray (contiguous elements) 
+with at most one element deletion. In other words, you want to choose a subarray and optionally 
+delete one element from it so that there is still at least one element left and the sum of the 
+remaining elements is maximum possible.
+
+Note that the subarray needs to be non-empty after deleting one element.
+
+Input: arr = [1,-2,0,3]
+Output: 4
+Explanation: Because we can choose [1, -2, 0, 3] and drop -2, thus the subarray [1, 0, 3] becomes the maximum value.
+
+Input: arr = [1,-2,-2,3]
+Output: 3
+Explanation: We just choose [3] and it's the maximum sum.
+
+Input: arr = [-1,-1,-1,-1]
+Output: -1
+Explanation: The final subarray needs to be non-empty. You can't choose [-1] and delete -1 from it, 
+then get an empty subarray to make the sum equals to 0. 
+
+Constraints:
+
+    1 <= arr.length <= 10^5
+    -10^4 <= arr[i] <= 10^4
+
+ */
+class _1186_MaximumSubarraySumWithOneDeletion {
+  public:
+    int maximumSum(std::vector<int>& arr);
+    
+};
+
+
+
+
 /*
 Given a string text, you want to use the characters of text to form as many instances 
 of the word "balloon" as possible.
@@ -2915,6 +3572,34 @@ class _1227_AirplaneSeatAssignmentProbability {
 };
 
 /*
+1238. Circular Permutation in Binary Representation 
+Given 2 integers n and start. Your task is return any permutation p of (0,1,2.....,2^n -1) such that :
+    p[0] = start
+    p[i] and p[i+1] differ by only one bit in their binary representation.
+    p[0] and p[2^n -1] must also differ by only one bit in their binary representation.
+
+Input: n = 2, start = 3
+Output: [3,2,0,1]
+Explanation: The binary representation of the permutation is (11,10,00,01). 
+All the adjacent element differ by one bit. Another valid permutation is [3,1,0,2]
+
+Input: n = 3, start = 2
+Output: [2,6,7,5,4,0,1,3]
+Explanation: The binary representation of the permutation is (010,110,111,101,100,000,001,011).
+
+Constraints:
+
+    1 <= n <= 16
+    0 <= start < 2 ^ n
+*/
+class _1238_CicularPermutationInBinaryRepresentation {
+  public:
+    std::vector<int> circularPermutation(int n, int start);
+  private:
+    std::vector<int> grayVector(int n);
+};
+
+/*
 You are given two strings s1 and s2 of equal length consisting of 
 letters "x" and "y" only. Your task is to make these two strings 
 equal to each other. You can swap any two characters that belong 
@@ -2949,6 +3634,110 @@ s1, s2 only contain 'x' or 'y'.
 class _1247_MinimumSwapsToMakeStringsEqual {
 public:
     int minimumSwap(std::string s1, std::string s2);
+};
+
+
+
+/*
+1254 Number of closed islands
+     Given a 2D grid consists of 0s (land) and 1s (water).  An island is a maximal 4-directionally 
+connected group of 0s and a closed island is an island totally (all left, top, right, bottom) 
+surrounded by 1s.
+
+Return the number of closed islands.
+
+Input: grid = [[1,1,1,1,1,1,1,0],[1,0,0,0,0,1,1,0],[1,0,1,0,1,1,1,0],[1,0,0,0,0,1,0,1],[1,1,1,1,1,1,1,0]]
+Output: 2
+Explanation: 
+Islands in gray are closed because they are completely surrounded by water (group of 1s).
+
+Input: grid = [[0,0,1,0,0],[0,1,0,1,0],[0,1,1,1,0]]
+Output: 1
+
+Input: grid = [[1,1,1,1,1,1,1],
+               [1,0,0,0,0,0,1],
+               [1,0,1,1,1,0,1],
+               [1,0,1,0,1,0,1],
+               [1,0,1,1,1,0,1],
+               [1,0,0,0,0,0,1],
+               [1,1,1,1,1,1,1]]
+Output: 2
+
+Constraints:
+
+    1 <= grid.length, grid[0].length <= 100
+    0 <= grid[i][j] <=1
+*/
+class _1254_NumberOfClosedIslands {
+    int M;
+    int N;
+    int count;
+  public:
+    int closedIsland(std::vector<std::vector<int>>& grid);
+    void DFS(std::vector<std::vector<int>>& grid, int I, int J, bool& touchEdge);
+};
+
+
+/*
+You are given a map of a server center, represented as a m * n integer matrix grid, 
+where 1 means that on that cell there is a server and 0 means that it is no server. 
+Two servers are said to communicate if they are on the same row or on the same column.
+Return the number of servers that communicate with any other server.
+
+Input: grid = [[1,0],[0,1]]
+Output: 0
+Explanation: No servers can communicate with others.
+
+Input: grid = [[1,0],[1,1]]
+Output: 3
+Explanation: All three servers can communicate with at least one other server.
+
+Input: grid = [[1,1,0,0],[0,0,1,0],[0,0,1,0],[0,0,0,1]]
+Output: 4
+Explanation: The two servers in the first row can communicate with each other. 
+The two servers in the third column can communicate with each other. The server 
+at right bottom corner can't communicate with any other server.
+*/
+class _1267_CountServersThatCommunicate {
+public:
+    int countServers(std::vector<std::vector<int>>& grid);
+};
+
+/*
+Given a m * n matrix of ones and zeros, return how many square submatrices have all ones.
+
+Input: matrix =
+[
+  [0,1,1,1],
+  [1,1,1,1],
+  [0,1,1,1]
+]
+Output: 15
+There are 10 squares of side 1.
+There are 4 squares of side 2.
+There is  1 square of side 3.
+Total number of squares = 10 + 4 + 1 = 15.
+
+Input: matrix = 
+[
+  [1,0,1],
+  [1,1,0],
+  [1,1,0]
+]
+Output: 7
+Explanation: 
+There are 6 squares of side 1.  
+There is 1 square of side 2. 
+Total number of squares = 6 + 1 = 7.
+
+Constraints:
+1 <= arr.length <= 300
+1 <= arr[0].length <= 300
+0 <= arr[i][j] <= 1
+*/
+class _1277_CountSquareSubmatricesWithAllOnes {
+public:
+    int countSquares(std::vector<std::vector<int>>& matrix);
 };
 
 
@@ -3100,6 +3889,73 @@ public:
     std::vector<int> mergeSortedArray(std::vector<int> &A, std::vector<int> &B);
 };
 
+/*
+Description
+Given a string(Given in the way of char array) and an offset, rotate the string by offset in place. (rotate from left to right).
+
+offset >= 0
+the length of str >= 0
+Make changes on the original input data
+
+Have you met this question in a real interview?  
+Example
+
+Input: str="abcdefg", offset = 3
+Output: str = "efgabcd"	
+
+Input: str="abcdefg", offset = 0
+Output: str = "abcdefg"	
+
+Input: str="abcdefg", offset = 1
+Output: str = "gabcdef"	
+
+Input: str="abcdefg", offset =2
+Output: str = "fgabcde"	
+
+Input: str="abcdefg", offset = 10
+Output: str = "efgabcd"	
+Explanation: Note that it is rotated in place, that is, after str is rotated, it becomes "efgabcd".
+Challenge
+Rotate in-place with O(1) extra memory.
+*/
+class _0008_RotateString {
+public:
+    void rotateString(std::string &str, int offset);
+};
+
+
+/*
+Description
+Given number n. Print number from 1 to n. But:
+
+when number is divided by 3, print "fizz".
+when number is divided by 5, print "buzz".
+when number is divided by both 3 and 5, print "fizz buzz".
+when number can't be divided by either 3 or 5, print the number itself.
+Have you met this question in a real interview?
+Example
+If n = 15, you should return:
+[
+  "1", "2", "fizz",
+  "4", "buzz", "fizz",
+  "7", "8", "fizz",
+  "buzz", "11", "fizz",
+  "13", "14", "fizz buzz"
+]
+
+If n = 10, you should return:
+[
+  "1", "2", "fizz",
+  "4", "buzz", "fizz",
+  "7", "8", "fizz",
+  "buzz"
+]
+Challenge : Can you do it with only one if statement?
+*/
+class _0009_FizzBuzz {
+public:
+    std::vector<std::string> fizzBuzz(int n);
+};
 
 
     /*
@@ -3411,3 +4267,5 @@ public:
             bool samePattern(std::string& A, std::string& B);
     };
 }
+
+#endif

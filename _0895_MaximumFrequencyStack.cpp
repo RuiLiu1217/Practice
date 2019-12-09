@@ -1,13 +1,5 @@
 #include "headers.hpp"
 
-class _0895_MaximumFrequencyStack {
-private:
-    // Copy inspired by the solution
-    std::map<int, int> freq; // A Map from x to the number of frequency occurences of x
-    std::map<int, std::stack<int>> group; // group data according to their frequency. If push 5, 5 -->  group[1]->5,  group[2]->5 respectively.
-    int maxFreq; // Keep the maximum frequency
-public:
-
 LeetCode::_0895_MaximumFrequencyStack::_0895_MaximumFrequencyStack() {
     maxFreq = 0;
 }
