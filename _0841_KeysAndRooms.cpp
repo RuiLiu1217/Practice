@@ -1,5 +1,6 @@
 #include "headers.hpp"
 #include <queue>
+#include <numeric>
 bool LeetCode::_0841_KeysAndRooms::canVisitAllRooms(std::vector<std::vector<int>>& rooms) {
     std::vector<int> accessible(rooms.size(), 0);
     accessible[0] = 1;

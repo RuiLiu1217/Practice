@@ -1,5 +1,5 @@
 #include "headers.hpp"
-#include <cmake>
+#include <cmath>
 #include <algorithm>
 int LeetCode::_1277_CountSquareSubmatricesWithAllOnes::countSquares(std::vector<std::vector<int>>& matrix) {
     std::vector<std::vector<int>> DP(matrix.size(), std::vector<int>(matrix[0].size(), 0));

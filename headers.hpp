@@ -2443,7 +2443,7 @@ Output: [[0,0,0,null,null,0,0,null,null,0,0],[0,0,0,null,null,0,0,0,0],[0,0,0,0,
 */
 class _0894_AllPossibleFullBinaryTrees {
 public:
-    std::vector<TreeNode*> allPossibleFBT(int N);
+    std::vector<TreeNode<int>*> allPossibleFBT(int N);
 };
 
 /*
@@ -3920,7 +3920,7 @@ Rotate in-place with O(1) extra memory.
 */
 class _0008_RotateString {
 public:
-    void rotateString(string &str, int offset);
+    void rotateString(std::string &str, int offset);
 };
 
 

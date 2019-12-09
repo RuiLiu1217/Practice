@@ -1,12 +1,13 @@
 #include "headers.hpp"
-
-std::vector<TreeNode*> LeetCode::_0894_AllPossibleFullBinaryTrees::allPossibleFBT(int N) {
+#include <numeric>
+#include <algorithm>
+std::vector<TreeNode<int>*> LeetCode::_0894_AllPossibleFullBinaryTrees::allPossibleFBT(int N) {
     if (!(N % 2)) {
         return std::vector<TreeNode<int>*>();
     }
     if(N == 1) {
         TreeNode<int>* p = new TreeNode<int>(0);
-        return std::vector<TreeNode*>({p});
+        return std::vector<TreeNode<int>*>({p});
     }
     std::vector<TreeNode<int>*> res;
     for(int i = 1; i < N; i += 2) {

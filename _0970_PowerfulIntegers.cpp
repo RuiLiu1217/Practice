@@ -8,7 +8,7 @@ std::vector<int> LeetCode::_0970_PowerfulIntegers::powerfulIntegers(int x, int y
     }
     if(x == 1 && y == 1) {
         if(bound < 2) {
-            return std::vecotr<int>();
+            return std::vector<int>();
         } else {
             return {2};
         }
