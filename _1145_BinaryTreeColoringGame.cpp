@@ -20,3 +20,4 @@ int LeetCode::_1145_BinaryTreeColoringGame::nodes(TreeNode<int>* root, int x) {
     }
     return 1 + l + r;
 }
+
