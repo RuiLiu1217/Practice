@@ -26,4 +26,5 @@ std::vector<TreeNode<int>*> LeetCode::_0894_AllPossibleFullBinaryTrees::allPossi
             }
         }
     }
+    return res;
 }

@@ -61,4 +61,5 @@ static std::string reverseWords_O1(std::string s) {
         reverseword(s, l, j-1);
         wordcount++;
     }
+    return s;
 }
