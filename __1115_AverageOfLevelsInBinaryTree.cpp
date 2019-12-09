@@ -8,7 +8,7 @@ std::vector<double> LintCode::_1115_AverageOfLevelsInBinaryTree::averageOfLevels
     }
     q.push(h);
     double sum = 0;
-    // int b = 33;
+
     std::vector<double> res;
     while(!q.empty()) {
         const int N = q.size();
