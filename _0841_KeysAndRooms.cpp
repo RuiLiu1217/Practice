@@ -8,7 +8,7 @@ bool LeetCode::_0841_KeysAndRooms::canVisitAllRooms(std::vector<std::vector<int>
     for(int i = 0; i < rooms[0].size(); ++i) {
         roomQ.push(rooms[0][i]);
     }
-    
+
     while(!roomQ.empty()) {
         int rmIdx = roomQ.front();
         if( accessible[rmIdx] == 0){
@@ -21,6 +21,6 @@ bool LeetCode::_0841_KeysAndRooms::canVisitAllRooms(std::vector<std::vector<int>
         }
         roomQ.pop();
     }
-    
+
     return std::accumulate(accessible.begin(), accessible.end(), 0) == accessible.size();
 }
