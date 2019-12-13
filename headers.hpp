@@ -4052,7 +4052,7 @@ when number is divided by 3, print "fizz".
 when number is divided by 5, print "buzz".
 when number is divided by both 3 and 5, print "fizz buzz".
 when number can't be divided by either 3 or 5, print the number itself.
-Have you met this question in a real interview?  
+Have you met this question in a real interview?
 Example
 If n = 15, you should return:
 [
