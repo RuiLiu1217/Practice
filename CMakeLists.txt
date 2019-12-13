@@ -172,6 +172,7 @@ ADD_LIBRARY(Practice STATIC
     _0205_IsomorphicStrings.cpp
     _0206_ReverseLinkedList.cpp
     _0208_ImplementTrie.cpp
+    _0210_CourseScheduleII.cpp
     _0213_HouseRobberII.cpp
     _0232_ImplementQueueUsingStacks.cpp
     _0235_LowestCommonAncestor.cpp
@@ -209,6 +210,7 @@ ADD_LIBRARY(Practice STATIC
     _0371_SumOfTwoIntegers.cpp
     _0378_KthSmallestElementInASortedMatrix.cpp
     _0380_RandomizedSet.cpp
+    _0381_RandomizedCollection.cpp
     _0390_EliminationGame.cpp
     _0394_DecodeString.cpp
     _0401_BinaryWatch.cpp
@@ -264,9 +266,11 @@ ADD_LIBRARY(Practice STATIC
     _0725_SplitLinkedListInParts.cpp
     _0729_MyCalendarI.cpp
     _0735_AsteroidCollision.cpp
+    _0740_DeleteAndEarn.cpp
     _0752_OpenTheLock.cpp
     _0756_PyramidTransitionMatrix.cpp
     _0777_SwapAdjacentInLRString.cpp
+    _0823_BinaryTreeWithFactors.cpp
     _0830_PositionsOfLargeGroups.cpp
     _0838_PushDominoes.cpp
     _0841_KeysAndRooms.cpp

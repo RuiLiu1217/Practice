@@ -833,6 +833,77 @@ public:
 };
 
 /*
+Insert Delete GetRandom O(1) - Duplicates allowed
+Design a data structure that supports all following operations in average O(1) time.
+
+Note: Duplicate elements are allowed.
+insert(val): Inserts an item val to the collection.
+remove(val): Removes an item val from the collection if present.
+getRandom: Returns a random element from current collection of elements. The probability of each element being returned is linearly related to the number of same value the collection contains.
+Example:
+
+// Init an empty collection.
+RandomizedCollection collection = new RandomizedCollection();
+
+// Inserts 1 to the collection. Returns true as the collection did not contain 1.
+collection.insert(1);
+
+// Inserts another 1 to the collection. Returns false as the collection contained 1. Collection now contains [1,1].
+collection.insert(1);
+
+// Inserts 2 to the collection, returns true. Collection now contains [1,1,2].
+collection.insert(2);
+
+// getRandom should return 1 with the probability 2/3, and returns 2 with the probability 1/3.
+collection.getRandom();
+
+// Removes 1 from the collection, returns true. Collection now contains [1,2].
+collection.remove(1);
+
+// getRandom should return 1 and 2 both equally likely.
+collection.getRandom();
+*/
+class _0381_RandomizedCollection {
+private:
+    std::vector<int> data;
+    std::unordered_map<int, std::unordered_set<int>> map;
+public:
+    /** Initialize your data structure here. */
+    _0381_RandomizedCollection() {
+    }
+    
+    /** Inserts a value to the collection. Returns true if the collection did not already contain the specified element. */
+    bool insert(int val) {
+        data.push_back(val);
+        map[val].insert(data.size() - 1);
+        return map[val].size() == 1;
+    }
+    
+    /** Removes a value from the collection. Returns true if the collection contained the specified element. */
+    bool remove(int val) {
+        auto it = map.find(val);
+        if (it != end(map)) {
+            auto free_pos = *it->second.begin();
+            it->second.erase(it->second.begin());
+            data[free_pos] = data.back();
+            map[data.back()].insert(free_pos);
+            map[data.back()].erase(data.size() - 1);
+            data.pop_back();
+            if (it->second.size() == 0) map.erase(it);
+            return true;            
+        }
+        return false;
+        
+    }
+    
+    /** Get a random element from the collection. */
+    int getRandom() {
+        return data[rand() % data.size()];
+    }
+};
+
+
+/*
 _390_ Elimination Game
 There is a list of sorted integers from 1 to n. Starting from left to right,
 remove the first number and every other number afterward until you reach the
@@ -2114,6 +2185,29 @@ public:
 };
 
 /*
+Given an array nums of integers, you can perform operations on the array.
+In each operation, you pick any nums[i] and delete it to earn nums[i] points. 
+After, you must delete every element equal to nums[i] - 1 or nums[i] + 1.
+You start with 0 points. Return the maximum number of points you can earn by 
+applying such operations.
+
+Input: nums = [3, 4, 2]
+Output: 6
+Delete 4 to earn 4 points, consequently 3 is also deleted.
+Then, delete 2 to earn 2 points. 6 total points are earned.
+
+Input: nums = [2, 2, 3, 3, 3, 4]
+Output: 9
+Delete 3 to earn 3 points, deleting both 2's and the 4.
+Then, delete 3 again to earn 3 points, and 3 again to earn 3 points.
+9 total points are earned.
+*/
+class _0740_DeleteAndEarn {
+public:
+    int deleteAndEarn(std::vector<int>& nums);
+};
+
+/*
 You have a lock in front of you with 4 circular wheels. Each wheel has 10 slots: 
 '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'. The wheels can rotate freely and 
 wrap around: for example we can turn '9' to be '0', or '0' to be '9'. Each move 
@@ -2224,6 +2318,32 @@ end只能靠后，而 R 在start 中的位置相对于end只能靠前。换句�
 class _0777_SwapAdjacentInLRString {
 public:
     bool canTransform(const std::string& start, const std::string& end);
+};
+
+/*
+Given an array of unique integers, each integer is strictly greater than 1.
+We make a binary tree using these integers and each number may be used for 
+any number of times. Each non-leaf node's value should be equal to the 
+product of the values of it's children.
+
+How many binary trees can we make?  Return the answer modulo 10 ** 9 + 7.
+
+Input: A = [2, 4]
+Output: 3
+We can make these trees: [2], [4], [4, 2, 2]
+
+Input: A = [2, 4, 5, 10]
+Output: 7
+We can make these trees: [2], [4], [5], [10], [4, 2, 2], [10, 2, 5], [10, 5, 2].
+
+Note:
+
+1 <= A.length <= 1000.
+2 <= A[i] <= 10 ^ 9.
+*/
+class _0823_BinaryTreeWithFactors {
+public:
+    int numFactoredBinaryTrees(std::vector<int>& A);
 };
 
 /*
@@ -2443,7 +2563,7 @@ Output: [[0,0,0,null,null,0,0,null,null,0,0],[0,0,0,null,null,0,0,0,0],[0,0,0,0,
 */
 class _0894_AllPossibleFullBinaryTrees {
 public:
-    std::vector<TreeNode*> allPossibleFBT(int N);
+    std::vector<TreeNode<int>*> allPossibleFBT(int N);
 };
 
 /*
@@ -3920,7 +4040,7 @@ Rotate in-place with O(1) extra memory.
 */
 class _0008_RotateString {
 public:
-    void rotateString(string &str, int offset);
+    void rotateString(std::string &str, int offset);
 };
 
 
