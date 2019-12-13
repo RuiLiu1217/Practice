@@ -1953,6 +1953,14 @@ public:
     std::vector<std::vector<int>> imageSmoother(std::vector<std::vector<int>>& M);
 };
 
+class _0664_StrangePrinter {
+public:
+    int strangePrinter(const std::string& s);
+private:
+    int turn(const std::string& s, int i, int j);
+    std::vector<std::vector<int>> DP;
+};
+
 /*
 Given two integers n and k, you need to construct a list which contains 
 n different positive integers ranging from 1 to n and obeys the following 

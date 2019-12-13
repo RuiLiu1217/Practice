@@ -68,6 +68,7 @@ ADD_LIBRARY(Practice STATIC
     _0040_CombinationSumII.cpp
     _0041_FirstMissingPositive.cpp
     _0043_MultiplyStrings.cpp
+    _0045_JumpGameII.cpp
     _0046_Permutations.cpp
     _0047_PermutationsII.cpp
     _0048_RotateImage.cpp
@@ -257,6 +258,7 @@ ADD_LIBRARY(Practice STATIC
     _0655_PrintBinaryTree.cpp
     _0659_SplitArrayIntoConsecutiveSubsequences.cpp
     _0661_ImageSmoother.cpp
+    _0664_StrangePrinter.cpp
     _0667_BeautifulArrangementII.cpp
     _0676_ImplementMagicDictionary.cpp
     _0679_24Games.cpp
@@ -275,6 +277,7 @@ ADD_LIBRARY(Practice STATIC
     _0838_PushDominoes.cpp
     _0841_KeysAndRooms.cpp
     _0862_ShortestSubarrayWithSumAtLeastK.cpp
+    _0873_LengthOfLongestFibonacciSubsequence.cpp
     _0874_WalkingRobotSimulation.cpp
     _0877_StoneGame.cpp
     _0890_FindAndReplacePattern.cpp
