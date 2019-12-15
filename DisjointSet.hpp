@@ -51,7 +51,7 @@ public:
     int find_PathSplitting_2(int x) {
         while(mSet[x].parent != x) {
             int next = mSet[x].parent;
-            mset[x].parent = mSet[next].parent;
+            mSet[x].parent = mSet[next].parent;
             x = next;
         }
         return x;

@@ -1831,6 +1831,38 @@ private:
 };
 
 /*
+Given an integer array with no duplicates. A maximum tree 
+building on this array is defined as follow:
+
+The root is the maximum number in the array.
+The left subtree is the maximum tree constructed from left 
+part subarray divided by the maximum number.
+The right subtree is the maximum tree constructed from right 
+part subarray divided by the maximum number.
+Construct the maximum tree by the given array and output 
+the root node of this tree.
+
+Input: [3,2,1,6,0,5]
+Output: return the tree root node representing the following tree:
+
+      6
+    /   \
+   3     5
+    \    / 
+     2  0   
+       \
+        1
+Note:
+The size of the given array will be in the range [1,1000].
+*/
+class _0654_MaximumBinaryTree {
+public:
+    TreeNode<int>* constructMaximumBinaryTree(std::vector<int>& nums);
+private:
+    TreeNode<int>* constructMaximumBinaryTree_impl(std::vector<int>& nums, int l, int r);
+};
+
+/*
 Print a binary tree in an m*n 2D string array following these rules:
 
 The row number m should be equal to the height of the given binary tree.
@@ -2085,6 +2117,70 @@ private:
     int univaluePath(TreeNode<int>* root, int* ans);
 };
 
+
+/*
+701. Insert into a Binary Search Tree
+Given the root node of a binary search tree (BST) and a value to 
+be inserted into the tree, insert the value into the BST. Return 
+the root node of the BST after the insertion. It is guaranteed 
+that the new value does not exist in the original BST.
+
+Note that there may exist multiple valid ways for the insertion, 
+as long as the tree remains a BST after insertion. You can 
+return any of them.
+
+For example, 
+
+Given the tree:
+        4
+       / \
+      2   7
+     / \
+    1   3
+And the value to insert: 5
+You can return this binary search tree:
+
+         4
+       /   \
+      2     7
+     / \   /
+    1   3 5
+This tree is also valid:
+
+         5
+       /   \
+      2     7
+     / \   
+    1   3
+         \
+          4
+*/
+class _0701_InsertIntoABinarySearchTree {
+public:
+    TreeNode<int>* insertIntoBST(TreeNode<int>* root, int val);
+};
+
+/*
+709. To Lower Case
+Implement function ToLowerCase() that has a string parameter 
+str, and returns the same string in lowercase.
+
+Input: "Hello"
+Output: "hello"
+
+Input: "here"
+Output: "here"
+
+Input: "LOVELY"
+Output: "lovely"
+*/
+class _0709_ToLowerCase {
+public:
+    std::string toLowerCase(std::string str);
+};
+
+
+
 /*
 We have two special characters. The first character can be represented by 
 one bit 0. The second character can be represented by two bits (10 or 11).
@@ -2298,6 +2394,28 @@ private:
 };
 
 /*
+You're given strings J representing the types of stones that are jewels, 
+and S representing the stones you have. Each character in S is a type of 
+stone you have. You want to know how many of the stones you have are also 
+jewels.
+The letters in J are guaranteed distinct, and all characters in J and S 
+are letters. Letters are case sensitive, so "a" is considered a different 
+type of stone from "A".
+
+Input: J = "aA", S = "aAAbbbb"
+Output: 3
+
+Input: J = "z", S = "ZZ"
+Output: 0
+Note: S and J will consist of letters and have length at most 50.
+The characters in J are distinct.
+*/
+class _0771_JewelsAndStones {
+public:
+    int numJewelsInStones(std::string J, std::string S);
+};
+
+/*
 In a string composed of 'L', 'R', and 'X' characters, like "RXXLRXRXL", a move 
 consists of either replacing one occurrence of "XL" with "LX", or replacing one 
 occurrence of "RX" with "XR". Given the starting string start and the ending string 
@@ -2327,6 +2445,52 @@ class _0777_SwapAdjacentInLRString {
 public:
     bool canTransform(const std::string& start, const std::string& end);
 };
+
+/*
+In a 2 dimensional array grid, each value grid[i][j] represents the height of a building 
+located there. We are allowed to increase the height of any number of buildings, by any 
+amount (the amounts can be different for different buildings). Height 0 is considered to 
+be a building as well. 
+At the end, the "skyline" when viewed from all four directions of the grid, i.e. top, 
+bottom, left, and right, must be the same as the skyline of the original grid. A city's 
+skyline is the outer contour of the rectangles formed by all the buildings when viewed 
+from a distance. See the following example.
+
+What is the maximum total sum that the height of the buildings can be increased?
+
+Example:
+Input: grid = [[3,0,8,4],[2,4,5,7],[9,2,6,3],[0,3,1,0]]
+Output: 35
+Explanation: 
+The grid is:
+[ [3, 0, 8, 4], 
+  [2, 4, 5, 7],
+  [9, 2, 6, 3],
+  [0, 3, 1, 0] ]
+
+The skyline viewed from top or bottom is: [9, 4, 8, 7]
+The skyline viewed from left or right is: [8, 7, 9, 3]
+
+The grid after increasing the height of buildings without affecting skylines is:
+
+gridNew = [ [8, 4, 8, 7],
+            [7, 4, 7, 7],
+            [9, 4, 8, 7],
+            [3, 3, 3, 3] ]
+
+Notes:
+1 < grid.length = grid[0].length <= 50.
+All heights grid[i][j] are in the range [0, 100].
+All buildings in grid[i][j] occupy the entire grid cell: that is, they are a 1 x 1 x grid[i][j] rectangular prism.
+*/
+class _0807_MaxIncreaseToKeepCitySkyline {
+public:
+    int maxIncreaseKeepingSkyline(std::vector<std::vector<int>>& grid);
+private:
+    std::vector<int> rowMax(const std::vector<std::vector<int>>& grid);
+    std::vector<int> colMax(const std::vector<std::vector<int>>& grid);
+};
+
 
 /*
 Given an array of unique integers, each integer is strictly greater than 1.
@@ -2466,6 +2630,41 @@ Output: 3
 class _0862_ShortestSubarrayWithSumAtLeastK {
 public:
     int shortestSubarray(std::vector<int>& A, int K);
+};
+
+/*
+A sequence X_1, X_2, ..., X_n is fibonacci-like if:
+
+n >= 3
+X_i + X_{i+1} = X_{i+2} for all i + 2 <= n
+
+Given a strictly increasing array A of positive integers forming 
+a sequence, find the length of the longest fibonacci-like 
+subsequence of A. If one does not exist, return 0.
+(Recall that a subsequence is derived from another sequence A 
+by deleting any number of elements (including none) from A, without 
+changing the order of the remaining elements. For example, 
+[3, 5, 8] is a subsequence of [3, 4, 5, 6, 7, 8].)
+
+Input: [1,2,3,4,5,6,7,8]
+Output: 5
+Explanation:
+The longest subsequence that is fibonacci-like: [1,2,3,5,8].
+
+Input: [1,3,7,11,12,14,18]
+Output: 3
+Explanation:
+The longest subsequence that is fibonacci-like:
+[1,11,12], [3,11,14] or [7,11,18].
+
+Note:
+
+3 <= A.length <= 1000
+1 <= A[0] < A[1] < ... < A[A.length - 1] <= 10^9
+*/
+class _0873_LengthOfLongestFibonacciSubsequence {
+public:
+    int lenLongestFibSubseq(std::vector<int>& A);
 };
 
 /*
@@ -2664,6 +2863,27 @@ public:
 private:
     void sortArray(std::vector<int>& nums, int start, int end);
     void merge(std::vector<int>& nums, int start, int end, int mid);
+};
+
+/*
+Given the root node of a binary search tree, return the sum of 
+values of all nodes with value between L and R (inclusive).
+The binary search tree is guaranteed to have unique values.
+
+Input: root = [10,5,15,3,7,null,18], L = 7, R = 15
+Output: 32
+
+Input: root = [10,5,15,3,7,13,18,1,null,6], L = 6, R = 10
+Output: 23
+
+Note:
+
+The number of nodes in the tree is at most 10000.
+The final answer is guaranteed to be less than 2^31.
+*/
+class _0938_RangeSumOfBST {
+public:
+    int rangeSumBST(TreeNode<int>* root, int L, int R);
 };
 
 /*
@@ -2962,6 +3182,52 @@ private:
     void DFS(std::vector<std::vector<int>>& A, std::vector<std::vector<int>>& visited, int i, int j);
 };
 
+
+/*
+A valid parentheses string is either empty (""), "(" + A + ")", or 
+A + B, where A and B are valid parentheses strings, and + 
+represents string concatenation. For example, "", "()", "(())()", 
+and "(()(()))" are all valid parentheses strings.
+A valid parentheses string S is primitive if it is 
+nonempty, and there does not exist a way to split it into 
+S = A+B, with A and B nonempty valid parentheses strings.
+Given a valid parentheses string S, consider its 
+primitive decomposition: S = P_1 + P_2 + ... + P_k, 
+where P_i are primitive valid parentheses strings.
+Return S after removing the outermost parentheses of 
+every primitive string in the primitive decomposition of S.
+
+Input: "(()())(())"
+Output: "()()()"
+Explanation: 
+The input string is "(()())(())", with primitive decomposition 
+"(()())" + "(())".
+After removing outer parentheses of each part, this is 
+"()()" + "()" = "()()()".
+
+Input: "(()())(())(()(()))"
+Output: "()()()()(())"
+Explanation: 
+The input string is "(()())(())(()(()))", with primitive 
+decomposition "(()())" + "(())" + "(()(()))".
+After removing outer parentheses of each part, this is 
+"()()" + "()" + "()(())" = "()()()()(())".
+
+Input: "()()"
+Output: ""
+Explanation: 
+The input string is "()()", with primitive decomposition "()" + "()".
+After removing outer parentheses of each part, this is "" + "" = "".
+
+S.length <= 10000
+S[i] is "(" or ")"
+S is a valid parentheses string
+*/
+class _1021_RemoveOutermostParentheses {
+public:
+    std::string removeOuterParentheses(std::string S);
+};
+
 /*
 A query word matches a given pattern if we can insert lowercase letters to 
 the pattern word so that it equals the query. (We may insert each character 
@@ -3093,6 +3359,33 @@ private:
     int ManhattonDis(int i, int j, int r0, int c0);
 };
 
+/*
+Given the root of a binary search tree with distinct values, 
+modify it so that every node has a new value equal to the 
+sum of the values of the original tree that are greater 
+than or equal to node.val.
+As a reminder, a binary search tree is a tree that satisfies 
+these constraints:
+The left subtree of a node contains only nodes with keys less than the node's key.
+The right subtree of a node contains only nodes with keys greater than the node's key.
+Both the left and right subtrees must also be binary search trees.
+ 
+Input: [4,1,6,0,2,5,7,null,null,null,3,null,null,null,8]
+Output: [30,36,21,36,35,26,15,null,null,null,33,null,null,null,8]
+
+Note:
+
+The number of nodes in the tree is between 1 and 100.
+Each node will have value between 0 and 100.
+The given tree is a binary search tree.
+*/
+class _1038_BinarySearchTreeToGreaterSumTree {
+private:
+    std::stack<TreeNode<int>*> vis;
+public:
+    TreeNode<int>* bstToGst(TreeNode<int>* root);
+    void traverse(TreeNode<int>* root);
+};
 
 /*
 We have a collection of rocks, each rock has a positive integer weight.
@@ -3328,6 +3621,23 @@ public:
     bool parseBoolExpr(std::string expression);
 };
 
+
+/*
+Given a valid (IPv4) IP address, return a defanged version of that IP address.
+A defanged IP address replaces every period "." with "[.]".
+
+Input: address = "1.1.1.1"
+Output: "1[.]1[.]1[.]1"
+
+Input: address = "255.100.50.0"
+Output: "255[.]100[.]50[.]0"
+
+Constraints: The given address is a valid IPv4 address.
+*/
+class _1108_DefangingAnIPAddress {
+public:
+    std::string defangIPaddr(std::string address); 
+};
 
 /*
   Given the root of a binary tree, each node in the tree has a distinct value.
@@ -3670,9 +3980,32 @@ public:
     int longestSubsequence(std::vector<int>& arr, int difference);
 };
 
+/*
+Split a String in Balanced Strings
+Balanced strings are those who have equal quantity of 'L' and 'R' characters.
+Given a balanced string s split it in the maximum amount of balanced strings.
+Return the maximum amount of splitted balanced strings.
 
+Input: s = "RLRRLLRLRL"
+Output: 4
+Explanation: s can be split into "RL", "RRLL", "RL", "RL", each substring contains same number of 'L' and 'R'.
 
+Input: s = "RLLLLRRRLR"
+Output: 3
+Explanation: s can be split into "RL", "LLLRRR", "LR", each substring contains same number of 'L' and 'R'.
 
+Input: s = "LLLLRRRR"
+Output: 1
+Explanation: s can be split into "LLLLRRRR".
+
+Input: s = "RLRRRLLRLL"
+Output: 2
+Explanation: s can be split into "RL", "RRRLLRLL", since each substring contains an equal number of 'L' and 'R'
+
+Constraints:
+1 <= s.length <= 1000
+s[i] = 'L' or 'R'
+*/
 class _1221_SplitAStringInBalancedStrings {
 public:
     int balancedStringSplit(std::string s);
@@ -3764,6 +4097,29 @@ public:
     int minimumSwap(std::string s1, std::string s2);
 };
 
+/*
+Given n and m which are the dimensions of a matrix 
+initialized by zeros and given an array indices 
+where indices[i] = [ri, ci]. For each pair of [ri, ci] 
+you have to increment all cells in row ri and 
+column ci by 1.
+Return the number of cells with odd values in the matrix 
+after applying the increment to all indices. 
+
+Input: n = 2, m = 3, indices = [[0,1],[1,1]]
+Output: 6
+Explanation: Initial matrix = [[0,0,0],[0,0,0]].
+After applying first increment it becomes [[1,2,1],[0,1,0]].
+The final matrix will be [[1,3,1],[1,3,1]] which contains 6 odd numbers.
+
+Input: n = 2, m = 2, indices = [[1,1],[0,0]]
+Output: 0
+Explanation: Final matrix = [[2,2],[2,2]]. There is no odd number in the final matrix.
+*/
+class _1252_CellsWithOddValuesInAMatrix {
+public:
+    int oddCells(int n, int m, std::vector<std::vector<int>>& indices);
+};
 
 
 /*
@@ -3803,6 +4159,24 @@ class _1254_NumberOfClosedIslands {
   public:
     int closedIsland(std::vector<std::vector<int>>& grid);
     void DFS(std::vector<std::vector<int>>& grid, int I, int J, bool& touchEdge);
+};
+
+/*
+On a plane there are n points with integer coordinates 
+points[i] = [xi, yi]. Your task is to find the minimum 
+time in seconds to visit all points.
+
+You can move according to the next rules:
+1. In one second always you can either move vertically, 
+horizontally by one unit or diagonally (it means to move 
+one unit vertically and one unit horizontally in 
+one second).
+2. You have to visit the points in the same order as 
+they appear in the array. 
+*/
+class _1266_MinimumTimeVisitingAllPoints {
+public:
+    int minTimeToVisitAllPoints(std::vector<std::vector<int>>& points);
 };
 
 

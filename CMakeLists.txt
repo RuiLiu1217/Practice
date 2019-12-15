@@ -255,6 +255,7 @@ ADD_LIBRARY(Practice STATIC
     _0637_AverageOfLevelInBinaryTree.cpp
     _0641_DesignCircularDeque.cpp
     _0647_PalindromicSubstrings.cpp
+    _0654_MaximumBinaryTree.cpp
     _0655_PrintBinaryTree.cpp
     _0659_SplitArrayIntoConsecutiveSubsequences.cpp
     _0661_ImageSmoother.cpp
@@ -264,6 +265,8 @@ ADD_LIBRARY(Practice STATIC
     _0679_24Games.cpp
     _0686_RepeatedStringMatch.cpp
     _0687_LongestUnivaluePath.cpp
+    _0701_InsertIntoABinarySearchTree.cpp
+    _0709_ToLowerCase.cpp
     _0717_OneBitAndTwoBitsCharacters.cpp
     _0725_SplitLinkedListInParts.cpp
     _0729_MyCalendarI.cpp
@@ -271,7 +274,10 @@ ADD_LIBRARY(Practice STATIC
     _0740_DeleteAndEarn.cpp
     _0752_OpenTheLock.cpp
     _0756_PyramidTransitionMatrix.cpp
+    _0771_JewelsAndStones.cpp
     _0777_SwapAdjacentInLRString.cpp
+    _0804_UniqueMorseCodeWords.cpp
+    _0807_MaxIncreaseToKeepCitySkyline.cpp
     _0823_BinaryTreeWithFactors.cpp
     _0830_PositionsOfLargeGroups.cpp
     _0838_PushDominoes.cpp
@@ -285,6 +291,7 @@ ADD_LIBRARY(Practice STATIC
     _0895_MaximumFrequencyStack.cpp
     _0911_OnlineElection.cpp
     _0912_SortAnArray.cpp
+    _0938_RangeSumOfBST.cpp
     _0946_ValidateStackSequences.cpp
     _0956_TallestBillboard.cpp
     _0958_CheckCompletenessOfABinaryTree.cpp
@@ -296,11 +303,13 @@ ADD_LIBRARY(Practice STATIC
     _1017_ConvertToBase_Negative2.cpp
     _1018_BinaryPrefixDivisibleBy5.cpp
     _1020_NumberOfEnclaves.cpp
+    _1021_RemoveOutermostParentheses.cpp
     _1023_CamelcaseMatching.cpp
     _1025_DivisorGame.cpp
     _1027_LongestArithmeticSequence.cpp
     _1029_TwoCityScheduling.cpp
     _1030_MatrixCellsInDistanceOrder.cpp
+    _1038_BinarySearchTreeGoGreaterSumTree.cpp
     _1046_LastStoneWeight.cpp
     _1047_RemoveAllAdjacentDuplicatesInString.cpp
     _1074_NumberOfSubmatricesThatSumToTarget.cpp
@@ -309,6 +318,7 @@ ADD_LIBRARY(Practice STATIC
     _1103_DistributeCandiesToPeople.cpp
     _1105_FillingBookcaseShelves.cpp
     _1106_ParsingABooleanExpression.cpp
+    _1108_DefangingAnIPAddress.cpp
     _1110_DeleteNodesAndReturnForest.cpp
     _1122_RelativeSortArray.cpp
     _1131_MaximumOfAbsoluteValueExpression.cpp
@@ -326,7 +336,9 @@ ADD_LIBRARY(Practice STATIC
     _1227_AirplaneSeatAssignmentProbability.cpp
     _1238_CircularPermutationInBinaryRepresentation.cpp
     _1247_MinimumSwapsToMakeStringsEqual.cpp
+    _1252_CellsWithOddValuesInAMatrix.cpp
     _1254_NumberOfClosedIslands.cpp
+    _1266_MinimumTimeVisitingAllPoints.cpp
     _1267_CountServersThatCommunicate.cpp
     _1277_CountSquareSubmatricesWithAllOnes.cpp
     )
