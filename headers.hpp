@@ -1556,6 +1556,28 @@ class _0560_SubarraySumEqualsK {
     int subarraySum(std::vector<int>& nums, int k);
 };
 
+
+/*
+Given two strings s1 and s2, write a function to return true if s2 
+contains the permutation of s1. In other words, one of the first 
+string's permutations is the substring of the second string.
+
+Input: s1 = "ab" s2 = "eidbaooo"
+Output: True
+Explanation: s2 contains one permutation of s1 ("ba").
+
+Input:s1= "ab" s2 = "eidboaoo"
+Output: False
+
+Note:
+The input strings only contain lower case letters.
+The length of both given strings is in range [1, 10,000].
+*/
+class _0567_PermutationInString {
+public:
+    bool checkInclusion(std::string s1, std::string s2);
+};
+
 /*
 Given two non-empty binary trees s and t, check whether tree t has exactly 
 the same structure and node values with a subtree of s. A subtree of s is 
@@ -1597,6 +1619,28 @@ private:
     bool isSame(TreeNode<int>* s, TreeNode<int>* t);
 };
 
+/*
+Given two words word1 and word2, find the minimum number of steps 
+required to make word1 and word2 the same, where in each step you 
+can delete one character in either string.
+
+Input: "sea", "eat"
+Output: 2
+Explanation: You need one step to make "sea" to "ea" and another step to make "eat" to "ea".
+Note:
+The length of given words won't exceed 500.
+Characters in given words can only be lower-case letters.
+*/
+class _0583_DeleteOperationForTwoStrings {
+private:
+    std::vector<std::vector<int>> DP;
+    int minDistance_DP_nonLCS_based(std::string word1, std::string word2);
+    int minDistance_LCS_DP_based(std::string word1, std::string word2);
+    int minDistance_LCS_based(std::string word1, std::string word2);
+    int lcs(std::string& s1, std::string& s2, int m, int n);
+public:
+    int minDistance(std::string word1, std::string word2);
+};
 
 /*
 Given an n-ary tree, return the postorder traversal of its nodes' values.
@@ -1654,6 +1698,36 @@ The range of operations size won't exceed 10,000.
 class _0598_RangeAdditionII {
 public:
     int maxCount(int m, int n, std::vector<std::vector<int>>& ops);
+};
+
+/*
+Given two binary trees and imagine that when you put one of them to 
+cover the other, some nodes of the two trees are overlapped while 
+the others are not.
+You need to merge them into a new binary tree. The merge rule is 
+that if two nodes overlap, then sum node values up as the new 
+value of the merged node. Otherwise, the NOT null node will be 
+used as the node of new tree.
+
+Input: 
+	Tree 1                     Tree 2                  
+          1                         2                             
+         / \                       / \                            
+        3   2                     1   3                        
+       /                           \   \                      
+      5                             4   7                  
+Output: 
+Merged tree:
+	     3
+	    / \
+	   4   5
+	  / \   \ 
+	 5   4   7
+ Note: The merging process must start from the root nodes of both trees.
+*/
+class _0617_MergeTwoBinaryTrees {
+public:
+    TreeNode<int>* mergeTrees(TreeNode<int>* t1, TreeNode<int>* t2);
 };
 
 /*
@@ -1926,6 +2000,36 @@ private:
 };
 
 /*
+There is a robot starting at position (0, 0), the origin, on a 2D plane. 
+Given a sequence of its moves, judge if this robot ends up at (0, 0) after 
+it completes its moves.
+The move sequence is represented by a string, and the character moves[i] 
+represents its ith move. Valid moves are R (right), L (left), U (up), 
+and D (down). If the robot returns to the origin after it finishes all of 
+its moves, return true. Otherwise, return false.
+Note: The way that the robot is "facing" is irrelevant. "R" will always 
+make the robot move to the right once, "L" will always make it move left, 
+etc. Also, assume that the magnitude of the robot's movement is the same 
+for each move.
+
+Input: "UD"
+Output: true 
+Explanation: The robot moves up once, and then down once. All moves have 
+the same magnitude, so it ended up at the origin where it started. 
+Therefore, we return true.
+
+Input: "LL"
+Output: false
+Explanation: The robot moves left twice. It ends up two "moves" to the 
+left of the origin. We return false because it is not at the origin at 
+the end of its moves.
+*/
+class _0657_RobotReturnToOrigin {
+public:
+    bool judgeCircle(std::string moves);
+};
+
+/*
 You are given an integer array sorted in ascending order (may contain 
 duplicates), you need to split them into several subsequences, where 
 each subsequences consist of at least 3 consecutive integers. Return 
@@ -1985,6 +2089,25 @@ public:
     std::vector<std::vector<int>> imageSmoother(std::vector<std::vector<int>>& M);
 };
 
+
+/*
+There is a strange printer with the following two special requirements:
+The printer can only print a sequence of the same character each time.
+At each turn, the printer can print new characters starting from and ending at any 
+places, and will cover the original existing characters.
+Given a string consists of lower English letters only, your job is to count the minimum 
+number of turns the printer needed in order to print it.
+
+Input: "aaabbb"
+Output: 2
+Explanation: Print "aaa" first and then print "bbb".
+
+Input: "aba"
+Output: 2
+Explanation: Print "aaa" first and then print "b" from the second place of the string, 
+which will cover the existing character 'a'.
+Hint: Length of the given string will not exceed 100.
+*/
 class _0664_StrangePrinter {
 public:
     int strangePrinter(const std::string& s);
@@ -2247,6 +2370,26 @@ public:
     std::vector<ListNode<int>*> splitListToParts(ListNode<int>* root, int k);
 };
 
+/*
+A self-dividing number is a number that is divisible by every digit 
+it contains.
+For example, 128 is a self-dividing number 
+because 128 % 1 == 0, 128 % 2 == 0, and 128 % 8 == 0.
+Also, a self-dividing number is not allowed to contain the digit zero.
+Given a lower and upper number bound, output a list of every possible self dividing number, including the bounds if possible.
+
+Input: 
+left = 1, right = 22
+Output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]
+Note:
+
+The boundaries of each input argument are 1 <= left <= right <= 10000.
+*/
+class _0728_SelfDividingNumbers {
+public:
+    std::vector<int> selfDividingNumbers(int left, int right);
+};
+
 
 class _0729_MyCalendarI {
 public:
@@ -2394,6 +2537,28 @@ private:
 };
 
 /*
+A string S of lowercase letters is given. We want to partition 
+this string into as many parts as possible so that each letter 
+appears in at most one part, and return a list of integers 
+representing the size of these parts.
+
+Input: S = "ababcbacadefegdehijhklij"
+Output: [9,7,8]
+Explanation:
+The partition is "ababcbaca", "defegde", "hijhklij".
+This is a partition so that each letter appears in at most one part.
+A partition like "ababcbacadefegde", "hijhklij" is incorrect, because it splits S into less parts.
+Note:
+
+S will have length in range [1, 500].
+S will consist of lowercase letters ('a' to 'z') only.
+*/
+class _0763_PartitionLabels {
+public:
+    std::vector<int> partitionLabels(std::string S) ;
+};
+
+/*
 You're given strings J representing the types of stones that are jewels, 
 and S representing the stones you have. Each character in S is a type of 
 stone you have. You want to know how many of the stones you have are also 
@@ -2447,6 +2612,72 @@ public:
 };
 
 /*
+Given a directed, acyclic graph of N nodes.  Find all possible paths 
+from node 0 to node N-1, and return them in any order.
+
+The graph is given as follows:  the nodes are 0, 1, ..., graph.length - 1.  
+graph[i] is a list of all nodes j for which the edge (i, j) exists.
+
+Example:
+Input: [[1,2], [3], [3], []] 
+Output: [[0,1,3],[0,2,3]] 
+Explanation: The graph looks like this:
+0--->1
+|    |
+v    v
+2--->3
+There are two paths: 0 -> 1 -> 3 and 0 -> 2 -> 3.
+Note:
+The number of nodes in the graph will be in the range [2, 15].
+You can print different paths in any order, but you should keep the order of nodes inside one path.
+*/
+class _0797_AllPathsFromSourceToTarget {
+public:
+    std::vector<std::vector<int>> allPathsSourceTarget(std::vector<std::vector<int>>& graph);
+};
+
+/*
+International Morse Code defines a standard encoding where each letter is 
+mapped to a series of dots and dashes, as follows: "a" maps to ".-", "b" 
+maps to "-...", "c" maps to "-.-.", and so on.
+
+For convenience, the full table for the 26 letters of the English alphabet 
+is given below:
+
+[".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..",
+"--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-",
+"-.--","--.."]
+
+Now, given a list of words, each word can be written as a concatenation of 
+the Morse code of each letter. For example, "cba" can be written as "-.-..--...", 
+(which is the concatenation "-.-." + "-..." + ".-"). We'll call such a 
+concatenation, the transformation of a word.
+
+Return the number of different transformations among all words we have.
+
+Example:
+Input: words = ["gin", "zen", "gig", "msg"]
+Output: 2
+Explanation: 
+The transformation of each word is:
+"gin" -> "--...-."
+"zen" -> "--...-."
+"gig" -> "--...--."
+"msg" -> "--...--."
+
+There are 2 different transformations, "--...-." and "--...--.".
+Note:
+
+The length of words will be at most 100.
+Each words[i] will have length in range [1, 12].
+words[i] will only consist of lowercase letters.
+*/
+class _0804_UniqueMorseCodeWords {
+public:
+    int uniqueMorseRepresentations(std::vector<std::string>& words);
+};
+
+/*
 In a 2 dimensional array grid, each value grid[i][j] represents the height of a building 
 located there. We are allowed to increase the height of any number of buildings, by any 
 amount (the amounts can be different for different buildings). Height 0 is considered to 
@@ -2491,6 +2722,36 @@ private:
     std::vector<int> colMax(const std::vector<std::vector<int>>& grid);
 };
 
+/*
+We are given the head node root of a binary tree, where additionally every
+node's value is either a 0 or a 1.
+Return the same tree where every subtree (of the given tree) not containing 
+a 1 has been removed.
+(Recall that the subtree of a node X is X, plus every node that is a descendant of X.)
+
+Example 1:
+Input: [1,null,0,0,1]
+Output: [1,null,0,null,1]
+ 
+Explanation: 
+Only the red nodes satisfy the property "every subtree not containing a 1".
+The diagram on the right represents the answer.
+
+Input: [1,0,1,0,0,0,1]
+Output: [1,null,1,null,1]
+
+Input: [1,1,0,1,1,0,1,0]
+Output: [1,1,0,1,1,null,1]
+
+Note:
+
+The binary tree will have at most 100 nodes.
+The value of each node will only be 0 or 1.
+*/
+class _0814_BinaryTreePruning {
+public:
+    TreeNode<int>* pruneTree(TreeNode<int>* root);
+};
 
 /*
 Given an array of unique integers, each integer is strictly greater than 1.
@@ -2543,6 +2804,38 @@ public:
 };
 
 /*
+Given a binary matrix A, we want to flip the image horizontally, 
+then invert it, and return the resulting image.
+To flip an image horizontally means that each row of the image is 
+reversed. For example, flipping [1, 1, 0] horizontally results in 
+[0, 1, 1].
+To invert an image means that each 0 is replaced by 1, and each 1 
+is replaced by 0. For example, inverting [0, 1, 1] results in 
+[1, 0, 0].
+
+Input: [[1,1,0],[1,0,1],[0,0,0]]
+Output: [[1,0,0],[0,1,0],[1,1,1]]
+Explanation: First reverse each row: [[0,1,1],[1,0,1],[0,0,0]].
+Then, invert the image: [[1,0,0],[0,1,0],[1,1,1]]
+Example 2:
+
+Input: [[1,1,0,0],[1,0,0,1],[0,1,1,1],[1,0,1,0]]
+Output: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]
+Explanation: First reverse each row: [[0,0,1,1],[1,0,0,1],[1,1,1,0],[0,1,0,1]].
+Then invert the image: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]
+Notes:
+
+1 <= A.length = A[0].length <= 20
+0 <= A[i][j] <= 1
+*/
+class _0832_FlippingAnImage {
+public:
+    std::vector<std::vector<int>> flipAndInvertImage(std::vector<std::vector<int>>& A);
+};
+
+
+
+/*
  838 Push Dominoes
 There are N dominoes in a line, and we place each domino vertically upright.
 In the beginning, we simultaneously push some of the dominoes either to the 
@@ -2575,6 +2868,35 @@ class _0838_PushDominoes {
     std::string pushDominoes(std::string dominoes);
 };
 
+
+/*
+Two strings X and Y are similar if we can swap two letters (in different positions) of X, so that it equals Y.
+For example, "tars" and "rats" are similar (swapping at positions 0 and 2), and "rats" and "arts" are similar, 
+but "star" is not similar to "tars", "rats", or "arts".
+Together, these form two connected groups by similarity: {"tars", "rats", "arts"} and {"star"}.  Notice that 
+"tars" and "arts" are in the same group even though they are not similar. Formally, each group is such that a 
+word is in the group if and only if it is similar to at least one other word in the group.
+
+We are given a list A of strings.  Every string in A is an anagram of every other string in A. 
+How many groups are there?
+
+Input: A = ["tars","rats","arts","star"]
+Output: 2
+
+Constraints:
+1 <= A.length <= 2000
+1 <= A[i].length <= 1000
+A.length * A[i].length <= 20000
+All words in A consist of lowercase letters only.
+All words in A have the same length and are anagrams of each other.
+The judging time limit has been increased for this question.
+*/
+class _0839_SimilarStringGroups {
+public:
+    int numSimilarGroups(std::vector<std::string>& A);
+private:
+    bool areSimilar(const std::string& a, const std::string& b);
+};
 
 /*
 There are N rooms and you start in room 0. Each room has a distinct number in 0, 
@@ -2822,6 +3144,23 @@ public:
     int pop();
 };
 
+/*
+Given an array A of non-negative integers, return an array 
+consisting of all the even elements of A, followed by all 
+the odd elements of A.
+You may return any answer array that satisfies this condition.
+
+Input: [3,1,2,4]
+Output: [2,4,3,1]
+The outputs [4,2,3,1], [2,4,1,3], and [4,2,1,3] would also be accepted.
+
+1 <= A.length <= 5000
+0 <= A[i] <= 5000
+*/
+class _0905_SortArrayByParity {
+public:
+    std::vector<int> sortArrayByParity(std::vector<int>& A);
+};
 
 /*
 In an election, the i-th vote was cast for persons[i] at time times[i].
@@ -3065,6 +3404,32 @@ S[i] is 'a', 'b', or 'c'
 class _1003_CheckIfWordIsValidAfterSubstitutions {
 public:
     bool isValid(std::string S);
+};
+
+
+/*
+Return the root node of a binary search tree that matches 
+the given preorder traversal.
+(Recall that a binary search tree is a binary tree where 
+for every node, any descendant of node.left has a value < 
+node.val, and any descendant of node.right has a value > 
+node.val.  Also recall that a preorder traversal displays 
+the value of the node first, then traverses node.left, then 
+traverses node.right.)
+
+Input: [8,5,1,7,10,12]
+Output: [8,5,10,1,7,null,12]
+
+Note: 
+1 <= preorder.length <= 100
+The values of preorder are distinct.
+*/
+class _1008_ConstructBinarySearchTreeFromPreorderTraversal {
+private:
+    int i = 0;
+public:
+    TreeNode<int>* bstFromPreorder(std::vector<int>& preorder);
+    TreeNode<int>* bstFromPreorderImpl(std::vector<int>& preorder, int bound);
 };
 
 /*
@@ -3456,6 +3821,27 @@ Note:
 class _1074_NumberOfSubmatricesThatSumToTarget {
   public:
     int numSubmatrixSumTarget(std::vector<std::vector<int>>&A, int target);
+};
+
+/*
+You have a set of tiles, where each tile has one letter tiles[i] 
+printed on it. Return the number of possible non-empty sequences 
+of letters you can make.
+
+Input: "AAB"
+Output: 8
+Explanation: The possible sequences are "A", "B", "AA", "AB", "BA", "AAB", "ABA", "BAA".
+
+Input: "AAABBC"
+Output: 188
+
+Note:
+1 <= tiles.length <= 7
+tiles consists of uppercase English letters.
+*/
+class _1079_LetterTilePossibilities {
+public:
+    int numTilePossibilities(std::string tiles);
 };
 
 
@@ -4162,6 +4548,79 @@ class _1254_NumberOfClosedIslands {
 };
 
 /*
+Given a binary tree with the following rules:
+root.val == 0
+If treeNode.val == x and treeNode.left != null, 
+then treeNode.left.val == 2 * x + 1
+If treeNode.val == x and treeNode.right != null, 
+then treeNode.right.val == 2 * x + 2
+
+Now the binary tree is contaminated, which means all 
+treeNode.val have been changed to -1.
+
+You need to first recover the binary tree and then 
+implement the FindElements class:
+
+FindElements(TreeNode* root) Initializes the object 
+with a contamined binary tree, you need to recover it 
+first.
+bool find(int target) Return if the target value 
+exists in the recovered binary tree.
+ 
+Input
+["FindElements","find","find"]
+[[[-1,null,-1]],[1],[2]]
+Output
+[null,false,true]
+Explanation
+FindElements findElements = new FindElements([-1,null,-1]); 
+findElements.find(1); // return False 
+findElements.find(2); // return True 
+
+Example 2:
+Input
+["FindElements","find","find","find"]
+[[[-1,-1,-1,-1,-1]],[1],[3],[5]]
+Output
+[null,true,true,false]
+Explanation
+FindElements findElements = new FindElements([-1,-1,-1,-1,-1]);
+findElements.find(1); // return True
+findElements.find(3); // return True
+findElements.find(5); // return False
+
+
+Example 3:
+Input
+["FindElements","find","find","find","find"]
+[[[-1,null,-1,-1,null,-1]],[2],[3],[4],[5]]
+Output
+[null,true,false,false,true]
+Explanation
+FindElements findElements = new FindElements([-1,null,-1,-1,null,-1]);
+findElements.find(2); // return True
+findElements.find(3); // return False
+findElements.find(4); // return False
+findElements.find(5); // return True
+
+Constraints:
+
+TreeNode.val == -1
+The height of the binary tree is less than or equal to 20
+The total number of nodes is between [1, 10^4]
+Total calls of find() is between [1, 10^4]
+0 <= target <= 10^6
+*/
+class _1261_FindElementsInAContaminatedBinaryTree {
+    TreeNode<int>* rot;
+    std::unordered_set<int> res;
+public:
+    _1261_FindElementsInAContaminatedBinaryTree(TreeNode<int>* root);
+    bool find(int target);
+    void recover(TreeNode<int>* root);
+};
+
+/*
 On a plane there are n points with integer coordinates 
 points[i] = [xi, yi]. Your task is to find the minimum 
 time in seconds to visit all points.
@@ -4203,6 +4662,40 @@ at right bottom corner can't communicate with any other server.
 class _1267_CountServersThatCommunicate {
 public:
     int countServers(std::vector<std::vector<int>>& grid);
+};
+
+
+/*
+Given two integers tomatoSlices and cheeseSlices. The ingredients of different burgers are as follows:
+Jumbo Burger: 4 tomato slices and 1 cheese slice.
+Small Burger: 2 Tomato slices and 1 cheese slice.
+Return [total_jumbo, total_small] so that the number of remaining tomatoSlices equal to 0 and the 
+number of remaining cheeseSlices equal to 0. If it is not possible to make the remaining tomatoSlices 
+and cheeseSlices equal to 0 return [].
+
+Input: tomatoSlices = 16, cheeseSlices = 7
+Output: [1,6]
+Explantion: To make one jumbo burger and 6 small burgers we need 4*1 + 2*6 = 16 tomato and 1 + 6 = 7 
+cheese. There will be no remaining ingredients.
+
+Input: tomatoSlices = 17, cheeseSlices = 4
+Output: []
+Explantion: There will be no way to use all ingredients to make small and jumbo burgers.
+
+Input: tomatoSlices = 4, cheeseSlices = 17
+Output: []
+Explantion: Making 1 jumbo burger there will be 16 cheese remaining and making 2 small burgers there 
+will be 15 cheese remaining.
+
+Input: tomatoSlices = 0, cheeseSlices = 0
+Output: [0,0]
+
+Input: tomatoSlices = 2, cheeseSlices = 1
+Output: [0,1]
+*/
+class _1276_NumberofBurgersWithNoWasteOfIngredients {
+public:
+    std::vector<int> numOfBurgers(int tomatoSlices, int cheeseSlices);
 };
 
 /*

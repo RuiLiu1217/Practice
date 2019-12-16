@@ -248,15 +248,18 @@ ADD_LIBRARY(Practice STATIC
     _0553_OptimalDivision.cpp
     _0554_BrickWall.cpp
     _0560_SubarraySubEqualK.cpp
+    _0567_PermutationInString.cpp
     _0572_SubtreeOfAnotherTree.cpp
     _0590_NaryTreePostOrderTraversal.cpp
     _0598_RangeAdditionII.cpp
+    _0617_MergeTwoBinaryTrees.cpp
     _0622_DesignCircularQueue.cpp
     _0637_AverageOfLevelInBinaryTree.cpp
     _0641_DesignCircularDeque.cpp
     _0647_PalindromicSubstrings.cpp
     _0654_MaximumBinaryTree.cpp
     _0655_PrintBinaryTree.cpp
+    _0657_RobotReturnToOrigin.cpp
     _0659_SplitArrayIntoConsecutiveSubsequences.cpp
     _0661_ImageSmoother.cpp
     _0664_StrangePrinter.cpp
@@ -269,18 +272,24 @@ ADD_LIBRARY(Practice STATIC
     _0709_ToLowerCase.cpp
     _0717_OneBitAndTwoBitsCharacters.cpp
     _0725_SplitLinkedListInParts.cpp
+    _0728_SelfDividingNumbers.cpp
     _0729_MyCalendarI.cpp
     _0735_AsteroidCollision.cpp
     _0740_DeleteAndEarn.cpp
     _0752_OpenTheLock.cpp
     _0756_PyramidTransitionMatrix.cpp
+    _0763_PartitionLabels.cpp
     _0771_JewelsAndStones.cpp
     _0777_SwapAdjacentInLRString.cpp
+    _0797_AllPathsFromSourceToTarget.cpp
     _0804_UniqueMorseCodeWords.cpp
     _0807_MaxIncreaseToKeepCitySkyline.cpp
+    _0814_BinaryTreePruning.cpp
     _0823_BinaryTreeWithFactors.cpp
     _0830_PositionsOfLargeGroups.cpp
+    _0832_FlippingAnImage.cpp
     _0838_PushDominoes.cpp
+    _0839_SimilarStringGroups.cpp
     _0841_KeysAndRooms.cpp
     _0862_ShortestSubarrayWithSumAtLeastK.cpp
     _0873_LengthOfLongestFibonacciSubsequence.cpp
@@ -289,6 +298,7 @@ ADD_LIBRARY(Practice STATIC
     _0890_FindAndReplacePattern.cpp
     _0894_AllPossibleFullBinaryTrees.cpp
     _0895_MaximumFrequencyStack.cpp
+    _0905_SortArrayByParity.cpp
     _0911_OnlineElection.cpp
     _0912_SortAnArray.cpp
     _0938_RangeSumOfBST.cpp
@@ -299,6 +309,7 @@ ADD_LIBRARY(Practice STATIC
     _0971_FlipBinaryTreeToMatchPreorderTraversal.cpp
     _0986_IntervalListIntersections.cpp
     _1003_checkIfWordIsValidAfterSubstitutions.cpp
+    _1008_ConstructBinarySearchTreeFromPreorderTraversal.cpp
     _1016_BinaryStringWithSubstringsRepresenting1ToN.cpp
     _1017_ConvertToBase_Negative2.cpp
     _1018_BinaryPrefixDivisibleBy5.cpp
@@ -313,6 +324,7 @@ ADD_LIBRARY(Practice STATIC
     _1046_LastStoneWeight.cpp
     _1047_RemoveAllAdjacentDuplicatesInString.cpp
     _1074_NumberOfSubmatricesThatSumToTarget.cpp
+    _1079_LetterTilePossibilities.cpp
     _1081_SmallestSubsequenceOfDistinctCharacters.cpp
     _1094_CarPooling.cpp
     _1103_DistributeCandiesToPeople.cpp
@@ -338,7 +350,9 @@ ADD_LIBRARY(Practice STATIC
     _1247_MinimumSwapsToMakeStringsEqual.cpp
     _1252_CellsWithOddValuesInAMatrix.cpp
     _1254_NumberOfClosedIslands.cpp
+    _1261_FindElementsInAContaminatedBinaryTree.cpp
     _1266_MinimumTimeVisitingAllPoints.cpp
     _1267_CountServersThatCommunicate.cpp
+    _1276_NumberofBurgersWithNoWasteOfIngredients.cpp
     _1277_CountSquareSubmatricesWithAllOnes.cpp
     )

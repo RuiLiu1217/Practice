@@ -18,13 +18,13 @@
 int LeetCode::_0045_JumpGameII::jump(std::vector<int>& nums) {
     int n = nums.size(), step = 0, start = 0, end = 0;
     while(end < n - 1) {
-        step++;
-        int maxend = end + 1;
+        step++; // update jump steps
+        int maxend = end + 1; // 最远可以到达的index
         for(int i = start; i <= end; ++i) {
-            if(i + nums[i] >= n - 1) {
+            if(i + nums[i] >= n - 1) { // 如果当前位置再往前走 nums[i]步会出去，就直接返回步数
                 return step;
             }
-            maxend = std::max(maxend, i + nums[i]);
+            maxend = std::max(maxend, i + nums[i]); //更新最远能到达的index
         }
         start = end + 1;
         end = maxend;
