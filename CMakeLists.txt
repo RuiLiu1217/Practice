@@ -226,17 +226,20 @@ ADD_LIBRARY(Practice STATIC
 	_0509_FibonacciNumber.cpp
 	_0518_CoinChange2.cpp
 	_0535_EncodeAndDecodeTinyURL.cpp
+	_0537_ComplexNumberMultiplication.cpp
 	_0538_ConvertBSTToGreaterTree.cpp
 	_0540_SingleElementInASortedArray.cpp
 	_0541_ReverseStringII.cpp
 	_0553_OptimalDivision.cpp
 	_0554_BrickWall.cpp
+	_0557_ReverseWordsInAStringIII.cpp
 	_0559_MaximumDepthOfNaryTree.cpp
 	_0560_SubarraySubEqualK.cpp
 	_0561_ArrayPartitionI.cpp
 	_0567_PermutationInString.cpp
 	_0572_SubtreeOfAnotherTree.cpp
 	_0583_DeleteOperationForTwoStrings.cpp
+	_0589_NaryTreePreorderTraversal.cpp
 	_0590_NaryTreePostOrderTraversal.cpp
 	_0598_RangeAdditionII.cpp
 	_0617_MergeTwoBinaryTrees.cpp
@@ -255,6 +258,7 @@ ADD_LIBRARY(Practice STATIC
 	_0679_24Games.cpp
 	_0686_RepeatedStringMatch.cpp
 	_0687_LongestUnivaluePath.cpp
+	_0700_SearchInABinarySearchTree.cpp
 	_0701_InsertIntoABinarySearchTree.cpp
 	_0709_ToLowerCase.cpp
 	_0717_OneBitAndTwoBitsCharacters.cpp
@@ -295,7 +299,10 @@ ADD_LIBRARY(Practice STATIC
 	_0921_MinimumAddToMakeParenthesesValid.cpp
 	_0922_SortArrayByParityII.cpp
 	_0929_UniqueEmailAddress.cpp
+	_0933_NumberOfRecentCalls.cpp
 	_0938_RangeSumOfBST.cpp
+	_0942_DIStringMatch.cpp
+	_0944_DeleteColumnsToMakeSorted.cpp
 	_0946_ValidateStackSequences.cpp
 	_0956_TallestBillboard.cpp
 	_0958_CheckCompletenessOfABinaryTree.cpp
@@ -304,6 +311,7 @@ ADD_LIBRARY(Practice STATIC
 	_0979_DistributeCoinsInBinaryTree.cpp
 	_0980_UniquePathsIII.cpp
 	_0986_IntervalListIntersections.cpp
+	_1002_FindCommonCharacters.cpp
 	_1003_checkIfWordIsValidAfterSubstitutions.cpp
 	_1008_ConstructBinarySearchTreeFromPreorderTraversal.cpp
 	_1016_BinaryStringWithSubstringsRepresenting1ToN.cpp
@@ -343,6 +351,7 @@ ADD_LIBRARY(Practice STATIC
 	_1186_MaximumSubarraySumWithOneDeletion.cpp
 	_1189_MaximumNumberOfBalloons.cpp
 	_1190_ReverseSubstringBetweenEachPairOfParentheses.cpp
+	_1200_MinimumAbsoluteDifference.cpp
 	_1207_UniqueNumberOfOccurences.cpp
 	_1209_RemoveAllAdjacentDuplicatesInStringII.cpp
 	_1218_LongestArithmeticSubsequenceOfGivenDifference.cpp
@@ -359,6 +368,7 @@ ADD_LIBRARY(Practice STATIC
 	_1267_CountServersThatCommunicate.cpp
 	_1276_NumberofBurgersWithNoWasteOfIngredients.cpp
 	_1277_CountSquareSubmatricesWithAllOnes.cpp
+	_876_MiddleOfTheLinkedList.cpp
 	__0001_APlusBProblem.cpp
 	__0002_TrailingZeros.cpp
 	__0004_UglyNumberII.cpp
