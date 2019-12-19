@@ -1440,6 +1440,28 @@ public:
 
 
 /*
+Given two strings representing two complex numbers.
+You need to return a string representing their multiplication. Note i2 = -1 according to the definition.
+
+Example 1:
+Input: "1+1i", "1+1i"
+Output: "0+2i"
+Explanation: (1 + i) * (1 + i) = 1 + i2 + 2 * i = 2i, and you need convert it to the form of 0+2i.
+Example 2:
+Input: "1+-1i", "1+-1i"
+Output: "0+-2i"
+Explanation: (1 - i) * (1 - i) = 1 + i2 - 2 * i = -2i, and you need convert it to the form of 0+-2i.
+Note:
+
+The input strings will not have extra blank.
+The input strings will be given in the form of a+bi, where the integer a and b will both belong to the range of [-100, 100]. And the output should be also in this form.
+*/
+class _0537_ComplexNumberMultiplication {
+public:
+    std::string complexNumberMultiply(std::string a, std::string b);
+};
+
+/*
 Given a Binary Search Tree (BST), convert it to a Greater Tree such that 
 every key of the original BST is changed to the original key plus sum of 
 all keys greater than the original key in BST.
@@ -1561,6 +1583,21 @@ exceed 20,000.
 class _0554_BrickWall {
 public:
     int leastBricks(std::vector<std::vector<int>>& wall);
+};
+
+
+/*
+Given a string, you need to reverse the order of characters in each word 
+within a sentence while still preserving whitespace and initial word order.
+
+Input: "Let's take LeetCode contest"
+Output: "s'teL ekat edoCteeL tsetnoc"
+Note: In the string, each word is separated by single space and there will 
+not be any extra space in the string.
+*/
+class _0557_ReverseWordsInAStringIII {
+public:
+    std::string reverseWords(std::string s);
 };
 
 /*
@@ -1703,6 +1740,31 @@ private:
     int lcs(std::string& s1, std::string& s2, int m, int n);
 public:
     int minDistance(std::string word1, std::string word2);
+};
+
+/*
+Given an n-ary tree, return the preorder traversal of its nodes' values.
+Nary-Tree input serialization is represented in their level order 
+traversal, each group of children is separated by the null value 
+(See examples). 
+
+Follow up:
+Recursive solution is trivial, could you do it iteratively?
+
+Input: root = [1,null,3,2,4,null,5,6]
+Output: [1,3,5,6,2,4]
+
+Input: root = [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]
+Output: [1,2,3,6,7,11,14,4,8,12,5,9,13,10]
+
+Constraints:
+
+The height of the n-ary tree is less than or equal to 1000
+The total number of nodes is between [0, 10^4]
+*/
+class _0589_NaryTreePreorderTraversal {
+public:
+    std::vector<int> preorder(NaryTreeNode<int>* root);
 };
 
 /*
@@ -2303,6 +2365,35 @@ private:
     int univaluePath(TreeNode<int>* root, int* ans);
 };
 
+/*
+Given the root node of a binary search tree (BST) and a value. 
+You need to find the node in the BST that the node's value equals 
+the given value. Return the subtree rooted with that node. 
+If such node doesn't exist, you should return NULL.
+
+Given the tree:
+        4
+       / \
+      2   7
+     / \
+    1   3
+
+And the value to search: 2
+You should return this subtree:
+
+      2     
+     / \   
+    1   3
+In the example above, if we want to search the value 5, since 
+there is no node with value 5, we should return NULL.
+Note that an empty tree is represented by NULL, therefore you 
+would see the expected output (serialized tree format) as [], 
+not null.
+*/
+class _0700_SearchInABinarySearchTree {
+public:
+    TreeNode<int>* searchBST(TreeNode<int>* root, int val);
+};
 
 /*
 701. Insert into a Binary Search Tree
@@ -3169,6 +3260,27 @@ public:
     int robotSim(std::vector<int>& commands, std::vector<std::vector<int>>& obstacles);
 };
 
+
+/*
+Given a non-empty, singly linked list with head node head, return a middle node of 
+linked list. If there are two middle nodes, return the second middle node.
+
+Input: [1,2,3,4,5]
+Output: Node 3 from this list (Serialization: [3,4,5])
+The returned node has value 3.  (The judge's serialization of this node is [3,4,5]).
+Note that we returned a ListNode object ans, such that:
+ans.val = 3, ans.next.val = 4, ans.next.next.val = 5, and ans.next.next.next = NULL.
+
+Input: [1,2,3,4,5,6]
+Output: Node 4 from this list (Serialization: [4,5,6])
+Since the list has two middle nodes with values 3 and 4, we return the second one.
+*/
+class _876_MiddleOfTheLinkedList {
+public:
+    ListNode<int>* middleNode(ListNode<int>* head);
+};
+
+
 /*
 Alex and Lee play a game with piles of stones. There are an even number 
 of piles arranged in a row, and each pile has a positive integer number
@@ -3201,6 +3313,29 @@ public:
     int LeeMax(std::vector<int>& piles, int start, int end);
 };
 
+
+/*
+On a N * N grid, we place some 1 * 1 * 1 cubes that are axis-aligned with the 
+x, y, and z axes. Each value v = grid[i][j] represents a tower of v cubes 
+placed on top of grid cell (i, j). Now we view the projection of these 
+cubes onto the xy, yz, and zx planes. 
+A projection is like a shadow, that maps our 3 dimensional figure to a 2 
+dimensional plane. Here, we are viewing the "shadow" when looking at the 
+cubes from the top, the front, and the side.
+Return the total area of all three projections.
+
+Input: [[2]]
+Output: 5
+
+Input: [[1,2],[3,4]]
+Output: 17
+Explanation: 
+Here are the three projections ("shadows") of the shape made with each axis-aligned plane.
+*/
+class _0883_ProjectionAreaOf3DShapes {
+public:
+    int projectionArea(std::vector<std::vector<int>>& grid);
+};
 /*
 On a 2 dimensional grid with R rows and C columns, we start at (r0, c0) facing east.
 Here, the north-west corner of the grid is at the first row and column, and the south-east
@@ -3467,11 +3602,39 @@ Each emails[i] contains exactly one '@' character.
 All local and domain names are non-empty.
 Local names do not start with a '+' character.
 */
-
 class _0929_UniqueEmailAddress {
 public:
     int numUniqueEmails(std::vector<std::string>& emails);
 };
+
+
+/*
+Write a class RecentCounter to count recent requests.
+It has only one method: ping(int t), where t represents some 
+time in milliseconds.
+Return the number of pings that have been made from 3000 
+milliseconds ago until now.
+Any ping with time in [t - 3000, t] will count, including 
+the current ping.
+It is guaranteed that every call to ping uses a strictly larger 
+value of t than before.
+
+Input: inputs = ["RecentCounter","ping","ping","ping","ping"], 
+inputs = [[],[1],[100],[3001],[3002]]
+Output: [null,1,2,3,3]
+
+Each test case will have at most 10000 calls to ping.
+Each test case will call ping with strictly increasing values of t.
+Each call to ping will have 1 <= t <= 10^9.
+*/
+class _0933_NumberOfRecentCalls {
+private:
+    std::queue<int> q;
+public:
+    _0933_NumberOfRecentCalls();
+    int ping(int t);
+};
+
 
 /*
 Given the root node of a binary search tree, return the sum of 
@@ -3492,6 +3655,69 @@ The final answer is guaranteed to be less than 2^31.
 class _0938_RangeSumOfBST {
 public:
     int rangeSumBST(TreeNode<int>* root, int L, int R);
+};
+
+
+/*
+Given a string S that only contains "I" (increase) or "D" (decrease), 
+let N = S.length.
+Return any permutation A of [0, 1, ..., N] such that for all 
+i = 0, ..., N-1:
+If S[i] == "I", then A[i] < A[i+1]
+If S[i] == "D", then A[i] > A[i+1]
+
+Input: "IDID"
+Output: [0,4,1,3,2]
+
+Input: "III"
+Output: [0,1,2,3]
+
+Input: "DDI"
+Output: [3,2,0,1]
+
+Note:
+1 <= S.length <= 10000
+S only contains characters "I" or "D".
+*/
+class _0942_DIStringMatch {
+public:
+    std::vector<int> disStringMatch(std::string S);
+};
+
+/*
+We are given an array A of N lowercase letter strings, all of the same 
+length. Now, we may choose any set of deletion indices, and for each string, 
+we delete all the characters in those indices. For example, if we have an
+array A = ["abcdef","uvwxyz"] and deletion indices {0, 2, 3}, then the 
+final array after deletions is ["bef", "vyz"], and the remaining columns 
+of A are ["b","v"], ["e","y"], and ["f","z"]. 
+(Formally, the c-th column is [A[0][c], A[1][c], ..., A[A.length-1][c]].)
+Suppose we chose a set of deletion indices D such that after deletions, 
+each remaining column in A is in non-decreasing sorted order.
+Return the minimum possible value of D.length.
+
+Input: ["cba","daf","ghi"]
+Output: 1
+Explanation: 
+After choosing D = {1}, each column ["c","d","g"] and ["a","f","i"] are in 
+non-decreasing sorted order. If we chose D = {}, then a column 
+["b","a","h"] would not be in non-decreasing sorted order.
+
+Input: ["a","b"]
+Output: 0
+Explanation: D = {}
+
+Input: ["zyx","wvu","tsr"]
+Output: 3
+Explanation: D = {0, 1, 2}
+
+Note:
+1 <= A.length <= 100
+1 <= A[i].length <= 1000
+*/
+class _0944_DeleteColumnsToMakeSorted {
+public:
+    int minDeletionSize(std::vector<std::string>& A);
 };
 
 /*
@@ -3708,6 +3934,30 @@ arrays or lists.
 class _0986_IntervalListIntersections {
 public:
     std::vector<std::vector<int>> intervalIntersection(std::vector<std::vector<int>>& A, std::vector<std::vector<int>>& B);
+};
+
+/*
+Given an array A of strings made only from lowercase letters, return a list 
+of all characters that show up in all strings within the list (including 
+duplicates). For example, if a character occurs 3 times in all strings but 
+not 4 times, you need to include that character three times in the final 
+answer.
+You may return the answer in any order.
+
+Input: ["bella","label","roller"]
+Output: ["e","l","l"]
+
+Input: ["cool","lock","cook"]
+Output: ["c","o"]
+Note:
+
+1 <= A.length <= 100
+1 <= A[i].length <= 100
+A[i][j] is a lowercase letter
+*/
+class _1002_FindCommonCharacters {
+public:
+    std::vector<std::string> commonChars(std::vector<std::string>& A);
 };
 
 /*
@@ -4779,6 +5029,37 @@ It's guaranteed that all parentheses are balanced.
 class _1190_ReverseSubstringsBetweenEachPairOfParentheses {
 public:
     std::string reverseParentheses(std::string s);
+};
+
+
+/*
+Given an array of distinct integers arr, find all pairs of elements with the minimum 
+absolute difference of any two elements. 
+Return a list of pairs in ascending order(with respect to pairs), each pair [a, b] 
+follows
+a, b are from arr
+a < b
+b - a equals to the minimum absolute difference of any two elements in arr
+
+Input: arr = [4,2,1,3]
+Output: [[1,2],[2,3],[3,4]]
+Explanation: The minimum absolute difference is 1. 
+List all pairs with difference equal to 1 in ascending order.
+
+Input: arr = [1,3,6,10,15]
+Output: [[1,3]]
+
+Input: arr = [3,8,-10,23,19,-4,-14,27]
+Output: [[-14,-10],[19,23],[23,27]]
+
+Constraints:
+
+2 <= arr.length <= 10^5
+-10^6 <= arr[i] <= 10^6
+*/
+class _1200_MinimumAbsoluteDifference {
+public:
+    std::vector<std::vector<int>> minimumAbsDifference(std::vector<int>& arr);
 };
 
 
