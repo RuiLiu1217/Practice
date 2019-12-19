@@ -869,37 +869,15 @@ private:
     std::unordered_map<int, std::unordered_set<int>> map;
 public:
     /** Initialize your data structure here. */
-    _0381_RandomizedCollection() {
-    }
-    
+    _0381_RandomizedCollection();
     /** Inserts a value to the collection. Returns true if the collection did not already contain the specified element. */
-    bool insert(int val) {
-        data.push_back(val);
-        map[val].insert(data.size() - 1);
-        return map[val].size() == 1;
-    }
+    bool insert(int val);
     
     /** Removes a value from the collection. Returns true if the collection contained the specified element. */
-    bool remove(int val) {
-        auto it = map.find(val);
-        if (it != end(map)) {
-            auto free_pos = *it->second.begin();
-            it->second.erase(it->second.begin());
-            data[free_pos] = data.back();
-            map[data.back()].insert(free_pos);
-            map[data.back()].erase(data.size() - 1);
-            data.pop_back();
-            if (it->second.size() == 0) map.erase(it);
-            return true;            
-        }
-        return false;
-        
-    }
+    bool remove(int val);
     
     /** Get a random element from the collection. */
-    int getRandom() {
-        return data[rand() % data.size()];
-    }
+    int getRandom();
 };
 
 
@@ -1046,6 +1024,29 @@ public:
 class _0415_AddStrings {
 public:
     std::string addStrings(std::string num1, std::string num2);
+};
+
+/*
+Given an 2D board, count how many battleships are in it. The battleships are represented with 'X's, empty slots are represented with '.'s. You may assume the following rules:
+You receive a valid board, made of only battleships or empty slots.
+Battleships can only be placed horizontally or vertically. In other words, they can only be made of the shape 1xN (1 row, N columns) or Nx1 (N rows, 1 column), where N can be of any size.
+At least one horizontal or vertical cell separates between two battleships - there are no adjacent battleships.
+Example:
+X..X
+...X
+...X
+In the above board there are 2 battleships.
+Invalid Example:
+...X
+XXXX
+...X
+This is an invalid board that you will not receive - as battleships will always have a cell separating between them.
+Follow up:
+Could you do it in one-pass, using only O(1) extra memory and without modifying the value of the board?
+*/
+class _0419_BattleshipsInABoard{
+public:
+    int countBattleships(std::vector<std::vector<char>>& board);
 };
 
 // We want to use quad trees to store an N x N boolean grid. Each cell in the
@@ -1207,6 +1208,29 @@ class _0455_AssignCookies {
 public:
     int findContentChildren(std::vector<int>& g, std::vector<int>& s);
 };
+
+
+/*
+The Hamming distance between two integers is the number of positions at which the 
+corresponding bits are different.
+Given two integers x and y, calculate the Hamming distance.
+
+Note:
+0 ≤ x, y < 231.
+Example:
+Input: x = 1, y = 4
+Output: 2
+Explanation:
+1   (0 0 0 1)
+4   (0 1 0 0)
+       ↑   ↑
+The above arrows point to positions where the corresponding bits are different.
+*/
+class _0461_HammingDistance {
+public:
+    int hammingDistance(int x, int y);
+};
+
 /*
 In the "100 game," two players take turns adding, to a running total, any 
 integer from 1..10. The player who first causes the running total to reach 
@@ -1539,6 +1563,28 @@ public:
     int leastBricks(std::vector<std::vector<int>>& wall);
 };
 
+/*
+Given a n-ary tree, find its maximum depth.
+The maximum depth is the number of nodes along the longest path from the root 
+node down to the farthest leaf node.
+Nary-Tree input serialization is represented in their level order traversal, 
+each group of children is separated by the null value (See examples).
+
+Input: root = [1,null,3,2,4,null,5,6]
+Output: 3
+
+Input: root = [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]
+Output: 5
+
+Constraints:
+
+The depth of the n-ary tree is less than or equal to 1000.
+The total number of nodes is between [0, 10^4].
+*/
+class _0559_MaximumDepthOfNaryTree {
+public:
+    int maxDepth(NaryTreeNode<int>* root);
+};
 
 /*
 560. Subarray Sum Equals K
@@ -1556,6 +1602,23 @@ class _0560_SubarraySumEqualsK {
     int subarraySum(std::vector<int>& nums, int k);
 };
 
+
+/*
+Given an array of 2n integers, your task is to group these integers 
+into n pairs of integer, say (a1, b1), (a2, b2), ..., (an, bn) which 
+makes sum of min(ai, bi) for all i from 1 to n as large as possible.
+
+Input: [1,4,3,2]
+Output: 4
+Explanation: n is 2, and the maximum sum of pairs is 4 = min(1, 2) + min(3, 4).
+Note:
+n is a positive integer, which is in the range of [1, 10000].
+All the integers in the array will be in the range of [-10000, 10000].
+*/
+class _0561_ArrayPartitionI {
+public:
+    int arrayPairSum(std::vector<int>& nums);
+};
 
 /*
 Given two strings s1 and s2, write a function to return true if s2 
@@ -2723,6 +2786,45 @@ private:
 };
 
 /*
+A website domain like "discuss.leetcode.com" consists of various subdomains. At the top level, we have 
+"com", at the next level, we have "leetcode.com", and at the lowest level, "discuss.leetcode.com". When 
+we visit a domain like "discuss.leetcode.com", we will also visit the parent domains "leetcode.com" and 
+"com" implicitly.
+Now, call a "count-paired domain" to be a count (representing the number of visits this domain received), 
+followed by a space, followed by the address. An example of a count-paired domain might be "9001 discuss.leetcode.com".
+We are given a list cpdomains of count-paired domains. We would like a list of count-paired domains, 
+(in the same format as the input, and in any order), that explicitly counts the number of visits to each subdomain.
+
+Example 1:
+Input: 
+["9001 discuss.leetcode.com"]
+Output: 
+["9001 discuss.leetcode.com", "9001 leetcode.com", "9001 com"]
+Explanation: 
+We only have one website domain: "discuss.leetcode.com". As discussed above, the subdomain "leetcode.com" and 
+"com" will also be visited. So they will all be visited 9001 times.
+
+Input: 
+["900 google.mail.com", "50 yahoo.com", "1 intel.mail.com", "5 wiki.org"]
+Output: 
+["901 mail.com","50 yahoo.com","900 google.mail.com","5 wiki.org","5 org","1 intel.mail.com","951 com"]
+Explanation: 
+We will visit "google.mail.com" 900 times, "yahoo.com" 50 times, "intel.mail.com" once and "wiki.org" 5 times. 
+For the subdomains, we will visit "mail.com" 900 + 1 = 901 times, "com" 900 + 50 + 1 = 951 times, and "org" 5 times.
+
+Notes:
+The length of cpdomains will not exceed 100. 
+The length of each domain name will not exceed 100.
+Each address will have either 1 or 2 "." characters.
+The input count in any count-paired domain will not exceed 10000.
+The answer output can be returned in any order.
+*/
+class _0811_SubdomainVisitCount {
+public:
+    std::vector<std::string> subdomainVisits(std::vector<std::string>& cpdomains);
+};
+
+/*
 We are given the head node root of a binary tree, where additionally every
 node's value is either a 0 or a 1.
 Return the same tree where every subtree (of the given tree) not containing 
@@ -2931,6 +3033,56 @@ public:
 };
 
 /*
+Let's call an array A a mountain if the following properties hold:
+
+A.length >= 3
+There exists some 0 < i < A.length - 1 such that 
+A[0] < A[1] < ... A[i-1] < A[i] > A[i+1] > ... > A[A.length - 1]
+Given an array that is definitely a mountain, return any i such that 
+A[0] < A[1] < ... A[i-1] < A[i] > A[i+1] > ... > A[A.length - 1].
+
+Input: [0,1,0]
+Output: 1
+
+Input: [0,2,1,0]
+Output: 1
+Note:
+
+3 <= A.length <= 10000
+0 <= A[i] <= 10^6
+A is a mountain, as defined above.
+*/
+class _0852_PeakIndexInAMountainArray {
+public:
+    int peakIndexInMountainArray(std::vector<int>& A);
+};
+
+/*
+We have a two dimensional matrix A where each value is 0 or 1.
+A move consists of choosing any row or column, and toggling each 
+value in that row or column: changing all 0s to 1s, and all 1s to 0s.
+After making any number of moves, every row of this matrix is 
+interpreted as a binary number, and the score of the matrix is the 
+sum of these numbers.
+Return the highest possible score.
+
+Input: [[0,0,1,1],[1,0,1,0],[1,1,0,0]]
+Output: 39
+Explanation:
+Toggled to [[1,1,1,1],[1,0,0,1],[1,1,1,1]].
+0b1111 + 0b1001 + 0b1111 = 15 + 9 + 15 = 39
+
+Note:
+1 <= A.length <= 20
+1 <= A[0].length <= 20
+A[i][j] is 0 or 1.
+*/
+class _0861_ScoreAfterFlippingMatrix {
+public:
+    int matrixScore(std::vector<std::vector<int>>& A);
+};
+
+/*
 Return the length of the shortest, non-empty, contiguous subarray of A 
 with sum at least K.
 If there is no non-empty subarray with sum at least K, return -1.
@@ -3049,6 +3201,36 @@ public:
     int LeeMax(std::vector<int>& piles, int start, int end);
 };
 
+/*
+On a 2 dimensional grid with R rows and C columns, we start at (r0, c0) facing east.
+Here, the north-west corner of the grid is at the first row and column, and the south-east
+corner of the grid is at the last row and column.
+Now, we walk in a clockwise spiral shape to visit every position in this grid. 
+Whenever we would move outside the boundary of the grid, we continue our walk outside the 
+grid (but may return to the grid boundary later.) 
+
+Eventually, we reach all R * C spaces of the grid.
+Return a list of coordinates representing the positions of the grid in the order they were visited.
+
+Input: R = 1, C = 4, r0 = 0, c0 = 0
+Output: [[0,0],[0,1],[0,2],[0,3]]
+
+Input: R = 5, C = 6, r0 = 1, c0 = 4
+Output: [[1,4],[1,5],[2,5],[2,4],[2,3],[1,3],[0,3],[0,4],[0,5],[3,5],[3,4],
+         [3,3],[3,2],[2,2],[1,2],[0,2],[4,5],[4,4],[4,3],[4,2],[4,1],[3,1],
+         [2,1],[1,1],[0,1],[4,0],[3,0],[2,0],[1,0],[0,0]]
+Note:
+
+1 <= R <= 100
+1 <= C <= 100
+0 <= r0 < R
+0 <= c0 < C
+Accepted
+*/
+class _0885_SpiralMatrixIII {
+public:
+    std::vector<std::vector<int>> spiralMatrixIII(int R, int C, int r0, int c0);
+};
 
 /*
 You have a list of words and a pattern, and you want to know which words in words 
@@ -3205,6 +3387,93 @@ private:
 };
 
 /*
+Given a string S of '(' and ')' parentheses, we add the minimum number of 
+parentheses ( '(' or ')', and in any positions ) so that the resulting 
+parentheses string is valid.
+
+Formally, a parentheses string is valid if and only if:
+It is the empty string, or
+It can be written as AB (A concatenated with B), where A and B are valid strings, or
+It can be written as (A), where A is a valid string.
+Given a parentheses string, return the minimum number of parentheses we 
+must add to make the resulting string valid.
+
+Input: "())"
+Output: 1
+
+Input: "((("
+Output: 3
+
+Input: "()"
+Output: 0
+
+Input: "()))(("
+Output: 4
+
+Note:
+
+S.length <= 1000
+S only consists of '(' and ')' characters.
+*/
+class _0921_MinimumAddToMakeParenthesesValid {
+public:
+    int minAddToMakeValid(std::string s);
+};
+
+/*
+Given an array A of non-negative integers, half of the integers in A are odd, 
+and half of the integers are even. Sort the array so that whenever A[i] is odd, 
+i is odd; and whenever A[i] is even, i is even. You may return any answer array 
+that satisfies this condition.
+
+Input: [4,2,5,7]
+Output: [4,5,2,7]
+Explanation: [4,7,2,5], [2,5,4,7], [2,7,4,5] would also have been accepted.
+Note:
+
+2 <= A.length <= 20000
+A.length % 2 == 0
+0 <= A[i] <= 1000
+*/
+class _0922_SortArrayByParityII {
+public:
+    std::vector<int> sortArrayByParityII(std::vector<int>& A);
+};
+
+/*
+Every email consists of a local name and a domain name, separated by the @ sign.
+For example, in alice@leetcode.com, alice is the local name, and leetcode.com is the domain name.
+Besides lowercase letters, these emails may contain '.'s or '+'s.
+If you add periods ('.') between some characters in the local name part of an email address, mail 
+sent there will be forwarded to the same address without dots in the local name. 
+For example, "alice.z@leetcode.com" and "alicez@leetcode.com" forward to the same email address. 
+(Note that this rule does not apply for domain names.)
+If you add a plus ('+') in the local name, everything after the first plus sign will be ignored. 
+This allows certain emails to be filtered, for example m.y+name@email.com will be forwarded to
+my@email.com.  (Again, this rule does not apply for domain names.)
+It is possible to use both of these rules at the same time.
+Given a list of emails, we send one email to each address in the list. 
+How many different addresses actually receive mails? 
+
+Input: ["test.email+alex@leetcode.com","test.e.mail+bob.cathy@leetcode.com","testemail+david@lee.tcode.com"]
+Output: 2
+Explanation: "testemail@leetcode.com" and "testemail@lee.tcode.com" actually receive mails
+ 
+Note:
+
+1 <= emails[i].length <= 100
+1 <= emails.length <= 100
+Each emails[i] contains exactly one '@' character.
+All local and domain names are non-empty.
+Local names do not start with a '+' character.
+*/
+
+class _0929_UniqueEmailAddress {
+public:
+    int numUniqueEmails(std::vector<std::string>& emails);
+};
+
+/*
 Given the root node of a binary search tree, return the sum of 
 values of all nodes with value between L and R (inclusive).
 The binary search tree is guaranteed to have unique values.
@@ -3349,7 +3618,78 @@ public:
 	std::vector<int> flipMatchVoyage(TreeNode<int>* root, std::vector<int>& voyage);
 };
 
+/*
+Given the root of a binary tree with N nodes, each node in the tree has node.val coins, 
+and there are N coins total.
+In one move, we may choose two adjacent nodes and move one coin from one node to another.
+(The move may be from parent to child, or from child to parent.)
+Return the number of moves required to make every node have exactly one coin.
 
+Input: [3,0,0]
+Output: 2
+Explanation: From the root of the tree, we move one coin to its left child, and one coin to its right child.
+
+Input: [0,3,0]
+Output: 3
+Explanation: From the left child of the root, we move two coins to the root [taking two moves].  Then, we move one coin from the root of the tree to the right child.
+
+Input: [1,0,2]
+Output: 2
+
+Input: [1,0,0,null,3]
+Output: 4
+
+Note:
+
+1<= N <= 100
+0 <= node.val <= N
+*/
+class _0979_DistributeCoinsInBinaryTree {
+private:
+    int ans = 0;
+public:
+    int distriuteCoins(TreeNode<int>* root);
+    int DFS(TreeNode<int>* root);
+};
+
+/*
+On a 2-dimensional grid, there are 4 types of squares:
+
+1 represents the starting square.  There is exactly one starting square.
+2 represents the ending square.  There is exactly one ending square.
+0 represents empty squares we can walk over.
+-1 represents obstacles that we cannot walk over.
+Return the number of 4-directional walks from the starting square to the ending square, 
+that walk over every non-obstacle square exactly once.
+
+Input: [[1,0,0,0],[0,0,0,0],[0,0,2,-1]]
+Output: 2
+Explanation: We have the following two paths: 
+1. (0,0),(0,1),(0,2),(0,3),(1,3),(1,2),(1,1),(1,0),(2,0),(2,1),(2,2)
+2. (0,0),(1,0),(2,0),(2,1),(1,1),(0,1),(0,2),(0,3),(1,3),(1,2),(2,2)
+
+Input: [[1,0,0,0],[0,0,0,0],[0,0,0,2]]
+Output: 4
+Explanation: We have the following four paths: 
+1. (0,0),(0,1),(0,2),(0,3),(1,3),(1,2),(1,1),(1,0),(2,0),(2,1),(2,2),(2,3)
+2. (0,0),(0,1),(1,1),(1,0),(2,0),(2,1),(2,2),(1,2),(0,2),(0,3),(1,3),(2,3)
+3. (0,0),(1,0),(2,0),(2,1),(2,2),(1,2),(1,1),(0,1),(0,2),(0,3),(1,3),(2,3)
+4. (0,0),(1,0),(2,0),(2,1),(1,1),(0,1),(0,2),(0,3),(1,3),(1,2),(2,2),(2,3)
+
+Input: [[0,1],[2,0]]
+Output: 0
+Explanation: 
+There is no path that walks over every empty square exactly once.
+Note that the starting and ending square can be anywhere in the grid.
+
+Note:
+
+1 <= grid.length * grid[0].length <= 20
+*/
+class _0980_UniquePathsIII {
+public:
+    int uniquePathsIII(std::vector<std::vector<int>>& grid);
+};
 
 /*
 Given two lists of closed intervals, each list of intervals is pairwise disjoint and in 
@@ -3671,6 +4011,34 @@ class _1027_LongestArithmeticSequence{
 };
 
 /*
+We run a preorder depth first search on the root of a binary tree.
+At each node in this traversal, we output D dashes 
+(where D is the depth of this node), then we output the value of this node. 
+(If the depth of a node is D, the depth of its immediate child is D+1. 
+The depth of the root node is 0.)
+If a node has only one child, that child is guaranteed to be the left child.
+Given the output S of this traversal, recover the tree and return its root.
+
+Input: "1-2--3--4-5--6--7"
+Output: [1,2,5,3,4,6,7]
+
+Input: "1-2--3---4-5--6---7"
+Output: [1,2,5,3,null,6,null,4,null,7]
+
+Input: "1-401--349---90--88"
+Output: [1,401,null,349,88,90]
+
+Note:
+
+The number of nodes in the original tree is between 1 and 1000.
+Each node will have a value between 1 and 10^9.
+*/
+class _1028_RecoverATreeFromPreorderTraversal {
+public:
+    TreeNode<int>* recoverFromPreorder(std::string S);
+};
+
+/*
 There are 2N people a company is planning to interview. The cost of flying 
 the i-th person to city A is costs[i][0], and the cost of flying the i-th 
 person to city B is costs[i][1].
@@ -3791,6 +4159,26 @@ public:
     std::string removeDuplicates(std::string S);
 };
 
+/*
+Students are asked to stand in non-decreasing order of heights for an annual photo.
+Return the minimum number of students not standing in the right positions. 
+(This is the number of students that must move in order for all students to be 
+standing in non-decreasing order of height.)
+
+Input: [1,1,4,2,1,3]
+Output: 3
+Explanation: 
+Students with heights 4, 3 and the last 1 are not standing in the right positions.
+
+Note:
+
+1 <= heights.length <= 100
+1 <= heights[i] <= 100
+*/
+class _1051_HeightChecker {
+public:
+    int heightChecker(std::vector<int>& heights);
+};
 
 
 /*
@@ -3930,6 +4318,27 @@ public:
 };
 
 /*
+In an infinite binary tree where every node has two children, the nodes are 
+labelled in row order.
+In the odd numbered rows (ie., the first, third, fifth,...), the labelling 
+is left to right, while in the even numbered rows (second, fourth, sixth,...), 
+the labelling is right to left.
+
+Given the label of a node in this tree, return the labels in the path from 
+the root of the tree to the node with that label.
+
+Input: label = 14
+Output: [1,3,4,14]
+
+Input: label = 26
+Output: [1,2,6,10,26]
+*/
+class _1104_PathInZigzagLabelledBinaryTree {
+public:
+    std::vector<int> pathInZigZagTree(int label);
+};
+
+/*
 We have a sequence of books: the i-th book has thickness books[i][0] 
 and height books[i][1]. 
 We want to place these books in order onto bookcase shelves that have 
@@ -4055,6 +4464,42 @@ public:
 
 
 /*
+A string is a valid parentheses string (denoted VPS) if and only if it consists of "(" and ")" 
+characters only, and:
+
+It is the empty string, or
+It can be written as AB (A concatenated with B), where A and B are VPS's, or
+It can be written as (A), where A is a VPS.
+We can similarly define the nesting depth depth(S) of any VPS S as follows:
+
+depth("") = 0
+depth(A + B) = max(depth(A), depth(B)), where A and B are VPS's
+depth("(" + A + ")") = 1 + depth(A), where A is a VPS.
+For example,  "", "()()", and "()(()())" are VPS's (with nesting depths 0, 1, and 2), and ")(" and "(()" are not VPS's.
+
+Given a VPS seq, split it into two disjoint subsequences A and B, such that A and B are VPS's 
+(and A.length + B.length = seq.length).
+Now choose any such A and B such that max(depth(A), depth(B)) is the minimum possible value.
+Return an answer array (of length seq.length) that encodes such a choice of A and B: 
+answer[i] = 0 if seq[i] is part of A, else answer[i] = 1. 
+Note that even though multiple answers may exist, you may return any of them.
+
+Input: seq = "(()())"
+Output: [0,1,1,1,1,0]
+
+Input: seq = "()(())()"
+Output: [0,0,0,1,1,0,1,1]
+
+Constraints:
+
+1 <= seq.size <= 10000
+*/
+class _1111_MaximumNestingDepthOfTwoValidParenthesesStrings {
+public:
+    std::vector<int> maxDepthAfterSplit(std::string seq);
+};
+
+/*
 Given two arrays arr1 and arr2, the elements of arr2 are distinct, and all 
 elements in arr2 are also in arr1.
 Sort the elements of arr1 such that the relative ordering of items in arr1 are 
@@ -4161,6 +4606,56 @@ public:
     void set(int index, int val);
     int snap();
     int get(int index, int snaid);
+};
+
+
+/*
+You are given an array of strings words and a string chars.
+A string is good if it can be formed by characters from chars 
+(each character can only be used once).
+Return the sum of lengths of all good strings in words.
+
+Input: words = ["cat","bt","hat","tree"], chars = "atach"
+Output: 6
+Explanation: 
+The strings that can be formed are "cat" and "hat" so the answer is 3 + 3 = 6.
+
+Input: words = ["hello","world","leetcode"], chars = "welldonehoneyr"
+Output: 10
+Explanation: 
+The strings that can be formed are "hello" and "world" so the answer is 5 + 5 = 10.
+
+Note:
+
+1 <= words.length <= 1000
+1 <= words[i].length, chars.length <= 100
+All strings contain lowercase English letters only.
+*/
+class _1160_FindWordsThatCanBeFormedByCharacters {
+public:
+    int countCharacters(std::vector<std::string>& words, std::string chars);
+};
+
+/*
+Given the root of a binary tree, the level of its root is 1, the 
+level of its children is 2, and so on.
+Return the smallest level X such that the sum of all the values 
+of nodes at level X is maximal.
+
+Input: [1,7,0,7,-8,null,null]
+Output: 2
+Level 1 sum = 1.
+Level 2 sum = 7 + 0 = 7.
+Level 3 sum = 7 + -8 = -1.
+So we return the level with the maximum sum which is level 2.
+Note:
+
+The number of nodes in the given tree is between 1 and 10^4.
+-10^5 <= node.val <= 10^5
+*/
+class _1161_MaximumLevelSumOfABinaryTree {
+public:
+    int maxLevelSum(TreeNode<int>* root);
 };
 
 /*
@@ -4399,6 +4894,47 @@ public:
 
 
 /*
+On an 8x8 chessboard, there can be multiple Black Queens and one White King.
+Given an array of integer coordinates queens that represents the positions of the 
+Black Queens, and a pair of coordinates king that represent the position of the 
+White King, return the coordinates of all the queens (in any order) that can 
+attack the King.
+
+
+Input: queens = [[0,1],[1,0],[4,0],[0,4],[3,3],[2,4]], king = [0,0]
+Output: [[0,1],[1,0],[3,3]]
+Explanation:  
+The queen at [0,1] can attack the king cause they're in the same row. 
+The queen at [1,0] can attack the king cause they're in the same column. 
+The queen at [3,3] can attack the king cause they're in the same diagnal. 
+The queen at [0,4] can't attack the king cause it's blocked by the queen at [0,1]. 
+The queen at [4,0] can't attack the king cause it's blocked by the queen at [1,0]. 
+The queen at [2,4] can't attack the king cause it's not in the same row/column/diagnal as the king.
+
+Input: queens = [[0,0],[1,1],[2,2],[3,4],[3,5],[4,4],[4,5]], king = [3,3]
+Output: [[2,2],[3,4],[4,4]]
+
+Input: queens = [[5,6],[7,7],[2,1],[0,7],[1,6],[5,1],[3,7],[0,3],[4,0],[1,2],[6,3],[5,0],
+[0,4],[2,2],[1,1],[6,4],[5,4],[0,0],[2,6],[4,5],[5,2],[1,4],[7,5],[2,3],[0,5],[4,2],[1,0],
+[2,7],[0,1],[4,6],[6,1],[0,6],[4,3],[1,7]], king = [3,4]
+Output: [[2,3],[1,4],[1,6],[3,7],[4,3],[5,4],[4,5]]
+ 
+
+Constraints:
+
+1 <= queens.length <= 63
+queens[0].length == 2
+0 <= queens[i][j] < 8
+king.length == 2
+0 <= king[0], king[1] < 8
+At most one piece is allowed in a cell.
+*/
+class _1222_QueensThatCanAttackTheKing {
+public:
+    std::vector<std::vector<int>> queensAttackTheKing(std::vector<std::vector<int>>& queens, std::vector<int>& king);
+};
+
+/*
 n passengers board an airplane with exactly n seats. The first passenger has 
 lost the ticket and picks a seat randomly. But after that, the rest of 
 passengers will:
@@ -4416,6 +4952,44 @@ class _1227_AirplaneSeatAssignmentProbability {
     public:
         double nthPersionGetsNthSeat(int n);
 
+};
+
+/*
+Given a function  f(x, y) and a value z, return all positive integer pairs x and y where f(x,y) == z.
+The function is constantly increasing, i.e.:
+f(x, y) < f(x + 1, y)
+f(x, y) < f(x, y + 1)
+The function interface is defined like this:
+interface CustomFunction {
+public:
+  // Returns positive integer f(x, y) for any given positive integer x and y.
+  int f(int x, int y);
+};
+For custom testing purposes you're given an integer function_id and a target z as input, where 
+function_id represent one function from an secret internal list, on the examples you'll know only two 
+functions from the list.
+
+You may return the solutions in any order.
+
+Input: function_id = 1, z = 5
+Output: [[1,4],[2,3],[3,2],[4,1]]
+Explanation: function_id = 1 means that f(x, y) = x + y
+
+Input: function_id = 2, z = 5
+Output: [[1,5],[5,1]]
+Explanation: function_id = 2 means that f(x, y) = x * y
+
+Constraints:
+
+1 <= function_id <= 9
+1 <= z <= 100
+It's guaranteed that the solutions of f(x, y) == z will be on the range 1 <= x, y <= 1000
+It's also guaranteed that f(x, y) will fit in 32 bit signed integer if 1 <= x, y <= 1000
+*/
+class _1237_FindPositiveIntegerSolutionForAGivenEquation {
+public:
+    class CustomFunction;
+    std::vector<std::vector<int>> findSolution(CustomFunction& customfunction, int z);
 };
 
 /*
