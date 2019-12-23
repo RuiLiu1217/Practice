@@ -81,13 +81,17 @@ public:
     int lengthOfLongestSubstring(std::string s);
 };
 
-// class _0004_MedianOfTwoSortedArrays {
-//     public:
-//         double findMedianOfSortedArrays(
-//             std::vector<int>& nums1,
-//             std::vector<int>& nums2);
-
-// };
+/*
+There are two sorted arrays nums1 and nums2 of size m and n respectively.
+Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).
+You may assume nums1 and nums2 cannot be both empty.
+*/
+class _0004_MedianOfTwoSortedArrays {
+    public:
+        double findMedianOfSortedArrays(
+            std::vector<int>& nums1,
+            std::vector<int>& nums2);
+};
 
 
 
