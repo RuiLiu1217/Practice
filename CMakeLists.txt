@@ -92,6 +92,7 @@ ADD_LIBRARY(Practice STATIC
 	_0434_NumberOfSegmentsInAString.cpp
 	_0205_IsomorphicStrings.cpp
 	_0153_FindMinimumInRotatedSortedArray.cpp
+	_1031_MaximumSumOfTwoNonOverlappingSubarrays.cpp
 	_0047_PermutationsII.cpp
 	_0401_BinaryWatch.cpp
 	_0537_ComplexNumberMultiplication.cpp
@@ -101,6 +102,7 @@ ADD_LIBRARY(Practice STATIC
 	_0046_Permutations.cpp
 	_0423_ReconstructOriginalDigitsFromEnglish.cpp
 	_0347_TopKFrequentElements.cpp
+	_1125_SmallestSufficientTeam.cpp
 	_0328_OddEvenLinkedList.cpp
 	__0004_UglyNumberII.cpp
 	_0144_BinaryTreePreOrderTraversal.cpp
