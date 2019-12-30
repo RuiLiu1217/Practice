@@ -1826,6 +1826,81 @@ public:
 };
 
 /*
+Suppose Andy and Doris want to choose a restaurant for dinner, and they both have a 
+list of favorite restaurants represented by strings.
+You need to help them find out their common interest with the least list index sum. 
+If there is a choice tie between answers, output all of them with no order requirement. 
+You could assume there always exists an answer.
+
+Input:
+["Shogun", "Tapioca Express", "Burger King", "KFC"]
+["Piatti", "The Grill at Torrey Pines", "Hungry Hunter Steakhouse", "Shogun"]
+Output: ["Shogun"]
+Explanation: The only restaurant they both like is "Shogun".
+
+Input:
+["Shogun", "Tapioca Express", "Burger King", "KFC"]
+["KFC", "Shogun", "Burger King"]
+Output: ["Shogun"]
+Explanation: The restaurant they both like and have the least index sum is "Shogun" with index sum 1 (0+1).
+Note:
+The length of both lists will be in the range of [1, 1000].
+The length of strings in both lists will be in the range of [1, 30].
+The index is starting from 0 to the list length minus 1.
+No duplicates in both lists.
+*/
+class _0599_MinimumIndexSumOfTwoLists {
+public:
+    std::vector<std::string> findRestaruant(std::vector<std::string>& list1, std::vector<std::string>& list2);
+};
+
+/*
+Given a list of directory info including directory path, and all the files with contents in this 
+directory, you need to find out all the groups of duplicate files in the file system in terms of 
+their paths.
+A group of duplicate files consists of at least two files that have exactly the same content.
+A single directory info string in the input list has the following format:
+"root/d1/d2/.../dm f1.txt(f1_content) f2.txt(f2_content) ... fn.txt(fn_content)"
+It means there are n files (f1.txt, f2.txt ... fn.txt with content f1_content, f2_content ... fn_content, respectively) 
+in directory root/d1/d2/.../dm. Note that n >= 1 and m >= 0. If m = 0, it means the directory is just the root directory.
+
+The output is a list of group of duplicate file paths. For each group, it contains all the file 
+paths of the files that have the same content. A file path is a string that has the following format:
+
+"directory_path/file_name.txt"
+
+Input:
+["root/a 1.txt(abcd) 2.txt(efgh)", "root/c 3.txt(abcd)", "root/c/d 4.txt(efgh)", "root 4.txt(efgh)"]
+Output:  
+[["root/a/2.txt","root/c/d/4.txt","root/4.txt"],["root/a/1.txt","root/c/3.txt"]]
+
+Note:
+
+No order is required for the final output.
+You may assume the directory name, file name and file content only has letters and digits, 
+and the length of file content is in the range of [1,50].
+
+The number of files given is in the range of [1,20000].
+You may assume no files or directories share the same name in the same directory.
+You may assume each given directory info represents a unique directory. Directory path and 
+file info are separated by a single blank space.
+
+Follow-up beyond contest:
+Imagine you are given a real file system, how will you search files? DFS or BFS?
+If the file content is very large (GB level), how will you modify your solution?
+If you can only read the file by 1kb each time, how will you modify your solution?
+What is the time complexity of your modified solution? What is the most time-consuming part and memory consuming part of it? How to optimize?
+How to make sure the duplicated files you find are not false positive?
+*/
+class _0609_FindDuplicateFileInSystem {
+public:
+    std::vector<std::vector<std::string>> findDuplicate(std::vector<std::string>& paths);
+private:
+    std::pair<std::string, std::string> separateFileNameAndContent(const std::string& pf);
+    std::vector<std::pair<std::string, std::string>> getOneFoldersFiles(const std::string& path);
+};
+
+/*
 Given two binary trees and imagine that when you put one of them to 
 cover the other, some nodes of the two trees are overlapped while 
 the others are not.
@@ -2010,6 +2085,24 @@ public:
     bool isFull();
 };
 
+/*
+You are given n pairs of numbers. In every pair, the first number is always 
+smaller than the second number.
+Now, we define a pair (c, d) can follow another pair (a, b) if and only if 
+b < c. Chain of pairs can be formed in this fashion.
+Given a set of pairs, find the length longest chain which can be formed. You 
+needn't use up all the given pairs. You can select pairs in any order.
+
+Input: [[1,2], [2,3], [3,4]]
+Output: 2
+Explanation: The longest chain is [1,2] -> [3,4]
+Note:
+The number of given pairs will be in the range [1, 1000].
+*/
+class _0646_MaximumLengthOfPairChain {
+public:
+    int findLongestChain(std::vector<std::vector<int>>& pairs);
+};
 
 /*
 Given a string, your task is to count how many palindromic substrings in this string.
@@ -3275,7 +3368,7 @@ Input: [1,2,3,4,5,6]
 Output: Node 4 from this list (Serialization: [4,5,6])
 Since the list has two middle nodes with values 3 and 4, we return the second one.
 */
-class _876_MiddleOfTheLinkedList {
+class _0876_MiddleOfTheLinkedList {
 public:
     ListNode<int>* middleNode(ListNode<int>* head);
 };
@@ -3459,6 +3552,28 @@ public:
     _0895_MaximumFrequencyStack();
     void push(int x);
     int pop();
+};
+
+/*
+A string S of lowercase letters is given.  Then, we may make any number of moves.
+In each move, we choose one of the first K letters (starting from the left), remove it, and place it at the end of the string.
+Return the lexicographically smallest string we could have after any number of moves.
+
+Input: S = "cba", K = 1
+Output: "acb"
+Explanation: 
+In the first move, we move the 1st character ("c") to the end, obtaining the string "bac".
+In the second move, we move the 1st character ("b") to the end, obtaining the final result "acb".
+
+Input: S = "baaca", K = 3
+Output: "aaabc"
+Explanation: 
+In the first move, we move the 1st character ("b") to the end, obtaining the string "aacab".
+In the second move, we move the 3rd character ("c") to the end, obtaining the final result "aaabc".
+*/
+class _0899_OrderlyQueue {
+public:
+    std::string orderlyQueue(std::string S, int K);
 };
 
 /*
@@ -5138,6 +5253,42 @@ public:
     std::vector<std::vector<int>> minimumAbsDifference(std::vector<int>& arr);
 };
 
+/*
+You are given a string s, and an array of pairs of indices in the string pairs where pairs[i] = 
+[a, b] indicates 2 indices(0-indexed) of the string. You can swap the characters at any pair of 
+indices in the given pairs any number of times.
+Return the lexicographically smallest string that s can be changed to after using the swaps.
+
+Input: s = "dcab", pairs = [[0,3],[1,2]]
+Output: "bacd"
+Explaination: 
+Swap s[0] and s[3], s = "bcad"
+Swap s[1] and s[2], s = "bacd"
+
+Input: s = "dcab", pairs = [[0,3],[1,2],[0,2]]
+Output: "abcd"
+Explaination: 
+Swap s[0] and s[3], s = "bcad"
+Swap s[0] and s[2], s = "acbd"
+Swap s[1] and s[2], s = "abcd"
+
+Input: s = "cba", pairs = [[0,1],[1,2]]
+Output: "abc"
+Explaination: 
+Swap s[0] and s[1], s = "bca"
+Swap s[1] and s[2], s = "bac"
+Swap s[0] and s[1], s = "abc"
+ 
+
+1 <= s.length <= 10^5
+0 <= pairs.length <= 10^5
+0 <= pairs[i][0], pairs[i][1] < s.length
+s only contains lower case English letters.
+*/
+class _1202_SmallestStringWithSwaps {
+public:
+    std::string smallestStringWithSwaps(std::string s, std::vector<std::vector<int>>& pairs);
+};
 
 /*
 Given an array of integers arr, write a function that returns true if and only if the 
@@ -5741,20 +5892,17 @@ Explanation:
 6 contains 1 digit (odd number of digits). 
 7896 contains 4 digits (even number of digits). 
 Therefore only 12 and 7896 contain an even number of digits.
-Example 2:
 
 Input: nums = [555,901,482,1771]
 Output: 1 
 Explanation: 
 Only 1771 contains an even number of digits.
- 
 
 Constraints:
-
 1 <= nums.length <= 500
 1 <= nums[i] <= 10^5
 */
-class _1295_FindNumbersWithEvenNumberOfDigits{
+class _1295_FindNumbersWithEvenNumberOfDigits {
 public:
     int findNumber(std::vector<int>& nums);
 };
