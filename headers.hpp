@@ -5666,6 +5666,99 @@ public:
     int countSquares(std::vector<std::vector<int>>& matrix);
 };
 
+/*
+There are n people whose IDs go from 0 to n - 1 and each person belongs exactly 
+to one group. Given the array groupSizes of length n telling the group size each 
+person belongs to, return the groups there are and the people's IDs each group 
+includes.
+You can return any solution in any order and the same applies for IDs. Also, it 
+is guaranteed that there exists at least one solution. 
+
+Input: groupSizes = [3,3,3,3,3,1,3]
+Output: [[5],[0,1,2],[3,4,6]]
+Explanation: 
+Other possible solutions are [[2,1,6],[5],[0,4,3]] and [[5],[0,6,2],[4,3,1]].
+
+Input: groupSizes = [2,1,3,3,3,2]
+Output: [[1],[0,5],[2,3,4]]
+
+Constraints:
+
+groupSizes.length == n
+1 <= n <= 500
+1 <= groupSizes[i] <= n
+*/
+class _1282_GroupThePeopleGivenTheGroupSizeTheyBelongTo {
+public:
+    std::vector<std::vector<int>> groupThePeople(std::vector<int>& groupSizes);
+};
+
+/*
+Given head which is a reference node to a singly-linked list. The value of each node in the linked list is either 0 or 1. The linked list holds the binary representation of a number.
+Return the decimal value of the number in the linked list.
+
+Input: head = [1,0,1]
+Output: 5
+Explanation: (101) in base 2 = (5) in base 10
+Example 2:
+
+Input: head = [0]
+Output: 0
+Example 3:
+
+Input: head = [1]
+Output: 1
+Example 4:
+
+Input: head = [1,0,0,1,0,0,1,1,1,0,0,0,0,0,0]
+Output: 18880
+Example 5:
+
+Input: head = [0,0]
+Output: 0
+ 
+
+Constraints:
+
+The Linked List is not empty.
+Number of nodes will not exceed 30.
+Each node's value is either 0 or 1.
+*/
+class _1290_ConvertBinaryNumberInALinkedListToInteger {
+public:
+    int getDecimalValue(ListNode<int>* head);
+};
+
+/*
+Given an array nums of integers, return how many of them contain an even number of digits.
+
+Input: nums = [12,345,2,6,7896]
+Output: 2
+Explanation: 
+12 contains 2 digits (even number of digits). 
+345 contains 3 digits (odd number of digits). 
+2 contains 1 digit (odd number of digits). 
+6 contains 1 digit (odd number of digits). 
+7896 contains 4 digits (even number of digits). 
+Therefore only 12 and 7896 contain an even number of digits.
+Example 2:
+
+Input: nums = [555,901,482,1771]
+Output: 1 
+Explanation: 
+Only 1771 contains an even number of digits.
+ 
+
+Constraints:
+
+1 <= nums.length <= 500
+1 <= nums[i] <= 10^5
+*/
+class _1295_FindNumbersWithEvenNumberOfDigits{
+public:
+    int findNumber(std::vector<int>& nums);
+};
+
 
 } // namespace LeetCode
 
