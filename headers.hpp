@@ -5049,6 +5049,38 @@ public:
     int get(int index, int snaid);
 };
 
+/*
+Given a string date representing a Gregorian calendar date formatted as YYYY-MM-DD, return the day number of the year.
+
+Input: date = "2019-01-09"
+Output: 9
+Explanation: Given date is the 9th day of the year in 2019.
+
+Input: date = "2019-02-10"
+Output: 41
+
+Input: date = "2003-03-01"
+Output: 60
+
+Input: date = "2004-03-01"
+Output: 61
+
+Constraints:
+date.length == 10
+date[4] == date[7] == '-', and all other date[i]'s are digits
+date represents a calendar date between Jan 1st, 1900 and Dec 31, 2019.
+*/
+class _1154_DayOfTheYear {
+public:
+    int dayOfYear(std::string dt) {
+        int days[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+        int y = stoi(dt.substr(0, 4)), m = stoi(dt.substr(5, 2)), d = stoi(dt.substr(8));
+        if (m > 2 && y % 4 == 0 && (y % 100 != 0 || y % 400 == 0)) ++d; 
+        while (--m > 0) d += days[m - 1];
+        return d;
+    }    
+};
+
 
 /*
 You are given an array of strings words and a string chars.
@@ -5251,6 +5283,46 @@ Constraints:
 class _1200_MinimumAbsoluteDifference {
 public:
     std::vector<std::vector<int>> minimumAbsDifference(std::vector<int>& arr);
+};
+
+/*
+Write a program to find the n-th ugly number.
+Ugly numbers are positive integers which are divisible by a or b or c.
+
+Input: n = 3, a = 2, b = 3, c = 5
+Output: 4
+Explanation: The ugly numbers are 2, 3, 4, 5, 6, 8, 9, 10... The 3rd is 4.
+Example 2:
+
+Input: n = 4, a = 2, b = 3, c = 4
+Output: 6
+Explanation: The ugly numbers are 2, 3, 4, 6, 8, 9, 10, 12... The 4th is 6.
+Example 3:
+
+Input: n = 5, a = 2, b = 11, c = 13
+Output: 10
+Explanation: The ugly numbers are 2, 4, 6, 8, 10, 11, 12, 13... The 5th is 10.
+Example 4:
+
+Input: n = 1000000000, a = 2, b = 217983653, c = 336916467
+Output: 1999999984
+
+Constraints:
+1 <= n, a, b, c <= 10^9
+1 <= a * b * c <= 10^18
+It's guaranteed that the result will be in range [1, 2 * 10^9]
+*/
+class _1201_UglyNumberIII {
+public:
+    // it looks like a DP problem, but actually it is a Binary Search Problem
+    // Calculate how many numbers from 1 to num are divisble by either a, b or c
+    // using the formula:
+    // num / a + num / b + num / c - num / lcm(ab) - num / lcm(bc) - num / lcm(ac) + num / lcm(abc)
+    int nthUglyNumber(int n, int a, int b, int c);
+private:
+    long long gcb(long long a, long long b);
+    long long lcm(long long a, long long b);
+    int count(long long num, long long a, long long b, long long c);
 };
 
 /*
@@ -5630,6 +5702,100 @@ class _1254_NumberOfClosedIslands {
 };
 
 /*
+Given a list of words, list of  single letters (might be repeating) and score of every 
+character. Return the maximum score of any valid set of words formed by using the given 
+letters (words[i] cannot be used two or more times).
+
+It is not necessary to use all characters in letters and each letter can only be used 
+once. Score of letters 'a', 'b', 'c', ... ,'z' is given by 
+score[0], score[1], ... , score[25] respectively.
+
+Input: 
+words = ["dog","cat","dad","good"], 
+letters = ["a","a","c","d","d","d","g","o","o"], 
+score = [1,0,9,5,0,0,3,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0]
+Output: 23
+Explanation:
+Score  a=1, c=9, d=5, g=3, o=2
+Given letters, we can form the words "dad" (5+1+5) and "good" (3+2+2+5) with a score of 23.
+Words "dad" and "dog" only get a score of 21.
+
+Example 2:
+Input: 
+words = ["xxxz","ax","bx","cx"], 
+letters = ["z","a","b","c","x","x","x"], 
+score = [4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,10]
+Output: 27
+Explanation:
+Score  a=4, b=4, c=4, x=5, z=10
+Given letters, we can form the words "ax" (4+5), "bx" (4+5) and "cx" (4+5) with a score of 27.
+Word "xxxz" only get a score of 25.
+
+Example 3:
+Input: 
+words = ["leetcode"], 
+letters = ["l","e","t","c","o","d"], 
+score = [0,0,1,1,1,0,0,0,0,0,0,1,0,0,1,0,0,0,0,1,0,0,0,0,0,0]
+Output: 0
+Explanation:
+Letter "e" can only be used once.
+ 
+Constraints:
+1 <= words.length <= 14
+1 <= words[i].length <= 15
+1 <= letters.length <= 100
+letters[i].length == 1
+score.length == 26
+0 <= score[i] <= 10
+words[i], letters[i] contains only lower case English letters.
+*/
+class _1255_MaximumScoreWordsFormedByLetters {
+private:
+    int maxScore = 0;
+public:
+    int maxScoreWords(std::vector<std::string>& words, std::vector<char>& letters, std::vector<int>& score);
+private:
+    int getWordScore(const std::vector<int>& word, const std::vector<int>& score);    
+    bool canCreateAWord(const std::vector<int>& letterMap, const std::vector<int>& word);    
+    void createAWord(std::vector<int>& letterMap, const std::vector<int>& word);    
+    void removeAWord(std::vector<int>& letterMap, const std::vector<int>& word);    
+    bool noMoreWordsCanGenerated(const std::vector<std::vector<int>>& words,int startIdx, const std::vector<int>& letterMap);
+    void scoreWords(std::vector<std::vector<int>>& words, int startIdx, std::vector<int>& letterMap,
+                   std::vector<int>& score, int& myScore);
+};
+
+/*
+Given a 2D grid of size m x n and an integer k. You need to shift the grid k times.
+In one shift operation:
+    Element at grid[i][j] becomes at grid[i][j + 1].
+    Element at grid[i][n - 1] becomes at grid[i + 1][0].
+    Element at grid[n - 1][n - 1] becomes at grid[0][0].
+Return the 2D grid after applying shift operation k times.
+
+Input: grid = [[1,2,3],[4,5,6],[7,8,9]], k = 1
+Output: [[9,1,2],[3,4,5],[6,7,8]]
+
+Input: grid = [[3,8,1,9],[19,7,2,5],[4,6,11,10],[12,0,21,13]], k = 4
+Output: [[12,0,21,13],[3,8,1,9],[19,7,2,5],[4,6,11,10]]
+
+Input: grid = [[1,2,3],[4,5,6],[7,8,9]], k = 9
+Output: [[1,2,3],[4,5,6],[7,8,9]]
+
+Constraints:
+
+m == grid.length
+n == grid[i].length
+1 <= m <= 50
+1 <= n <= 50
+-1000 <= grid[i][j] <= 1000
+0 <= k <= 100
+*/
+class _1260_Shift2DGrid {
+public:
+    std::vector<std::vector<int>> shiftGrid(std::vector<std::vector<int>>& grid, int K);        
+};
+
+/*
 Given a binary tree with the following rules:
 root.val == 0
 If treeNode.val == x and treeNode.left != null, 
@@ -5907,6 +6073,75 @@ public:
     int findNumber(std::vector<int>& nums);
 };
 
+/*
+Given an array arr, replace every element in that array with the 
+greatest element among the elements to its right, and replace the 
+last element with -1.
+
+After doing so, return the array.
+
+Input: arr = [17,18,5,4,6,1]
+Output: [18,6,6,6,1,-1]
+
+Constraints:
+1 <= arr.length <= 10^4
+1 <= arr[i] <= 10^5
+*/
+class _1299_ReplaceElementsWithGreatestElementOnRightSide {
+public:
+    std::vector<int> replaceElements(std::vector<int>& arr);
+};
+
+/*
+You are given a square board of characters. You can move on the board starting 
+at the bottom right square marked with the character 'S'.
+You need to reach the top left square marked with the character 'E'. The rest 
+of the squares are labeled either with a numeric character 1, 2, ..., 9 or with 
+an obstacle 'X'. In one move you can go up, left or up-left (diagonally) only if 
+there is no obstacle there.
+Return a list of two integers: the first integer is the maximum sum of numeric 
+characters you can collect, and the second is the number of such paths that you
+ can take to get that maximum sum, taken modulo 10^9 + 7.
+In case there is no path, return [0, 0].
+
+Input: board = ["E23","2X2","12S"]
+Output: [7,1]
+
+Input: board = ["E12","1X1","21S"]
+Output: [4,2]
+
+Input: board = ["E11","XXX","11S"]
+Output: [0,0]
+ 
+Constraints:
+
+2 <= board.length == board[i].length <= 100
+*/
+class _1301_NumberOfPathsWithMaxScore {
+public:
+    std::vector<int> pathsWithMaxScore(std::vector<std::string>& bd);
+};
+
+/*
+Given an integer n, return any array containing n unique integers such that they add up to 0.
+
+Input: n = 5
+Output: [-7,-1,1,3,4]
+Explanation: These arrays also are accepted [-5,-1,1,2,3] , [-3,-1,2,-2,4].
+
+Input: n = 3
+Output: [-1,0,1]
+
+Input: n = 1
+Output: [0]
+
+Constraints:
+1 <= n <= 1000
+*/
+class _1304_FindNUniqueIntegersSumupToZero {
+public:
+    std::vector<int> sumZero(int n);
+};
 
 } // namespace LeetCode
 

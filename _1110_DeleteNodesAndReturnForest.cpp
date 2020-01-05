@@ -43,12 +43,12 @@ public:
             return nullptr;
         }
         
-        bool del = (toDelVal.find(node->val) != toDelVal.end());
-        if(isRoot && !del) {
-            res.push_back(node);
+        bool del = (toDelVal.find(node->val) != toDelVal.end()); // found this value should be deleted and it is a root
+        if(isRoot && !del) { // if it is a root and its value should not be deleted.
+            res.push_back(node); // put it back to the result
         }
         node->left = Delete(node->left, del);
         node->right = Delete(node->right, del);
-        return del ? nullptr : node;
+        return del ? nullptr : node; // The node is not really deleted.
     }
 };

@@ -1579,6 +1579,23 @@ public:
 };
 
 /*
+Given a 2D binary matrix filled with 0's and 1's, find the largest rectangle containing only 1's and return its area.
+
+Input:
+[
+  ["1","0","1","0","0"],
+  ["1","0","1","1","1"],
+  ["1","1","1","1","1"],
+  ["1","0","0","1","0"]
+]
+Output: 6
+*/
+class _0085_MaximalRectangle {
+public:
+    int maximalRectangle(std::vector<std::vector<char>>& matrix);
+};
+
+/*
 Given a linked list and a value x, partition it such that all nodes less 
 than x come before nodes greater than or equal to x.
 You should preserve the original relative order of the nodes in each of 
