@@ -1,6 +1,5 @@
 #include "headers.hpp"
 
-
 // it looks like a DP problem, but actually it is a Binary Search Problem
 // Calculate how many numbers from 1 to num are divisble by either a, b or c
 // using the formula:
@@ -35,6 +34,7 @@ long long LeetCode::_1201_UglyNumberIII::lcm(long long a, long long b) {
     return a * b / ab;
 }
 
+// 算有多少个数能够被三个数至少一个整除。
 int LeetCode::_1201_UglyNumberIII::count(long long num, long long a, long long b, long long c) {
     long long lab = lcm(a, b);
     long long lbc = lcm(b, c);

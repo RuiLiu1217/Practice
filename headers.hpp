@@ -2784,6 +2784,32 @@ private:
 };
 
 /*
+Special binary strings are binary strings with the following two properties:
+
+The number of 0's is equal to the number of 1's.
+Every prefix of the binary string has at least as many 1's as 0's.
+Given a special string S, a move consists of choosing two consecutive, non-empty, special substrings of S, and swapping them. (Two strings are consecutive if the last character of the first string is exactly one index before the first character of the second string.)
+
+At the end of any number of moves, what is the lexicographically largest resulting string possible?
+
+Example 1:
+Input: S = "11011000"
+Output: "11100100"
+Explanation:
+The strings "10" [occuring at S[1]] and "1100" [at S[3]] are swapped.
+This is the lexicographically largest string possible after some number of swaps.
+Note:
+
+S has length at most 50.
+S is guaranteed to be a special binary string as defined above.
+*/
+class _0761_SpecialBinaryString {
+public:
+    std::string makeLargestSpecial(std::string S);
+    std::string makeLargestSpecialHelp(std::string S);
+};
+
+/*
 A string S of lowercase letters is given. We want to partition 
 this string into as many parts as possible so that each letter 
 appears in at most one part, and return a list of integers 
@@ -5912,6 +5938,45 @@ public:
     int countServers(std::vector<std::vector<int>>& grid);
 };
 
+/*
+You have a pointer at index 0 in an array of size arrLen. 
+At each step, you can move 1 position to the left, 1 position 
+to the right in the array or stay in the same place  
+(The pointer should not be placed outside the array at any time).
+Given two integers steps and arrLen, return the number of ways 
+such that your pointer still at index 0 after exactly steps steps.
+
+Since the answer may be too large, return it modulo 10^9 + 7.
+
+Input: steps = 3, arrLen = 2
+Output: 4
+Explanation: There are 4 differents ways to stay at index 0 after 3 steps.
+Right, Left, Stay
+Stay, Right, Left
+Right, Stay, Left
+Stay, Stay, Stay
+
+Input: steps = 2, arrLen = 4
+Output: 2
+Explanation: There are 2 differents ways to stay at index 0 after 2 steps
+Right, Left
+Stay, Stay
+
+Input: steps = 4, arrLen = 2
+Output: 8
+
+Constraints:
+
+1 <= steps <= 500
+1 <= arrLen <= 10^6
+*/
+class _1269_NumberOfWaysToStayInTheSamePlaceAfterSomeSteps {
+private:
+    int MOD = (1000000000 + 7);
+    void updateDP(std::vector<long long>& cur, std::vector<long long>& nex, const int N);
+public:
+    int numWays(int steps, int arrLen);
+};
 
 /*
 Given two integers tomatoSlices and cheeseSlices. The ingredients of different burgers are as follows:
@@ -6008,6 +6073,23 @@ groupSizes.length == n
 class _1282_GroupThePeopleGivenTheGroupSizeTheyBelongTo {
 public:
     std::vector<std::vector<int>> groupThePeople(std::vector<int>& groupSizes);
+};
+
+/*
+Given an integer array sorted in non-decreasing order, there is exactly one 
+integer in the array that occurs more than 25% of the time.
+Return that integer.
+
+Input: arr = [1,2,2,6,6,6,6,7,10]
+Output: 6
+
+Constraints:
+1 <= arr.length <= 10^4
+0 <= arr[i] <= 10^5
+*/
+class _1287_ElementAppearingMoreThan25PercentInSortedArray {
+public:
+    int findSpecialInteger(std::vector<int>& arr);
 };
 
 /*
@@ -6141,6 +6223,34 @@ Constraints:
 class _1304_FindNUniqueIntegersSumupToZero {
 public:
     std::vector<int> sumZero(int n);
+};
+
+/*
+Given two binary search trees root1 and root2.
+Return a list containing all the integers from both trees sorted in ascending order.
+
+Input: root1 = [2,1,4], root2 = [1,0,3]
+Output: [0,1,1,2,3,4]
+
+Input: root1 = [0,-10,10], root2 = [5,1,7,0,2]
+Output: [-10,0,0,1,2,5,7,10]
+
+Input: root1 = [], root2 = [5,1,7,0,2]
+Output: [0,1,2,5,7]
+
+Input: root1 = [0,-10,10], root2 = []
+Output: [-10,0,10]
+
+Input: root1 = [1,null,8], root2 = [8,1]
+Output: [1,1,8,8]
+
+Constraints:
+Each tree has at most 5000 nodes.
+Each node's value is between [-10^5, 10^5].
+*/
+class _1305_AllElementsInTwoBinarySearchTrees {
+public:
+    std::vector<int> getAllElements(TreeNode<int>* root1, TreeNode<int>* root2);
 };
 
 } // namespace LeetCode
