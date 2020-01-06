@@ -932,6 +932,101 @@ public:
 
 
 /*
+Equations are given in the format A / B = k, where A and B are variables represented 
+as strings, and k is a real number (floating point number). Given some queries, 
+return the answers. If the answer does not exist, return -1.0.
+
+Given a / b = 2.0, b / c = 3.0.
+queries are: a / c = ?, b / a = ?, a / e = ?, a / a = ?, x / x = ? .
+return [6.0, 0.5, -1.0, 1.0, -1.0 ].
+
+The input is: vector<pair<string, string>> equations, vector<double>& values, 
+vector<pair<string, string>> queries , where equations.size() == values.size(), and the 
+values are positive. This represents the equations. Return vector<double>.
+
+According to the example above:
+
+equations = [ ["a", "b"], ["b", "c"] ],
+values = [2.0, 3.0],
+queries = [ ["a", "c"], ["b", "a"], ["a", "e"], ["a", "a"], ["x", "x"] ]. 
+ 
+The input is always valid. You may assume that evaluating the queries will result 
+in no division by zero and there is no contradiction.
+*/
+class _0399_EvaluateDivision {
+private:
+    // A hash function used to hash a pair of any kind 
+    struct hash_pair { 
+        template <class T1, class T2> 
+        size_t operator()(const std::pair<T1, T2>& p) const
+        { 
+            auto hash1 = std::hash<T1>{}(p.first); 
+            auto hash2 = std::hash<T2>{}(p.second); 
+            return hash1 ^ hash2; 
+        } 
+    }; 
+    std::unordered_set<std::string> node;
+    std::unordered_map<std::pair<std::string, std::string>, double, hash_pair> edge;
+    std::unordered_map<std::string, bool> visited;
+    std::unordered_map<std::string, std::vector<std::string>> adjMap;
+    void resetVisit() {
+        for(auto& n : node) {
+            visited[n] = false;
+        }
+    }
+    std::vector<std::string> getAdj(std::string a) {
+        if(adjMap.find(a) == adjMap.end()) {
+            return {};
+        }
+        return adjMap[a];
+    }
+    
+public:
+    std::vector<double> calcEquation(std::vector<std::vector<std::string>>& equations, 
+    std::vector<double>& values, std::vector<std::vector<std::string>>& queries) {
+        for(int i = 0; i < equations.size(); ++i) {
+            node.insert(equations[i][0]);
+            node.insert(equations[i][1]);
+            edge[{equations[i][0], equations[i][1]}] = values[i];
+            edge[{equations[i][1], equations[i][0]}] = 1.0 / values[i];
+            adjMap[equations[i][0]].push_back(equations[i][1]);
+            adjMap[equations[i][1]].push_back(equations[i][0]);
+        }
+        resetVisit();
+        std::vector<double> res;
+        for(int i = 0; i < queries.size(); ++i) {
+            res.push_back(calculate(queries[i][0], queries[i][1]));
+            resetVisit();
+        }
+        return res;
+    }
+    
+    double calculate(std::string a, std::string b) {
+        
+        if(node.find(a) == node.end() || node.find(b) == node.end()) {
+            return -1.0;
+        }
+        
+        if(a == b) {
+            return 1.0;
+        }
+        
+        std::vector<std::string> adjA = getAdj(a);
+        visited[a] = true;
+        for(int i = 0; i < adjA.size(); ++i) {
+            if(visited[adjA[i]] == false) {
+                double v = calculate(adjA[i], b);
+                if(v != -1.0) {
+                    return v * edge[std::make_pair(a, adjA[i])];
+                }
+            }
+        }
+        return -1.0;
+    }
+};
+
+
+/*
 A binary watch has 4 LEDs on the top which represent
 the hours (0-11), and the 6 LEDs on the bottom represent
 the minutes (0-59).
@@ -2926,7 +3021,7 @@ private:
 public:
     bool isBipartitle(std::vector<std::vector<int>>& graph);
     bool Color(const std::vector<std::vector<int>>& graph, int I, int color);
-}
+};
 
 /*
 Given a directed, acyclic graph of N nodes.  Find all possible paths 
