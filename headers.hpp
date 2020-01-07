@@ -6284,6 +6284,44 @@ public:
 };
 
 /*
+Design an Iterator class, which has:
+
+A constructor that takes a string characters of sorted 
+distinct lowercase English letters and a number 
+combinationLength as arguments.
+
+A function next() that returns the next combination of 
+length combinationLength in lexicographical order.
+A function hasNext() that returns True if and only if 
+there exists a next combination.
+
+CombinationIterator iterator = new CombinationIterator("abc", 2); // creates the iterator.
+
+iterator.next(); // returns "ab"
+iterator.hasNext(); // returns true
+iterator.next(); // returns "ac"
+iterator.hasNext(); // returns true
+iterator.next(); // returns "bc"
+iterator.hasNext(); // returns false
+
+1 <= combinationLength <= characters.length <= 15
+There will be at most 10^4 function calls per test.
+It's guaranteed that all calls of the function next are valid.
+*/
+class _1286_IteratorForCombination {
+private:
+    std::string characters;
+    int combinationLength;
+    std::vector<int> combinIndex;
+    bool isFirstCombination;
+    int charactersLength;
+public:
+    _1286_IteratorForCombination(std::string cs, int cl);
+    std::string next();
+    bool hasNext();
+};
+
+/*
 Given an integer array sorted in non-decreasing order, there is exactly one 
 integer in the array that occurs more than 25% of the time.
 Return that integer.
