@@ -1,5 +1,7 @@
 #include "headers.hpp"
-
+    // 这道题有两种做法，抄答案来的
+    // https://leetcode.com/problems/shortest-bridge/discuss/189293/C%2B%2B-BFS-Island-Expansion-%2B-UF-Bonus
+    
 int LeetCode::_0934_ShortestBridge::shortestBridge(std::vector<std::vector<int>>& A) {
     for(int i = 0, found = 0; !found && i < A.size(); ++i) {
         for(int j = 0; !found && j < A[i].size(); ++j) {
