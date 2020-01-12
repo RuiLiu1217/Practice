@@ -744,6 +744,25 @@ private:
 };
 
 /*
+Given a set of distinct positive integers, find the largest subset such that every pair 
+(Si, Sj) of elements in this subset satisfies:
+
+Si % Sj = 0 or Sj % Si = 0.
+
+If there are multiple solutions, return any subset is fine.
+
+Input: [1,2,3]
+Output: [1,2] (of course, [1,3] will also be ok)
+
+Input: [1,2,4,8]
+Output: [1,2,4,8]
+*/
+class _0368_LargestDivisibleSubset {
+public:
+    std::vector<int> largestDivisibleSubset(std::vector<int>& nums);
+};
+
+/*
 Calculate the sum of two integers a and b, but you 
 are not allowed to use the operator + and -.
 
