@@ -136,6 +136,21 @@ private:
 };
 
 /*
+Given an array of n positive integers and a positive integer s, find the minimal length 
+of a contiguous subarray of which the sum ≥ s. If there isn't one, return 0 instead.
+
+Input: s = 7, nums = [2,3,1,2,4,3]
+Output: 2
+Explanation: the subarray [4,3] has the minimal length under the problem constraint.
+Follow up:
+If you have figured out the O(n) solution, try coding another solution of which the time complexity is O(n log n). 
+*/
+class _0209_MinimumSizeSubarraySum {
+public:
+    int minSubArrayLen(int s, std::vector<int>& nums);
+};
+
+/*
 There are a total of n courses you have to take, labeled from 0 to n-1.
 Some courses may have prerequisites, for example to take course 0 you 
 have to first take course 1, which is expressed as a pair: [0,1]
@@ -249,6 +264,16 @@ Output: 6
 class _0222_CountCompleteTreeNodes {
 public:
     int countNodes(TreeNode<int>* root);
+};
+
+/*
+Find the total area covered by two rectilinear rectangles 
+in a 2D plane. Each rectangle is defined by its bottom left 
+corner and top right corner as shown in the figure.
+*/
+class _0223_RectangleArea {
+public:
+    int computeArea(int A, int B, int C, int D, int E, int F, int G, int H);
 };
 
 /*

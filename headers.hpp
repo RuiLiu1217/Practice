@@ -761,6 +761,21 @@ public:
 };
 
 /*
+Your task is to calculate ab mod 1337 where a is a positive integer 
+and b is an extremely large positive integer given in the form of an array.
+
+Input: a = 2, b = [3]
+Output: 8
+
+Input: a = 2, b = [1,0]
+Output: 1024
+*/
+class _0372_SuperPow {
+public:
+    int superPow(int a, std::vector<int>& b);
+};
+
+/*
     Given a n x n matrix where each of the rows and columns 
     are sorted in ascending order, find the kth smallest element 
     in the matrix.
@@ -928,6 +943,33 @@ For example, there won't be input like 3a or 2[4].
 class _0394_DecodeString {
 public:
     std::string decodeString(std::string s);
+};
+
+/*
+Given an array of integers with possible duplicates, randomly output 
+the index of a given target number. You can assume that the given 
+target number must exist in the array.
+
+Note:
+The array size can be very large. Solution that uses too much extra 
+space will not pass the judge.
+
+int[] nums = new int[] {1,2,3,3,3};
+Solution solution = new Solution(nums);
+
+// pick(3) should return either index 2, 3, or 4 randomly. Each index 
+should have equal probability of returning.
+solution.pick(3);
+
+// pick(1) should return 0. Since in the array only nums[0] is equal to 1.
+solution.pick(1);
+*/
+class _0398_RandomPickIndex {
+private:
+    std::unordered_map<int, std::vector<int>> map;
+public:
+    _0398_RandomPickIndex(std::vector<int>& nums);
+    int pick(int target);
 };
 
 
@@ -1211,9 +1253,124 @@ public:
     std::vector<std::vector<int>> levelOrder(NaryTreeNode<int> *root);
 };
 
+/*
+You are given a doubly linked list which in addition to the next and 
+previous pointers, it could have a child pointer, which may or may not 
+point to a separate doubly linked list. These child lists may have one
+or more children of their own, and so on, to produce a multilevel data
+ structure, as shown in the example below.
+Flatten the list so that all the nodes appear in a single-level, doubly 
+linked list. You are given the head of the first level of the list.
+
+Input: head = [1,2,3,4,5,6,null,null,null,7,8,9,10,null,null,11,12]
+Output: [1,2,3,7,8,11,12,9,10,4,5,6]
+Explanation:
+
+The multilevel linked list in the input is as follows:
+After flattening the multilevel linked list it becomes:
+
+Input: head = [1,2,null,3]
+Output: [1,3,2]
+Explanation:
+
+The input multilevel linked list is as follows:
+
+  1---2---NULL
+  |
+  3---NULL
+
+Input: head = []
+Output: []
+How multilevel linked list is represented in test case:
+
+We use the multilevel linked list from Example 1 above:
+
+ 1---2---3---4---5---6--NULL
+         |
+         7---8---9---10--NULL
+             |
+             11--12--NULL
+Constraints:
+Number of Nodes will not exceed 1000.
+1 <= Node.val <= 10^5
+*/
+class _0430_FlattenAMultilevelDoublyLinkedList {
+    class Node{
+        public:
+            int val;
+            Node* prev;
+            Node* next;
+            Node* child;
+    };
+public:
+    Node* flatten(Node* head);
+};
+
+/*
+A gene string can be represented by an 8-character long string, with choices 
+from "A", "C", "G", "T". Suppose we need to investigate about a mutation 
+(mutation from "start" to "end"), where ONE mutation is defined as ONE single 
+character changed in the gene string.
+
+For example, "AACCGGTT" -> "AACCGGTA" is 1 mutation.
+Also, there is a given gene "bank", which records all the valid gene mutations. 
+A gene must be in the bank to make it a valid gene string.
+Now, given 3 things - start, end, bank, your task is to determine what is the 
+minimum number of mutations needed to mutate from "start" to "end". If there 
+is no such a mutation, return -1.
+
+Starting point is assumed to be valid, so it might not be included in the bank.
+If multiple mutations are needed, all mutations during in the sequence must be valid.
+You may assume start and end string is not the same.
+
+start: "AACCGGTT"
+end:   "AACCGGTA"
+bank: ["AACCGGTA"]
+return: 1
+ 
+start: "AACCGGTT"
+end:   "AAACGGTA"
+bank: ["AACCGGTA", "AACCGCTA", "AAACGGTA"]
+return: 2
+
+start: "AAAAACCC"
+end:   "AACCCCCC"
+bank: ["AAAACCCC", "AAACCCCC", "AACCCCCC"]
+return: 3
+*/
+class _0433_MinimumGeneticMutation {
+public:
+    int minMutation(std::string start, std::string end, std::vector<std::string>& bank);
+};
+
 class _0434_NumberOfSegmentsInAString {
 public:
     int countSegments(std::string s);
+};
+
+/*
+Given a collection of intervals, find the minimum number of intervals you need
+to remove to make the rest of the intervals non-overlapping.
+
+Input: [[1,2],[2,3],[3,4],[1,3]]
+Output: 1
+Explanation: [1,3] can be removed and the rest of intervals are non-overlapping.
+
+Input: [[1,2],[1,2],[1,2]]
+Output: 2
+Explanation: You need to remove two [1,2] to make the rest of intervals non-overlapping.
+
+Input: [[1,2],[2,3]]
+Output: 0
+Explanation: You don't need to remove any of the intervals since they're already non-overlapping.
+
+Note:
+You may assume the interval's end point is always bigger than its start point.
+Intervals like [1,2] and [2,3] have borders "touching" but they don't overlap each other.
+*/
+class _0435_NonOverlappingIntervals {
+public:
+    int eraseOverlapIntervals(std::vector<std::vector<int>>& intervals);
 };
 
 class _0441_ArrangingCoins {
@@ -2927,6 +3084,34 @@ public:
 };
 
 /*
+Given an array arr that is a permutation of [0, 1, ..., arr.length - 1], 
+we split the array into some number of "chunks" (partitions), and individually 
+sort each chunk.  After concatenating them, the result equals the sorted array.
+
+What is the most number of chunks we could have made?
+
+Input: arr = [4,3,2,1,0]
+Output: 1
+Explanation:
+Splitting into two or more chunks will not return the required result.
+For example, splitting into [4, 3], [2, 1, 0] will result in [3, 4, 0, 1, 2], which isn't sorted.
+
+Input: arr = [1,0,2,3,4]
+Output: 4
+Explanation:
+We can split into two chunks, such as [1, 0], [2, 3, 4].
+However, splitting into [1, 0], [2], [3], [4] is the highest number of chunks possible.
+Note:
+
+arr will have length in range [1, 10].
+arr[i] will be a permutation of [0, 1, ..., arr.length - 1].
+*/
+class _0769_MaxChunksToMakeSorted {
+public:
+    int maxChunksToSorted(std::vector<int>& arr);
+};
+
+/*
 You're given strings J representing the types of stones that are jewels, 
 and S representing the stones you have. Each character in S is a type of 
 stone you have. You want to know how many of the stones you have are also 
@@ -3202,6 +3387,47 @@ The value of each node will only be 0 or 1.
 class _0814_BinaryTreePruning {
 public:
     TreeNode<int>* pruneTree(TreeNode<int>* root);
+};
+
+/*
+We had some 2-dimensional coordinates, like "(1, 3)" or "(2, 0.5)". 
+Then, we removed all commas, decimal points, and spaces, and ended 
+up with the string S. Return a list of strings representing all 
+possibilities for what our original coordinates could have been.
+
+Our original representation never had extraneous zeroes, so we never 
+started with numbers like "00", "0.0", "0.00", "1.0", "001", "00.01", 
+or any other number that can be represented with less digits. Also, a 
+decimal point within a number never occurs without at least one digit 
+occuring before it, so we never started with numbers like ".1".
+
+The final answer list can be returned in any order.  Also note that 
+all coordinates in the final answer have exactly one space between 
+them (occurring after the comma.)
+
+Input: "(123)"
+Output: ["(1, 23)", "(12, 3)", "(1.2, 3)", "(1, 2.3)"]
+
+Input: "(00011)"
+Output:  ["(0.001, 1)", "(0, 0.011)"]
+Explanation: 
+0.0, 00, 0001 or 00.01 are not allowed.
+
+Input: "(0123)"
+Output: ["(0, 123)", "(0, 12.3)", "(0, 1.23)", "(0.1, 23)", "(0.1, 2.3)", "(0.12, 3)"]
+
+Input: "(100)"
+Output: [(10, 0)]
+Explanation: 
+1.0 is not allowed.
+
+Note:
+4 <= S.length <= 12.
+S[0] = "(", S[S.length - 1] = ")", and the other elements in S are digits.
+*/
+class _0816_AmbiguousCoordinates {
+public:
+    std::vector<std::string> ambiguousCoordinates(std::string S);
 };
 
 /*
@@ -3765,6 +3991,48 @@ In the second move, we move the 3rd character ("c") to the end, obtaining the fi
 class _0899_OrderlyQueue {
 public:
     std::string orderlyQueue(std::string S, int K);
+};
+
+
+/*
+In a row of trees, the i-th tree produces fruit with type tree[i].
+You start at any tree of your choice, then repeatedly perform the following steps:
+
+1. Add one piece of fruit from this tree to your baskets.  If you cannot, stop.
+2. Move to the next tree to the right of the current tree.  If there is no tree to the right, stop.
+
+Note that you do not have any choice after the initial choice of starting tree: you must 
+perform step 1, then step 2, then back to step 1, then step 2, and so on until you stop.
+You have two baskets, and each basket can carry any quantity of fruit, but you want each 
+basket to only carry one type of fruit each.
+
+What is the total amount of fruit you can collect with this procedure?
+
+Input: [1,2,1]
+Output: 3
+Explanation: We can collect [1,2,1].
+
+Input: [0,1,2,2]
+Output: 3
+Explanation: We can collect [1,2,2].
+If we started at the first tree, we would only collect [0, 1].
+
+Input: [1,2,3,2,2]
+Output: 4
+Explanation: We can collect [2,3,2,2].
+If we started at the first tree, we would only collect [1, 2].
+
+Input: [3,3,3,1,2,1,1,2,3,3,4]
+Output: 5
+Explanation: We can collect [1,2,1,1,2].
+If we started at the first tree or the eighth tree, we would only collect 4 fruits.
+
+1 <= tree.length <= 40000
+0 <= tree[i] < tree.length
+*/
+class _0904_FruitInoBackets {
+public:
+    int totalFruit(std::vector<int>& tree);
 };
 
 /*
