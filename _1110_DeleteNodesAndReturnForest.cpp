@@ -21,3 +21,34 @@ TreeNode<int>* LeetCode::_1110_DeleteNodesAndReturnForest::helper(TreeNode<int>*
     node->right = helper(node->right, result, toDeleteSet, deleted);
     return deleted ? nullptr : node;
 }
+
+
+// Another time solve it, but still cannot rembember how to do 
+
+class Solution {
+private:
+    std::unordered_set<int> toDelVal;
+    std::vector<TreeNode<int>*> res;
+public:
+    std::vector<TreeNode<int>*> delNodes(TreeNode<int>* root, std::vector<int>& to_delete) {
+        for(int i = 0; i < to_delete.size(); ++i) {
+            toDelVal.insert(to_delete[i]);
+        }
+        root = Delete(root, true);
+        return res;
+    }
+    
+    TreeNode<int>* Delete(TreeNode<int>* node, bool isRoot) {
+        if(node == nullptr) {
+            return nullptr;
+        }
+        
+        bool del = (toDelVal.find(node->val) != toDelVal.end()); // found this value should be deleted and it is a root
+        if(isRoot && !del) { // if it is a root and its value should not be deleted.
+            res.push_back(node); // put it back to the result
+        }
+        node->left = Delete(node->left, del);
+        node->right = Delete(node->right, del);
+        return del ? nullptr : node; // The node is not really deleted.
+    }
+};

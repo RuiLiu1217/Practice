@@ -772,152 +772,8 @@ Empty cells are indicated by the character '.'.
 */
 class _0037_SudokuSolver {
 public:
-    // void solveSudoku(vector<vector<char>>& board) {
-    //     const int M = unfilled(board);
-    //     std::vector<int> rowMask(9, 0);
-    //     std::vector<int> colMask(9, 0);
-    //     std::vector<int> blkMask(9, 0);
-    //     calcualteMasks(board, rowMask, colMask, blkMask);
-    //     solveSudoku(board, 0, M, rowMask, colMask, blkMask);
-    // }
-    // void calcualteMasks(std::vector<std::vector<char>>& board, 
-    //                     std::vector<int>& rowMask,
-    //                    std::vector<int>& colMask,
-    //                    std::vector<int>& blkMask) {
-    //     const int M = 0x000003FF;
-        
-    //     for(int i = 0; i < 9; ++i) {
-    //         int v = 0;
-    //         for(int j = 0; j < 9; ++j) {
-    //             if(board[i][j] != '.') {
-    //                  v |= 1<<(board[i][j] - '0');
-    //             }
-    //         }
-    //         rowMask[i] = M ^ v;
-    //     }
-        
-    //     for(int j = 0; j < 9; ++j) {
-    //         int v = 0;
-    //         for(int i = 0; i < 9; ++i) {
-    //             if(board[i][j] != '.') {
-    //                 v |= 1<<(board[i][j] - '0');
-    //             }
-    //         }
-    //         colMask[j] = M ^ v;
-    //     }
-        
-    //     for(int i = 0; i < 3; ++i) {
-    //         for(int j = 0; j < 3; ++j) {
-    //             int v = 0;
-    //             for(int k1 = 0; k1 < 3; ++k1) {
-    //                 for(int k2 = 0; k2 < 3; ++k2) {
-    //                     if(board[i * 3 + k1][j * 3 + k2] != '.') {
-    //                         v |= 1 << (board[i * 3 + k1][j * 3 + k2] - '0');
-    //                     }
-    //                 }
-    //             }
-    //             blkMask[i * 3 + j] = M ^ v;
-    //         }
-    //     }
-    // }
-    
-    // std::vector<char> getSolutionSpace(std::vector<int>& rowMask, std::vector<int>& colMask, std::vector<int>& blkMask, int i, int j) {
-    //     int I = i / 3;
-    //     int J = j / 3;
-    //     int rm = rowMask[i];
-    //     int cm = colMask[j];
-    //     int bm = blkMask[I * 3 + J];
-    //     int s = (rm & cm & bm);
-    //     if(s == 0) {
-    //         return {};
-    //     } else {
-    //         int i = 0;
-    //         std::vector<char> res;
-    //         while(s) {
-    //             if(s & 1) {
-    //                 res.push_back('0' + i);
-    //             }
-    //             s = s >> 1;
-    //             ++i;
-    //         }
-    //         return res;
-    //     }
-    // }
-    
-    
-    // void solveSudoku(std::vector<std::vector<char>>& board, int k, int M, std::vector<int>& rowMask,
-    //                 std::vector<int>& colMask, std::vector<int>& blkMask) {
-    //     if(k == M) {
-    //         return;
-    //     }
-    //     const int Ms = 0x000003FF;
-    //     for(int i = 0; i < 9; ++i) {
-    //         for(int j = 0; j < 9; ++j) {
-    //             if(board[i][j] == '.') {
-    //                 std::vector<char> solvable = getSolutionSpace(rowMask, colMask, blkMask, i, j);
-    //                 if(solvable.size() > 0) {
-    //                     for(auto c : solvable) {
-    //                         board[i][j] = c;
-    //                         rowMask[i] &= ((1 << (c - '0')) ^ Ms);
-    //                         colMask[j] &= ((1 << (c - '0')) ^ Ms);
-    //                         blkMask[(i / 3) * 3 + j / 3] = blkMask[(i / 3) * 3 + j / 3] & ((1 << (c - '0')) ^ Ms);
-    //                         solveSudoku(board, k + 1, M, rowMask, colMask, blkMask);
-    //                         board[i][j] = '.';
-    //                         rowMask[i] |= (1 << (c - '0'));
-    //                         colMask[j] |= (1 << (c - '0'));
-    //                         blkMask[(i / 3) * 3 + j / 3] |= (1 << (c - '0'));
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
-    // int unfilled(std::vector<std::vector<char>>& board) {
-    //     int res = 0;
-    //     for(int i = 0; i < 9; ++i) {
-    //         for(int j = 0; j < 9; ++j) {
-    //             if(board[i][j] == '.') {
-    //                 ++res;
-    //             }
-    //         }
-    //     }
-    //     return res;
-    // }
-    
-    
-    
-    // std::vector<char> getPotentialValues(std::vector<std::vector<char>>& board, int i, int j) {
-    //     std::vector<bool> used(9, false);
-    //     for(int k = 0; k < 9; ++k) {
-    //         if(board[i][k] != '.') {
-    //             used[board[i][k] - '0'] = true;
-    //         }
-    //     }
-        
-    //     for(int k = 0; k < 9; ++k) {
-    //         if(board[k][j] != '.') {
-    //             used[board[k][j] - '0'] = true;
-    //         }
-    //     }
-        
-    //     int I = i / 3;
-    //     int J = j / 3;
-    //     for(int k1 = 0; k1 < 3; ++k1) {
-    //         for(int k2 = 0; k2 < 3; ++k2) {
-    //             if(board[I + k1][J + k2] != '.') {
-    //                 used[board[I+k1][J+k2] - '0'] = true;
-    //             }
-    //         }
-    //     }
-        
-    //     std::vector<char> res;
-    //     for(int i = 0; i < 9; ++i) {
-    //         if(used[i] == false) {
-    //             res.push_back(static_cast<char>('0' + i));
-    //         }
-    //     }
-    //     return res;
-    // }
+    // Backtracing problem, but the issue is how to make the backtracing fast !!!!
+    void solveSudoku(std::vector<std::vector<char>>& board);
 };
 
 
@@ -1723,6 +1579,23 @@ public:
 };
 
 /*
+Given a 2D binary matrix filled with 0's and 1's, find the largest rectangle containing only 1's and return its area.
+
+Input:
+[
+  ["1","0","1","0","0"],
+  ["1","0","1","1","1"],
+  ["1","1","1","1","1"],
+  ["1","0","0","1","0"]
+]
+Output: 6
+*/
+class _0085_MaximalRectangle {
+public:
+    int maximalRectangle(std::vector<std::vector<char>>& matrix);
+};
+
+/*
 Given a linked list and a value x, partition it such that all nodes less 
 than x come before nodes greater than or equal to x.
 You should preserve the original relative order of the nodes in each of 
@@ -1825,6 +1698,18 @@ Explanation: It could be decoded as "BZ" (2 26), "VF" (22 6), or "BBF" (2 2 6).
 class _0091_DecodeWays{
 public:
     int numDecodings(std::string s);
+};
+
+/*
+Reverse a linked list from position m to n. Do it in one-pass.
+Note: 1 ≤ m ≤ n ≤ length of list.
+
+Input: 1->2->3->4->5->NULL, m = 2, n = 4
+Output: 1->4->3->2->5->NULL
+*/
+class _0092_ReverseLinkedListII {
+public:
+    ListNode<int>* reverseBetween(ListNode<int>* head, int m, int n);
 };
 
 /*

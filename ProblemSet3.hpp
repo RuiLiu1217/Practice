@@ -173,6 +173,34 @@ private:
 };
 
 /*
+Given a 2D board and a list of words from the dictionary, find all words in the board.
+Each word must be constructed from letters of sequentially adjacent cell, where "adjacent" 
+cells are those horizontally or vertically neighboring. The same letter cell may not 
+be used more than once in a word.
+
+Input: 
+board = [
+  ['o','a','a','n'],
+  ['e','t','a','e'],
+  ['i','h','k','r'],
+  ['i','f','l','v']
+]
+words = ["oath","pea","eat","rain"]
+Output: ["eat","oath"]
+
+Note:
+All inputs are consist of lowercase letters a-z.
+The values of words are distinct.
+*/
+class _0212_WordSearchII {
+private:
+    std::unordered_set<std::string> res;
+public:
+    std::vector<std::string> findWords(std::vector<std::vector<char>>& board, std::vector<std::string>& words);
+    void findWords(std::vector<std::vector<char>>& board, int i, int j, const std::string& word, int idx);
+};
+
+/*
 You are a professional robber planning to rob houses along a street. Each house 
 has a certain amount of money stashed. All houses at this place are arranged in 
 a circle. That means the first house is the neighbor of the last one. Meanwhile, 
@@ -198,6 +226,29 @@ public:
     int rob(std::vector<int>& nums);
 private:
     int robHelp(std::vector<int>& nums);
+};
+
+/*
+Given a complete binary tree, count the number of nodes.
+
+Definition of a complete binary tree from Wikipedia:
+In a complete binary tree every level, except possibly the 
+last, is completely filled, and all nodes in the last level 
+are as far left as possible. It can have between 1 and 2h 
+nodes inclusive at the last level h.
+
+Input: 
+    1
+   / \
+  2   3
+ / \  /
+4  5 6
+
+Output: 6
+*/
+class _0222_CountCompleteTreeNodes {
+public:
+    int countNodes(TreeNode<int>* root);
 };
 
 /*
@@ -330,6 +381,26 @@ class _0260_SingleNumberII
     */
 public:
     std::vector<int> singleNumber(const std::vector<int> &nums);
+};
+
+
+/*
+Given a positive integer n, find the least number of perfect square numbers (for example, 1, 4, 9, 16, ...) which sum to n.
+
+Example 1:
+
+Input: n = 12
+Output: 3 
+Explanation: 12 = 4 + 4 + 4.
+Example 2:
+
+Input: n = 13
+Output: 2
+Explanation: 13 = 4 + 9.
+*/
+class _0279_PerfectSquares {
+public:
+    int numSquares(int n);
 };
 
 /*

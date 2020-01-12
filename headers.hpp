@@ -932,6 +932,101 @@ public:
 
 
 /*
+Equations are given in the format A / B = k, where A and B are variables represented 
+as strings, and k is a real number (floating point number). Given some queries, 
+return the answers. If the answer does not exist, return -1.0.
+
+Given a / b = 2.0, b / c = 3.0.
+queries are: a / c = ?, b / a = ?, a / e = ?, a / a = ?, x / x = ? .
+return [6.0, 0.5, -1.0, 1.0, -1.0 ].
+
+The input is: vector<pair<string, string>> equations, vector<double>& values, 
+vector<pair<string, string>> queries , where equations.size() == values.size(), and the 
+values are positive. This represents the equations. Return vector<double>.
+
+According to the example above:
+
+equations = [ ["a", "b"], ["b", "c"] ],
+values = [2.0, 3.0],
+queries = [ ["a", "c"], ["b", "a"], ["a", "e"], ["a", "a"], ["x", "x"] ]. 
+ 
+The input is always valid. You may assume that evaluating the queries will result 
+in no division by zero and there is no contradiction.
+*/
+class _0399_EvaluateDivision {
+private:
+    // A hash function used to hash a pair of any kind 
+    struct hash_pair { 
+        template <class T1, class T2> 
+        size_t operator()(const std::pair<T1, T2>& p) const
+        { 
+            auto hash1 = std::hash<T1>{}(p.first); 
+            auto hash2 = std::hash<T2>{}(p.second); 
+            return hash1 ^ hash2; 
+        } 
+    }; 
+    std::unordered_set<std::string> node;
+    std::unordered_map<std::pair<std::string, std::string>, double, hash_pair> edge;
+    std::unordered_map<std::string, bool> visited;
+    std::unordered_map<std::string, std::vector<std::string>> adjMap;
+    void resetVisit() {
+        for(auto& n : node) {
+            visited[n] = false;
+        }
+    }
+    std::vector<std::string> getAdj(std::string a) {
+        if(adjMap.find(a) == adjMap.end()) {
+            return {};
+        }
+        return adjMap[a];
+    }
+    
+public:
+    std::vector<double> calcEquation(std::vector<std::vector<std::string>>& equations, 
+    std::vector<double>& values, std::vector<std::vector<std::string>>& queries) {
+        for(int i = 0; i < equations.size(); ++i) {
+            node.insert(equations[i][0]);
+            node.insert(equations[i][1]);
+            edge[{equations[i][0], equations[i][1]}] = values[i];
+            edge[{equations[i][1], equations[i][0]}] = 1.0 / values[i];
+            adjMap[equations[i][0]].push_back(equations[i][1]);
+            adjMap[equations[i][1]].push_back(equations[i][0]);
+        }
+        resetVisit();
+        std::vector<double> res;
+        for(int i = 0; i < queries.size(); ++i) {
+            res.push_back(calculate(queries[i][0], queries[i][1]));
+            resetVisit();
+        }
+        return res;
+    }
+    
+    double calculate(std::string a, std::string b) {
+        
+        if(node.find(a) == node.end() || node.find(b) == node.end()) {
+            return -1.0;
+        }
+        
+        if(a == b) {
+            return 1.0;
+        }
+        
+        std::vector<std::string> adjA = getAdj(a);
+        visited[a] = true;
+        for(int i = 0; i < adjA.size(); ++i) {
+            if(visited[adjA[i]] == false) {
+                double v = calculate(adjA[i], b);
+                if(v != -1.0) {
+                    return v * edge[std::make_pair(a, adjA[i])];
+                }
+            }
+        }
+        return -1.0;
+    }
+};
+
+
+/*
 A binary watch has 4 LEDs on the top which represent
 the hours (0-11), and the 6 LEDs on the bottom represent
 the minutes (0-59).
@@ -1826,6 +1921,81 @@ public:
 };
 
 /*
+Suppose Andy and Doris want to choose a restaurant for dinner, and they both have a 
+list of favorite restaurants represented by strings.
+You need to help them find out their common interest with the least list index sum. 
+If there is a choice tie between answers, output all of them with no order requirement. 
+You could assume there always exists an answer.
+
+Input:
+["Shogun", "Tapioca Express", "Burger King", "KFC"]
+["Piatti", "The Grill at Torrey Pines", "Hungry Hunter Steakhouse", "Shogun"]
+Output: ["Shogun"]
+Explanation: The only restaurant they both like is "Shogun".
+
+Input:
+["Shogun", "Tapioca Express", "Burger King", "KFC"]
+["KFC", "Shogun", "Burger King"]
+Output: ["Shogun"]
+Explanation: The restaurant they both like and have the least index sum is "Shogun" with index sum 1 (0+1).
+Note:
+The length of both lists will be in the range of [1, 1000].
+The length of strings in both lists will be in the range of [1, 30].
+The index is starting from 0 to the list length minus 1.
+No duplicates in both lists.
+*/
+class _0599_MinimumIndexSumOfTwoLists {
+public:
+    std::vector<std::string> findRestaruant(std::vector<std::string>& list1, std::vector<std::string>& list2);
+};
+
+/*
+Given a list of directory info including directory path, and all the files with contents in this 
+directory, you need to find out all the groups of duplicate files in the file system in terms of 
+their paths.
+A group of duplicate files consists of at least two files that have exactly the same content.
+A single directory info string in the input list has the following format:
+"root/d1/d2/.../dm f1.txt(f1_content) f2.txt(f2_content) ... fn.txt(fn_content)"
+It means there are n files (f1.txt, f2.txt ... fn.txt with content f1_content, f2_content ... fn_content, respectively) 
+in directory root/d1/d2/.../dm. Note that n >= 1 and m >= 0. If m = 0, it means the directory is just the root directory.
+
+The output is a list of group of duplicate file paths. For each group, it contains all the file 
+paths of the files that have the same content. A file path is a string that has the following format:
+
+"directory_path/file_name.txt"
+
+Input:
+["root/a 1.txt(abcd) 2.txt(efgh)", "root/c 3.txt(abcd)", "root/c/d 4.txt(efgh)", "root 4.txt(efgh)"]
+Output:  
+[["root/a/2.txt","root/c/d/4.txt","root/4.txt"],["root/a/1.txt","root/c/3.txt"]]
+
+Note:
+
+No order is required for the final output.
+You may assume the directory name, file name and file content only has letters and digits, 
+and the length of file content is in the range of [1,50].
+
+The number of files given is in the range of [1,20000].
+You may assume no files or directories share the same name in the same directory.
+You may assume each given directory info represents a unique directory. Directory path and 
+file info are separated by a single blank space.
+
+Follow-up beyond contest:
+Imagine you are given a real file system, how will you search files? DFS or BFS?
+If the file content is very large (GB level), how will you modify your solution?
+If you can only read the file by 1kb each time, how will you modify your solution?
+What is the time complexity of your modified solution? What is the most time-consuming part and memory consuming part of it? How to optimize?
+How to make sure the duplicated files you find are not false positive?
+*/
+class _0609_FindDuplicateFileInSystem {
+public:
+    std::vector<std::vector<std::string>> findDuplicate(std::vector<std::string>& paths);
+private:
+    std::pair<std::string, std::string> separateFileNameAndContent(const std::string& pf);
+    std::vector<std::pair<std::string, std::string>> getOneFoldersFiles(const std::string& path);
+};
+
+/*
 Given two binary trees and imagine that when you put one of them to 
 cover the other, some nodes of the two trees are overlapped while 
 the others are not.
@@ -2010,6 +2180,24 @@ public:
     bool isFull();
 };
 
+/*
+You are given n pairs of numbers. In every pair, the first number is always 
+smaller than the second number.
+Now, we define a pair (c, d) can follow another pair (a, b) if and only if 
+b < c. Chain of pairs can be formed in this fashion.
+Given a set of pairs, find the length longest chain which can be formed. You 
+needn't use up all the given pairs. You can select pairs in any order.
+
+Input: [[1,2], [2,3], [3,4]]
+Output: 2
+Explanation: The longest chain is [1,2] -> [3,4]
+Note:
+The number of given pairs will be in the range [1, 1000].
+*/
+class _0646_MaximumLengthOfPairChain {
+public:
+    int findLongestChain(std::vector<std::vector<int>>& pairs);
+};
 
 /*
 Given a string, your task is to count how many palindromic substrings in this string.
@@ -2691,6 +2879,32 @@ private:
 };
 
 /*
+Special binary strings are binary strings with the following two properties:
+
+The number of 0's is equal to the number of 1's.
+Every prefix of the binary string has at least as many 1's as 0's.
+Given a special string S, a move consists of choosing two consecutive, non-empty, special substrings of S, and swapping them. (Two strings are consecutive if the last character of the first string is exactly one index before the first character of the second string.)
+
+At the end of any number of moves, what is the lexicographically largest resulting string possible?
+
+Example 1:
+Input: S = "11011000"
+Output: "11100100"
+Explanation:
+The strings "10" [occuring at S[1]] and "1100" [at S[3]] are swapped.
+This is the lexicographically largest string possible after some number of swaps.
+Note:
+
+S has length at most 50.
+S is guaranteed to be a special binary string as defined above.
+*/
+class _0761_SpecialBinaryString {
+public:
+    std::string makeLargestSpecial(std::string S);
+    std::string makeLargestSpecialHelp(std::string S);
+};
+
+/*
 A string S of lowercase letters is given. We want to partition 
 this string into as many parts as possible so that each letter 
 appears in at most one part, and return a list of integers 
@@ -2763,6 +2977,50 @@ end只能靠后，而 R 在start 中的位置相对于end只能靠前。换句�
 class _0777_SwapAdjacentInLRString {
 public:
     bool canTransform(const std::string& start, const std::string& end);
+};
+
+/*
+Given an undirected graph, return true if and only if it is bipartite.
+Recall that a graph is bipartite if we can split it's set of nodes into 
+two independent subsets A and B such that every edge in the graph has 
+one node in A and another node in B.
+
+The graph is given in the following form: graph[i] is a list of indexes j
+for which the edge between nodes i and j exists.  Each node is an integer 
+between 0 and graph.length - 1.  There are no self edges or parallel edges: 
+graph[i] does not contain i, and it doesn't contain any element twice.
+
+Input: [[1,3], [0,2], [1,3], [0,2]]
+Output: true
+Explanation: 
+The graph looks like this:
+0----1
+|    |
+|    |
+3----2
+We can divide the vertices into two groups: {0, 2} and {1, 3}.
+
+Input: [[1,2,3], [0,2], [0,1,3], [0,2]]
+Output: false
+Explanation: 
+The graph looks like this:
+0----1
+| \  |
+|  \ |
+3----2
+We cannot find a way to divide the set of nodes into two independent subsets.
+
+graph will have length in range [1, 100].
+graph[i] will contain integers in range [0, graph.length - 1].
+graph[i] will not contain i or duplicate values.
+The graph is undirected: if any element j is in graph[i], then i will be in graph[j].
+*/
+class _0785_IsGraphBipartitle {
+private:
+    std::vector<int> colored;
+public:
+    bool isBipartitle(std::vector<std::vector<int>>& graph);
+    bool Color(const std::vector<std::vector<int>>& graph, int I, int color);
 };
 
 /*
@@ -3198,6 +3456,32 @@ public:
 };
 
 /*
+Given a binary tree rooted at root, the depth of each node is the shortest distance to the root.
+A node is deepest if it has the largest depth possible among any node in the entire tree.
+The subtree of a node is that node, plus the set of all descendants of that node.
+Return the node with the largest depth such that it contains all the deepest nodes in its subtree.
+
+Input: [3,5,1,6,2,0,8,null,null,7,4]
+Output: [2,7,4]
+
+We return the node with value 2, colored in yellow in the diagram.
+The nodes colored in blue are the deepest nodes of the tree.
+The input "[3, 5, 1, 6, 2, 0, 8, null, null, 7, 4]" is a serialization of the given tree.
+The output "[2, 7, 4]" is a serialization of the subtree rooted at the node with value 2.
+Both the input and output have TreeNode type.
+
+Note:
+
+The number of nodes in the tree will be between 1 and 500.
+The values of each node are unique.
+*/
+class _0865_SmallestSubtreeWithAllTheDeepestNodes {
+public:
+    TreeNode<int>* subtreeWithAllDeepest(TreeNode<int>* root);
+    std::pair<int, TreeNode<int>*> depth(TreeNode<int>* root);
+};
+
+/*
 A sequence X_1, X_2, ..., X_n is fibonacci-like if:
 
 n >= 3
@@ -3275,7 +3559,7 @@ Input: [1,2,3,4,5,6]
 Output: Node 4 from this list (Serialization: [4,5,6])
 Since the list has two middle nodes with values 3 and 4, we return the second one.
 */
-class _876_MiddleOfTheLinkedList {
+class _0876_MiddleOfTheLinkedList {
 public:
     ListNode<int>* middleNode(ListNode<int>* head);
 };
@@ -3462,6 +3746,28 @@ public:
 };
 
 /*
+A string S of lowercase letters is given.  Then, we may make any number of moves.
+In each move, we choose one of the first K letters (starting from the left), remove it, and place it at the end of the string.
+Return the lexicographically smallest string we could have after any number of moves.
+
+Input: S = "cba", K = 1
+Output: "acb"
+Explanation: 
+In the first move, we move the 1st character ("c") to the end, obtaining the string "bac".
+In the second move, we move the 1st character ("b") to the end, obtaining the final result "acb".
+
+Input: S = "baaca", K = 3
+Output: "aaabc"
+Explanation: 
+In the first move, we move the 1st character ("b") to the end, obtaining the string "aacab".
+In the second move, we move the 3rd character ("c") to the end, obtaining the final result "aaabc".
+*/
+class _0899_OrderlyQueue {
+public:
+    std::string orderlyQueue(std::string S, int K);
+};
+
+/*
 Given an array A of non-negative integers, return an array 
 consisting of all the even elements of A, followed by all 
 the odd elements of A.
@@ -3635,6 +3941,34 @@ public:
     int ping(int t);
 };
 
+/*
+In a given 2D binary array A, there are two islands.  
+(An island is a 4-directionally connected group of 1s not connected to any other 1s.)
+Now, we may change 0s to 1s so as to connect the two islands together to form 1 island.
+Return the smallest number of 0s that must be flipped. 
+(It is guaranteed that the answer is at least 1.)
+
+Input: [[0,1],[1,0]]
+Output: 1
+
+Input: [[0,1,0],[0,0,0],[0,0,1]]
+Output: 2
+
+Input: [[1,1,1,1,1],[1,0,0,0,1],[1,0,1,0,1],[1,0,0,0,1],[1,1,1,1,1]]
+Output: 1
+
+Note:
+
+1 <= A.length = A[0].length <= 100
+A[i][j] == 0 or A[i][j] == 1 
+*/
+class _0934_ShortestBridge {
+public:
+    int shortestBridge(std::vector<std::vector<int>>& A);
+private:
+    int paint(std::vector<std::vector<int>>& A, int i, int j);
+    bool expand(std::vector<std::vector<int>>& A, int i, int j, int color);
+};
 
 /*
 Given the root node of a binary search tree, return the sum of 
@@ -4343,6 +4677,44 @@ private:
 };
 
 /*
+Given an array A of non-negative integers, return the maximum sum of elements in 
+two non-overlapping (contiguous) subarrays, which have lengths L and M.  (For clarification, 
+the L-length subarray could occur before or after the M-length subarray.)
+
+Formally, return the largest V for which V = (A[i] + A[i+1] + ... + A[i+L-1]) + (A[j] + A[j+1] + 
+... + A[j+M-1]) and either:
+
+0 <= i < i + L - 1 < j < j + M - 1 < A.length, or
+0 <= j < j + M - 1 < i < i + L - 1 < A.length.
+
+Example 1:
+
+Input: A = [0,6,5,2,2,5,1,9,4], L = 1, M = 2
+Output: 20
+Explanation: One choice of subarrays is [9] with length 1, and [6,5] with length 2.
+Example 2:
+
+Input: A = [3,8,1,3,2,1,8,9,0], L = 3, M = 2
+Output: 29
+Explanation: One choice of subarrays is [3,8,1] with length 3, and [8,9] with length 2.
+Example 3:
+
+Input: A = [2,1,5,6,0,9,5,0,3,8], L = 4, M = 3
+Output: 31
+Explanation: One choice of subarrays is [5,6,0,9] with length 4, and [3,8] with length 3.
+
+Note:
+L >= 1
+M >= 1
+L + M <= A.length <= 1000
+0 <= A[i] <= 1000
+*/
+class _1031_MaximumSumOfTwoNonOverlappingSubarrays {
+public:
+    int maxSumTwoNoOverlap(std::vector<int>& A, int L, int M);
+};
+
+/*
 Given the root of a binary search tree with distinct values, 
 modify it so that every node has a new value equal to the 
 sum of the values of the original tree that are greater 
@@ -4772,6 +5144,44 @@ public:
 };
 
 /*
+In a project, you have a list of required skills req_skills, and a list of people.
+The i-th person people[i] contains a list of skills that person has.
+Consider a sufficient team: a set of people such that for every required skill in 
+req_skills, there is at least one person in the team who has that skill. 
+We can represent these teams by the index of each person: for example, 
+team = [0, 1, 3] represents the people with skills people[0], people[1], and people[3].
+
+Return any sufficient team of the smallest possible size, represented by the index of each person.
+You may return the answer in any order.  It is guaranteed an answer exists.
+
+Example 1:
+Input: req_skills = ["java","nodejs","reactjs"], people = [["java"],["nodejs"],["nodejs","reactjs"]]
+Output: [0,2]
+
+Example 2:
+Input: req_skills = ["algorithms","math","java","reactjs","csharp","aws"], 
+people = [["algorithms","math","java"],["algorithms","math","reactjs"],["java","csharp","aws"],
+["reactjs","csharp"],["csharp","math"],["aws","java"]]
+Output: [1,2]
+ 
+Constraints:
+
+1 <= req_skills.length <= 16
+1 <= people.length <= 60
+1 <= people[i].length, req_skills[i].length, people[i][j].length <= 16
+Elements of req_skills and people[i] are (respectively) distinct.
+req_skills[i][j], people[i][j][k] are lowercase English letters.
+Every skill in people[i] is a skill in req_skills.
+It is guaranteed a sufficient team exists.
+*/
+class _1125_SmallestSufficientTeam {
+public:
+    std::vector<int> smallestSufficientTeam(
+        std::vector<std::string>& req_skills, 
+        std::vector<std::vector<std::string>>& people);
+};
+
+/*
 Given two arrays of integers with equal lengths, return the 
 maximum value of:
 
@@ -4856,6 +5266,38 @@ public:
     void set(int index, int val);
     int snap();
     int get(int index, int snaid);
+};
+
+/*
+Given a string date representing a Gregorian calendar date formatted as YYYY-MM-DD, return the day number of the year.
+
+Input: date = "2019-01-09"
+Output: 9
+Explanation: Given date is the 9th day of the year in 2019.
+
+Input: date = "2019-02-10"
+Output: 41
+
+Input: date = "2003-03-01"
+Output: 60
+
+Input: date = "2004-03-01"
+Output: 61
+
+Constraints:
+date.length == 10
+date[4] == date[7] == '-', and all other date[i]'s are digits
+date represents a calendar date between Jan 1st, 1900 and Dec 31, 2019.
+*/
+class _1154_DayOfTheYear {
+public:
+    int dayOfYear(std::string dt) {
+        int days[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+        int y = stoi(dt.substr(0, 4)), m = stoi(dt.substr(5, 2)), d = stoi(dt.substr(8));
+        if (m > 2 && y % 4 == 0 && (y % 100 != 0 || y % 400 == 0)) ++d; 
+        while (--m > 0) d += days[m - 1];
+        return d;
+    }    
 };
 
 
@@ -5062,6 +5504,82 @@ public:
     std::vector<std::vector<int>> minimumAbsDifference(std::vector<int>& arr);
 };
 
+/*
+Write a program to find the n-th ugly number.
+Ugly numbers are positive integers which are divisible by a or b or c.
+
+Input: n = 3, a = 2, b = 3, c = 5
+Output: 4
+Explanation: The ugly numbers are 2, 3, 4, 5, 6, 8, 9, 10... The 3rd is 4.
+Example 2:
+
+Input: n = 4, a = 2, b = 3, c = 4
+Output: 6
+Explanation: The ugly numbers are 2, 3, 4, 6, 8, 9, 10, 12... The 4th is 6.
+Example 3:
+
+Input: n = 5, a = 2, b = 11, c = 13
+Output: 10
+Explanation: The ugly numbers are 2, 4, 6, 8, 10, 11, 12, 13... The 5th is 10.
+Example 4:
+
+Input: n = 1000000000, a = 2, b = 217983653, c = 336916467
+Output: 1999999984
+
+Constraints:
+1 <= n, a, b, c <= 10^9
+1 <= a * b * c <= 10^18
+It's guaranteed that the result will be in range [1, 2 * 10^9]
+*/
+class _1201_UglyNumberIII {
+public:
+    // it looks like a DP problem, but actually it is a Binary Search Problem
+    // Calculate how many numbers from 1 to num are divisble by either a, b or c
+    // using the formula:
+    // num / a + num / b + num / c - num / lcm(ab) - num / lcm(bc) - num / lcm(ac) + num / lcm(abc)
+    int nthUglyNumber(int n, int a, int b, int c);
+private:
+    long long gcb(long long a, long long b);
+    long long lcm(long long a, long long b);
+    int count(long long num, long long a, long long b, long long c);
+};
+
+/*
+You are given a string s, and an array of pairs of indices in the string pairs where pairs[i] = 
+[a, b] indicates 2 indices(0-indexed) of the string. You can swap the characters at any pair of 
+indices in the given pairs any number of times.
+Return the lexicographically smallest string that s can be changed to after using the swaps.
+
+Input: s = "dcab", pairs = [[0,3],[1,2]]
+Output: "bacd"
+Explaination: 
+Swap s[0] and s[3], s = "bcad"
+Swap s[1] and s[2], s = "bacd"
+
+Input: s = "dcab", pairs = [[0,3],[1,2],[0,2]]
+Output: "abcd"
+Explaination: 
+Swap s[0] and s[3], s = "bcad"
+Swap s[0] and s[2], s = "acbd"
+Swap s[1] and s[2], s = "abcd"
+
+Input: s = "cba", pairs = [[0,1],[1,2]]
+Output: "abc"
+Explaination: 
+Swap s[0] and s[1], s = "bca"
+Swap s[1] and s[2], s = "bac"
+Swap s[0] and s[1], s = "abc"
+ 
+
+1 <= s.length <= 10^5
+0 <= pairs.length <= 10^5
+0 <= pairs[i][0], pairs[i][1] < s.length
+s only contains lower case English letters.
+*/
+class _1202_SmallestStringWithSwaps {
+public:
+    std::string smallestStringWithSwaps(std::string s, std::vector<std::vector<int>>& pairs);
+};
 
 /*
 Given an array of integers arr, write a function that returns true if and only if the 
@@ -5403,6 +5921,100 @@ class _1254_NumberOfClosedIslands {
 };
 
 /*
+Given a list of words, list of  single letters (might be repeating) and score of every 
+character. Return the maximum score of any valid set of words formed by using the given 
+letters (words[i] cannot be used two or more times).
+
+It is not necessary to use all characters in letters and each letter can only be used 
+once. Score of letters 'a', 'b', 'c', ... ,'z' is given by 
+score[0], score[1], ... , score[25] respectively.
+
+Input: 
+words = ["dog","cat","dad","good"], 
+letters = ["a","a","c","d","d","d","g","o","o"], 
+score = [1,0,9,5,0,0,3,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0]
+Output: 23
+Explanation:
+Score  a=1, c=9, d=5, g=3, o=2
+Given letters, we can form the words "dad" (5+1+5) and "good" (3+2+2+5) with a score of 23.
+Words "dad" and "dog" only get a score of 21.
+
+Example 2:
+Input: 
+words = ["xxxz","ax","bx","cx"], 
+letters = ["z","a","b","c","x","x","x"], 
+score = [4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,10]
+Output: 27
+Explanation:
+Score  a=4, b=4, c=4, x=5, z=10
+Given letters, we can form the words "ax" (4+5), "bx" (4+5) and "cx" (4+5) with a score of 27.
+Word "xxxz" only get a score of 25.
+
+Example 3:
+Input: 
+words = ["leetcode"], 
+letters = ["l","e","t","c","o","d"], 
+score = [0,0,1,1,1,0,0,0,0,0,0,1,0,0,1,0,0,0,0,1,0,0,0,0,0,0]
+Output: 0
+Explanation:
+Letter "e" can only be used once.
+ 
+Constraints:
+1 <= words.length <= 14
+1 <= words[i].length <= 15
+1 <= letters.length <= 100
+letters[i].length == 1
+score.length == 26
+0 <= score[i] <= 10
+words[i], letters[i] contains only lower case English letters.
+*/
+class _1255_MaximumScoreWordsFormedByLetters {
+private:
+    int maxScore = 0;
+public:
+    int maxScoreWords(std::vector<std::string>& words, std::vector<char>& letters, std::vector<int>& score);
+private:
+    int getWordScore(const std::vector<int>& word, const std::vector<int>& score);    
+    bool canCreateAWord(const std::vector<int>& letterMap, const std::vector<int>& word);    
+    void createAWord(std::vector<int>& letterMap, const std::vector<int>& word);    
+    void removeAWord(std::vector<int>& letterMap, const std::vector<int>& word);    
+    bool noMoreWordsCanGenerated(const std::vector<std::vector<int>>& words,int startIdx, const std::vector<int>& letterMap);
+    void scoreWords(std::vector<std::vector<int>>& words, int startIdx, std::vector<int>& letterMap,
+                   std::vector<int>& score, int& myScore);
+};
+
+/*
+Given a 2D grid of size m x n and an integer k. You need to shift the grid k times.
+In one shift operation:
+    Element at grid[i][j] becomes at grid[i][j + 1].
+    Element at grid[i][n - 1] becomes at grid[i + 1][0].
+    Element at grid[n - 1][n - 1] becomes at grid[0][0].
+Return the 2D grid after applying shift operation k times.
+
+Input: grid = [[1,2,3],[4,5,6],[7,8,9]], k = 1
+Output: [[9,1,2],[3,4,5],[6,7,8]]
+
+Input: grid = [[3,8,1,9],[19,7,2,5],[4,6,11,10],[12,0,21,13]], k = 4
+Output: [[12,0,21,13],[3,8,1,9],[19,7,2,5],[4,6,11,10]]
+
+Input: grid = [[1,2,3],[4,5,6],[7,8,9]], k = 9
+Output: [[1,2,3],[4,5,6],[7,8,9]]
+
+Constraints:
+
+m == grid.length
+n == grid[i].length
+1 <= m <= 50
+1 <= n <= 50
+-1000 <= grid[i][j] <= 1000
+0 <= k <= 100
+*/
+class _1260_Shift2DGrid {
+public:
+    std::vector<std::vector<int>> shiftGrid(std::vector<std::vector<int>>& grid, int K);        
+};
+
+/*
 Given a binary tree with the following rules:
 root.val == 0
 If treeNode.val == x and treeNode.left != null, 
@@ -5519,6 +6131,45 @@ public:
     int countServers(std::vector<std::vector<int>>& grid);
 };
 
+/*
+You have a pointer at index 0 in an array of size arrLen. 
+At each step, you can move 1 position to the left, 1 position 
+to the right in the array or stay in the same place  
+(The pointer should not be placed outside the array at any time).
+Given two integers steps and arrLen, return the number of ways 
+such that your pointer still at index 0 after exactly steps steps.
+
+Since the answer may be too large, return it modulo 10^9 + 7.
+
+Input: steps = 3, arrLen = 2
+Output: 4
+Explanation: There are 4 differents ways to stay at index 0 after 3 steps.
+Right, Left, Stay
+Stay, Right, Left
+Right, Stay, Left
+Stay, Stay, Stay
+
+Input: steps = 2, arrLen = 4
+Output: 2
+Explanation: There are 2 differents ways to stay at index 0 after 2 steps
+Right, Left
+Stay, Stay
+
+Input: steps = 4, arrLen = 2
+Output: 8
+
+Constraints:
+
+1 <= steps <= 500
+1 <= arrLen <= 10^6
+*/
+class _1269_NumberOfWaysToStayInTheSamePlaceAfterSomeSteps {
+private:
+    int MOD = (1000000000 + 7);
+    void updateDP(std::vector<long long>& cur, std::vector<long long>& nex, const int N);
+public:
+    int numWays(int steps, int arrLen);
+};
 
 /*
 Given two integers tomatoSlices and cheeseSlices. The ingredients of different burgers are as follows:
@@ -5590,6 +6241,352 @@ public:
     int countSquares(std::vector<std::vector<int>>& matrix);
 };
 
+/*
+There are n people whose IDs go from 0 to n - 1 and each person belongs exactly 
+to one group. Given the array groupSizes of length n telling the group size each 
+person belongs to, return the groups there are and the people's IDs each group 
+includes.
+You can return any solution in any order and the same applies for IDs. Also, it 
+is guaranteed that there exists at least one solution. 
+
+Input: groupSizes = [3,3,3,3,3,1,3]
+Output: [[5],[0,1,2],[3,4,6]]
+Explanation: 
+Other possible solutions are [[2,1,6],[5],[0,4,3]] and [[5],[0,6,2],[4,3,1]].
+
+Input: groupSizes = [2,1,3,3,3,2]
+Output: [[1],[0,5],[2,3,4]]
+
+Constraints:
+
+groupSizes.length == n
+1 <= n <= 500
+1 <= groupSizes[i] <= n
+*/
+class _1282_GroupThePeopleGivenTheGroupSizeTheyBelongTo {
+public:
+    std::vector<std::vector<int>> groupThePeople(std::vector<int>& groupSizes);
+};
+
+/*
+Given a m x n binary matrix mat. In one step, you can choose one cell and flip 
+it and all the four neighbours of it if they exist (Flip is changing 1 to 0 and 
+0 to 1). A pair of cells are called neighboors if they share one edge.
+Return the minimum number of steps required to convert mat to a zero matrix or 
+-1 if you cannot.
+Binary matrix is a matrix with all cells equal to 0 or 1 only.
+Zero matrix is a matrix with all cells equal to 0.
+
+Input: mat = [[0,0],[0,1]]
+Output: 3
+Explanation: One possible solution is to flip (1, 0) then (0, 1) and finally (1, 1) as shown.
+
+Input: mat = [[0]]
+Output: 0
+Explanation: Given matrix is a zero matrix. We don't need to change it.
+
+Input: mat = [[1,1,1],[1,0,1],[0,0,0]]
+Output: 6
+
+Input: mat = [[1,0,0],[1,0,0]]
+Output: -1
+Explanation: Given matrix can't be a zero matrix
+
+Constraints:
+
+m == mat.length
+n == mat[0].length
+1 <= m <= 3
+1 <= n <= 3
+mat[i][j] is 0 or 1.
+*/
+class _1284_MinimumNumberOfFlipsToConvertBinaryMatrixToZeroMatrix {
+private:
+    int M;
+    int N;
+
+public:
+    int minFlips(std::vector<std::vector<int>>& mat);
+    int getInteger(std::vector<std::vector<int>>& mat);
+    int oneFlip(int i, int j, int num);
+};
+
+/*
+Design an Iterator class, which has:
+
+A constructor that takes a string characters of sorted 
+distinct lowercase English letters and a number 
+combinationLength as arguments.
+
+A function next() that returns the next combination of 
+length combinationLength in lexicographical order.
+A function hasNext() that returns True if and only if 
+there exists a next combination.
+
+CombinationIterator iterator = new CombinationIterator("abc", 2); // creates the iterator.
+
+iterator.next(); // returns "ab"
+iterator.hasNext(); // returns true
+iterator.next(); // returns "ac"
+iterator.hasNext(); // returns true
+iterator.next(); // returns "bc"
+iterator.hasNext(); // returns false
+
+1 <= combinationLength <= characters.length <= 15
+There will be at most 10^4 function calls per test.
+It's guaranteed that all calls of the function next are valid.
+*/
+class _1286_IteratorForCombination {
+private:
+    std::string characters;
+    int combinationLength;
+    std::vector<int> combinIndex;
+    bool isFirstCombination;
+    int charactersLength;
+public:
+    _1286_IteratorForCombination(std::string cs, int cl);
+    std::string next();
+    bool hasNext();
+};
+
+/*
+Given an integer array sorted in non-decreasing order, there is exactly one 
+integer in the array that occurs more than 25% of the time.
+Return that integer.
+
+Input: arr = [1,2,2,6,6,6,6,7,10]
+Output: 6
+
+Constraints:
+1 <= arr.length <= 10^4
+0 <= arr[i] <= 10^5
+*/
+class _1287_ElementAppearingMoreThan25PercentInSortedArray {
+public:
+    int findSpecialInteger(std::vector<int>& arr);
+};
+
+/*
+Given head which is a reference node to a singly-linked list. The value of each node in the linked list is either 0 or 1. The linked list holds the binary representation of a number.
+Return the decimal value of the number in the linked list.
+
+Input: head = [1,0,1]
+Output: 5
+Explanation: (101) in base 2 = (5) in base 10
+Example 2:
+
+Input: head = [0]
+Output: 0
+Example 3:
+
+Input: head = [1]
+Output: 1
+Example 4:
+
+Input: head = [1,0,0,1,0,0,1,1,1,0,0,0,0,0,0]
+Output: 18880
+Example 5:
+
+Input: head = [0,0]
+Output: 0
+ 
+
+Constraints:
+
+The Linked List is not empty.
+Number of nodes will not exceed 30.
+Each node's value is either 0 or 1.
+*/
+class _1290_ConvertBinaryNumberInALinkedListToInteger {
+public:
+    int getDecimalValue(ListNode<int>* head);
+};
+
+/*
+Given an array nums of integers, return how many of them contain an even number of digits.
+
+Input: nums = [12,345,2,6,7896]
+Output: 2
+Explanation: 
+12 contains 2 digits (even number of digits). 
+345 contains 3 digits (odd number of digits). 
+2 contains 1 digit (odd number of digits). 
+6 contains 1 digit (odd number of digits). 
+7896 contains 4 digits (even number of digits). 
+Therefore only 12 and 7896 contain an even number of digits.
+
+Input: nums = [555,901,482,1771]
+Output: 1 
+Explanation: 
+Only 1771 contains an even number of digits.
+
+Constraints:
+1 <= nums.length <= 500
+1 <= nums[i] <= 10^5
+*/
+class _1295_FindNumbersWithEvenNumberOfDigits {
+public:
+    int findNumber(std::vector<int>& nums);
+};
+
+/*
+Given an array arr, replace every element in that array with the 
+greatest element among the elements to its right, and replace the 
+last element with -1.
+
+After doing so, return the array.
+
+Input: arr = [17,18,5,4,6,1]
+Output: [18,6,6,6,1,-1]
+
+Constraints:
+1 <= arr.length <= 10^4
+1 <= arr[i] <= 10^5
+*/
+class _1299_ReplaceElementsWithGreatestElementOnRightSide {
+public:
+    std::vector<int> replaceElements(std::vector<int>& arr);
+};
+
+/*
+You are given a square board of characters. You can move on the board starting 
+at the bottom right square marked with the character 'S'.
+You need to reach the top left square marked with the character 'E'. The rest 
+of the squares are labeled either with a numeric character 1, 2, ..., 9 or with 
+an obstacle 'X'. In one move you can go up, left or up-left (diagonally) only if 
+there is no obstacle there.
+Return a list of two integers: the first integer is the maximum sum of numeric 
+characters you can collect, and the second is the number of such paths that you
+ can take to get that maximum sum, taken modulo 10^9 + 7.
+In case there is no path, return [0, 0].
+
+Input: board = ["E23","2X2","12S"]
+Output: [7,1]
+
+Input: board = ["E12","1X1","21S"]
+Output: [4,2]
+
+Input: board = ["E11","XXX","11S"]
+Output: [0,0]
+ 
+Constraints:
+
+2 <= board.length == board[i].length <= 100
+*/
+class _1301_NumberOfPathsWithMaxScore {
+public:
+    std::vector<int> pathsWithMaxScore(std::vector<std::string>& bd);
+};
+
+/*
+Given an integer n, return any array containing n unique integers such that they add up to 0.
+
+Input: n = 5
+Output: [-7,-1,1,3,4]
+Explanation: These arrays also are accepted [-5,-1,1,2,3] , [-3,-1,2,-2,4].
+
+Input: n = 3
+Output: [-1,0,1]
+
+Input: n = 1
+Output: [0]
+
+Constraints:
+1 <= n <= 1000
+*/
+class _1304_FindNUniqueIntegersSumupToZero {
+public:
+    std::vector<int> sumZero(int n);
+};
+
+/*
+Given two binary search trees root1 and root2.
+Return a list containing all the integers from both trees sorted in ascending order.
+
+Input: root1 = [2,1,4], root2 = [1,0,3]
+Output: [0,1,1,2,3,4]
+
+Input: root1 = [0,-10,10], root2 = [5,1,7,0,2]
+Output: [-10,0,0,1,2,5,7,10]
+
+Input: root1 = [], root2 = [5,1,7,0,2]
+Output: [0,1,2,5,7]
+
+Input: root1 = [0,-10,10], root2 = []
+Output: [-10,0,10]
+
+Input: root1 = [1,null,8], root2 = [8,1]
+Output: [1,1,8,8]
+
+Constraints:
+Each tree has at most 5000 nodes.
+Each node's value is between [-10^5, 10^5].
+*/
+class _1305_AllElementsInTwoBinarySearchTrees {
+public:
+    std::vector<int> getAllElements(TreeNode<int>* root1, TreeNode<int>* root2);
+};
+
+/*
+Given a string s formed by digits ('0' - '9') and '#' . We want to map s to English 
+lowercase characters as follows:
+
+Characters ('a' to 'i') are represented by ('1' to '9') respectively.
+Characters ('j' to 'z') are represented by ('10#' to '26#') respectively. 
+Return the string formed after mapping.
+It's guaranteed that a unique mapping will always exist.
+
+Input: s = "10#11#12"
+Output: "jkab"
+Explanation: "j" -> "10#" , "k" -> "11#" , "a" -> "1" , "b" -> "2".
+
+Input: s = "1326#"
+Output: "acz"
+
+Input: s = "25#"
+Output: "y"
+
+Input: s = "12345678910#11#12#13#14#15#16#17#18#19#20#21#22#23#24#25#26#"
+Output: "abcdefghijklmnopqrstuvwxyz"
+
+Constraints:
+1 <= s.length <= 1000
+s[i] only contains digits letters ('0'-'9') and '#' letter.
+s will be valid string such that mapping is always possible.
+*/
+class _1309_DecryptStringFromAlphabetToIngeterMapping {
+public:
+    std::string freqAlphabets(std::string s);
+};
+
+/*
+Given the array arr of positive integers and the array queries where 
+queries[i] = [Li, Ri], for each query i compute the XOR of elements 
+from Li to Ri (that is, arr[Li] xor arr[Li+1] xor ... xor arr[Ri] ). 
+Return an array containing the result for the given queries.
+
+Input: arr = [1,3,4,8], queries = [[0,1],[1,2],[0,3],[3,3]]
+Output: [2,7,14,8] 
+Explanation: 
+The binary representation of the elements in the array are:
+1 = 0001 
+3 = 0011 
+4 = 0100 
+8 = 1000 
+The XOR values for queries are:
+[0,1] = 1 xor 3 = 2 
+[1,2] = 3 xor 4 = 7 
+[0,3] = 1 xor 3 xor 4 xor 8 = 14 
+[3,3] = 8
+Example 2:
+
+Input: arr = [4,8,2,10], queries = [[2,3],[1,3],[0,0],[0,3]]
+Output: [8,0,4,4]
+*/
+class _1310_XORQueriesOfASubarray {
+public:
+    std::vector<int> xorQueries(std::vector<int>& arr, std::vector<std::vector<int>>& queries);
+};
 
 } // namespace LeetCode
 
