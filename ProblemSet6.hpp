@@ -1,5 +1,5 @@
-#ifndef PROBLEM_SET5_HPP
-#define PROBLEM_SET5_HPP
+#ifndef PROBLEM_SET6_HPP
+#define PROBLEM_SET6_HPP
 
 #include <vector>
 #include <string>
