@@ -1264,6 +1264,21 @@ public:
 };
 
 /*
+All DNA is composed of a series of nucleotides abbreviated as A, C, G, and T, 
+for example: "ACGAATTCCG". When studying DNA, it is sometimes useful to 
+identify repeated sequences within the DNA.
+Write a function to find all the 10-letter-long sequences (substrings) that 
+occur more than once in a DNA molecule.
+
+Input: s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"
+Output: ["AAAAACCCCC", "CCCCCAAAAA"]
+*/
+class _0187_RepeatedDNASequences {
+public:
+    std::vector<std::string> findRepeatedDNASequences(std::string s);
+};
+
+/*
 Given an array, rotate the array to the right by k steps, where k is non-negative.
 
 Input: [1,2,3,4,5,6,7] and k = 3

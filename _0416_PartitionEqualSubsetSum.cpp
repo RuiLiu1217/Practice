@@ -1,6 +1,7 @@
 #include "headers.hpp"
 #include <algorithm>
 #include <numeric>
+// DP 
 bool LeetCode::_0416_PartitionEqualSubsetSum::canPartition(std::vector<int>& nums) {
     int sum = std::accumulate(nums.begin(), nums.end(), 0);
     if(sum % 2) {
