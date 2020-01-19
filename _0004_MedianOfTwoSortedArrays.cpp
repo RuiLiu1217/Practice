@@ -19,12 +19,11 @@ double LeetCode::_0004_MedianOfTwoSortedArrays::findMedianOfSortedArrays(std::ve
         const int M2 = K - M1; // Then we need K - M1 elements in the second array; // 因此需要在nums2中找  K - M1 个元素
 
         // 如果在nums1中的第M1个数比在nums2中的M2-1个数还要小，说明我们还要从nums1中拿更多的数
-        //  If the M1_th number in nums1 is smaller than the previous number of 
-        // the selected M2-1_th number in nums2, it means we need more in nums1
+        // 否则这意味着我们在nums1中拿太多的数字了，需要返回一部分。
         if(nums1[M1] < nums2[M2 - 1]) { 
             l = M1 + 1; 
         } else {
-            r = M1; // else we select too many values in nums1, we should return back some
+            r = M1; 
         }
     }
 

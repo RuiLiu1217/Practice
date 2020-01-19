@@ -9,9 +9,7 @@ int LeetCode::_0027_RemoveElement::removeElement(std::vector<int>& nums, int val
         {
             ++fastIdx;
         } else {
-            nums[slowIdx] = nums[fastIdx];
-            ++slowIdx;
-            ++fastIdx;
+            nums[slowIdx++] = nums[fastIdx++];
         }
     }
     return slowIdx;      
