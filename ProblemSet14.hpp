@@ -153,6 +153,29 @@ public:
 };
 
 /*
+Given a m * n matrix mat and an integer K, return a matrix answer where each answer[i][j] is the sum of all elements mat[r][c] for i - K <= r <= i + K, j - K <= c <= j + K, and (r, c) is a valid position in the matrix.
+
+Example 1:
+Input: mat = [[1,2,3],[4,5,6],[7,8,9]], K = 1
+Output: [[12,21,16],[27,45,33],[24,39,28]]
+
+Example 2:
+Input: mat = [[1,2,3],[4,5,6],[7,8,9]], K = 2
+Output: [[45,45,45],[45,45,45],[45,45,45]]
+
+Constraints:
+m == mat.length
+n == mat[i].length
+1 <= m, n, K <= 100
+1 <= mat[i][j] <= 100
+*/
+class _1314_MatrixBlockSum {
+public:
+    std::vector<std::vector<int>> matrixBlockSum(std::vector<std::vector<int>>& mat, int K);
+
+}
+
+/*
 Given a binary tree, return the sum of values of nodes with even-valued grandparent. 
 (A grandparent of a node is the parent of its parent, if it exists.)
 If there are no nodes with an even-valued grandparent, return 0.
