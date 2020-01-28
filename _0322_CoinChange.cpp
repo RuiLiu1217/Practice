@@ -1,15 +1,16 @@
 #include "headers.hpp"
 
 // DP[amount] The minimun number of coins used to sum total "amount";
-int LeetCode::_0322_CoinChange::coinChange_Help(const std::vector<int>& coins, int amout) {
+int LeetCode::_0322_CoinChange::coinChange_Help(
+    const std::vector<int>& coins, int amout) 
+{
     if(amout < 0) {
         return -1;
     }
     if(amout == 0) {
         return 0;
     }
-    
-    
+        
     if(DP[amout] != 0) {
         return DP[amout];
     }
