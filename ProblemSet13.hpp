@@ -255,9 +255,28 @@ Explanation: The second person has a probability of 0.5 to get the second
 seat (when first person gets the first seat).
 */
 class _1227_AirplaneSeatAssignmentProbability {
-    public:
-        double nthPersionGetsNthSeat(int n);
+public:
+    double nthPersionGetsNthSeat(int n);
+};
 
+
+/*
+You are given an array coordinates, coordinates[i] = [x, y], 
+where [x, y] represents the coordinate of a point. Check if 
+these points make a straight line in the XY plane.
+
+Input: coordinates = [[1,1],[2,2],[3,4],[4,5],[5,6],[7,7]]
+Output: false
+
+Constraints:
+2 <= coordinates.length <= 1000
+coordinates[i].length == 2
+-10^4 <= coordinates[i][0], coordinates[i][1] <= 10^4
+coordinates contains no duplicate point.
+*/
+class _1232_CheckIfItIsAStraightLine {
+public:
+    bool checkStraightLine(std::vector<std::vector<int>>& coordinates);
 };
 
 /*
@@ -361,6 +380,41 @@ s1, s2 only contain 'x' or 'y'.
 class _1247_MinimumSwapsToMakeStringsEqual {
 public:
     int minimumSwap(std::string s1, std::string s2);
+};
+
+/*
+Tag: Number theory
+Given an array nums of positive integers. Your task is to 
+select some subset of nums, multiply each element by an 
+integer and add all these numbers. The array is said to 
+be good if you can obtain a sum of 1 from the array by 
+any possible subset and multiplicand.
+
+Return True if the array is good otherwise return False.
+
+Input: nums = [12,5,7,23]
+Output: true
+Explanation: Pick numbers 5 and 7.
+5*3 + 7*(-2) = 1
+
+Input: nums = [29,6,10]
+Output: true
+Explanation: Pick numbers 29, 6 and 10.
+29*1 + 6*(-3) + 10*(-1) = 1
+
+Input: nums = [3,6]
+Output: false
+
+Constraints:
+
+1 <= nums.length <= 10^5
+1 <= nums[i] <= 10^9
+*/
+class _1250_CheckIfItIsAGoodArray {
+public:
+    bool isGoodArray(std::vector<int>& nums);
+private:
+    int gcd(int a, int b);
 };
 
 /*

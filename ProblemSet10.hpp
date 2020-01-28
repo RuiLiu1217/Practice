@@ -635,6 +635,31 @@ public:
 };
 
 /*
+Given two integers A and B, return any string S such that:
+S has length A + B and contains exactly A 'a' letters, 
+and exactly B 'b' letters;
+The substring 'aaa' does not occur in S;
+The substring 'bbb' does not occur in S.
+
+Input: A = 1, B = 2
+Output: "abb"
+Explanation: "abb", "bab" and "bba" are all correct answers.
+
+Input: A = 4, B = 1
+Output: "aabaa" 
+
+Note:
+
+0 <= A <= 100
+0 <= B <= 100
+It is guaranteed such an S exists for the given A and B.
+*/
+class _0984_StringWithoutAAAOrBBB {
+public:
+    std::string strWithout3a3b(int A, int B);
+};
+
+/*
 Given two lists of closed intervals, each list of intervals is pairwise disjoint and in 
 sorted order. Return the intersection of these two interval lists.
 
@@ -652,6 +677,48 @@ class _0986_IntervalListIntersections {
 public:
     std::vector<std::vector<int>> intervalIntersection(std::vector<std::vector<int>>& A, std::vector<std::vector<int>>& B);
 };
+
+/*
+Given an array equations of strings that represent relationships 
+between variables, each string equations[i] has length 4 and takes 
+one of two different forms: "a==b" or "a!=b".  Here, a and b are 
+lowercase letters (not necessarily different) that represent 
+one-letter variable names.
+Return true if and only if it is possible to assign integers to 
+variable names so as to satisfy all the given equations.
+
+Input: ["a==b","b!=a"]
+Output: false
+Explanation: If we assign say, a = 1 and b = 1, then the first equation is satisfied, but not the second.  There is no way to assign the variables to satisfy both equations.
+
+Input: ["b==a","a==b"]
+Output: true
+Explanation: We could assign a = 1 and b = 1 to satisfy both equations.
+
+Input: ["a==b","b==c","a==c"]
+Output: true
+
+Input: ["a==b","b!=c","c==a"]
+Output: false
+Example 5:
+
+Input: ["c==c","b==d","x!=z"]
+Output: true
+ 
+
+Note:
+
+1 <= equations.length <= 500
+equations[i].length == 4
+equations[i][0] and equations[i][3] are lowercase letters
+equations[i][1] is either '=' or '!'
+equations[i][2] is '='
+*/
+class _0990_SatisfiabilityOfEqualityEquations {
+public:
+    bool equationPossible(std::vector<std::string>& equations);
+};
+
 }
 
 #endif

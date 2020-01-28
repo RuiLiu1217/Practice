@@ -172,8 +172,7 @@ n == mat[i].length
 class _1314_MatrixBlockSum {
 public:
     std::vector<std::vector<int>> matrixBlockSum(std::vector<std::vector<int>>& mat, int K);
-
-}
+};
 
 /*
 Given a binary tree, return the sum of values of nodes with even-valued grandparent. 
@@ -194,4 +193,58 @@ class _1315_SumOfNodesWithEvenvaluedGrandparent {
 public:
     int sumEvenGrandparent(TreeNode<int>* root);
 };
+
+/*
+Given a positive integer num consisting only of digits 6 and 9.
+Return the maximum number you can get by changing at most one digit (6 becomes 9, and 9 becomes 6).
+
+Input: num = 9669
+Output: 9969
+Explanation: 
+Changing the first digit results in 6669.
+Changing the second digit results in 9969.
+Changing the third digit results in 9699.
+Changing the fourth digit results in 9666. 
+The maximum number is 9969.
+
+Input: num = 9996
+Output: 9999
+Explanation: Changing the last digit 6 to 9 results in the maximum number.
+
+Input: num = 9999
+Output: 9999
+Explanation: It is better not to apply any change. 
+
+Constraints:
+
+1 <= num <= 10^4
+num's digits are 6 or 9.
+*/
+class _1323_Maximum69Number {
+public:
+    int maximum69Number(int num);
+};
+
+/*
+Given a m * n matrix mat of integers, sort it diagonally in 
+ascending order from the top-left to the bottom-right then 
+return the sorted array.
+
+Input: mat = [[3,3,1,1],[2,2,1,2],[1,1,1,2]]
+Output: [[1,1,1,1],[1,2,2,2],[1,2,3,3]]
+
+Constraints:
+m == mat.length
+n == mat[i].length
+1 <= m, n <= 100
+1 <= mat[i][j] <= 100
+*/
+class _1329_SortTheMatrixDiagonally {
+public:
+    std::vector<std::vector<int>> diagonalSort(std::vector<std::vector<int>>& mat);
+};
+
+
 }
+
+#endif
