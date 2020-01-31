@@ -99,10 +99,10 @@ private:
 };
 
 /*
-Tag: string, index calculation, array
-The string "PAYPALISHIRING" is written in a zigzag pattern on 
-a given number of rows like this: (you may want to display this 
-pattern in a fixed font for better legibility)
+Tag: string, mathematics, array
+The string "PAYPALISHIRING" is written in a zigzag pattern 
+on a given number of rows like this: (you may want to 
+display this pattern in a fixed font for better legibility)
 
     P   A   H   N
     A P L S I I G
@@ -145,7 +145,7 @@ public:
 };
 
 
-/*
+/* TODO, Like: 1273, Dislike: 7740
 Tag: string, overflow consideration
 Implement atoi which converts a string to an integer.
 The function first discards as many whitespace characters as 
@@ -162,36 +162,24 @@ If the first sequence of non-whitespace characters in str is not a valid integra
 If no valid conversion could be performed, a zero value is returned.
 
 Note:
-
 Only the space character ' ' is considered as whitespace character.
 Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231,  231 − 1]. If the numerical value is out of the range of representable values, INT_MAX (231 − 1) or INT_MIN (−231) is returned.
-Example 1:
 
-Input: "42"
-Output: 42
-Example 2:
-
-Input: "   -42"
-Output: -42
+Input: "42"        :        Output: 42
+Input: "   -42"    :        Output: -42
 Explanation: The first non-whitespace character is '-', which is the minus sign.
              Then take as many numerical digits as possible, which gets 42.
-Example 3:
 
-Input: "4193 with words"
-Output: 4193
+Input: "4193 with words"     :      Output: 4193
 Explanation: Conversion stops at digit '3' as the next character is not a numerical digit.
-Example 4:
 
-Input: "words and 987"
-Output: 0
+Input: "words and 987"       :      Output: 0
 Explanation: The first non-whitespace character is 'w', which is not a numerical 
              digit or a +/- sign. Therefore no valid conversion could be performed.
-Example 5:
 
-Input: "-91283472332"
-Output: -2147483648
+Input: "-91283472332"        :      Output: -2147483648
 Explanation: The number "-91283472332" is out of the range of a 32-bit signed integer.
-             Thefore INT_MIN (−231) is returned.
+    Thefore INT_MIN (−231) is returned.
 */
 class _0008_StringToInteger {
 public:
@@ -203,24 +191,70 @@ public:
 Determine whether an integer is a palindrome. An integer is a 
 palindrome when it reads the same backward as forward.
 
-Example 1:
-Input: 121
-Output: true
-Example 2:
-
-Input: -121
-Output: false
+Input: 121             Output: true
+Input: -121            Output: false
 Explanation: From left to right, it reads -121. From right to left, 
 it becomes 121-. Therefore it is not a palindrome.
 
-Example 3:
-Input: 10
-Output: false
+Input: 10              Output: false
 Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
 */
 class _0009_PalindromeNumber {
 public:
     bool isPalindrome(int x);
+};
+
+/*
+Tag: dynamic programming, string matching
+TODO: Copy from the answer
+Given an input string (s) and a pattern (p), implement 
+regular expression matching with support for '.' and '*'.
+
+'.' Matches any single character.
+'*' Matches zero or more of the preceding element.
+The matching should cover the entire input string (not 
+partial).
+
+s could be empty and contains only lowercase letters a-z.
+p could be empty and contains only lowercase letters a-z, 
+and characters like . or *.
+
+Input:
+s = "aa"
+p = "a"
+Output: false
+Explanation: "a" does not match the entire string "aa".
+Example 2:
+
+Input:
+s = "aa"
+p = "a*"
+Output: true
+Explanation: '*' means zero or more of the preceding element, 'a'. Therefore, by repeating 'a' once, it becomes "aa".
+Example 3:
+
+Input:
+s = "ab"
+p = ".*"
+Output: true
+Explanation: ".*" means "zero or more (*) of any character (.)".
+Example 4:
+
+Input:
+s = "aab"
+p = "c*a*b"
+Output: true
+Explanation: c can be repeated 0 times, a can be repeated 1 time. Therefore, it matches "aab".
+Example 5:
+
+Input:
+s = "mississippi"
+p = "mis*is*p*."
+Output: false
+*/
+class _0010_RegularExpressionMatching {
+public:
+    bool isMatch(std::string s, std::string p);
 };
 
 /* TODO
@@ -347,7 +381,8 @@ public:
     std::string longestCommonPrefix(std::vector<std::string> &strs);
 };
 
-/* Todo
+/* 
+Classical Problem
 Tag: binary search, hash, 
 Given an array nums of n integers, are there elements a, b, c in nums such 
 that a + b + c = 0? Find all unique triplets in the array which gives the 
@@ -387,6 +422,7 @@ class _0016_3SumCloset {
 };
  
 /*
+Tag: recursive
 Given a string containing digits from 2-9 inclusive, return all possible 
 letter combinations that the number could represent.
 A mapping of digit to letters (just like on the telephone buttons) is 
@@ -402,7 +438,6 @@ be in any order you want.
 class _0017_LetterCombinationsOfAPhoneNumber {
 public:
     std::vector<std::string> letterCombinations(std::string &digits);
-
 private:
     void letterCombination(const std::string &digits, int i, int N, std::string tmp, std::vector<std::string> &res);
 };
@@ -462,7 +497,7 @@ public:
 };
 
 /*
-Tag: single link list
+Tag: single link list, recursive
 Merge two sorted linked lists and return it as a new list. The new list 
 should be made by splicing together the nodes of the first two lists.
 Example:
@@ -627,6 +662,9 @@ public:
 };
 
 /*
+Tag: string match, KMP (it is actually a hard question, 
+but you can use brute force, which makes it easy)
+
 Implement strStr().
 Return the index of the first occurrence of needle in haystack, 
 or -1 if needle is not part of haystack.
@@ -646,13 +684,14 @@ great question to ask during an interview.
 For the purpose of this problem, we will return 0 when needle is 
 an empty string. This is consistent to C's strstr() and Java's indexOf().
 */
-class _0028_ImplementStrStr
-{
+class _0028_ImplementStrStr {
 public:
     int strStr(std::string &haystack, std::string &needle);
 };
 
 /*
+TODO
+Tag: Binary search, math
 Given two integers dividend and divisor, divide two integers without 
 using multiplication, division and mod operator.
 
@@ -677,6 +716,19 @@ class _0029_DivideTwoIntegers {
 public:
     int divide(int dividend, int divisor);
 };
+
+/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+// 30 Substring with concatenation of all words            //
+/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
 
 /*
 Implement next permutation, which rearranges numbers into the lexicographically 

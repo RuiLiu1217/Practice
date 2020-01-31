@@ -1,21 +1,22 @@
 #include "headers.hpp"
-// Have no any ideas
-// Copy from the solution:
-/*
-his Solution use 2D DP. beat 90% solutions, very simple.
-
-Here are some conditions to figure out, then the logic can be very straightforward.
-
-1, If p.charAt(j) == s.charAt(i) :  dp[i][j] = dp[i-1][j-1];
-2, If p.charAt(j) == '.' : dp[i][j] = dp[i-1][j-1];
-3, If p.charAt(j) == '*': 
-    here are two sub conditions:
-        1   if p.charAt(j-1) != s.charAt(i) : dp[i][j] = dp[i][j-2]  //in this case, a* only counts as empty
-        2   if p.charAt(i-1) == s.charAt(i) or p.charAt(i-1) == '.':
-                        dp[i][j] = dp[i-1][j]    //in this case, a* counts as multiple a 
-                    or dp[i][j] = dp[i][j-1]   // in this case, a* counts as single a
-                    or dp[i][j] = dp[i][j-2]   // in this case, a* counts as empty
-*/
+// Tag: dynamic programming, string matching.
 bool LeetCode::_0010_RegularExpressionMatching::isMatch(std::string s, std::string p){
+    const int M = s.length();
+    const int N = p.length();
 
+    // DP[i][j] means whether the first [0,i) substr of s 
+    // matches with the first [0,j) substr of p.
+    std::vector<std::vector<bool>> DP(M + 1, std::vector<bool>(N + 1, false));
+    DP[0][0] = true;
+
+    for(int i = 0; i <= M; ++i) {
+        for(int j = 1; j <= N; ++j) {
+            if(p[j-1] == '*') {
+                DP[i][j] = DP[i][j-2] || (i && DP[i-1][j] && (s[i-1] == p[j-2] || p[j-2] == '.'));
+            } else {
+                DP[i][j] = i && DP[i-1][j-1] && (s[i-1] == p[j-1] || p[j-1] == '.');
+            }
+        }
+    }
+    return DP[M][N];
 }

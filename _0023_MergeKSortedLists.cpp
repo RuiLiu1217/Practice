@@ -1,5 +1,47 @@
 #include "headers.hpp"
 
+/*
+class Solution {
+private:
+    ListNode* head;
+    ListNode* p;
+public:
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        head = new ListNode(INT_MAX);
+        p = head;
+        merge(lists);
+        ListNode* h = head->next;
+        head->next = nullptr;
+        delete head;
+        return h;
+    }
+    
+    void merge(std::vector<ListNode*>& lists) {
+        int I = 0;
+        int minV = INT_MAX;
+        int count = 0;
+        for(int i = 0; i < lists.size(); ++i) {
+            if(lists[i]) {
+                if(lists[i]->val < minV) {
+                    minV = lists[i]->val;
+                    I = i;
+                }
+            } else {
+                ++count;
+            }
+        }
+        if(count == lists.size()) {
+            return;
+        }
+        p->next = lists[I];
+        lists[I] = lists[I]->next;
+        p = p->next;
+        
+        merge(lists);
+    }
+};
+*/
+
 ListNode<int>* LeetCode::_0023_MergeKeSortedLists::mergeKLists(std::vector<ListNode<int>*>& lists) {
     if(lists.empty()) {
         return nullptr;
