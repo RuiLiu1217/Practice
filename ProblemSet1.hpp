@@ -731,6 +731,7 @@ public:
 /////////////////////////////////////////////////////////////
 
 /*
+TODO: Permutation, array boundary
 Implement next permutation, which rearranges numbers into the lexicographically 
 next greater permutation of numbers. If such arrangement is not possible, it 
 must rearrange it as the lowest possible order (ie, sorted in ascending order).
@@ -741,16 +742,30 @@ corresponding outputs are in the right-hand column.
 3,2,1 → 1,2,3
 1,1,5 → 1,5,1
 */
-class _0031_NextPermutation
-{
+class _0031_NextPermutation {
 public:
     void nextPermutation(std::vector<int> &nums);
-
 private:
     void reverse(std::vector<int> &nums, int start, int end);
 };
 
 /*
+Tag: Binary search
+TODO
+
+discuss two cases that num[mid] > num[start] and 
+num[mid] < num[start]
+Note: it is hard for the edge cases:
+1. empty vector
+2. one value, find the exist
+3. one value, find the non-exist
+4. two value, find the exist
+4. two value, find the non-exist
+5. 3 values, find the exist (mid, mid at left, mid at right)
+6. 3 values, find the non exist (mid, mid at left, mid at right)
+7. 4 values...
+...
+
 Suppose an array sorted in ascending order is rotated at some pivot 
 unknown to you beforehand. 
 (i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]).
@@ -767,14 +782,13 @@ Example 2:
 Input: nums = [4,5,6,7,0,1,2], target = 3
 Output: -1
 */
-// TODO: Modification of the binary search. Needs remember.
-class _0033_SearchInRotatedSortedArray
-{
+class _0033_SearchInRotatedSortedArray {
 public:
     int search(std::vector<int> &nums, int target);
 };
 
 /*
+Tag: binary search
     TODO: Modification of the binary search
 Given an array of integers nums sorted in ascending order, find the 
 starting and ending position of a given target value.
@@ -790,14 +804,15 @@ Example 2:
 Input: nums = [5,7,7,8,8,10], target = 6
 Output: [-1,-1]
 */
-class _0034_FindFirstAndLastPositionOfElementInSortedArray
-{
+class _0034_FindFirstAndLastPositionOfElementInSortedArray {
 public:
     std::vector<int> searchRange(std::vector<int> &nums, int target);
 };
 
 
-/* TOPIC: Binary Search
+/* 
+Tag: Binary Search
+
 Given a sorted array and a target value, return the index if the target 
 is found. If not, return the index where it would be if it were inserted 
 in order.
@@ -816,6 +831,7 @@ public:
 
 
 /*
+Tag: simulate according to the condition
 Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be 
 validated according to the following rules:
 
@@ -843,6 +859,8 @@ private:
 };
 
 /*
+TODO: Review it again
+Tag: backtracking, recursive.
 Write a program to solve a Sudoku puzzle by filling the empty cells.
 
 A sudoku solution must satisfy all of the following rules:
@@ -860,6 +878,7 @@ public:
 
 
 /*
+Tag: string
 The count-and-say sequence is the sequence of integers with the first five 
 terms as following:
 1.     1
@@ -873,33 +892,32 @@ terms as following:
 Given an integer n where 1 ≤ n ≤ 30, generate the nth term of the count-and-say sequence.
 Note: Each term of the sequence of integers will be represented as a string.
 */
-class _0038_CountAndSay
-{
+class _0038_CountAndSay {
 public:
     std::string countAndSay(int n);
-
 private:
     std::string countOnce(std::string &s);
 };
 
 /*  
-    Given a set of candidate numbers (candidates without duplicates) 
-    and a target number (target), find all unique combinations in 
-    candidates where the candidate numbers sums to target.
-    
-    The same repeated number may be chosen from candidates unlimited number of times.
-    Note:
-        All numbers (including target) will be positive integers.
-        The solution set must not contain duplicate combinations.
-    Example 1:
-        Input: candidates = [2,3,6,7], target = 7,
-    A solution set is:
-        [  [7],  [2,2,3] ]
-    Example 2:
-        Input: candidates = [2,3,5], target = 8, 
-    A solution set is:
-        [  [2,2,2,2],  [2,3,3],  [3,5] ]
-    */
+Tag: backtracking
+Given a set of candidate numbers (candidates without duplicates) 
+and a target number (target), find all unique combinations in 
+candidates where the candidate numbers sums to target.
+
+The same repeated number may be chosen from candidates unlimited number of times.
+Note:
+    All numbers (including target) will be positive integers.
+    The solution set must not contain duplicate combinations.
+Example 1:
+    Input: candidates = [2,3,6,7], target = 7,
+A solution set is:
+    [  [7],  [2,2,3] ]
+Example 2:
+    Input: candidates = [2,3,5], target = 8, 
+A solution set is:
+    [  [2,2,2,2],  [2,3,3],  [3,5] ]
+*/
 class _0039_CombinationSum
 {
 public:
@@ -910,46 +928,48 @@ private:
 };
 
 /*
-    Given a collection of candidate numbers (candidates) and a target number (target), 
-    find all unique combinations in candidates where the candidate numbers sums to target.
+Tag: backtracking
+Given a collection of candidate numbers (candidates) and a target number (target), 
+find all unique combinations in candidates where the candidate numbers sums to target.
 
-    Each number in candidates may only be used once in the combination.
+Each number in candidates may only be used once in the combination.
 
-    Note:
+Note:
 
-    All numbers (including target) will be positive integers.
-    The solution set must not contain duplicate combinations.
-    Example 1:
+All numbers (including target) will be positive integers.
+The solution set must not contain duplicate combinations.
+Example 1:
 
-    Input: candidates = [10,1,2,7,6,1,5], target = 8,
-    A solution set is:
-    [
-    [1, 7],
-    [1, 2, 5],
-    [2, 6],
-    [1, 1, 6]
-    ]
-    Example 2:
+Input: candidates = [10,1,2,7,6,1,5], target = 8,
+A solution set is:
+[
+[1, 7],
+[1, 2, 5],
+[2, 6],
+[1, 1, 6]
+]
+Example 2:
 
-    Input: candidates = [2,5,2,1,2], target = 5,
-    A solution set is:
-    [
-    [1,2,2],
-    [5]
-    ]
+Input: candidates = [2,5,2,1,2], target = 5,
+A solution set is:
+[
+[1,2,2],
+[5]
+]
 */
-class _0040_CombinationSumII{
-    private:
-        std::vector<std::vector<int>> res;
-        std::vector<int> temp;
-    public:
-        void choose(std::vector<int>& candidates, int target, int begin);
-        std::vector<std::vector<int>> combinationSum2(std::vector<int>& candidates, int target);
+class _0040_CombinationSumII {
+private:
+    std::vector<std::vector<int>> res;
+    std::vector<int> temp;
+public:
+    void choose(std::vector<int>& candidates, int target, int begin);
+    std::vector<std::vector<int>> combinationSum2(std::vector<int>& candidates, int target);
 };
 
 /*
+TODO
+Tag: array, I don't know how to categorize.
 Given an unsorted integer array, find the smallest missing positive integer.
-
 Example 1:
     Input: [1,2,0]         :         Output: 3
     Input: [3,4,-1,1]      :         Output: 2
@@ -963,6 +983,7 @@ public:
 };
 
 /*
+Tag: string operation, basic arithmetic operation
 Given two non-negative integers num1 and num2 represented as strings, return the product 
 of num1 and num2, also represented as a string.
 Example 1:

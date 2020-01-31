@@ -25,3 +25,41 @@ std::vector<std::vector<int>> LeetCode::_0040_CombinationSumII::combinationSum2(
     choose(candidates, target, 0);
     return res;
 }
+
+
+/* Another solution
+class Solution {
+public:
+    vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+        std::unordered_map<int,int> mp;
+        for(int i = 0; i < candidates.size(); ++i) {
+            ++mp[candidates[i]];
+        }
+        std::vector<int> tmp;
+        std::vector<std::vector<int>> res;
+        combinationSum2(mp, target, tmp, res);
+        return res;
+        
+    }
+    void combinationSum2(std::unordered_map<int, int>& candidates, int target, std::vector<int>& tmp, std::vector<std::vector<int>>& res) {
+        if(target < 0) {
+            return;
+        }
+        if(target == 0) {
+            res.push_back(tmp);
+        }
+        
+        for(auto& c : candidates) {
+            if(c.second > 0) {
+                if(tmp.empty() || (!tmp.empty() && tmp.back() <= c.first)) {
+                    --c.second;
+                    tmp.push_back(c.first);
+                    combinationSum2(candidates, target - c.first, tmp, res);
+                    tmp.pop_back();
+                    ++c.second;
+                }
+            }
+        }
+    }
+};
+*/
