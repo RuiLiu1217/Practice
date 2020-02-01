@@ -1,7 +1,7 @@
 #include "headers.hpp"
 
 int LeetCode::_0007_ReverseInteger::reverse(int x) {
-    long long res = 0;
+    long long res = 0; // Consider the overflow
     while(x) {
         res = res * 10 + x % 10;
         x /= 10;

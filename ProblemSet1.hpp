@@ -13,7 +13,7 @@
 
 namespace LeetCode
 {
-/* TOPIC: HASH MAP
+/*  Tag: array, Hash
     Given an array of integers, return indices of the two 
     numbers such that they add up to a specific target.
     You may assume that each input would have exactly one 
@@ -23,13 +23,12 @@ namespace LeetCode
         Because nums[0] + nums[1] = 2 + 7 = 9,
     Return [0, 1].
     */
-class _0001_TwoSum
-{
+class _0001_TwoSum {
 public:
     std::vector<int> twoSum(std::vector<int> &nums, int target);
 };
 
-/* TOPIC: LINK LIST
+/* Tag: single link list
     You are given two non-empty linked lists representing 
     two non-negative integers. The digits are stored in 
     reverse order and each of their nodes contain a single digit. 
@@ -42,8 +41,7 @@ public:
     Output: 7 -> 0 -> 8
     Explanation: 342 + 465 = 807.
     */
-class _0002_AddTwoNumbers
-{
+class _0002_AddTwoNumbers {
 public:
     ListNode<int> *addTwoNumbers(ListNode<int> *l1, ListNode<int> *l2);
 
@@ -51,39 +49,28 @@ private:
     ListNode<int> *AddTwoNodes(ListNode<int> *l1, ListNode<int> *l2, int wi);
 };
 
-/* TOPIC : SLIDING WINDOW
-    Given a string, find the length of the longest substring without repeating characters.
-    
-    Example 1:
-    Input: "abcabcbb"
-    Output: 3 
-    Explanation: The answer is "abc", with the length of 3. 
-    
-    Example 2:
-    Input: "bbbbb"
-    Output: 1
-    Explanation: The answer is "b", with the length of 1.
-    
-    Example 3:
-    Input: "pwwkew"
-    Output: 3
-    
-    Explanation: The answer is "wke", with the length of 3. 
-    Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
-    */
-// TODO: Copy the solution. Need to understand it better
-// HashTable + Sliding Window:
-// Using a hashtable to remember the last index of every char, And keep tracking the starting
-// point of a valid substring
-class _0003_LongestSubstringWithoutRepeatingCharacters
-{
+/*  TODO 
+Tag : sliding Window, hash, string
+Given a string, find the length of the longest substring without repeating characters.
+
+Input: "abcabcbb"     :      Output: 3 
+Explanation: The answer is "abc", with the length of 3. 
+Input: "bbbbb"        :      Output: 1
+Explanation: The answer is "b", with the length of 1.
+Input: "pwwkew"       :      Output: 3
+Explanation: The answer is "wke", with the length of 3. 
+Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
+*/
+class _0003_LongestSubstringWithoutRepeatingCharacters {
 public:
     int lengthOfLongestSubstring(std::string s);
 };
 
-/*
+/* TODO :
+Tag : Binary Search, array
 There are two sorted arrays nums1 and nums2 of size m and n respectively.
-Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).
+Find the median of the two sorted arrays. 
+The overall run time complexity should be O(log (m+n)).
 You may assume nums1 and nums2 cannot be both empty.
 */
 class _0004_MedianOfTwoSortedArrays {
@@ -94,45 +81,41 @@ class _0004_MedianOfTwoSortedArrays {
 };
 
 
-
 /*
+Tag: string, palindromic
 Given a string s, find the longest palindromic substring in s. You may assume that 
 the maximum length of s is 1000.
 
-Example 1:
 Input: "babad"          :         Output: "bab"
 Note: "aba" is also a valid answer.
 
-Example 2:
-
 Input: "cbbd"           :         Output: "bb"
 */
-class _0005_LongestPalindromicSubstring
-{
+class _0005_LongestPalindromicSubstring {
 public:
     std::string longestPalidrome(std::string s);
-
 private:
     int expandAroundCenter(std::string &s, int i, int j);
 };
 
 /*
-The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows 
-like this: (you may want to display this pattern in a fixed font for better legibility)
+Tag: string, mathematics, array
+The string "PAYPALISHIRING" is written in a zigzag pattern 
+on a given number of rows like this: (you may want to 
+display this pattern in a fixed font for better legibility)
 
-        P   A   H   N
-        A P L S I I G
-        Y   I   R
+    P   A   H   N
+    A P L S I I G
+    Y   I   R
 And then read line by line: "PAHNAPLSIIGYIR"
 
-Write the code that will take a string and make this conversion given a number of rows:
+Write the code that will take a string and make this conversion 
+given a number of rows:
 
 string convert(string s, int numRows);
-Example 1:
 
 Input: s = "PAYPALISHIRING", numRows = 3
 Output: "PAHNAPLSIIGYIR"
-Example 2:
 
 Input: s = "PAYPALISHIRING", numRows = 4
 Output: "PINALSIGYAHRPI"
@@ -149,28 +132,21 @@ public:
 };
 
 /*
+Tag: stack, numeric
 Given a 32-bit signed integer, reverse digits of an integer.
-Example 1:
-Input: 123
-Output: 321
 
-Example 2:
-Input: -123
-Output: -321
-
-Example 3:
-Input: 120
-Output: 21
+Input: 123       :       Output: 321
+Input: -123      :       Output: -321
+Input: 120       :       Output: 21
 */
-class _0007_ReverseInteger
-{
+class _0007_ReverseInteger {
 public:
     int reverse(int x);
 };
 
 
-// Totally COPY FROM A SOLUTION
-/*
+/* TODO, Like: 1273, Dislike: 7740
+Tag: string, overflow consideration
 Implement atoi which converts a string to an integer.
 The function first discards as many whitespace characters as 
 necessary until the first non-whitespace character is found. 
@@ -183,40 +159,27 @@ the integral number, which are ignored and have no effect on the
 behavior of this function.
 
 If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed.
-
 If no valid conversion could be performed, a zero value is returned.
 
 Note:
-
 Only the space character ' ' is considered as whitespace character.
 Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231,  231 − 1]. If the numerical value is out of the range of representable values, INT_MAX (231 − 1) or INT_MIN (−231) is returned.
-Example 1:
 
-Input: "42"
-Output: 42
-Example 2:
-
-Input: "   -42"
-Output: -42
+Input: "42"        :        Output: 42
+Input: "   -42"    :        Output: -42
 Explanation: The first non-whitespace character is '-', which is the minus sign.
              Then take as many numerical digits as possible, which gets 42.
-Example 3:
 
-Input: "4193 with words"
-Output: 4193
+Input: "4193 with words"     :      Output: 4193
 Explanation: Conversion stops at digit '3' as the next character is not a numerical digit.
-Example 4:
 
-Input: "words and 987"
-Output: 0
+Input: "words and 987"       :      Output: 0
 Explanation: The first non-whitespace character is 'w', which is not a numerical 
              digit or a +/- sign. Therefore no valid conversion could be performed.
-Example 5:
 
-Input: "-91283472332"
-Output: -2147483648
+Input: "-91283472332"        :      Output: -2147483648
 Explanation: The number "-91283472332" is out of the range of a 32-bit signed integer.
-             Thefore INT_MIN (−231) is returned.
+    Thefore INT_MIN (−231) is returned.
 */
 class _0008_StringToInteger {
 public:
@@ -224,32 +187,78 @@ public:
 };
 
 
-/* TOPIC: Palindrome
+/* Tag: string, palindrome
 Determine whether an integer is a palindrome. An integer is a 
 palindrome when it reads the same backward as forward.
 
-Example 1:
-Input: 121
-Output: true
-Example 2:
-
-Input: -121
-Output: false
+Input: 121             Output: true
+Input: -121            Output: false
 Explanation: From left to right, it reads -121. From right to left, 
 it becomes 121-. Therefore it is not a palindrome.
 
-Example 3:
-Input: 10
-Output: false
+Input: 10              Output: false
 Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
 */
-class _0009_PalindromeNumber
-{
+class _0009_PalindromeNumber {
 public:
     bool isPalindrome(int x);
 };
 
-/* TOPIC: Greedy Algorithm
+/*
+Tag: dynamic programming, string matching
+TODO: Copy from the answer
+Given an input string (s) and a pattern (p), implement 
+regular expression matching with support for '.' and '*'.
+
+'.' Matches any single character.
+'*' Matches zero or more of the preceding element.
+The matching should cover the entire input string (not 
+partial).
+
+s could be empty and contains only lowercase letters a-z.
+p could be empty and contains only lowercase letters a-z, 
+and characters like . or *.
+
+Input:
+s = "aa"
+p = "a"
+Output: false
+Explanation: "a" does not match the entire string "aa".
+Example 2:
+
+Input:
+s = "aa"
+p = "a*"
+Output: true
+Explanation: '*' means zero or more of the preceding element, 'a'. Therefore, by repeating 'a' once, it becomes "aa".
+Example 3:
+
+Input:
+s = "ab"
+p = ".*"
+Output: true
+Explanation: ".*" means "zero or more (*) of any character (.)".
+Example 4:
+
+Input:
+s = "aab"
+p = "c*a*b"
+Output: true
+Explanation: c can be repeated 0 times, a can be repeated 1 time. Therefore, it matches "aab".
+Example 5:
+
+Input:
+s = "mississippi"
+p = "mis*is*p*."
+Output: false
+*/
+class _0010_RegularExpressionMatching {
+public:
+    bool isMatch(std::string s, std::string p);
+};
+
+/* TODO
+Tag: greedy algorithm
 Given n non-negative integers a1, a2, ..., an , where each represents a point 
 at coordinate (i, ai). n vertical lines are drawn such that the two endpoints 
 of line i is at (i, ai) and (i, 0). Find two lines, which together with x-axis 
@@ -259,8 +268,6 @@ Note: You may not slant the container and n is at least 2.
 The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this 
 case, the max area of water (blue section) the container can contain is 49. 
 
-Example:
-
 Input: [1,8,6,2,5,4,8,3,7]
 Output: 49
 */
@@ -269,13 +276,56 @@ public:
     int maxArea(std::vector<int>& height);
 };
 
+/* TODO
+Tag: greedy algorithm, hash
+Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
+Symbol       Value
+I             1
+V             5
+X             10
+L             50
+C             100
+D             500
+M             1000
+For example, two is written as II in Roman numeral, just two one's added together.
+Twelve is written as, XII, which is simply X + II. The number twenty seven is 
+written as XXVII, which is XX + V + II.
+Roman numerals are usually written largest to smallest from left to right. 
+However, the numeral for four is not IIII. Instead, the number four is written 
+as IV. Because the one is before the five we subtract it making four. The same 
+principle applies to the number nine, which is written as IX. There are six 
+instances where subtraction is used:
 
-class _0012_IntegerToRoman{
+I can be placed before V (5) and X (10) to make 4 and 9. 
+X can be placed before L (50) and C (100) to make 40 and 90. 
+C can be placed before D (500) and M (1000) to make 400 and 900.
+Given an integer, convert it to a roman numeral. Input is guaranteed to be within the range from 1 to 3999.
+
+Input: 3
+Output: "III"
+
+Input: 4
+Output: "IV"
+
+Input: 9
+Output: "IX"
+
+Input: 58
+Output: "LVIII"
+Explanation: L = 50, V = 5, III = 3.
+Example 5:
+
+Input: 1994
+Output: "MCMXCIV"
+Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
+*/
+class _0012_IntegerToRoman {
 public:
     std::string intToRoman(int num);
 };
 
 /*
+Tag: numeric, string
     Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
     Symbol       Value
     I             1
@@ -306,36 +356,34 @@ public:
     Input: "LVIII"   :      Output: 58     (Explanation: L = 50, V= 5, III = 3)
     Input: "MCMXCIV" :      Output: 1994   (Explanation: M = 1000, CM = 900, XC = 90 and IV = 4)
 */
-class _0013_RomanToInteger
-{
+class _0013_RomanToInteger {
 public:
     int romainToInt(std::string &s);
-
 private:
     int charToInt(char c);
 };
 
 /*
-Write a function to find the longest common prefix string amongst an array of strings.
+Tag: string
+Write a function to find the longest common prefix string among an array of strings.
 If there is no common prefix, return an empty string "".
 
-Example 1:
 Input: ["flower","flow","flight"]
 Output: "fl"
 
-Example 2:
 Input: ["dog","racecar","car"]
 Output: ""
 
 Explanation: There is no common prefix among the input strings.
 */
-class _0014_LongestCommonPrefix
-{
+class _0014_LongestCommonPrefix {
 public:
     std::string longestCommonPrefix(std::vector<std::string> &strs);
 };
 
-/*
+/* 
+Classical Problem
+Tag: binary search, hash, 
 Given an array nums of n integers, are there elements a, b, c in nums such 
 that a + b + c = 0? Find all unique triplets in the array which gives the 
 sum of zero.
@@ -351,16 +399,15 @@ A solution set is:
   [-1, 0, 1],
   [-1, -1, 2]
 ]
-TODO: Binary search based algorithm
 */
-class _0015_3Sum
-{
+class _0015_3Sum {
 public:
     std::vector<std::vector<int>> threeSum(std::vector<int> &nums);
 };
 
 
-/*
+/* Todo
+Tag: Binary search, hash
 Given an array nums of n integers and an integer target, find three 
 integers in nums such that the sum is closest to target. Return the 
 sum of the three integers. You may assume that each input would have 
@@ -369,12 +416,13 @@ Example:
 Given array nums = [-1, 2, 1, -4], and target = 1.
 The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
 */
-class _0016_3SumCloset{
+class _0016_3SumCloset {
     public:
         int threeSumCloset(std::vector<int>& nums, int target);
 };
-
+ 
 /*
+Tag: recursive
 Given a string containing digits from 2-9 inclusive, return all possible 
 letter combinations that the number could represent.
 A mapping of digit to letters (just like on the telephone buttons) is 
@@ -387,16 +435,35 @@ Note:
 Although the above answer is in lexicographical order, your answer could 
 be in any order you want.
 */
-class _0017_LetterCombinationsOfAPhoneNumber
-{
+class _0017_LetterCombinationsOfAPhoneNumber {
 public:
     std::vector<std::string> letterCombinations(std::string &digits);
-
 private:
     void letterCombination(const std::string &digits, int i, int N, std::string tmp, std::vector<std::string> &res);
 };
 
-/*
+
+/* Todo
+Tag: Binary search, hash
+Given an array nums of n integers and an integer target, are there elements a, b, c, and d in nums such that a + b + c + d = target? Find all unique quadruplets in the array which gives the sum of target.
+The solution set must not contain duplicate quadruplets.
+Example:
+Given array nums = [1, 0, -1, 0, -2, 2], and target = 0.
+
+A solution set is:
+[
+  [-1,  0, 0, 1],
+  [-2, -1, 1, 2],
+  [-2,  0, 0, 2]
+]
+*/
+class _0018_4Sum {
+public:
+    std::vector<std::vector<int>> fourSum(std::vector<int>& nums, int target);
+};
+
+/* 
+Tag: single link list
 Given a linked list, remove the n-th node from the end of list and return its head.
 Example:
 Given linked list: 1->2->3->4->5, and n = 2.
@@ -404,13 +471,13 @@ After removing the second node from the end, the linked list becomes 1->2->3->5.
 Note: Given n will always be valid.
 Follow up: Could you do this in one pass?
 */
-class _0019_RemoveNthNodeFromEndToList
-{
+class _0019_RemoveNthNodeFromEndToList {
 public:
     ListNode<int> *removeNthFromEnd(ListNode<int> *head, int n);
 };
 
 /*
+Tag: parenthesis, stack
 Given a string containing just the characters '(', ')', '{', '}', '[' and ']', 
 determine if the input string is valid.
 An input string is valid if:
@@ -424,13 +491,13 @@ Input: "(]"         :     Output: false
 Input: "([)]"       :     Output: false
 Input: "{[]}"       :     Output: true
 */
-class _0020_ValidParentheses
-{
+class _0020_ValidParentheses {
 public:
     bool isValid(std::string &s);
 };
 
 /*
+Tag: single link list, recursive
 Merge two sorted linked lists and return it as a new list. The new list 
 should be made by splicing together the nodes of the first two lists.
 Example:
@@ -438,13 +505,13 @@ Input:  1->2->4,
         1->3->4
 Output: 1->1->2->3->4->4
 */
-class _0021_MergeTwoSortedLists
-{
+class _0021_MergeTwoSortedLists {
 public:
     ListNode<int> *mergeTwoLists(ListNode<int> *l1, ListNode<int> *l2);
 };
 
 /*
+Tag: recursive, parenthesis, permutation, combination
 Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
 For example, given n = 3, a solution set is:
 [
@@ -455,16 +522,15 @@ For example, given n = 3, a solution set is:
   "()()()"
 ]
 */
-class _0022_GenerateParentheses
-{
+class _0022_GenerateParentheses {
 public:
     std::vector<std::string> generateParenthesis(int n);
-
 private:
     void generateParenthesis(int l, int r, std::string v, std::vector<std::string> &res);
 };
 
 /*
+Tag: single link list
 Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
 Example:
 Input:
@@ -474,29 +540,28 @@ Input:
   2->6
 ]
 Output: 1->1->2->3->4->4->5->6
-
 */
-class _0023_MergeKeSortedLists
-{
+class _0023_MergeKeSortedLists {
 public:
     ListNode<int> *mergeKLists(std::vector<ListNode<int> *> &lists);
     bool finishSorting(std::vector<bool> notChoose);
 };
 
 /*
+Tag: single link list, recursive
 Given a linked list, swap every two adjacent nodes and return its head.
 You may not modify the values in the list's nodes, only nodes itself may be changed.
 
 Example:
 Given 1->2->3->4, you should return the list as 2->1->4->3.
 */
-class _0024_SwapNodesInPairs
-{
+class _0024_SwapNodesInPairs {
 public:
     ListNode<int> *swapPairs(ListNode<int> *head);
 };
 
 /*
+Tag: single link list, recursive
 Given a linked list, reverse the nodes of a linked list k at a time and return 
 its modified list.
 k is a positive integer and is less than or equal to the length of the linked list. 
@@ -511,7 +576,7 @@ Note:
 Only constant extra memory is allowed.
 You may not alter the values in the list's nodes, only nodes itself may be changed.
 */
-class _0025_ReverseNodeInKGroup{
+class _0025_ReverseNodeInKGroup {
 public:
     ListNode<int>* reverseGroup(ListNode<int>* head, int k);
 private:
@@ -519,6 +584,7 @@ private:
 };
 
 /*
+Tag: array, slow-fast pointer
 Given a sorted array nums, remove the duplicates in-place such that each element 
 appear only once and return the new length.
 Do not allocate extra space for another array, you must do this by modifying the 
@@ -552,13 +618,13 @@ for (int i = 0; i < len; i++) {
     print(nums[i]);
 }
 */
-class _0026_RemoveDuplicatesFromSortedArray
-{
+class _0026_RemoveDuplicatesFromSortedArray {
 public:
     int removeDuplicates(std::vector<int> &nums);
 };
 
 /*
+Tag: array, slow-fast pointers
 Given an array nums and a value val, remove all instances of that value in-place 
 and return the new length. Do not allocate extra space for another array, you must 
 do this by modifying the input array in-place with O(1) extra memory.
@@ -590,13 +656,15 @@ for (int i = 0; i < len; i++) {
     print(nums[i]);
 }
 */
-class _0027_RemoveElement
-{
+class _0027_RemoveElement {
 public:
     int removeElement(std::vector<int> &nums, int val);
 };
 
 /*
+Tag: string match, KMP (it is actually a hard question, 
+but you can use brute force, which makes it easy)
+
 Implement strStr().
 Return the index of the first occurrence of needle in haystack, 
 or -1 if needle is not part of haystack.
@@ -616,13 +684,14 @@ great question to ask during an interview.
 For the purpose of this problem, we will return 0 when needle is 
 an empty string. This is consistent to C's strstr() and Java's indexOf().
 */
-class _0028_ImplementStrStr
-{
+class _0028_ImplementStrStr {
 public:
     int strStr(std::string &haystack, std::string &needle);
 };
 
 /*
+TODO
+Tag: Binary search, math
 Given two integers dividend and divisor, divide two integers without 
 using multiplication, division and mod operator.
 
@@ -648,7 +717,21 @@ public:
     int divide(int dividend, int divisor);
 };
 
+/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+// 30 Substring with concatenation of all words            //
+/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+
 /*
+TODO: Permutation, array boundary
 Implement next permutation, which rearranges numbers into the lexicographically 
 next greater permutation of numbers. If such arrangement is not possible, it 
 must rearrange it as the lowest possible order (ie, sorted in ascending order).
@@ -659,16 +742,30 @@ corresponding outputs are in the right-hand column.
 3,2,1 → 1,2,3
 1,1,5 → 1,5,1
 */
-class _0031_NextPermutation
-{
+class _0031_NextPermutation {
 public:
     void nextPermutation(std::vector<int> &nums);
-
 private:
     void reverse(std::vector<int> &nums, int start, int end);
 };
 
 /*
+Tag: Binary search
+TODO
+
+discuss two cases that num[mid] > num[start] and 
+num[mid] < num[start]
+Note: it is hard for the edge cases:
+1. empty vector
+2. one value, find the exist
+3. one value, find the non-exist
+4. two value, find the exist
+4. two value, find the non-exist
+5. 3 values, find the exist (mid, mid at left, mid at right)
+6. 3 values, find the non exist (mid, mid at left, mid at right)
+7. 4 values...
+...
+
 Suppose an array sorted in ascending order is rotated at some pivot 
 unknown to you beforehand. 
 (i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]).
@@ -685,14 +782,13 @@ Example 2:
 Input: nums = [4,5,6,7,0,1,2], target = 3
 Output: -1
 */
-// TODO: Modification of the binary search. Needs remember.
-class _0033_SearchInRotatedSortedArray
-{
+class _0033_SearchInRotatedSortedArray {
 public:
     int search(std::vector<int> &nums, int target);
 };
 
 /*
+Tag: binary search
     TODO: Modification of the binary search
 Given an array of integers nums sorted in ascending order, find the 
 starting and ending position of a given target value.
@@ -708,14 +804,15 @@ Example 2:
 Input: nums = [5,7,7,8,8,10], target = 6
 Output: [-1,-1]
 */
-class _0034_FindFirstAndLastPositionOfElementInSortedArray
-{
+class _0034_FindFirstAndLastPositionOfElementInSortedArray {
 public:
     std::vector<int> searchRange(std::vector<int> &nums, int target);
 };
 
 
-/* TOPIC: Binary Search
+/* 
+Tag: Binary Search
+
 Given a sorted array and a target value, return the index if the target 
 is found. If not, return the index where it would be if it were inserted 
 in order.
@@ -734,6 +831,7 @@ public:
 
 
 /*
+Tag: simulate according to the condition
 Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be 
 validated according to the following rules:
 
@@ -761,6 +859,8 @@ private:
 };
 
 /*
+TODO: Review it again
+Tag: backtracking, recursive.
 Write a program to solve a Sudoku puzzle by filling the empty cells.
 
 A sudoku solution must satisfy all of the following rules:
@@ -778,6 +878,7 @@ public:
 
 
 /*
+Tag: string
 The count-and-say sequence is the sequence of integers with the first five 
 terms as following:
 1.     1
@@ -791,33 +892,32 @@ terms as following:
 Given an integer n where 1 ≤ n ≤ 30, generate the nth term of the count-and-say sequence.
 Note: Each term of the sequence of integers will be represented as a string.
 */
-class _0038_CountAndSay
-{
+class _0038_CountAndSay {
 public:
     std::string countAndSay(int n);
-
 private:
     std::string countOnce(std::string &s);
 };
 
 /*  
-    Given a set of candidate numbers (candidates without duplicates) 
-    and a target number (target), find all unique combinations in 
-    candidates where the candidate numbers sums to target.
-    
-    The same repeated number may be chosen from candidates unlimited number of times.
-    Note:
-        All numbers (including target) will be positive integers.
-        The solution set must not contain duplicate combinations.
-    Example 1:
-        Input: candidates = [2,3,6,7], target = 7,
-    A solution set is:
-        [  [7],  [2,2,3] ]
-    Example 2:
-        Input: candidates = [2,3,5], target = 8, 
-    A solution set is:
-        [  [2,2,2,2],  [2,3,3],  [3,5] ]
-    */
+Tag: backtracking
+Given a set of candidate numbers (candidates without duplicates) 
+and a target number (target), find all unique combinations in 
+candidates where the candidate numbers sums to target.
+
+The same repeated number may be chosen from candidates unlimited number of times.
+Note:
+    All numbers (including target) will be positive integers.
+    The solution set must not contain duplicate combinations.
+Example 1:
+    Input: candidates = [2,3,6,7], target = 7,
+A solution set is:
+    [  [7],  [2,2,3] ]
+Example 2:
+    Input: candidates = [2,3,5], target = 8, 
+A solution set is:
+    [  [2,2,2,2],  [2,3,3],  [3,5] ]
+*/
 class _0039_CombinationSum
 {
 public:
@@ -828,46 +928,48 @@ private:
 };
 
 /*
-    Given a collection of candidate numbers (candidates) and a target number (target), 
-    find all unique combinations in candidates where the candidate numbers sums to target.
+Tag: backtracking
+Given a collection of candidate numbers (candidates) and a target number (target), 
+find all unique combinations in candidates where the candidate numbers sums to target.
 
-    Each number in candidates may only be used once in the combination.
+Each number in candidates may only be used once in the combination.
 
-    Note:
+Note:
 
-    All numbers (including target) will be positive integers.
-    The solution set must not contain duplicate combinations.
-    Example 1:
+All numbers (including target) will be positive integers.
+The solution set must not contain duplicate combinations.
+Example 1:
 
-    Input: candidates = [10,1,2,7,6,1,5], target = 8,
-    A solution set is:
-    [
-    [1, 7],
-    [1, 2, 5],
-    [2, 6],
-    [1, 1, 6]
-    ]
-    Example 2:
+Input: candidates = [10,1,2,7,6,1,5], target = 8,
+A solution set is:
+[
+[1, 7],
+[1, 2, 5],
+[2, 6],
+[1, 1, 6]
+]
+Example 2:
 
-    Input: candidates = [2,5,2,1,2], target = 5,
-    A solution set is:
-    [
-    [1,2,2],
-    [5]
-    ]
+Input: candidates = [2,5,2,1,2], target = 5,
+A solution set is:
+[
+[1,2,2],
+[5]
+]
 */
-class _0040_CombinationSumII{
-    private:
-        std::vector<std::vector<int>> res;
-        std::vector<int> temp;
-    public:
-        void choose(std::vector<int>& candidates, int target, int begin);
-        std::vector<std::vector<int>> combinationSum2(std::vector<int>& candidates, int target);
+class _0040_CombinationSumII {
+private:
+    std::vector<std::vector<int>> res;
+    std::vector<int> temp;
+public:
+    void choose(std::vector<int>& candidates, int target, int begin);
+    std::vector<std::vector<int>> combinationSum2(std::vector<int>& candidates, int target);
 };
 
 /*
+TODO
+Tag: array, I don't know how to categorize.
 Given an unsorted integer array, find the smallest missing positive integer.
-
 Example 1:
     Input: [1,2,0]         :         Output: 3
     Input: [3,4,-1,1]      :         Output: 2
@@ -881,6 +983,7 @@ public:
 };
 
 /*
+Tag: string operation, basic arithmetic operation
 Given two non-negative integers num1 and num2 represented as strings, return the product 
 of num1 and num2, also represented as a string.
 Example 1:
@@ -1207,9 +1310,11 @@ public:
 };
 
 /*
+Tag: dynamic programming
 64. Minimum Path Sum
-Given a m x n grid filled with non-negative numbers, find a path from top left to bottom 
-right which minimizes the sum of all numbers along its path.
+Given a m x n grid filled with non-negative numbers, find a path from 
+top left to bottom right which minimizes the sum of all numbers along 
+its path.
 Note: You can only move either down or right at any point in time.
 
 Input:

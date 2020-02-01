@@ -8,22 +8,17 @@
 // 这里注意，当A[i] = A[A[i]-1]时会陷入死循环。这种情况下直接跳过。
 
 int LeetCode::_0041_FirstMissingPositive::firstMissingPositive(std::vector<int>& nums) {
-// const int n = nums.size();
-// int i = 0;
-// while(i < n) {
-//     if(nums[i] != i + 1 && nums[i] > 0 && nums[i] <= n && nums[i] != nums[nums[i] - 1]) {
-//         std::swap(nums[i], nums[nums[i] - 1]);
-//     } else {
-//         ++i;
-//     }
-// }
+    const int N = nums.size();
+    for(int i = 0; i < N; ++i) {
+        while(nums[i] > 0 && nums[i] <= N && nums[nums[i] - 1] != nums[i]) {
+            std::swap(nums[i], nums[nums[i] - 1]);
+        }
+    }
 
-// for(int i = 0; i < n; ++i) {
-//     if(nums[i] != i + 1) {
-//         return i + 1;
-//     }
-// }
-
- return -1;
-
+    for(int i = 0; i < N; ++i) {
+        if(nums[i] != i + 1) {
+            return i + 1;
+        }
+    }
+    return N + 1;
 }

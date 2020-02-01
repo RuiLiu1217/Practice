@@ -1,6 +1,5 @@
 #include "headers.hpp"
 
-
 std::string LeetCode::_0005_LongestPalindromicSubstring::longestPalidrome(std::string s) {
     if(s.size() == 0) {
         return "";
@@ -12,7 +11,9 @@ std::string LeetCode::_0005_LongestPalindromicSubstring::longestPalidrome(std::s
         int len2 = expandAroundCenter(s, i, i + 1); // Expand with neighbor same;
         int l = std::max(len1, len2);
         if(l > end - start) {
-            start = i - (l - 1) / 2; // The difficulty is how to calculate the start and end index according to the given center index
+            // The difficulty is how to calculate the start and end 
+            // index according to the given center index
+            start = i - (l - 1) / 2; 
             end = i + l / 2;
         }
     }

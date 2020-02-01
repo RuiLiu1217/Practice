@@ -5,7 +5,6 @@
 // using the formula:
 // num / a + num / b + num / c - num / lcm(ab) - num / lcm(bc) - num / lcm(ac) + num / lcm(abc)
 int LeetCode::_1201_UglyNumberIII::nthUglyNumber(int n, int a, int b, int c) {
-    
     int left = 0;
     int right = INT_MAX;
     int result = 0;
