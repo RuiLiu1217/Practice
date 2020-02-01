@@ -1025,10 +1025,12 @@ public:
 };
 
 /*
-    Given a collection of [distinct] integers, return all possible permutations
+Given a collection of [distinct] integers, return all 
+possible permutations
 Example:
-    Input: [1,2,3]
-    Output: [[1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], [3,2,1]]
+Input: [1,2,3]
+Output:[[1,2,3], [1,3,2], [2,1,3], 
+        [2,3,1], [3,1,2], [3,2,1]]
 */
 class _0046_Permutations {
 public:
@@ -1038,9 +1040,8 @@ private:
 };
 
 /*
-Given a collection of numbers that might contain duplicates, return all possible unique permutations.
-
-Example:
+Given a collection of numbers that might contain 
+duplicates, return all possible unique permutations.
 
 Input: [1,1,2]
 Output:
@@ -1052,25 +1053,15 @@ Output:
 */
 class _0047_PermutationsII {
 public:
-    vector<vector<int>> permuteUnique(vector<int>& nums) {
-        std::sort(nums.begin(), nums.end());
-        std::vector<std::vector<int>> res;
-        gen(nums, 0, nums.size() - 1, res);
-        return res;
-    }
-    void gen(std::vector<int> nums, int start, int end, std::vector<std::vector<int>>& res) {
-        if(start == end) {
-            res.push_back(nums);
-            return;
-        }
-        for(int i = start; i <= end; ++i) {
-            if(i != start && nums[i] == nums[start]) {
-                continue;
-            }
-            std::swap(nums[i], nums[start]);
-            gen(nums, start + 1, end, res);
-        }
-    }
+    std::vector<std::vector<int>> permuteUnique(
+        std::vector<int>& nums);
+    void genPermute(std::vector<int> nums, 
+        int start, int end, 
+        std::vector<std::vector<int>>& res);
+
+    void genPermute(std::unordered_map<int, int>& Map, 
+        int N, std::vector<int>& tmp,
+        std::vector<std::vector<int>>& res);
 };
 
 /* 
@@ -1086,7 +1077,7 @@ public:
 
 
 /*
-=======
+Tag: hash
 Group Anagrams :  Given an array of strings, group anagrams together.
 
 Input: ["eat", "tea", "tan", "ate", "nat", "bat"],
@@ -1103,6 +1094,9 @@ public:
 };
 
 /*
+Tag: recursive
+Note: integer data overflow if n < 0 --> -n but 
+      if n is INT_MIN, then...
 Implement pow(x, n), which calculates x raised to the power n (x^n).
 
 Input: 2.00000, 10       :           Output: 1024.00000
@@ -1141,6 +1135,8 @@ Explanation: There exist two distinct solutions to the 4-queens puzzle as shown 
 class _0051_NQueens {
 public:
     std::vector<std::vector<std::string>> solveNQueens(int n);
+    void solve(std::vector<std::string>& tmp, int curN, int n, std::vector<std::vector<std::string>>& res);
+    std::vector<int> availableQ(std::vector<std::string> tmp, int curN, int n);
 };
 
 /*
@@ -1221,7 +1217,9 @@ public:
 
 
 /*
-Todo
+Todo: The code is hard to think of. But the idea is not hard.
+Try to write it again and again.
+
 Given an array of non-negative integers, you are initially positioned at the first index of the array.
 Each element in the array represents your maximum jump length at that position.
 Determine if you are able to reach the last index.
@@ -1236,8 +1234,7 @@ public:
 };
 
 /*
-Todo: classical problem
-Merge Intervals
+Todo: interval 
 Given a collection of intervals, merge all overlapping intervals.
 
 Input: [[1,3],[2,6],[8,10],[15,18]]            :           Output: [[1,6],[8,10],[15,18]]
@@ -1252,6 +1249,30 @@ public:
 };
 
 /*
+Tag: Intervals
+Given a set of non-overlapping intervals, insert a new interval into the 
+intervals (merge if necessary).
+You may assume that the intervals were initially sorted according to their
+start times.
+
+Input: intervals = [[1,3],[6,9]], newInterval = [2,5]
+Output: [[1,5],[6,9]]
+
+Input: intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]], newInterval = [4,8]
+Output: [[1,2],[3,10],[12,16]]
+Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
+*/
+class _0057_InsertInterval {
+public:
+    std::vector<std::vector<int>> insert(std::vector<std::vector>& intervals,
+    std::vector<int>& newInterval);
+    bool newIntervalSmaller(const std::vector<int>& a, const std::vector<int>& b);
+    bool intersect(const std::vector<int>& a,const std::vector<int>& b);
+};
+
+
+/*
+Tag: string
 58. Length of Last Word
 Given a string s consists of upper/lower-case alphabets and empty space characters ' ', 
 return the length of last word in the string. If the last word does not exist, return 0.

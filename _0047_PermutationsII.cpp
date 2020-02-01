@@ -44,7 +44,7 @@ void gen(std::vector<int> nums, int start, int end, std::vector<std::vector<int>
         return;
     }
     for(int i = start; i <= end; ++i) {
-        if(i != start && nums[i] == nums[start]) {
+        if(i != start && nums[i] == nums[start]) { // remove duplicates
             continue;
         }
         std::swap(nums[i], nums[start]);

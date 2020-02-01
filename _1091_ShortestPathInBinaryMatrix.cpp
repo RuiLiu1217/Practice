@@ -16,11 +16,7 @@ static int shortPathBinaryMatrix(std::vector<std::vector<int>>& grid, int steps 
             auto c = q.front();
             q.pop();
 
-            if(
-            c.first >= 0 && 
-            c.second >= 0 && 
-            c.first < grid.size() && 
-            c.second < grid[0].size() && 
+            if(c.first >= 0 && c.second >= 0 && c.first < grid.size() && c.second < grid[0].size() && 
             !grid[c.first][c.second]) {
                 grid[c.first][c.second] = 1;
                 if(c.first == grid.size() - 1 && c.second == grid[0].size() - 1) {
