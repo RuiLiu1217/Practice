@@ -1004,6 +1004,10 @@ private:
 };
 
 /*
+TODO
+Tag: BFS
+Note: be careful of boundary conditions
+
 Given an array of non-negative integers, you are initially positioned at the first index of the array.
 Each element in the array represents your maximum jump length at that position.
 Your goal is to reach the last index in the minimum number of jumps.
@@ -1021,16 +1025,14 @@ public:
 };
 
 /*
-        Given a collection of [distinct] integers, return all possible permutations
-    Example:
-        Input: [1,2,3]
-        Output: [[1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], [3,2,1]]
-    */
-class _0046_Permutations
-{
+    Given a collection of [distinct] integers, return all possible permutations
+Example:
+    Input: [1,2,3]
+    Output: [[1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], [3,2,1]]
+*/
+class _0046_Permutations {
 public:
     std::vector<std::vector<int>> permute(std::vector<int> &nums);
-
 private:
     void permuteRecursive(std::vector<int> &nums, int begin, std::vector<std::vector<int>> &result);
 };
@@ -1048,19 +1050,15 @@ Output:
   [2,1,1]
 ]
 */
-class _0047_PermutationsII{
+class _0047_PermutationsII {
 public:
-/*
     vector<vector<int>> permuteUnique(vector<int>& nums) {
         std::sort(nums.begin(), nums.end());
         std::vector<std::vector<int>> res;
-        genPermute(nums, 0, nums.size() - 1, res);
+        gen(nums, 0, nums.size() - 1, res);
         return res;
     }
-    */
-    
-    // This function is not correct 
-    /*void genPermute(std::vector<int>& nums, int start, int end, std::vector<std::vector<int>>& res) {
+    void gen(std::vector<int> nums, int start, int end, std::vector<std::vector<int>>& res) {
         if(start == end) {
             res.push_back(nums);
             return;
@@ -1070,42 +1068,18 @@ public:
                 continue;
             }
             std::swap(nums[i], nums[start]);
-            genPermute(nums, start+1, end, res);
-            std::swap(nums[i], nums[start]);
-        }
-    }*/
-    // However, this is correct, I have no idea why.
-    /*
-    void genPermute(std::vector<int> nums, int start, int end, std::vector<std::vector<int>>& res) {
-        if(start == end) {
-            res.push_back(nums);
-            return;
-        }
-        for(int i = start; i <= end; ++i) {
-            if(i != start && nums[i] == nums[start]) {
-                continue;
-            }
-            std::swap(nums[i], nums[start]);
-            genPermute(nums, start+1, end, res);
+            gen(nums, start + 1, end, res);
         }
     }
-    */
-    
-    
-    std::vector<std::vector<int>> permuteUnique(std::vector<int>& nums);
-    
-    void genPermute(std::unordered_map<int, int>& Map, int N, 
-                     std::vector<int>& tmp,
-                     std::vector<std::vector<int>>& res);
 };
 
 /* 
-        You are given an n x n 2D matrix representing an image. Rotate the image by 90 degrees (clockwise).
-        Note: You have to rotate the image in-place, which means you have to modify the input 2D matrix 
-        directly. DO NOT allocate another 2D matrix and do the rotation.
-    */
-class _0048_RotateImage
-{
+Tag: matrix operation
+You are given an n x n 2D matrix representing an image. Rotate the image by 90 degrees (clockwise).
+Note: You have to rotate the image in-place, which means you have to modify the input 2D matrix 
+directly. DO NOT allocate another 2D matrix and do the rotation.
+*/
+class _0048_RotateImage {
 public:
     void rotate(std::vector<std::vector<int>> &matrix);
 };
@@ -1143,7 +1117,54 @@ public:
     double myPow(double x, int n);
 };
 
-class _0052_NQueensII{
+/*
+Tag: backtracking
+The n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no 
+two queens attack each other. Given an integer n, return all distinct solutions to the 
+n-queens puzzle. Each solution contains a distinct board configuration of the n-queens' 
+placement, where 'Q' and '.' both indicate a queen and an empty space respectively.
+
+Input: 4
+Output: [
+ [".Q..",  // Solution 1
+  "...Q",
+  "Q...",
+  "..Q."],
+
+ ["..Q.",  // Solution 2
+  "Q...",
+  "...Q",
+  ".Q.."]
+]
+Explanation: There exist two distinct solutions to the 4-queens puzzle as shown above.
+*/
+class _0051_NQueens {
+public:
+    std::vector<std::vector<std::string>> solveNQueens(int n);
+};
+
+/*
+Tag: backtracking
+The n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no 
+two queens attack each other. Given an integer n, return all distinct solutions to the 
+n-queens puzzle. Each solution contains a distinct board configuration of the n-queens' 
+placement, where 'Q' and '.' both indicate a queen and an empty space respectively.
+
+Input: 4
+Output: [
+ [".Q..",  // Solution 1
+  "...Q",
+  "Q...",
+  "..Q."],
+
+ ["..Q.",  // Solution 2
+  "Q...",
+  "...Q",
+  ".Q.."]
+]
+Explanation: There exist two distinct solutions to the 4-queens puzzle as shown above.
+*/
+class _0052_NQueensII {
 public:
     int totalNQueens(int n);
 private:
@@ -1153,6 +1174,9 @@ private:
 };
 
 /*
+Tag: dynamic programming or conqor and merge
+TODO: Classical problem
+
 Maximum Subarray
 Given an integer array nums, find the contiguous subarray (containing at least one number) 
 which has the largest sum and return its sum.
@@ -1170,10 +1194,10 @@ private:
     int includeMid(std::vector<int>& nums, int start, int end, int mid);
 };
 
-
 /*
+Tag: matrix operations
+Note: edge condition
 Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order.
-
 Input:
 [
  [ 1, 2, 3 ],
@@ -1196,8 +1220,8 @@ public:
 };
 
 
-
 /*
+Todo
 Given an array of non-negative integers, you are initially positioned at the first index of the array.
 Each element in the array represents your maximum jump length at that position.
 Determine if you are able to reach the last index.
@@ -1212,6 +1236,7 @@ public:
 };
 
 /*
+Todo: classical problem
 Merge Intervals
 Given a collection of intervals, merge all overlapping intervals.
 
@@ -1221,20 +1246,16 @@ Explanation: Since intervals [1,3] and [2,6] overlaps, merge them into [1,6].
 Input: [[1,4],[4,5]]                           :           Output: [[1,5]]
 Explanation: Intervals [1,4] and [4,5] are considered overlapping.
 */
-class _0056_MergeIntervals{
+class _0056_MergeIntervals {
 public:
     std::vector<std::vector<int>> merge(std::vector<std::vector<int>>& intervals);
 };
 
 /*
 58. Length of Last Word
-Given a string s consists of upper/lower-case alphabets and empty space characters ' ', return the length of last word in the string.
-
-If the last word does not exist, return 0.
-
+Given a string s consists of upper/lower-case alphabets and empty space characters ' ', 
+return the length of last word in the string. If the last word does not exist, return 0.
 Note: A word is defined as a character sequence consists of non-space characters only.
-
-Example:
 
 Input: "Hello World"
 Output: 5

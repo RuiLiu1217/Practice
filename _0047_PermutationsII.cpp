@@ -30,3 +30,25 @@ void LeetCode::_0047_PermutationsII::genPermute(std::unordered_map<int, int>& Ma
         }
     }
 }
+/*
+Better solution
+vector<vector<int>> permuteUnique(vector<int>& nums) {
+    std::sort(nums.begin(), nums.end());
+    std::vector<std::vector<int>> res;
+    gen(nums, 0, nums.size() - 1, res);
+    return res;
+}
+void gen(std::vector<int> nums, int start, int end, std::vector<std::vector<int>>& res) {
+    if(start == end) {
+        res.push_back(nums);
+        return;
+    }
+    for(int i = start; i <= end; ++i) {
+        if(i != start && nums[i] == nums[start]) {
+            continue;
+        }
+        std::swap(nums[i], nums[start]);
+        gen(nums, start + 1, end, res);
+    }
+}
+*/

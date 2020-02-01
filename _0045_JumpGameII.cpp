@@ -15,6 +15,8 @@
 // cases. And the following codes handle all of them in a unified way 
 // without using the unclean if statements.
 // BFS
+// TODO:
+// Tag: BFS
 int LeetCode::_0045_JumpGameII::jump(std::vector<int>& nums) {
     int n = nums.size(), step = 0, start = 0, end = 0;
     while(end < n - 1) {
