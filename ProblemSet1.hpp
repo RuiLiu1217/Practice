@@ -1264,7 +1264,7 @@ Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
 */
 class _0057_InsertInterval {
 public:
-    std::vector<std::vector<int>> insert(std::vector<std::vector>& intervals,
+    std::vector<std::vector<int>> insert(std::vector<std::vector<int>>& intervals,
     std::vector<int>& newInterval);
     bool newIntervalSmaller(const std::vector<int>& a, const std::vector<int>& b);
     bool intersect(const std::vector<int>& a,const std::vector<int>& b);
@@ -1288,6 +1288,7 @@ public:
 
 
 /*
+Tag: matrix operation
 Given a positive integer n, generate a square matrix filled with elements from 1 to n2 in spiral order.
 Input: 3
 Output:
@@ -1303,8 +1304,39 @@ public:
 };
 
 
+/*
+Tag: Permutation, Priority Queue, String
+TODO
+Note: The same, how to generate next permuation
+
+The set [1,2,3,...,n] contains a total of n! unique 
+permutations.
+By listing and labeling all of the permutations in 
+order, we get the following sequence for n = 3:
+
+"123" "132" "213" "231" "312" "321"
+Given n and k, return the kth permutation sequence.
+
+Note:
+Given n will be between 1 and 9 inclusive.
+Given k will be between 1 and n! inclusive.
+
+Input: n = 3, k = 3
+Output: "213"
+
+Input: n = 4, k = 9
+Output: "2314"
+*/
+class _0060_PermutationSequence {
+public:
+    std::string getPermutation(int n, int k);
+    std::string getNext(std::string S);
+};
+
 
 /*
+Tag: Single Linked List
+
 Given a linked list, rotate the list to the right by k places, where k is non-negative.
 
 Example 1:
@@ -1330,6 +1362,8 @@ public:
 };
 
 /*
+Tag: Dynamic Programming
+
 62. Unique Paths
 A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below).
 The robot can only move either down or right at any point in time. The robot is trying to reach 
@@ -1345,7 +1379,37 @@ public:
 };
 
 
+/*
+Tag: Dynamic Programming
 
+A robot is located at the top-left corner of a m x n 
+grid (marked 'Start' in the diagram below).
+The robot can only move either down or right at any 
+point in time. The robot is trying to reach the 
+bottom-right corner of the grid (marked 'Finish' in 
+the diagram below).
+
+Now consider if some obstacles are added to the grids. 
+How many unique paths would there be?
+
+An obstacle and empty space is marked as 1 and 0 
+respectively in the grid.
+
+Note: m and n will be at most 100.
+
+Input:
+[
+  [0,0,0],
+  [0,1,0],
+  [0,0,0]
+]
+Output: 2
+Explanation:
+There is one obstacle in the middle of the 3x3 grid above.
+There are two ways to reach the bottom-right corner:
+1. Right -> Right -> Down -> Down
+2. Down -> Down -> Right -> Right
+*/
 class _0063_UniquePathsII{
 public:
     int uniquePathsWithObstacles(std::vector<std::vector<int>>& obstacleGrid);
@@ -1374,6 +1438,14 @@ public:
 };
 
 /*
+Tag: String, DFA, NFA
+*/
+class _0065_ValidNumber {
+
+};
+
+/*
+Tag: array operation
 Given a non-empty array of digits representing a non-negative integer, 
 plus one to the integer. The digits are stored such that the most significant 
 digit is at the head of the list, and each element in the array contain 
@@ -1391,6 +1463,7 @@ public:
 };
 
 /*
+Tag: Array operation
 Given two binary strings, return their sum (also a binary string).
 The input strings are both non-empty and contains only characters 1 or 0.
 
