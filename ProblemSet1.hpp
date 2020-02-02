@@ -1476,6 +1476,7 @@ public:
 };
 
 /*
+Tag: Binary search.
 Implement int sqrt(int x).
 Compute and return the square root of x, where x is guaranteed to be a non-negative integer.
 Since the return type is an integer, the decimal digits are truncated and only the integer 
@@ -1484,16 +1485,16 @@ part of the result is returned.
 Input: 4           :          Output: 2
 Input: 8           :          Output: 2
 
-Explanation: The square root of 8 is 2.82842..., and since 
-             the decimal part is truncated, 2 is returned.
+Explanation: The square root of 8 is 2.82842..., and since
+the decimal part is truncated, 2 is returned.
 */
 class _0069_SqrtX {
 public:
     int mySqrt(int x);
 };
 
-
 /*
+Tag: dynamic programming, fibnacci
 You are climbing a stair case. It takes n steps to reach to the top. Each time you can either climb 1 or 2 
 steps. In how many distinct ways can you climb to the top?
 
@@ -1502,7 +1503,6 @@ Note: Given n will be a positive integer.
 Input: 2            :            Output: 2
 1. 1 step + 1 step
 2. 2 steps
-
 
 Input: 3            :            Output: 3
 1. 1 step + 1 step + 1 step
@@ -1516,6 +1516,8 @@ public:
 
 
 /*
+Tag: string, stringstream operation
+Todo: familar with stringstream
 Given an absolute path for a file (Unix-style), simplify it. Or in other words, 
 convert it to the canonical path. In a UNIX-style file system, a period . refers to 
 the current directory. Furthermore, a double period .. moves the directory up a 
@@ -1549,6 +1551,35 @@ public:
     std::string simplifyPath(std::string path);
 };
 
+/*
+Given two words word1 and word2, find the minimum number 
+of operations required to convert word1 to word2.
+You have the following 3 operations permitted on a word:
+
+Insert a character
+Delete a character
+Replace a character
+
+Input: word1 = "horse", word2 = "ros"
+Output: 3
+Explanation: 
+horse -> rorse (replace 'h' with 'r')
+rorse -> rose (remove 'r')
+rose -> ros (remove 'e')
+
+Input: word1 = "intention", word2 = "execution"
+Output: 5
+Explanation: 
+intention -> inention (remove 't')
+inention -> enention (replace 'i' with 'e')
+enention -> exention (replace 'n' with 'x')
+exention -> exection (replace 'n' with 'c')
+exection -> execution (insert 'u')
+*/
+class _0072_EditDistance{
+public:
+    int minDistance(std::string word1, std::string word2);
+};
 
 /*
 Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in-place.
