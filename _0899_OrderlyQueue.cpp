@@ -29,3 +29,4 @@ std::string LeetCode::_0899_OrderlyQueue::orderlyQueue(std::string S, int K) {
         }
         return res;
     }
+}

@@ -95,6 +95,20 @@ public:
     int change(int amount, std::vector<int>& coins);
 };
 
+class _0519_RandomFlipMatrix {
+private:
+    int M;
+    int N;
+    int len;
+    std::vector<int> index;    
+public:
+    _0519_RandomFlipMatrix(int n_rows, int n_cols);
+    std::vector<int> flip();
+    void reset();
+
+};
+
+
 /*
 Note: This is a companion problem to the System Design problem: Design TinyURL.
 TinyURL is a URL shortening service where you enter a URL such as 

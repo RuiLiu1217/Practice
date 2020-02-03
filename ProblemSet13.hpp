@@ -802,6 +802,11 @@ public:
     int countSquares(std::vector<std::vector<int>>& matrix);
 };
 
+
+class _1281_SubstractTheProductAndSumOfDigitsOfAnInteger {
+public:
+    int subtractProductAndSum(int n);
+};
 /*
 There are n people whose IDs go from 0 to n - 1 and each person belongs exactly 
 to one group. Given the array groupSizes of length n telling the group size each 

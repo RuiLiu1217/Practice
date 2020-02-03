@@ -2113,10 +2113,55 @@ Input: [5,1,4,null,null,3,6]
 Output: false
 Explanation: The root node's value is 5 but its right child's value is 4.
 */
-class _0098_ValidateBinarySearchTree
-{
+class _0098_ValidateBinarySearchTree {
 public:
     bool isValidBST(TreeNode<int> *root);
+};
+
+/*
+Two elements of a binary search tree (BST) are swapped by mistake.
+Recover the tree without changing its structure.
+
+Input: [1,3,null,null,2]
+
+   1
+  /
+ 3
+  \
+   2
+
+Output: [3,1,null,null,2]
+
+   3
+  /
+ 1
+  \
+   2
+Example 2:
+
+Input: [3,1,4,null,null,2]
+
+  3
+ / \
+1   4
+   /
+  2
+
+Output: [2,1,4,null,null,3]
+
+  2
+ / \
+1   4
+   /
+  3
+Follow up:
+
+A solution using O(n) space is pretty straight forward.
+Could you devise a constant space solution?
+*/
+class _0099_RecoverBinarySearchTree {
+public:
+    void recoverTree(TreeNode<int>* root);
 };
 
 /*

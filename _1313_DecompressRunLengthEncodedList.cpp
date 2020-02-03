@@ -1,4 +1,5 @@
 #include "headers.hpp"
+#include <numeric>
 
 std::vector<int> LeetCode::_1313_DecompressRunLengthEncodedList::decompressRLElist(std::vector<int>& nums) {
 	std::vector<int> res;
