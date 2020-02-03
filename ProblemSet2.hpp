@@ -333,7 +333,7 @@ Return:
 class _0113_PathSumII{
 public:
     std::vector<std::vector<int>> pathSum(TreeNode<int>* root, int sum);
-    void pathSum(TreeNode* root, int sum, std::vector<int> tmp, std::vector<std::vector<int>>& res);
+    void pathSum(TreeNode<int>* root, int sum, std::vector<int> tmp, std::vector<std::vector<int>>& res);
 };
 
 /*

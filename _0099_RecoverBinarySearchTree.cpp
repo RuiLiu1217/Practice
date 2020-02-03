@@ -1,6 +1,6 @@
 #include "headers.hpp"
 
-void LeetCode::_0099_RecoverBinarySearchTree::recoverTree(TreNode<int>* root) {
+void LeetCode::_0099_RecoverBinarySearchTree::recoverTree(TreeNode<int>* root) {
     TreeNode<int>* first = nullptr;
     TreeNode<int>* second = nullptr;
     TreeNode<int>* prev = new TreeNode<int>(INT_MIN);

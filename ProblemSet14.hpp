@@ -42,6 +42,11 @@ public:
     std::vector<int> pathsWithMaxScore(std::vector<std::string>& bd);
 };
 
+class _1302_DeepestLeavesSum {
+public:
+    int deepestLeavesSum(TreeNode<int>* root);
+};
+
 /*
 Given an integer n, return any array containing n unique integers such that they add up to 0.
 

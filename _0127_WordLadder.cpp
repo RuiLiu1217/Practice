@@ -114,7 +114,7 @@ int LeetCode::_0127_Wordladder::ladderLength(std::string beginWord, std::string 
 }
 
 // BFS in one direction
-static int ladderLength(std::string beginWord, std::string endWord, std::vector<std::string>& wordList) {
+static int ladderLengthv1(std::string beginWord, std::string endWord, std::vector<std::string>& wordList) {
     std::unordered_set<std::string> dict(wordList.begin(), wordList.end());
     std::queue<std::string> todo;
     todo.push(beginWord);
@@ -146,7 +146,7 @@ static int ladderLength(std::string beginWord, std::string endWord, std::vector<
 
 
 // BFS in dual directions
-static int ladderLength(std::string beginWord, std::string endWord, std::vector<std::string>& wordList) {
+static int ladderLengthv2(std::string beginWord, std::string endWord, std::vector<std::string>& wordList) {
     std::unordered_set<std::string> dict(wordList.begin(), wordList.end()), head, tail, *phead, *ptail;
     if (dict.find(endWord) == dict.end()) {
         return 0;

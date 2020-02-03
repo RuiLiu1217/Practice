@@ -2112,7 +2112,7 @@ Could you devise a constant space solution?
 */
 class _0099_RecoverBinarySearchTree {
 public:
-    void recoverTree(TreeNode* root);
+    void recoverTree(TreeNode<int>* root);
 };
 
 /*

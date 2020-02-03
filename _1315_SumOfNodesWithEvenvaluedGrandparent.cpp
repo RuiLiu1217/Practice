@@ -2,8 +2,8 @@
 #include <unordered_set>
 #include <queue>
 
+
 int LeetCode::_1315_SumOfNodesWithEvenvaluedGrandparent::sumEvenGrandparent(TreeNode<int>* root) {
-    int sumEvenGrandparent(TreeNode<int>* root) {
     TreeNode<int>* p = root;
     std::queue<TreeNode<int>*> q;
     std::unordered_set<TreeNode<int>*> pnt;
