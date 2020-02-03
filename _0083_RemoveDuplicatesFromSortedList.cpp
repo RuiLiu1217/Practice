@@ -18,3 +18,33 @@ ListNode<int>* LeetCode::_0083_RemoveDuplicatesFromSortedList::deleteDuplicates(
     }
     return head;
 }
+
+/*
+class Solution {
+public:
+    ListNode* deleteDuplicates(ListNode* head) {
+        if(head == nullptr || head->next == nullptr) {
+            return head;
+        }
+        std::queue<ListNode*> q;
+        q.push(head);
+        ListNode* t = head->next;
+        while(t) {
+            if(t->val != q.back()->val) {
+                q.push(t);
+            }
+            t = t->next;
+        }
+        q.back()->next = nullptr;
+        ListNode* h = q.front();
+        q.pop();
+        head = h;
+        while(!q.empty()) {
+            h->next = q.front();
+            q.pop();
+            h = h->next;
+        }
+        return head;
+    }
+};
+*/

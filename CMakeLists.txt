@@ -4,13 +4,25 @@ ADD_LIBRARY(Practice STATIC
 	SkipList.hpp
 	ProblemSet3.hpp
 	FenwickTree.hpp
+	ProblemSet4.hpp
+	ProblemSet11.hpp
+	ProblemSet10.hpp
 	DataStructures.hpp
+	ProblemSet5.hpp
 	ProblemSet2.hpp
 	Trie.hpp
+	ProblemSet14.hpp
 	headers.hpp
+	ProblemSet8.hpp
+	ProblemSet13.hpp
 	ProblemSet1.hpp
+	ProblemSet6.hpp
+	_0875_KokoEatingBananas.hpp
 	Tree.hpp
 	DisjointSet.hpp
+	ProblemSet7.hpp
+	ProblemSet12.hpp
+	ProblemSet9.hpp
 	LinkList.hpp
 	_0667_BeautifulArrangementII.cpp
 	_1105_FillingBookcaseShelves.cpp
@@ -20,6 +32,7 @@ ADD_LIBRARY(Practice STATIC
 	_1079_LetterTilePossibilities.cpp
 	_0390_EliminationGame.cpp
 	_0318_MaximumProductOfWordLengths.cpp
+	_0931_MinimumFallingPathSum.cpp
 	_0105_ConstructBinaryTreeFromPreorderAndInorderTraversal.cpp
 	_0173_BinarySearchTreeIterator.cpp
 	_0096_UniqueBinarySearchTrees.cpp
@@ -28,6 +41,7 @@ ADD_LIBRARY(Practice STATIC
 	_0394_DecodeString.cpp
 	_1146_SnapshotArray.cpp
 	_0069_SqrtX.cpp
+	_0833_FindAndReplaceInString.cpp
 	_0447_NumberOfBoomeranges.cpp
 	_1254_NumberOfClosedIslands.cpp
 	_0200_NumberOfIslands.cpp
@@ -38,6 +52,8 @@ ADD_LIBRARY(Practice STATIC
 	_0933_NumberOfRecentCalls.cpp
 	_0589_NaryTreePreorderTraversal.cpp
 	_0687_LongestUnivaluePath.cpp
+	_0072_EditDistance.cpp
+	_1269_NumberOfWaysToStayInTheSamePlaceAfterSomeSteps.cpp
 	_0980_UniquePathsIII.cpp
 	_0110_BalancedBinaryTree.cpp
 	_0979_DistributeCoinsInBinaryTree.cpp
@@ -47,6 +63,9 @@ ADD_LIBRARY(Practice STATIC
 	_1103_DistributeCandiesToPeople.cpp
 	_0654_MaximumBinaryTree.cpp
 	_0326_PowerOfThree.cpp
+	_1301_NumberOfPathsWithMaxScore.cpp
+	_0398_RandomPickIndex.cpp
+	_0092_ReverseLinkedListII.cpp
 	_0830_PositionsOfLargeGroups.cpp
 	_1074_NumberOfSubmatricesThatSumToTarget.cpp
 	__1508_ScoreAfterFlippingMatrix.cpp
@@ -55,7 +74,9 @@ ADD_LIBRARY(Practice STATIC
 	_0017_LetterCombinationsOfAPhoneNumber.cpp
 	_0094_BinaryTreeInorderTraversal.cpp
 	_0313_SuperUglyNumber.cpp
+	_0368_LargestDivisibleSubset.cpp
 	_0890_FindAndReplacePattern.cpp
+	_0187_RepeatedDNASequences.cpp
 	_1276_NumberofBurgersWithNoWasteOfIngredients.cpp
 	_0380_RandomizedSet.cpp
 	_1145_BinaryTreeColoringGame.cpp
@@ -63,11 +84,13 @@ ADD_LIBRARY(Practice STATIC
 	_1111_MaximumNestingDepthOfTwoValidParenthesesStrings.cpp
 	_1222_QueensThatCanAttackTheKing.cpp
 	_0053_MaximumSubArray.cpp
+	_0876_MiddleOfTheLinkedList.cpp
 	_1008_ConstructBinarySearchTreeFromPreorderTraversal.cpp
 	_0127_WordLadder.cpp
 	_0102_BinaryTreeLevelOrderTraversal.cpp
 	_0152_MaximumProductSubarray.cpp
 	_0002_AddTwoNumbers.cpp
+	_0904_FruitInoBackets.cpp
 	_0041_FirstMissingPositive.cpp
 	_0661_ImageSmoother.cpp
 	_1038_BinarySearchTreeGoGreaterSumTree.cpp
@@ -75,16 +98,22 @@ ADD_LIBRARY(Practice STATIC
 	__1038_JewelsAndStones.cpp
 	_0405_ConvertANumberToHexadecimal.cpp
 	_0946_ValidateStackSequences.cpp
+	_0899_OrderlyQueue.cpp
+	_0393_UTF8Validation.cpp
 	_0598_RangeAdditionII.cpp
 	_0371_SumOfTwoIntegers.cpp
 	_0441_ArrangingCoins.cpp
 	_0725_SplitLinkedListInParts.cpp
+	_0209_MinimumSizeSubarraySum.cpp
+	_1286_IteratorForCombination.cpp
 	_0862_ShortestSubarrayWithSumAtLeastK.cpp
 	_0557_ReverseWordsInAStringIII.cpp
 	_1104_PathInZigzagLabelledBinaryTree.cpp
 	_0316_RemoveDuplicateLetters.cpp
+	_0934_ShortestBridge.cpp
 	_0303_RangeSumQueryImmutable.cpp
 	__0009_FizzBuzz.cpp
+	_0399_EvaluateDivision.cpp
 	_0885_SpiralMatrixIII.cpp
 	_0700_SearchInABinarySearchTree.cpp
 	_0414_ThirdMaximumNumber.cpp
@@ -96,19 +125,26 @@ ADD_LIBRARY(Practice STATIC
 	_0047_PermutationsII.cpp
 	_0401_BinaryWatch.cpp
 	_0537_ComplexNumberMultiplication.cpp
+	_0599_MinimumIndexSumOfTwoLists.cpp
 	_0100_SameTree.cpp
 	_0009_PalindromeNumber.cpp
 	_0059_SpiralMatrixII.cpp
 	_0046_Permutations.cpp
 	_0423_ReconstructOriginalDigitsFromEnglish.cpp
 	_0347_TopKFrequentElements.cpp
+	_1315_SumOfNodesWithEvenvaluedGrandparent.cpp
 	_1125_SmallestSufficientTeam.cpp
+	_0223_RectangleArea.cpp
 	_0328_OddEvenLinkedList.cpp
+	_0668_KnightProbabilityInChessboard.cpp
 	__0004_UglyNumberII.cpp
 	_0144_BinaryTreePreOrderTraversal.cpp
 	_0007_ReverseInteger.cpp
 	_1122_RelativeSortArray.cpp
+	_0816_AmbiguousCoordinates.cpp
 	_0027_RemoveElement.cpp
+	_0761_SpecialBinaryString.cpp
+	_0785_IsGraphBipartitle.cpp
 	_1108_DefangingAnIPAddress.cpp
 	_0052_NQueensII.cpp
 	_0073_SetMatrixZeros.cpp
@@ -118,7 +154,10 @@ ADD_LIBRARY(Practice STATIC
 	_0075_SortColors.cpp
 	_0322_CoinChange.cpp
 	_1081_SmallestSubsequenceOfDistinctCharacters.cpp
+	_1299_ReplaceElementsWithGreatestElementOnRightSide.cpp
+	_1281_SubstractTheProductAndSumOfDigitsOfAnInteger.cpp
 	_0093_RestoreIPAddress.cpp
+	_0416_PartitionEqualSubsetSum.cpp
 	_0003_LongestSubstringWithoutRepeatingCharacters.cpp
 	_0622_DesignCircularQueue.cpp
 	_0147_InsertionSortList.cpp
@@ -127,11 +166,13 @@ ADD_LIBRARY(Practice STATIC
 	_0213_HouseRobberII.cpp
 	__1126_MergeTwoBinaryTrees.cpp
 	_0378_KthSmallestElementInASortedMatrix.cpp
+	_0746_MinCostClimbingStairs.cpp
 	_0071_SimplifyPath.cpp
 	_0128_LongestConsecutiveSequence.cpp
 	_0089_GrayCode.cpp
-	_876_MiddleOfTheLinkedList.cpp
 	_0199_BinaryTreeRightSideView.cpp
+	_0051_NQueens.cpp
+	_1255_MaximumScoreWordsFormedByLetters.cpp
 	_0119_PascalTriangleII.cpp
 	_0086_PartitionList.cpp
 	_0554_BrickWall.cpp
@@ -142,6 +183,7 @@ ADD_LIBRARY(Practice STATIC
 	_0756_PyramidTransitionMatrix.cpp
 	_0540_SingleElementInASortedArray.cpp
 	_0162_FindPeakElement.cpp
+	_0081_SearchInRotatedSortedArrayII.cpp
 	_0058_LengthOfLastWord.cpp
 	_0131_PalindromePartitioning.cpp
 	_0078_Subsets.cpp
@@ -149,18 +191,22 @@ ADD_LIBRARY(Practice STATIC
 	_1025_DivisorGame.cpp
 	_1277_CountSquareSubmatricesWithAllOnes.cpp
 	_0029_DivideTwoIntegers.cpp
+	_0593_ValidSquare.cpp
 	_0155_MinStack.cpp
 	_1200_MinimumAbsoluteDifference.cpp
+	_0984_StringWithoutAAAOrBBB.cpp
 	_0063_UniquePathsII.cpp
 	_0452_MinimumNumberOfArrowsToBurstBalloons.cpp
 	_0406_QueueReconstructionByHeight.cpp
 	_0088_MergeSortedArray.cpp
 	_0084_LongestRectangleInHistogram.cpp
+	_1323_Maximum69Number.cpp
 	_0647_PalindromicSubstrings.cpp
 	_0198_HouseRobber.cpp
 	_0055_JumpGame.cpp
 	__1010_MatrixIncreaseToKeepCitySkyline.cpp
 	_0190_ReverseBits.cpp
+	_0741_CherryPickup.cpp
 	_1030_MatrixCellsInDistanceOrder.cpp
 	_0005_LongestpalindromicSubstring.cpp
 	_0306_AdditiveNumber.cpp
@@ -171,16 +217,23 @@ ADD_LIBRARY(Practice STATIC
 	_0202_HappyNumber.cpp
 	_0823_BinaryTreeWithFactors.cpp
 	_0481_MagicalString.cpp
+	_0386_LexicographicalNumbers.cpp
+	_1091_ShortestPathInBinaryMatrix.cpp
 	_1028_RecoverATreeFromPreorderTraversal.cpp
 	_0021_MergeTwoSortedLists.cpp
+	_0799_ChampagneTower.cpp
 	_0429_NaryTreelevelOrderTraversal.cpp
+	_0923_3SumWithMultiplicity.cpp
 	_0070_ClimbingStairs.cpp
+	_0963_MinimumAreaRectangleII.cpp
 	_0104_MaximumDepthOfBinaryTree.cpp
 	_0045_JumpGameII.cpp
 	_0206_ReverseLinkedList.cpp
 	_0797_AllPathsFromSourceToTarget.cpp
+	_0279_PerfectSquares.cpp
 	_0838_PushDominoes.cpp
 	__0002_TrailingZeros.cpp
+	_1313_DecompressRunLengthEncodedList.cpp
 	_0039_CombinationSum.cpp
 	_0427_ConstructQuadTree.cpp
 	_0022_GenerateParentheses.cpp
@@ -194,8 +247,12 @@ ADD_LIBRARY(Practice STATIC
 	_0657_RobotReturnToOrigin.cpp
 	_1190_ReverseSubstringBetweenEachPairOfParentheses.cpp
 	_1227_AirplaneSeatAssignmentProbability.cpp
+	_1232_CheckIfItIsAStraightLine.cpp
+	_0435_NonOverlappingIntervals.cpp
 	_0062_UniquePaths.cpp
 	_0172_FactorialTrailingZeroes.cpp
+	_1290_ConvertBinaryNumberInALinkedListToInteger.cpp
+	_0865_SmallestSubtreeWithAllTheDeepestNodes.cpp
 	_0310_MinimumHeightTrees.cpp
 	_0912_SortAnArray.cpp
 	_0136_SingleNumber.cpp
@@ -204,6 +261,7 @@ ADD_LIBRARY(Practice STATIC
 	_1106_ParsingABooleanExpression.cpp
 	_0013_RomanToInteger.cpp
 	_0771_JewelsAndStones.cpp
+	_1287_ElementAppearingMoreThan25PercentInSortedArray.cpp
 	_0307_RangeSumQuery_Mutable.cpp
 	_0012_IntegerToRoman.cpp
 	_1160_FindWordsThatCanBeFormedByCharacters.cpp
@@ -215,6 +273,9 @@ ADD_LIBRARY(Practice STATIC
 	_0942_DIStringMatch.cpp
 	_0344_ReverseString.cpp
 	__1151_MirrorReflection.cpp
+	_1004_MaxConsecutiveOnesIII.cpp
+	_0433_MinimumGeneticMutation.cpp
+	_1282_GroupThePeopleGivenTheGroupSizeTheyBelongTo.cpp
 	_0167_TwoSumII_InputArrayIsSorted.cpp
 	_0174_DungeonGame.cpp
 	_0106_ConstructBinaryTreeFromInorderAndPostorderTraversal.cpp
@@ -222,13 +283,17 @@ ADD_LIBRARY(Practice STATIC
 	_0004_MedianOfTwoSortedArrays.cpp
 	__1115_AverageOfLevelsInBinaryTree.cpp
 	_0735_AsteroidCollision.cpp
+	_1309_DecryptStringFromAlphabetToIngeterMapping.cpp
 	_0553_OptimalDivision.cpp
 	_0048_RotateImage.cpp
 	_0655_PrintBinaryTree.cpp
+	_0372_SuperPow.cpp
 	_0112_PathSum.cpp
 	__0008_RotateSting.cpp
 	_0337_HouseRobberIII.cpp
 	_0679_24Games.cpp
+	_1329_SortTheMatrixDiagonally.cpp
+	_1310_XORQueriesOfASubarray.cpp
 	_0559_MaximumDepthOfNaryTree.cpp
 	_0676_ImplementMagicDictionary.cpp
 	_0142_LinkedListCycleII.cpp
@@ -254,16 +319,19 @@ ADD_LIBRARY(Practice STATIC
 	_1252_CellsWithOddValuesInAMatrix.cpp
 	_0807_MaxIncreaseToKeepCitySkyline.cpp
 	_1221_SplitAStringInBalancedStrings.cpp
+	_0010_RegularExpressionMatching.cpp
 	_0777_SwapAdjacentInLRString.cpp
 	_1175_PrimeArrangements.cpp
 	_0148_SortList.cpp
 	_1046_LastStoneWeight.cpp
 	_0929_UniqueEmailAddress.cpp
+	_0275_HIndexII.cpp
 	_0728_SelfDividingNumbers.cpp
 	_0098_ValidateBinarySearchTree.cpp
 	_0019_RemoveNthNodeFromEndOfList.cpp
 	_0171_ExcelSheetColumnNumber.cpp
 	_0189_RotateArray.cpp
+	_1201_UglyNumberIII.cpp
 	_0686_RepeatedStringMatch.cpp
 	_0331_VerifyPreorderSerializationOfABinaryTree.cpp
 	_0006_ZigZagConversion.cpp
@@ -288,33 +356,45 @@ ADD_LIBRARY(Practice STATIC
 	_0944_DeleteColumnsToMakeSorted.cpp
 	_0641_DesignCircularDeque.cpp
 	_0074_SearchA2DMatrix.cpp
+	_0990_SatisfiabilityOfEqualityEquations.cpp
 	_0125_ValidPalindrome.cpp
 	_0442_FindAllDuplicatedInAnArray.cpp
 	_0054_SpiralMatrix.cpp
 	_0804_UniqueMorseCodeWords.cpp
 	_0560_SubarraySubEqualK.cpp
+	_1260_Shift2DGrid.cpp
+	_1302_DeepestLeavesSum.cpp
 	_1020_NumberOfEnclaves.cpp
 	_0329_LongestIncreasingPathInAMatrix.cpp
 	_0061_RotateList.cpp
+	_0085_MaximalRectangle.cpp
 	_0740_DeleteAndEarn.cpp
 	_0343_IntegerBreak.cpp
+	_1304_FindNUniqueIntegersSumupToZero.cpp
 	__1355_PascalsTriangle.cpp
 	__1104_JudgeRouteCircle.cpp
 	_0169_MajorityElement.cpp
 	_0455_AssignCookies.cpp
 	_0958_CheckCompletenessOfABinaryTree.cpp
+	_0982_TriplesWithBitwiseAndEqualToZero.cpp
 	_0590_NaryTreePostOrderTraversal.cpp
 	_0659_SplitArrayIntoConsecutiveSubsequences.cpp
+	_0609_FindDuplicateFileInSystem.cpp
 	_0011_ContainerWithMostWater.cpp
 	_0091_DecodeWays.cpp
+	_0060_PermutationSequence.cpp
 	_1189_MaximumNumberOfBalloons.cpp
 	_1094_CarPooling.cpp
 	_0763_PartitionLabels.cpp
+	_1295_FindNumbersWithEvenNumberOfDigits.cpp
+	_0057_InsertInterval.cpp
 	_0050_PowXN.cpp
 	_1131_MaximumOfAbsoluteValueExpression.cpp
 	_0290_WordPattern.cpp
 	_1021_RemoveOutermostParentheses.cpp
 	_0203_RemoveLinkedListElements.cpp
+	_1284_MinimumNumberOfFlipsToConvertBinaryMatrixToZeroMatrix.cpp
+	_0519_RandomFlipMatrix.cpp
 	_0381_RandomizedCollection.cpp
 	_0008_StringToInteger.cpp
 	_1051_HeightChecker.cpp
@@ -339,9 +419,14 @@ ADD_LIBRARY(Practice STATIC
 	_0168_ExcelSheetColumnTitle.cpp
 	_0109_ConvertSortedListToBinarySearchTree.cpp
 	__1317_CountCompleteTreeNodes.cpp
+	_1250_CheckIfItIsAGoodArray.cpp
+	_0212_WordSearchII.cpp
+	_0222_CountCompleteTreeNodes.cpp
 	_0232_ImplementQueueUsingStacks.cpp
 	_0083_RemoveDuplicatesFromSortedList.cpp
+	_0430_FlattenAMultilevelDoublyLinkedList.cpp
 	_0191_NumberOf1Bits.cpp
+	_0001_TwoSum.cpp
 	_0729_MyCalendarI.cpp
 	_0419_BattleshipsInABoard.cpp
 	_0921_MinimumAddToMakeParenthesesValid.cpp
@@ -356,7 +441,9 @@ ADD_LIBRARY(Practice STATIC
 	_0709_ToLowerCase.cpp
 	_0477_TotalHammingDistance.cpp
 	_0852_PeakIndexInAMountainArray.cpp
+	_1202_SmallestStringWithSwaps.cpp
 	_0970_PowerfulIntegers.cpp
+	_0769_MaxChunksToMakeSorted.cpp
 	_0151_ReverseWordsInAString.cpp
 	_0409_LongestPalindrome.cpp
 	_0664_StrangePrinter.cpp
@@ -365,6 +452,7 @@ ADD_LIBRARY(Practice STATIC
 	_0080_RemoveDuplicateFromSortedArrayII.cpp
 	_1170_CompareStringByFrequencyOfTheSmallestCharacter.cpp
 	_0129_SumRootToLeafNumbers.cpp
+	_0646_MaximumLengthOfPairChain.cpp
 	_1238_CircularPermutationInBinaryRepresentation.cpp
 	_0873_LengthOfLongestFibonacciSubsequence.cpp
 	_0956_TallestBillboard.cpp
@@ -375,6 +463,7 @@ ADD_LIBRARY(Practice STATIC
 	_0108_ConvertSortedArrayToBinarySearchTree.cpp
 	_1266_MinimumTimeVisitingAllPoints.cpp
 	_1207_UniqueNumberOfOccurences.cpp
+	_1305_AllElementsInTwoBinarySearchTrees.cpp
 	_0260_SingleNumberII.cpp
 	_0040_CombinationSumII.cpp
 	_0033_SearchInRotatedSortedArray.cpp
@@ -386,7 +475,11 @@ ADD_LIBRARY(Practice STATIC
 	_1247_MinimumSwapsToMakeStringsEqual.cpp
 	__1332_NumberOf1Bits.cpp
 	_0538_ConvertBSTToGreaterTree.cpp
+	_1314_MatrixBlockSum.cpp
 	_0049_GroupAnagrams.cpp
 	_0412_FizzBuzz.cpp
 	_0861_ScoreAfterFlippingMatrix.cpp
+	_0018_4Sum.cpp
+	_0775_GlobalAndLocalInversions.cpp
+	_1154_DayOfTheYear.cpp
 )

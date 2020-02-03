@@ -27,3 +27,31 @@ void LeetCode::_0090_SubsetII::generateAllSubsets(std::vector<int>& nums, std::v
         subset.pop_back();
     }
 }
+
+/*
+Better solution
+
+class Solution {
+public:
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+        std::vector<std::vector<int>> res;
+        std::vector<int> tmp;
+        std::sort(begin(nums), end(nums));
+        subset(res, tmp, nums, 0);
+        return res;
+    }
+    void subset(std::vector<std::vector<int>>& res, std::vector<int>& tmp,
+               std::vector<int>& nums, int pos) {
+        res.push_back(tmp);
+        for(int i = pos; i < nums.size(); ++i) {
+            if(i != pos && nums[i] == nums[i-1]) {
+                continue;
+            }
+            tmp.push_back(nums[i]);
+            subset(res, tmp, nums, i + 1); // i + 1, not pos + 1
+            tmp.pop_back();
+        }
+    }
+};
+
+*/
