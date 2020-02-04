@@ -521,6 +521,9 @@ public:
 
 
 /*
+Tag: Array, Special Topic. I totally have no idea about it. If possible, just remember it.
+TODO : Remember
+
 Say you have an array for which the ith element is the price of a given stock on day i.
 If you were only permitted to complete at most one transaction (i.e., buy one and sell 
 one share of the stock), design an algorithm to find the maximum profit.
@@ -544,6 +547,72 @@ public:
 };
 
 /*
+Tag: greedy, array, special topic
+122. Best Time to Buy and Sell Stock II
+Say you have an array for which the ith element is the price of a given stock on day i.
+Design an algorithm to find the maximum profit. You may complete as many transactions as 
+you like (i.e., buy one and sell one share of the stock multiple times).
+
+Note: You may not engage in multiple transactions at the same time (i.e., you must sell 
+the stock before you buy again).
+
+Input: [7,1,5,3,6,4]
+Output: 7
+Explanation: Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4.
+             Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.
+
+Input: [1,2,3,4,5]
+Output: 4
+Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.
+             Note that you cannot buy on day 1, buy on day 2 and sell them later, as you are
+             engaging multiple transactions at the same time. You must sell before buying again.
+Example 3:
+
+Input: [7,6,4,3,1]
+Output: 0
+Explanation: In this case, no transaction is done, i.e. max profit = 0.
+*/
+class _0122_BestTimeToBuyAndSellStockII{
+public:
+    int maxProfit(std::vector<int> prices);
+};
+
+/*
+Tag: recursive, Tree
+TODO
+Given a non-empty binary tree, find the maximum path sum.
+For this problem, a path is defined as any sequence of nodes from some starting node to 
+any node in the tree along the parent-child connections. The path must contain at least 
+one node and does not need to go through the root.
+
+Input: [1,2,3]
+
+       1
+      / \
+     2   3
+
+Output: 6
+
+Input: [-10,9,20,null,null,15,7]
+
+   -10
+   / \
+  9  20
+    /  \
+   15   7
+
+Output: 42
+*/
+class _0124_BinaryTreeMaximumPathSum {
+private:
+    int res;
+public:
+    int helper(TreeNode<int>* root);
+    int maxPathSum(TreeNode<int>* root);
+};
+
+/*
+Tag: 
 Given a string, determine if it is a palindrome, considering only alphanumeric characters 
 and ignoring cases. 
 Note: For the purpose of this problem, we define empty string as valid palindrome.
