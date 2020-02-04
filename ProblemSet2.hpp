@@ -12,7 +12,6 @@
 #include "LinkList.hpp"
 
 namespace LeetCode {
-
 /*
 Tag: Tree
 Given a binary tree, check whether it is a mirror of itself 
@@ -128,6 +127,7 @@ public:
 
 
 /*
+Tag: Tree
 Given inorder and postorder traversal of a tree, construct the binary tree.
 
 Note:
@@ -154,56 +154,58 @@ private:
 };
 
 
-/* Binary Tree Level Order Traversal II
-    Given a binary tree, return the bottom - up level order traversal of 
-    its nodes' values. (ie, from left to right, level by level from leaf to root).
-    
-    For example :
-    Given binary tree[3, 9, 20, null, null, 15, 7],
-       3
-      / \
-     9  20
-    / \
-  15   7
-    return its bottom - up level order traversal as :
-    [
-        [15, 7],
-        [9, 20],
-        [3]
-    ]
-    */
-class _0107_BinaryTreeLevelOrderTraversalII
-{
+/*
+Tag: Tree
+Binary Tree Level Order Traversal II
+Given a binary tree, return the bottom - up level order traversal of 
+its nodes' values. (ie, from left to right, level by level from leaf to root).
+
+For example :
+Given binary tree[3, 9, 20, null, null, 15, 7],
+    3
+   / \
+  9  20
+ / \
+15  7
+return its bottom - up level order traversal as :
+[
+    [15, 7],
+    [9, 20],
+    [3]
+]
+*/
+class _0107_BinaryTreeLevelOrderTraversalII {
 public:
     std::vector<std::vector<int>> levelOrderBottom(TreeNode<int> *root);
 };
 
-/* Convert Sorted Array to Binary Search Tree
-    Given an array where elements are sorted in ascending order, 
-    convert it to a height balanced BST.
-    
-    For this problem, a height-balanced binary tree is defined as a binary tree in
-    which the depth of the two subtrees of every node never differ by more than 1.
-    
-    Example:
-    Given the sorted array: [-10,-3,0,5,9],
-    One possible answer is: [0,-3,9,-10,null,5], which represents the following height balanced BST:
-                 0
-                / \
-              -3   9
-              /   /
-            -10  5
-    */
-class _0108_ConvertSortedArrayToBinarySearchTree
-{
+/*
+Tag: Tree, Binary Search
+Convert Sorted Array to Binary Search Tree
+Given an array where elements are sorted in ascending order, 
+convert it to a height balanced BST.
+
+For this problem, a height-balanced binary tree is defined as a binary tree in
+which the depth of the two subtrees of every node never differ by more than 1.
+
+Example:
+Given the sorted array: [-10,-3,0,5,9],
+One possible answer is: [0,-3,9,-10,null,5], which represents the following height balanced BST:
+                0
+            / \
+            -3   9
+            /   /
+        -10  5
+*/
+class _0108_ConvertSortedArrayToBinarySearchTree {
 public:
     TreeNode<int> *sortedArrayToBST(std::vector<int> &nums);
-
 private:
     TreeNode<int> *bst(std::vector<int> &nums, int start, int end);
 };
 
 /*
+Tag: Tree
 Given a singly linked list where elements are sorted in ascending order, convert 
 it to a height balanced BST. For this problem, a height-balanced binary tree is 
 defined as a binary tree in which the depth of the two subtrees of every node 
@@ -223,8 +225,8 @@ height balanced BST:
 class _0109_ConvertSortedListToBinarySearchTree {
 public:
     TreeNode<int>* sortedListToBST(ListNode<int>* head);
-    
-    void split(ListNode<int>* head, ListNode<int>*& root, ListNode<int>*& left, ListNode<int>*& right);
+    void split(ListNode<int>* head, ListNode<int>*& root, 
+        ListNode<int>*& left, ListNode<int>*& right);
 };
 
 /*
