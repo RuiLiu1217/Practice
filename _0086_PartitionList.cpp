@@ -30,3 +30,24 @@ ListNode<int>* LeetCode::_0086_PartitionList::partition(ListNode<int>* head, int
     delete nh;
     return head;
 }
+
+/*
+Better solution
+*/
+static ListNode<int>* partition(ListNode<int>* head, int x) {
+    ListNode<int> node1(0);
+    ListNode<int> node2(0);
+    ListNode<int>* p1 = &node1;
+    ListNode<int>* p2 = &node2;
+    while(head) {
+        if(head->val < x) {
+            p1 = p1->next = head;
+        } else {
+            p2 = p2->next = head;
+        }
+        head = head->next;
+    }
+    p2->next = nullptr;
+    p1->next = node2.next;
+    return node1.next;
+}

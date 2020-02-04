@@ -1,6 +1,4 @@
 #include "headers.hpp"
-// Copy from the soultion, have no idea why!!!!
-
 int LeetCode::_0091_DecodeWays::numDecodings(std::string s) {
     if(s.size() == 0 || s[0] == '0') {
         return 0;

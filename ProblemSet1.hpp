@@ -1552,6 +1552,7 @@ public:
 };
 
 /*
+Tag: Dynamic Programming
 Given two words word1 and word2, find the minimum number 
 of operations required to convert word1 to word2.
 You have the following 3 operations permitted on a word:
@@ -1582,6 +1583,7 @@ public:
 };
 
 /*
+Tag: Matrix operation, tricks
 Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in-place.
 
 Example 1:
@@ -1624,6 +1626,7 @@ public:
 };
 
 /*
+Tag: binary search
 Write an efficient algorithm that searches for a value in an m x n matrix. 
 This matrix has the following properties:
 Integers in each row are sorted from left to right. The first integer of 
@@ -1657,6 +1660,7 @@ public:
 
 
 /*
+Tag: array
 Given an array with n objects colored red, white or blue, sort them 
 in-place so that objects of the same color are adjacent, with the colors 
 in the order red, white and blue.
@@ -1680,6 +1684,7 @@ public:
 
 
 /*
+Tag: backtracking, combination
 Given two integers n and k, return all possible combinations of k numbers out of 1 ... n.
 Example:
 Input: n = 4, k = 2
@@ -1700,6 +1705,7 @@ public:
 };
 
 /*
+Tag: backtracking, combination
 Given a set of distinct integers, nums, return all possible subsets (the power set).
 Note: The solution set must not contain duplicate subsets.
 Example:
@@ -1723,6 +1729,7 @@ public:
 };
 
 /*
+Tag: backtracking
 Given a 2D board and a word, find if the word exists in the grid.
 The word can be constructed from letters of sequentially adjacent 
 cell, where "adjacent" cells are those horizontally or vertically 
@@ -1749,6 +1756,8 @@ public:
 
 
 /*
+Tag: array
+TODO
 80. Remove Duplicates from Sorted Array II
 Given a sorted array nums, remove the duplicates in-place such that 
 duplicates appeared at most twice and return the new length.
@@ -1780,6 +1789,28 @@ public:
 };
 
 /*
+Tag: Binary Search
+Suppose an array sorted in ascending order is rotated at some pivot 
+unknown to you beforehand. (i.e., [0,0,1,2,2,5,6] might become 
+[2,5,6,0,0,1,2]). You are given a target value to search. If found 
+in the array return true, otherwise return false.
+
+Input: nums = [2,5,6,0,0,1,2], target = 0
+Output: true
+Input: nums = [2,5,6,0,0,1,2], target = 3
+Output: false
+Follow up:
+This is a follow up problem to Search in Rotated Sorted Array, where nums may contain duplicates.
+Would this affect the run-time complexity? How and why?
+*/
+class _0081_SearchInRotatedSortedArrayII {
+public:
+    bool search(std::vector<int>& nums, int target);
+};
+
+
+/*
+Tag: Single Linked List operation
 82. Remove Duplicates from Sorted List II
 Given a sorted linked list, delete all nodes that have duplicate numbers, 
 leaving only distinct numbers from the original list.
@@ -1795,9 +1826,8 @@ public:
     ListNode<int>* deleteDuplicates(ListNode<int>* head);
 };
 
-
-
 /*
+Tag: Single Linked List Operation
 Given a sorted linked list, delete all duplicates such that each element 
 appear only once.
 
@@ -1812,14 +1842,13 @@ public:
     ListNode<int>* deleteDuplicates(ListNode<int>* head);
 };
 
-
 /*
+Tag: increasing stack
+TODO:
 Given n non-negative integers representing the histogram's bar height where 
 the width of each bar is 1, find the area of largest rectangle in the histogram.
 Above is a histogram where width of each bar is 1, given height = [2,1,5,6,2,3].
 The largest rectangle is shown in the shaded area, which has area = 10 unit.
-
-Example:
 
 Input: [2,1,5,6,2,3]
 Output: 10
@@ -1830,6 +1859,8 @@ public:
 };
 
 /*
+Tag: dynamic programming
+TODO
 Given a 2D binary matrix filled with 0's and 1's, find the largest rectangle containing only 1's and return its area.
 
 Input:
@@ -1847,6 +1878,7 @@ public:
 };
 
 /*
+Tag: single linked list operation
 Given a linked list and a value x, partition it such that all nodes less 
 than x come before nodes greater than or equal to x.
 You should preserve the original relative order of the nodes in each of 
@@ -1861,7 +1893,8 @@ class _0086_PartitionList {
 };
 
 /*
-88. Merge Sorted Array
+Tag: array operation, from back to front
+Merge Sorted Array
 Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.
 
 Note:
@@ -1882,6 +1915,7 @@ public:
 
 
 /*
+Tag: recursive
 The gray code is a binary numeral system where two successive values differ in only one bit.
 Given a non-negative integer n representing the total number of bits in the code, print the 
 sequence of gray code. A gray code sequence must begin with 0.
@@ -1906,6 +1940,7 @@ public:
 };
 
 /*
+Tag: combination
 Given a collection of integers that might contain duplicates, nums, return all possible subsets 
 (the power set).
 Note: The solution set must not contain duplicate subsets.
@@ -1931,6 +1966,7 @@ public:
 };
 
 /*
+Tag: dyanmic programming
 A message containing letters from A-Z is being encoded to numbers using the following mapping:
 'A' -> 1
 'B' -> 2
@@ -1952,6 +1988,7 @@ public:
 };
 
 /*
+Tag: single linked list
 Reverse a linked list from position m to n. Do it in one-pass.
 Note: 1 ≤ m ≤ n ≤ length of list.
 
@@ -1964,6 +2001,7 @@ public:
 };
 
 /*
+Tag: backtracking
 93. Restore IP Addresses
 Given a string containing only digits, restore it by returning all possible valid IP address combinations.
 
@@ -1980,9 +2018,8 @@ private:
 };
 
 /*
+Tag: recursive, hash
 Given an integer n, generate all structurally unique BST's (binary search trees) that store values 1 ... n.
-
-Example:
 
 Input: 3
 Output:
@@ -2002,7 +2039,6 @@ The above output corresponds to the 5 unique BST's shown below:
     /     /       \                 \
    2     1         2                 3
 */
-
 class _0095_UniqueBinarySearchTreeII {
 public:
     std::vector<TreeNode<int>*> generateTrees(int n);
@@ -2010,9 +2046,8 @@ public:
 };
 
 /*
+Tag: recursive, hash
 Given n, how many structurally unique BST's (binary search trees) that store values 1 ... n?
-
-Example:
 
 Input: 3
 Output: 5
@@ -2035,6 +2070,20 @@ public:
 
 
 /*
+Tag: dynamic programming, string
+Given s1, s2, s3, find whether s3 is formed by the interleaving of s1 and s2.
+Input: s1 = "aabcc", s2 = "dbbca", s3 = "aadbbcbcac"
+Output: true
+Input: s1 = "aabcc", s2 = "dbbca", s3 = "aadbbbaccc"
+Output: false
+*/
+class _0097_InterleavingString {
+public:
+    bool isInterleav(std::string s1, std::string s2, std::string s3);
+};
+
+/*
+Tag: Tree
 Given a binary tree, determine if it is a valid binary search tree (BST).
 
 Assume a BST is defined as follows:
@@ -2070,6 +2119,8 @@ public:
 };
 
 /*
+Tag: Morris Traversal, Tree
+
 Two elements of a binary search tree (BST) are swapped by mistake.
 Recover the tree without changing its structure.
 
@@ -2116,11 +2167,10 @@ public:
 };
 
 /*
+Tag: Tree
 Given two binary trees, write a function to check if they are the same or not.
-
-Two binary trees are considered the same if they are structurally identical and the nodes have the same value.
-
-Example 1:
+Two binary trees are considered the same if they are structurally identical 
+and the nodes have the same value.
 
 Input:     1         1
           / \       / \
@@ -2129,7 +2179,6 @@ Input:     1         1
         [1,2,3],   [1,2,3]
 
 Output: true
-Example 2:
 
 Input:     1         1
           /           \
@@ -2138,7 +2187,6 @@ Input:     1         1
         [1,2],     [1,null,2]
 
 Output: false
-Example 3:
 
 Input:     1         1
           / \       / \
@@ -2148,7 +2196,7 @@ Input:     1         1
 
 Output: false
 */
-class _0100_SameTree{
+class _0100_SameTree {
 public:
     bool isSameTree(TreeNode<int>* p, TreeNode<int>* q);
 };

@@ -12,41 +12,38 @@
 #include "LinkList.hpp"
 
 namespace LeetCode {
-
 /*
-        Given a binary tree, check whether it is a mirror of itself(ie, symmetric around its center).
-    For example, this binary tree[1, 2, 2, 3, 4, 4, 3] is symmetric :
-
-          1
-         / \
-        2   2
-       / \ / \
-      3  4 4  3
-
-    But the following[1, 2, 2, null, 3, null, 3] is not:
-           1
-          / \
-         2   2
-          \   \
-           3   3
-    Note:
-    Bonus points if you could solve it both recursively and iteratively.
-
-    Solution:  utilize the preorder framework
-    */
-class _0101_SymmetricTree
-{
+Tag: Tree
+Given a binary tree, check whether it is a mirror of itself 
+(ie, symmetric around its center). For example, this binary 
+tree[1, 2, 2, 3, 4, 4, 3] is symmetric:
+         1
+        / \
+       2   2
+      / \ / \
+     3  4 4  3
+But the following[1, 2, 2, null, 3, null, 3] is not:
+        1
+       / \
+      2   2
+       \   \
+        3   3
+Note:
+Bonus points if you could solve it both recursively and iteratively.
+Solution:  utilize the preorder framework
+*/
+class _0101_SymmetricTree {
 public:
     bool isSymmetric(TreeNode<int> *root);
-
 private:
     bool preOrderIter(TreeNode<int> *root);
 };
 
 /*
-Given a binary tree, return the level order traversal of its nodes' values. (ie, from left to right, level by level).
+Tag: Tree
+Given a binary tree, return the level order traversal of its 
+nodes' values. (ie, from left to right, level by level).
 
-For example:
 Given binary tree [3,9,20,null,null,15,7],
     3
    / \
@@ -54,11 +51,7 @@ Given binary tree [3,9,20,null,null,15,7],
     /  \
    15   7
 return its level order traversal as:
-[
-  [3],
-  [9,20],
-  [15,7]
-]
+[[3], [9,20], [15,7]]
 */
 class _0102_BinaryTreeLevelOrderTraversal {
 public:
@@ -66,6 +59,7 @@ public:
 };
 
 /*
+Tag: Tree
 Given a binary tree, return the zigzag level order traversal of its nodes' 
 values. (ie, from left to right, then right to left for the next level and 
 alternate between).
@@ -78,11 +72,7 @@ Given binary tree [3,9,20,null,null,15,7],
     /  \
    15   7
 return its zigzag level order traversal as:
-[
-  [3],
-  [20,9],
-  [15,7]
-]
+[[3], [20,9], [15,7]]
 */
 class _0103_BinaryTreeZigzagLevelOrderTraversal {
 public:
@@ -90,6 +80,7 @@ public:
 };
 
 /*
+Tag: Tree
 Given a binary tree, find its maximum depth.
 The maximum depth is the number of nodes along the longest path from the root 
 node down to the farthest leaf node.
@@ -111,8 +102,8 @@ public:
     int maxDepth(TreeNode<int>* root);
 };
 
-
 /*
+Tag: Tree
 Given preorder and inorder traversal of a tree, construct the binary tree.
 
 Note:
@@ -136,6 +127,7 @@ public:
 
 
 /*
+Tag: Tree
 Given inorder and postorder traversal of a tree, construct the binary tree.
 
 Note:
@@ -162,56 +154,58 @@ private:
 };
 
 
-/* Binary Tree Level Order Traversal II
-    Given a binary tree, return the bottom - up level order traversal of 
-    its nodes' values. (ie, from left to right, level by level from leaf to root).
-    
-    For example :
-    Given binary tree[3, 9, 20, null, null, 15, 7],
-       3
-      / \
-     9  20
-    / \
-  15   7
-    return its bottom - up level order traversal as :
-    [
-        [15, 7],
-        [9, 20],
-        [3]
-    ]
-    */
-class _0107_BinaryTreeLevelOrderTraversalII
-{
+/*
+Tag: Tree
+Binary Tree Level Order Traversal II
+Given a binary tree, return the bottom - up level order traversal of 
+its nodes' values. (ie, from left to right, level by level from leaf to root).
+
+For example :
+Given binary tree[3, 9, 20, null, null, 15, 7],
+    3
+   / \
+  9  20
+ / \
+15  7
+return its bottom - up level order traversal as :
+[
+    [15, 7],
+    [9, 20],
+    [3]
+]
+*/
+class _0107_BinaryTreeLevelOrderTraversalII {
 public:
     std::vector<std::vector<int>> levelOrderBottom(TreeNode<int> *root);
 };
 
-/* Convert Sorted Array to Binary Search Tree
-    Given an array where elements are sorted in ascending order, 
-    convert it to a height balanced BST.
-    
-    For this problem, a height-balanced binary tree is defined as a binary tree in
-    which the depth of the two subtrees of every node never differ by more than 1.
-    
-    Example:
-    Given the sorted array: [-10,-3,0,5,9],
-    One possible answer is: [0,-3,9,-10,null,5], which represents the following height balanced BST:
-                 0
-                / \
-              -3   9
-              /   /
-            -10  5
-    */
-class _0108_ConvertSortedArrayToBinarySearchTree
-{
+/*
+Tag: Tree, Binary Search
+Convert Sorted Array to Binary Search Tree
+Given an array where elements are sorted in ascending order, 
+convert it to a height balanced BST.
+
+For this problem, a height-balanced binary tree is defined as a binary tree in
+which the depth of the two subtrees of every node never differ by more than 1.
+
+Example:
+Given the sorted array: [-10,-3,0,5,9],
+One possible answer is: [0,-3,9,-10,null,5], which represents the following height balanced BST:
+                0
+            / \
+            -3   9
+            /   /
+        -10  5
+*/
+class _0108_ConvertSortedArrayToBinarySearchTree {
 public:
     TreeNode<int> *sortedArrayToBST(std::vector<int> &nums);
-
 private:
     TreeNode<int> *bst(std::vector<int> &nums, int start, int end);
 };
 
 /*
+Tag: Tree
 Given a singly linked list where elements are sorted in ascending order, convert 
 it to a height balanced BST. For this problem, a height-balanced binary tree is 
 defined as a binary tree in which the depth of the two subtrees of every node 
@@ -231,8 +225,8 @@ height balanced BST:
 class _0109_ConvertSortedListToBinarySearchTree {
 public:
     TreeNode<int>* sortedListToBST(ListNode<int>* head);
-    
-    void split(ListNode<int>* head, ListNode<int>*& root, ListNode<int>*& left, ListNode<int>*& right);
+    void split(ListNode<int>* head, ListNode<int>*& root, 
+        ListNode<int>*& left, ListNode<int>*& right);
 };
 
 /*
