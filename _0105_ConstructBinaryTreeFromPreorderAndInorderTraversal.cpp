@@ -1,19 +1,27 @@
 #include "headers.hpp"
 #include <algorithm>
-TreeNode<int>* LeetCode::_0105_ConstructBinaryTreeFromPreorderAndInorderTraversal::buildTree(std::vector<int>& preorder, std::vector<int>& inorder) {
-    if(preorder.size() == 0 || inorder.size() == 0) {
+
+static TreeNode<int>* buildTree(std::vector<int>& preorder, int ps, int pe, std::vector<int>& inorder, int is, int ie) {
+    if(ps > pe) {
         return nullptr;
-    } else {
-        TreeNode<int>* root = new TreeNode<int>(preorder[0]);
-        auto iterInOrder = std::find(inorder.begin(), inorder.end(), preorder[0]);
-        int idxInOrder = iterInOrder - inorder.begin();
-        std::vector<int> lftInOrder(inorder.begin(), iterInOrder);
-        std::vector<int> rghInOrder(iterInOrder+1, inorder.end());
-        
-        std::vector<int> lftPreOrder(preorder.begin()+1, preorder.begin()+1+idxInOrder);
-        std::vector<int> rghPreOrder(preorder.begin()+1+idxInOrder, preorder.end());
-        root->left = buildTree(lftPreOrder, lftInOrder);
-        root->right = buildTree(rghPreOrder, rghInOrder);
-        return root;
     }
+    if(ps == pe) {
+        TreeNode* r = new TreeNode(preorder[ps]);
+        return r;
+    }
+    int rootV = preorder[ps];
+    auto iter = std::find(inorder.begin() + is, inorder.begin() + ie + 1, rootV);
+    int iterIdx = iter - inorder.begin();
+    int leftLen = iterIdx - is;
+    int rightLen = ie - iterIdx;
+    TreeNode* root = new TreeNode(preorder[ps]);
+    root->left = buildTree(preorder, ps + 1, ps + leftLen, inorder, is, iterIdx - 1);
+    root->right = buildTree(preorder, ps+leftLen+1, pe, inorder, iterIdx + 1, ie);
+    return root;
+    
 }
+
+TreeNode<int>* LeetCode::_0105_ConstructBinaryTreeFromPreorderAndInorderTraversal::buildTree(std::vector<int>& preorder, std::vector<int>& inorder) {
+    return buildTree(preorder, 0, preorder.size() - 1, inorder, 0, inorder.size() - 1);
+}
+
