@@ -230,6 +230,7 @@ public:
 };
 
 /*
+Tag: Tree, recursive
 Given a binary tree, determine if it is height-balanced.
 For this problem, a height-balanced binary tree is defined as:
 a binary tree in which the left and right subtrees of every node differ in height by no more than 1.
@@ -264,6 +265,7 @@ private:
 };
 
 /*
+Tag: Tree
 Given a binary tree, find its minimum depth.
 The minimum depth is the number of nodes along the shortest path 
 from the root node down to the nearest leaf node.
@@ -286,6 +288,7 @@ public:
 };
 
 /*
+Tag: Backtracking, Tree, recursive
 Given a binary tree and a sum, determine if the tree has a root-to-leaf path 
 such that adding up all the values along the path equals the given sum.
 Note: A leaf is a node with no children.
@@ -309,6 +312,7 @@ public:
 
 
 /*
+Tag: Backtracking, Tree, recursive
 Given a binary tree and a sum, find all root-to-leaf paths where each path's sum equals the given sum.
 Note: A leaf is a node with no children.
 
@@ -331,6 +335,7 @@ public:
 };
 
 /*
+Tag: single linked list, Tree
 Given a binary tree, flatten it to a linked list in-place.
 
 For example, given the following tree:
@@ -360,13 +365,13 @@ public:
 };
 
 /*
-    You are given a perfect binary tree where all leaves are on the same level, 
-    and every parent has two children. The binary tree has the following definition:
-
-    Populate each next pointer to point to its next right node. If there is no next 
-    right node, the next pointer should be set to NULL.
-    Initially, all next pointers are set to NULL.
-    */
+Tag: Tree, recursive
+You are given a perfect binary tree where all leaves are on the same level, 
+and every parent has two children. The binary tree has the following definition:
+Populate each next pointer to point to its next right node. If there is no next 
+right node, the next pointer should be set to NULL.
+Initially, all next pointers are set to NULL.
+*/
 class _0116_PopulatingNextRightPointerInEachNode
 {
 public:
@@ -383,34 +388,18 @@ public:
 };
 
 /*
+Tag: recursive, Tree,
+TODO: Constant space
 117. Populating Next Right Pointers in Each Node II
-Medium
-
-1235
-
-167
-
-Add to List
-
-Share
 Given a binary tree
-
-
-Populate each next pointer to point to its next right node. If there is no next right node, the next pointer should be set to NULL.
-
+Populate each next pointer to point to its next right node. 
+If there is no next right node, the next pointer should be set to NULL.
 Initially, all next pointers are set to NULL.
-
- 
 
 Follow up:
 
 You may only use constant extra space.
 Recursive approach is fine, you may assume implicit stack space does not count as extra space for this problem.
- 
-
-Example 1:
-
-
 
 Input: root = [1,2,3,4,5,null,7]
 Output: [1,#,2,3,#,4,5,7,#]
@@ -461,9 +450,8 @@ public:
 };
 
 /*
+Tag: array operation
 Given a non-negative integer numRows, generate the first numRows of Pascal's triangle.
-
-
 In Pascal's triangle, each number is the sum of the two numbers directly above it.
 
 Example:
@@ -483,8 +471,8 @@ public:
     std::vector<std::vector<int>> generate(int numRows);
 };
 
-
 /*
+Tag: array operation
 Given a non-negative index k where k ≤ 33, return the kth index row of the Pascal's triangle.
 Note that the row index starts from 0.
 In Pascal's triangle, each number is the sum of the two numbers directly above it.
@@ -502,6 +490,7 @@ public:
 
 
 /*
+Tag: dynamic programming.
 Given a triangle, find the minimum path sum from top to bottom. Each step you may move to adjacent numbers on the row below.
 For example, given the following triangle
 
@@ -559,20 +548,19 @@ the stock before you buy again).
 Input: [7,1,5,3,6,4]
 Output: 7
 Explanation: Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4.
-             Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.
+    Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.
 
 Input: [1,2,3,4,5]
 Output: 4
 Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.
-             Note that you cannot buy on day 1, buy on day 2 and sell them later, as you are
-             engaging multiple transactions at the same time. You must sell before buying again.
-Example 3:
+    Note that you cannot buy on day 1, buy on day 2 and sell them later, as you are
+    engaging multiple transactions at the same time. You must sell before buying again.
 
 Input: [7,6,4,3,1]
 Output: 0
 Explanation: In this case, no transaction is done, i.e. max profit = 0.
 */
-class _0122_BestTimeToBuyAndSellStockII{
+class _0122_BestTimeToBuyAndSellStockII {
 public:
     int maxProfit(std::vector<int> prices);
 };
@@ -626,11 +614,15 @@ public:
 };
 
 /*
-Given two words (beginWord and endWord), and a dictionary's word list, find the length of shortest transformation sequence from beginWord to endWord, such that:
+Tag: BFS
+TODO
+
+Given two words (beginWord and endWord), and a dictionary's word list, find the 
+length of shortest transformation sequence from beginWord to endWord, such that:
 
 Only one letter can be changed at a time.
-Each transformed word must exist in the word list. Note that beginWord is not a transformed word.
-Note:
+Each transformed word must exist in the word list. Note that beginWord is not a 
+transformed word.
 
 Return 0 if there is no such transformation sequence.
 All words have the same length.
@@ -643,21 +635,20 @@ Input:
 beginWord = "hit",
 endWord = "cog",
 wordList = ["hot","dot","dog","lot","log","cog"]
-
 Output: 5
 
-Explanation: As one shortest transformation is "hit" -> "hot" -> "dot" -> "dog" -> "cog",
+Explanation: As one shortest transformation is 
+"hit" -> "hot" -> "dot" -> "dog" -> "cog",
 return its length 5.
-Example 2:
 
 Input:
 beginWord = "hit"
 endWord = "cog"
 wordList = ["hot","dot","dog","lot","log"]
-
 Output: 0
 
-Explanation: The endWord "cog" is not in wordList, therefore no possible transformation.
+Explanation: The endWord "cog" is not in wordList, 
+therefore no possible transformation.
 */
 class _0127_Wordladder {
 public:
@@ -666,7 +657,8 @@ public:
 
 
 /*
-Given an unsorted array of integers, find the length of the longest consecutive elements sequence.
+Given an unsorted array of integers, find the length of the 
+longest consecutive elements sequence.
 Your algorithm should run in O(n) complexity.
 
 Input: [100, 4, 200, 1, 3, 2]
