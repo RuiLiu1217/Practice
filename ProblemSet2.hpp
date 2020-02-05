@@ -657,6 +657,8 @@ public:
 
 
 /*
+Tag: Hash, dynamic programming
+Todo
 Given an unsorted array of integers, find the length of the 
 longest consecutive elements sequence.
 Your algorithm should run in O(n) complexity.
@@ -671,6 +673,8 @@ public:
 };
 
 /*
+Tag: DFS
+Todo
 Given a binary tree containing digits from 0-9 only, each root-to-leaf path 
 could represent a number. An example is the root-to-leaf path 1->2->3 which 
 represents the number 123. Find the total sum of all root-to-leaf numbers.
@@ -713,6 +717,38 @@ public:
 };
 
 /*
+Tag: backtracking
+Surrounded Regions
+Given a 2D board containing 'X' and 'O' (the letter O), capture all regions surrounded by 'X'.
+A region is captured by flipping all 'O's into 'X's in that surrounded region.
+
+X X X X
+X O O X
+X X O X
+X O X X
+After running your function, the board should be:
+X X X X
+X X X X
+X X X X
+X O X X
+Explanation:
+Surrounded regions shouldn’t be on the border, which means that any 'O' on the border of the board 
+are not flipped to 'X'. Any 'O' that is not on the border and it is not connected to an 'O' on the 
+border will be flipped to 'X'. Two cells are connected if they are adjacent cells connected 
+horizontally or vertically.
+*/
+class _0130_SurroundedRegions {
+public:
+    void solve(std::vector<std::vector<char>>& board);
+    
+    void DFS(std::vector<std::vector<char>>& board, int i, int j, 
+             const int M, const int N, 
+             const char orig, const char newc);
+};
+
+/*
+Tag: palindrome, string, Dynamic programming, DFS
+TODO:
 Given a string s, partition s such that every substring of the partition is a palindrome.
 Return all possible palindrome partitioning of s.
 
@@ -731,9 +767,30 @@ private:
     bool isPalindrome(std::string& s, int start, int end); 
 };
 
+/*
+Tag: string, palindrome, dynamic programming
+TODO:
+
+Given a string s, partition s such that every substring of the partition is a palindrome.
+Return the minimum cuts needed for a palindrome partitioning of s.
+
+Example:
+
+Input: "aab"
+Output: 1
+Explanation: The palindrome partitioning ["aa","b"] could be produced using 1 cut.
+*/
+class _0132_PalindromePartitioningII {
+public:
+    std::vector<std::vector<std::string>> partition(std::string s);
+};
+
 
 /*
-Given a reference of a node in a connected undirected graph, return a deep copy (clone) of the graph. Each node in the graph contains a val (int) and a list (List[Node]) of its neighbors.
+Tag: DFS, Graph
+Given a reference of a node in a connected undirected graph, return a deep copy 
+(clone) of the graph. Each node in the graph contains a val (int) and a list 
+(List[Node]) of its neighbors.
 
 Input:
 {"$id":"1","neighbors":[{"$id":"2","neighbors":[{"$ref":"1"},{"$id":"3","neighbors":[{"$ref":"2"},{"$id":"4","neighbors":[{"$ref":"3"},{"$ref":"1"}],"val":4}],"val":3}],"val":2},{"$ref":"4"}],"val":1}
@@ -903,6 +960,7 @@ public:
 
 
 /*
+Tag: basic knowledge
 Given a binary tree, return the preorder traversal of its nodes' values.
 
 Example:
@@ -924,6 +982,7 @@ public:
 
 
 /*
+Tag: basic knowledge
 Given a binary tree, return the postorder traversal of its nodes' values.
 
 Example:
@@ -945,6 +1004,9 @@ public:
 
 
 /*
+Tag: Special topic
+TODO:
+
 Design and implement a data structure for Least Recently Used (LRU) cache. 
 It should support the following operations: get and put.
 
@@ -985,6 +1047,7 @@ public:
 };
 
 /*
+Tag: single linked list
 Sort a linked list using insertion sort.
 A graphical example of insertion sort. The partial sorted list (black) initially contains only the first element in the list.
 With each iteration one element (red) is removed from the input data and inserted in-place into the sorted list
@@ -1009,6 +1072,8 @@ public:
 };
 
 
+// 
+// Tag: merge sort, single linked list
 // Sort a linked list in O(NlogN) time using constant space complexity.
 class _0148_SortList
 {
@@ -1022,6 +1087,7 @@ private:
 
 
 /*
+Tag: Geometry
 Given n points on a 2D plane, find the maximum number of points that lie on the same straight line.
 */
 class _0149_MaxPointsOnALine {
@@ -1030,6 +1096,7 @@ public:
 };
 
 /*
+Tag: Stack
 Evaluate the value of an arithmetic expression in Reverse Polish Notation.
 Valid operators are +, -, *, /. Each operand may be an integer or another expression.
 
@@ -1063,6 +1130,8 @@ public:
 };
 
 /*
+TAG: string, stringstream
+TODO: Operation on stirng is very tricky and important
 Given an input string, reverse the string word by word.
 
 Example 1:
@@ -1093,6 +1162,8 @@ public:
 
 
 /*
+Tag: array, dynamic programming
+Todo: I have no idea how it is solved. and why the solution is in that way
 Given an integer array nums, find the contiguous subarray within an array (containing 
 at least one number) which has the largest product.
 
@@ -1116,6 +1187,7 @@ public:
 
 
 /*
+Tag: binary search
 Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
 (i.e.,  [0,1,2,4,5,6,7] might become  [4,5,6,7,0,1,2]).
 
@@ -1135,21 +1207,22 @@ public:
 
 
 /*
-    Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
-        push(x) -- Push element x onto stack.
-        pop() -- Removes the element on top of the stack.
-        top() -- Get the top element.
-        getMin() -- Retrieve the minimum element in the stack.
-    Example:
-        MinStack minStack = new MinStack();
-        minStack.push(-2);
-        minStack.push(0);
-        minStack.push(-3);
-        minStack.getMin();   --> Returns -3.
-        minStack.pop();
-        minStack.top();      --> Returns 0.
-        minStack.getMin();   --> Returns -2.
-    */
+Tag: Stack
+Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+    push(x) -- Push element x onto stack.
+    pop() -- Removes the element on top of the stack.
+    top() -- Get the top element.
+    getMin() -- Retrieve the minimum element in the stack.
+Example:
+    MinStack minStack = new MinStack();
+    minStack.push(-2);
+    minStack.push(0);
+    minStack.push(-3);
+    minStack.getMin();   --> Returns -3.
+    minStack.pop();
+    minStack.top();      --> Returns 0.
+    minStack.getMin();   --> Returns -2.
+*/
 class _0155_MinStack
 {
 private:
@@ -1166,6 +1239,8 @@ public:
 };
 
 /*
+Tag: single linked list
+
 Write a program to find the node at which the intersection of two singly linked lists begins.
 
 Input: intersectVal = 8, listA = [4,1,8,4,5], listB = [5,0,1,8,4,5], skipA = 2, skipB = 3

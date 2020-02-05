@@ -34,3 +34,42 @@ void LeetCode::_0143_ReorderList::reorderList(ListNode<int>* head) {
     delete nh;
     nh = nullptr;
 }
+
+
+/*
+recursive solution but very slow:
+
+class Solution {
+public:
+    void reorderList(ListNode* head) {
+        ListNode* p = head;
+        while(p && p->next) {
+            p->next = reverse(p->next);
+            p = p->next;
+        }
+    }
+    
+    ListNode* reverse(ListNode* head) {
+        if(!head) {
+            return nullptr;
+        }
+        if(head->next == nullptr) {
+            return head;
+        }
+        ListNode* pre = nullptr;
+        ListNode* cur = head;
+        ListNode* nex = cur->next;
+        while(cur) {
+            cur->next = pre;
+            pre = cur;
+            cur = nex;
+            if(nex) {
+                
+                nex = nex->next;
+            }
+        }
+        return pre;
+        
+    }
+};
+*/
