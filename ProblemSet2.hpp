@@ -600,7 +600,7 @@ public:
 };
 
 /*
-Tag: 
+Tag: palindrome
 Given a string, determine if it is a palindrome, considering only alphanumeric characters 
 and ignoring cases. 
 Note: For the purpose of this problem, we define empty string as valid palindrome.
@@ -614,9 +614,8 @@ public:
 };
 
 /*
-Tag: BFS
+Tag: BFS, bidirect-BFS
 TODO
-
 Given two words (beginWord and endWord), and a dictionary's word list, find the 
 length of shortest transformation sequence from beginWord to endWord, such that:
 
@@ -826,6 +825,60 @@ private:
 
 
 /*
+Tag: array, 
+TODO: Hard to think of
+
+There are N gas stations along a circular route, 
+where the amount of gas at station i is gas[i].
+You have a car with an unlimited gas tank and it costs 
+cost[i] of gas to travel from station i to its next station 
+(i+1). You begin the journey with an empty tank at one of 
+the gas stations.
+Return the starting gas station's index if you can travel 
+around the circuit once in the clockwise direction, otherwise 
+return -1.
+
+If there exists a solution, it is guaranteed to be unique.
+Both input arrays are non-empty and have the same length.
+Each element in the input arrays is a non-negative integer.
+Example 1:
+
+Input: 
+gas  = [1,2,3,4,5]
+cost = [3,4,5,1,2]
+
+Output: 3
+
+Explanation:
+Start at station 3 (index 3) and fill up with 4 unit of gas. Your tank = 0 + 4 = 4
+Travel to station 4. Your tank = 4 - 1 + 5 = 8
+Travel to station 0. Your tank = 8 - 2 + 1 = 7
+Travel to station 1. Your tank = 7 - 3 + 2 = 6
+Travel to station 2. Your tank = 6 - 4 + 3 = 5
+Travel to station 3. The cost is 5. Your gas is just enough to travel back to station 3.
+Therefore, return 3 as the starting index.
+Example 2:
+
+Input: 
+gas  = [2,3,4]
+cost = [3,4,3]
+
+Output: -1
+
+Explanation:
+You can't start at station 0 or 1, as there is not enough gas to travel to the next station.
+Let's start at station 2 and fill up with 4 unit of gas. Your tank = 0 + 4 = 4
+Travel to station 0. Your tank = 4 - 3 + 2 = 3
+Travel to station 1. Your tank = 3 - 3 + 3 = 3
+You cannot travel back to station 2, as it requires 4 unit of gas but you only have 3.
+Therefore, you can't travel around the circuit once no matter where you start.
+*/
+class _0134_GasStation {
+public:
+    int canCompleteCircuit(std::vector<int>& gas, std::vector<int>& cost);
+};
+
+/*
 Given a non-empty array of integers, every element appears twice except for one. Find that single one.
 Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
 
@@ -840,7 +893,57 @@ public:
     int singleNumber(std::vector<int>& nums);
 };
 
+
 /*
+Tag: array, left-right two times traversal
+TODO: Hard to think of
+There are N children standing in a line. Each child is assigned a rating value.
+You are giving candies to these children subjected to the following requirements:
+
+1. Each child must have at least one candy.
+2. Children with a higher rating get more candies than their neighbors.
+
+What is the minimum candies you must give?
+
+Input: [1,0,2]
+Output: 5
+Explanation: You can allocate to the first, second and third child with 2, 1, 2 candies respectively.
+Example 2:
+
+Input: [1,2,2]
+Output: 4
+Explanation: You can allocate to the first, second and third child with 1, 2, 1 candies respectively.
+    The third child gets 1 candy because it satisfies the above two conditions.
+*/
+
+class _0135_Candy {
+public:
+    int candy(std::vector<int>& ratings);
+};
+
+
+/*
+Tag: Bit operation
+Given a non-empty array of integers, every element appears twice except for one. 
+Find that single one.
+Your algorithm should have a linear runtime complexity. Could you implement it 
+without using extra memory?
+
+Input: [2,2,1]
+Output: 1
+
+Input: [4,1,2,1,2]
+Output: 4
+*/
+class _0136_SingleNumber {
+public:
+    int singleNumber(std::vector<int>& nums);
+};
+
+
+/*
+Tag: Bit operation
+
 Given a non-empty array of integers, every element appears three times except for one, which appears 
 exactly once. Find that single one.
 
@@ -861,6 +964,8 @@ public:
 };
 
 /*
+Tag: single linked list
+TODO:
 A linked list is given such that each node contains an additional random pointer which could point to 
 any node in the list or null. Return a deep copy of the list.
 
@@ -893,6 +998,44 @@ public:
 };
 
 /*
+Tag: Dynamic, backtracking (TLE)
+Given a non-empty string s and a dictionary wordDict containing a list of non-empty 
+words, determine if s can be segmented into a space-separated sequence of one or 
+more dictionary words.
+
+Note:
+
+The same word in the dictionary may be reused multiple times in the segmentation.
+You may assume the dictionary does not contain duplicate words.
+Example 1:
+
+Input: s = "leetcode", wordDict = ["leet", "code"]
+Output: true
+Explanation: Return true because "leetcode" can be segmented as "leet code".
+Example 2:
+
+Input: s = "applepenapple", wordDict = ["apple", "pen"]
+Output: true
+Explanation: Return true because "applepenapple" can be segmented as "apple pen apple".
+             Note that you are allowed to reuse a dictionary word.
+Example 3:
+
+Input: s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"]
+Output: false
+*/
+class _0139_WordBreak {
+public:
+    bool wordBreak(std::string s, std::vector<std::string>& wordDict);
+private:
+    bool wordBreak(std::string s, std::unordered_set<std::string>& wd);
+    bool wordBreak(std::string& s, const std::unordered_set<std::string>& wordDict);
+private:
+    std::unordered_map<std::string, bool> hasSolution;
+};
+
+/*
+Tag: Single Linked List
+
 Given a linked list, determine if it has a cycle in it.
 
 To represent a cycle in the given linked list, we use an integer pos which represents the position (0-indexed) in the linked list where tail connects to. If pos is -1, then there is no cycle in the linked list.
@@ -1302,6 +1445,59 @@ public:
     int findPeakElement(std::vector<int>& nums);
 };
 
+/*
+Tag: string,
+TODO: Too much details need to be considered
+
+Compare two version numbers version1 and version2.
+If version1 > version2 return 1; if version1 < version2 return -1;otherwise return 0.
+You may assume that the version strings are non-empty and contain only digits and the . character.
+The . character does not represent a decimal point and is used to separate number sequences.
+For instance, 2.5 is not "two and a half" or "half way to version three", it is the fifth 
+second-level revision of the second first-level revision.
+You may assume the default revision number for each level of a version number to be 0. 
+For example, version number 3.4 has a revision number of 3 and 4 for its first and second 
+level revision number. Its third and fourth level revision number are both 0.
+
+Input: version1 = "0.1", version2 = "1.1"             :          Output: -1
+Input: version1 = "1.0.1", version2 = "1"             :          Output: 1
+Input: version1 = "7.5.2.4", version2 = "7.5.3"       :          Output: -1
+Input: version1 = "1.01", version2 = "1.001"          :          Output: 0
+Explanation: Ignoring leading zeroes, both “01” and “001" represent the same number “1”
+
+Input: version1 = "1.0", version2 = "1.0.0"
+Output: 0
+Explanation: The first version number does not have a 
+third level revision number, which means its third level 
+revision number is default to "0"
+
+Note:
+
+Version strings are composed of numeric strings separated by dots . and this numeric strings may have leading zeroes.
+Version strings do not start or end with dots, and they will not be two consecutive dots.
+*/
+class _0165_CompareVersionNumbers {
+public:
+    int compareVersion(std::string version1, std::string version2)
+
+};
+
+
+/*
+Tag: string, arithmatic, hash
+TODO: Copy solution, need to fully understand what happened.
+Given two integers representing the numerator and denominator of a fraction, 
+return the fraction in string format. If the fractional part is repeating, 
+enclose the repeating part in parentheses.
+
+Input: numerator = 1, denominator = 2        :               Output: "0.5"
+Input: numerator = 2, denominator = 1        :               Output: "2"
+Input: numerator = 2, denominator = 3        :               Output: "0.(6)"
+ */
+class _0166_FractionToRecurringDecimal {
+public:
+std::string fractionToDecimal(int numerator, int denominator);
+};
 
 /*
 Given an array of integers that is already sorted in ascending order, find two numbers such
@@ -1494,6 +1690,22 @@ public:
 };
 
 /*
+Given a list of non negative integers, arrange them such that they 
+form the largest number.
+
+Input: [10,2]
+Output: "210"
+
+Input: [3,30,34,5,9]
+Output: "9534330"
+Note: The result may be very large, so you need to return a string instead of an integer.
+*/
+class _0179_LargestNumber {
+public:
+    std::string largestNumber(std::vector<int>& nums);
+};
+
+/*
 All DNA is composed of a series of nucleotides abbreviated as A, C, G, and T, 
 for example: "ACGAATTCCG". When studying DNA, it is sometimes useful to 
 identify repeated sequences within the DNA.
@@ -1509,6 +1721,14 @@ public:
 };
 
 /*
+Tag: special topic 
+ */
+class _0188_BestTimeToBuyAndSellStockIV {
+
+};
+
+/*
+Tag: string like reverse
 Given an array, rotate the array to the right by k steps, where k is non-negative.
 
 Input: [1,2,3,4,5,6,7] and k = 3
@@ -1535,32 +1755,32 @@ public:
 
 
 
-class _0190_ReverseBits
-{
-    /*
-            Reverse bits of a given 32 bits unsigned integer.
-            Example 1:
-            Input: 00000010100101000001111010011100
-            Output : 00111001011110000010100101000000
-            Explanation : The input binary string 00000010100101000001111010011100 
-            represents the unsigned integer 43261596, so return 964176192 which 
-            its binary representation is 00111001011110000010100101000000.
-            Example 2 :
-            Input : 11111111111111111111111111111101
-            Output : 10111111111111111111111111111111
-            Explanation : The input binary string 11111111111111111111111111111101 
-            represents the unsigned integer 4294967293, so return 3221225471 which 
-            its binary representation is 10101111110010110010011101101001.
+/*
+Tag: bit operation
+Reverse bits of a given 32 bits unsigned integer.
+Example 1:
+Input: 00000010100101000001111010011100
+Output : 00111001011110000010100101000000
+Explanation : The input binary string 00000010100101000001111010011100 
+represents the unsigned integer 43261596, so return 964176192 which 
+its binary representation is 00111001011110000010100101000000.
+Example 2 :
+Input : 11111111111111111111111111111101
+Output : 10111111111111111111111111111111
+Explanation : The input binary string 11111111111111111111111111111101 
+represents the unsigned integer 4294967293, so return 3221225471 which 
+its binary representation is 10101111110010110010011101101001.
 
-            Note :
-            Note that in some languages such as Java, there is no unsigned integer 
-            type. In this case, both input and output will be given as signed integer 
-            type and should not affect your implementation, as the internal binary 
-            representation of the integer is the same whether it is signed or unsigned.
-            In Java, the compiler represents the signed integers using 2's complement 
-            notation. Therefore, in Example 2 above the input represents the signed 
-            integer -3 and the output represents the signed integer -1073741825.
-        */
+Note :
+Note that in some languages such as Java, there is no unsigned integer 
+type. In this case, both input and output will be given as signed integer 
+type and should not affect your implementation, as the internal binary 
+representation of the integer is the same whether it is signed or unsigned.
+In Java, the compiler represents the signed integers using 2's complement 
+notation. Therefore, in Example 2 above the input represents the signed 
+integer -3 and the output represents the signed integer -1073741825.
+*/
+class _0190_ReverseBits {
 public:
     uint32_t reverseBits(uint32_t n);
 };

@@ -9,9 +9,9 @@ LeetCode::_0138_CopyListWithRandomPointer::Node* LeetCode::_0138_CopyListWithRan
     }
     LeetCode::_0138_CopyListWithRandomPointer::Node* res = new LeetCode::_0138_CopyListWithRandomPointer::Node();
     res->val = head->val;
+    visit[head] = res; // this has to be done before recursive call
+
     res->next = copyRandomList(head->next);   // 跟 cloneGraph 一个意思只不过没那么多而已;
     res->random = copyRandomList(head->random);
-    visit[head] = res;
-
     return res;
 }
