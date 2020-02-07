@@ -11,3 +11,20 @@ uint32_t LeetCode::_0190_ReverseBits::reverseBits(uint32_t n) {
     }
     return ans.to_ullong();
 }
+
+/*
+class Solution {
+public:
+    uint32_t reverseBits(uint32_t n) {
+        uint32_t res;
+        int t= 32;
+        while(t) {
+            res <<= 1;
+            res |= (n & 1);
+            n >>= 1;
+            --t;
+        }
+        return res;
+    }
+};
+*/
