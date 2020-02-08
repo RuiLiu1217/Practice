@@ -303,6 +303,189 @@ public:
 };
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+1337. The K Weakest Rows in a Matrix
+User Accepted:3626
+User Tried:3781
+Total Accepted:3727
+Total Submissions:5595
+Difficulty:Easy
+Given a m * n matrix mat of ones (representing soldiers) and zeros (representing civilians), return the indexes of the k weakest rows in the matrix ordered from the weakest to the strongest.
+
+A row i is weaker than row j, if the number of soldiers in row i is less than the number of soldiers in row j, or they have the same number of soldiers but i is less than j. Soldiers are always stand in the frontier of a row, that is, always ones may appear first and then zeros.
+
+ 
+
+Example 1:
+
+Input: mat = 
+[[1,1,0,0,0],
+ [1,1,1,1,0],
+ [1,0,0,0,0],
+ [1,1,0,0,0],
+ [1,1,1,1,1]], 
+k = 3
+Output: [2,0,3]
+Explanation: 
+The number of soldiers for each row is: 
+row 0 -> 2 
+row 1 -> 4 
+row 2 -> 1 
+row 3 -> 2 
+row 4 -> 5 
+Rows ordered from the weakest to the strongest are [2,0,3,1,4]
+Example 2:
+
+Input: mat = 
+[[1,0,0,0],
+ [1,1,1,1],
+ [1,0,0,0],
+ [1,0,0,0]], 
+k = 2
+Output: [0,2]
+Explanation: 
+The number of soldiers for each row is: 
+row 0 -> 1 
+row 1 -> 4 
+row 2 -> 1 
+row 3 -> 1 
+Rows ordered from the weakest to the strongest are [0,2,3,1]
+ 
+
+Constraints:
+
+m == mat.length
+n == mat[i].length
+2 <= n, m <= 100
+1 <= k <= m
+matrix[i][j] is either 0 or 1.
+
+struct comp {
+  bool operator()(std::pair<int, int> const & p1, std::pair<int, int> const & p2) {
+      return p1.first > p2.first || (p1.first == p2.first && p1.second > p2.second);
+  }
+};
+class Solution {
+public:
+    vector<int> kWeakestRows(vector<vector<int>>& mat, int k) {
+        std::priority_queue<std::pair<int, int>, std::vector<std::pair<int,int>>, comp> pq;
+        for(int i = 0; i < mat.size(); ++i) {
+            pq.push({std::accumulate(begin(mat[i]), end(mat[i]), 0), i});
+        }
+        
+        std::vector<int> res;
+        int t = 0;
+        while (t < k) {
+            res.push_back(pq.top().second);
+            pq.pop();
+            ++t;
+        }
+        return res;
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1338. Reduce Array Size to The Half
+User Accepted:3238
+User Tried:3451
+Total Accepted:3301
+Total Submissions:5000
+Difficulty:Medium
+Given an array arr.  You can choose a set of integers and remove all the occurrences of these integers in the array.
+
+Return the minimum size of the set so that at least half of the integers of the array are removed.
+
+ 
+
+Example 1:
+
+Input: arr = [3,3,3,3,5,5,5,2,2,7]
+Output: 2
+Explanation: Choosing {3,7} will make the new array [5,5,5,2,2] which has size 5 (i.e equal to half of the size of the old array).
+Possible sets of size 2 are {3,5},{3,2},{5,2}.
+Choosing set {2,7} is not possible as it will make the new array [3,3,3,3,5,5,5] which has size greater than half of the size of the old array.
+Example 2:
+
+Input: arr = [7,7,7,7,7,7]
+Output: 1
+Explanation: The only possible set you can choose is {7}. This will make the new array empty.
+Example 3:
+
+Input: arr = [1,9]
+Output: 1
+Example 4:
+
+Input: arr = [1000,1000,3,7]
+Output: 1
+Example 5:
+
+Input: arr = [1,2,3,4,5,6,7,8,9,10]
+Output: 5
+ 
+
+Constraints:
+
+1 <= arr.length <= 10^5
+arr.length is even.
+1 <= arr[i] <= 10^5
+
+class Solution {
+public:
+    int minSetSize(vector<int>& arr) {
+        const int N = arr.size();
+        std::unordered_map<int, int> map;
+        for(int i = 0; i < arr.size(); ++i) {
+            ++map[arr[i]];
+        }
+        std::vector<std::pair<int,int>> statistic;
+        for(auto& m : map) {
+            statistic.push_back(m);
+        }
+        std::sort(begin(statistic), end(statistic), [](auto& a, auto& b){
+            return (a.second > b.second);
+        });
+        int removeNum = 0;
+        int accumuNum = 0;
+        for(int i = 0; i < statistic.size(); ++i) {
+            ++removeNum;
+            accumuNum += statistic[i].second;
+            if(accumuNum >= N / 2) {
+                break;
+            }
+        }
+        return removeNum;
+    }
+};
+
+
+*/
+
 }
 
 #endif

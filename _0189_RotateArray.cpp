@@ -1,5 +1,5 @@
 #include "headers.hpp"
-
+// Array operation
 void LeetCode::_0189_RotateArray::rotate(std::vector<int>& nums, int k) {
     int numVecSize = nums.size();
     k = k % numVecSize;

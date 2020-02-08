@@ -1,5 +1,5 @@
 #include "headers.hpp"
-
+// String, Mathematics, Recursive
 int LeetCode::_0171_ExcellSheetColumnNumber::titleToNumber(std::string s) {
     if(s.empty()) {
         return 0;

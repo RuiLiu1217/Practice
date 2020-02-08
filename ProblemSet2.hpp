@@ -1347,7 +1347,28 @@ public:
     int findMin(std::vector<int>& nums);
 };
 
+/*
+Suppose an array sorted in ascending order is rotated at some pivot 
+unknown to you beforehand.
+(i.e.,  [0,1,2,4,5,6,7] might become  [4,5,6,7,0,1,2]).
+Find the minimum element.
+The array may contain duplicates.
 
+Input: [1,3,5]
+Output: 1
+
+Input: [2,2,2,0,1]
+Output: 0
+Note:
+This is a follow up problem to Find Minimum in Rotated Sorted Array.
+Would allow duplicates affect the run-time complexity? How and why?
+*/
+class _0154_FindMinimumInRotatedSortedArrayII {
+public:
+    int findMin(std::vector<int>& nums);
+private:
+    int findMin(std::vector<int>& nums, int start, int end);
+};
 
 /*
 Tag: Stack
@@ -1446,6 +1467,34 @@ public:
 };
 
 /*
+Tag: sort, bucket sort, very special case
+TODO
+Given an unsorted array, find the maximum difference between the successive elements in its sorted form.
+
+Return 0 if the array contains less than 2 elements.
+
+Example 1:
+
+Input: [3,6,9,1]
+Output: 3
+Explanation: The sorted form of the array is [1,3,6,9], either
+             (3,6) or (6,9) has the maximum difference 3.
+Example 2:
+
+Input: [10]
+Output: 0
+Explanation: The array contains less than 2 elements, therefore return 0.
+Note:
+
+You may assume all elements in the array are non-negative integers and fit in the 32-bit signed integer range.
+Try to solve it in linear time/space.
+*/
+class _0164_MaximumGap {
+public:
+    int maximumGap(std::vector<int>& nums);
+};
+
+/*
 Tag: string,
 TODO: Too much details need to be considered
 
@@ -1477,8 +1526,11 @@ Version strings are composed of numeric strings separated by dots . and this num
 Version strings do not start or end with dots, and they will not be two consecutive dots.
 */
 class _0165_CompareVersionNumbers {
+private:
+    int findDot(const std::string& v);
+    std::string removeHeadingZeros(const std::string& v);
 public:
-    int compareVersion(std::string version1, std::string version2)
+    int compareVersion(std::string version1, std::string version2);
 
 };
 

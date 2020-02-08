@@ -1,5 +1,5 @@
 #include "headers.hpp"
-
+// Dynamic programming
 /*
 It is a typical DP problem. We design a DP vector, DP[i] means the maximum value that we can get from 
 nums[0] to nums[i].

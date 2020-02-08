@@ -1,5 +1,5 @@
 #include "headers.hpp"
-
+// Backtracking
 int LeetCode::_0200_NumberOfIslands::numIslands(std::vector<std::vector<char>>& grid) {
     const int M = grid.size();
     if(M == 0) {

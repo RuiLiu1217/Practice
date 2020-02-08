@@ -1,5 +1,5 @@
 #include "headers.hpp"
-
+// Tag: array, edge cases
 int LeetCode::_0162_FindPeakElement::findPeakElement(std::vector<int>& nums) {
     if(nums.size() == 1) {
         return 0;

@@ -1,8 +1,10 @@
 #include "headers.hpp"
 #include <unordered_map>
-
-// 抄答案的，需要进一步分析，理解
-std::string LeetCode::_0166_FractionToRecurringDecimal::fractionToDecimal(int n, int d) {
+// hash, string, math, 
+// todo
+std::string LeetCode::_0166_FractionToRecurringDecimal::fractionToDecimal(int n1, int d1) {
+    long long n = n1;
+    long long d = d1;
     if(n == 0) {
         return "0";
     }
@@ -24,10 +26,10 @@ std::string LeetCode::_0166_FractionToRecurringDecimal::fractionToDecimal(int n,
 
     res += ".";
 
-    std::unordered_map<int, int> map;
+    std::unordered_map<long long, long long> map;
 
     //Simulate the division process
-    for(int r = n % d; r; r %= d) {
+    for(long long r = n % d; r; r %= d) {
         // meet a known remainder
         // so we reach the end of the repeating part
         if(map.count(r) > 0) {
