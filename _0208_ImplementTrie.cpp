@@ -1,6 +1,8 @@
 #include "headers.hpp"
 #include <string>
 
+// Tag: Trie, string
+// Todo: important
 LeetCode::_0208_ImplementTrie::_0208_ImplementTrie() {}
     
     
@@ -24,7 +26,7 @@ bool LeetCode::_0208_ImplementTrie::search(std::string word) {
             p = p->children[word[i]];
         }
     }
-    return p->isWord;
+    return p && p->isWord;
 }
 
 

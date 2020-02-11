@@ -1,7 +1,9 @@
 #include "headers.hpp"
 #include <algorithm>
 
-// 滑动窗口算法
+// Tag: sliding window
+// TODO: while < or <= and edge conditions is hard to make right
+
 int LeetCode::_0209_MinimumSizeSubarraySum::minSubArrayLen(int s, std::vector<int>& nums) {
     int l = 0;
     int r = 0;
@@ -18,8 +20,8 @@ int LeetCode::_0209_MinimumSizeSubarraySum::minSubArrayLen(int s, std::vector<in
     return len == INT_MAX ? 0 : len;
 }
 
-// nlogn的算法反而比较tricky
-// 这个算法利用presum和二分搜索
+// NlogN solution is harder.
+// Tag: presum, binary search
 // 1. sums[0] = 0
 // 2. sums[i] = nums[0] + ... + nums[i-1] for  i > 0
 // 对于每个 sum[i] >= s, 我们用二分搜索找到这样的 j : sums[j] > sums[i] - s (j < i), 同样 sums[j - 1] <= sums[i] - s.

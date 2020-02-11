@@ -11,6 +11,24 @@
 #include "Trie.hpp"
 namespace LeetCode {
 
+
+/*
+Tag: bit operations
+TODO: n & (n-1) trick
+Given a range [m, n] where 0 <= m <= n <= 2147483647, return the bitwise AND of all numbers in this range, inclusive.
+
+Input: [5,7]
+Output: 4
+Example 2:
+
+Input: [0,1]
+Output: 0
+*/
+class _0201_BitwiseANDofNumbersRange {
+public:
+    int rangeBitwiseAnd(int m, int n);
+};
+
 /*
 Write an algorithm to determine if a number is "happy".
 
@@ -100,6 +118,38 @@ public:
 };
 
 /*
+There are a total of n courses you have to take, labeled from 0 to n-1.
+Some courses may have prerequisites, for example to take course 0 you have to 
+first take course 1, which is expressed as a pair: [0,1]
+Given the total number of courses and a list of prerequisite pairs, is it possible 
+for you to finish all courses?
+
+Input: 2, [[1,0]] 
+Output: true
+Explanation: There are a total of 2 courses to take. 
+             To take course 1 you should have finished course 0. So it is possible.
+Example 2:
+
+Input: 2, [[1,0],[0,1]]
+Output: false
+Explanation: There are a total of 2 courses to take. 
+             To take course 1 you should have finished course 0, and to take course 0 you should
+             also have finished course 1. So it is impossible.
+Note:
+
+The input prerequisites is a graph represented by a list of edges, not adjacency matrices. Read more about how a graph is represented.
+You may assume that there are no duplicate edges in the input prerequisites.
+*/
+class _0207_CourseSchedule {
+    using Graph = std::vector<std::vector<int>>;
+    Graph createGraph(int numCourses, std::vector<std::vector<int>>& prerequisites);
+    bool isCyclicUtils(Graph g, int v, std::vector<bool>& visited, std::vector<bool>& recStack);
+    std::vector<int> computeIndegrees(Graph& g);
+public:    
+    bool canFinish(int numCourses, std::vector<std::vector<int>>& prerequisites);
+};
+
+/*
 Implement a trie with insert, search, and startsWith methods.
 
 Example:
@@ -132,7 +182,7 @@ public:
     bool startsWith(std::string prefix);
 private:
     std::unordered_map<char, _0208_ImplementTrie*> children;
-    bool isWord;
+    bool isWord = false;
 };
 
 /*
@@ -185,6 +235,44 @@ public:
     std::vector<int> findOrder(int numCourses, std::vector<std::vector<int>>& prerequisites);
 private:
      void BFS(const std::vector<std::vector<int>>& graph, std::vector<int>& inDegree, std::vector<int>& res);
+};
+
+/*
+Design a data structure that supports the following two operations:
+void addWord(word)
+bool search(word)
+search(word) can search a literal word or a regular expression string 
+containing only letters a-z or .. A . means it can represent any one letter.
+
+addWord("bad")
+addWord("dad")
+addWord("mad")
+search("pad") -> false
+search("bad") -> true
+search(".ad") -> true
+search("b..") -> true
+Note:
+You may assume that all words are consist of lowercase letters a-z.
+*/
+class _0211_AddAndSearchWordDataStructureDesign {
+    class TrieNode {
+        public:
+            bool word;
+            TrieNode* children[26];
+            TrieNode() {
+                word = false;
+                for(int i = 0; i < 26; ++i) {
+                    children[i] = nullptr;
+                }
+            }
+    };
+public:
+    _0211_AddAndSearchWordDataStructureDesign() {}
+    void addWord(std::string word);
+    bool search(std::string word);
+private:
+    TrieNode* root = new TrieNode();
+    bool search(const char* word, TrieNode* node);
 };
 
 /*
@@ -244,6 +332,119 @@ private:
 };
 
 /*
+Find the kth largest element in an unsorted array. Note that it is the kth largest 
+element in the sorted order, not the kth distinct element.
+
+Input: [3,2,1,5,6,4] and k = 2
+Output: 5
+
+Input: [3,2,3,1,2,4,5,5,6] and k = 4
+Output: 4
+Note:
+You may assume k is always valid, 1 ≤ k ≤ array's length.
+*/
+class _0215_KthLargestElementInAnArray {
+public:
+    int findKthLargest(std::vector<int>& nums, int k);
+};
+
+/*
+Find all possible combinations of k numbers that add up to a number n, given that 
+only numbers from 1 to 9 can be used and each combination should be a unique set of numbers.
+Note:
+
+All numbers will be positive integers.
+The solution set must not contain duplicate combinations.
+
+Input: k = 3, n = 7
+Output: [[1,2,4]]
+
+Input: k = 3, n = 9
+Output: [[1,2,6], [1,3,5], [2,3,4]]
+*/
+class _0216_CombinationSumIII{
+public:
+    std::vector<std::vector<int>> combinationSum3(int k, int n);
+private:
+    void DFS(int k, int n, int curV, std::vector<int>& tmp, std::vector<std::vector<int>>& res);
+};
+
+/*
+217. Contains Duplicate
+Given an array of integers, find if the array contains any duplicates.
+Your function should return true if any value appears at least twice in 
+the array, and it should return false if every element is distinct.
+Input: [1,2,3,1]
+Output: true
+
+Input: [1,2,3,4]
+Output: false
+
+Input: [1,1,1,3,3,4,3,2,4,2]
+Output: true
+*/
+class _0217_ContainsDuplicate {
+public:
+    bool containsDuplicate(std::vector<int>& nums);
+};
+
+/*
+Given an array of integers and an integer k, find out whether there are
+two distinct indices i and j in the array such that nums[i] = nums[j]
+and the absolute difference between i and j is at most k.
+
+Input: nums = [1,2,3,1], k = 3
+Output: true
+
+Input: nums = [1,0,1,1], k = 1
+Output: true
+
+Input: nums = [1,2,3,1,2,3], k = 2
+Output: false
+*/
+class _0219_ContainsDuplicateII {
+public:
+    bool containsNearbyDuplicate(std::vector<int>& nums, int k);
+};
+
+/*
+Given an array of integers, find out whether there are two distinct 
+indices i and j in the array such that the absolute difference between 
+nums[i] and nums[j] is at most t and the absolute difference between 
+i and j is at most k.
+
+Input: nums = [1,2,3,1], k = 3, t = 0
+Output: true
+
+Input: nums = [1,0,1,1], k = 1, t = 2
+Output: true
+
+Input: nums = [1,5,9,1,5,9], k = 2, t = 3
+Output: false
+*/
+class _0220_ContainsDuplicateIII {
+public:
+    bool containsNearbyAlmostDuplicate(std::vector<int>& nums, int k, int t);
+};
+
+/*
+Given a 2D binary matrix filled with 0's and 1's, find the largest 
+square containing only 1's and return its area.
+
+Input: 
+1 0 1 0 0
+1 0 1 1 1
+1 1 1 1 1
+1 0 0 1 0
+
+Output: 4
+*/
+class _0221_MaximalSquare {
+public:
+    int maximalSquare(std::vector<std::vector<char>>& matrix);
+};
+
+/*
 Given a complete binary tree, count the number of nodes.
 
 Definition of a complete binary tree from Wikipedia:
@@ -274,6 +475,121 @@ corner and top right corner as shown in the figure.
 class _0223_RectangleArea {
 public:
     int computeArea(int A, int B, int C, int D, int E, int F, int G, int H);
+};
+
+/*
+225. Implement Stack using Queues
+Implement the following operations of a stack using queues.
+
+push(x) -- Push element x onto stack.
+pop() -- Removes the element on top of the stack.
+top() -- Get the top element.
+empty() -- Return whether the stack is empty.
+
+MyStack stack = new MyStack();
+
+stack.push(1);
+stack.push(2);  
+stack.top();   // returns 2
+stack.pop();   // returns 2
+stack.empty(); // returns false
+Notes:
+
+You must use only standard operations of a queue -- which means only 
+push to back, peek/pop from front, size, and is empty operations are valid.
+
+Depending on your language, queue may not be supported natively. You may 
+simulate a queue by using a list or deque (double-ended queue), as long 
+as you use only standard operations of a queue. You may assume that all 
+operations are valid (for example, no pop or top operations will be 
+called on an empty stack).
+*/
+class _0225_ImplementStackUsingQueues {
+public:
+    _0225_ImplementStackUsingQueues();
+
+    void push(int x);
+
+    int pop();
+
+    int top();
+
+    bool empty();
+
+private:
+    std::queue<int> nums;
+};
+
+/*
+Invert a binary tree.
+Input:
+
+     4
+   /   \
+  2     7
+ / \   / \
+1   3 6   9
+Output:
+
+     4
+   /   \
+  7     2
+ / \   / \
+9   6 3   1
+*/
+class _0226_InvertBinaryTree {
+public:
+    TreeNode<int>* invertTree(TreeNode<int>* root);
+};
+
+/*
+Given a sorted integer array without duplicates, return the summary of its ranges.
+
+Example 1:
+
+Input:  [0,1,2,4,5,7]
+Output: ["0->2","4->5","7"]
+Explanation: 0,1,2 form a continuous range; 4,5 form a continuous range.
+Example 2:
+
+Input:  [0,2,3,4,6,8,9]
+Output: ["0","2->4","6","8->9"]
+Explanation: 2,3,4 form a continuous range; 8,9 form a continuous range.
+*/
+class _0228_SummaryRange {
+public:
+    std::vector<std::string> summaryRanges(std::vector<int>& nums);
+};
+
+/*
+Given a binary search tree, write a function kthSmallest to find the kth smallest element in it.
+Note:
+You may assume k is always valid, 1 ≤ k ≤ BST's total elements.
+
+Input: root = [3,1,4,null,2], k = 1
+   3
+  / \
+ 1   4
+  \
+   2
+Output: 1
+
+Input: root = [5,3,6,2,4,null,null,1], k = 3
+       5
+      / \
+     3   6
+    / \
+   2   4
+  /
+ 1
+Output: 3
+Follow up:
+What if the BST is modified (insert/delete operations) often and you need to find the kth 
+smallest frequently? How would you optimize the kthSmallest routine?
+*/
+class _0230_KthSmallestElementInABST {
+public:
+    int kthSmallest(TreeNode<int>* root, int k);
 };
 
 /*

@@ -1,5 +1,5 @@
 #include "headers.hpp"
-
+// Tag: single linked list
 ListNode<int>* LeetCode::_0203_RemoveLinkedListElements::removeElements(ListNode<int>* head, int val) {
     if(!head) {
         return nullptr;

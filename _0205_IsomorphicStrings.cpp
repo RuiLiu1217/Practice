@@ -1,6 +1,7 @@
 #include "headers.hpp"
 #include <map>
 #include <string>
+// Tag: hash, double hash
 bool LeetCode::_0205_IsomorphicStrings::isIsomorphic(std::string s, std::string t) {
     if(s.size() != t.size()) {
         return false;

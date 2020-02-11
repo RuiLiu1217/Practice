@@ -3,6 +3,9 @@
 #include <unordered_map>
 #include <iterator>
 
+// Tag: hash, but I don't think it is a good problem
+// TODO
+
 int LeetCode::_0149_MaxPointsOnALine::maxPoints(std::vector<std::vector<int>>& points) {
     // std::unordered_map<float, int> statistic; // slope --> number of lines;
     // int maxNum = 0;

@@ -1,5 +1,6 @@
 #include "headers.hpp"
-
+// Tag: dynamic programming, two times calculation, {0~N-1, 1~N}
+// 
 int LeetCode::_0213_HouseRobberII::rob(std::vector<int>& nums) {
     if(nums.size() == 0) {
         return 0;
@@ -33,7 +34,5 @@ int LeetCode::_0213_HouseRobberII::robHelp(std::vector<int>& nums) {
         DP[0][i] = std::max(DP[0][i-1], DP[1][i-1]);
         DP[1][i] = DP[0][i-1] + nums[i];
     }
-
-    
     return std::max(DP[0].back(), DP[1].back());
 }

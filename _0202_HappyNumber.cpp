@@ -2,10 +2,10 @@
 #include <cmath>
 #include <algorithm>
 #include <unordered_set>
+// Tag: hash, mathematics
 int LeetCode::_0202_HappyNumber::gat(int n) {
     int sum = 0;
-    while(n > 0)
-    {
+    while(n > 0) {
         sum += std::pow(n % 10, 2);
         n = n / 10;
     }
