@@ -668,6 +668,25 @@ public:
     TreeNode<int> *lowestCommonAncestorIterative(TreeNode<int> *root, TreeNode<int> *p, TreeNode<int> *q);
 };
 
+
+/*
+Given an array nums of n integers where n > 1,  return an array output 
+such that output[i] is equal to the product of all the elements of nums 
+except nums[i].
+
+Input:  [1,2,3,4]
+Output: [24,12,8,6]
+Note: Please solve it without division and in O(n).
+
+Follow up:
+Could you solve it with constant space complexity? (The output array 
+does not count as extra space for the purpose of space complexity 
+analysis.)
+*/
+class _0238_ProductOfArrayExceptSelf {
+
+};
+
 /*
 Write an efficient algorithm that searches for a value 
 in an m x n matrix. This matrix has the following properties:
@@ -691,6 +710,60 @@ class _0240_SearchA2DMatrix_II
 {
 public:
     bool searchMatrix(const std::vector<std::vector<int>> &matrix, int target);
+};
+
+/*
+Given two strings s and t , write a function to determine if t is an anagram of s.
+
+Input: s = "anagram", t = "nagaram"
+Output: true
+
+Input: s = "rat", t = "car"
+Output: false
+Note:
+You may assume the string contains only lowercase alphabets.
+
+Follow up:
+What if the inputs contain unicode characters? How would you adapt your solution to such case?
+*/
+class _0242_ValidAnagram {
+public:
+    bool isAnagram(std::string s, std::string t);
+};
+
+
+/*
+Given a binary tree, return all root-to-leaf paths.
+Note: A leaf is a node with no children.
+
+Input:
+
+   1
+ /   \
+2     3
+ \
+  5
+
+Output: ["1->2->5", "1->3"]
+Explanation: All root-to-leaf paths are: 1->2->5, 1->3
+*/
+class _0257_BinaryTreePaths {
+public:
+    std::vector<std::string> binaryTreePaths(TreeNode<int>* root);
+};
+
+/*
+Given a non-negative integer num, repeatedly add all its digits until the 
+result has only one digit.
+
+Input: 38
+Output: 2 
+Explanation: The process is like: 3 + 8 = 11, 1 + 1 = 2. 
+    Since 2 has only one digit, return it.
+*/
+class _0258_AddDigits {
+public:
+    int addDigits(int num);
 };
 
 class _0260_SingleNumberII
@@ -722,6 +795,24 @@ class _0260_SingleNumberII
     */
 public:
     std::vector<int> singleNumber(const std::vector<int> &nums);
+};
+
+
+/*
+Write a program to find the n-th ugly number.
+Ugly numbers are positive numbers whose prime factors only include 2, 3, 5. 
+
+Input: n = 10
+Output: 12
+Explanation: 1, 2, 3, 4, 5, 6, 8, 9, 10, 12 is the sequence of the first 10 ugly numbers.
+
+Note:  
+1 is typically treated as an ugly number.
+n does not exceed 1690.
+*/
+class _0264_UglyNumberII {
+public:
+    int nthUglyNumber(int n);
 };
 
 /*

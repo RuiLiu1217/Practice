@@ -26,10 +26,9 @@ int LeetCode::_0300_LongestIncreasingSubsequence::lengthOfLIS_N2(std::vector<int
     return DP.back();
 }
 
-    
 
-// NlogN solution:
 /*
+NlogN solution:
 In this approach, we scan the array from left to right. We also make use 
 of a dp array initialized with all 0's. This dp array is meant to store the 
 increasing subsequence formed by including the currently encountered element. 
@@ -71,8 +70,7 @@ int LeetCode::_0300_LongestIncreasingSubsequence::lengthOfLIS_NlogN(std::vector<
         
         if(it == DP.begin() + len) {
             ++len;
-        }            
-        
+        }
     }
     return len;
 }
