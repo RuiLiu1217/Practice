@@ -542,6 +542,8 @@ public:
     TreeNode<int>* invertTree(TreeNode<int>* root);
 };
 
+
+
 /*
 Given a sorted integer array without duplicates, return the summary of its ranges.
 
@@ -590,6 +592,25 @@ smallest frequently? How would you optimize the kthSmallest routine?
 class _0230_KthSmallestElementInABST {
 public:
     int kthSmallest(TreeNode<int>* root, int k);
+};
+
+/*
+Given an integer, write a function to determine if it is a power of two.
+
+Input: 1
+Output: true 
+Explanation: 20 = 1
+
+Input: 16
+Output: true
+Explanation: 24 = 16
+
+Input: 218
+Output: false
+*/
+class _0231_PowerOfTwo {
+public:
+    bool isPowerOfTwo(int n);
 };
 
 /*
@@ -666,6 +687,73 @@ class _0235_LowestCommonAncestor
 public:
     TreeNode<int> *lowestCommonAncestorRecursive(TreeNode<int> *root, TreeNode<int> *p, TreeNode<int> *q);
     TreeNode<int> *lowestCommonAncestorIterative(TreeNode<int> *root, TreeNode<int> *p, TreeNode<int> *q);
+};
+
+/*
+Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.
+According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined 
+between two nodes p and q as the lowest node in T that has both p and q as descendants 
+(where we allow a node to be a descendant of itself).”
+
+Given the following binary tree:  root = [3,5,1,6,2,0,8,null,null,7,4]
+
+Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1
+Output: 3
+Explanation: The LCA of nodes 5 and 1 is 3.
+
+Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 4
+Output: 5
+Explanation: The LCA of nodes 5 and 4 is 5, since a node can be a descendant of itself according to the LCA definition.
+
+Note:
+All of the nodes' values will be unique.
+p and q are different and both values will exist in the binary tree.
+*/
+class _0236_LowestCommonAncestorOfABinaryTree {
+public:
+    TreeNode<int>* lowestCommonAncestor(TreeNode<int>* root, TreeNode<int>* p, TreeNode<int>* q);
+};
+
+/*
+Write a function to delete a node (except the tail) in a singly linked list, 
+given only access to that node.
+Given linked list -- head = [4,5,1,9], which looks like following:
+
+Input: head = [4,5,1,9], node = 5
+Output: [4,1,9]
+Explanation: You are given the second node with value 5, the linked list should become 4 -> 1 -> 9 after calling your function.
+
+Input: head = [4,5,1,9], node = 1
+Output: [4,5,9]
+Explanation: You are given the third node with value 1, the linked list should become 4 -> 5 -> 9 after calling your function.
+
+Note:
+
+The linked list will have at least two elements.
+All of the nodes' values will be unique.
+The given node will not be the tail and it will always be a valid node of the linked list.
+Do not return anything from your function.
+*/
+class _0237_DeleteNodeInALinkedList {
+public:
+    void deleteNode(ListNode<int>* node);
+};
+
+/*
+Given an array nums of n integers where n > 1,  return an array output such that output[i] is equal 
+to the product of all the elements of nums except nums[i].
+
+Input:  [1,2,3,4]
+Output: [24,12,8,6]
+Note: Please solve it without division and in O(n).
+
+Follow up:
+Could you solve it with constant space complexity? (The output array does not count as extra space 
+for the purpose of space complexity analysis.)
+*/
+class _0238_ProductOfArrayExceptSelf {
+public:
+    std::vector<int> productExceptSelf(std::vector<int>& nums);
 };
 
 /*

@@ -1,5 +1,5 @@
 #include "headers.hpp"
-
+// Tag: basic data structure
 LeetCode::_0232_ImplementQueueUsingStacks::_0232_ImplementQueueUsingStacks(){
 
 }
