@@ -564,6 +564,21 @@ public:
 };
 
 /*
+Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times.
+Note: The algorithm should run in linear time and in O(1) space.
+
+Input: [3,2,3]
+Output: [3]
+
+Input: [1,1,1,3,3,2,2,2]
+Output: [1,2]
+*/
+class _0229_MajorityElementII {
+public:
+    std::vector<int> majorityElement(std::vector<int>& nums);
+};
+
+/*
 Given a binary search tree, write a function kthSmallest to find the kth smallest element in it.
 Note:
 You may assume k is always valid, 1 ≤ k ≤ BST's total elements.
