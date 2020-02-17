@@ -96,6 +96,42 @@ public:
 };
 
 /*
+Tag: math
+Google
+TODO
+
+In a row of dominoes, A[i] and B[i] represent the top and bottom halves of 
+the i-th domino. (A domino is a tile with two numbers from 1 to 6 - one on
+each half of the tile.)
+
+We may rotate the i-th domino, so that A[i] and B[i] swap values.
+Return the minimum number of rotations so that all the values in A are the
+same, or all the values in B are the same.
+
+If it cannot be done, return -1.
+
+Input: A = [2,1,2,4,2,2], B = [5,2,6,2,3,2]
+Output: 2
+Explanation: 
+The first figure represents the dominoes as given by A and B: before we do any rotations.
+If we rotate the second and fourth dominoes, we can make every value in the top row equal to 2, as indicated by the second figure.
+
+Input: A = [3,5,1,2,3], B = [3,6,3,3,4]
+Output: -1
+Explanation: 
+In this case, it is not possible to rotate the dominoes to make one row of values equal.
+
+Note:
+
+1 <= A[i], B[i] <= 6
+2 <= A.length == B.length <= 20000
+*/
+class _1007_MinimumDominoRotationsForEqualRow {
+public:
+    int minDominoRotations(std::vector<int>& A, std::vector<int>& B);
+};
+
+/*
 Return the root node of a binary search tree that matches 
 the given preorder traversal.
 (Recall that a binary search tree is a binary tree where 
@@ -543,6 +579,33 @@ S consists only of English lowercase letters.
 class _1047_RemoveAllAdjacentDuplicatesInString {
 public:
     std::string removeDuplicates(std::string S);
+};
+
+/*
+Given a list of words, each word consists of English lowercase letters.
+Let's say word1 is a predecessor of word2 if and only if we can add 
+exactly one letter anywhere in word1 to make it equal to word2. 
+For example, "abc" is a predecessor of "abac".
+A word chain is a sequence of words [word_1, word_2, ..., word_k] with 
+k >= 1, where word_1 is a predecessor of word_2, word_2 is a predecessor 
+of word_3, and so on.
+Return the longest possible length of a word chain with words chosen 
+from the given list of words.
+
+Input: ["a","b","ba","bca","bda","bdca"]
+Output: 4
+Explanation: one of the longest word chain is "a","ba","bda","bdca".
+ 
+
+Note:
+
+1 <= words.length <= 1000
+1 <= words[i].length <= 16
+words[i] only consists of English lowercase letters.
+*/
+class _1048_LongestStringChain {
+public:
+    int longestStrChain(std::vector<std::string>& words);
 };
 
 /*

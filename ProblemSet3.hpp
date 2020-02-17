@@ -186,6 +186,10 @@ private:
 };
 
 /*
+Tag: Sliding windows
+Google
+TODO: edge cases and edge condition
+
 Given an array of n positive integers and a positive integer s, find the minimal length 
 of a contiguous subarray of which the sum ≥ s. If there isn't one, return 0 instead.
 
@@ -332,6 +336,25 @@ private:
 };
 
 /*
+Tag: palindrome, KMP
+TODO: Familar with KMP algorithm, especially how to calculate the next[] array
+
+Given a string s, you are allowed to convert it to a palindrome by 
+adding characters in front of it. Find and return the shortest 
+palindrome you can find by performing this transformation.
+
+Input: "aacecaaa"           :          Output: "aaacecaaa"
+Input: "abcd"               :          Output: "dcbabcd"
+Credits:
+Special thanks to @ifanchu for adding this problem and creating all test 
+cases. Thanks to @Freezen for additional test cases. 
+*/
+class _0214_ShortestPalindrome {
+public:
+    std::string shortestPalindrome(std::string s);
+};
+
+/*
 Find the kth largest element in an unsorted array. Note that it is the kth largest 
 element in the sorted order, not the kth distinct element.
 
@@ -428,6 +451,9 @@ public:
 };
 
 /*
+Tag: dynamic programming
+Google
+TODO: State Transition Equation
 Given a 2D binary matrix filled with 0's and 1's, find the largest 
 square containing only 1's and return its area.
 
@@ -664,41 +690,56 @@ public:
     bool empty();
 };
 
-class _0235_LowestCommonAncestor
-{
-    /*
-            Given a binary search tree (BST), find the lowest common 
-            ancestor (LCA) of two given nodes in the BST.
-            
-            According to the definition of LCA on Wikipedia: The lowest 
-            common ancestor is defined between two nodes p and q as the 
-            lowest node in T that has both p and q as descendants (where 
-            we allow a node to be a descendant of itself).
-            
-            Given binary search tree:  root = [6,2,8,0,4,7,9,null,null,3,5]
-                _______6______
-               /              \
-            ___2__          ___8__
-           /      \        /      \
-           0       4       7       9
-         /  \
-        3   5
+/*
+Given an integer n, count the total number of digit 1 appearing 
+in all non-negative integers less than or equal to n.
 
-        Example 1:
-            Input: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8
-            Output: 6
-            Explanation: The LCA of nodes 2 and 8 is 6.
-        Example 2:
-            Input: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 4
-            Output: 2
-            Explanation: The LCA of nodes 2 and 4 is 2, since a node 
-            can be a descendant of itself according to the LCA definition.
-        Note:
-            All of the nodes' values will be unique. p and q are different 
-            and both values will exist in the BST.
-        Challenge: 
-            Think about the case that the tree is not a binary search tree?
-        */
+Given n = 13,
+Return 6, because digit 1 occurred in the following numbers: 1, 10, 11, 12, 13.
+
+Hint:
+Beware of overflow.
+*/
+class _0233_NumberOfDigitOne {
+public:
+    int countDigitOne(int n);
+};
+
+
+/*
+    Given a binary search tree (BST), find the lowest common 
+    ancestor (LCA) of two given nodes in the BST.
+    
+    According to the definition of LCA on Wikipedia: The lowest 
+    common ancestor is defined between two nodes p and q as the 
+    lowest node in T that has both p and q as descendants (where 
+    we allow a node to be a descendant of itself).
+    
+    Given binary search tree:  root = [6,2,8,0,4,7,9,null,null,3,5]
+         _______6______
+        /              \
+     ___2__          ___8__
+    /      \        /      \
+    0       4       7       9
+   /  \
+   3   5
+
+Example 1:
+    Input: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8
+    Output: 6
+    Explanation: The LCA of nodes 2 and 8 is 6.
+Example 2:
+    Input: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 4
+    Output: 2
+    Explanation: The LCA of nodes 2 and 4 is 2, since a node 
+    can be a descendant of itself according to the LCA definition.
+Note:
+    All of the nodes' values will be unique. p and q are different 
+    and both values will exist in the BST.
+Challenge: 
+    Think about the case that the tree is not a binary search tree?
+*/
+class _0235_LowestCommonAncestor{ 
 public:
     TreeNode<int> *lowestCommonAncestorRecursive(TreeNode<int> *root, TreeNode<int> *p, TreeNode<int> *q);
     TreeNode<int> *lowestCommonAncestorIterative(TreeNode<int> *root, TreeNode<int> *p, TreeNode<int> *q);
