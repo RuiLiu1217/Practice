@@ -983,6 +983,25 @@ public:
 };
 
 /*
+Tag: dynamic programming, two pointers
+Google
+TODO: Review the left,right maximum height and its application
+Given n non-negative integers representing an elevation map where the width 
+of each bar is 1, compute how much water it is able to trap after raining.
+
+The above elevation map is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. 
+In this case, 6 units of rain water (blue section) are being trapped. Thanks 
+Marcos for contributing this image!
+
+Input: [0,1,0,2,1,0,1,3,2,1,2,1]
+Output: 6
+*/
+class _0042_TrappingRainWater {
+public:
+    int trap(std::vector<int>& height);
+};
+
+/*
 Tag: string operation, basic arithmetic operation
 Given two non-negative integers num1 and num2 represented as strings, return the product 
 of num1 and num2, also represented as a string.
