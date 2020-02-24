@@ -1,6 +1,28 @@
 #include "headers.hpp"
 #include <algorithm>
 
+static TreeNode<int>* bstFromPreorder(std::vector<int>& preorder) {
+    return bstFromPreorder(preorder, 0, preorder.size());
+}
+
+static TreeNode<int>* bstFromPreorder(std::vector<int>& preorder, int startIdx, int endIdx) 
+{
+    if(endIdx <= startIdx) {
+        return nullptr;
+    }
+    TreeNode<int>* root = new TreeNode<int>(preorder[startIdx]);
+    if(endIdx - startIdx == 1) {
+        return root;
+    }
+    int i = startIdx + 1;
+    while(i < endIdx && preorder[i] < preorder[startIdx]) {
+        ++i;
+    }
+    root->left = bstFromPreorder(preorder, startIdx + 1, i);
+    root->right = bstFromPreorder(preorder, i, endIdx);
+    return root;        
+}
+
 TreeNode<int>* LeetCode::_1008_ConstructBinarySearchTreeFromPreorderTraversal::bstFromPreorderImpl(std::vector<int>& preorder, int bound) {
     if(i == preorder.size() || preorder[i] > bound) {
         return nullptr;

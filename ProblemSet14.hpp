@@ -303,20 +303,6 @@ public:
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*
 1337. The K Weakest Rows in a Matrix
 User Accepted:3626
@@ -399,18 +385,6 @@ public:
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 1338. Reduce Array Size to The Half
 User Accepted:3238
 User Tried:3451
@@ -485,6 +459,146 @@ public:
 
 
 */
+
+
+
+/*
+Given two numbers, hour and minutes. Return the smaller angle 
+(in sexagesimal units) formed between the hour and the minute 
+hand.
+Input: hour = 12, minutes = 30
+Output: 165
+
+Input: hour = 3, minutes = 30
+Output: 75
+
+Input: hour = 3, minutes = 15
+Output: 7.5
+
+Input: hour = 4, minutes = 50
+Output: 155
+
+Input: hour = 12, minutes = 0
+Output: 0
+
+Constraints:
+1 <= hour <= 12
+0 <= minutes <= 59
+Answers within 10^-5 of the actual value will be accepted as correct.
+*/
+class _1344_AngleBetweenHandsOfAClock {
+public:
+    double angleClock(int hour, int minute);
+};
+
+
+/*
+Given an integer array arr. You have to sort the integers in the array
+in ascending order by the number of 1's in their binary representation
+and in case of two or more integers have the same number of 1's you 
+have to sort them in ascending order.
+
+Return the sorted array.
+
+Example 1:
+Input: arr = [0,1,2,3,4,5,6,7,8]
+Output: [0,1,2,4,8,3,5,6,7]
+Explantion: [0] is the only integer with 0 bits.
+[1,2,4,8] all have 1 bit.
+[3,5,6] have 2 bits.
+[7] has 3 bits.
+The sorted array by bits is [0,1,2,4,8,3,5,6,7]
+
+Example 2:
+Input: arr = [1024,512,256,128,64,32,16,8,4,2,1]
+Output: [1,2,4,8,16,32,64,128,256,512,1024]
+Explantion: All integers have 1 bit in the binary representation, 
+you should just sort them in ascending order.
+
+Example 3:
+Input: arr = [10000,10000]
+Output: [10000,10000]
+
+Example 4:
+Input: arr = [2,3,5,7,11,13,17,19]
+Output: [2,3,5,17,7,11,13,19]
+
+Example 5:
+Input: arr = [10,100,1000,10000]
+Output: [10,100,10000,1000]
+ 
+Constraints:
+
+1 <= arr.length <= 500
+0 <= arr[i] <= 10^4
+*/
+class _1356_SortIntegersByTheNumberOf1Bits {
+public: 
+    std::vector<int> sortByBits(std::vector<int>& arr);
+};
+
+/*
+Given a string s consisting only of characters a, b and c.
+Return the number of substrings containing at least one 
+occurrence of all these characters a, b and c.
+
+Input: s = "abcabc"
+Output: 10
+Explanation: The substrings containing at least one 
+occurrence of the characters a, b and c are "abc", "abca", 
+"abcab", "abcabc", "bca", "bcab", "bcabc", "cab", "cabc" 
+and "abc" (again). 
+
+Input: s = "aaacb"
+Output: 3
+Explanation: The substrings containing at least one 
+occurrence of the characters a, b and c are "aaacb", "aacb" and "acb". 
+
+Input: s = "abc"
+Output: 1
+
+Constraints:
+
+3 <= s.length <= 5 x 10^4
+s only consists of a, b or c characters.
+*/
+class _1358_NumberOfSubstringsContainingAllThreeCharacters {
+private:
+    int count[3];
+    bool contains3() {
+        return count[0] >= 1 && count[1] >= 1 && count[2] >= 1;
+    }
+public:
+    int numberOfSubstrings(std::string s);
+};
+
+/*
+Given n orders, each order consist in pickup and delivery services. 
+Count all valid pickup/delivery possible sequences such that 
+delivery(i) is always after of pickup(i). 
+
+Since the answer may be too large, return it modulo 10^9 + 7.
+
+Input: n = 1
+Output: 1
+Explanation: Unique order (P1, D1), Delivery 1 always is after of Pickup 1.
+
+Input: n = 2
+Output: 6
+Explanation: All possible orders: 
+(P1,P2,D1,D2), (P1,P2,D2,D1), (P1,D1,P2,D2), (P2,P1,D1,D2), (P2,P1,D2,D1) and (P2,D2,P1,D1).
+This is an invalid order (P1,D2,P2,D1) because Pickup 2 is after of Delivery 2.
+Example 3:
+
+Input: n = 3
+Output: 90
+
+1 <= n <= 500
+*/
+class _1359_CountAllValidPickupAndDeliveryOptions {
+public:
+    int countOrders(int n );
+};
 
 }
 

@@ -299,6 +299,25 @@ public:
 };
 
 /*
+Tag: 
+
+Google
+   
+Write a function to generate the generalized abbreviations of a word. 
+Note: The order of the output does not matter.
+Example:
+
+Input: "word"
+Output:
+["word", "1ord", "w1rd", "wo1d", "wor1", "2rd", "w2d", "wo2", 
+"1o1d", "1or1", "w1r1", "1o2", "2r1", "3d", "w3", "4"]
+*/
+class _0320_GeneralizedAbbreviation {
+public:
+    std::vector<std::string> generalizeAbbreviations(std::string word);
+};
+
+/*
 Given two arrays of length m and n with digits 0-9 representing two 
 numbers. Create the maximum number of length k <= m + n from digits
 of the two. The relative order of the digits from the same array 
@@ -729,12 +748,52 @@ class _0357_CountNumbersWithUniqueDigits
 {
 public:
     int countNumbersWithUniqueDigits(int n);
-
 private:
     // For n-digits, it is a simple combination problem
     // The first digit has 9 choices.
     // From the second digits, 9 , 8, 7 ... selections until 1
     int countExactDigit(int n);
+};
+
+/*
+Design a logger system that receive stream of messages along with 
+its timestamps, each message should be printed if and only if it 
+is not printed in the last 10 seconds.
+
+Given a message and a timestamp (in seconds granularity), return 
+true if the message should be printed in the given timestamp, 
+otherwise returns false.
+
+It is possible that several messages arrive roughly at the same time.
+
+Example:
+
+Logger logger = new Logger();
+
+// logging string "foo" at timestamp 1
+logger.shouldPrintMessage(1, "foo"); returns true; 
+
+// logging string "bar" at timestamp 2
+logger.shouldPrintMessage(2,"bar"); returns true;
+
+// logging string "foo" at timestamp 3
+logger.shouldPrintMessage(3,"foo"); returns false;
+
+// logging string "bar" at timestamp 8
+logger.shouldPrintMessage(8,"bar"); returns false;
+
+// logging string "foo" at timestamp 10
+logger.shouldPrintMessage(10,"foo"); returns false;
+
+// logging string "foo" at timestamp 11
+logger.shouldPrintMessage(11,"foo"); returns true;
+*/
+class _0359_LoggerRateLimiter{
+private:
+    std::unordered_map<std::string, int> map;
+public:
+    _0359_LoggerRateLimiter() {}
+    bool shouldPrintMessage(int timeStamp, std::string message);
 };
 
 /*

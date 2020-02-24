@@ -832,6 +832,35 @@ public:
 };
 
 /*
+Given an array nums, there is a sliding window of size k which is moving from the 
+very left of the array to the very right. You can only see the k numbers in the 
+window. Each time the sliding window moves right by one position. Return the max 
+sliding window.
+
+Input: nums = [1,3,-1,-3,5,3,6,7], and k = 3
+Output: [3,3,5,5,6,7] 
+Explanation: 
+
+Window position                Max
+---------------               -----
+[1  3  -1] -3  5  3  6  7       3
+ 1 [3  -1  -3] 5  3  6  7       3
+ 1  3 [-1  -3  5] 3  6  7       5
+ 1  3  -1 [-3  5  3] 6  7       5
+ 1  3  -1  -3 [5  3  6] 7       6
+ 1  3  -1  -3  5 [3  6  7]      7
+Note:
+You may assume k is always valid, 1 ≤ k ≤ input array's size for non-empty array.
+
+Follow up:
+Could you solve it in linear time?
+*/
+class _0239_SlidingWindowMaximum {
+public:
+    std::vector<int> maxSlidingWindow(std::vector<int>& nums, int k);
+};
+
+/*
 Write an efficient algorithm that searches for a value 
 in an m x n matrix. This matrix has the following properties:
 
@@ -1002,6 +1031,49 @@ Explanation: 13 = 4 + 9.
 class _0279_PerfectSquares {
 public:
     int numSquares(int n);
+};
+
+
+/*
+Tag: hash
+Google
+
+An abbreviation of a word follows the form <first letter><number><last letter>. 
+Below are some examples of word abbreviations:
+a) it --> it    (no abbreviation)
+
+     1
+     ↓
+b) d|o|g                   --> d1g
+
+              1    1  1
+     1---5----0----5--8
+     ↓   ↓    ↓    ↓  ↓    
+c) i|nternationalizatio|n  --> i18n
+
+              1
+     1---5----0
+     ↓   ↓    ↓
+d) l|ocalizatio|n          --> l10n
+Assume you have a dictionary and given a word, find whether its abbreviation is 
+unique in the dictionary. A word's abbreviation is unique if no other word from 
+the dictionary has the same abbreviation.
+
+Example:
+Given dictionary = [ "deer", "door", "cake", "card" ]
+
+isUnique("dear") -> false
+isUnique("cart") -> true
+isUnique("cane") -> false
+isUnique("make") -> true
+*/
+class _0288_UniqueWordAbbreviation {
+private:
+    std::unordered_map<std::string, std::unordered_set<std::string>> mp;
+public:
+    _0288_UniqueWordAbbreviation(std::vector<std::string>& dictionary);
+    bool isUnique(std::string word);
+
 };
 
 /*
