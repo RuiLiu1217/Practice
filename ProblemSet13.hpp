@@ -136,6 +136,27 @@ public:
     std::string removeDuplicates(std::string s, int k);
 };
 
+/*
+Given two binary search trees, return True if and only if 
+there is a node in the first tree and a node in the second 
+tree whose values sum up to a given integer target.
+
+Input: root1 = [2,1,4], root2 = [1,0,3], target = 5
+Output: true
+Explanation: 2 and 3 sum up to 5.
+
+Input: root1 = [0,-10,10], root2 = [5,1,7,0,2], target = 18
+Output: false
+
+Constraints:
+
+Each tree has at most 5000 nodes.
+-10^9 <= target, node.val <= 10^9
+*/
+class _1214_TwoSumBSTs{
+public:
+    bool twoSumBSTs(TreeNode<int>* root1, TreeNode<int>* root2, int target);
+};
 
 /*
 Given an integer array arr and an integer difference, return the length of the 
