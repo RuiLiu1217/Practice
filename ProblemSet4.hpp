@@ -766,8 +766,6 @@ otherwise returns false.
 
 It is possible that several messages arrive roughly at the same time.
 
-Example:
-
 Logger logger = new Logger();
 
 // logging string "foo" at timestamp 1
@@ -788,7 +786,7 @@ logger.shouldPrintMessage(10,"foo"); returns false;
 // logging string "foo" at timestamp 11
 logger.shouldPrintMessage(11,"foo"); returns true;
 */
-class _0359_LoggerRateLimiter{
+class _0359_LoggerRateLimiter {
 private:
     std::unordered_map<std::string, int> map;
 public:
