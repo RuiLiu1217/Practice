@@ -157,6 +157,53 @@ public:
 };
 
 /*
+Tag: Binary Search
+Google
+
+A conveyor belt has packages that must be shipped from one port to another within D days.
+The i-th package on the conveyor belt has a weight of weights[i].  Each day, we load the 
+ship with packages on the conveyor belt (in the order given by weights). We may not load 
+more weight than the maximum weight capacity of the ship.
+Return the least weight capacity of the ship that will result in all the packages on the 
+conveyor belt being shipped within D days.
+
+Input: weights = [1,2,3,4,5,6,7,8,9,10], D = 5
+Output: 15
+Explanation: 
+A ship capacity of 15 is the minimum to ship all the packages in 5 days like this:
+1st day: 1, 2, 3, 4, 5
+2nd day: 6, 7
+3rd day: 8
+4th day: 9
+5th day: 10
+
+Note that the cargo must be shipped in the order given, so using a ship of capacity 14 and
+splitting the packages into parts like (2, 3, 4, 5), (1, 6, 7), (8), (9), (10) is not allowed. 
+Example 2:
+
+Input: weights = [3,2,2,4,1,4], D = 3
+Output: 6
+Explanation: 
+A ship capacity of 6 is the minimum to ship all the packages in 3 days like this:
+1st day: 3, 2
+2nd day: 2, 4
+3rd day: 1, 4
+Example 3:
+
+Input: weights = [1,2,3,1,1], D = 4
+Output: 3
+Explanation: 
+1st day: 1
+2nd day: 2
+3rd day: 3
+4th day: 1, 1
+*/
+class _1011_CapacityToShipPackagesWithinDDays {
+public:
+    int shipWithinDays(std::vector<int>& weights, int D);
+};
+
+/*
 Given a binary string S (a string consisting only of '0' and '1's) and a positive integer N, 
 return true if and only if for every integer X from 1 to N, the binary representation of X 
 is a substring of S.
@@ -695,6 +742,52 @@ text consists of lowercase English letters.
 class _1081_SmallestSubsequenceOfDistinctCharacters {
 public:
     std::string smallestSubsequenc(std::string text);
+};
+
+
+/*
+Tag: DFS,
+Google
+
+We can rotate digits by 180 degrees to form new digits. 
+When 0, 1, 6, 8, 9 are rotated 180 degrees, they become 
+0, 1, 9, 8, 6 respectively. When 2, 3, 4, 5 and 7 are 
+rotated 180 degrees, they become invalid.
+A confusing number is a number that when rotated 180 degrees 
+becomes a different number with each digit valid.(Note that 
+the rotated number can be greater than the original number.)
+
+Given a positive integer N, return the number of confusing 
+numbers between 1 and N inclusive.
+
+Input: 20
+Output: 6
+Explanation: 
+The confusing numbers are [6,9,10,16,18,19].
+6 converts to 9.
+9 converts to 6.
+10 converts to 01 which is just 1.
+16 converts to 91.
+18 converts to 81.
+19 converts to 61.
+
+Input: 100
+Output: 19
+Explanation: 
+The confusing numbers are [6,9,10,16,18,19,60,61,66,68,80,81,86,89,90,91,98,99,100].
+ 
+Note:
+1 <= N <= 10^9
+*/
+class _1088_ConfusingNumberII {
+private:
+    int count = 0;
+    const std::vector<int> mp = {0, 1, 2, 3, 4, 5, 9, 7, 8, 6};
+public:
+    int confusingNumberII(int N);
+
+    void DFS(long long n, int N);
+    bool isConfusing(int x);
 };
 
 /*

@@ -12,6 +12,51 @@
 namespace LeetCode {
 
 /*
+Tag: Data Structure
+
+Google
+
+Design and implement a data structure for a compressed string iterator. 
+It should support the following operations: next and hasNext.
+
+The given compressed string will be in the form of each letter followed 
+by a positive integer representing the number of this letter existing 
+in the original uncompressed string.
+
+next() - if the original string still has uncompressed characters, 
+return the next letter; Otherwise return a white space.
+
+hasNext() - Judge whether there is any letter needs to be uncompressed.
+
+Note:
+Please remember to RESET your class variables declared in StringIterator, 
+as static/class variables are persisted across multiple test cases. 
+Please see here for more details.
+
+StringIterator iterator = new StringIterator("L1e2t1C1o1d1e1");
+
+iterator.next(); // return 'L'
+iterator.next(); // return 'e'
+iterator.next(); // return 'e'
+iterator.next(); // return 't'
+iterator.next(); // return 'C'
+iterator.next(); // return 'o'
+iterator.next(); // return 'd'
+iterator.hasNext(); // return true
+iterator.next(); // return 'e'
+iterator.hasNext(); // return false
+iterator.next(); // return ' '
+*/
+class _0604_DesignCompressedStringIterator {
+private:
+    std::queue<std::pair<std::string, int>> q;
+public:
+    _0604_DesignCompressedStringIterator(std::string compressedString);
+    char next();
+    bool hasNext();
+};
+
+/*
 Given a list of directory info including directory path, and all the files with contents in this 
 directory, you need to find out all the groups of duplicate files in the file system in terms of 
 their paths.
@@ -405,6 +450,30 @@ public:
 };
 
 /*
+Tag: Priority Queue
+
+Google
+Given a sorted array, two integers k and x, find the k closest elements 
+to x in the array. The result should also be sorted in ascending order. 
+If there is a tie, the smaller elements are always preferred.
+
+Input: [1,2,3,4,5], k=4, x=3
+Output: [1,2,3,4]
+
+Input: [1,2,3,4,5], k=4, x=-1
+Output: [1,2,3,4]
+Note:
+The value k is positive and will always be smaller than the length of 
+the sorted array.
+Length of the given array is positive and will not exceed 104
+Absolute value of elements in the array and x will not exceed 104
+*/
+class _0658_FindKClosetElements {
+public:
+    std::vector<int> findClosetElements(std::vector<int>&arr, int k, int n);
+};
+
+/*
 You are given an integer array sorted in ascending order (may contain 
 duplicates), you need to split them into several subsequences, where 
 each subsequences consist of at least 3 consecutive integers. Return 
@@ -601,6 +670,32 @@ private:
     bool valid(std::vector<int>& nums);
     bool valid(double a, double b, double c);
     bool valid(double a, double b); 
+};
+
+/*
+Given a time represented in the format "HH:MM", form the next 
+closest time by reusing the current digits. There is no limit 
+on how many times a digit can be reused.
+
+You may assume the given input string is always valid. For 
+example, "01:34", "12:09" are all valid. "1:34", "12:9" are 
+all invalid.
+
+Input: "19:34"
+Output: "19:39"
+Explanation: The next closest time choosing from digits 1, 9, 
+3, 4, is 19:39, which occurs 5 minutes later.  It is not 19:33, 
+because this occurs 23 hours and 59 minutes later.
+
+Input: "23:59"
+Output: "22:22"
+Explanation: The next closest time choosing from digits 2, 3, 5, 
+9, is 22:22. It may be assumed that the returned time is next
+day's time since it is smaller than the input time numerically.
+*/
+class _0681_NextClosetTime {
+public:
+    std::string nextClosetTime(std::string time);
 };
 
 /*
