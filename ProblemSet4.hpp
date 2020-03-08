@@ -605,9 +605,29 @@ public:
     // The result is undefined if this NestedInteger holds a single integer
     const std::vector<NestedInteger> &getList() const;
 };
+
+/*
+Given a nested list of integers, return the sum of all integers in the list weighted by 
+their depth. Each element is either an integer, or a list -- whose elements may also be 
+integers or other lists.
+
+Input: [[1,1],2,[1,1]]
+Output: 10 
+Explanation: Four 1's at depth 2, one 2 at depth 1.
+
+Input: [1,[4,[6]]]
+Output: 27 
+Explanation: One 1 at depth 1, one 4 at depth 2, and one 6 at depth 3; 1 + 4*2 + 6*3 = 27.
+*/
+class _0339_NestedListWeightSum {
+public:
+    int depthSum(std::vector<NestedInteger>& nestedList);
+private:
+    int depthSum(std::vector<NestedInteger>& nestedList, int depth);
+};
+
 // TODO: COPY FROM A SOLUTION
-class _0341_FlattenNestedListIterator
-{
+class _0341_FlattenNestedListIterator {
 private:
     std::vector<NestedInteger> nl;
     _0341_FlattenNestedListIterator *itr = nullptr;
@@ -634,8 +654,7 @@ public:
         Output: false
     Follow up: Could you solve it without loops/recursion?
     */
-class _0342_PowerOfFour
-{
+class _0342_PowerOfFour {
 public:
     bool isPowerOfFour(int num);
 };
