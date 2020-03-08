@@ -453,6 +453,25 @@ public:
 };
 
 /*
+Given a string S, check if the letters can be rearranged so that two characters 
+that are adjacent to each other are not the same. If possible, output any possible 
+result.  If not possible, return the empty string.
+
+Input: S = "aab"
+Output: "aba"
+
+Input: S = "aaab"
+Output: ""
+Note:
+
+S will consist of lowercase letters and have length in range [1, 500].
+*/
+class _0767_ReorganizeString {
+public:
+    std::string reorganizeString(std::string S);
+};
+
+/*
 Given an array arr that is a permutation of [0, 1, ..., arr.length - 1], 
 we split the array into some number of "chunks" (partitions), and individually 
 sort each chunk.  After concatenating them, the result equals the sorted array.
