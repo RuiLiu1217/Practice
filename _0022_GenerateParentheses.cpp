@@ -1,4 +1,8 @@
 #include "headers.hpp"
+
+/*
+Google
+*/
 std::vector<std::string> LeetCode::_0022_GenerateParentheses::generateParenthesis(int n) {
     if(n == 0) {
         return {};

@@ -1,6 +1,8 @@
 #include "headers.hpp"
 #include <stack>
-
+/*
+Google
+*/
 bool LeetCode::_0020_ValidParentheses::isValid(std::string& s) {
     // () 1 [] 2 {} 3
     std::stack<int> st;

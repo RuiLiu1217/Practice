@@ -1,6 +1,10 @@
 #include "headers.hpp"
 #include <algorithm>
 
+/*
+Google
+*/
+
 // 这道题完全抄答案的，需要再一次复习看如何找到正确的思路
 // 一道二分搜索法的极致变形
 double LeetCode::_0004_MedianOfTwoSortedArrays::findMedianOfSortedArrays(std::vector<int>& nums1, std::vector<int>& nums2) {

@@ -626,6 +626,23 @@ private:
     int depthSum(std::vector<NestedInteger>& nestedList, int depth);
 };
 
+/*
+Given a string, find the length of the longest substring T that contains at most k 
+distinct characters.
+
+Input: s = "eceba", k = 2
+Output: 3
+Explanation: T is "ece" which its length is 3.
+
+Input: s = "aa", k = 1
+Output: 2
+Explanation: T is "aa" which its length is 2.
+*/
+class _0340_LongestSubstringWithAtMostKDistintCharacters {
+public:
+    int lengthOfLongestSubstringKDistinct(std::string s, int k);
+};
+
 // TODO: COPY FROM A SOLUTION
 class _0341_FlattenNestedListIterator {
 private:

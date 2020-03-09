@@ -1,5 +1,9 @@
 #include "headers.hpp"
 
+/*
+Google
+Just try to convert it
+*/
 bool LeetCode::_0009_PalindromeNumber::isPalindrome(int x) {
    if(x < 0) {
         return false;

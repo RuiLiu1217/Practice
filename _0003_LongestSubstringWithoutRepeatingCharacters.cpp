@@ -1,4 +1,5 @@
 #include "headers.hpp"
+// Google
 
 // TODO: Copy the solution. Need to understand it better
 // HashTable + Sliding Window:

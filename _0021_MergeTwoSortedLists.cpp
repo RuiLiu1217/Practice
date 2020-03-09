@@ -1,5 +1,8 @@
 #include "headers.hpp"
 
+/*
+Google
+*/
 ListNode<int>* LeetCode::_0021_MergeTwoSortedLists::mergeTwoLists(
     ListNode<int>* l1, ListNode<int>* l2) {
     if(l1 == nullptr && l2 == nullptr) {
