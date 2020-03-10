@@ -99,6 +99,20 @@ public:
     int thirdMax(std::vector<int>& nums);
 };
 
+/*
+Facebook
+
+Tag: string operation, math
+
+Given two non-negative integers num1 and num2 represented as string, return the sum of num1 and num2.
+
+Note:
+
+The length of both num1 and num2 is < 5100.
+Both num1 and num2 contains only digits 0-9.
+Both num1 and num2 does not contain any leading zero.
+You must not use any built-in BigInteger library or convert the inputs to integer directly.
+*/
 class _0415_AddStrings {
 public:
     std::string addStrings(std::string num1, std::string num2);
@@ -335,6 +349,42 @@ Intervals like [1,2] and [2,3] have borders "touching" but they don't overlap ea
 class _0435_NonOverlappingIntervals {
 public:
     int eraseOverlapIntervals(std::vector<std::vector<int>>& intervals);
+};
+
+/*
+
+Facebook
+
+Tag: hash, string
+
+Given a string s and a non-empty string p, find all the start indices of p's anagrams in s.
+Strings consists of lowercase English letters only and the length of both strings s and p 
+will not be larger than 20,100. The order of output does not matter.
+
+Input:
+s: "cbaebabacd" p: "abc"
+
+Output:
+[0, 6]
+
+Explanation:
+The substring with start index = 0 is "cba", which is an anagram of "abc".
+The substring with start index = 6 is "bac", which is an anagram of "abc".
+
+Input:
+s: "abab" p: "ab"
+
+Output:
+[0, 1, 2]
+
+Explanation:
+The substring with start index = 0 is "ab", which is an anagram of "ab".
+The substring with start index = 1 is "ba", which is an anagram of "ab".
+The substring with start index = 2 is "ab", which is an anagram of "ab".
+*/
+class _0438_FindAllAnagramsInAString {
+public:
+    std::vector<int> findAnagrams(std::string s, std::string p);
 };
 
 class _0441_ArrangingCoins {

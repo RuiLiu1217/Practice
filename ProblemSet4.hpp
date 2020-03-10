@@ -627,6 +627,10 @@ private:
 };
 
 /*
+Tag: Sliding Window
+
+Facebook
+
 Given a string, find the length of the longest substring T that contains at most k 
 distinct characters.
 
@@ -749,6 +753,28 @@ Your algorithm's time complexity must be better than O(n log n), where n is the 
 class _0347_TopKFrequentElements {
 public:
     std::vector<int> topKFrequent(std::vector<int>& nums, int k);
+};
+
+/*
+
+Tag: hash
+
+Facebook
+
+Given two arrays, write a function to compute their intersection.
+
+Input: nums1 = [1,2,2,1], nums2 = [2,2]
+Output: [2]
+
+Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+Output: [9,4]
+Note:
+Each element in the result must be unique.
+The result can be in any order.
+*/
+class _0349_IntersectionOfTwoArrays {
+public:
+    std::vector<int> intersection(std::vector<int>& nums1, std::vector<int>& nums2);
 };
 
 /*
@@ -1219,6 +1245,10 @@ public:
 };
 
 /*
+Tag: hash
+
+Facebook
+
 Given an array of integers with possible duplicates, randomly output 
 the index of a given target number. You can assume that the given 
 target number must exist in the array.

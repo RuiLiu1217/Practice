@@ -243,6 +243,10 @@ public:
 };
 
 /*
+Tag: Tree
+!!! Edge case and initial condtion is very easy to have errors !!!
+Facebook 
+
 Given a binary tree, you need to compute the length of the diameter 
 of the tree. The diameter of a binary tree is the length of the 
 longest path between any two nodes in a tree. This path may or may 
@@ -372,6 +376,10 @@ public:
 };
 
 /*
+Tag:
+
+Facebook
+
 560. Subarray Sum Equals K
 Given an array of integers and an integer k, you need to find 
 the total number of continuous subarrays whose sum equals to k.

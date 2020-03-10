@@ -1,6 +1,6 @@
 #include "headers.hpp"
 
-std::vector<int> findAnagrams(std::string s, std::string p) {
+std::vector<int> LeetCode::_0438_FindAllAnagramsInAString::findAnagrams(std::string s, std::string p) {
     std::vector<int> sv(256, 0);
     std::vector<int> pv(256, 0);
 
