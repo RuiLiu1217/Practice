@@ -1,4 +1,6 @@
 #include "headers.hpp"
+// Facebook, Google
+// DFS
 // 这道题是hard题，最难的一点是一开始怎么能想到用DFS
 // 看答案的：
 std::vector<std::string> LeetCode::_0301_RemoveInvalidParentheses::removeInvalidParentheses(const std::string& s) {
@@ -50,7 +52,7 @@ void LeetCode::_0301_RemoveInvalidParentheses::DFS(const std::string& s, int sta
             std::string curr = s;
             curr.erase(i, 1); // remove the i-th parentheses
             if(s[i] == ')') {
-                DFS(curr, i, l, r-1, ans);
+                DFS(curr, i, l, r-1, ans); // Remove redundant ")"
             } else if(s[i] == '(') {
                 DFS(curr, i, l-1, r, ans);
             }
