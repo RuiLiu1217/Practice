@@ -242,6 +242,10 @@ private:
 };
 
 /*
+Facebook
+
+!!! Copy from solution !!!
+
 Design a data structure that supports the following two operations:
 void addWord(word)
 bool search(word)
@@ -256,19 +260,18 @@ search("bad") -> true
 search(".ad") -> true
 search("b..") -> true
 Note:
-You may assume that all words are consist of lowercase letters a-z.
-*/
+You may assume that all words are consist of lowercase letters a-z. */
 class _0211_AddAndSearchWordDataStructureDesign {
     class TrieNode {
-        public:
-            bool word;
-            TrieNode* children[26];
-            TrieNode() {
-                word = false;
-                for(int i = 0; i < 26; ++i) {
-                    children[i] = nullptr;
-                }
+    public:
+        bool word;
+        TrieNode* children[26];
+        TrieNode() {
+            word = false;
+            for(int i = 0; i < 26; ++i) {
+                children[i] = nullptr;
             }
+        }
     };
 public:
     _0211_AddAndSearchWordDataStructureDesign() {}
@@ -278,6 +281,7 @@ private:
     TrieNode* root = new TrieNode();
     bool search(const char* word, TrieNode* node);
 };
+
 
 /*
 Given a 2D board and a list of words from the dictionary, find all words in the board.
@@ -355,6 +359,8 @@ public:
 };
 
 /*
+Facebook
+
 Find the kth largest element in an unsorted array. Note that it is the kth largest 
 element in the sorted order, not the kth distinct element.
 
@@ -747,6 +753,9 @@ public:
 
 
 /*
+
+Facebook
+
 Given an array nums of n integers where n > 1,  return an array output 
 such that output[i] is equal to the product of all the elements of nums 
 except nums[i].
@@ -761,7 +770,8 @@ does not count as extra space for the purpose of space complexity
 analysis.)
 */
 class _0238_ProductOfArrayExceptSelf {
-
+public:
+    std::vector<int> productExceptSelf(std::vector<int>& nums);
 };
 
 /*
@@ -1004,6 +1014,9 @@ public:
 };
 
 /*
+
+Facebook
+
 There is a new alien language which uses the latin alphabet. However, 
 the order among letters are unknown to you. You receive a list of 
 non-empty words from the dictionary, where words are sorted lexicographically 
@@ -1035,6 +1048,30 @@ public:
     std::string alienOrder(std::vector<std::string>& words);
 private:
     std::vector<int> topologicalSort(std::vector<std::vector<int>>& adjList);
+};
+
+/*
+Given a non-empty binary search tree and a target value, find the 
+value in the BST that is closest to the target.
+
+Note:
+
+Given target value is a floating point.
+You are guaranteed to have only one unique value in the BST that 
+is closest to the target.
+
+Input: root = [4,2,5,1,3], target = 3.714286
+
+    4
+   / \
+  2   5
+ / \
+1   3
+Output: 4
+*/
+class _0270_ClosetBinarySearchTreeValue {
+public:
+    int closestValue(TreeNode<int>* root, double target); 
 };
 
 /*
@@ -1102,6 +1139,36 @@ Could you solve it in logarithmic time complexity?
 class _0275_HIndexII {
 public:
     int hIndex(std::vector<int>& citations);
+};
+
+/*
+Facebook
+
+You are a product manager and currently leading a team to develop a new product. 
+Unfortunately, the latest version of your product fails the quality check. Since 
+each version is developed based on the previous version, all the versions after 
+a bad version are also bad.
+
+Suppose you have n versions [1, 2, ..., n] and you want to find out the first bad 
+one, which causes all the following ones to be bad.
+
+You are given an API bool isBadVersion(version) which will return whether version 
+is bad. Implement a function to find the first bad version. You should minimize 
+the number of calls to the API.
+
+Example:
+
+Given n = 5, and version = 4 is the first bad version.
+
+call isBadVersion(3) -> false
+call isBadVersion(5) -> true
+call isBadVersion(4) -> true
+
+Then 4 is the first bad version. 
+*/
+class _0278_FirstBadVersion {
+public:
+    int firstBadVersion(int n);
 };
 
 /*
@@ -1194,6 +1261,43 @@ public:
 private:
     std::unordered_map<char, std::string> map;
     std::unordered_map<std::string, char> map2;
+};
+
+/*
+Facebook
+
+Serialization is the process of converting a data structure or object into a 
+sequence of bits so that it can be stored in a file or memory buffer, or 
+transmitted across a network connection link to be reconstructed later in the 
+same or another computer environment.
+
+Design an algorithm to serialize and deserialize a binary tree. There is no 
+restriction on how your serialization/deserialization algorithm should work. 
+You just need to ensure that a binary tree can be serialized to a string and 
+this string can be deserialized to the original tree structure.
+
+You may serialize the following tree:
+
+    1
+   / \
+  2   3
+     / \
+    4   5
+
+as "[1,2,3,null,null,4,5]"
+Clarification: The above format is the same as how LeetCode serializes a binary 
+tree. You do not necessarily need to follow this format, so please be creative 
+and come up with different approaches yourself.
+
+Note: Do not use class member/global/static variables to store states. Your 
+serialize and deserialize algorithms should be stateless.
+*/
+class _0297_SerializeAndDeserializeBinaryTree {
+public:
+    // Encodes a tree to a single string.
+    std::string serialize(TreeNode<int>* root);
+    // Decodes your encoded data to tree.
+    TreeNode<int>* deserialize(std::string data);
 };
 
 

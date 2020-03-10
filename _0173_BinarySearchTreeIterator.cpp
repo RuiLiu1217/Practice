@@ -8,7 +8,7 @@ LeetCode::_0173_BinarySearchTreeIterator::_0173_BinarySearchTreeIterator(TreeNod
         p = p->left;
     }
 }
-    
+
 /** @return the next smallest number */
 int LeetCode::_0173_BinarySearchTreeIterator::next() {
     if(hasNext()) {

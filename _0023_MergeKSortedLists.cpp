@@ -44,7 +44,7 @@ public:
 
 
 /*
-Google
+Google, Facebook
 */
 
 ListNode<int>* LeetCode::_0023_MergeKeSortedLists::mergeKLists(std::vector<ListNode<int>*>& lists) {

@@ -43,4 +43,3 @@ bool LeetCode::_0139_WordBreak::wordBreak(std::string& s, const std::unordered_s
     }
     return hasSolution[s] = false;
 }
-

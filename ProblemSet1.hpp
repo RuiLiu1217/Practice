@@ -530,6 +530,9 @@ private:
 };
 
 /*
+
+Google
+
 Tag: single link list
 Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
 Example:
@@ -788,6 +791,10 @@ public:
 };
 
 /*
+Facebook
+
+!!!Copy from the solution, need to be reviewed again!!!
+
 Tag: binary search
     TODO: Modification of the binary search
 Given an array of integers nums sorted in ascending order, find the 
@@ -1458,11 +1465,47 @@ public:
 };
 
 /*
-Tag: String, DFA, NFA
-*/
-class _0065_ValidNumber {
+Facebook
+        !!! Copy from Solution !!!
 
+Tag: String, DFA, NFA
+Validate if a given string can be interpreted as a decimal number.
+
+Some examples:
+"0" => true
+" 0.1 " => true
+"abc" => false
+"1 a" => false
+"2e10" => true
+" -90e3   " => true
+" 1e" => false
+"e3" => false
+" 6e-1" => true
+" 99e2.5 " => false
+"53.5e93" => true
+" --6 " => false
+"-+3" => false
+"95a54e53" => false
+
+Note: It is intended for the problem statement to be ambiguous. You 
+should gather all requirements up front before implementing one. 
+However, here is a list of characters that can be in a valid decimal number:
+
+Numbers 0-9
+Exponent - "e"
+Positive/negative sign - "+"/"-"
+Decimal point - "."
+Of course, the context of these characters also matters in the input.
+
+Update (2015-02-10):
+The signature of the C++ function had been updated. If you still see your 
+function signature accepts a const char * argument, please click the reload 
+button to reset your code definition. */
+class _0065_ValidNumber {
+public:
+    bool isNumber(std::string str);
 };
+
 
 /*
 Tag: array operation
@@ -1483,6 +1526,8 @@ public:
 };
 
 /*
+Facebook
+
 Tag: Array operation
 Given two binary strings, return their sum (also a binary string).
 The input strings are both non-empty and contains only characters 1 or 0.
@@ -1996,6 +2041,8 @@ class _0086_PartitionList {
 };
 
 /*
+Facebook 
+
 Tag: array operation, from back to front
 Merge Sorted Array
 Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.
@@ -2186,6 +2233,9 @@ public:
 };
 
 /*
+Facebook
+
+
 Tag: Tree
 Given a binary tree, determine if it is a valid binary search tree (BST).
 
