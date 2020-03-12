@@ -1,6 +1,6 @@
 #include "headers.hpp"
 
-Node* LeetCode::_0117_PopulatingNextRightPointersInEachNodeII::connect(Node* root) {
+LeetCode::_0117_PopulatingNextRightPointersInEachNodeII::Node* LeetCode::_0117_PopulatingNextRightPointersInEachNodeII::connect(Node* root) {
     if(root == nullptr) {
         return nullptr;
     }
@@ -26,4 +26,36 @@ Node* LeetCode::_0117_PopulatingNextRightPointersInEachNodeII::connect(Node* roo
         }
     }
     return root;
+}
+
+/* Space Complexity O(1) Solution */
+struct myNode {
+    int val;
+    myNode* left;
+    myNode* right;
+    myNode* next;
+    myNode(int v, myNode* l, myNode* r, myNode* n) : val(v), left(l), right(r), next(n) {}
+};
+
+myNode* connect(myNode* root) {
+    myNode* dummy = new myNode(0, nullptr, nullptr, nullptr);
+    myNode* cur = dummy;
+    myNode* head = root;
+    while(root) {
+        if(root->left) {
+            cur->next = root->left;
+            cur = cur->next;
+        }
+        if(root->right) {
+            cur->next = root->right;
+            cur = cur->next;
+        }
+        root = root->next;
+        if(!root) {
+            cur = dummy;
+            root = dummy->next;
+            dummy->next = nullptr;
+        }
+    }
+    return head;
 }

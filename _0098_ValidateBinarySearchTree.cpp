@@ -1,5 +1,29 @@
 #include "headers.hpp"
 
+/*
+class Solution {
+public:
+    bool isValidBST(TreeNode* root) {
+        auto [min, max, isValid] = isValidBSTImpl(root);
+        return isValid;
+    }
+    
+    std::tuple<double, double, bool> isValidBSTImpl(TreeNode* root) {
+        if(!root) {
+            return {INT_MAX + 1.0, INT_MIN - 1.0, true};
+        } else if(root->left == nullptr && root->right == nullptr) {
+            return {root->val, root->val, true};
+        } else {
+            auto [lmin, lmax, leftBST] = isValidBSTImpl(root->left);
+            auto [rmin, rmax, rightBST] = isValidBSTImpl(root->right);
+            double val = root->val;
+            bool isValid = lmax < val && rmin > val && leftBST && rightBST;
+            return {std::min(lmin, val), std::max(rmax, val), isValid};
+        }
+    }
+};
+*/
+
 bool LeetCode::_0098_ValidateBinarySearchTree::isValidBST(TreeNode<int>* root) {
     if(!root) {
         return true;

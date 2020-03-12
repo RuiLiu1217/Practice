@@ -1,4 +1,7 @@
 #include "headers.hpp"
+/*
+Google
+*/
 
 std::string LeetCode::_0005_LongestPalindromicSubstring::longestPalidrome(std::string s) {
     if(s.size() == 0) {

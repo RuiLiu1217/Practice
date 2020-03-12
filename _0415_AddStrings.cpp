@@ -1,48 +1,47 @@
 #include "headers.hpp"
 #include <algorithm>
 std::string LeetCode::_0415_AddStrings::addStrings(std::string num1, std::string num2) {
-    std::reverse(num1.begin(), num1.end());
-    std::reverse(num2.begin(), num2.end());
-    
-    int length = std::min(num1.size(), num2.size());
+    std::reverse(begin(num1), end(num1));
+    std::reverse(begin(num2), end(num2));
+    const int minL = std::min(num1.size(), num2.size());
+    int carry = 0;
     std::string res;
-    bool carry = false;
-    for(int i = 0; i < length; ++i) {
-        int curRes = num1[i] - '0' + num2[i] - '0' + carry;
-        if(curRes >= 10) {
-            curRes = curRes - 10;
-            carry = true;
+    int i = 0;
+    for(i = 0; i < minL; ++i) {
+        int t = (num1[i] - '0' + num2[i] - '0' + carry);
+        if(t >= 10) {
+            carry = 1;
+            t -= 10;
         } else {
-            carry = false;
+            carry = 0;
         }
-        res = char(curRes + '0') + res;
+        res += ('0' + t);
     }
-    if(num1.size() < num2.size()) {
-        for(int i = length; i < num2.size(); ++i) {
-            int curRes = num2[i] - '0' + carry;
-            if(curRes >= 10) {
-                curRes = curRes - 10;
-                carry = true;
-            } else {
-                carry = false;
-            }
-            res = char(curRes + '0') + res;
+    while(i < num1.size()) {
+        int t = (num1[i] - '0' + carry);
+        if(t >= 10) {
+            carry = 1;
+            t -= 10;
+        } else {
+            carry = 0;
         }
-    } else if(num2.size() < num1.size() ) {
-        for(int i = length; i < num1.size(); ++i) {
-            int curRes = num1[i] - '0' + carry;
-            if(curRes >= 10) {
-                curRes = curRes - 10;
-                carry = true;
-            } else {
-                carry = false;
-            }
-            res = char(curRes+'0') + res;
-        }
+        res += ('0' + t);
+        ++i;
     }
-    
+    while(i < num2.size()) {
+        int t = (num2[i] - '0' + carry);
+        if(t >= 10) {
+            carry = 1;
+            t -= 10;
+        } else {
+            carry = 0;
+        }
+        res += ('0' + t);
+        ++i;
+    }
     if(carry) {
-        res = char('1') + res;
+        res += '1';
     }
+    std::reverse(begin(res), end(res));
     return res;
 }

@@ -1,5 +1,7 @@
 #include "headers.hpp"
 #include <algorithm>
+// Moore vote algorithm 比较tricky
+// Tag: Facebook
 // Moore Vote Algorithm: 先设定两个备选值，然后每个备选值都有个计数，
 // 从头到尾访问一下，如果跟备选值一样，就加一个计数，如果计数是0，则当前
 // 这个数更新为新的计数，并开始计数为1，否则都减去一个计数;

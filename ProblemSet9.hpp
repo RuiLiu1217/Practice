@@ -426,6 +426,37 @@ public:
 };
 
 /*
+Tag: Unknow, my solution is slow
+
+Google
+
+Alice has a hand of cards, given as an array of integers.
+Now she wants to rearrange the cards into groups so that each 
+group is size W, and consists of W consecutive cards.
+
+Return true if and only if she can.
+
+Input: hand = [1,2,3,6,2,3,4,7,8], W = 3
+Output: true
+Explanation: Alice's hand can be rearranged as [1,2,3],[2,3,4],[6,7,8].
+
+Input: hand = [1,2,3,4,5], W = 4
+Output: false
+Explanation: Alice's hand can't be rearranged into groups of 4.
+
+Note:
+1 <= hand.length <= 10000
+0 <= hand[i] <= 10^9
+1 <= W <= hand.length
+*/
+class _0846_HandOfStraights {
+public:
+    bool isNStraightHand(std::vector<int>& hand, int W);
+private:
+    bool isNStraightHand(std::map<int, int>& hand, int W, int S);
+};
+
+/*
 Let's call an array A a mountain if the following properties hold:
 
 A.length >= 3

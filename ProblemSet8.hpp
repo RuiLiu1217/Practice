@@ -71,7 +71,43 @@ public:
     std::string toLowerCase(std::string str);
 };
 
+/*
+Design a max stack that supports push, pop, top, peekMax and popMax.
 
+push(x) -- Push element x onto stack.
+pop() -- Remove the element on top of the stack and return it.
+top() -- Get the element on the top.
+peekMax() -- Retrieve the maximum element in the stack.
+popMax() -- Retrieve the maximum element in the stack, and remove it. 
+If you find more than one maximum elements, only remove the top-most one.
+
+MaxStack stack = new MaxStack();
+stack.push(5); 
+stack.push(1);
+stack.push(5);
+stack.top(); -> 5
+stack.popMax(); -> 5
+stack.top(); -> 1
+stack.peekMax(); -> 5
+stack.pop(); -> 1
+stack.top(); -> 5
+Note:
+-1e7 <= x <= 1e7
+Number of operations won't exceed 10000.
+The last four operations won't be called when stack is empty.
+*/
+class _0716_MaxStack {
+private:
+    std::stack<int> normal;
+    std::stack<int> maximu;
+public:
+    _0716_MaxStack() {}
+    void push(int x);
+    int pop();
+    int top();
+    int peekMax();
+    int popMax();
+};
 
 /*
 We have two special characters. The first character can be represented by 
@@ -170,6 +206,36 @@ private:
     // floor:    largest entry whose key <= query key         |       [(12)   18]         |  [12    (18)]
     // ceiling:  smallest entry whose key > query key         |    floor.end > q.start    |     ceiling.start < q.end
     // Time complexity: O(nlogn)   Space complexity: O(n)
+};
+
+
+/*
+Given two sentences words1, words2 (each represented as an array of strings), and a list of 
+similar word pairs pairs, determine if two sentences are similar. For example, 
+      "great acting skills" 
+and 
+      "fine drama talent" 
+are similar, if the similar word pairs are 
+pairs = [["great", "fine"], ["acting","drama"], ["skills","talent"]].
+Note that the similarity relation is not transitive. For example, if "great" and "fine" are 
+similar, and "fine" and "good" are similar, "great" and "good" are not necessarily similar.
+However, similarity is symmetric. For example, "great" and "fine" being similar is the same 
+as "fine" and "great" being similar. Also, a word is always similar with itself. For example, 
+the sentences words1 = ["great"], words2 = ["great"], pairs = [] are similar, even though 
+there are no specified similar word pairs.
+Finally, sentences can only be similar if they have the same number of words. So a sentence 
+like words1 = ["great"] can never be similar to words2 = ["doubleplus","good"].
+Note:
+
+The length of words1 and words2 will not exceed 1000.
+The length of pairs will not exceed 2000.
+The length of each pairs[i] will be 2.
+The length of each words[i] and pairs[i][j] will be in the range [1, 20].
+*/
+class _0734_SentenceSimilarity {
+public:
+    bool areSentencesSimilar(std::vector<std::string>& words1, std::vector<std::string>& words2,
+    std::vector<std::vector<std::string>>& pairs);
 };
 
 /*
@@ -420,6 +486,25 @@ S will consist of lowercase letters ('a' to 'z') only.
 class _0763_PartitionLabels {
 public:
     std::vector<int> partitionLabels(std::string S) ;
+};
+
+/*
+Given a string S, check if the letters can be rearranged so that two characters 
+that are adjacent to each other are not the same. If possible, output any possible 
+result.  If not possible, return the empty string.
+
+Input: S = "aab"
+Output: "aba"
+
+Input: S = "aaab"
+Output: ""
+Note:
+
+S will consist of lowercase letters and have length in range [1, 500].
+*/
+class _0767_ReorganizeString {
+public:
+    std::string reorganizeString(std::string S);
 };
 
 /*

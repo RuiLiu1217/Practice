@@ -1,6 +1,8 @@
 #include "headers.hpp"
+/* 
+Google, Facebook
+*/
 
-// 抄答案的
 /*
 Single pass approach:
 First, we observe that for any given sequence that is in descending order, 

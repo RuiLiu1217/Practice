@@ -136,6 +136,27 @@ public:
     std::string removeDuplicates(std::string s, int k);
 };
 
+/*
+Given two binary search trees, return True if and only if 
+there is a node in the first tree and a node in the second 
+tree whose values sum up to a given integer target.
+
+Input: root1 = [2,1,4], root2 = [1,0,3], target = 5
+Output: true
+Explanation: 2 and 3 sum up to 5.
+
+Input: root1 = [0,-10,10], root2 = [5,1,7,0,2], target = 18
+Output: false
+
+Constraints:
+
+Each tree has at most 5000 nodes.
+-10^9 <= target, node.val <= 10^9
+*/
+class _1214_TwoSumBSTs{
+public:
+    bool twoSumBSTs(TreeNode<int>* root1, TreeNode<int>* root2, int target);
+};
 
 /*
 Given an integer array arr and an integer difference, return the length of the 
@@ -380,6 +401,39 @@ s1, s2 only contain 'x' or 'y'.
 class _1247_MinimumSwapsToMakeStringsEqual {
 public:
     int minimumSwap(std::string s1, std::string s2);
+};
+
+/*
+Given a string s of '(' , ')' and lowercase English characters. 
+Your task is to remove the minimum number of parentheses ( '(' or ')', in any positions ) 
+so that the resulting parentheses string is valid and return any valid string.
+
+Formally, a parentheses string is valid if and only if:
+It is the empty string, contains only lowercase characters, or
+It can be written as AB (A concatenated with B), where A and B are valid strings, or
+It can be written as (A), where A is a valid string.
+
+Input: s = "lee(t(c)o)de)"
+Output: "lee(t(c)o)de"
+Explanation: "lee(t(co)de)" , "lee(t(c)ode)" would also be accepted.
+
+Input: s = "a)b(c)d"
+Output: "ab(c)d"
+
+Input: s = "))(("
+Output: ""
+Explanation: An empty string is also valid.
+
+Input: s = "(a(b(c)d)"
+Output: "a(b(c)d)"
+
+Constraints:
+1 <= s.length <= 10^5
+s[i] is one of  '(' , ')' and lowercase English letters.
+*/
+class _1249_MinimumRemoveToMakeValidParentheses {
+public:
+    std::string minRemoveToMakeValid(std::string s);
 };
 
 /*

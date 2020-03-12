@@ -299,6 +299,25 @@ public:
 };
 
 /*
+Tag: 
+
+Google
+   
+Write a function to generate the generalized abbreviations of a word. 
+Note: The order of the output does not matter.
+Example:
+
+Input: "word"
+Output:
+["word", "1ord", "w1rd", "wo1d", "wor1", "2rd", "w2d", "wo2", 
+"1o1d", "1or1", "w1r1", "1o2", "2r1", "3d", "w3", "4"]
+*/
+class _0320_GeneralizedAbbreviation {
+public:
+    std::vector<std::string> generalizeAbbreviations(std::string word);
+};
+
+/*
 Given two arrays of length m and n with digits 0-9 representing two 
 numbers. Create the maximum number of length k <= m + n from digits
 of the two. The relative order of the digits from the same array 
@@ -586,9 +605,50 @@ public:
     // The result is undefined if this NestedInteger holds a single integer
     const std::vector<NestedInteger> &getList() const;
 };
+
+/*
+Given a nested list of integers, return the sum of all integers in the list weighted by 
+their depth. Each element is either an integer, or a list -- whose elements may also be 
+integers or other lists.
+
+Input: [[1,1],2,[1,1]]
+Output: 10 
+Explanation: Four 1's at depth 2, one 2 at depth 1.
+
+Input: [1,[4,[6]]]
+Output: 27 
+Explanation: One 1 at depth 1, one 4 at depth 2, and one 6 at depth 3; 1 + 4*2 + 6*3 = 27.
+*/
+class _0339_NestedListWeightSum {
+public:
+    int depthSum(std::vector<NestedInteger>& nestedList);
+private:
+    int depthSum(std::vector<NestedInteger>& nestedList, int depth);
+};
+
+/*
+Tag: Sliding Window
+
+Facebook
+
+Given a string, find the length of the longest substring T that contains at most k 
+distinct characters.
+
+Input: s = "eceba", k = 2
+Output: 3
+Explanation: T is "ece" which its length is 3.
+
+Input: s = "aa", k = 1
+Output: 2
+Explanation: T is "aa" which its length is 2.
+*/
+class _0340_LongestSubstringWithAtMostKDistintCharacters {
+public:
+    int lengthOfLongestSubstringKDistinct(std::string s, int k);
+};
+
 // TODO: COPY FROM A SOLUTION
-class _0341_FlattenNestedListIterator
-{
+class _0341_FlattenNestedListIterator {
 private:
     std::vector<NestedInteger> nl;
     _0341_FlattenNestedListIterator *itr = nullptr;
@@ -615,8 +675,7 @@ public:
         Output: false
     Follow up: Could you solve it without loops/recursion?
     */
-class _0342_PowerOfFour
-{
+class _0342_PowerOfFour {
 public:
     bool isPowerOfFour(int num);
 };
@@ -697,6 +756,28 @@ public:
 };
 
 /*
+
+Tag: hash
+
+Facebook
+
+Given two arrays, write a function to compute their intersection.
+
+Input: nums1 = [1,2,2,1], nums2 = [2,2]
+Output: [2]
+
+Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+Output: [9,4]
+Note:
+Each element in the result must be unique.
+The result can be in any order.
+*/
+class _0349_IntersectionOfTwoArrays {
+public:
+    std::vector<int> intersection(std::vector<int>& nums1, std::vector<int>& nums2);
+};
+
+/*
 Given two arrays, write a function to compute their intersection.
 
 Input: nums1 = [1,2,2,1], nums2 = [2,2]           :          Output: [2,2]
@@ -729,12 +810,115 @@ class _0357_CountNumbersWithUniqueDigits
 {
 public:
     int countNumbersWithUniqueDigits(int n);
-
 private:
     // For n-digits, it is a simple combination problem
     // The first digit has 9 choices.
     // From the second digits, 9 , 8, 7 ... selections until 1
     int countExactDigit(int n);
+};
+
+/*
+Design a logger system that receive stream of messages along with 
+its timestamps, each message should be printed if and only if it 
+is not printed in the last 10 seconds.
+
+Given a message and a timestamp (in seconds granularity), return 
+true if the message should be printed in the given timestamp, 
+otherwise returns false.
+
+It is possible that several messages arrive roughly at the same time.
+
+Logger logger = new Logger();
+
+// logging string "foo" at timestamp 1
+logger.shouldPrintMessage(1, "foo"); returns true; 
+
+// logging string "bar" at timestamp 2
+logger.shouldPrintMessage(2,"bar"); returns true;
+
+// logging string "foo" at timestamp 3
+logger.shouldPrintMessage(3,"foo"); returns false;
+
+// logging string "bar" at timestamp 8
+logger.shouldPrintMessage(8,"bar"); returns false;
+
+// logging string "foo" at timestamp 10
+logger.shouldPrintMessage(10,"foo"); returns false;
+
+// logging string "foo" at timestamp 11
+logger.shouldPrintMessage(11,"foo"); returns true;
+*/
+class _0359_LoggerRateLimiter {
+private:
+    std::unordered_map<std::string, int> map;
+public:
+    _0359_LoggerRateLimiter() {}
+    bool shouldPrintMessage(int timeStamp, std::string message);
+};
+
+/*
+Tag: Data Structure
+Google
+
+Design a hit counter which counts the number of hits received 
+in the past 5 minutes.
+Each function accepts a timestamp parameter (in seconds granularity) 
+and you may assume that calls are being made to the system in 
+chronological order (ie, the timestamp is monotonically increasing). 
+You may assume that the earliest timestamp starts at 1.
+
+It is possible that several hits arrive roughly at the same time.
+
+HitCounter counter = new HitCounter();
+
+// hit at timestamp 1.
+counter.hit(1);
+
+// hit at timestamp 2.
+counter.hit(2);
+
+// hit at timestamp 3.
+counter.hit(3);
+
+// get hits at timestamp 4, should return 3.
+counter.getHits(4);
+
+// hit at timestamp 300.
+counter.hit(300);
+
+// get hits at timestamp 300, should return 4.
+counter.getHits(300);
+
+// get hits at timestamp 301, should return 3.
+counter.getHits(301); 
+Follow up:
+What if the number of hits per second could be very large? Does your design scale?
+*/
+class _0362_DesignHitCounter {
+    class Node {
+    public:
+        int timeStamp;
+        int hitNum;
+        Node* prev;
+        Node* next;
+    };
+private:
+    Node* head;
+    Node* tail;
+public:
+    _0362_DesignHitCounter() {
+        head = nullptr;
+        tail = nullptr;
+    }
+    /** Record a hit.
+        @param timestamp - The current timestamp (in seconds granularity). 
+    */
+    void hit(int timestamp);
+
+    /** Return the number of hits in the past 5 minutes.
+        @param timestamp - The current timestamp (in seconds granularity). 
+    */
+    int getHits(int timestamp);
 };
 
 /*
@@ -922,6 +1106,55 @@ public:
     std::vector<int> lexicalOrder(int n);
 };
 
+/*
+Tag: Stack, string
+GOOGLE
+TODO:
+Suppose we abstract our file system by a string in the following manner:
+The string "dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext" represents:
+dir
+    subdir1
+    subdir2
+        file.ext
+The directory dir contains an empty sub-directory subdir1 and a sub-directory 
+subdir2 containing a file file.ext.
+The string 
+"dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext" 
+represents:
+
+dir
+    subdir1
+        file1.ext
+        subsubdir1
+    subdir2
+        subsubdir2
+            file2.ext
+The directory dir contains two sub-directories subdir1 and subdir2. subdir1 contains 
+a file file1.ext and an empty second-level sub-directory subsubdir1. subdir2 contains 
+a second-level sub-directory subsubdir2 containing a file file2.ext.
+
+We are interested in finding the longest (number of characters) absolute path to a file 
+within our file system. For example, in the second example above, the longest absolute 
+path is "dir/subdir2/subsubdir2/file2.ext", and its length is 32 (not including the 
+double quotes).
+
+Given a string representing the file system in the above format, return the length 
+of the longest absolute path to file in the abstracted file system. If there is no 
+file in the system, return 0.
+
+Note:
+The name of a file contains at least a . and an extension.
+The name of a directory or sub-directory will not contain a ..
+Time complexity required: O(n) where n is the size of the input string.
+
+Notice that a/aa/aaa/file1.txt is not the longest file path, if there is another 
+path aaaaaaaaaaaaaaaaaaaaa/sth.png.
+*/
+class _0388_LongestAbsoluteFilePath {
+public:
+    int lengthLongestPath(std::string input);
+};
+
 
 /*
 _390_ Elimination Game
@@ -1012,6 +1245,10 @@ public:
 };
 
 /*
+Tag: hash
+
+Facebook
+
 Given an array of integers with possible duplicates, randomly output 
 the index of a given target number. You can assume that the given 
 target number must exist in the array.

@@ -7,7 +7,8 @@ int LeetCode::_0146_LRUCache::get(int key) {
     if(it == mMap.end()) {
         return -1;
     } else {
-        // EXAMPLE: void splice (iterator position, list& x, iterator i);   // transfers only the element pointed by i from x into the container.
+        // EXAMPLE: void splice (iterator position, list& x, iterator i);   
+        // transfers only the element pointed by i from x into the container.
         // Transfers elements from x into the container, inserting them at position. 
         // This effectively inserts those elements into the container and removes them 
         // from x, altering the sizes of both containers. The operation does not involve 

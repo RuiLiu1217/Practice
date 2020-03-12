@@ -530,6 +530,9 @@ private:
 };
 
 /*
+
+Google
+
 Tag: single link list
 Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
 Example:
@@ -788,6 +791,10 @@ public:
 };
 
 /*
+Facebook
+
+!!!Copy from the solution, need to be reviewed again!!!
+
 Tag: binary search
     TODO: Modification of the binary search
 Given an array of integers nums sorted in ascending order, find the 
@@ -980,6 +987,26 @@ Your algorithm should run in O(n) time and uses constant extra space.
 class _0041_FirstMissingPositive{
 public:
     int firstMissingPositive(std::vector<int>& nums);
+};
+
+/*
+Tag: dynamic programming, two pointers
+Google
+TODO: Review the left,right maximum height and its application
+
+Given n non-negative integers representing an elevation map where the width 
+of each bar is 1, compute how much water it is able to trap after raining.
+
+The above elevation map is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. 
+In this case, 6 units of rain water (blue section) are being trapped. Thanks 
+Marcos for contributing this image!
+
+Input: [0,1,0,2,1,0,1,3,2,1,2,1]
+Output: 6
+*/
+class _0042_TrappingRainWater {
+public:
+    int trap(std::vector<int>& height);
 };
 
 /*
@@ -1438,11 +1465,47 @@ public:
 };
 
 /*
-Tag: String, DFA, NFA
-*/
-class _0065_ValidNumber {
+Facebook
+        !!! Copy from Solution !!!
 
+Tag: String, DFA, NFA
+Validate if a given string can be interpreted as a decimal number.
+
+Some examples:
+"0" => true
+" 0.1 " => true
+"abc" => false
+"1 a" => false
+"2e10" => true
+" -90e3   " => true
+" 1e" => false
+"e3" => false
+" 6e-1" => true
+" 99e2.5 " => false
+"53.5e93" => true
+" --6 " => false
+"-+3" => false
+"95a54e53" => false
+
+Note: It is intended for the problem statement to be ambiguous. You 
+should gather all requirements up front before implementing one. 
+However, here is a list of characters that can be in a valid decimal number:
+
+Numbers 0-9
+Exponent - "e"
+Positive/negative sign - "+"/"-"
+Decimal point - "."
+Of course, the context of these characters also matters in the input.
+
+Update (2015-02-10):
+The signature of the C++ function had been updated. If you still see your 
+function signature accepts a const char * argument, please click the reload 
+button to reset your code definition. */
+class _0065_ValidNumber {
+public:
+    bool isNumber(std::string str);
 };
+
 
 /*
 Tag: array operation
@@ -1463,6 +1526,8 @@ public:
 };
 
 /*
+Facebook
+
 Tag: Array operation
 Given two binary strings, return their sum (also a binary string).
 The input strings are both non-empty and contains only characters 1 or 0.
@@ -1473,6 +1538,70 @@ Input: a = "1010", b = "1011"      :        Output: "10101"
 class _0067_AddBinary {
 public:
     std::string addBinary(std::string a, std::string b);
+};
+
+/*
+Given an array of words and a width maxWidth, format the text such that each 
+line has exactly maxWidth characters and is fully (left and right) justified.
+You should pack your words in a greedy approach; that is, pack as many words 
+as you can in each line. Pad extra spaces ' ' when necessary so that each 
+line has exactly maxWidthcharacters.
+
+Extra spaces between words should be distributed as evenly as possible. If the 
+number of spaces on a line do not divide evenly between words, the empty slots
+on the left will be assigned more spaces than the slots on the right.
+
+For the last line of text, it should be left justified and no extraspace is inserted between words.
+
+Note:
+
+A word is defined as a character sequence consisting of non-space characters only.
+Each word's length is guaranteed to be greater than 0 and not exceed maxWidth.
+The input array words contains at least one word.
+Example 1:
+
+Input:
+words = ["This", "is", "an", "example", "of", "text", "justification."]
+maxWidth = 16
+Output:
+[
+   "This    is    an",
+   "example  of text",
+   "justification.  "
+]
+Example 2:
+
+Input:
+words = ["What","must","be","acknowledgment","shall","be"]
+maxWidth = 16
+Output:
+[
+  "What   must   be",
+  "acknowledgment  ",
+  "shall be        "
+]
+Explanation: Note that the last line is "shall be    " instead of "shall     be",
+             because the last line must be left-justified instead of fully-justified.
+             Note that the second line is also left-justified becase it contains only one word.
+Example 3:
+
+Input:
+words = ["Science","is","what","we","understand","well","enough","to","explain",
+         "to","a","computer.","Art","is","everything","else","we","do"]
+maxWidth = 20
+Output:
+[
+  "Science  is  what we",
+  "understand      well",
+  "enough to explain to",
+  "a  computer.  Art is",
+  "everything  else  we",
+  "do                  "
+]
+*/
+class _0068_TextJustification {
+public:
+    std::vector<std::string> fullJustify(std::vector<std::string>& words, int L);
 };
 
 /*
@@ -1682,6 +1811,25 @@ public:
     void sortColors(std::vector<int>& nums);
 };
 
+/*
+Tag: Sliding Windows
+Google, Facebook
+TODO: ending edge cases, which is not easy to debug
+
+Given a string S and a string T, find the minimum window in S which will 
+contain all the characters in T in complexity O(n).
+
+Input: S = "ADOBECODEBANC", T = "ABC"
+Output: "BANC"
+Note:
+
+If there is no such window in S that covers all characters in T, return the empty string "".
+If there is such window, you are guaranteed that there will always be only one unique minimum window in S.
+*/
+class _0076_MinimumWindowSubstring {
+public:
+    std::string minWindow(std::string s, std::string t);
+};
 
 /*
 Tag: backtracking, combination
@@ -1893,6 +2041,8 @@ class _0086_PartitionList {
 };
 
 /*
+Facebook 
+
 Tag: array operation, from back to front
 Merge Sorted Array
 Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.
@@ -2083,6 +2233,9 @@ public:
 };
 
 /*
+Facebook
+
+
 Tag: Tree
 Given a binary tree, determine if it is a valid binary search tree (BST).
 

@@ -99,6 +99,20 @@ public:
     int thirdMax(std::vector<int>& nums);
 };
 
+/*
+Facebook
+
+Tag: string operation, math
+
+Given two non-negative integers num1 and num2 represented as string, return the sum of num1 and num2.
+
+Note:
+
+The length of both num1 and num2 is < 5100.
+Both num1 and num2 contains only digits 0-9.
+Both num1 and num2 does not contain any leading zero.
+You must not use any built-in BigInteger library or convert the inputs to integer directly.
+*/
 class _0415_AddStrings {
 public:
     std::string addStrings(std::string num1, std::string num2);
@@ -337,6 +351,42 @@ public:
     int eraseOverlapIntervals(std::vector<std::vector<int>>& intervals);
 };
 
+/*
+
+Facebook
+
+Tag: hash, string
+
+Given a string s and a non-empty string p, find all the start indices of p's anagrams in s.
+Strings consists of lowercase English letters only and the length of both strings s and p 
+will not be larger than 20,100. The order of output does not matter.
+
+Input:
+s: "cbaebabacd" p: "abc"
+
+Output:
+[0, 6]
+
+Explanation:
+The substring with start index = 0 is "cba", which is an anagram of "abc".
+The substring with start index = 6 is "bac", which is an anagram of "abc".
+
+Input:
+s: "abab" p: "ab"
+
+Output:
+[0, 1, 2]
+
+Explanation:
+The substring with start index = 0 is "ab", which is an anagram of "ab".
+The substring with start index = 1 is "ba", which is an anagram of "ab".
+The substring with start index = 2 is "ab", which is an anagram of "ab".
+*/
+class _0438_FindAllAnagramsInAString {
+public:
+    std::vector<int> findAnagrams(std::string s, std::string p);
+};
+
 class _0441_ArrangingCoins {
 public:
     int arrangeCoins(int n);
@@ -368,6 +418,65 @@ class _0447_NumberOfBoomerangs {
 public:
     int numberOfBoomerangs(std::vector<std::vector<int>>& points);
 };
+
+/*
+Serialization is the process of converting a data structure or object 
+into a sequence of bits so that it can be stored in a file or memory 
+buffer, or transmitted across a network connection link to be 
+reconstructed later in the same or another computer environment.
+
+Design an algorithm to serialize and deserialize a binary search tree. 
+There is no restriction on how your serialization/deserialization 
+algorithm should work. You just need to ensure that a binary search 
+tree can be serialized to a string and this string can be deserialized 
+to the original tree structure.
+
+The encoded string should be as compact as possible.
+
+Note: Do not use class member/global/static variables to store states. 
+Your serialize and deserialize algorithms should be stateless.
+*/
+class _0449_SerializeAndDeserializeBST {
+public:
+    // Encodes a tree to a single string.
+    std::string serialize(TreeNode<int>* root) {
+        std::string s;
+        serialize(root, s);
+        return s;
+    }
+
+    // Decodes your encoded data to tree.
+    TreeNode<int>* deserialize(std::string data) {
+        int pos = 0;
+        return deserialize(data, pos, INT_MIN, INT_MAX);
+    }
+
+private:
+    void serialize(TreeNode<int>* root, std::string& s) {
+        if(!root) {
+            return;
+        }
+        s.append(reinterpret_cast<const char*>(&root->val), sizeof(root->val));
+        serialize(root->left, s);
+        serialize(root->right, s);
+    }
+    
+    TreeNode<int>* deserialize(const std::string& s, int& pos, int curMin, int curMax) {
+        if(pos >= s.size()) {
+            return nullptr;
+        }
+        int val = *reinterpret_cast<const int*>(s.data() + pos);
+        if(val < curMin || val > curMax) {
+            return nullptr;
+        }
+        pos += sizeof(val);
+        TreeNode<int>* root = new TreeNode<int>(val);
+        root->left = deserialize(s, pos, curMin, val);
+        root->right = deserialize(s, pos, val, curMax);
+        return root;
+    }
+};
+
 
 /*
 There are a number of spherical balloons spread in two-dimensional space. 

@@ -567,6 +567,9 @@ public:
 };
 
 /*
+Facebook
+!!! Copy from the solution !!!
+
 Tag: recursive, Tree
 TODO
 Given a non-empty binary tree, find the maximum path sum.
@@ -601,6 +604,9 @@ public:
 };
 
 /*
+
+Facebook
+
 Tag: palindrome
 Given a string, determine if it is a palindrome, considering only alphanumeric characters 
 and ignoring cases. 
@@ -787,13 +793,18 @@ public:
 
 
 /*
+Facebook
+!!! Copy from the solution, but TLE!!!
+
 Tag: DFS, Graph
 Given a reference of a node in a connected undirected graph, return a deep copy 
 (clone) of the graph. Each node in the graph contains a val (int) and a list 
 (List[Node]) of its neighbors.
 
 Input:
-{"$id":"1","neighbors":[{"$id":"2","neighbors":[{"$ref":"1"},{"$id":"3","neighbors":[{"$ref":"2"},{"$id":"4","neighbors":[{"$ref":"3"},{"$ref":"1"}],"val":4}],"val":3}],"val":2},{"$ref":"4"}],"val":1}
+{"$id":"1","neighbors":[{"$id":"2","neighbors":[{"$ref":"1"},{"$id":"3","neighbors":
+[{"$ref":"2"},{"$id":"4","neighbors":[{"$ref":"3"},{"$ref":"1"}],"val":4}],"val":3}],
+"val":2},{"$ref":"4"}],"val":1}
 
 Explanation:
 Node 1's value is 1, and it has two neighbors: Node 2 and 4.
@@ -999,7 +1010,10 @@ public:
 };
 
 /*
-Tag: Dynamic, backtracking (TLE)
+Tag: Dynamic Programming, backtracking (TLE)
+
+Facebook
+
 Given a non-empty string s and a dictionary wordDict containing a list of non-empty 
 words, determine if s can be segmented into a space-separated sequence of one or 
 more dictionary words.
@@ -1672,6 +1686,8 @@ public:
 
 
 /*
+Facebook
+
 Implement an iterator over a binary search tree (BST). Your iterator will be initialized 
 with the root node of a BST. Calling next() will return the next smallest number in the BST.
 BSTIterator iterator = new BSTIterator(root);
@@ -1909,6 +1925,8 @@ public:
 
 
 /*
+Facebook
+
 Given a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.
 
 Example:

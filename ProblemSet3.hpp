@@ -186,6 +186,10 @@ private:
 };
 
 /*
+Tag: Sliding windows
+Google
+TODO: edge cases and edge condition
+
 Given an array of n positive integers and a positive integer s, find the minimal length 
 of a contiguous subarray of which the sum ≥ s. If there isn't one, return 0 instead.
 
@@ -238,6 +242,10 @@ private:
 };
 
 /*
+Facebook
+
+!!! Copy from solution !!!
+
 Design a data structure that supports the following two operations:
 void addWord(word)
 bool search(word)
@@ -252,19 +260,18 @@ search("bad") -> true
 search(".ad") -> true
 search("b..") -> true
 Note:
-You may assume that all words are consist of lowercase letters a-z.
-*/
+You may assume that all words are consist of lowercase letters a-z. */
 class _0211_AddAndSearchWordDataStructureDesign {
     class TrieNode {
-        public:
-            bool word;
-            TrieNode* children[26];
-            TrieNode() {
-                word = false;
-                for(int i = 0; i < 26; ++i) {
-                    children[i] = nullptr;
-                }
+    public:
+        bool word;
+        TrieNode* children[26];
+        TrieNode() {
+            word = false;
+            for(int i = 0; i < 26; ++i) {
+                children[i] = nullptr;
             }
+        }
     };
 public:
     _0211_AddAndSearchWordDataStructureDesign() {}
@@ -274,6 +281,7 @@ private:
     TrieNode* root = new TrieNode();
     bool search(const char* word, TrieNode* node);
 };
+
 
 /*
 Given a 2D board and a list of words from the dictionary, find all words in the board.
@@ -332,6 +340,27 @@ private:
 };
 
 /*
+Tag: palindrome, KMP
+TODO: Familar with KMP algorithm, especially how to calculate the next[] array
+
+Given a string s, you are allowed to convert it to a palindrome by 
+adding characters in front of it. Find and return the shortest 
+palindrome you can find by performing this transformation.
+
+Input: "aacecaaa"           :          Output: "aaacecaaa"
+Input: "abcd"               :          Output: "dcbabcd"
+Credits:
+Special thanks to @ifanchu for adding this problem and creating all test 
+cases. Thanks to @Freezen for additional test cases. 
+*/
+class _0214_ShortestPalindrome {
+public:
+    std::string shortestPalindrome(std::string s);
+};
+
+/*
+Facebook
+
 Find the kth largest element in an unsorted array. Note that it is the kth largest 
 element in the sorted order, not the kth distinct element.
 
@@ -428,6 +457,9 @@ public:
 };
 
 /*
+Tag: dynamic programming
+Google
+TODO: State Transition Equation
 Given a 2D binary matrix filled with 0's and 1's, find the largest 
 square containing only 1's and return its area.
 
@@ -664,41 +696,56 @@ public:
     bool empty();
 };
 
-class _0235_LowestCommonAncestor
-{
-    /*
-            Given a binary search tree (BST), find the lowest common 
-            ancestor (LCA) of two given nodes in the BST.
-            
-            According to the definition of LCA on Wikipedia: The lowest 
-            common ancestor is defined between two nodes p and q as the 
-            lowest node in T that has both p and q as descendants (where 
-            we allow a node to be a descendant of itself).
-            
-            Given binary search tree:  root = [6,2,8,0,4,7,9,null,null,3,5]
-                _______6______
-               /              \
-            ___2__          ___8__
-           /      \        /      \
-           0       4       7       9
-         /  \
-        3   5
+/*
+Given an integer n, count the total number of digit 1 appearing 
+in all non-negative integers less than or equal to n.
 
-        Example 1:
-            Input: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8
-            Output: 6
-            Explanation: The LCA of nodes 2 and 8 is 6.
-        Example 2:
-            Input: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 4
-            Output: 2
-            Explanation: The LCA of nodes 2 and 4 is 2, since a node 
-            can be a descendant of itself according to the LCA definition.
-        Note:
-            All of the nodes' values will be unique. p and q are different 
-            and both values will exist in the BST.
-        Challenge: 
-            Think about the case that the tree is not a binary search tree?
-        */
+Given n = 13,
+Return 6, because digit 1 occurred in the following numbers: 1, 10, 11, 12, 13.
+
+Hint:
+Beware of overflow.
+*/
+class _0233_NumberOfDigitOne {
+public:
+    int countDigitOne(int n);
+};
+
+
+/*
+    Given a binary search tree (BST), find the lowest common 
+    ancestor (LCA) of two given nodes in the BST.
+    
+    According to the definition of LCA on Wikipedia: The lowest 
+    common ancestor is defined between two nodes p and q as the 
+    lowest node in T that has both p and q as descendants (where 
+    we allow a node to be a descendant of itself).
+    
+    Given binary search tree:  root = [6,2,8,0,4,7,9,null,null,3,5]
+         _______6______
+        /              \
+     ___2__          ___8__
+    /      \        /      \
+    0       4       7       9
+   /  \
+   3   5
+
+Example 1:
+    Input: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8
+    Output: 6
+    Explanation: The LCA of nodes 2 and 8 is 6.
+Example 2:
+    Input: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 4
+    Output: 2
+    Explanation: The LCA of nodes 2 and 4 is 2, since a node 
+    can be a descendant of itself according to the LCA definition.
+Note:
+    All of the nodes' values will be unique. p and q are different 
+    and both values will exist in the BST.
+Challenge: 
+    Think about the case that the tree is not a binary search tree?
+*/
+class _0235_LowestCommonAncestor{ 
 public:
     TreeNode<int> *lowestCommonAncestorRecursive(TreeNode<int> *root, TreeNode<int> *p, TreeNode<int> *q);
     TreeNode<int> *lowestCommonAncestorIterative(TreeNode<int> *root, TreeNode<int> *p, TreeNode<int> *q);
@@ -706,6 +753,9 @@ public:
 
 
 /*
+
+Facebook
+
 Given an array nums of n integers where n > 1,  return an array output 
 such that output[i] is equal to the product of all the elements of nums 
 except nums[i].
@@ -720,7 +770,8 @@ does not count as extra space for the purpose of space complexity
 analysis.)
 */
 class _0238_ProductOfArrayExceptSelf {
-
+public:
+    std::vector<int> productExceptSelf(std::vector<int>& nums);
 };
 
 /*
@@ -791,6 +842,35 @@ public:
 };
 
 /*
+Given an array nums, there is a sliding window of size k which is moving from the 
+very left of the array to the very right. You can only see the k numbers in the 
+window. Each time the sliding window moves right by one position. Return the max 
+sliding window.
+
+Input: nums = [1,3,-1,-3,5,3,6,7], and k = 3
+Output: [3,3,5,5,6,7] 
+Explanation: 
+
+Window position                Max
+---------------               -----
+[1  3  -1] -3  5  3  6  7       3
+ 1 [3  -1  -3] 5  3  6  7       3
+ 1  3 [-1  -3  5] 3  6  7       5
+ 1  3  -1 [-3  5  3] 6  7       5
+ 1  3  -1  -3 [5  3  6] 7       6
+ 1  3  -1  -3  5 [3  6  7]      7
+Note:
+You may assume k is always valid, 1 ≤ k ≤ input array's size for non-empty array.
+
+Follow up:
+Could you solve it in linear time?
+*/
+class _0239_SlidingWindowMaximum {
+public:
+    std::vector<int> maxSlidingWindow(std::vector<int>& nums, int k);
+};
+
+/*
 Write an efficient algorithm that searches for a value 
 in an m x n matrix. This matrix has the following properties:
 
@@ -834,6 +914,21 @@ public:
     bool isAnagram(std::string s, std::string t);
 };
 
+/*
+Given a list of words and two words word1 and word2, return the shortest distance between these two words in the list.
+Assume that words = ["practice", "makes", "perfect", "coding", "makes"].
+
+Input: word1 = “coding”, word2 = “practice”
+Output: 3
+Input: word1 = "makes", word2 = "coding"
+Output: 1
+Note:
+You may assume that word1 does not equal to word2, and word1 and word2 are both in the list.
+*/
+class _0243_ShortestWordDistance {
+public:
+    int shortestDistance(std::vector<std::string>& words, std::string word1, std::string word2);
+};
 
 /*
 Given a binary tree, return all root-to-leaf paths.
@@ -919,6 +1014,108 @@ public:
 };
 
 /*
+
+Facebook
+
+There is a new alien language which uses the latin alphabet. However, 
+the order among letters are unknown to you. You receive a list of 
+non-empty words from the dictionary, where words are sorted lexicographically 
+by the rules of this new language. Derive the order of letters in 
+this language.
+
+Input:
+["wrt", "wrf", "er", "ett", "rftt"]
+Output: "wertf"
+
+Input:
+["z", "x"]
+Output: "zx"
+
+Input:
+["z", "x", "z"] 
+Output: "" 
+
+Explanation: The order is invalid, so return "".
+Note:
+
+You may assume all letters are in lowercase.
+You may assume that if a is a prefix of b, then a must appear before b 
+in the given dictionary. If the order is invalid, return an empty string.
+There may be multiple valid order of letters, return any one of them is fine.
+*/
+class _0269_AlienDictionary {
+public:
+    std::string alienOrder(std::vector<std::string>& words);
+private:
+    std::vector<int> topologicalSort(std::vector<std::vector<int>>& adjList);
+};
+
+/*
+Given a non-empty binary search tree and a target value, find the 
+value in the BST that is closest to the target.
+
+Note:
+
+Given target value is a floating point.
+You are guaranteed to have only one unique value in the BST that 
+is closest to the target.
+
+Input: root = [4,2,5,1,3], target = 3.714286
+
+    4
+   / \
+  2   5
+ / \
+1   3
+Output: 4
+*/
+class _0270_ClosetBinarySearchTreeValue {
+public:
+    int closestValue(TreeNode<int>* root, double target); 
+};
+
+/*
+Tag: serialization
+
+Google, but I don't know why I cannot get a correct result
+
+Design an algorithm to encode a list of strings to a string. 
+The encoded string is then sent over the network and is decoded 
+back to the original list of strings.
+
+Machine 1 (sender) has the function:
+
+string encode(vector<string> strs) {
+  // ... your code
+  return encoded_string;
+}
+Machine 2 (receiver) has the function:
+vector<string> decode(string s) {
+  //... your code
+  return strs;
+}
+So Machine 1 does:
+
+string encoded_string = encode(strs);
+and Machine 2 does:
+
+vector<string> strs2 = decode(encoded_string);
+strs2 in Machine 2 should be the same as strs in Machine 1.
+
+Implement the encode and decode methods.
+
+The string may contain any possible characters out of 256 valid ascii characters. 
+Your algorithm should be generalized enough to work on any possible characters.
+Do not use class member/global/static variables to store states. Your encode and 
+decode algorithms should be stateless.
+Do not rely on any library method such as eval or serialize methods. You should 
+implement your own encode/decode algorithm.
+*/
+class _0271_EncodeAndDecodeStrings {
+/////////////////////////////////////////
+};
+
+/*
 Given an array of citations sorted in ascending order (each citation is a 
 non-negative integer) of a researcher, write a function to compute the researcher's 
 h-index.
@@ -945,6 +1142,36 @@ public:
 };
 
 /*
+Facebook
+
+You are a product manager and currently leading a team to develop a new product. 
+Unfortunately, the latest version of your product fails the quality check. Since 
+each version is developed based on the previous version, all the versions after 
+a bad version are also bad.
+
+Suppose you have n versions [1, 2, ..., n] and you want to find out the first bad 
+one, which causes all the following ones to be bad.
+
+You are given an API bool isBadVersion(version) which will return whether version 
+is bad. Implement a function to find the first bad version. You should minimize 
+the number of calls to the API.
+
+Example:
+
+Given n = 5, and version = 4 is the first bad version.
+
+call isBadVersion(3) -> false
+call isBadVersion(5) -> true
+call isBadVersion(4) -> true
+
+Then 4 is the first bad version. 
+*/
+class _0278_FirstBadVersion {
+public:
+    int firstBadVersion(int n);
+};
+
+/*
 Given a positive integer n, find the least number of perfect square numbers (for example, 1, 4, 9, 16, ...) which sum to n.
 
 Example 1:
@@ -961,6 +1188,49 @@ Explanation: 13 = 4 + 9.
 class _0279_PerfectSquares {
 public:
     int numSquares(int n);
+};
+
+
+/*
+Tag: hash
+Google
+
+An abbreviation of a word follows the form <first letter><number><last letter>. 
+Below are some examples of word abbreviations:
+a) it --> it    (no abbreviation)
+
+     1
+     ↓
+b) d|o|g                   --> d1g
+
+              1    1  1
+     1---5----0----5--8
+     ↓   ↓    ↓    ↓  ↓    
+c) i|nternationalizatio|n  --> i18n
+
+              1
+     1---5----0
+     ↓   ↓    ↓
+d) l|ocalizatio|n          --> l10n
+Assume you have a dictionary and given a word, find whether its abbreviation is 
+unique in the dictionary. A word's abbreviation is unique if no other word from 
+the dictionary has the same abbreviation.
+
+Example:
+Given dictionary = [ "deer", "door", "cake", "card" ]
+
+isUnique("dear") -> false
+isUnique("cart") -> true
+isUnique("cane") -> false
+isUnique("make") -> true
+*/
+class _0288_UniqueWordAbbreviation {
+private:
+    std::unordered_map<std::string, std::unordered_set<std::string>> mp;
+public:
+    _0288_UniqueWordAbbreviation(std::vector<std::string>& dictionary);
+    bool isUnique(std::string word);
+
 };
 
 /*
@@ -991,6 +1261,43 @@ public:
 private:
     std::unordered_map<char, std::string> map;
     std::unordered_map<std::string, char> map2;
+};
+
+/*
+Facebook
+
+Serialization is the process of converting a data structure or object into a 
+sequence of bits so that it can be stored in a file or memory buffer, or 
+transmitted across a network connection link to be reconstructed later in the 
+same or another computer environment.
+
+Design an algorithm to serialize and deserialize a binary tree. There is no 
+restriction on how your serialization/deserialization algorithm should work. 
+You just need to ensure that a binary tree can be serialized to a string and 
+this string can be deserialized to the original tree structure.
+
+You may serialize the following tree:
+
+    1
+   / \
+  2   3
+     / \
+    4   5
+
+as "[1,2,3,null,null,4,5]"
+Clarification: The above format is the same as how LeetCode serializes a binary 
+tree. You do not necessarily need to follow this format, so please be creative 
+and come up with different approaches yourself.
+
+Note: Do not use class member/global/static variables to store states. Your 
+serialize and deserialize algorithms should be stateless.
+*/
+class _0297_SerializeAndDeserializeBinaryTree {
+public:
+    // Encodes a tree to a single string.
+    std::string serialize(TreeNode<int>* root);
+    // Decodes your encoded data to tree.
+    TreeNode<int>* deserialize(std::string data);
 };
 
 

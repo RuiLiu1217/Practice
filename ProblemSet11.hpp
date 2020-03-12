@@ -96,6 +96,42 @@ public:
 };
 
 /*
+Tag: math
+Google
+TODO
+
+In a row of dominoes, A[i] and B[i] represent the top and bottom halves of 
+the i-th domino. (A domino is a tile with two numbers from 1 to 6 - one on
+each half of the tile.)
+
+We may rotate the i-th domino, so that A[i] and B[i] swap values.
+Return the minimum number of rotations so that all the values in A are the
+same, or all the values in B are the same.
+
+If it cannot be done, return -1.
+
+Input: A = [2,1,2,4,2,2], B = [5,2,6,2,3,2]
+Output: 2
+Explanation: 
+The first figure represents the dominoes as given by A and B: before we do any rotations.
+If we rotate the second and fourth dominoes, we can make every value in the top row equal to 2, as indicated by the second figure.
+
+Input: A = [3,5,1,2,3], B = [3,6,3,3,4]
+Output: -1
+Explanation: 
+In this case, it is not possible to rotate the dominoes to make one row of values equal.
+
+Note:
+
+1 <= A[i], B[i] <= 6
+2 <= A.length == B.length <= 20000
+*/
+class _1007_MinimumDominoRotationsForEqualRow {
+public:
+    int minDominoRotations(std::vector<int>& A, std::vector<int>& B);
+};
+
+/*
 Return the root node of a binary search tree that matches 
 the given preorder traversal.
 (Recall that a binary search tree is a binary tree where 
@@ -118,6 +154,53 @@ private:
 public:
     TreeNode<int>* bstFromPreorder(std::vector<int>& preorder);
     TreeNode<int>* bstFromPreorderImpl(std::vector<int>& preorder, int bound);
+};
+
+/*
+Tag: Binary Search
+Google
+
+A conveyor belt has packages that must be shipped from one port to another within D days.
+The i-th package on the conveyor belt has a weight of weights[i].  Each day, we load the 
+ship with packages on the conveyor belt (in the order given by weights). We may not load 
+more weight than the maximum weight capacity of the ship.
+Return the least weight capacity of the ship that will result in all the packages on the 
+conveyor belt being shipped within D days.
+
+Input: weights = [1,2,3,4,5,6,7,8,9,10], D = 5
+Output: 15
+Explanation: 
+A ship capacity of 15 is the minimum to ship all the packages in 5 days like this:
+1st day: 1, 2, 3, 4, 5
+2nd day: 6, 7
+3rd day: 8
+4th day: 9
+5th day: 10
+
+Note that the cargo must be shipped in the order given, so using a ship of capacity 14 and
+splitting the packages into parts like (2, 3, 4, 5), (1, 6, 7), (8), (9), (10) is not allowed. 
+Example 2:
+
+Input: weights = [3,2,2,4,1,4], D = 3
+Output: 6
+Explanation: 
+A ship capacity of 6 is the minimum to ship all the packages in 3 days like this:
+1st day: 3, 2
+2nd day: 2, 4
+3rd day: 1, 4
+Example 3:
+
+Input: weights = [1,2,3,1,1], D = 4
+Output: 3
+Explanation: 
+1st day: 1
+2nd day: 2
+3rd day: 3
+4th day: 1, 1
+*/
+class _1011_CapacityToShipPackagesWithinDDays {
+public:
+    int shipWithinDays(std::vector<int>& weights, int D);
 };
 
 /*
@@ -546,6 +629,33 @@ public:
 };
 
 /*
+Given a list of words, each word consists of English lowercase letters.
+Let's say word1 is a predecessor of word2 if and only if we can add 
+exactly one letter anywhere in word1 to make it equal to word2. 
+For example, "abc" is a predecessor of "abac".
+A word chain is a sequence of words [word_1, word_2, ..., word_k] with 
+k >= 1, where word_1 is a predecessor of word_2, word_2 is a predecessor 
+of word_3, and so on.
+Return the longest possible length of a word chain with words chosen 
+from the given list of words.
+
+Input: ["a","b","ba","bca","bda","bdca"]
+Output: 4
+Explanation: one of the longest word chain is "a","ba","bda","bdca".
+ 
+
+Note:
+
+1 <= words.length <= 1000
+1 <= words[i].length <= 16
+words[i] only consists of English lowercase letters.
+*/
+class _1048_LongestStringChain {
+public:
+    int longestStrChain(std::vector<std::string>& words);
+};
+
+/*
 Students are asked to stand in non-decreasing order of heights for an annual photo.
 Return the minimum number of students not standing in the right positions. 
 (This is the number of students that must move in order for all students to be 
@@ -632,6 +742,52 @@ text consists of lowercase English letters.
 class _1081_SmallestSubsequenceOfDistinctCharacters {
 public:
     std::string smallestSubsequenc(std::string text);
+};
+
+
+/*
+Tag: DFS,
+Google
+
+We can rotate digits by 180 degrees to form new digits. 
+When 0, 1, 6, 8, 9 are rotated 180 degrees, they become 
+0, 1, 9, 8, 6 respectively. When 2, 3, 4, 5 and 7 are 
+rotated 180 degrees, they become invalid.
+A confusing number is a number that when rotated 180 degrees 
+becomes a different number with each digit valid.(Note that 
+the rotated number can be greater than the original number.)
+
+Given a positive integer N, return the number of confusing 
+numbers between 1 and N inclusive.
+
+Input: 20
+Output: 6
+Explanation: 
+The confusing numbers are [6,9,10,16,18,19].
+6 converts to 9.
+9 converts to 6.
+10 converts to 01 which is just 1.
+16 converts to 91.
+18 converts to 81.
+19 converts to 61.
+
+Input: 100
+Output: 19
+Explanation: 
+The confusing numbers are [6,9,10,16,18,19,60,61,66,68,80,81,86,89,90,91,98,99,100].
+ 
+Note:
+1 <= N <= 10^9
+*/
+class _1088_ConfusingNumberII {
+private:
+    int count = 0;
+    const std::vector<int> mp = {0, 1, 2, 3, 4, 5, 9, 7, 8, 6};
+public:
+    int confusingNumberII(int N);
+
+    void DFS(long long n, int N);
+    bool isConfusing(int x);
 };
 
 /*
