@@ -39,5 +39,4 @@
 
 std::vector<int> LeetCode::_0241_DifferentWaysToAddParentheses::diffWaysToCompute(std::string input) {
     return diffWaysToComp(input, 0, input.size());
-
 }
