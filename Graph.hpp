@@ -4,7 +4,7 @@
 #include <vector>
 #include <unordered_set>
 #include <stack>
-
+#include <queue>
 class Graph {
 private:
     int V; // number of vertex
@@ -100,5 +100,119 @@ public:
         return path;
     }
 };
+
+
+// Dijkstra Algorithm
+
+class DirectedEdge {
+private:
+    int v; // start point of an edge
+    int w; // end point of an edge
+    double weight; // weight of an edge;
+public:
+    DirectedEdge(int v, int w, double weight) : v(v), w(w), weight(weight) {}
+    DirectedEdge() : v(INT_MAX), w(INT_MAX), weight(INT_MIN) {}
+    int from() const {
+        return v;
+    }
+    int to() const {
+        return w;
+    }
+    double getWeight() const {
+        return weight;
+    }
+    bool isNull() const {
+        return weight == INT_MIN && v == w && v == INT_MAX;
+    }
+};
+
+class DirectedEdgeHash {
+public:
+    size_t operator()(const DirectedEdge& v) {
+        std::size_t h1 = std::hash<std::string>{}(std::to_string(v.from()));
+        std::size_t h2 = std::hash<std::string>{}(std::to_string(v.to()));
+        std::size_t h3 = std::hash<std::string>{}(std::to_string(v.getWeight()));
+        return (h1 ^ h2 ^ h3);
+    }
+};
+
+class EdgeWeightedDigraph {
+private:
+    int V; // number of vertex
+    int E; // number of Edges;
+public:
+    using AdjList = std::unordered_set<DirectedEdge, DirectedEdgeHash>;
+    std::vector<AdjList> adj; // adjcent list
+    EdgeWeightedDigraph(int V): V(V), E(E) {
+        adj.resize(V);
+    }
+
+    int getV() const { return V; }
+    int getE() const { return E; }
+    void addEdge(DirectedEdge e) {
+        adj[e.from()].insert(e);
+        ++E;
+    }
+
+    AdjList getAdj(int v) {
+        return adj[v];
+    }
+    AdjList getEdges() {
+        AdjList bag;
+        for(auto& a : adj) {
+            for(auto& e : a) {
+                bag.insert(e);
+            }
+        }
+        return bag;
+    }
+};
+
+class DijkstraSP {
+private:   
+    std::vector<DirectedEdge> edgeTo;
+    std::vector<double> distTo;
+    std::priority_queue<double> pq;
+public:
+    // Graph start from indexed vertex s;
+    DijkstraSP(EdgeWeightedDigraph G, int s) {
+        edgeTo.resize(G.getV());
+        distTo.resize(G.getV());
+        pq.resize(G.getV());
+    }
+        
+    double getDistTo(int v) {
+        return distTo[v];
+    }
+    bool hasPathTo(int v) {
+        return distTo[v] < INT_MAX ? distTo[v] : INT_MAX;
+    }
+    std::stack<DirectedEdge> getPathTo(int v) {
+        if(!hasPathTo(v)) {
+            return {};
+        }
+        std::stack<DirectedEdge> path;
+        for(auto e = edgeTo[v]; !e.isNull(); e = edgeTo[e.from()]) {
+            path.push(e);
+        }
+
+    }
+private:
+    void relax(EdgeWeightedDigraph G, int v) {
+        for(DirectedEdge e : G.getAdj(v)) {
+            int w = e.to(); //
+            if(distTo[w] > distTo[v] + e.getWeight()) {
+                distTo[w] = distTo[v] + e.getWeight();
+                edgeTo[w] = e;
+                if(pq.contains(w)) {
+                    pq.change(w, distTo[w]);
+                } else {
+                    pq.insert(w, distTo[w]);
+                }
+            }
+        }
+    }
+};
+
 
 #endif

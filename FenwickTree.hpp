@@ -18,7 +18,7 @@ public:
         }
     }
 
-    int query(int i) const {
+    int query(int i) const { // Firt i-th elements sum
         int sum = 0;
         while(i > 0) {
             sum += sums_[i];
