@@ -1,38 +1,36 @@
 #include "headers.hpp"
 #define ALPHALEN 256
 
-template<bool returnVal>
-static bool isSmaller(const std::vector<int>& countS,const std::vector<int>& countT) {
-    for(int i = 0; i < ALPHALEN; ++i) {
-        if(countS[i] < countT[i]) {
-            return returnVal;
+// Facebook
+
+ bool isLargerOrEqual(const std::vector<int>& tMap, std::vector<int>& cur) {
+    for(int i = 0; i < 256; ++i) {
+        if(tMap[i] > cur[i]) {
+            return false;
         }
     }
-    return !returnVal;
+    return true;
 }
 std::string LeetCode::_0076_MinimumWindowSubstring::minWindow(std::string s, std::string t) {
-    int startIdx = 0;
-    int endIdx = 0;
-    std::vector<int> countS(ALPHALEN, 0);
-    std::vector<int> countT(ALPHALEN, 0);
-    
-    for(int i = 0; i < t.size(); ++i) {
-        ++countT[static_cast<size_t>(t[i])];
+    std::vector<int> tMap(256, 0);
+    for(char c : t) {
+        ++tMap[static_cast<int>(c)];
     }
     
-    int minWindow = INT_MAX;
+    std::vector<int> curMap(256, 0);
+    int tail = 0;
+    int length = INT_MAX;
     std::string res;
-    while(endIdx < s.size()) {
-        while(endIdx < s.size() && isSmaller<true>(countS, countT)) {
-            ++countS[static_cast<size_t>(s[endIdx++])];
-        }
-        
-        while(startIdx < endIdx &&  isSmaller<false>(countS, countT)) {
-            if (minWindow > endIdx - startIdx) {
-                minWindow = endIdx - startIdx;
-                res = s.substr(startIdx, endIdx - startIdx);
+    for(int i = 0; i < s.size(); ++i) {
+        ++curMap[s[i]];
+        while(isLargerOrEqual(tMap, curMap)) {
+            if(i - tail + 1 < length) {
+                length = std::min(length, i - tail + 1);
+                res = s.substr(tail, i - tail + 1);
             }
-            --countS[static_cast<int>(s[startIdx++])];
+            
+            --curMap[s[tail]];
+            ++tail;
         }
     }
     return res;

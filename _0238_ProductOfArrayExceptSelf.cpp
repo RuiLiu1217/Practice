@@ -1,5 +1,6 @@
 #include "headers.hpp"
 
+// Facebook
 std::vector<int> LeetCode::_0238_ProductOfArrayExceptSelf::productExceptSelf(std::vector<int>& nums) {
     std::vector<int> res(nums.size(), 1);
     for(int i = 1; i < res.size(); ++i) {

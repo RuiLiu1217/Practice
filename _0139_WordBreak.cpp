@@ -1,4 +1,8 @@
 #include "headers.hpp"
+
+// Facebook
+
+
 // Backtracking (TLE)
 // bool LeetCode::_0139_WordBreak::wordBreak(std::string s, std::vector<std::string>& wordDict) {
 //     std::unordered_set<std::string> wd(wordDict.begin(), wordDict.end());
@@ -18,6 +22,25 @@
 //     }
 //     return false;
 // }
+
+
+
+ // DP is a better solution
+static bool wordBreakDP(std::string s, std::vector<std::string>& wordDict) {
+    std::unordered_set<std::string> wd(begin(wordDict), end(wordDict));
+    std::vector<bool> DP(s.size() + 1, false);
+    DP[0] = true; // empty string definitely can be divided, it means whether the s[0, i) can be divided
+    for(int i = 0 ; i < DP.size(); ++i) {
+        for(int j = 0; j < i; ++j) {
+            if(DP[j] && wd.count(s.substr(j, i-j))) {
+                DP[i] = true;
+                break;
+            }
+        }
+    }
+    return DP.back();
+}
+
 
 // This problem cannot use Backtracing to solve !!! will TLE
 // USE DP to solve it.

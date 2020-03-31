@@ -444,6 +444,38 @@ public:
     bool flipEquiv(TreeNode<int>* root1, TreeNode<int>* root2);
 };
 
+/*
+In an alien language, surprisingly they also use english lowercase 
+letters, but possibly in a different order. The order of the alphabet 
+is some permutation of lowercase letters. Given a sequence of words 
+written in the alien language, and the order of the alphabet, return 
+true if and only if the given words are sorted lexicographicaly in 
+this alien language.
+
+Input: words = ["hello","leetcode"], order = "hlabcdefgijkmnopqrstuvwxyz"
+Output: true
+Explanation: As 'h' comes before 'l' in this language, then the sequence is sorted.
+
+Input: words = ["word","world","row"], order = "worldabcefghijkmnpqstuvxyz"
+Output: false
+Explanation: As 'd' comes after 'l' in this language, then words[0] > words[1], hence the sequence is unsorted.
+
+Input: words = ["apple","app"], order = "abcdefghijklmnopqrstuvwxyz"
+Output: false
+Explanation: The first three characters "app" match, and the second string is shorter (in size.) According to lexicographical rules "apple" > "app", because 'l' > '∅', where '∅' is defined as the blank character which is less than any other character (More info).
+ 
+
+Constraints:
+
+1 <= words.length <= 100
+1 <= words[i].length <= 20
+order.length == 26
+All characters in words[i] and order are English lowercase letters.
+*/
+class _0953_VerifyingAnAlienDictionary {
+public:
+    bool isAlienSorted(std::vector<std::string>& words, std::string order);
+};
 
 /*
 You are installing a billboard and want it to have the largest 
@@ -578,6 +610,34 @@ If we cannot do so, then return the list [-1].
 class _0971_FlipBinaryTreeToMatchPreorderTraversal {
 public:
 	std::vector<int> flipMatchVoyage(TreeNode<int>* root, std::vector<int>& voyage);
+};
+
+/*
+We have a list of points on the plane.  Find the K closest points to the origin (0, 0).
+(Here, the distance between two points on a plane is the Euclidean distance.)
+You may return the answer in any order.  The answer is guaranteed to be unique (except for the order that it is in.)
+
+Input: points = [[1,3],[-2,2]], K = 1
+Output: [[-2,2]]
+Explanation: 
+The distance between (1, 3) and the origin is sqrt(10).
+The distance between (-2, 2) and the origin is sqrt(8).
+Since sqrt(8) < sqrt(10), (-2, 2) is closer to the origin.
+We only want the closest K = 1 points from the origin, so the answer is just [[-2,2]].
+
+Input: points = [[3,3],[5,-1],[-2,4]], K = 2
+Output: [[3,3],[-2,4]]
+(The answer [[-2,4],[3,3]] would also be accepted.)
+
+Note:
+
+1 <= K <= points.length <= 10000
+-10000 < points[i][0] < 10000
+-10000 < points[i][1] < 10000
+*/
+class _0973_KClosestPointsToOrigin {
+public:
+    std::vector<std::vector<int>> kCloset(std::vector<std::vector<int>>& points, int K);
 };
 
 /*

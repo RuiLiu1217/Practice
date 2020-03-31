@@ -4,6 +4,7 @@
 // !!! Copy from solution !!!
 // Learn the usage of sstream
 
+// Facebook
 static void Serialize(TreeNode<int>* root, std::ostringstream& out) {
     if(!root) {
         out<<"# ";

@@ -545,6 +545,9 @@ Input:
 Output: 1->1->2->3->4->4->5->6
 */
 class _0023_MergeKeSortedLists {
+private:
+    ListNode<int>* p;
+    ListNode<int>* fh;
 public:
     ListNode<int> *mergeKLists(std::vector<ListNode<int> *> &lists);
     bool finishSorting(std::vector<bool> notChoose);
