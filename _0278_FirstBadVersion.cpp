@@ -2,6 +2,8 @@
 // !!! Copy from the solution !!!
 // Binary Search
 
+// Facebook
+
 bool isBadVersion(int ver) {
     return false;
 }

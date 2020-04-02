@@ -1,5 +1,8 @@
 #include "headers.hpp"
 
+// Facebook
+// Automatic Machine
+
 bool LeetCode::_0065_ValidNumber::isNumber(std::string str) {
     int state = 0; 
     int flag = 0; // flag to judge the special case ".";

@@ -191,6 +191,36 @@ public:
 
 
 /*
+Given two sparse matrices A and B, return the result of AB.
+You may assume that A's column number is equal to B's row number.
+
+Input:
+
+A = [
+  [ 1, 0, 0],
+  [-1, 0, 3]
+]
+
+B = [
+  [ 7, 0, 0 ],
+  [ 0, 0, 0 ],
+  [ 0, 0, 1 ]
+]
+
+Output:
+
+     |  1 0 0 |   | 7 0 0 |   |  7 0 0 |
+AB = | -1 0 3 | x | 0 0 0 | = | -7 0 3 |
+                  | 0 0 1 |
+*/
+class _0311_SparseMatrixMultiplication {
+public:
+    std::vector<std::vector<int>> multiply(std::vector<std::vector<int>>& A, std::vector<std::vector<int>>& B);
+
+};
+
+
+/*
 Write a program to find the nth super ugly number.
 Super ugly numbers are positive numbers whose all prime factors are in the given 
 prime list primes of size k.

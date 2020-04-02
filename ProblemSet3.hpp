@@ -1116,6 +1116,26 @@ class _0271_EncodeAndDecodeStrings {
 };
 
 /*
+Convert a non-negative integer to its english words representation. Given input is guaranteed to be less than 231 - 1.
+
+Input: 123
+Output: "One Hundred Twenty Three"
+
+Input: 12345
+Output: "Twelve Thousand Three Hundred Forty Five"
+
+Input: 1234567
+Output: "One Million Two Hundred Thirty Four Thousand Five Hundred Sixty Seven"
+
+Input: 1234567891
+Output: "One Billion Two Hundred Thirty Four Million Five Hundred Sixty Seven Thousand Eight Hundred Ninety One"
+*/
+class _0273_IntegerToEnglishWords {
+public:
+    std::string numberToWords(int num);
+};
+
+/*
 Given an array of citations sorted in ascending order (each citation is a 
 non-negative integer) of a researcher, write a function to compute the researcher's 
 h-index.
@@ -1190,6 +1210,32 @@ public:
     int numSquares(int n);
 };
 
+/*
+Given a string that contains only digits 0-9 and a target value, return all possibilities to 
+add binary operators (not unary) +, -, or * between the digits so they evaluate to the target 
+value.
+
+Input: num = "123", target = 6
+Output: ["1+2+3", "1*2*3"] 
+
+Input: num = "232", target = 8
+Output: ["2*3+2", "2+3*2"]
+
+Input: num = "105", target = 5
+Output: ["1*0+5","10-5"]
+
+Input: num = "00", target = 0
+Output: ["0+0", "0-0", "0*0"]
+
+Input: num = "3456237490", target = 9191
+Output: []
+*/
+class _0282_ExpressionAddOperators {
+public:
+    std::vector<std::string> addOperators(std::string num, int target);
+private:
+    void DFS(const std::string& num, const int target, int pos, std::string exp, long prev, long curr, std::vector<std::string>& ans);
+};
 
 /*
 Tag: hash
