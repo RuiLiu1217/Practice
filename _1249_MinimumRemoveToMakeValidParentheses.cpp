@@ -2,11 +2,13 @@
 #include <stack>
 #include <unordered_set>
 
+// Facebook
+
 std::string LeetCode::_1249_MinimumRemoveToMakeValidParentheses::minRemoveToMakeValid(std::string s) {
     std::stack<int> leftP;
     std::unordered_set<int> toBeRemoved;
     for(int i = 0; i < s.size(); ++i) {
-        if(c == '(') {
+        if(s[i] == '(') {
             leftP.push(i);
         } else if (s[i] == ')') {
             if(leftP.empty()) {

@@ -1,6 +1,8 @@
 #include "headers.hpp"
 #include <sstream>
 
+// Facebook
+
 std::string LeetCode::_0071_SimplifyPath::simplifyPath(std::string path) {
     std::string t;
     std::stringstream ss(path);

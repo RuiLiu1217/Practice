@@ -1,27 +1,14 @@
 #include "headers.hpp"
 #include <algorithm>
 #include <cctype>
+
+// Facebook
+
 bool LeetCode::_0125_ValidPalindrome::isPalindrome(std::string s) {
-    if (s.empty())
-        return true;
-    std::transform(s.begin(), s.end(), s.begin(), ::tolower);
-    int i = 0;
-    int j = s.size() - 1;
-    while(i < j) {
-        if(!std::isalnum(s[i])) {
-            i++;
-            continue;
-        }
-        if(!std::isalnum(s[j])) {
-            j--;
-            continue;
-        }
-        if(s[i] == s[j]) {
-            i++;
-            j--;
-        } else {
-            return false;
-        }
+    for (int i = 0, j = s.size() - 1; i < j; i++, j--) { // Move 2 pointers from each end until they collide
+        while (std::isalnum(s[i]) == false && i < j) i++; // Increment left pointer if not alphanumeric
+        while (std::isalnum(s[j]) == false && i < j) j--; // Decrement right pointer if no alphanumeric
+        if (std::toupper(s[i]) != std::toupper(s[j])) return false; // Exit and return error if not match
     }
     return true;
 }

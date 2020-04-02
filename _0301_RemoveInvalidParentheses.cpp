@@ -38,11 +38,14 @@ bool LeetCode::_0301_RemoveInvalidParentheses::isValid(const std::string& s) {
 
 
 void LeetCode::_0301_RemoveInvalidParentheses::DFS(const std::string& s, int start, int l, int r, std::vector<std::string>& ans) {
+    if(l < 0 || r < 0) {
+        return;
+    }
     if(l == 0 && r == 0) { // 当多余的左右括号都删除干净了，判断这个结果是不是合法的括号
         if(isValid(s)) {
             ans.push_back(s);
-            return;
         }
+        return;
     }
 
     for(int i = start; i < s.length(); ++i) {

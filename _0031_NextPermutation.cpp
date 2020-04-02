@@ -45,7 +45,7 @@ void LeetCode::_0031_NextPermutation::nextPermutation(std::vector<int>& nums) {
     }
     int firstSmall = -1;
     for(int i = nums.size()-2; i >= 0; --i) {
-        if(nums[i] > nums[i+1]) {
+        if(nums[i] < nums[i+1]) {
             firstSmall = i;
             break;
         }
