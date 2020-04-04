@@ -1,4 +1,7 @@
 #include "headers.hpp"
+/*
+Type: Array
+*/
 int LeetCode::_0035_SearchInsertPosition::searchInsert(std::vector<int>& nums, int target) {
     if(nums.size() == 0) {
         return 1;

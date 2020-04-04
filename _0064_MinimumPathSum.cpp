@@ -1,5 +1,7 @@
 #include "headers.hpp"
-
+/*
+Type: Array
+*/
 int LeetCode::_0064_MinimumPathSum::minPathSum(std::vector<std::vector<int>>& grid) {
     if(grid.size() == 0 || grid[0].size() == 0) {
         return 0;

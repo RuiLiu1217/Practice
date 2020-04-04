@@ -1,5 +1,7 @@
 #include "headers.hpp"
-
+/*
+Type: Array
+*/
 bool LeetCode::_0055_JumpGame::canJump(std::vector<int> &nums)
 {
     int t = nums.size() - 1;

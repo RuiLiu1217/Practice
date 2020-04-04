@@ -1,4 +1,8 @@
 #include "headers.hpp"
+/*
+Type: Array
+*/
+
 //需要反复练习并说出缘由的一道题。 一道典型的DP题目，不过有点懵住了。看答案得到的结果
 /*
 If you think this algorithm is not easy to understand, you can try this example:

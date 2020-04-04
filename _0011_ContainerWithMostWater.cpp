@@ -1,6 +1,8 @@
 #include "headers.hpp"
 /*
 Google
+
+Type: Array
 */
 int LeetCode::_0011_ContainerWithMostWater::maxArea(std::vector<int>& height) {
     int i = 0;
@@ -9,7 +11,7 @@ int LeetCode::_0011_ContainerWithMostWater::maxArea(std::vector<int>& height) {
     while(i < j) {
         int h = std::min(height[i], height[j]);
         water = std::max(water, h * (j - i));
-        while(i < j && height[i] <= h) { // Caution: the edge case it should be <= not <
+        while(i < j && height[i] <= h) { // Caution: the edge case it should be <= not < to guarantee that it can terminate
             ++i;
         }
         while(i < j && height[j] <= h) {

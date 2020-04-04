@@ -1,7 +1,13 @@
 #include "headers.hpp"
 #include <algorithm>
 #include <cassert>
+/*
+Google
 
+Type : Array
+
+https://leetcode.com/problems/3sum-closest/
+*/
 int LeetCode::_0016_3SumCloset::threeSumCloset(std::vector<int>& nums, int target) {
     assert(nums.size() >= 3);
     int closet = nums[0] + nums[1] + nums[2];

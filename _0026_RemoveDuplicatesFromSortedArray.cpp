@@ -1,5 +1,9 @@
 #include "headers.hpp"
+/*
 
+Type: Array
+
+*/
 int LeetCode::_0026_RemoveDuplicatesFromSortedArray::removeDuplicates(std::vector<int>& nums) {
     if(nums.empty()) {
         return 0;

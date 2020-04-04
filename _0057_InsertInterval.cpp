@@ -1,5 +1,9 @@
 #include "headers.hpp"
 #include <algorithm>
+
+/*
+Type : Array
+*/
 std::vector<std::vector<int>> LeetCode::_0057_InsertInterval::insert(std::vector<std::vector<int>>& intervals, std::vector<int>& newInterval) {
     int i = 0;
     std::vector<std::vector<int>> res;

@@ -2,7 +2,9 @@
 #include <algorithm>
 /*
 Google
-Tag: Binary search
+Tag: Array Binary search
+
+https://leetcode.com/problems/3sum/
 */
 std::vector<std::vector<int>> LeetCode::_0015_3Sum::threeSum(std::vector<int>& nums) {
     std::vector<std::vector<int>> res;

@@ -1,4 +1,7 @@
 #include "headers.hpp"
+/*
+Type: Array
+*/
 void LeetCode::_0075_SortColors::sortColors(std::vector<int>& nums) {
     int start1Idx = 0;
     int start2Idx = 0;

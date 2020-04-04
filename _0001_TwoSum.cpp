@@ -2,6 +2,9 @@
 #include <algorithm>
 /*
 Google
+
+Type: Array
+
 */
 std::vector<int> LeetCode::_0001_TwoSum::twoSum(std::vector<int> &nums, int target) {
     std::vector<int> res;

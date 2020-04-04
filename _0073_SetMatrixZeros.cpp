@@ -1,5 +1,7 @@
 #include "headers.hpp"
-// 抄答案的
+/*
+Type: Array
+*/
 void LeetCode::_0073_SetMatrixZeros::setZeroes(std::vector<std::vector<int>>& matrix) {
     if(matrix.size() == 0 || matrix[0].size() == 0) {
         return;

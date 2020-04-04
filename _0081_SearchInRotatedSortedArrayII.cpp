@@ -1,5 +1,7 @@
 #include "headers.hpp"
-
+/*
+Type: Array
+*/
 bool LeetCode::_0081_SearchInRotatedSortedArrayII::search(std::vector<int>& nums, int target) {
     int start = 0;
     int end = nums.size() - 1;

@@ -1,5 +1,7 @@
 #include "headers.hpp"
-
+/*
+Type: Array
+*/
 int LeetCode::_0062_UniquePaths::uniquePaths(int m, int n)
 {
     TABLE.resize(m + 1);

@@ -1,5 +1,8 @@
 #include "headers.hpp"
 
+/*
+Type : Array
+
 // This problem has a nice BFS structure. Let's illustrate it 
 // using the example nums = [2, 3, 1, 1, 4] in the problem statement. 
 // We are initially at position 0. Then we can move at most nums[0] 
@@ -17,6 +20,9 @@
 // BFS
 // TODO:
 // Tag: BFS
+
+*/
+
 int LeetCode::_0045_JumpGameII::jump(std::vector<int>& nums) {
     int n = nums.size(), step = 0, start = 0, end = 0;
     while(end < n - 1) {

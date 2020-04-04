@@ -1,4 +1,7 @@
 #include "headers.hpp"
+/*
+Type: Array
+*/
 // 抄答案的
 int LeetCode::_0121_BestTimeToBuyAndSellStock::maxProfit(std::vector<int>& prices) {
     int minprice = INT_MAX;

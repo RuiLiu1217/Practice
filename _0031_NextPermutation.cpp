@@ -1,6 +1,9 @@
 #include "headers.hpp"
 /* 
 Google, Facebook
+
+Type: Array
+
 */
 
 /*

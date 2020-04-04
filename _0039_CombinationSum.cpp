@@ -1,4 +1,9 @@
 #include "headers.hpp"
+/*
+
+Type: Array
+
+*/
 std::vector<std::vector<int>> LeetCode::_0039_CombinationSum::combinationSum(std::vector<int>& candidates, int target) {
     std::vector<int> tmp;
     std::vector<std::vector<int>> res;

@@ -1,5 +1,10 @@
 #include "headers.hpp"
 #include <cmath>
+
+/*
+Type: Array
+*/
+
 std::vector<std::vector<int>> LeetCode::_0059_SpiralMatrixII::generateMatrix(int n)
 {
     std::vector<std::vector<int>> res;

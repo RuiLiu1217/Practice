@@ -1,8 +1,10 @@
 #include "headers.hpp"
-
+/*
+Type: Array
+*/
 std::vector<int> LeetCode::_0119_PascalTriangleII::getRow(int rowIndex) {
     if(rowIndex == 0) {
-        return std::vector<int>(1,1);
+        return {1};
     }
     std::vector<int> p{1,1};
     if(rowIndex == 1) {

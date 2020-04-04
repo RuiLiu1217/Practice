@@ -1,5 +1,8 @@
 #include "headers.hpp"
 #include <cmath>
+/*
+Type: Array
+*/
 std::vector<int> LeetCode::_0054_SpiralMatrix::spiralOrder(std::vector<std::vector<int>>& matrix) {
     int i = 0;
     int j = 0;

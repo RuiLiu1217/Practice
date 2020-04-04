@@ -1,6 +1,13 @@
 #include "headers.hpp"
 #include <algorithm>
 
+/*
+Google
+
+Type : Array
+
+*/
+
 std::vector<std::vector<int>> LeetCode::_0018_4Sum::fourSum(std::vector<int>& nums, int target) {
     if(nums.size() < 4) {
         return {};
@@ -24,7 +31,7 @@ std::vector<std::vector<int>> LeetCode::_0018_4Sum::fourSum(std::vector<int>& nu
                     while(left < right && nums[right] == nums[right - 1]) {
                         --right;
                     }
-                } if(sum < target) {
+                } else if(sum < target) {
                     ++left;
                 } else {
                     --right;

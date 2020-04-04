@@ -211,6 +211,53 @@ public:
 };
 
 /*
+Convert a Binary Search Tree to a sorted Circular Doubly-Linked List in place.
+You can think of the left and right pointers as synonymous to the predecessor 
+and successor pointers in a doubly-linked list. For a circular doubly linked list, 
+the predecessor of the first element is the last element, and the successor of 
+the last element is the first element.
+We want to do the transformation in place. After the transformation, the left 
+pointer of the tree node should point to its predecessor, and the right pointer 
+should point to its successor. You should return the pointer to the smallest 
+element of the linked list.
+
+Input: root = [4,2,5,1,3]
+Output: [1,2,3,4,5]
+
+Explanation: The figure below shows the transformed BST. The solid line indicates 
+the successor relationship, while the dashed line means the predecessor relationship.
+
+Input: root = [2,1,3]
+Output: [1,2,3]
+
+Input: root = []
+Output: []
+Explanation: Input is an empty tree. Output is also an empty Linked List.
+
+Input: root = [1]
+Output: [1]
+ 
+
+Constraints:
+
+-1000 <= Node.val <= 1000
+Node.left.val < Node.val < Node.right.val
+All values of Node.val are unique.
+0 <= Number of Nodes <= 2000
+*/
+class _0426_ConvertBinarySearchTreeToSortedDoublyLinkedList {
+public:
+    struct Node {
+        int val;
+        Node* left;
+        Node* right;
+    };
+    Node* treeToDoublyList(Node* root);
+private:
+    std::pair<Node*, Node*> conn(Node* root);
+};
+
+/*
 Given an n-ary tree, return the level order traversal 
 of its nodes' values. (ie, from left to right, level by level).
 
@@ -349,6 +396,10 @@ Intervals like [1,2] and [2,3] have borders "touching" but they don't overlap ea
 class _0435_NonOverlappingIntervals {
 public:
     int eraseOverlapIntervals(std::vector<std::vector<int>>& intervals);
+};
+
+class _0437_PathSumIII {
+    
 };
 
 /*

@@ -1,5 +1,8 @@
 #include "headers.hpp"
 
+/*
+Type: Array
+*/
 int LeetCode::_0063_UniquePathsII::uniquePathsWithObstacles(std::vector<std::vector<int>> &obstacleGrid)
 {
     const int M = obstacleGrid.size();

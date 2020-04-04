@@ -1,6 +1,12 @@
 #include "headers.hpp"
 
-// Facebook
+/*
+
+Facebook
+Type: Array
+
+*/
+
 std::vector<int> LeetCode::_0034_FindFirstAndLastPositionOfElementInSortedArray::searchRange(std::vector<int>& nums, int target) {
     int start = 0;
     int end = nums.size() - 1;

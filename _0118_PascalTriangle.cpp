@@ -1,5 +1,8 @@
 #include "headers.hpp"
 
+/*
+Type: Array
+*/
 std::vector<std::vector<int>> LeetCode::_0118_PascalTriangle::generate(int numRows) {
     if(numRows == 0) {
         return std::vector<std::vector<int>>();

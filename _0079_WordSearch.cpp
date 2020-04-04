@@ -1,4 +1,7 @@
 #include "headers.hpp"
+/*
+Type: Array
+*/
 
 bool LeetCode::_0079_WordSearch::exist(std::vector<std::vector<char>>& board, std::string word) {
     bool res = false;

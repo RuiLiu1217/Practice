@@ -1,5 +1,7 @@
 #include "headers.hpp"
-
+/*
+Type: Array
+*/
 bool LeetCode::_0074_SearchA2DMatrix::searchMatrix(std::vector<std::vector<int>>& matrix, int target) {
     const int M = matrix.size();
     if(M == 0) {

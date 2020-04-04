@@ -1,6 +1,17 @@
 #include "headers.hpp"
+#include <algorithm>
+/*
+Type: Array
+*/
 
-
+static int maxSubArray(std::vector<int>& nums) {
+    std::vector<int> DP(nums.size(), 0);
+    DP[0] = nums[0];
+    for(int i = 1; i < nums.size(); ++i) {
+        DP[i] = DP[i-1] > 0 ? (nums[i] + DP[i-1]) : nums[i];
+    }
+    return *std::max_element(DP.begin(), DP.end());
+}
 
 int LeetCode::_0053_MaximumSubarray::maxSubArray(std::vector<int>& nums) {
     return maxSubArrayHelp(nums, 0, nums.size()  - 1);
