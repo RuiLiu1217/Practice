@@ -143,36 +143,40 @@ static int ladderLengthv1(std::string beginWord, std::string endWord, std::vecto
     }
     return 0;
 }
+// Bidirectional BFS
+static int ladderLengthBiBFS(std::string beginWord, std::string endWord,
+    std::vector<std::string>& wordList) {
+    std::unordered_set<std::string> dict(begin(wordList), end(wordList));
+    std::unordered_set<std::string> head, *phead;
+    std::unordered_set<std::string> tail, *ptail;
 
-
-// BFS in dual directions
-static int ladderLengthv2(std::string beginWord, std::string endWord, std::vector<std::string>& wordList) {
-    std::unordered_set<std::string> dict(wordList.begin(), wordList.end()), head, tail, *phead, *ptail;
-    if (dict.find(endWord) == dict.end()) {
+    if(!dict.count(endWord)) {
         return 0;
     }
+
     head.insert(beginWord);
     tail.insert(endWord);
     int ladder = 2;
-    while (!head.empty() && !tail.empty()) {
-        if (head.size() < tail.size()) {
+    while(!head.empty() && !tail.empty()) {
+        if(head.size() < tail.size()) {
             phead = &head;
             ptail = &tail;
         } else {
             phead = &tail;
             ptail = &head;
         }
+
         std::unordered_set<std::string> temp;
-        for (auto it = phead -> begin(); it != phead -> end(); it++) {    
+        for(auto it = phead->begin(); it != phead->end(); ++it) {
             std::string word = *it;
-            for (int i = 0; i < word.size(); i++) {
+            for(int i = 0; i < word.size(); ++i) {
                 char t = word[i];
-                for (int j = 0; j < 26; j++) {
+                for(int j = 0; j < 26; ++j) {
                     word[i] = 'a' + j;
-                    if (ptail -> find(word) != ptail -> end()) {
+                    if(ptail->count(word)) {
                         return ladder;
                     }
-                    if (dict.find(word) != dict.end()) {
+                    if(dict.count(word)) {
                         temp.insert(word);
                         dict.erase(word);
                     }
@@ -180,8 +184,8 @@ static int ladderLengthv2(std::string beginWord, std::string endWord, std::vecto
                 word[i] = t;
             }
         }
-        ladder++;
-        phead -> swap(temp);
+        ++ladder;
+        phead->swap(temp);
     }
     return 0;
 }

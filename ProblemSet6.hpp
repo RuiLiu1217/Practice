@@ -11,6 +11,38 @@
 
 namespace LeetCode {
 /*
+Given a binary search tree (BST) with duplicates, find all the mode(s) (the most frequently occurred element) in the given BST.
+
+Assume a BST is defined as follows:
+
+The left subtree of a node contains only nodes with keys less than or equal to the node's key.
+The right subtree of a node contains only nodes with keys greater than or equal to the node's key.
+Both the left and right subtrees must also be binary search trees.
+ 
+
+For example:
+Given BST [1,null,2,2],
+
+   1
+    \
+     2
+    /
+   2
+ 
+
+return [2].
+
+Note: If a tree has more than one mode, you can return them in any order.
+
+Follow up: Could you do that without using any extra space? (Assume that the implicit stack space incurred due to recursion does not count).
+*/
+class _0501_FindModeInBinarySearchTree {
+public:
+    std::vector<int> findMode(TreeNode<int>* root);
+};
+
+
+/*
 Given scores of N athletes, find their relative 
 ranks and the people with the top three highest scores, 
 who will be awarded medals: "Gold Medal", "Silver Medal" 
@@ -133,6 +165,38 @@ public:
     bool checkSubarraySum(std::vector<int>& nums, int k);
 };
 
+
+/*
+   Suppose you have N integers from 1 to N. We define a beautiful arrangement as an array 
+   that is constructed by these N numbers successfully if one of the following is true for
+   the ith position (1 <= i <= N) in this array:
+   
+   The number at the ith position is divisible by i.
+   i is divisible by the number at the ith position.
+   Now given N, how many beautiful arrangements can you construct?
+   
+   Example 1:
+   Input: 2
+   Output: 2
+   Explanation:
+   
+   The first beautiful arrangement is [1, 2]:
+   
+   Number at the 1st position (i=1) is 1, and 1 is divisible by i (i=1).
+   Number at the 2nd position (i=2) is 2, and 2 is divisible by i (i=2).
+   
+   The second beautiful arrangement is [2, 1]:
+   
+   Number at the 1st position (i=1) is 2, and 2 is divisible by i (i=1).
+   Number at the 2nd position (i=2) is 1, and i (i=2) is divisible by 1.
+   这是一道典型的回溯问题
+*/
+
+class _0526_BeautifulArrangement {
+public:
+    int countArrangement(int N);
+};
+
 /*
 Given an array w of positive integers, where w[i] describes the weight of 
 index i, write a function pickIndex which randomly picks an index in 
@@ -166,6 +230,59 @@ private:
 public:
     _0528_RandomPickWithWeight(std::vector<int>& w);
     int pickIndex();
+};
+
+/*
+Given an array of integers and an integer k, you need to find the number of unique 
+k - diff pairs in the array.Here a k - diff pair is defined as an integer pair(i, j), 
+where i and j are both numbers in the array and their absolute difference is k.
+
+Example 1:
+Input: [3, 1, 4, 1, 5], k = 2
+Output : 2
+Explanation : There are two 2 - diff pairs in the array, (1, 3) and (3, 5).
+Although we have two 1s in the input, we should only return the number of unique pairs.
+Example 2 :
+Input : [1, 2, 3, 4, 5], k = 1
+Output : 4
+Explanation : There are four 1 - diff pairs in the array, (1, 2), (2, 3), (3, 4) and (4, 5).
+Example 3 :
+Input : [1, 3, 1, 5, 4], k = 0
+Output : 1
+Explanation : There is one 0 - diff pair in the array, (1, 1).
+Note :
+The pairs(i, j) and (j, i) count as the same pair.
+The length of the array won't exceed 10,000.
+All the integers in the given input belong to the range : [-1e7, 1e7].
+这道题给了我们一个含有重复数字的无序数组，还有一个整数k，让我们找出有多少对不重复的数对(i, j)
+使得i和j的差刚好为k。由于k有可能为0，而只有含有至少两个相同的数字才能形成数对，那么就是说我们
+需要统计数组中每个数字的个数。我们可以建立每个数字和其出现次数之间的映射，然后遍历哈希表中的数
+字，如果k为0且该数字出现的次数大于1，则结果res自增1；如果k不为0，且用当前数字加上k后得到的新
+数字也在数组中存在，则结果res自增1，参见代码如下：
+*/
+class _0532_KdiffPairsInAnArray {
+public:
+    int findPairs(std::vector<int>& nums, int k) {
+		if (k < 0) {
+			return 0;
+		}
+		int res = 0;
+		int numsSize = nums.size();
+		std::unordered_map<int, int> mp;
+		for (int i = 0; i < nums.size(); ++i) {
+			mp[nums[i]]++;
+		}
+
+		for (auto a : mp) {
+			if (k == 0 && a.second > 1) {
+					res++;
+			}
+			if (k > 0 && mp.count(a.first + k) > 0) {
+				res++;
+			}
+		}
+		return res;
+	}
 };
 
 /*
@@ -378,6 +495,106 @@ public:
 };
 
 /*
+A Binary Matrix is a matrix in which all the elements are either 0 or 1.
+Given quadTree1 and quadTree2. quadTree1 represents a n * n binary matrix 
+and quadTree2 represents another n * n binary matrix. 
+Return a Quad-Tree representing the n * n binary matrix which is the result 
+of logical bitwise OR of the two binary matrixes represented by quadTree1 
+and quadTree2.
+Notice that you can assign the value of a node to True or False when isLeaf 
+is False, and both are accepted in the answer.
+A Quad-Tree is a tree data structure in which each internal node has exactly
+four children. Besides, each node has two attributes:
+
+val: True if the node represents a grid of 1's or False if the node represents a grid of 0's. 
+isLeaf: True if the node is leaf node on the tree or False if the node has the four children.
+class Node {
+    public boolean val;
+    public boolean isLeaf;
+    public Node topLeft;
+    public Node topRight;
+    public Node bottomLeft;
+    public Node bottomRight;
+}
+We can construct a Quad-Tree from a two-dimensional area using the following steps:
+
+If the current grid has the same value (i.e all 1's or all 0's) set isLeaf True and set 
+val to the value of the grid and set the four children to Null and stop.
+If the current grid has different values, set isLeaf to False and set val to any value 
+and divide the current grid into four sub-grids as shown in the photo.
+Recurse for each of the children with the proper sub-grid.
+
+If you want to know more about the Quad-Tree, you can refer to the wiki.
+Quad-Tree format:
+The input/output represents the serialized format of a Quad-Tree using level order 
+traversal, where null signifies a path terminator where no node exists below.
+It is very similar to the serialization of the binary tree. The only difference is 
+that the node is represented as a list [isLeaf, val].
+If the value of isLeaf or val is True we represent it as 1 in the list [isLeaf, val] 
+and if the value of isLeaf or val is False we represent it as 0.
+ 
+Input: quadTree1 = [[0,1],[1,1],[1,1],[1,0],[1,0]]
+, quadTree2 = [[0,1],[1,1],[0,1],[1,1],[1,0],null,null,null,null,[1,0],[1,0],[1,1],[1,1]]
+Output: [[0,0],[1,1],[1,1],[1,1],[1,0]]
+Explanation: quadTree1 and quadTree2 are shown above. You can see the binary matrix which is represented by each Quad-Tree.
+If we apply logical bitwise OR on the two binary matrices we get the binary matrix below which is represented by the result Quad-Tree.
+Notice that the binary matrices shown are only for illustration, you don't have to construct the binary matrix to get the result tree.
+
+Example 2:
+
+Input: quadTree1 = [[1,0]]
+, quadTree2 = [[1,0]]
+Output: [[1,0]]
+Explanation: Each tree represents a binary matrix of size 1*1. Each matrix contains only zero.
+The resulting matrix is of size 1*1 with also zero.
+Example 3:
+
+Input: quadTree1 = [[0,0],[1,0],[1,0],[1,1],[1,1]]
+, quadTree2 = [[0,0],[1,1],[1,1],[1,0],[1,1]]
+Output: [[1,1]]
+Example 4:
+
+Input: quadTree1 = [[0,0],[1,1],[1,0],[1,1],[1,1]]
+, quadTree2 = [[0,0],[1,1],[0,1],[1,1],[1,1],null,null,null,null,[1,1],[1,0],[1,0],[1,1]]
+Output: [[0,0],[1,1],[0,1],[1,1],[1,1],null,null,null,null,[1,1],[1,0],[1,0],[1,1]]
+Example 5:
+
+Input: quadTree1 = [[0,1],[1,0],[0,1],[1,1],[1,0],null,null,null,null,[1,0],[1,0],[1,1],[1,1]]
+, quadTree2 = [[0,1],[0,1],[1,0],[1,1],[1,0],[1,0],[1,0],[1,1],[1,1]]
+Output: [[0,0],[0,1],[0,1],[1,1],[1,0],[1,0],[1,0],[1,1],[1,1],[1,0],[1,0],[1,1],[1,1]]
+ 
+
+Constraints:
+
+quadTree1 and quadTree2 are both valid Quad-Trees each representing a n * n grid.
+n == 2^x where 0 <= x <= 9.
+*/
+class _0558_LogicalORofTwoBinaryGridsRepresentedAsQuadTrees {
+class Node{
+public:
+    bool val;
+    bool isLeaf;
+    Node* topLeft;
+    Node* topRight;
+    Node* bottomLeft;
+    Node* bottomRight;
+
+    Node() {}
+
+    Node(bool _val, bool _isLeaf, Node* _topLeft, Node* _topRight, Node* _bottomLeft, Node* _bottomRight) {
+        val = _val;
+        isLeaf = _isLeaf;
+        topLeft = _topLeft;
+        topRight = _topRight;
+        bottomLeft = _bottomLeft;
+        bottomRight = _bottomRight;
+    }
+    };
+public:
+    Node* intersect(Node* quadTree1, Node* quadTree2);
+};
+
+/*
 Given a n-ary tree, find its maximum depth.
 The maximum depth is the number of nodes along the longest path from the root 
 node down to the farthest leaf node.
@@ -501,6 +718,47 @@ private:
 };
 
 /*
+Given an integer array with even length, where different numbers in this array represent 
+different kinds of candies. Each number means one candy of the corresponding kind. You 
+need to distribute these candies equally in number to brother and sister. Return the 
+maximum number of kinds of candies the sister could gain.
+
+Input: candies = [1,1,2,2,3,3]
+Output: 3
+Explanation:
+There are three different kinds of candies (1, 2 and 3), and two candies for each kind.
+Optimal distribution: The sister has candies [1,2,3] and the brother has candies [1,2,3], too.
+The sister has three different kinds of candies.
+Example 2:
+Input: candies = [1,1,2,3]
+Output: 2
+Explanation: For example, the sister has candies [2,3] and the brother has candies [1,1].
+The sister has two different kinds of candies, the brother has only one kind of candies.
+Note:
+
+The length of the given array is in range [2, 10,000], and will be even.
+The number in given array is in range [-100,000, 100,000].
+*/
+class _0575_DistributeCandies {
+public:
+    int distributeCandies(std::vector<int>& candies) {
+        std::unordered_set<int> sisCandy;
+        int candySize = candies.size();
+        for (int i = 0; i < candies.size(); ++i) {
+            if (sisCandy.find(candies[i]) == sisCandy.end()) {
+                if (sisCandy.size() >= candySize / 2) {
+                    return sisCandy.size();
+                }
+                else {
+                    sisCandy.insert(candies[i]);
+                }
+            }
+        }
+        return sisCandy.size();
+    }
+};
+
+/*
 Given two words word1 and word2, find the minimum number of steps 
 required to make word1 and word2 the same, where in each step you 
 can delete one character in either string.
@@ -564,6 +822,40 @@ class _0590_Node;
 class _0590_NaryTreePostOrderTraversal {
 public:
     std::vector<int> postorder(_0590_Node* root);
+};
+
+/*
+Given a string representing an expression of fraction addition and subtraction, 
+you need to return the calculation result in string format. The final result should 
+be irreducible fraction. If your final result is an integer, say 2, you need to change 
+it to the format of fraction that has denominator 1. So in this case, 2 should be 
+converted to 2/1.
+
+Input:"-1/2+1/2"
+Output: "0/1"
+
+Input:"-1/2+1/2+1/3"
+Output: "1/3"
+
+Input:"1/3-1/2"
+Output: "-1/6"
+
+Input:"5/3+1/3"
+Output: "2/1"
+Note:
+The input string only contains '0' to '9', '/', '+' and '-'. So does the output.
+Each fraction (input and output) has format ±numerator/denominator. If the first input 
+fraction or the output is positive, then '+' will be omitted. The input only contains valid 
+irreducible fractions, where the numerator and denominator of each fraction will always 
+be in the range [1,10]. If the denominator is 1, it means this fraction is actually an 
+integer in a fraction format defined above.
+The number of given fractions will be in the range [1,10].
+The numerator and denominator of the final result are guaranteed to be valid and in the 
+range of 32-bit int.
+*/
+class _0592_FractionAdditionAndSubtraction {
+public:
+    std::string fractionAddition(std::string expression);
 };
 
 /*

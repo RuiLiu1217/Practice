@@ -3,7 +3,6 @@
 TreeNode<int>* LeetCode::_0538_ConvertBSTToGreaterTree::convertBST(TreeNode<int>* root) {
     inOrder(root);
     return root;
-    
 }
     
 void LeetCode::_0538_ConvertBSTToGreaterTree::inOrder(TreeNode<int>* root) {

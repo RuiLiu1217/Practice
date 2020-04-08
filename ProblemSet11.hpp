@@ -694,7 +694,6 @@ Input: A = [1,2,4], K = 3
 Output: 6
 Explanation: 
 The missing numbers are [3,5,6,7,...], hence the third missing number is 6.
- 
 
 Note:
 

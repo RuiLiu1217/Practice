@@ -132,6 +132,11 @@ public:
     TreeNode<int>* mergeTrees(TreeNode<int>* t1, TreeNode<int>* t2);
 };
 
+class _0621_TaskScheduler {
+public:
+    int leastInterval(std::vector<char>& tasks, int n);
+};
+
 /*
 622. Design Circular Queue
 Design your implementation of the circular queue. The circular queue is a 
@@ -193,6 +198,40 @@ public:
     
     /** Checks whether the circular queue is full or not. */
     bool isFull();
+};
+
+/*
+On a single threaded CPU, we execute some functions.  Each function has a unique id between 0 and N-1.
+We store logs in timestamp order that describe when a function is entered or exited.
+Each log is a string with this format: "{function_id}:{"start" | "end"}:{timestamp}".  For example, 
+"0:start:3" means the function with id 0 started at the beginning of timestamp 3.  "1:end:2" means the 
+function with id 1 ended at the end of timestamp 2.
+A function's exclusive time is the number of units of time spent in this function.  Note that this does 
+not include any recursive calls to child functions.
+The CPU is single threaded which means that only one function is being executed at a given time unit.
+Return the exclusive time of each function, sorted by their function id.
+
+Input:
+n = 2
+logs = ["0:start:0","1:start:2","1:end:5","0:end:6"]
+Output: [3, 4]
+Explanation:
+Function 0 starts at the beginning of time 0, then it executes 2 units of time and reaches the end of time 1.
+Now function 1 starts at the beginning of time 2, executes 4 units of time and ends at time 5.
+Function 0 is running again at the beginning of time 6, and also ends at the end of time 6, thus executing for 1 unit of time. 
+So function 0 spends 2 + 1 = 3 units of total time executing, and function 1 spends 4 units of total time executing.
+ 
+
+Note:
+
+1 <= n <= 100
+Two functions won't start or end at the same time.
+Functions will always log when they exit.
+ 
+*/
+class _0636_ExclusiveTimeOfFunctions {
+public:
+    std::vector<int> exclusiveTime(int n, std::vector<std::string>& logs);
 };
 
 /*
@@ -609,11 +648,49 @@ N will be between 1 and 25.
 K will be between 0 and 100.
 The knight always initially starts on the board.
 */
-class _0668_KnightProbabilityInChessboard{
+class _0668_KnightProbabilityInChessboard {
 public:
     double knightProbability(int N, int K, int r, int c);
 };
 
+/*
+Given a non-empty special binary tree consisting of nodes with the non-negative 
+value, where each node in this tree has exactly two or zero sub-node. If the node 
+has two sub-nodes, then this node's value is the smaller value among its two 
+sub-nodes. More formally, the property root.val = min(root.left.val, root.right.val) 
+always holds.
+
+Given such a binary tree, you need to output the second minimum value in the set 
+made of all the nodes' value in the whole tree.
+If no such second minimum value exists, output -1 instead.
+
+Input: 
+    2
+   / \
+  2   5
+     / \
+    5   7
+
+Output: 5
+Explanation: The smallest value is 2, the second smallest value is 5.
+ 
+
+Input: 
+    2
+   / \
+  2   2
+
+Output: -1
+Explanation: The smallest value is 2, but there isn't any second smallest value.
+*/
+class _0671_SecondMinimumNodeInABinaryTree {
+private:
+    int min1;
+    int ans = INT_MAX;
+public:
+    void dfs(TreeNode<int>* root);
+    int findSecondMinimumValue(TreeNode<int>* root);
+};
 
 /*
 Implement a magic directory with buildDict, and search methods.
@@ -670,6 +747,23 @@ private:
     bool valid(std::vector<int>& nums);
     bool valid(double a, double b, double c);
     bool valid(double a, double b); 
+};
+
+/*
+Given a non-empty string s, you may delete at most one character. Judge whether you can make it a palindrome.
+
+Input: "aba"
+Output: True
+
+Input: "abca"
+Output: True
+Explanation: You could delete the character 'c'.
+Note:
+The string will only contain lowercase characters a-z. The maximum length of the string is 50000.
+*/
+class _0680_ValidPalindromeII {
+public:
+    bool validPalindrome(std::string s);
 };
 
 /*
