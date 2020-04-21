@@ -168,17 +168,27 @@ public:
     }
 };
 
+
 class DijkstraSP {
 private:   
     std::vector<DirectedEdge> edgeTo;
     std::vector<double> distTo;
-    std::priority_queue<double> pq;
+    std::priority_queue<std::pair<int, double>, std::vector<std::pair<int, double>>, std::greater<std::pair<int, double>>> pq;
 public:
     // Graph start from indexed vertex s;
     DijkstraSP(EdgeWeightedDigraph G, int s) {
         edgeTo.resize(G.getV());
         distTo.resize(G.getV());
         pq.resize(G.getV());
+        for(int v = 0; v < G.getV(); ++v) {
+            distTo[v] = INT_MAX;
+        }
+        distTo[s] = 0.0;
+        pq.insert(s, 0.0);
+        while(!pq.empty()) {
+            relax(G, pq.top());
+            pq.pop();
+        }
     }
         
     double getDistTo(int v) {

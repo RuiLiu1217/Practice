@@ -3,6 +3,7 @@
 /*
 Type: Array
 */
+
 int LeetCode::_0042_TrappingRainWater::trap(std::vector<int>& height) {
     const int N = height.size();
     std::vector<int> l(N, 0);

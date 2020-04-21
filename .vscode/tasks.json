@@ -17,22 +17,35 @@
             "args": [
                 "-std=c++17",
                 "-g",
+                "-Wall",
                 "-o",
                 "helloworld",
-                "main.cpp",
-                "LeetCode.cpp",
-                "LintCode.cpp"
+                "main.cpp"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "executive build hello world",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-std=c++17",
+                "-o3",
+                "main.cpp"
             ],
             "group": {
                 "kind": "build",
                 "isDefault": true
             }
-
         },
         {
             "type": "shell",
             "label": "g++.exe build active file from desktop",
-            "command": "C:\\LLVM\\bin\\g++.exe",
+            "command": "C:\\mingw64\\mingw64\\bin\\g++.exe",
             "args": [
                 "-g",
                 "${file}",
@@ -40,7 +53,7 @@
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
             "options": {
-                "cwd": "C:\\LLVM\\bin"
+                "cwd": "C:\\mingw64\\mingw64\\bin"
             }
         }
     ]

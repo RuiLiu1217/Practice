@@ -7,8 +7,7 @@ int LeetCode::_0575_DistributeCandies::distributeCandies(std::vector<int>& candi
         if (sisCandy.find(candies[i]) == sisCandy.end()) {
             if (sisCandy.size() >= candySize / 2) {
                 return sisCandy.size();
-            }
-            else {
+            } else {
                 sisCandy.insert(candies[i]);
             }
         }
