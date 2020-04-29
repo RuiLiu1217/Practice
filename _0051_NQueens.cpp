@@ -1,10 +1,7 @@
 #include "headers.hpp"
 
 std::vector<std::vector<std::string>> LeetCode::_0051_NQueens::solveNQueens(int n) {
-    std::string ol;
-    for(int i = 0 ;i < n; ++i) {
-        ol += ".";
-    }
+    std::string ol(n, '.');
     std::vector<std::string> tmp(n, ol);
     std::vector<std::vector<std::string>> res;
     solve(tmp, 0, n, res);

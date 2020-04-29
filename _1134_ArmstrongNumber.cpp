@@ -1,4 +1,5 @@
 #include "headers.hpp"
+#include <math.h>
 // Amazon
 bool LeetCode::_1134_ArmstrongNumber::isArmstrong(int N) {
     int sum = 0;

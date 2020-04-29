@@ -136,6 +136,27 @@ public:
 };
 
 /*
+You have a list of points in the plane. Return the area of the largest triangle that can be formed by any 3 of the points.
+
+Example:
+Input: points = [[0,0],[0,1],[1,0],[0,2],[2,0]]
+Output: 2
+Explanation: 
+The five points are show in the figure below. The red triangle is the largest.
+
+Notes:
+
+3 <= points.length <= 50.
+No points will be duplicated.
+ -50 <= points[i][j] <= 50.
+Answers within 10^-6 of the true value will be accepted as correct.
+*/
+class _0812_LargestTriangleArea {
+public:
+    double largestTriangleArea(std::vector<std::vector<int>>& points);
+};
+
+/*
 We are given the head node root of a binary tree, where additionally every
 node's value is either a 0 or a 1.
 Return the same tree where every subtree (of the given tree) not containing 
@@ -881,6 +902,50 @@ public:
     int pop();
 };
 
+/*
+Given a binary search tree, rearrange the tree in in-order so that the leftmost node in the tree is now the root of the tree, and every node has no left child and only 1 right child.
+
+Example 1:
+Input: [5,3,6,2,4,null,8,1,null,null,null,7,9]
+
+       5
+      / \
+    3    6
+   / \    \
+  2   4    8
+ /        / \ 
+1        7   9
+
+Output: [1,null,2,null,3,null,4,null,5,null,6,null,7,null,8,null,9]
+
+ 1
+  \
+   2
+    \
+     3
+      \
+       4
+        \
+         5
+          \
+           6
+            \
+             7
+              \
+               8
+                \
+                 9  
+ 
+
+Constraints:
+
+The number of nodes in the given tree will be between 1 and 100.
+Each node will have a unique integer value from 0 to 1000.
+*/
+class _0897_IncreasingOrderSearchTree {
+public:
+    TreeNode<int>* increasingBST(TreeNode<int>* root);
+};
 /*
 A string S of lowercase letters is given.  Then, we may make any number of moves.
 In each move, we choose one of the first K letters (starting from the left), remove it, and place it at the end of the string.

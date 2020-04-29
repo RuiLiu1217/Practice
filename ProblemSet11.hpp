@@ -773,6 +773,36 @@ public:
     std::string smallestSubsequenc(std::string text);
 };
 
+/*
+A string S represents a list of words.
+Each letter in the word has 1 or more options.  If there is 
+one option, the letter is represented as is.  If there is 
+more than one option, then curly braces delimit the options. 
+For example, "{a,b,c}" represents options ["a", "b", "c"].
+
+For example, "{a,b,c}d{e,f}" represents the list 
+["ade", "adf", "bde", "bdf", "cde", "cdf"].
+
+Return all words that can be formed in this manner, 
+in lexicographical order.
+
+Input: "{a,b}c{d,e}f"
+Output: ["acdf","acef","bcdf","bcef"]
+
+Input: "abcd"
+Output: ["abcd"]
+
+Note:
+
+1 <= S.length <= 50
+There are no nested curly brackets.
+All characters inside a pair of consecutive opening and ending curly brackets are different.
+*/
+class _1087_BraceExpansion {
+public:
+    std::vector<std::string> expand(std::string S);
+    std::vector<std::string> foo(std::string S);
+};
 
 /*
 Tag: DFS,
