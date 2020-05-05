@@ -24,6 +24,7 @@
 #include "ProblemSet12.hpp" // Problem 1101 - 1200
 #include "ProblemSet13.hpp" // Problem 1201 - 1300
 #include "ProblemSet14.hpp" // Problem 1301 - 1400
+#include "ProblemSet15.hpp" // Problem 1301 - 1400
 
 namespace LintCode {
 
