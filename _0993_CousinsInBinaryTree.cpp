@@ -5,21 +5,15 @@ bool LeetCode::_0993_CousinsInBinaryTree::isCousins(TreeNode<int>* root, int x, 
     q.push({root, nullptr});
     while(!q.empty()) {
         const int N = q.size();
-        bool foundX = false;
-        bool foundY = false;
         TreeNode<int>* px = nullptr;
         TreeNode<int>* py = nullptr;
         for(int i = 0; i < N; ++i) {
-            auto fr = q.front();
+            auto [cur, parent] = q.front();
             q.pop();
-            TreeNode<int>* cur = fr.first;
-            TreeNode<int>* parent = fr.second;
             if(cur->val == x) {
-                foundX = true;
                 px = parent;
             }
             if(cur->val == y) {
-                foundY = true;
                 py = parent;
             }
             
@@ -30,10 +24,11 @@ bool LeetCode::_0993_CousinsInBinaryTree::isCousins(TreeNode<int>* root, int x, 
                 q.push({cur->right, cur});
             }
         }
-        if(foundX && foundY) {
-            if(px != py) {
-                return true;
-            }
+        if((px && !py) || (!px && py)) {
+            return false;
+        }
+        if(px && py) {
+            return px != py;
         }
     }
     return false;

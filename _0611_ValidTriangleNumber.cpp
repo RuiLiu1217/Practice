@@ -14,7 +14,6 @@ int LeetCode::_0611_ValidTriangleNumber::triangleNumber(std::vector<int>& nums) 
                 ++k;
             }
             count += k - j - 1;
-            
         }
     }
     return count;

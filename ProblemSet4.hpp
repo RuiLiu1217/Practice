@@ -1231,6 +1231,25 @@ public:
     int getRandom();
 };
 
+
+/*
+Given an arbitrary ransom note string and another string containing letters from all the magazines, write a function 
+that will return true if the ransom note can be constructed from the magazines ; otherwise, it will return false.
+Each letter in the magazine string can only be used once in your ransom note.
+
+Note:
+You may assume that both strings contain only lowercase letters.
+
+canConstruct("a", "b") -> false
+canConstruct("aa", "ab") -> false
+canConstruct("aa", "aab") -> true
+*/
+class _0383_RansomNote {
+public:
+    bool canConstruct(std::string ransomNote, std::string magazine);
+};
+
+
 /*
 Given an integer n, return 1 - n in lexicographical order.
 For example, given 13, return: [1,10,11,12,13,2,3,4,5,6,7,8,9].

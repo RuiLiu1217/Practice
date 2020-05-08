@@ -103,6 +103,14 @@ private:
 };
 
 /*
+
+*/
+class _0611_ValidTriangleNumber {
+public:
+    int triangleNumber(std::vector<int>& nums);
+};
+
+/*
 Given two binary trees and imagine that when you put one of them to 
 cover the other, some nodes of the two trees are overlapped while 
 the others are not.
@@ -198,6 +206,26 @@ public:
     
     /** Checks whether the circular queue is full or not. */
     bool isFull();
+};
+
+/*
+Given a non-negative integer c, your task is to decide whether there're two integers a and b such that a2 + b2 = c.
+
+Example 1:
+
+Input: 5
+Output: True
+Explanation: 1 * 1 + 2 * 2 = 5
+ 
+
+Example 2:
+
+Input: 3
+Output: False
+*/
+class _0633_SumOfSquareNumbers {
+public:
+    bool judgeSquareSum(int c);
 };
 
 /*
