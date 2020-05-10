@@ -416,6 +416,12 @@ private:
     std::vector<int> DP;
 };
 
+
+class _0325_MaximumSizeSubarraySumEqualsK {
+public:
+    int maxSubArrayLen(std::vector<int>& nums, int k);
+};
+
 /*
 Given an integer, write a function to determine if it is a power of three.
 

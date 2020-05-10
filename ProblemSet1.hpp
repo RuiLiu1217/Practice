@@ -5,7 +5,7 @@
 #include <string>
 #include <stack>
 #include <queue>
-
+#include <functional>
 #include "Tree.hpp"
 #include "LinkList.hpp"
 
@@ -860,6 +860,16 @@ The given board size is always 9x9.
 */
 class _0036_ValidSudoku{
 public:
+    std::function<bool(char, std::vector<int>&)> containDup = [](char tmp,  std::vector<int>& ext){
+        if(tmp >= '1' && tmp <= '9') {
+            if(ext[tmp-'1'] == 0) {
+                ext[tmp - '1'] = 1;
+            } else {
+                return true;
+            }
+        }
+        return false;
+    };
     bool isValidSudoku(std::vector<std::vector<char>>& board);
 
 private:

@@ -952,6 +952,29 @@ public:
 };
 
 /*
+Given a string, we can "shift" each of its letter to its successive letter, for example: "abc" -> "bcd". We can keep "shifting" which forms the sequence:
+
+"abc" -> "bcd" -> ... -> "xyz"
+Given a list of strings which contains only lowercase alphabets, group all strings that belong to the same shifting sequence.
+
+Example:
+
+Input: ["abc", "bcd", "acef", "xyz", "az", "ba", "a", "z"],
+Output: 
+[
+  ["abc","bcd","xyz"],
+  ["az","ba"],
+  ["acef"],
+  ["a","z"]
+]
+*/
+class _0249_GroupShiftedStrings {
+public:
+    std::vector<std::vector<std::string>> groupStrings(std::vector<std::string>& strings);
+    std::string transback(std::string& s);
+};
+
+/*
 Given a binary tree, return all root-to-leaf paths.
 Note: A leaf is a node with no children.
 
@@ -1154,6 +1177,26 @@ Output: "One Billion Two Hundred Thirty Four Million Five Hundred Sixty Seven Th
 class _0273_IntegerToEnglishWords {
 public:
     std::string numberToWords(int num);
+};
+
+/*
+Given an array of citations (each citation is a non-negative integer) of a researcher, write a function to compute the researcher's h-index.
+
+According to the definition of h-index on Wikipedia: "A scientist has index h if h of his/her N papers have at least h citations each, and the other N − h papers have no more than h citations each."
+
+Example:
+
+Input: citations = [3,0,6,1,5]
+Output: 3 
+Explanation: [3,0,6,1,5] means the researcher has 5 papers in total and each of them had 
+             received 3, 0, 6, 1, 5 citations respectively. 
+             Since the researcher has 3 papers with at least 3 citations each and the remaining 
+             two with no more than 3 citations each, her h-index is 3.
+Note: If there are several possible values for h, the maximum one is taken as the h-index.
+*/
+class _0274_HIndex {
+public:
+    int hIndex(std::vector<int>& citations);
 };
 
 /*
