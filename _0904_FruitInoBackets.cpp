@@ -1,37 +1,22 @@
 #include "headers.hpp"
 #include <unordered_map>
+// The problem description is not clear, actually it is just a sliding window problem that what is the longest substring that only contains at most
+// two distinct characters.
 
 int LeetCode::_0904_FruitInoBackets::totalFruit(std::vector<int>& tree) {
     std::unordered_map<int, int> map;
-    int backIndex = 0;
-    int maxLength = INT_MIN;
-    for(int forwardIndex = 0; forwardIndex != tree.size(); ++forwardIndex) {
-        if(map.size() == 2) {
-            bool extraValueExist = true;
-            if(map.size() == 2) {
-                bool extraValueExist = true;
-                for(auto& m : map) {
-                    if(m.first == tree[forwardIndex]) {
-                        extraValueExist = false;
-                        break;
-                    }
-                }
-
-                if(extraValueExist) {
-                    while(backIndex <= forwardIndex) {
-                        int key = tree[backIndex];
-                        ++backIndex;
-                        --map[key];
-                        if(map[key] == 0) {
-                            map.erase(key);
-                            break;
-                        }
-                    }
-                }
+    int slow = 0;
+    int maxLen = INT_MIN;
+    for(int i = 0; i < tree.size(); ++i) {
+        ++map[tree[i]];
+        while(map.size() > 2) {
+            --map[tree[slow]];
+            if(map[tree[slow]] == 0) {
+                map.erase(tree[slow]);
             }
-            ++map[tree[forwardIndex]];
-            maxLength = std::max(maxLength, forwardIndex - backIndex + 1);
+            ++slow;
         }
-        return maxLength;
+        maxLen = std::max(maxLen, i - slow + 1);
     }
+    return maxLen;
 }
