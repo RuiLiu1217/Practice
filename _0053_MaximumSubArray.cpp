@@ -17,7 +17,6 @@ int LeetCode::_0053_MaximumSubarray::maxSubArray(std::vector<int>& nums) {
     return maxSubArrayHelp(nums, 0, nums.size()  - 1);
 }
 
-
 int LeetCode::_0053_MaximumSubarray::maxSubArrayHelp(std::vector<int>& nums, int start, int end) {
     if(end - start < 1) {
         return nums[start];

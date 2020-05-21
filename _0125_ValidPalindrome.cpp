@@ -2,8 +2,8 @@
 #include <algorithm>
 #include <cctype>
 
-// Facebook
-// std::isalnum is a alphabetical or number
+// Facebook, Microsoft
+// note: usage of "std::isalnum" is a alphabetical or number "toupper, tolower"
 bool LeetCode::_0125_ValidPalindrome::isPalindrome(std::string s) {
     for (int i = 0, j = s.size() - 1; i < j; i++, j--) { // Move 2 pointers from each end until they collide
         while (!std::isalnum(s[i]) && i < j) i++; // Increment left pointer if not alphanumeric

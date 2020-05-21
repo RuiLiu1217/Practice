@@ -46,6 +46,41 @@ namespace LeetCode {
     };
 
     /*
+    Given a binary tree where each path going from the root to any leaf form a valid sequence, 
+    check if a given string is a valid sequence in such binary tree. We get the given string 
+    from the concatenation of an array of integers arr and the concatenation of all values 
+    of the nodes along a path results in a sequence in the given binary tree.
+
+    Input: root = [0,1,0,0,1,0,null,null,1,0,0], arr = [0,1,0,1]
+    Output: true
+    Explanation: 
+    The path 0 -> 1 -> 0 -> 1 is a valid sequence (green color in the figure). 
+    Other valid sequences are: 
+    0 -> 1 -> 1 -> 0 
+    0 -> 0 -> 0
+
+    Input: root = [0,1,0,0,1,0,null,null,1,0,0], arr = [0,0,1]
+    Output: false 
+    Explanation: The path 0 -> 0 -> 1 does not exist, therefore it is not even a sequence.
+
+    Input: root = [0,1,0,0,1,0,null,null,1,0,0], arr = [0,1,1]
+    Output: false
+    Explanation: The path 0 -> 1 -> 1 is a sequence, but it is not a valid sequence.
+
+    Constraints:
+
+    1 <= arr.length <= 5000
+    0 <= arr[i] <= 9
+    Each node's value is between [0 - 9].
+    */
+    class _1430_CheckIfAStringIsAValidSequenceFromRootToLeavesPathInaBinaryTree {
+        public:
+            bool isValidSequence(TreeNode<int>* root, std::vector<int>& arr);
+            bool isValidSequence(TreeNode<int>* root, std::vector<int>& arr, int startIdx);
+    };
+
+
+    /*
     You are given the array paths, where paths[i] = [cityAi, cityBi] means there exists a direct path going from 
     cityAi to cityBi. Return the destination city, that is, the city without any path outgoing to another city.
 
