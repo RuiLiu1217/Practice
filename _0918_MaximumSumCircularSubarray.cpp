@@ -5,7 +5,6 @@
 I guess you know how to solve max subarray sum (without circular).
 If not, you can have a reference here: 53. Maximum Subarray
 
-
 Explanation
 So there are two case.
 Case 1. The first is that the subarray take only a middle part, and we know how to find the max subarray sum.

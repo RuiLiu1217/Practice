@@ -28,7 +28,6 @@ int LeetCode::_0053_MaximumSubarray::maxSubArrayHelp(std::vector<int>& nums, int
         int v = std::max(std::max(incMid, lftSub), rghSub);
         return v;
     }
-
 }
 
 int LeetCode::_0053_MaximumSubarray::includeMid(std::vector<int>& nums, int start, int end, int mid) {
