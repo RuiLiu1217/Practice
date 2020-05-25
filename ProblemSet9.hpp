@@ -97,6 +97,40 @@ private:
 };
 
 /*
+Sometimes people repeat letters to represent extra feeling, such as "hello" -> "heeellooo", "hi" -> "hiiii".  In these strings 
+like "heeellooo", we have groups of adjacent letters that are all the same:  "h", "eee", "ll", "ooo".
+For some given string S, a query word is stretchy if it can be made to be equal to S by any number of applications of the following 
+extension operation: choose a group consisting of characters c, and add some number of characters c to the group so that the 
+size of the group is 3 or more.
+For example, starting with "hello", we could do an extension on the group "o" to get "hellooo", but we cannot get "helloo" since 
+the group "oo" has size less than 3.  Also, we could do another extension like "ll" -> "lllll" to get "helllllooo".  
+If S = "helllllooo", then the query word "hello" would be stretchy because of these two extension operations: query = "hello" -> "hellooo" -> "helllllooo" = S.
+
+Given a list of query words, return the number of words that are stretchy. 
+
+Input: 
+S = "heeellooo"
+words = ["hello", "hi", "helo"]
+Output: 1
+Explanation: 
+We can extend "e" and "o" in the word "hello" to get "heeellooo".
+We can't extend "helo" to get "heeellooo" because the group "ll" is not size 3 or more. 
+
+Notes:
+
+0 <= len(S) <= 100.
+0 <= len(words) <= 100.
+0 <= len(words[i]) <= 100.
+S and all words in words consist only of lowercase letters
+*/
+class _0809_ExpressiveWords {
+public:
+    int expressiveWords(std::string S, std::vector<std::string>& words);
+private:
+    bool check(std::string S, std::string W);
+};
+
+/*
 A website domain like "discuss.leetcode.com" consists of various subdomains. At the top level, we have 
 "com", at the next level, we have "leetcode.com", and at the lowest level, "discuss.leetcode.com". When 
 we visit a domain like "discuss.leetcode.com", we will also visit the parent domains "leetcode.com" and 
@@ -640,6 +674,63 @@ class _0865_SmallestSubtreeWithAllTheDeepestNodes {
 public:
     TreeNode<int>* subtreeWithAllDeepest(TreeNode<int>* root);
     std::pair<int, TreeNode<int>*> depth(TreeNode<int>* root);
+};
+
+/*
+Given two arrays A and B of equal size, the advantage of A with respect to B is the number of indices i for which A[i] > B[i].
+Return any permutation of A that maximizes its advantage with respect to B.
+
+Input: A = [2,7,11,15], B = [1,10,4,11]
+Output: [2,11,7,15]
+
+Input: A = [12,24,8,32], B = [13,25,32,11]
+Output: [24,32,8,12] 
+
+Note:
+
+1 <= A.length = B.length <= 10000
+0 <= A[i] <= 10^9
+0 <= B[i] <= 10^9
+*/
+class _0870_AdvancedShuffle {
+public:
+    std::vector<int> advantageCount(std::vector<int>& A, std::vector<int>& B) {
+        std::sort(begin(A), end(A));
+        std::vector<int> res;
+        for(int i = 0; i < B.size(); ++i) {
+            int idx = binarySearch(A, B[i]);
+            res.push_back(A[idx]);
+            updateA(A, idx);
+        }
+        return res;
+    }
+private:
+    void updateA(std::vector<int>& A, int idx) {
+        for(int i = idx + 1; i < A.size(); ++i) {
+            A[i-1] = A[i];
+        }
+        A.resize(A.size() - 1);
+    }
+    
+    int binarySearch(std::vector<int>& A, int v) {
+        int s = 0;
+        int e = A.size();
+        while(s < e) {
+            int m = s + (e - s) / 2;
+            if(A[m] == v) {
+                s = m + 1;
+            } else if(A[m] < v) {
+                s = m + 1;
+            } else {
+                e = m;
+            }
+        }
+        if(s == A.size()) {
+            return 0; // there is no such value that greater than v, just give a smallest one;
+        } else {
+            return s;
+        }
+    }
 };
 
 /*

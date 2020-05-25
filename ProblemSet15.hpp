@@ -11,6 +11,7 @@
 
 // Problem 1401 - 1500
 namespace LeetCode {
+    
     /*
     Given a string s of zeros and ones, return the maximum score after splitting the string into two 
     non-empty substrings (i.e. left substring and right substring).
