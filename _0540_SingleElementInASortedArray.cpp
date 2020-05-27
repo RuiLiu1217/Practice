@@ -1,5 +1,8 @@
 #include "headers.hpp"
 
+
+// Copy from the solution. 
+// Binary search
 int LeetCode::_0540_SingleElementInASortedArray::singleNonDuplicate(std::vector<int>& nums) {
     return singleNoDuplicate(nums, 0, nums.size());
 }

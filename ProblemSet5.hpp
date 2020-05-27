@@ -54,6 +54,35 @@ public:
 
 
 /*
+Given a non-negative integer num represented as a string, remove k digits 
+from the number so that the new number is the smallest possible.
+
+Note:
+The length of num is less than 10002 and will be ≥ k.
+The given num does not contain any leading zero.
+
+Input: num = "1432219", k = 3
+Output: "1219"
+Explanation: Remove the three digits 4, 3, and 2 to form the new number 1219 which is the smallest.
+
+Input: num = "10200", k = 1
+Output: "200"
+Explanation: Remove the leading 1 and the number is 200. Note that the output must not contain leading zeroes.
+
+Input: num = "10", k = 2
+Output: "0"
+Explanation: Remove all the digits from the number and it is left with nothing which is 0.
+*/
+class _0402_RemoveKDigits {
+private:
+    std::string removeHeadZeros(std::string num);
+public:
+    std::string removeKdigits(std::string num, int k);
+    std::string removeOnedig(std::string num);
+};
+
+
+/*
 Given an integer, write an algorithm to convert it to hexadecimal. For 
 negative integer, two’s complement method is used.
 All letters in hexadecimal (a-f) must be in lowercase.
@@ -526,6 +555,48 @@ private:
         root->right = deserialize(s, pos, val, curMax);
         return root;
     }
+};
+
+/*
+Given a string, sort it in decreasing order based on the frequency of characters.
+
+Example 1:
+
+Input:
+"tree"
+
+Output:
+"eert"
+
+Explanation:
+'e' appears twice while 'r' and 't' both appear once.
+So 'e' must appear before both 'r' and 't'. Therefore "eetr" is also a valid answer.
+Example 2:
+
+Input:
+"cccaaa"
+
+Output:
+"cccaaa"
+
+Explanation:
+Both 'c' and 'a' appear three times, so "aaaccc" is also a valid answer.
+Note that "cacaca" is incorrect, as the same characters must be together.
+Example 3:
+
+Input:
+"Aabb"
+
+Output:
+"bbAa"
+
+Explanation:
+"bbaA" is also a valid answer, but "Aabb" is incorrect.
+Note that 'A' and 'a' are treated as two different characters.
+*/
+class _0451_SortCharactersByFrequency {
+public:
+    std::string frequencySort(std::string s);
 };
 
 

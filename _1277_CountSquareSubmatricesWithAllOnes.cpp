@@ -1,6 +1,8 @@
 #include "headers.hpp"
 #include <cmath>
 #include <algorithm>
+
+// Dynamic Programming
 int LeetCode::_1277_CountSquareSubmatricesWithAllOnes::countSquares(std::vector<std::vector<int>>& matrix) {
     std::vector<std::vector<int>> DP(matrix.size(), std::vector<int>(matrix[0].size(), 0));
     DP[0] = matrix[0];

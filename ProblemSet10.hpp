@@ -9,7 +9,53 @@
 #include "Tree.hpp"
 #include "LinkList.hpp"
 namespace LeetCode {
-    
+
+/*
+Write a class StockSpanner which collects daily price quotes for some stock, 
+and returns the span of that stock's price for the current day.
+The span of the stock's price today is defined as the maximum number of consecutive 
+days (starting from today and going backwards) for which the price of the stock 
+was less than or equal to today's price.
+
+For example, if the price of a stock over the next 7 days were 
+[100, 80, 60, 70, 60, 75, 85], then the stock spans would be [1, 1, 1, 2, 1, 4, 6].
+
+
+Example 1:
+
+Input: ["StockSpanner","next","next","next","next","next","next","next"], [[],[100],[80],[60],[70],[60],[75],[85]]
+Output: [null,1,1,1,2,1,4,6]
+Explanation: 
+First, S = StockSpanner() is initialized.  Then:
+S.next(100) is called and returns 1,
+S.next(80) is called and returns 1,
+S.next(60) is called and returns 1,
+S.next(70) is called and returns 2,
+S.next(60) is called and returns 1,
+S.next(75) is called and returns 4,
+S.next(85) is called and returns 6.
+
+Note that (for example) S.next(75) returned 4, because the last 4 prices
+(including today's price of 75) were less than or equal to today's price.
+ 
+
+Note:
+
+Calls to StockSpanner.next(int price) will have 1 <= price <= 10^5.
+There will be at most 10000 calls to StockSpanner.next per test case.
+There will be at most 150000 calls to StockSpanner.next across all test cases.
+The total time limit for this problem has been reduced by 75% for C++, and 50% for all other languages.
+*/
+class _0901_OnlineStockSpan {
+private:
+    std::stack<std::pair<int, int>> st;
+public:
+    _0901_OnlineStockSpan() {}
+
+    int next(int price);
+};
+
+
 /*
 In a row of trees, the i-th tree produces fruit with type tree[i].
 You start at any tree of your choice, then repeatedly perform the following steps:
@@ -969,6 +1015,56 @@ Each node has a unique integer value from 1 to 100.
 class _0993_CousinsInBinaryTree {
 public:
     bool isCousins(TreeNode<int>* root, int x, int y);
+};
+
+/*
+In a town, there are N people labelled from 1 to N.  There is a rumor that one of these people is secretly the town judge.
+
+If the town judge exists, then:
+
+The town judge trusts nobody.
+Everybody (except for the town judge) trusts the town judge.
+There is exactly one person that satisfies properties 1 and 2.
+You are given trust, an array of pairs trust[i] = [a, b] representing that the person labelled a trusts the person labelled b.
+
+If the town judge exists and can be identified, return the label of the town judge.  Otherwise, return -1.
+
+ 
+
+Example 1:
+
+Input: N = 2, trust = [[1,2]]
+Output: 2
+Example 2:
+
+Input: N = 3, trust = [[1,3],[2,3]]
+Output: 3
+Example 3:
+
+Input: N = 3, trust = [[1,3],[2,3],[3,1]]
+Output: -1
+Example 4:
+
+Input: N = 3, trust = [[1,2],[2,3]]
+Output: -1
+Example 5:
+
+Input: N = 4, trust = [[1,3],[1,4],[2,3],[2,4],[4,3]]
+Output: 3
+ 
+
+Constraints:
+
+1 <= N <= 1000
+0 <= trust.length <= 10^4
+trust[i].length == 2
+trust[i] are all different
+trust[i][0] != trust[i][1]
+1 <= trust[i][0], trust[i][1] <= N
+*/
+class _0997_FindTheTownJudge {
+public:
+    int findJudge(int N, std::vector<std::vector<int>>& trust);
 };
 
 }
