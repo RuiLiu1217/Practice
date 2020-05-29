@@ -529,6 +529,31 @@ public:
     int longestIncreasingPath(std::vector<std::vector<int>>& matrix);
 };
 
+/*
+Given a sorted positive integer array nums and an integer n, add/patch elements to the array 
+such that any number in range [1, n] inclusive can be formed by the sum of some elements in 
+the array. Return the minimum number of patches required.
+
+Input: nums = [1,3], n = 6
+Output: 1 
+Explanation:
+Combinations of nums are [1], [3], [1,3], which form possible sums of: 1, 3, 4.
+Now if we add/patch 2 to nums, the combinations are: [1], [2], [3], [1,3], [2,3], [1,2,3].
+Possible sums are 1, 2, 3, 4, 5, 6, which now covers the range [1, 6].
+So we only need 1 patch.
+
+Input: nums = [1,5,10], n = 20
+Output: 2
+Explanation: The two patches can be [2, 4].
+Example 3:
+
+Input: nums = [1,2,2], n = 5
+Output: 0
+*/
+class _0330_PatchingArray {
+public:
+    int minPatches(std::vector<int>& nums, int n);
+};
 
 /*
 One way to serialize a binary tree is to use pre-order traversal. When we encounter a 
@@ -908,6 +933,30 @@ private:
 public:
     _0359_LoggerRateLimiter() {}
     bool shouldPrintMessage(int timeStamp, std::string message);
+};
+
+/*
+Given a 2D grid, each cell is either a wall 'W', an enemy 'E' or 
+empty '0' (the number zero), return the maximum enemies you can 
+kill using one bomb. The bomb kills all the enemies in the same 
+row and column from the planted point until it hits the wall since 
+the wall is too strong to be destroyed.
+Note: You can only put the bomb at an empty cell.
+
+
+Input: [["0","E","0","0"],["E","0","W","E"],["0","E","0","0"]]
+Output: 3 
+Explanation: For the given grid,
+
+0 E 0 0 
+E 0 W E 
+0 E 0 0
+
+Placing a bomb at (1,1) kills 3 enemies.
+*/
+class _0361_BombEnemy {
+public:
+    int maxkilledEnemies(std::vector<std::vector<char>>& grid);
 };
 
 /*
@@ -1519,6 +1568,22 @@ public:
     double calculate(std::string a, std::string b);
 };
 
+/*
+Find the nth digit of the infinite integer sequence 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ...
+
+Note:
+n is positive and will fit within the range of a 32-bit signed integer (n < 231).
+
+Input: 3      :     Output: 3
+Input: 11     :     Output: 0
+
+Explanation:
+The 11th digit of the sequence 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ... is a 0, which is part of the number 10.
+*/
+class _0400_NthDight {
+public:
+    int findNthDigit(int n);
+};
 
 }
 
