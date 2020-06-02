@@ -143,5 +143,120 @@ namespace LeetCode {
         public:
             bool kLengthApart(std::vector<int>& nums, int k);
     };
+
+    /*
+    Given an array target and an integer n. In each iteration, you will read a number from  list = {1,2,3..., n}.
+
+    Build the target array using the following operations:
+
+    Push: Read a new element from the beginning list, and push it in the array.
+    Pop: delete the last element of the array.
+    If the target array is already built, stop reading more elements.
+    You are guaranteed that the target array is strictly increasing, only containing numbers between 1 to n inclusive.
+
+    Return the operations to build the target array.
+
+    You are guaranteed that the answer is unique.
+
+    
+
+    Example 1:
+
+    Input: target = [1,3], n = 3
+    Output: ["Push","Push","Pop","Push"]
+    Explanation: 
+    Read number 1 and automatically push in the array -> [1]
+    Read number 2 and automatically push in the array then Pop it -> [1]
+    Read number 3 and automatically push in the array -> [1,3]
+    Example 2:
+
+    Input: target = [1,2,3], n = 3
+    Output: ["Push","Push","Push"]
+    Example 3:
+
+    Input: target = [1,2], n = 4
+    Output: ["Push","Push"]
+    Explanation: You only need to read the first 2 numbers and stop.
+    Example 4:
+
+    Input: target = [2,3,4], n = 4
+    Output: ["Push","Pop","Push","Push","Push"]
+    */
+    class _1441_BuildAnArrayWithStackOperations {
+        public:
+            std::vector<std::string> buildArray(std::vector<int>& target, int n);
+    };
+
+    /*
+    Given a sentence text (A sentence is a string of space-separated words) in the following format:
+
+    First letter is in upper case.
+    Each word in text are separated by a single space.
+    Your task is to rearrange the words in text such that all words are rearranged in an increasing order of their lengths. If two words have the same length, arrange them in their original order.
+
+    Return the new text following the format shown above.
+
+
+    Input: text = "Leetcode is cool"
+    Output: "Is cool leetcode"
+    Explanation: There are 3 words, "Leetcode" of length 8, "is" of length 2 and "cool" of length 4.
+    Output is ordered by length and the new first word starts with capital letter.
+
+    Input: text = "Keep calm and code on"
+    Output: "On and keep calm code"
+    Explanation: Output is ordered as follows:
+    "On" 2 letters.
+    "and" 3 letters.
+    "keep" 4 letters in case of tie order by position in original text.
+    "calm" 4 letters.
+    "code" 4 letters.
+
+    Input: text = "To be or not to be"
+    Output: "To be or to be not"
+    
+
+    Constraints:
+
+    text begins with a capital letter and then contains lowercase letters and single space between words.
+    1 <= text.length <= 10^5
+    */
+    class _1451_RearrangeWordsInASentence {
+        public:
+            std::string arrangeWords(std::string text);
+    }
+
+    /*
+    Given a binary string s and an integer k.
+    
+    Return True if all binary codes of length k is a substring of s. Otherwise, return False.
+    
+    Input: s = "00110110", k = 2
+    Output: true
+    Explanation: The binary codes of length 2 are "00", "01", "10" and "11". They can be all found as substrings at indicies 0, 1, 3 and 2 respectively.
+    
+    Input: s = "00110", k = 2
+    Output: true
+    
+    Input: s = "0110", k = 1
+    Output: true
+    Explanation: The binary codes of length 1 are "0" and "1", it is clear that both exist as a substring. 
+    
+    Input: s = "0110", k = 2
+    Output: false
+    Explanation: The binary code "00" is of length 2 and doesn't exist in the array.
+    
+    Input: s = "0000000001011100", k = 4
+    Output: false
+    
+    Constraints:
+    
+    1 <= s.length <= 5 * 10^5
+    s consists of 0's and 1's only.
+    1 <= k <= 20
+     */
+    class _1461_CheckIfAStringContainsAllBinaryCodesofSizeK {
+        public:
+            bool hasAllCodes(std::string s, int k);
+    };
 }
 #endif

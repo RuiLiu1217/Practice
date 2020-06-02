@@ -528,6 +528,39 @@ public:
     
 };
 
+/*
+Given the head of a linked list, we repeatedly delete consecutive sequences of nodes that sum to 0 until there are no such sequences.
+
+After doing so, return the head of the final linked list.  You may return any such answer.
+
+ 
+
+(Note that in the examples below, all sequences are serializations of ListNode objects.)
+
+Example 1:
+
+Input: head = [1,2,-3,3,1]
+Output: [3,1]
+Note: The answer [1,2,1] would also be accepted.
+Example 2:
+
+Input: head = [1,2,3,-3,4]
+Output: [1,2,4]
+Example 3:
+
+Input: head = [1,2,3,-3,-2]
+Output: [1]
+ 
+
+Constraints:
+
+The given linked list will contain between 1 and 1000 nodes.
+Each node in the linked list has -1000 <= node.val <= 1000.
+*/
+class _1171_RemoveZeroSumConsecutiveNodesFromLinkedList {
+public:
+    ListNode<int>* removeZeroSumSublists(ListNode<int>* head);
+};
 
 
 /*
@@ -595,6 +628,42 @@ Constraints:
 class _1176_DietPlanPerformance {
 public:
     int dietPlanPerformance(std::vector<int>& calories, int k, int lower, int upper);
+};
+
+/*
+You are given an array colors, in which there are three colors: 1, 2 and 3.
+
+You are also given some queries. Each query consists of two integers i and c, return the shortest distance between the given index i and the target color c. If there is no solution return -1.
+
+
+Example 1:
+
+Input: colors = [1,1,2,1,3,2,2,3,3], queries = [[1,3],[2,2],[6,1]]
+Output: [3,0,3]
+Explanation: 
+The nearest 3 from index 1 is at index 4 (3 steps away).
+The nearest 2 from index 2 is at index 2 itself (0 steps away).
+The nearest 1 from index 6 is at index 3 (3 steps away).
+Example 2:
+
+Input: colors = [1,2], queries = [[0,3]]
+Output: [-1]
+Explanation: There is no 3 in the array.
+ 
+
+Constraints:
+
+1 <= colors.length <= 5*10^4
+1 <= colors[i] <= 3
+1 <= queries.length <= 5*10^4
+queries[i].length == 2
+0 <= queries[i][0] < colors.length
+1 <= queries[i][1] <= 3
+*/
+class _1182_ShortestDistanceToTargetColor {
+public:
+    std::vector<int> shortestDistanceColor(std::vector<int>& colors, std::vector<std::vector<int>>& queries);
+    std::vector<int> calDistance(std::vector<int>& colors, int targetColor);
 };
 
 /*
