@@ -1860,6 +1860,35 @@ public:
     std::string largestNumber(std::vector<int>& nums);
 };
 
+// 180 is a MySQL problem;
+class _0180_ConsecutiveNumbers;
+// 181 is a MySQL problem;
+class _0181_EmployeesEarningMoreThanTheirManagers;
+// 182 is a MySQL problem;
+class _0182_DuplicateEmails;
+// 183 is a MySQL problem;
+class _0183_CustomersWhoeNeverOrder;
+// 184 is a MySQL problem;
+class _0184_DepartmentHighestSalary;
+// 185 is a MySQL problem;
+class _0185_DepartmentTopThreeSalaries;
+
+/*
+Given an input string , reverse the string word by word. 
+
+Input:  ["t","h","e"," ","s","k","y"," ","i","s"," ","b","l","u","e"]
+Output: ["b","l","u","e"," ","i","s"," ","s","k","y"," ","t","h","e"]
+Note: 
+
+A word is defined as a sequence of non-space characters.
+The input string does not contain leading or trailing spaces.
+The words are always separated by a single space.
+Follow up: Could you do it in-place without allocating extra space?
+*/
+class _0186_ReverseWordsInAStringII {
+public:
+    void reverseWords(std::vector<char>& s);
+};
 /*
 All DNA is composed of a series of nucleotides abbreviated as A, C, G, and T, 
 for example: "ACGAATTCCG". When studying DNA, it is sometimes useful to 
@@ -1979,6 +2008,20 @@ class _0191_NumberOf1Bits {
 public:
     int hammingWeight(uint32_t n);
 };
+
+// 192 is a bash problem
+class _0192_WordFrequency;
+// 193 is a bash problem
+class _0193_ValidPhoneNumbers;
+// 194 is a bash problem
+class _0194_TransposeFile;
+// 195 is a bash problem
+class _0195_TenthLine;
+// 196 is a MySQL problem
+class _0196_DeleteDuplicateEmails;
+// 197 is a MySQL problem
+class _0197_RisingTemperature;
+
 
 
 /*
