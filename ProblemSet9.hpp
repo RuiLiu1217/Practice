@@ -8,1089 +8,1063 @@
 
 #include "Tree.hpp"
 #include "LinkList.hpp"
-
 namespace LeetCode {
-    /*
-International Morse Code defines a standard encoding where each letter is 
-mapped to a series of dots and dashes, as follows: "a" maps to ".-", "b" 
-maps to "-...", "c" maps to "-.-.", and so on.
-
-For convenience, the full table for the 26 letters of the English alphabet 
-is given below:
-
-[".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..",
-"--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-",
-"-.--","--.."]
-
-Now, given a list of words, each word can be written as a concatenation of 
-the Morse code of each letter. For example, "cba" can be written as "-.-..--...", 
-(which is the concatenation "-.-." + "-..." + ".-"). We'll call such a 
-concatenation, the transformation of a word.
-
-Return the number of different transformations among all words we have.
-
-Example:
-Input: words = ["gin", "zen", "gig", "msg"]
-Output: 2
-Explanation: 
-The transformation of each word is:
-"gin" -> "--...-."
-"zen" -> "--...-."
-"gig" -> "--...--."
-"msg" -> "--...--."
-
-There are 2 different transformations, "--...-." and "--...--.".
-Note:
-
-The length of words will be at most 100.
-Each words[i] will have length in range [1, 12].
-words[i] will only consist of lowercase letters.
-*/
-class _0804_UniqueMorseCodeWords {
-public:
-    int uniqueMorseRepresentations(std::vector<std::string>& words);
-};
 
 /*
-In a 2 dimensional array grid, each value grid[i][j] represents the height of a building 
-located there. We are allowed to increase the height of any number of buildings, by any 
-amount (the amounts can be different for different buildings). Height 0 is considered to 
-be a building as well. 
-At the end, the "skyline" when viewed from all four directions of the grid, i.e. top, 
-bottom, left, and right, must be the same as the skyline of the original grid. A city's 
-skyline is the outer contour of the rectangles formed by all the buildings when viewed 
-from a distance. See the following example.
+Write a class StockSpanner which collects daily price quotes for some stock, 
+and returns the span of that stock's price for the current day.
+The span of the stock's price today is defined as the maximum number of consecutive 
+days (starting from today and going backwards) for which the price of the stock 
+was less than or equal to today's price.
 
-What is the maximum total sum that the height of the buildings can be increased?
+For example, if the price of a stock over the next 7 days were 
+[100, 80, 60, 70, 60, 75, 85], then the stock spans would be [1, 1, 1, 2, 1, 4, 6].
 
-Example:
-Input: grid = [[3,0,8,4],[2,4,5,7],[9,2,6,3],[0,3,1,0]]
-Output: 35
-Explanation: 
-The grid is:
-[ [3, 0, 8, 4], 
-  [2, 4, 5, 7],
-  [9, 2, 6, 3],
-  [0, 3, 1, 0] ]
-
-The skyline viewed from top or bottom is: [9, 4, 8, 7]
-The skyline viewed from left or right is: [8, 7, 9, 3]
-
-The grid after increasing the height of buildings without affecting skylines is:
-
-gridNew = [ [8, 4, 8, 7],
-            [7, 4, 7, 7],
-            [9, 4, 8, 7],
-            [3, 3, 3, 3] ]
-
-Notes:
-1 < grid.length = grid[0].length <= 50.
-All heights grid[i][j] are in the range [0, 100].
-All buildings in grid[i][j] occupy the entire grid cell: that is, they are a 1 x 1 x grid[i][j] rectangular prism.
-*/
-class _0807_MaxIncreaseToKeepCitySkyline {
-public:
-    int maxIncreaseKeepingSkyline(std::vector<std::vector<int>>& grid);
-private:
-    std::vector<int> rowMax(const std::vector<std::vector<int>>& grid);
-    std::vector<int> colMax(const std::vector<std::vector<int>>& grid);
-};
-
-/*
-Sometimes people repeat letters to represent extra feeling, such as "hello" -> "heeellooo", "hi" -> "hiiii".  In these strings 
-like "heeellooo", we have groups of adjacent letters that are all the same:  "h", "eee", "ll", "ooo".
-For some given string S, a query word is stretchy if it can be made to be equal to S by any number of applications of the following 
-extension operation: choose a group consisting of characters c, and add some number of characters c to the group so that the 
-size of the group is 3 or more.
-For example, starting with "hello", we could do an extension on the group "o" to get "hellooo", but we cannot get "helloo" since 
-the group "oo" has size less than 3.  Also, we could do another extension like "ll" -> "lllll" to get "helllllooo".  
-If S = "helllllooo", then the query word "hello" would be stretchy because of these two extension operations: query = "hello" -> "hellooo" -> "helllllooo" = S.
-
-Given a list of query words, return the number of words that are stretchy. 
-
-Input: 
-S = "heeellooo"
-words = ["hello", "hi", "helo"]
-Output: 1
-Explanation: 
-We can extend "e" and "o" in the word "hello" to get "heeellooo".
-We can't extend "helo" to get "heeellooo" because the group "ll" is not size 3 or more. 
-
-Notes:
-
-0 <= len(S) <= 100.
-0 <= len(words) <= 100.
-0 <= len(words[i]) <= 100.
-S and all words in words consist only of lowercase letters
-*/
-class _0809_ExpressiveWords {
-public:
-    int expressiveWords(std::string S, std::vector<std::string>& words);
-private:
-    bool check(std::string S, std::string W);
-};
-
-/*
-A website domain like "discuss.leetcode.com" consists of various subdomains. At the top level, we have 
-"com", at the next level, we have "leetcode.com", and at the lowest level, "discuss.leetcode.com". When 
-we visit a domain like "discuss.leetcode.com", we will also visit the parent domains "leetcode.com" and 
-"com" implicitly.
-Now, call a "count-paired domain" to be a count (representing the number of visits this domain received), 
-followed by a space, followed by the address. An example of a count-paired domain might be "9001 discuss.leetcode.com".
-We are given a list cpdomains of count-paired domains. We would like a list of count-paired domains, 
-(in the same format as the input, and in any order), that explicitly counts the number of visits to each subdomain.
 
 Example 1:
-Input: 
-["9001 discuss.leetcode.com"]
-Output: 
-["9001 discuss.leetcode.com", "9001 leetcode.com", "9001 com"]
+
+Input: ["StockSpanner","next","next","next","next","next","next","next"], [[],[100],[80],[60],[70],[60],[75],[85]]
+Output: [null,1,1,1,2,1,4,6]
 Explanation: 
-We only have one website domain: "discuss.leetcode.com". As discussed above, the subdomain "leetcode.com" and 
-"com" will also be visited. So they will all be visited 9001 times.
+First, S = StockSpanner() is initialized.  Then:
+S.next(100) is called and returns 1,
+S.next(80) is called and returns 1,
+S.next(60) is called and returns 1,
+S.next(70) is called and returns 2,
+S.next(60) is called and returns 1,
+S.next(75) is called and returns 4,
+S.next(85) is called and returns 6.
 
-Input: 
-["900 google.mail.com", "50 yahoo.com", "1 intel.mail.com", "5 wiki.org"]
-Output: 
-["901 mail.com","50 yahoo.com","900 google.mail.com","5 wiki.org","5 org","1 intel.mail.com","951 com"]
-Explanation: 
-We will visit "google.mail.com" 900 times, "yahoo.com" 50 times, "intel.mail.com" once and "wiki.org" 5 times. 
-For the subdomains, we will visit "mail.com" 900 + 1 = 901 times, "com" 900 + 50 + 1 = 951 times, and "org" 5 times.
-
-Notes:
-The length of cpdomains will not exceed 100. 
-The length of each domain name will not exceed 100.
-Each address will have either 1 or 2 "." characters.
-The input count in any count-paired domain will not exceed 10000.
-The answer output can be returned in any order.
-*/
-class _0811_SubdomainVisitCount {
-public:
-    std::vector<std::string> subdomainVisits(std::vector<std::string>& cpdomains);
-};
-
-/*
-You have a list of points in the plane. Return the area of the largest triangle that can be formed by any 3 of the points.
-
-Example:
-Input: points = [[0,0],[0,1],[1,0],[0,2],[2,0]]
-Output: 2
-Explanation: 
-The five points are show in the figure below. The red triangle is the largest.
-
-Notes:
-
-3 <= points.length <= 50.
-No points will be duplicated.
- -50 <= points[i][j] <= 50.
-Answers within 10^-6 of the true value will be accepted as correct.
-*/
-class _0812_LargestTriangleArea {
-public:
-    double largestTriangleArea(std::vector<std::vector<int>>& points);
-};
-
-/*
-We are given the head node root of a binary tree, where additionally every
-node's value is either a 0 or a 1.
-Return the same tree where every subtree (of the given tree) not containing 
-a 1 has been removed.
-(Recall that the subtree of a node X is X, plus every node that is a descendant of X.)
-
-Example 1:
-Input: [1,null,0,0,1]
-Output: [1,null,0,null,1]
- 
-Explanation: 
-Only the red nodes satisfy the property "every subtree not containing a 1".
-The diagram on the right represents the answer.
-
-Input: [1,0,1,0,0,0,1]
-Output: [1,null,1,null,1]
-
-Input: [1,1,0,1,1,0,1,0]
-Output: [1,1,0,1,1,null,1]
-
-Note:
-
-The binary tree will have at most 100 nodes.
-The value of each node will only be 0 or 1.
-*/
-class _0814_BinaryTreePruning {
-public:
-    TreeNode<int>* pruneTree(TreeNode<int>* root);
-};
-
-/*
-We had some 2-dimensional coordinates, like "(1, 3)" or "(2, 0.5)". 
-Then, we removed all commas, decimal points, and spaces, and ended 
-up with the string S. Return a list of strings representing all 
-possibilities for what our original coordinates could have been.
-
-Our original representation never had extraneous zeroes, so we never 
-started with numbers like "00", "0.0", "0.00", "1.0", "001", "00.01", 
-or any other number that can be represented with less digits. Also, a 
-decimal point within a number never occurs without at least one digit 
-occuring before it, so we never started with numbers like ".1".
-
-The final answer list can be returned in any order.  Also note that 
-all coordinates in the final answer have exactly one space between 
-them (occurring after the comma.)
-
-Input: "(123)"
-Output: ["(1, 23)", "(12, 3)", "(1.2, 3)", "(1, 2.3)"]
-
-Input: "(00011)"
-Output:  ["(0.001, 1)", "(0, 0.011)"]
-Explanation: 
-0.0, 00, 0001 or 00.01 are not allowed.
-
-Input: "(0123)"
-Output: ["(0, 123)", "(0, 12.3)", "(0, 1.23)", "(0.1, 23)", "(0.1, 2.3)", "(0.12, 3)"]
-
-Input: "(100)"
-Output: [(10, 0)]
-Explanation: 
-1.0 is not allowed.
-
-Note:
-4 <= S.length <= 12.
-S[0] = "(", S[S.length - 1] = ")", and the other elements in S are digits.
-*/
-class _0816_AmbiguousCoordinates {
-public:
-    std::vector<std::string> ambiguousCoordinates(std::string S);
-};
-
-/*
-Given an array of unique integers, each integer is strictly greater than 1.
-We make a binary tree using these integers and each number may be used for 
-any number of times. Each non-leaf node's value should be equal to the 
-product of the values of it's children.
-
-How many binary trees can we make?  Return the answer modulo 10 ** 9 + 7.
-
-Input: A = [2, 4]
-Output: 3
-We can make these trees: [2], [4], [4, 2, 2]
-
-Input: A = [2, 4, 5, 10]
-Output: 7
-We can make these trees: [2], [4], [5], [10], [4, 2, 2], [10, 2, 5], [10, 5, 2].
-
-Note:
-
-1 <= A.length <= 1000.
-2 <= A[i] <= 10 ^ 9.
-*/
-class _0823_BinaryTreeWithFactors {
-public:
-    int numFactoredBinaryTrees(std::vector<int>& A);
-};
-
-/*
-A sentence S is given, composed of words separated by spaces. 
-Each word consists of lowercase and uppercase letters only.
-
-We would like to convert the sentence to "Goat Latin" (a made-up language similar to Pig Latin.)
-The rules of Goat Latin are as follows:
-If a word begins with a vowel (a, e, i, o, or u), append "ma" to the end of the word.
-For example, the word 'apple' becomes 'applema'.
-If a word begins with a consonant (i.e. not a vowel), remove the first letter and append it to the end, then add "ma".
-For example, the word "goat" becomes "oatgma".
-Add one letter 'a' to the end of each word per its word index in the sentence, starting with 1.
-For example, the first word gets "a" added to the end, the second word gets "aa" added to the end and so on.
-Return the final sentence representing the conversion from S to Goat Latin. 
-
-Input: "I speak Goat Latin"
-Output: "Imaa peaksmaaa oatGmaaaa atinLmaaaaa"
-
-Input: "The quick brown fox jumped over the lazy dog"
-Output: "heTmaa uickqmaaa rownbmaaaa oxfmaaaaa umpedjmaaaaaa overmaaaaaaa hetmaaaaaaaa azylmaaaaaaaaa ogdmaaaaaaaaaa"
+Note that (for example) S.next(75) returned 4, because the last 4 prices
+(including today's price of 75) were less than or equal to today's price.
  
 
-Notes:
-
-S contains only uppercase, lowercase and spaces. Exactly one space between each word.
-1 <= S.length <= 150.
-*/
-class _0824_GoatLatin {
-public:
-    std::string toGoatLatin(std::string S);
-};
-
-/*
-In a string S of lowercase letters, these letters form consecutive groups of the same character.
-For example, a string like S = "abbxxxxzyy" has the groups "a", "bb", "xxxx", "z" and "yy".
-Call a group large if it has 3 or more characters.  We would like the starting and ending positions of every large group.
-The final answer should be in lexicographic order.
-
-Input: "abbxxxxzzy"
-Output: [[3,6]]
-Explanation: "xxxx" is the single large group with starting  3 and ending positions 6.
-Example 2:
-
-Input: "abc"
-Output: []
-Explanation: We have "a","b" and "c" but no large group.
-Example 3:
-
-Input: "abcdddeeeeaabbbcd"
-Output: [[3,5],[6,9],[12,14]]
-*/
-class _0830_PositionsOfLargeGroups {
-public:
-    std::vector<std::vector<int>> largetGroupPositions(std::string S);
-};
-
-/*
-Given a binary matrix A, we want to flip the image horizontally, 
-then invert it, and return the resulting image.
-To flip an image horizontally means that each row of the image is 
-reversed. For example, flipping [1, 1, 0] horizontally results in 
-[0, 1, 1].
-To invert an image means that each 0 is replaced by 1, and each 1 
-is replaced by 0. For example, inverting [0, 1, 1] results in 
-[1, 0, 0].
-
-Input: [[1,1,0],[1,0,1],[0,0,0]]
-Output: [[1,0,0],[0,1,0],[1,1,1]]
-Explanation: First reverse each row: [[0,1,1],[1,0,1],[0,0,0]].
-Then, invert the image: [[1,0,0],[0,1,0],[1,1,1]]
-Example 2:
-
-Input: [[1,1,0,0],[1,0,0,1],[0,1,1,1],[1,0,1,0]]
-Output: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]
-Explanation: First reverse each row: [[0,0,1,1],[1,0,0,1],[1,1,1,0],[0,1,0,1]].
-Then invert the image: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]
-Notes:
-
-1 <= A.length = A[0].length <= 20
-0 <= A[i][j] <= 1
-*/
-class _0832_FlippingAnImage {
-public:
-    std::vector<std::vector<int>> flipAndInvertImage(std::vector<std::vector<int>>& A);
-};
-
-/*
-To some string S, we will perform some replacement operations that replace groups of 
-letters with new ones (not necessarily the same size).
-
-Each replacement operation has 3 parameters: a starting index i, a source word x and 
-a target word y. The rule is that if x starts at position i in the original string S, 
-then we will replace that occurrence of x with y. If not, we do nothing.
-
-For example, if we have S = "abcd" and we have some replacement operation i = 2, 
-x = "cd", y = "ffff", then because "cd" starts at position 2 in the original string S, 
-we will replace it with "ffff".
-
-Using another example on S = "abcd", if we have both the replacement operation i = 0, 
-x = "ab", y = "eee", as well as another replacement operation i = 2, x = "ec", y = "ffff", 
-this second operation does nothing because in the original string S[2] = 'c', 
-which doesn't match x[0] = 'e'.
-
-All these operations occur simultaneously. It's guaranteed that there won't be any overlap 
-in replacement: for example, S = "abc", indexes = [0, 1], sources = ["ab","bc"] is not a 
-valid test case.
-
-Input: S = "abcd", indexes = [0,2], sources = ["a","cd"], targets = ["eee","ffff"]
-Output: "eeebffff"
-Explanation: "a" starts at index 0 in S, so it's replaced by "eee".
-"cd" starts at index 2 in S, so it's replaced by "ffff".
-
-Input: S = "abcd", indexes = [0,2], sources = ["ab","ec"], targets = ["eee","ffff"]
-Output: "eeecd"
-Explanation: "ab" starts at index 0 in S, so it's replaced by "eee". 
-"ec" doesn't starts at index 2 in the original S, so we do nothing.
-Notes:
-
-0 <= indexes.length = sources.length = targets.length <= 100
-0 < indexes[i] < S.length <= 1000
-All characters in given inputs are lowercase letters.
-*/
-class _0833_FindAndReplaceInString {
-public:
-    std::string findReplaceString(std::string S, std::vector<int>& indexes, std::vector<std::string>& sources,
-    std::vector<std::string>& targets);
-};
-
-
-/*
- 838 Push Dominoes
-There are N dominoes in a line, and we place each domino vertically upright.
-In the beginning, we simultaneously push some of the dominoes either to the 
-left or to the right. After each second, each domino that is falling to the 
-left pushes the adjacent domino on the left. Similarly, the dominoes falling 
-to the right push their adjacent dominoes standing on the right.
-When a vertical domino has dominoes falling on it from both sides, it stays 
-still due to the balance of the forces. For the purposes of this question, 
-we will consider that a falling domino expends no additional force to a 
-falling or already fallen domino.
-Given a string "S" representing the initial state. S[i] = 'L', if the i-th 
-domino has been pushed to the left; S[i] = 'R', if the i-th domino has been 
-pushed to the right; S[i] = '.', if the i-th domino has not been pushed.
-
-Return a string representing the final state. 
-
-Input: ".L.R...LR..L.."
-Output: "LL.RR.LLRRLL.."
-
-Input: "RR.L"
-Output: "RR.L"
-Explanation: The first domino expends no additional force on the second domino.
-
 Note:
-    0 <= N <= 10^5
-    String dominoes contains only 'L', 'R' and '.'
+
+Calls to StockSpanner.next(int price) will have 1 <= price <= 10^5.
+There will be at most 10000 calls to StockSpanner.next per test case.
+There will be at most 150000 calls to StockSpanner.next across all test cases.
+The total time limit for this problem has been reduced by 75% for C++, and 50% for all other languages.
 */
-class _0838_PushDominoes {
-  public:
-    std::string pushDominoes(std::string dominoes);
-};
-
-
-/*
-Two strings X and Y are similar if we can swap two letters (in different positions) of X, so that it equals Y.
-For example, "tars" and "rats" are similar (swapping at positions 0 and 2), and "rats" and "arts" are similar, 
-but "star" is not similar to "tars", "rats", or "arts".
-Together, these form two connected groups by similarity: {"tars", "rats", "arts"} and {"star"}.  Notice that 
-"tars" and "arts" are in the same group even though they are not similar. Formally, each group is such that a 
-word is in the group if and only if it is similar to at least one other word in the group.
-
-We are given a list A of strings.  Every string in A is an anagram of every other string in A. 
-How many groups are there?
-
-Input: A = ["tars","rats","arts","star"]
-Output: 2
-
-Constraints:
-1 <= A.length <= 2000
-1 <= A[i].length <= 1000
-A.length * A[i].length <= 20000
-All words in A consist of lowercase letters only.
-All words in A have the same length and are anagrams of each other.
-The judging time limit has been increased for this question.
-*/
-class _0839_SimilarStringGroups {
-public:
-    int numSimilarGroups(std::vector<std::string>& A);
+class _0901_OnlineStockSpan {
 private:
-    bool areSimilar(const std::string& a, const std::string& b);
-};
-
-/*
-There are N rooms and you start in room 0. Each room has a distinct number in 0, 
-1, 2, ..., N-1, and each room may have some keys to access the next room. 
-Formally, each room i has a list of keys rooms[i], and each key rooms[i][j] is an 
-integer in [0, 1, ..., N-1] where N = rooms.length. A key rooms[i][j] = v opens 
-the room with number v.
-Initially, all the rooms start locked (except for room 0). You can walk back and 
-forth between rooms freely.
-Return true if and only if you can enter every room.
-
-Input: [[1],[2],[3],[]]
-Output: true
-Explanation:  
-We start in room 0, and pick up key 1.
-We then go to room 1, and pick up key 2.
-We then go to room 2, and pick up key 3.
-We then go to room 3.  Since we were able to go to every room, we return true.
-
-Input: [[1,3],[3,0,1],[2],[0]]
-Output: false
-Explanation: We can't enter the room with number 2.
-Note:
-
-1 <= rooms.length <= 1000
-0 <= rooms[i].length <= 1000
-The number of keys in all rooms combined is at most 3000.
-*/
-class _0841_KeysAndRooms {
+    std::stack<std::pair<int, int>> st;
 public:
-     bool canVisitAllRooms(std::vector<std::vector<int>>& rooms);
+    _0901_OnlineStockSpan() {}
+
+    int next(int price);
 };
 
 
 /*
-Given a string S of digits, such as S = "123456579", we can split it into a Fibonacci-like sequence [123, 456, 579].
+In a row of trees, the i-th tree produces fruit with type tree[i].
+You start at any tree of your choice, then repeatedly perform the following steps:
 
-Formally, a Fibonacci-like sequence is a list F of non-negative integers such that:
+1. Add one piece of fruit from this tree to your baskets.  If you cannot, stop.
+2. Move to the next tree to the right of the current tree.  If there is no tree to the right, stop.
 
-0 <= F[i] <= 2^31 - 1, (that is, each integer fits a 32-bit signed integer type);
-F.length >= 3;
-and F[i] + F[i+1] = F[i+2] for all 0 <= i < F.length - 2.
-Also, note that when splitting the string into pieces, each piece must not have extra leading zeroes, except if the piece is the number 0 itself.
+Note that you do not have any choice after the initial choice of starting tree: you must 
+perform step 1, then step 2, then back to step 1, then step 2, and so on until you stop.
+You have two baskets, and each basket can carry any quantity of fruit, but you want each 
+basket to only carry one type of fruit each.
 
-Return any Fibonacci-like sequence split from S, or return [] if it cannot be done.
+What is the total amount of fruit you can collect with this procedure?
 
-Input: "123456579"   :    Output: [123,456,579]
-Input: "11235813"    :    Output: [1,1,2,3,5,8,13]
-Input: "112358130"   :    Output: []
-Explanation: The task is impossible.
-
-Input: "0123"        :    Output: []
-Explanation: Leading zeroes are not allowed, so "01", "2", "3" is not valid.
-
-Input: "1101111"     :    Output: [110, 1, 111]
-Explanation: The output [11, 0, 11, 11] would also be accepted.
-Note:
-
-1 <= S.length <= 200
-S contains only digits.
-*/
-class _0842_SplitArrayIntoFibonacciSequence {
-public:
-// Copy from the solution, the difficulty is how to design the function interface
-    std::vector<int> splitIntoFibonacci(std::string S);
-};
-
-/*
-Tag: Unknow, my solution is slow
-
-Google
-
-Alice has a hand of cards, given as an array of integers.
-Now she wants to rearrange the cards into groups so that each 
-group is size W, and consists of W consecutive cards.
-
-Return true if and only if she can.
-
-Input: hand = [1,2,3,6,2,3,4,7,8], W = 3
-Output: true
-Explanation: Alice's hand can be rearranged as [1,2,3],[2,3,4],[6,7,8].
-
-Input: hand = [1,2,3,4,5], W = 4
-Output: false
-Explanation: Alice's hand can't be rearranged into groups of 4.
-
-Note:
-1 <= hand.length <= 10000
-0 <= hand[i] <= 10^9
-1 <= W <= hand.length
-*/
-class _0846_HandOfStraights {
-public:
-    bool isNStraightHand(std::vector<int>& hand, int W);
-private:
-    bool isNStraightHand(std::map<int, int>& hand, int W, int S);
-};
-
-/*
-Let's call an array A a mountain if the following properties hold:
-
-A.length >= 3
-There exists some 0 < i < A.length - 1 such that 
-A[0] < A[1] < ... A[i-1] < A[i] > A[i+1] > ... > A[A.length - 1]
-Given an array that is definitely a mountain, return any i such that 
-A[0] < A[1] < ... A[i-1] < A[i] > A[i+1] > ... > A[A.length - 1].
-
-Input: [0,1,0]
-Output: 1
-
-Input: [0,2,1,0]
-Output: 1
-Note:
-
-3 <= A.length <= 10000
-0 <= A[i] <= 10^6
-A is a mountain, as defined above.
-*/
-class _0852_PeakIndexInAMountainArray {
-public:
-    int peakIndexInMountainArray(std::vector<int>& A);
-};
-
-/*
-We have a two dimensional matrix A where each value is 0 or 1.
-A move consists of choosing any row or column, and toggling each 
-value in that row or column: changing all 0s to 1s, and all 1s to 0s.
-After making any number of moves, every row of this matrix is 
-interpreted as a binary number, and the score of the matrix is the 
-sum of these numbers.
-Return the highest possible score.
-
-Input: [[0,0,1,1],[1,0,1,0],[1,1,0,0]]
-Output: 39
-Explanation:
-Toggled to [[1,1,1,1],[1,0,0,1],[1,1,1,1]].
-0b1111 + 0b1001 + 0b1111 = 15 + 9 + 15 = 39
-
-Note:
-1 <= A.length <= 20
-1 <= A[0].length <= 20
-A[i][j] is 0 or 1.
-*/
-class _0861_ScoreAfterFlippingMatrix {
-public:
-    int matrixScore(std::vector<std::vector<int>>& A);
-};
-
-/*
-Return the length of the shortest, non-empty, contiguous subarray of A 
-with sum at least K.
-If there is no non-empty subarray with sum at least K, return -1.
-
-Input: A = [1], K = 1
-Output: 1
-
-Input: A = [1,2], K = 4
-Output: -1
-
-Input: A = [2,-1,2], K = 3
+Input: [1,2,1]
 Output: 3
+Explanation: We can collect [1,2,1].
 
-1 <= A.length <= 50000
--10 ^ 5 <= A[i] <= 10 ^ 5
-1 <= K <= 10 ^ 9
-这道题完全没有头绪，是抄答案的，关键点需要使用一个双向队列
-*/
-class _0862_ShortestSubarrayWithSumAtLeastK {
-public:
-    int shortestSubarray(std::vector<int>& A, int K);
-};
+Input: [0,1,2,2]
+Output: 3
+Explanation: We can collect [1,2,2].
+If we started at the first tree, we would only collect [0, 1].
 
-/*
-Given a binary tree rooted at root, the depth of each node is the shortest distance to the root.
-A node is deepest if it has the largest depth possible among any node in the entire tree.
-The subtree of a node is that node, plus the set of all descendants of that node.
-Return the node with the largest depth such that it contains all the deepest nodes in its subtree.
+Input: [1,2,3,2,2]
+Output: 4
+Explanation: We can collect [2,3,2,2].
+If we started at the first tree, we would only collect [1, 2].
 
-Input: [3,5,1,6,2,0,8,null,null,7,4]
-Output: [2,7,4]
-
-We return the node with value 2, colored in yellow in the diagram.
-The nodes colored in blue are the deepest nodes of the tree.
-The input "[3, 5, 1, 6, 2, 0, 8, null, null, 7, 4]" is a serialization of the given tree.
-The output "[2, 7, 4]" is a serialization of the subtree rooted at the node with value 2.
-Both the input and output have TreeNode type.
-
-Note:
-
-The number of nodes in the tree will be between 1 and 500.
-The values of each node are unique.
-*/
-class _0865_SmallestSubtreeWithAllTheDeepestNodes {
-public:
-    TreeNode<int>* subtreeWithAllDeepest(TreeNode<int>* root);
-    std::pair<int, TreeNode<int>*> depth(TreeNode<int>* root);
-};
-
-/*
-Given two arrays A and B of equal size, the advantage of A with respect to B is the number of indices i for which A[i] > B[i].
-Return any permutation of A that maximizes its advantage with respect to B.
-
-Input: A = [2,7,11,15], B = [1,10,4,11]
-Output: [2,11,7,15]
-
-Input: A = [12,24,8,32], B = [13,25,32,11]
-Output: [24,32,8,12] 
-
-Note:
-
-1 <= A.length = B.length <= 10000
-0 <= A[i] <= 10^9
-0 <= B[i] <= 10^9
-*/
-class _0870_AdvancedShuffle {
-public:
-    std::vector<int> advantageCount(std::vector<int>& A, std::vector<int>& B) {
-        std::sort(begin(A), end(A));
-        std::vector<int> res;
-        for(int i = 0; i < B.size(); ++i) {
-            int idx = binarySearch(A, B[i]);
-            res.push_back(A[idx]);
-            updateA(A, idx);
-        }
-        return res;
-    }
-private:
-    void updateA(std::vector<int>& A, int idx) {
-        for(int i = idx + 1; i < A.size(); ++i) {
-            A[i-1] = A[i];
-        }
-        A.resize(A.size() - 1);
-    }
-    
-    int binarySearch(std::vector<int>& A, int v) {
-        int s = 0;
-        int e = A.size();
-        while(s < e) {
-            int m = s + (e - s) / 2;
-            if(A[m] == v) {
-                s = m + 1;
-            } else if(A[m] < v) {
-                s = m + 1;
-            } else {
-                e = m;
-            }
-        }
-        if(s == A.size()) {
-            return 0; // there is no such value that greater than v, just give a smallest one;
-        } else {
-            return s;
-        }
-    }
-};
-
-/*
-A sequence X_1, X_2, ..., X_n is fibonacci-like if:
-
-n >= 3
-X_i + X_{i+1} = X_{i+2} for all i + 2 <= n
-
-Given a strictly increasing array A of positive integers forming 
-a sequence, find the length of the longest fibonacci-like 
-subsequence of A. If one does not exist, return 0.
-(Recall that a subsequence is derived from another sequence A 
-by deleting any number of elements (including none) from A, without 
-changing the order of the remaining elements. For example, 
-[3, 5, 8] is a subsequence of [3, 4, 5, 6, 7, 8].)
-
-Input: [1,2,3,4,5,6,7,8]
+Input: [3,3,3,1,2,1,1,2,3,3,4]
 Output: 5
-Explanation:
-The longest subsequence that is fibonacci-like: [1,2,3,5,8].
+Explanation: We can collect [1,2,1,1,2].
+If we started at the first tree or the eighth tree, we would only collect 4 fruits.
 
-Input: [1,3,7,11,12,14,18]
+1 <= tree.length <= 40000
+0 <= tree[i] < tree.length
+*/
+class _0904_FruitInoBackets {
+public:
+    int totalFruit(std::vector<int>& tree);
+};
+
+/*
+Given an array A of non-negative integers, return an array 
+consisting of all the even elements of A, followed by all 
+the odd elements of A.
+You may return any answer array that satisfies this condition.
+
+Input: [3,1,2,4]
+Output: [2,4,3,1]
+The outputs [4,2,3,1], [2,4,1,3], and [4,2,1,3] would also be accepted.
+
+1 <= A.length <= 5000
+0 <= A[i] <= 5000
+*/
+class _0905_SortArrayByParity {
+public:
+    std::vector<int> sortArrayByParity(std::vector<int>& A);
+};
+
+/*
+In an election, the i-th vote was cast for persons[i] at time times[i].
+Now, we would like to implement the following query function: 
+TopVotedCandidate.q(int t) will return the number of the person that was 
+leading the election at time t.  
+Votes cast at time t will count towards our query.  In the case of a 
+tie, the most recent vote (among tied candidates) wins.
+
+Input: ["TopVotedCandidate","q","q","q","q","q","q"], 
+[[[0,1,1,0,0,1,0],[0,5,10,15,20,25,30]],[3],[12],[25],[15],[24],[8]]
+Output: [null,0,1,1,0,0,1]
+Explanation: 
+At time 3, the votes are [0], and 0 is leading.
+At time 12, the votes are [0,1,1], and 1 is leading.
+At time 25, the votes are [0,1,1,0,0,1], and 1 is leading (as ties go to the most recent vote.)
+This continues for 3 more queries at time 15, 24, and 8.
+ 
+1 <= persons.length = times.length <= 5000
+0 <= persons[i] <= persons.length
+times is a strictly increasing array with all elements in [0, 10^9].
+TopVotedCandidate.q is called at most 10000 times per test case.
+TopVotedCandidate.q(int t) is always called with t >= times[0].
+*/
+class _0911_OnlineElection {
+public:
+    _0911_OnlineElection(std::vector<int>& persons, std::vector<int>& times);
+    int q(int t);
+private:
+    std::map<int, int> Map;
+};
+
+/*
+Given an array of integers nums, sort the array in ascending order.
+*/
+class _0912_SortAnArray {
+public:
+    std::vector<int> sortArray(std::vector<int>& nums);
+private:
+    void sortArray(std::vector<int>& nums, int start, int end);
+    void merge(std::vector<int>& nums, int start, int end, int mid);
+};
+
+
+/*
+Given a circular array C of integers represented by A, find the maximum possible sum of a non-empty subarray of C.
+Here, a circular array means the end of the array connects to the beginning of the array.  
+(Formally, C[i] = A[i] when 0 <= i < A.length, and C[i+A.length] = C[i] when i >= 0.)
+Also, a subarray may only include each element of the fixed buffer A at most once.  
+(Formally, for a subarray C[i], C[i+1], ..., C[j], there does not exist i <= k1, k2 <= j with k1 % A.length = k2 % A.length.)
+
+Input: [1,-2,3,-2]
 Output: 3
-Explanation:
-The longest subsequence that is fibonacci-like:
-[1,11,12], [3,11,14] or [7,11,18].
+Explanation: Subarray [3] has maximum sum 3
+
+Input: [5,-3,5]
+Output: 10
+Explanation: Subarray [5,5] has maximum sum 5 + 5 = 10
+
+Input: [3,-1,2,-1]
+Output: 4
+Explanation: Subarray [2,-1,3] has maximum sum 2 + (-1) + 3 = 4
+
+Input: [3,-2,2,-3]
+Output: 3
+Explanation: Subarray [3] and [3,-2,2] both have maximum sum 3
+
+Input: [-2,-3,-1]
+Output: -1
+Explanation: Subarray [-1] has maximum sum -1
 
 Note:
 
-3 <= A.length <= 1000
-1 <= A[0] < A[1] < ... < A[A.length - 1] <= 10^9
+-30000 <= A[i] <= 30000
+1 <= A.length <= 30000
 */
-class _0873_LengthOfLongestFibonacciSubsequence {
+class _0918_MaximumSumCircularSubarray {
 public:
-    int lenLongestFibSubseq(std::vector<int>& A);
+    int maxSubarraySumCircular(std::vector<int>& A);
 };
 
 /*
-A robot on an infinite grid starts at point (0, 0) and faces 
-north. The robot can receive one of three possible types of 
-commands:
+Given a string S of '(' and ')' parentheses, we add the minimum number of 
+parentheses ( '(' or ')', and in any positions ) so that the resulting 
+parentheses string is valid.
 
--2: turn left 90 degrees
--1: turn right 90 degrees
-1 <= x <= 9: move forward x units
-Some of the grid squares are obstacles. 
+Formally, a parentheses string is valid if and only if:
+It is the empty string, or
+It can be written as AB (A concatenated with B), where A and B are valid strings, or
+It can be written as (A), where A is a valid string.
+Given a parentheses string, return the minimum number of parentheses we 
+must add to make the resulting string valid.
 
-The i-th obstacle is at grid point (obstacles[i][0], obstacles[i][1])
-If the robot would try to move onto them, the robot stays on the 
-previous grid square instead (but still continues following the 
-rest of the route.)
-Return the square of the maximum Euclidean distance that the robot 
-will be from the origin.
+Input: "())"
+Output: 1
 
-Input: commands = [4,-1,3], obstacles = []    :    Output: 25
-Explanation: robot will go to (3, 4)
+Input: "((("
+Output: 3
 
-Input: commands = [4,-1,4,-2,4], obstacles = [[2,4]]    :   Output: 65
-Explanation: robot will be stuck at (1, 4) before turning left and going to (1, 8)
-*/
-class _0874_WalkingRobotSimulation {
-public:
-    int robotSim(std::vector<int>& commands, std::vector<std::vector<int>>& obstacles);
-};
+Input: "()"
+Output: 0
 
-/*
-Koko loves to eat bananas. There are N piles of bananas, the i-th pile has piles[i] bananas. 
-The guards have gone and will come back in H hours.
-
-Koko can decide her bananas-per-hour eating speed of K. Each hour, she chooses some pile of 
-bananas, and eats K bananas from that pile. If the pile has less than K bananas, she eats all 
-of them instead, and won't eat any more bananas during this hour.
-
-Koko likes to eat slowly, but still wants to finish eating all the bananas before the guards come back.
-Return the minimum integer K such that she can eat all the bananas within H hours.
-
-Input: piles = [3,6,7,11], H = 8
+Input: "()))(("
 Output: 4
 
-Input: piles = [30,11,23,4,20], H = 5
-Output: 30
+Note:
 
-Input: piles = [30,11,23,4,20], H = 6
+S.length <= 1000
+S only consists of '(' and ')' characters.
+*/
+class _0921_MinimumAddToMakeParenthesesValid {
+public:
+    int minAddToMakeValid(std::string s);
+};
+
+/*
+Given an array A of non-negative integers, half of the integers in A are odd, 
+and half of the integers are even. Sort the array so that whenever A[i] is odd, 
+i is odd; and whenever A[i] is even, i is even. You may return any answer array 
+that satisfies this condition.
+
+Input: [4,2,5,7]
+Output: [4,5,2,7]
+Explanation: [4,7,2,5], [2,5,4,7], [2,7,4,5] would also have been accepted.
+Note:
+
+2 <= A.length <= 20000
+A.length % 2 == 0
+0 <= A[i] <= 1000
+*/
+class _0922_SortArrayByParityII {
+public:
+    std::vector<int> sortArrayByParityII(std::vector<int>& A);
+};
+
+/*
+Given an integer array A, and an integer target, return the 
+number of tuples i, j, k  such that i < j < k and A[i] + 
+A[j] + A[k] == target.
+As the answer can be very large, return it modulo 10^9 + 7.
+
+Input: A = [1,1,2,2,3,3,4,4,5,5], target = 8
+Output: 20
+Explanation: 
+Enumerating by the values (A[i], A[j], A[k]):
+(1, 2, 5) occurs 8 times;
+(1, 3, 4) occurs 8 times;
+(2, 2, 4) occurs 2 times;
+(2, 3, 3) occurs 2 times.
+
+Input: A = [1,1,2,2,2,2], target = 5
+Output: 12
+Explanation: 
+A[i] = 1, A[j] = A[k] = 2 occurs 12 times:
+We choose one 1 from [1,1] in 2 ways,
+and two 2s from [2,2,2,2] in 6 ways.
+ 
+Note:
+3 <= A.length <= 3000
+0 <= A[i] <= 100
+0 <= target <= 300
+*/
+class _0923_3SumWithMultiplicity {
+public:
+    int threeSumMulti(std::vector<int>& A, int target);
+};
+
+/*
+Every email consists of a local name and a domain name, separated by the @ sign.
+For example, in alice@leetcode.com, alice is the local name, and leetcode.com is the domain name.
+Besides lowercase letters, these emails may contain '.'s or '+'s.
+If you add periods ('.') between some characters in the local name part of an email address, mail 
+sent there will be forwarded to the same address without dots in the local name. 
+For example, "alice.z@leetcode.com" and "alicez@leetcode.com" forward to the same email address. 
+(Note that this rule does not apply for domain names.)
+If you add a plus ('+') in the local name, everything after the first plus sign will be ignored. 
+This allows certain emails to be filtered, for example m.y+name@email.com will be forwarded to
+my@email.com.  (Again, this rule does not apply for domain names.)
+It is possible to use both of these rules at the same time.
+Given a list of emails, we send one email to each address in the list. 
+How many different addresses actually receive mails? 
+
+Input: ["test.email+alex@leetcode.com","test.e.mail+bob.cathy@leetcode.com","testemail+david@lee.tcode.com"]
+Output: 2
+Explanation: "testemail@leetcode.com" and "testemail@lee.tcode.com" actually receive mails
+ 
+Note:
+
+1 <= emails[i].length <= 100
+1 <= emails.length <= 100
+Each emails[i] contains exactly one '@' character.
+All local and domain names are non-empty.
+Local names do not start with a '+' character.
+*/
+class _0929_UniqueEmailAddress {
+public:
+    int numUniqueEmails(std::vector<std::string>& emails);
+};
+
+/*
+Given a square array of integers A, we want the minimum sum of a 
+falling path through A. A falling path starts at any element in 
+the first row, and chooses one element from each row. The next 
+row's choice must be in a column that is different from the 
+previous row's column by at most one.
+
+Input: [[1,2,3],[4,5,6],[7,8,9]]
+Output: 12
+
+Explanation: 
+The possible falling paths are:
+[1,4,7], [1,4,8], [1,5,7], [1,5,8], [1,5,9]
+[2,4,7], [2,4,8], [2,5,7], [2,5,8], [2,5,9], [2,6,8], [2,6,9]
+[3,5,7], [3,5,8], [3,5,9], [3,6,8], [3,6,9]
+The falling path with the smallest sum is [1,4,7], so the answer is 12.
+
+Note:
+
+1 <= A.length == A[0].length <= 100
+-100 <= A[i][j] <= 100
+*/
+class _0931_MinimumFallingPathSum {
+public:
+    int minFallingPathSum(std::vector<std::vector<int>>& A);
+};
+
+
+/*
+Write a class RecentCounter to count recent requests.
+It has only one method: ping(int t), where t represents some 
+time in milliseconds.
+Return the number of pings that have been made from 3000 
+milliseconds ago until now.
+Any ping with time in [t - 3000, t] will count, including 
+the current ping.
+It is guaranteed that every call to ping uses a strictly larger 
+value of t than before.
+
+Input: inputs = ["RecentCounter","ping","ping","ping","ping"], 
+inputs = [[],[1],[100],[3001],[3002]]
+Output: [null,1,2,3,3]
+
+Each test case will have at most 10000 calls to ping.
+Each test case will call ping with strictly increasing values of t.
+Each call to ping will have 1 <= t <= 10^9.
+*/
+class _0933_NumberOfRecentCalls {
+private:
+    std::queue<int> q;
+public:
+    _0933_NumberOfRecentCalls();
+    int ping(int t);
+};
+
+/*
+In a given 2D binary array A, there are two islands.  
+(An island is a 4-directionally connected group of 1s not connected to any other 1s.)
+Now, we may change 0s to 1s so as to connect the two islands together to form 1 island.
+Return the smallest number of 0s that must be flipped. 
+(It is guaranteed that the answer is at least 1.)
+
+Input: [[0,1],[1,0]]
+Output: 1
+
+Input: [[0,1,0],[0,0,0],[0,0,1]]
+Output: 2
+
+Input: [[1,1,1,1,1],[1,0,0,0,1],[1,0,1,0,1],[1,0,0,0,1],[1,1,1,1,1]]
+Output: 1
+
+Note:
+
+1 <= A.length = A[0].length <= 100
+A[i][j] == 0 or A[i][j] == 1 
+*/
+class _0934_ShortestBridge {
+public:
+    int shortestBridge(std::vector<std::vector<int>>& A);
+private:
+    int paint(std::vector<std::vector<int>>& A, int i, int j);
+    bool expand(std::vector<std::vector<int>>& A, int i, int j, int color);
+};
+
+/*
+Given the root node of a binary search tree, return the sum of 
+values of all nodes with value between L and R (inclusive).
+The binary search tree is guaranteed to have unique values.
+
+Input: root = [10,5,15,3,7,null,18], L = 7, R = 15
+Output: 32
+
+Input: root = [10,5,15,3,7,13,18,1,null,6], L = 6, R = 10
 Output: 23
- 
+
 Note:
 
-1 <= piles.length <= 10^4
-piles.length <= H <= 10^9
-1 <= piles[i] <= 10^9
+The number of nodes in the tree is at most 10000.
+The final answer is guaranteed to be less than 2^31.
 */
-class _0875_KokoEatingBananas {
+class _0938_RangeSumOfBST {
 public:
-    int minEatingSpeed(std::vector<int>& piles, int H);
-};
-
-/*
-Given a non-empty, singly linked list with head node head, return a middle node of 
-linked list. If there are two middle nodes, return the second middle node.
-
-Input: [1,2,3,4,5]
-Output: Node 3 from this list (Serialization: [3,4,5])
-The returned node has value 3.  (The judge's serialization of this node is [3,4,5]).
-Note that we returned a ListNode object ans, such that:
-ans.val = 3, ans.next.val = 4, ans.next.next.val = 5, and ans.next.next.next = NULL.
-
-Input: [1,2,3,4,5,6]
-Output: Node 4 from this list (Serialization: [4,5,6])
-Since the list has two middle nodes with values 3 and 4, we return the second one.
-*/
-class _0876_MiddleOfTheLinkedList {
-public:
-    ListNode<int>* middleNode(ListNode<int>* head);
+    int rangeSumBST(TreeNode<int>* root, int L, int R);
 };
 
 
 /*
-Alex and Lee play a game with piles of stones. There are an even number 
-of piles arranged in a row, and each pile has a positive integer number
-of stones piles[i]. The objective of the game is to end with the most 
-stones.  The total number of stones is odd, so there are no ties. Alex 
-and Lee take turns, with Alex starting first.  Each turn, a player takes 
-the entire pile of stones from either the beginning or the end of the row.  
-This continues until there are no more piles left, at which point the 
-person with the most stones wins.
+Given a string S that only contains "I" (increase) or "D" (decrease), 
+let N = S.length.
+Return any permutation A of [0, 1, ..., N] such that for all 
+i = 0, ..., N-1:
+If S[i] == "I", then A[i] < A[i+1]
+If S[i] == "D", then A[i] > A[i+1]
 
-Assuming Alex and Lee play optimally, return True if and only if Alex 
-wins the game.
+Input: "IDID"
+Output: [0,4,1,3,2]
 
-Input: [5,3,4,5]           :           Output: true
+Input: "III"
+Output: [0,1,2,3]
+
+Input: "DDI"
+Output: [3,2,0,1]
+
+Note:
+1 <= S.length <= 10000
+S only contains characters "I" or "D".
+*/
+class _0942_DIStringMatch {
+public:
+    std::vector<int> disStringMatch(std::string S);
+};
+
+/*
+We are given an array A of N lowercase letter strings, all of the same 
+length. Now, we may choose any set of deletion indices, and for each string, 
+we delete all the characters in those indices. For example, if we have an
+array A = ["abcdef","uvwxyz"] and deletion indices {0, 2, 3}, then the 
+final array after deletions is ["bef", "vyz"], and the remaining columns 
+of A are ["b","v"], ["e","y"], and ["f","z"]. 
+(Formally, the c-th column is [A[0][c], A[1][c], ..., A[A.length-1][c]].)
+Suppose we chose a set of deletion indices D such that after deletions, 
+each remaining column in A is in non-decreasing sorted order.
+Return the minimum possible value of D.length.
+
+Input: ["cba","daf","ghi"]
+Output: 1
 Explanation: 
-Alex starts first, and can only take the first 5 or the last 5.
-Say he takes the first 5, so that the row becomes [3, 4, 5].
-If Lee takes 3, then the board is [4, 5], and Alex takes 5 to win with 10 points.
-If Lee takes the last 5, then the board is [3, 4], and Alex takes 4 to win with 9 points.
-This demonstrated that taking the first 5 was a winning move for Alex, so we return true.
-*/
-class _0877_StoneGame {
-private:
-    std::vector<int> totStone;
-    std::vector<std::vector<int>> alexMap;
-    std::vector<std::vector<int>> leeMap;
-public:
-    bool stoneGame(std::vector<int>& piles);
-    int AlexMax(std::vector<int>& piles, int start, int end);
-    int LeeMax(std::vector<int>& piles, int start, int end);
-};
+After choosing D = {1}, each column ["c","d","g"] and ["a","f","i"] are in 
+non-decreasing sorted order. If we chose D = {}, then a column 
+["b","a","h"] would not be in non-decreasing sorted order.
 
+Input: ["a","b"]
+Output: 0
+Explanation: D = {}
 
-/*
-On a N * N grid, we place some 1 * 1 * 1 cubes that are axis-aligned with the 
-x, y, and z axes. Each value v = grid[i][j] represents a tower of v cubes 
-placed on top of grid cell (i, j). Now we view the projection of these 
-cubes onto the xy, yz, and zx planes. 
-A projection is like a shadow, that maps our 3 dimensional figure to a 2 
-dimensional plane. Here, we are viewing the "shadow" when looking at the 
-cubes from the top, the front, and the side.
-Return the total area of all three projections.
-
-Input: [[2]]
-Output: 5
-
-Input: [[1,2],[3,4]]
-Output: 17
-Explanation: 
-Here are the three projections ("shadows") of the shape made with each axis-aligned plane.
-*/
-class _0883_ProjectionAreaOf3DShapes {
-public:
-    int projectionArea(std::vector<std::vector<int>>& grid);
-};
-/*
-On a 2 dimensional grid with R rows and C columns, we start at (r0, c0) facing east.
-Here, the north-west corner of the grid is at the first row and column, and the south-east
-corner of the grid is at the last row and column.
-Now, we walk in a clockwise spiral shape to visit every position in this grid. 
-Whenever we would move outside the boundary of the grid, we continue our walk outside the 
-grid (but may return to the grid boundary later.) 
-
-Eventually, we reach all R * C spaces of the grid.
-Return a list of coordinates representing the positions of the grid in the order they were visited.
-
-Input: R = 1, C = 4, r0 = 0, c0 = 0
-Output: [[0,0],[0,1],[0,2],[0,3]]
-
-Input: R = 5, C = 6, r0 = 1, c0 = 4
-Output: [[1,4],[1,5],[2,5],[2,4],[2,3],[1,3],[0,3],[0,4],[0,5],[3,5],[3,4],
-         [3,3],[3,2],[2,2],[1,2],[0,2],[4,5],[4,4],[4,3],[4,2],[4,1],[3,1],
-         [2,1],[1,1],[0,1],[4,0],[3,0],[2,0],[1,0],[0,0]]
-Note:
-
-1 <= R <= 100
-1 <= C <= 100
-0 <= r0 < R
-0 <= c0 < C
-Accepted
-*/
-class _0885_SpiralMatrixIII {
-public:
-    std::vector<std::vector<int>> spiralMatrixIII(int R, int C, int r0, int c0);
-};
-
-/*
-You have a list of words and a pattern, and you want to know which words in words 
-matches the pattern. A word matches the pattern if there exists a permutation of 
-letters p so that after replacing every letter x in the pattern with p(x), we get 
-the desired word. (Recall that a permutation of letters is a bijection from letters 
-to letters: every letter maps to another letter, and no two letters map to the 
-same letter.)
-Return a list of the words in words that match the given pattern. 
-You may return the answer in any order.
-
-Input: words = ["abc","deq","mee","aqq","dkd","ccc"], pattern = "abb"
-Output: ["mee","aqq"]
-Explanation: "mee" matches the pattern because there is a permutation {a -> m, b -> e, ...}. 
-"ccc" does not match the pattern because {a -> c, b -> c, ...} is not a permutation,
-since a and b map to the same letter.
+Input: ["zyx","wvu","tsr"]
+Output: 3
+Explanation: D = {0, 1, 2}
 
 Note:
-
-1 <= words.length <= 50
-1 <= pattern.length = words[i].length <= 20
+1 <= A.length <= 100
+1 <= A[i].length <= 1000
 */
-class _0890_FindAndReplacePattern {
+class _0944_DeleteColumnsToMakeSorted {
 public:
-    std::vector<std::string> findAndReplacePattern(std::vector<std::string>& words, std::string pattern);
-};
-
-
-/*
-A full binary tree is a binary tree where each node has exactly 0 or 2 children.
-Return a list of all possible full binary trees with N nodes.  Each element of the 
-answer is the root node of one possible tree.
-
-Each node of each tree in the answer must have node.val = 0.
-You may return the final list of trees in any order. 
-
-Example 1:
-
-Input: 7
-Output: [[0,0,0,null,null,0,0,null,null,0,0],[0,0,0,null,null,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,null,null,null,null,0,0],[0,0,0,0,0,null,null,0,0]]
-*/
-class _0894_AllPossibleFullBinaryTrees {
-public:
-    std::vector<TreeNode<int>*> allPossibleFBT(int N);
+    int minDeletionSize(std::vector<std::string>& A);
 };
 
 /*
-Implement FreqStack, a class which simulates the operation of a stack-like data structure.
+Given two sequences pushed and popped with distinct values, return true 
+if and only if this could have been the result of a sequence of push and 
+pop operations on an initially empty stack.
 
-FreqStack has two functions:
+Input: pushed = [1,2,3,4,5], popped = [4,5,3,2,1]
+Output: true
+Explanation: We might do the following sequence:
+push(1), push(2), push(3), push(4), pop() -> 4,
+push(5), pop() -> 5, pop() -> 3, pop() -> 2, pop() -> 1
+Example 2:
 
-push(int x), which pushes an integer x onto the stack.
-pop(), which removes and returns the most frequent element in the stack.
-If there is a tie for most frequent element, the element closest to the top of the stack is removed and returned.
- 
+Input: pushed = [1,2,3,4,5], popped = [4,3,5,1,2]
+Output: false
+Explanation: 1 cannot be popped before 2.
+*/
+class _0946_ValidateStackSequences {
+public:
+    bool validateStackSequences(std::vector<int>& pushed, std::vector<int>& popped);
+};
+
+/*
+Tag: Tree
+Interview : Google
+For a binary tree T, we can define a flip operation as follows: 
+choose any node, and swap the left and right child subtrees.
+A binary tree X is flip equivalent to a binary tree Y if and only 
+if we can make X equal to Y after some number of flip operations.
+Write a function that determines whether two binary trees are flip 
+equivalent.  The trees are given by root nodes root1 and root2.
+
 Input: 
-["FreqStack","push","push","push","push","push","push","pop","pop","pop","pop"],
-[[],[5],[7],[5],[7],[4],[5],[],[],[],[]]
-Output: [null,null,null,null,null,null,null,5,7,5,4]
-Explanation:
-After making six .push operations, the stack is [5,7,5,7,4,5] from bottom to top.  Then:
-
-pop() -> returns 5, as 5 is the most frequent.
-The stack becomes [5,7,5,7,4].
-
-pop() -> returns 7, as 5 and 7 is the most frequent, but 7 is closest to the top.
-The stack becomes [5,7,5,4].
-
-pop() -> returns 5.
-The stack becomes [5,7,4].
-
-pop() -> returns 4.
-The stack becomes [5,7].
- 
+root1 = [1,2,3,4,5,6,null,null,null,7,8], 
+root2 = [1,3,2,null,6,4,5,null,null,null,null,8,7]
+Output: true
+Explanation: We flipped at nodes with values 1, 3, and 5.
 
 Note:
 
-Calls to FreqStack.push(int x) will be such that 0 <= x <= 10^9.
-It is guaranteed that FreqStack.pop() won't be called if the stack has zero elements.
-The total number of FreqStack.push calls will not exceed 10000 in a single test case.
-The total number of FreqStack.pop calls will not exceed 10000 in a single test case.
-The total number of FreqStack.push and FreqStack.pop calls will not exceed 150000 across all test cases.
+Each tree will have at most 100 nodes.
+Each value in each tree will be a unique integer in the range [0, 99].
 */
-class _0895_MaximumFrequencyStack {
-private:
-    // Copy inspired by the solution
-    std::map<int, int> freq; // A Map from x to the number of frequency occurences of x
-    std::map<int, std::stack<int>> group; // group data according to their frequency. If push 5, 5 -->  group[1]->5,  group[2]->5 respectively.
-    int maxFreq; // Keep the maximum frequency
+class _0951_FlipEquivalentBinaryTrees {
 public:
-    _0895_MaximumFrequencyStack();
-    void push(int x);
-    int pop();
+    bool flipEquiv(TreeNode<int>* root1, TreeNode<int>* root2);
 };
 
 /*
-Given a binary search tree, rearrange the tree in in-order so that the leftmost node in the tree is now the root of the tree, and every node has no left child and only 1 right child.
+In an alien language, surprisingly they also use english lowercase 
+letters, but possibly in a different order. The order of the alphabet 
+is some permutation of lowercase letters. Given a sequence of words 
+written in the alien language, and the order of the alphabet, return 
+true if and only if the given words are sorted lexicographicaly in 
+this alien language.
 
-Example 1:
-Input: [5,3,6,2,4,null,8,1,null,null,null,7,9]
+Input: words = ["hello","leetcode"], order = "hlabcdefgijkmnopqrstuvwxyz"
+Output: true
+Explanation: As 'h' comes before 'l' in this language, then the sequence is sorted.
 
-       5
-      / \
-    3    6
-   / \    \
-  2   4    8
- /        / \ 
-1        7   9
+Input: words = ["word","world","row"], order = "worldabcefghijkmnpqstuvxyz"
+Output: false
+Explanation: As 'd' comes after 'l' in this language, then words[0] > words[1], hence the sequence is unsorted.
 
-Output: [1,null,2,null,3,null,4,null,5,null,6,null,7,null,8,null,9]
-
- 1
-  \
-   2
-    \
-     3
-      \
-       4
-        \
-         5
-          \
-           6
-            \
-             7
-              \
-               8
-                \
-                 9  
+Input: words = ["apple","app"], order = "abcdefghijklmnopqrstuvwxyz"
+Output: false
+Explanation: The first three characters "app" match, and the second string is shorter (in size.) According to lexicographical rules "apple" > "app", because 'l' > '∅', where '∅' is defined as the blank character which is less than any other character (More info).
  
 
 Constraints:
 
-The number of nodes in the given tree will be between 1 and 100.
-Each node will have a unique integer value from 0 to 1000.
+1 <= words.length <= 100
+1 <= words[i].length <= 20
+order.length == 26
+All characters in words[i] and order are English lowercase letters.
 */
-class _0897_IncreasingOrderSearchTree {
+class _0953_VerifyingAnAlienDictionary {
 public:
-    TreeNode<int>* increasingBST(TreeNode<int>* root);
+    bool isAlienSorted(std::vector<std::string>& words, std::string order);
 };
+
 /*
-A string S of lowercase letters is given.  Then, we may make any number of moves.
-In each move, we choose one of the first K letters (starting from the left), remove it, and place it at the end of the string.
-Return the lexicographically smallest string we could have after any number of moves.
+You are installing a billboard and want it to have the largest 
+height. The billboard will have two steel supports, one on each 
+side. Each steel support must be an equal height. You have a 
+collection of rods which can be welded together. For example, if 
+you have rods of lengths 1, 2, and 3, you can weld them together
+to make a support of length 6.
 
-Input: S = "cba", K = 1
-Output: "acb"
-Explanation: 
-In the first move, we move the 1st character ("c") to the end, obtaining the string "bac".
-In the second move, we move the 1st character ("b") to the end, obtaining the final result "acb".
+Return the largest possible height of your billboard installation.
+If you cannot support the billboard, return 0.
 
-Input: S = "baaca", K = 3
-Output: "aaabc"
-Explanation: 
-In the first move, we move the 1st character ("b") to the end, obtaining the string "aacab".
-In the second move, we move the 3rd character ("c") to the end, obtaining the final result "aaabc".
+Input: [1,2,3,6]             :            Output: 6
+Explanation: We have two disjoint subsets {1,2,3} and {6}, which have the same sum = 6.
+
+Input: [1,2,3,4,5,6]         :            Output: 10
+Explanation: We have two disjoint subsets {2,3,5} and {4,6}, which have the same sum = 10.
+
+Input: [1,2]                 :            Output: 0
+Explanation: The billboard cannot be supported, so we return 0.
+
+这道题如果用Backtracing 比较直观但是会超时，数据的大小是 0 <= rods.length <= 20
+每个rod 有三个情况， 0， 不选， 1， 放左边， 2 放右边。
+
+这道题的解法仍然是动态规划，不过状态转移还是很难想出来的。
+DP[n][i] --> 表示当用到n个柱子的时候，两边的差为 i 可以达到的最大公共高度
+因此状态转移方程就是：
+
+DP[n][i + h] = max(DP[n][i], DP[n-1][i]);           当用到n个柱子时把柱子放在高的那一边，公共高度跟用n-1个柱子一样，可是高度差变成了 i + h
+DP[n][|i-h|] = max(DP[n][|i-h|], DP[n-1][i] + min(h, i)); // 如果把第n个柱子放在矮的那边，公共高度一定是增长了 min(i, h), 高度差就变成了 |i-h| 
+因为不知道h大还是原先的i大。
+因此，解为 DP[N][0]
 */
-class _0899_OrderlyQueue {
+class _0956_TallestBillboard {
 public:
-    std::string orderlyQueue(std::string S, int K);
+    int tallestBillboard(std::vector<int>& rods);
+};
+
+
+/*
+Given a binary tree, determine if it is a complete binary tree.
+Definition of a complete binary tree from Wikipedia:
+In a complete binary tree every level, except possibly the last, is completely 
+filled, and all nodes in the last level are as far left as possible. It can have 
+between 1 and 2h nodes inclusive at the last level h.
+*/
+class _0958_CheckCompletenessOfABinaryTree {
+public:
+    bool siCompleteTree(TreeNode<int>* root);
+};
+
+
+/*
+Given an array A of integers, a ramp is a tuple (i, j) for which i < j and A[i] <= A[j].  The width of such a ramp is j - i.
+
+Find the maximum width of a ramp in A.  If one doesn't exist, return 0.
+
+ 
+
+Example 1:
+
+Input: [6,0,8,2,1,5]
+Output: 4
+Explanation: 
+The maximum width ramp is achieved at (i, j) = (1, 5): A[1] = 0 and A[5] = 5.
+Example 2:
+
+Input: [9,8,1,0,1,9,4,0,4,1]
+Output: 7
+Explanation: 
+The maximum width ramp is achieved at (i, j) = (2, 9): A[2] = 1 and A[9] = 1.
+ 
+
+Note:
+
+2 <= A.length <= 50000
+0 <= A[i] <= 50000
+*/
+class _0962_MaximumWidthRamp {
+public:
+    int maxWidthRamp(std::vector<int>& A);
+};
+
+/*
+Given a set of points in the xy-plane, determine the minimum area of any rectangle 
+formed from these points, with sides not necessarily parallel to the x and y axes.
+If there isn't any rectangle, return 0.
+
+Input: [[1,2],[2,1],[1,0],[0,1]]
+Output: 2.00000
+Explanation: The minimum area rectangle occurs at [1,2],[2,1],[1,0],[0,1], with an area of 2.
+
+Input: [[0,1],[2,1],[1,1],[1,0],[2,0]]
+Output: 1.00000
+Explanation: The minimum area rectangle occurs at [1,0],[1,1],[2,1],[2,0], with an area of 1.
+
+Input: [[0,3],[1,2],[3,1],[1,3],[2,1]]
+Output: 0
+Explanation: There is no possible rectangle to form from these points.
+
+Input: [[3,1],[1,1],[0,1],[2,1],[3,3],[3,2],[0,2],[2,3]]
+Output: 2.00000
+Explanation: The minimum area rectangle occurs at [2,1],[2,3],[3,3],[3,1], with an area of 2.
+ 
+Note:
+1 <= points.length <= 50
+0 <= points[i][0] <= 40000
+0 <= points[i][1] <= 40000
+All points are distinct.
+Answers within 10^-5 of the actual value will be accepted as correct.
+*/
+class _0963_MinimumAreaRectangleII {
+public:
+    double minAreaFreeRect(std::vector<std::vector<int>>& points);
+};
+
+/*
+Given two positive integers x and y, an integer is powerful if it is equal to 
+x^i + y^j for some integers i >= 0 and j >= 0.
+Return a list of all powerful integers that have value less than or equal to bound.
+You may return the answer in any order.  In your answer, each value should occur at 
+most once.
+
+Input: x = 2, y = 3, bound = 10
+Output: [2,3,4,5,7,9,10]
+Explanation: 
+2 = 2^0 + 3^0
+3 = 2^1 + 3^0
+4 = 2^0 + 3^1
+5 = 2^1 + 3^1
+7 = 2^2 + 3^1
+9 = 2^3 + 3^0
+10 = 2^0 + 3^2
+
+Input: x = 3, y = 5, bound = 15
+Output: [2,4,6,8,10,14]
+
+1 <= x <= 100
+1 <= y <= 100
+0 <= bound <= 10^6
+*/
+class _0970_PowerfulIntegers {
+public:
+    std::vector<int> powerfulIntegers(int x, int y, int bound);
+};
+
+
+/*
+Flip Binary Tree To Match Preorder Traversal
+Given a binary tree with N nodes, each node has a different value from 
+{1, ..., N}. A node in this binary tree can be flipped by swapping the 
+left child and the right child of that node. Consider the sequence of 
+N values reported by a preorder traversal starting from the root. Call 
+such a sequence of N values the voyage of the tree. (Recall that a preorder 
+traversal of a node means we report the current node's value, then preorder
+-traverse the left child, then preorder-traverse the right child.)
+Our goal is to flip the least number of nodes in the tree so that the 
+voyage of the tree matches the voyage we are given. If we can do so, then 
+return a list of the values of all nodes flipped.  You may return the answer 
+in any order.
+
+If we cannot do so, then return the list [-1].
+*/
+class _0971_FlipBinaryTreeToMatchPreorderTraversal {
+public:
+	std::vector<int> flipMatchVoyage(TreeNode<int>* root, std::vector<int>& voyage);
+};
+
+/*
+We have a list of points on the plane.  Find the K closest points to the origin (0, 0).
+(Here, the distance between two points on a plane is the Euclidean distance.)
+You may return the answer in any order.  The answer is guaranteed to be unique (except for the order that it is in.)
+
+Input: points = [[1,3],[-2,2]], K = 1
+Output: [[-2,2]]
+Explanation: 
+The distance between (1, 3) and the origin is sqrt(10).
+The distance between (-2, 2) and the origin is sqrt(8).
+Since sqrt(8) < sqrt(10), (-2, 2) is closer to the origin.
+We only want the closest K = 1 points from the origin, so the answer is just [[-2,2]].
+
+Input: points = [[3,3],[5,-1],[-2,4]], K = 2
+Output: [[3,3],[-2,4]]
+(The answer [[-2,4],[3,3]] would also be accepted.)
+
+Note:
+
+1 <= K <= points.length <= 10000
+-10000 < points[i][0] < 10000
+-10000 < points[i][1] < 10000
+*/
+class _0973_KClosestPointsToOrigin {
+public:
+    std::vector<std::vector<int>> kCloset(std::vector<std::vector<int>>& points, int K);
+};
+
+/*
+Given the root of a binary tree with N nodes, each node in the tree has node.val coins, 
+and there are N coins total.
+In one move, we may choose two adjacent nodes and move one coin from one node to another.
+(The move may be from parent to child, or from child to parent.)
+Return the number of moves required to make every node have exactly one coin.
+
+Input: [3,0,0]
+Output: 2
+Explanation: From the root of the tree, we move one coin to its left child, and one coin to its right child.
+
+Input: [0,3,0]
+Output: 3
+Explanation: From the left child of the root, we move two coins to the root [taking two moves].  Then, we move one coin from the root of the tree to the right child.
+
+Input: [1,0,2]
+Output: 2
+
+Input: [1,0,0,null,3]
+Output: 4
+
+Note:
+
+1<= N <= 100
+0 <= node.val <= N
+*/
+class _0979_DistributeCoinsInBinaryTree {
+private:
+    int ans = 0;
+public:
+    int distriuteCoins(TreeNode<int>* root);
+    int DFS(TreeNode<int>* root);
+};
+
+/*
+On a 2-dimensional grid, there are 4 types of squares:
+
+1 represents the starting square.  There is exactly one starting square.
+2 represents the ending square.  There is exactly one ending square.
+0 represents empty squares we can walk over.
+-1 represents obstacles that we cannot walk over.
+Return the number of 4-directional walks from the starting square to the ending square, 
+that walk over every non-obstacle square exactly once.
+
+Input: [[1,0,0,0],[0,0,0,0],[0,0,2,-1]]
+Output: 2
+Explanation: We have the following two paths: 
+1. (0,0),(0,1),(0,2),(0,3),(1,3),(1,2),(1,1),(1,0),(2,0),(2,1),(2,2)
+2. (0,0),(1,0),(2,0),(2,1),(1,1),(0,1),(0,2),(0,3),(1,3),(1,2),(2,2)
+
+Input: [[1,0,0,0],[0,0,0,0],[0,0,0,2]]
+Output: 4
+Explanation: We have the following four paths: 
+1. (0,0),(0,1),(0,2),(0,3),(1,3),(1,2),(1,1),(1,0),(2,0),(2,1),(2,2),(2,3)
+2. (0,0),(0,1),(1,1),(1,0),(2,0),(2,1),(2,2),(1,2),(0,2),(0,3),(1,3),(2,3)
+3. (0,0),(1,0),(2,0),(2,1),(2,2),(1,2),(1,1),(0,1),(0,2),(0,3),(1,3),(2,3)
+4. (0,0),(1,0),(2,0),(2,1),(1,1),(0,1),(0,2),(0,3),(1,3),(1,2),(2,2),(2,3)
+
+Input: [[0,1],[2,0]]
+Output: 0
+Explanation: 
+There is no path that walks over every empty square exactly once.
+Note that the starting and ending square can be anywhere in the grid.
+
+Note:
+
+1 <= grid.length * grid[0].length <= 20
+*/
+class _0980_UniquePathsIII {
+public:
+    int uniquePathsIII(std::vector<std::vector<int>>& grid);
+};
+
+/*
+Create a timebased key-value store class TimeMap, that supports two operations.
+
+1. set(string key, string value, int timestamp)
+
+Stores the key and value, along with the given timestamp.
+2. get(string key, int timestamp)
+
+Returns a value such that set(key, value, timestamp_prev) was called previously, with timestamp_prev <= timestamp.
+If there are multiple such values, it returns the one with the largest timestamp_prev.
+If there are no values, it returns the empty string ("").
+ 
+
+Example 1:
+
+Input: inputs = ["TimeMap","set","get","get","set","get","get"], inputs = [[],["foo","bar",1],["foo",1],["foo",3],["foo","bar2",4],["foo",4],["foo",5]]
+Output: [null,null,"bar","bar",null,"bar2","bar2"]
+Explanation:   
+TimeMap kv;   
+kv.set("foo", "bar", 1); // store the key "foo" and value "bar" along with timestamp = 1   
+kv.get("foo", 1);  // output "bar"   
+kv.get("foo", 3); // output "bar" since there is no value corresponding to foo at timestamp 3 and timestamp 2, then the only value is at timestamp 1 ie "bar"   
+kv.set("foo", "bar2", 4);   
+kv.get("foo", 4); // output "bar2"   
+kv.get("foo", 5); //output "bar2"   
+
+Example 2:
+
+Input: inputs = ["TimeMap","set","set","get","get","get","get","get"], inputs = [[],["love","high",10],["love","low",20],["love",5],["love",10],["love",15],["love",20],["love",25]]
+Output: [null,null,null,"","high","high","low","low"]
+ 
+
+Note:
+
+All key/value strings are lowercase.
+All key/value strings have length in the range [1, 100]
+The timestamps for all TimeMap.set operations are strictly increasing.
+1 <= timestamp <= 10^7
+TimeMap.set and TimeMap.get functions will be called a total of 120000 times (combined) per test case.
+*/
+class _0981_TimeBasedKeyValueStore {
+public:
+    class TimeMap;
+};
+
+/*
+Given an array of integers A, find the number of triples of indices (i, j, k) such that:
+
+0 <= i < A.length
+0 <= j < A.length
+0 <= k < A.length
+A[i] & A[j] & A[k] == 0, where & represents the bitwise-AND operator.
+ 
+Input: [2,1,3]
+Output: 12
+Explanation: We could choose the following i, j, k triples:
+(i=0, j=0, k=1) : 2 & 2 & 1
+(i=0, j=1, k=0) : 2 & 1 & 2
+(i=0, j=1, k=1) : 2 & 1 & 1
+(i=0, j=1, k=2) : 2 & 1 & 3
+(i=0, j=2, k=1) : 2 & 3 & 1
+(i=1, j=0, k=0) : 1 & 2 & 2
+(i=1, j=0, k=1) : 1 & 2 & 1
+(i=1, j=0, k=2) : 1 & 2 & 3
+(i=1, j=1, k=0) : 1 & 1 & 2
+(i=1, j=2, k=0) : 1 & 3 & 2
+(i=2, j=0, k=1) : 3 & 2 & 1
+(i=2, j=1, k=0) : 3 & 1 & 2
+
+Note:
+1 <= A.length <= 1000
+0 <= A[i] < 2^16
+*/
+class _0982_TriplesWithBitwiseAndEqualToZero {
+public:
+    int countTriplets(std::vector<int>& A);
+};
+
+/*
+Given two integers A and B, return any string S such that:
+S has length A + B and contains exactly A 'a' letters, 
+and exactly B 'b' letters;
+The substring 'aaa' does not occur in S;
+The substring 'bbb' does not occur in S.
+
+Input: A = 1, B = 2
+Output: "abb"
+Explanation: "abb", "bab" and "bba" are all correct answers.
+
+Input: A = 4, B = 1
+Output: "aabaa" 
+
+Note:
+
+0 <= A <= 100
+0 <= B <= 100
+It is guaranteed such an S exists for the given A and B.
+*/
+class _0984_StringWithoutAAAOrBBB {
+public:
+    std::string strWithout3a3b(int A, int B);
+};
+
+/*
+Given two lists of closed intervals, each list of intervals is pairwise disjoint and in 
+sorted order. Return the intersection of these two interval lists.
+
+(Formally, a closed interval [a, b] (with a <= b) denotes the set of real numbers x with 
+a <= x <= b. The intersection of two closed intervals is a set of real numbers that is 
+either empty, or can be represented as a closed interval.  For example, the intersection 
+of [1, 3] and [2, 4] is [2, 3].)
+
+Input: A = [[0,2],[5,10],[13,23],[24,25]], B = [[1,5],[8,12],[15,24],[25,26]]
+Output: [[1,2],[5,5],[8,10],[15,23],[24,24],[25,25]]
+Reminder: The inputs and the desired output are lists of Interval objects, and not 
+arrays or lists.
+*/
+class _0986_IntervalListIntersections {
+public:
+    std::vector<std::vector<int>> intervalIntersection(std::vector<std::vector<int>>& A, std::vector<std::vector<int>>& B);
+};
+
+/*
+Given an array equations of strings that represent relationships 
+between variables, each string equations[i] has length 4 and takes 
+one of two different forms: "a==b" or "a!=b".  Here, a and b are 
+lowercase letters (not necessarily different) that represent 
+one-letter variable names.
+Return true if and only if it is possible to assign integers to 
+variable names so as to satisfy all the given equations.
+
+Input: ["a==b","b!=a"]
+Output: false
+Explanation: If we assign say, a = 1 and b = 1, then the first equation is satisfied, but not the second.  There is no way to assign the variables to satisfy both equations.
+
+Input: ["b==a","a==b"]
+Output: true
+Explanation: We could assign a = 1 and b = 1 to satisfy both equations.
+
+Input: ["a==b","b==c","a==c"]
+Output: true
+
+Input: ["a==b","b!=c","c==a"]
+Output: false
+Example 5:
+
+Input: ["c==c","b==d","x!=z"]
+Output: true
+ 
+
+Note:
+
+1 <= equations.length <= 500
+equations[i].length == 4
+equations[i][0] and equations[i][3] are lowercase letters
+equations[i][1] is either '=' or '!'
+equations[i][2] is '='
+*/
+class _0990_SatisfiabilityOfEqualityEquations {
+public:
+    bool equationPossible(std::vector<std::string>& equations);
+};
+
+/*
+In a binary tree, the root node is at depth 0, and children of each depth k node are at depth k+1.
+Two nodes of a binary tree are cousins if they have the same depth, but have different parents.
+We are given the root of a binary tree with unique values, and the values x and y of two different nodes in the tree.
+Return true if and only if the nodes corresponding to the values x and y are cousins.
+
+Input: root = [1,2,3,4], x = 4, y = 3
+Output: false
+
+Input: root = [1,2,3,null,4,null,5], x = 5, y = 4
+Output: true
+
+Input: root = [1,2,3,null,4], x = 2, y = 3
+Output: false
+ 
+Note:
+
+The number of nodes in the tree will be between 2 and 100.
+Each node has a unique integer value from 1 to 100.
+*/
+class _0993_CousinsInBinaryTree {
+public:
+    bool isCousins(TreeNode<int>* root, int x, int y);
+};
+
+/*
+In a town, there are N people labelled from 1 to N.  There is a rumor that one of these people is secretly the town judge.
+
+If the town judge exists, then:
+
+The town judge trusts nobody.
+Everybody (except for the town judge) trusts the town judge.
+There is exactly one person that satisfies properties 1 and 2.
+You are given trust, an array of pairs trust[i] = [a, b] representing that the person labelled a trusts the person labelled b.
+
+If the town judge exists and can be identified, return the label of the town judge.  Otherwise, return -1.
+
+ 
+
+Example 1:
+
+Input: N = 2, trust = [[1,2]]
+Output: 2
+Example 2:
+
+Input: N = 3, trust = [[1,3],[2,3]]
+Output: 3
+Example 3:
+
+Input: N = 3, trust = [[1,3],[2,3],[3,1]]
+Output: -1
+Example 4:
+
+Input: N = 3, trust = [[1,2],[2,3]]
+Output: -1
+Example 5:
+
+Input: N = 4, trust = [[1,3],[1,4],[2,3],[2,4],[4,3]]
+Output: 3
+ 
+
+Constraints:
+
+1 <= N <= 1000
+0 <= trust.length <= 10^4
+trust[i].length == 2
+trust[i] are all different
+trust[i][0] != trust[i][1]
+1 <= trust[i][0], trust[i][1] <= N
+*/
+class _0997_FindTheTownJudge {
+public:
+    int findJudge(int N, std::vector<std::vector<int>>& trust);
 };
 
 }

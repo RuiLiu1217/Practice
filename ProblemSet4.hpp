@@ -9,1643 +9,924 @@
 #include "Tree.hpp"
 #include "LinkList.hpp"
 namespace LeetCode {
+    /*
+A binary watch has 4 LEDs on the top which represent
+the hours (0-11), and the 6 LEDs on the bottom represent
+the minutes (0-59).
 
-    
-/*
-Remove the minimum number of invalid parentheses in order to make the input string valid. 
-Return all possible results. Note: The input string may contain letters other than the 
-parentheses ( and ).
+Each LED represents a zero or one, with the least significant
+bit on the right.
 
-Input: "()())()"
-Output: ["()()()", "(())()"]
-
-Input: "(a)())()"
-Output: ["(a)()()", "(a())()"]
-
-Input: ")("
-Output: [""]
-*/
-class _0301_RemoveInvalidParentheses {
-public:
-    std::vector<std::string> removeInvalidParentheses(const std::string& parentheses);
-private:
-    bool isValid(const std::string& s);
-    void DFS(const std::string& s, int start, int l, int r, std::vector<std::string>& ans);
-};
-
-/*
-Given an integer array nums, find the sum of the elements 
-between indices i and j (i ≤ j), inclusive.
+For example, the above binary watch reads "3:25".
+Given a non-negative integer n which represents the number of
+LEDs that are currently on, return all possible times the watch
+could represent.
 
 Example:
-Given nums = [-2, 0, 3, -5, 2, -1]
+    Input: n = 1
+    Return: ["1:00", "2:00", "4:00", "8:00", "0:01", 
+            "0:02", "0:04", "0:08", "0:16", "0:32"]
 
-sumRange(0, 2) -> 1
-sumRange(2, 5) -> -1
-sumRange(0, 5) -> -3
 Note:
-You may assume that the array does not change. There are 
-many calls to sumRange function.
+    The order of output does not matter.
+    The hour must not contain a leading zero, for example "01:00"
+    is not valid, it should be "1:00". The minute must be consist 
+    of two digits and may contain a leading zero, for example 
+    "10:2" is not valid, it should be "10:02".
+
+Solution: 
+    Thinking about it in the forward way is difficult, it is better 
+    to think about it in an inverse way:
+    There are total 12 * 60 combinations, why not enum them one by one 
+    and pick up all satisfied items:
 */
-class _0303_RangeSumQuery_Immutable {
+class _0401_BinaryWatch
+{
 public:
-    _0303_RangeSumQuery_Immutable(std::vector<int>& nums);
-    int sumRange(int i, int j);
+    std::vector<std::string> readBinaryWatch(int num);
+};
+
+class _0404_SumOfLeftLeaves
+{
+public:
+    int sumOfLeftLeaves(TreeNode<int> *root);
+};
+
+
+/*
+Given a non-negative integer num represented as a string, remove k digits 
+from the number so that the new number is the smallest possible.
+
+Note:
+The length of num is less than 10002 and will be ≥ k.
+The given num does not contain any leading zero.
+
+Input: num = "1432219", k = 3
+Output: "1219"
+Explanation: Remove the three digits 4, 3, and 2 to form the new number 1219 which is the smallest.
+
+Input: num = "10200", k = 1
+Output: "200"
+Explanation: Remove the leading 1 and the number is 200. Note that the output must not contain leading zeroes.
+
+Input: num = "10", k = 2
+Output: "0"
+Explanation: Remove all the digits from the number and it is left with nothing which is 0.
+*/
+class _0402_RemoveKDigits {
 private:
-    std::vector<int> mSum;
+    std::string removeHeadZeros(std::string num);
+public:
+    std::string removeKdigits(std::string num, int k);
+    std::string removeOnedig(std::string num);
+};
+
+
+/*
+Given an integer, write an algorithm to convert it to hexadecimal. For 
+negative integer, two’s complement method is used.
+All letters in hexadecimal (a-f) must be in lowercase.
+The hexadecimal string must not contain extra leading 0s. If the number is 
+zero, it is represented by a single zero character '0'; otherwise, the first 
+character in the hexadecimal string will not be the zero character.
+The given number is guaranteed to fit within the range of a 32-bit signed 
+integer.
+You must not use any method provided by the library which converts/formats 
+the number to hex directly.
+Input:  26         Output:  "1a"
+Input:  -1         Output:  "ffffffff"
+*/
+class _0405_ConvertANumberToHexadecimal{
+public:
+    std::string toHex(int num);
+};
+
+class _0406_QueueReconstructionByHeight {
+    public:
+        std::vector<std::pair<int, int>> reconstructQueue(std::vector<std::pair<int, int>>& people);
+};
+
+class _0409_LongestPalindrome {
+public:
+    int longestPalindrome(std::string s);
+};
+
+class _0412_FizzBuzz {
+public:
+    std::vector<std::string> fizzBuzz(int n);
+};
+ 
+class _0413_ArighmeticSlices {
+public:
+    int numberOfArithmeticSlices(std::vector<int>& A);
+private:
+    int numberOfSubArith(int N);
+};
+ 
+class _0414_ThirdMaximumNumber{
+public:
+    int thirdMax(std::vector<int>& nums);
 };
 
 /*
-Given a 2D matrix matrix, find the sum of the elements inside 
-the rectangle defined by its upper left corner (row1, col1) 
-and lower right corner (row2, col2).
+Facebook
 
-Range Sum Query 2D
-The above rectangle (with the red border) is defined by (row1, 
-col1) = (2, 1) and (row2, col2) = (4, 3), which contains sum = 8.
+Tag: string operation, math
 
+Given two non-negative integers num1 and num2 represented as string, return the sum of num1 and num2.
+
+Note:
+
+The length of both num1 and num2 is < 5100.
+Both num1 and num2 contains only digits 0-9.
+Both num1 and num2 does not contain any leading zero.
+You must not use any built-in BigInteger library or convert the inputs to integer directly.
+*/
+class _0415_AddStrings {
+public:
+    std::string addStrings(std::string num1, std::string num2);
+};
+
+/*
+Given a non-empty array containing only positive integers, find if the array 
+can be partitioned into two subsets such that the sum of elements in both 
+subsets is equal.
+Note:
+Each of the array element will not exceed 100.
+The array size will not exceed 200.
+
+Example 1:
+Input: [1, 5, 11, 5]
+Output: true
+Explanation: The array can be partitioned as [1, 5, 5] and [11].
+ 
+Example 2:
+Input: [1, 2, 3, 5]
+Output: false
+Explanation: The array cannot be partitioned into equal sum subsets.
+*/
+class _0416_PartitionEqualSubsetSum {
+public:
+    bool canPartition(std::vector<int>& nums);
+};
+
+/*
+Given an 2D board, count how many battleships are in it. The battleships are represented with 'X's, empty slots are represented with '.'s. You may assume the following rules:
+You receive a valid board, made of only battleships or empty slots.
+Battleships can only be placed horizontally or vertically. In other words, they can only be made of the shape 1xN (1 row, N columns) or Nx1 (N rows, 1 column), where N can be of any size.
+At least one horizontal or vertical cell separates between two battleships - there are no adjacent battleships.
 Example:
-Given matrix = [
-  [3, 0, 1, 4, 2],
-  [5, 6, 3, 2, 1],
-  [1, 2, 0, 1, 5],
-  [4, 1, 0, 1, 7],
-  [1, 0, 3, 0, 5]
-]
-
-sumRegion(2, 1, 4, 3) -> 8
-sumRegion(1, 1, 2, 2) -> 11
-sumRegion(1, 2, 2, 4) -> 12
-Note:
-You may assume that the matrix does not change.
-There are many calls to sumRegion function.
-You may assume that row1 ≤ row2 and col1 ≤ col2.
+X..X
+...X
+...X
+In the above board there are 2 battleships.
+Invalid Example:
+...X
+XXXX
+...X
+This is an invalid board that you will not receive - as battleships will always have a cell separating between them.
+Follow up:
+Could you do it in one-pass, using only O(1) extra memory and without modifying the value of the board?
 */
-class _0304_RangeSumQuery2D_Immutable {
+class _0419_BattleshipsInABoard{
 public:
-    _0304_RangeSumQuery2D_Immutable(std::vector<std::vector<int>>& matrix);    
-    int sumRegion(int row1, int col1, int row2, int col2);
+    int countBattleships(std::vector<std::vector<char>>& board);
+};
+
+// We want to use quad trees to store an N x N boolean grid. Each cell in the
+// grid can only be true or false. The root node represents the whole grid. For
+// each node, it will be subdivided into four children nodes until the values in
+// the region it represents are all the same.
+// Each node has another two boolean attributes : isLeaf and val. isLeaf is true
+// if and only if the node is a leaf node. The valattribute for a leaf node contains
+// the value of the region it represents.
+// Your task is to use a quad tree to represent a given grid.
+
+// 这是一道比较简单的题目，主要注意点就是先判断一个矩阵中的值是否一致，在看分隔中是否一致
+class _0427_ConstructQuadTree
+{
+public:
+    QuadTreeNode *construct(std::vector<std::vector<int>> &grid);
+    QuadTreeNode *construct(std::vector<std::vector<int>> &grid,
+                            int rowStart, int rowEnd, int colStart, int colEnd);
+
 private:
-    std::vector<std::vector<int>> prefixSum;
+    bool areConsistent(std::vector<std::vector<int>> &grid);
+    bool areConsistent(std::vector<std::vector<int>> &grid,
+                       int rowStart, int rowEnd, int colStart, int colEnd);
+
+    std::vector<std::vector<std::vector<int>>> divideGrid(std::vector<std::vector<int>> &grid);
 };
 
 /*
-Additive number is a string whose digits can form additive sequence.
-A valid additive sequence should contain at least three numbers. Except 
-for the first two numbers, each subsequent number in the sequence must 
-be the sum of the preceding two.
+Given a non-empty string containing an out-of-order English representation of digits 0-9, output the digits in ascending order.
 
-Given a string containing only digits '0'-'9', write a function to 
-determine if it's an additive number.
+Note:
+Input contains only lowercase English letters.
+Input is guaranteed to be valid and can be transformed to its original digits. That means invalid inputs such as "abc" or "zerone" are not permitted.
+Input length is less than 50,000.
+Example 1:
+Input: "owoztneoer"
 
-Note: Numbers in the additive sequence cannot have leading zeros, so 
-sequence 1, 2, 03 or 1, 02, 3 is invalid.
+Output: "012"
+Example 2:
+Input: "fviefuro"
 
-Input: "112358"
-Output: true
-Explanation: The digits can form an additive sequence: 1, 1, 2, 3, 5, 8. 
-             1 + 1 = 2, 1 + 2 = 3, 2 + 3 = 5, 3 + 5 = 8
+Output: "45"
+*/
+class _0423_ReconstructOriginalDigitFromEnglish {
+public:
+    std::string originalDigits(std::string s);
+};
 
-Input: "199100199"
-Output: true
-Explanation: The additive sequence is: 1, 99, 100, 199. 
-    1 + 99 = 100, 99 + 100 = 199
+/*
+Convert a Binary Search Tree to a sorted Circular Doubly-Linked List in place.
+You can think of the left and right pointers as synonymous to the predecessor 
+and successor pointers in a doubly-linked list. For a circular doubly linked list, 
+the predecessor of the first element is the last element, and the successor of 
+the last element is the first element.
+We want to do the transformation in place. After the transformation, the left 
+pointer of the tree node should point to its predecessor, and the right pointer 
+should point to its successor. You should return the pointer to the smallest 
+element of the linked list.
+
+Input: root = [4,2,5,1,3]
+Output: [1,2,3,4,5]
+
+Explanation: The figure below shows the transformed BST. The solid line indicates 
+the successor relationship, while the dashed line means the predecessor relationship.
+
+Input: root = [2,1,3]
+Output: [1,2,3]
+
+Input: root = []
+Output: []
+Explanation: Input is an empty tree. Output is also an empty Linked List.
+
+Input: root = [1]
+Output: [1]
+ 
 
 Constraints:
-num consists only of digits '0'-'9'.
-1 <= num.length <= 35
-Follow up:
-How would you handle overflow for very large input integers?
+
+-1000 <= Node.val <= 1000
+Node.left.val < Node.val < Node.right.val
+All values of Node.val are unique.
+0 <= Number of Nodes <= 2000
 */
-class _0306_AdditiveNumber {
+class _0426_ConvertBinarySearchTreeToSortedDoublyLinkedList {
 public:
-    bool isAdditiveNumber(std::string num);
-    bool isAdditiveNumber(std::string& num, int start1, int start2, int start3);
-    std::string add(std::string a, std::string b);
-};
-
-/*
-Given an integer array nums, find the sum of the elements between indices i and j (i ≤ j), inclusive.
-The update(i, val) function modifies nums by updating the element at index i to val.
-
-Given nums = [1, 3, 5]
-
-sumRange(0, 2) -> 9
-update(1, 2)
-sumRange(0, 2) -> 8
-Note:
-
-The array is only modifiable by the update function.
-You may assume the number of calls to update and sumRange function is distributed evenly.
-*/
-class _0307_RangeSumQuery_Mutable {
-private:
-    std::vector<int> data;
-    int arrayLength;
-public:
-    _0307_RangeSumQuery_Mutable(std::vector<int>& nums);
-    void update(int i, int val);
-    int sumRange(int i, int j);
-};
-
-/*
-For an undirected graph with tree characteristics, we can choose any node as 
-the root. The result graph is then a rooted tree. Among all possible rooted 
-trees, those with minimum height are called minimum height trees (MHTs). Given 
-such a graph, write a function to find all the MHTs and return a list of their 
-root labels.
-
-Format
-The graph contains n nodes which are labeled from 0 to n - 1. You will be given 
-the number n and a list of undirected edges (each edge is a pair of labels).
-
-You can assume that no duplicate edges will appear in edges. Since all edges are
-undirected, [0, 1] is the same as [1, 0] and thus will not appear together in edges.
-
-Input: n = 4, edges = [[1, 0], [1, 2], [1, 3]]
-
-        0
-        |
-        1
-       / \
-      2   3 
-
-Output: [1]
-
-Input: n = 6, edges = [[0, 3], [1, 3], [2, 3], [4, 3], [5, 4]]
-
-     0  1  2
-      \ | /
-        3
-        |
-        4
-        |
-        5 
-
-Output: [3, 4]
-*/
-class _0310_MinimumHeightTrees {
-public:
-    std::vector<int> findMinHeightTrees(int n, std::vector<std::vector<int>>& edges);
-};
-
-
-/*
-Given two sparse matrices A and B, return the result of AB.
-You may assume that A's column number is equal to B's row number.
-
-Input:
-
-A = [
-  [ 1, 0, 0],
-  [-1, 0, 3]
-]
-
-B = [
-  [ 7, 0, 0 ],
-  [ 0, 0, 0 ],
-  [ 0, 0, 1 ]
-]
-
-Output:
-
-     |  1 0 0 |   | 7 0 0 |   |  7 0 0 |
-AB = | -1 0 3 | x | 0 0 0 | = | -7 0 3 |
-                  | 0 0 1 |
-*/
-class _0311_SparseMatrixMultiplication {
-public:
-    std::vector<std::vector<int>> multiply(std::vector<std::vector<int>>& A, std::vector<std::vector<int>>& B);
-
-};
-
-
-/*
-Write a program to find the nth super ugly number.
-Super ugly numbers are positive numbers whose all prime factors are in the given 
-prime list primes of size k.
-
-Input: n = 12, primes = [2,7,13,19]
-Output: 32 
-Explanation: [1,2,4,7,8,13,14,16,19,26,28,32] is the sequence of the first 12 
-    super ugly numbers given primes = [2,7,13,19] of size 4.
-Note:
-
-1 is a super ugly number for any given primes.
-The given numbers in primes are in ascending order.
-0 < k ≤ 100, 0 < n ≤ 106, 0 < primes[i] < 1000.
-The nth super ugly number is guaranteed to fit in a 32-bit signed integer.
-*/
-class _0313_SuperUglyNumber {
-public:
-    int nthSuperUglyNumber(int n, std::vector<int>& primes);
-private:
-    int _min(std::vector<int>& res, std::vector<int>& idx, std::vector<int>& primes);
-};
-
-
-/*
-You are given an integer array nums and you have to return a new counts array. The 
-counts array has the property where counts[i] is the number of smaller elements to 
-the right of nums[i].
-
-Input: [5,2,6,1]
-Output: [2,1,1,0] 
-Explanation:
-To the right of 5 there are 2 smaller elements (2 and 1).
-To the right of 2 there is only 1 smaller element (1).
-To the right of 6 there is 1 smaller element (1).
-To the right of 1 there is 0 smaller element.
-*/
-class _0315_CountOfSmallerNumberAfterSelf {
-public:
-    std::vector<int> countSmaller(std::vector<int>& nums);
-};
-
-/*
-Given a string which contains only lowercase letters, remove duplicate letters 
-so that every letter appears once and only once. You must make sure your result 
-is the smallest in lexicographical order among all possible results.
-
-Input: "bcabc"          :           Output: "abc"
-Input: "cbacdcbc"       :           Output: "acdb"
-
-// https://www.youtube.com/watch?v=SrlvMmfG8sA
-// 分别用两个数组来记录，第一个数组统计各个字母出现的次数
-// 第二个数组用于记录这个字符是否用过了
-*/
-class _0316_RemoveDuplicateLetters {
-public:   
-    std::string removeDuplicateLetters(std::string s);
-};
-
-/*
-Given a string array words, find the maximum value of 
-length(word[i]) * length(word[j]) where the two words do not share common letters. 
-You may assume that each word will contain only lower case letters. 
-If no such two words exist, return 0.
-
-Input: ["abcw","baz","foo","bar","xtfn","abcdef"]
-Output: 16 
-Explanation: The two words can be "abcw", "xtfn".
-Example 2:
-
-Input: ["a","ab","abc","d","cd","bcd","abcd"]
-Output: 4 
-Explanation: The two words can be "ab", "cd".
-Example 3:
-
-Input: ["a","aa","aaa","aaaa"]
-Output: 0 
-Explanation: No such pair of words.
-*/
-class _0318_MaximumProductOfWordLengths {
-public:
-    int maxProduct(std::vector<std::string>& words);
-};
-
-/*
-There are n bulbs that are initially off. You first turn on all the bulbs. Then, you 
-turn off every second bulb. On the third round, you toggle every third bulb (turning 
-on if it's off or turning off if it's on). For the i-th round, you toggle every i bulb. 
-For the n-th round, you only toggle the last bulb. Find how many bulbs are on after 
-n rounds.
-
-Example:
-
-Input: 3
-Output: 1 
-Explanation: 
-At first, the three bulbs are [off, off, off].
-After first round, the three bulbs are [on, on, on].
-After second round, the three bulbs are [on, off, on].
-After third round, the three bulbs are [on, off, off]. 
-
-So you should return 1, because there is only one bulb is on.
-*/
-class _0319_BulbSwitcher {
-public:
-    int bulbSwitch(int n);
-};
-
-/*
-Tag: 
-
-Google
-   
-Write a function to generate the generalized abbreviations of a word. 
-Note: The order of the output does not matter.
-Example:
-
-Input: "word"
-Output:
-["word", "1ord", "w1rd", "wo1d", "wor1", "2rd", "w2d", "wo2", 
-"1o1d", "1or1", "w1r1", "1o2", "2r1", "3d", "w3", "4"]
-*/
-class _0320_GeneralizedAbbreviation {
-public:
-    std::vector<std::string> generalizeAbbreviations(std::string word);
-};
-
-/*
-Given two arrays of length m and n with digits 0-9 representing two 
-numbers. Create the maximum number of length k <= m + n from digits
-of the two. The relative order of the digits from the same array 
-must be preserved. Return an array of the k digits.
-
-Note: You should try to optimize your time and space complexity.
-
-Example 1:
-
-Input:
-nums1 = [3, 4, 6, 5]
-nums2 = [9, 1, 2, 5, 8, 3]
-k = 5
-Output:
-[9, 8, 6, 5, 3]
-Example 2:
-
-Input:
-nums1 = [6, 7]
-nums2 = [6, 0, 4]
-k = 5
-Output:
-[6, 7, 6, 0, 4]
-Example 3:
-
-Input:
-nums1 = [3, 9]
-nums2 = [8, 9]
-k = 3
-Output:
-[9, 8, 9]
-// 经典题，必会的，DP + Greedy
-//将问题拆分成两步，第一步两个数组合并，如果都用上，如何得到最大，第二步，在一个数组中拿k个数，怎么得到最大。
-// 第三步，分别在两个数组中拿k1，k-k1 个元素，各自最大，然后合并出最大于当前的，直到遍历所有可能的k1
-*/
-class _0321_CreateMaximumNumber {
-public:
-    std::vector<int> maxNumber(std::vector<int>& nums1, std::vector<int>& nums2, int k);
-private:
-    std::vector<int> maxNumber(const std::vector<int>& nums1,const std::vector<int>& nums2);
-    std::vector<int> maxNumber(const std::vector<int>& nums, int k);
-};
-
-/*
-Tag: dynamic programming
-You are given coins of different denominations and a total amount of 
-money amount. Write a function to compute the fewest number of coins 
-that you need to make up that amount. If that amount of money cannot 
-be made up by any combination of the coins, return -1.
-
-Example 1:
-
-Input: coins = [1, 2, 5], amount = 11
-Output: 3 
-Explanation: 11 = 5 + 5 + 1
-Example 2:
-
-Input: coins = [2], amount = 3
-Output: -1
-*/
-class _0322_CoinChange {
-public:
-    int coinChange(std::vector<int>& coins, int amount);
-private:
-    int coinChange_Help(const std::vector<int>& coins, int amout);
-    std::vector<int> DP;
-};
-
-/*
-Given an array nums and a target value k, find the maximum length of a subarray that sums to k. If there isn't one, return 0 instead.
-
-Note:
-The sum of the entire nums array is guaranteed to fit within the 32-bit signed integer range.
-
-Example 1:
-
-Input: nums = [1, -1, 5, -2, 3], k = 3
-Output: 4 
-Explanation: The subarray [1, -1, 5, -2] sums to 3 and is the longest.
-Example 2:
-
-Input: nums = [-2, -1, 2, 1], k = 1
-Output: 2 
-Explanation: The subarray [-1, 2] sums to 1 and is the longest.
-Follow Up:
-Can you do it in O(n) time?
-*/
-class _0325_MaximumSizeSubarraySumEqualsK {
-public:
-    int maxSubArrayLen(std::vector<int>& nums, int k);
-};
-
-/*
-Given an integer, write a function to determine if it is a power of three.
-
-Example 1:
-
-Input: 27
-Output: true
-Example 2:
-
-Input: 0
-Output: false
-Example 3:
-
-Input: 9
-Output: true
-Example 4:
-
-Input: 45
-Output: false
-Follow up:
-Could you do it without using any loop / recursion?
-*/
-class _0326_PowerOfThree{
-public:
-    bool isPowerOfThree(int n);
-};
-
-/*
-328. Odd Even Linked List
-
-Given a singly linked list, group all odd nodes together followed by 
-the even nodes. Please note here we are talking about the node number 
-and not the value in the nodes.
-
-You should try to do it in place. The program should run in O(1) space 
-complexity and O(nodes) time complexity.
-
-Input: 1->2->3->4->5->NULL
-Output: 1->3->5->2->4->NULL
-Example 2:
-
-Input: 2->1->3->5->6->4->7->NULL
-Output: 2->3->6->7->1->5->4->NULL
-Note:
-
-The relative order inside both the even and odd groups should remain as it was in the input.
-The first node is considered odd, the second node even and so on ...
-*/
-class _0328_OddEvenLinkedList {
-public:
-    ListNode<int>* oddEvenList(ListNode<int>* head);
-};
-
-/*
-Given an integer matrix, find the length of the longest increasing path.
-From each cell, you can either move to four directions: left, right, up or down. You may NOT 
-move diagonally or move outside of the boundary (i.e. wrap-around is not allowed).
-
-Example 1:
-
-Input: nums = 
-[
-  [9,9,4],
-  [6,6,8],
-  [2,1,1]
-] 
-Output: 4 
-Explanation: The longest increasing path is [1, 2, 6, 9].
-Example 2:
-
-Input: nums = 
-[
-  [3,4,5],
-  [3,2,6],
-  [2,2,1]
-] 
-Output: 4 
-Explanation: The longest increasing path is [3, 4, 5, 6]. Moving diagonally is not allowed.
-*/
-class _0329_LongestIncreasingPathInAMatrix {
-private:
-    std::vector<std::vector<int>> DP;
-    int mRow;
-    int mCol;
-    int DFS(const std::vector<std::vector<int>>& matrix, int I, int J);
-public:
-    int longestIncreasingPath(std::vector<std::vector<int>>& matrix);
-};
-
-/*
-Given a sorted positive integer array nums and an integer n, add/patch elements to the array 
-such that any number in range [1, n] inclusive can be formed by the sum of some elements in 
-the array. Return the minimum number of patches required.
-
-Input: nums = [1,3], n = 6
-Output: 1 
-Explanation:
-Combinations of nums are [1], [3], [1,3], which form possible sums of: 1, 3, 4.
-Now if we add/patch 2 to nums, the combinations are: [1], [2], [3], [1,3], [2,3], [1,2,3].
-Possible sums are 1, 2, 3, 4, 5, 6, which now covers the range [1, 6].
-So we only need 1 patch.
-
-Input: nums = [1,5,10], n = 20
-Output: 2
-Explanation: The two patches can be [2, 4].
-Example 3:
-
-Input: nums = [1,2,2], n = 5
-Output: 0
-*/
-class _0330_PatchingArray {
-public:
-    int minPatches(std::vector<int>& nums, int n);
-};
-
-/*
-One way to serialize a binary tree is to use pre-order traversal. When we encounter a 
-non-null node, we record the node's value. If it is a null node, we record using a 
-sentinel value such as #.
-
-     _9_
-    /   \
-   3     2
-  / \   / \
- 4   1  #  6
-/ \ / \   / \
-# # # #   # #
-For example, the above binary tree can be serialized to the string "9,3,4,#,#,1,#,#,2,#,6,#,#", 
-where # represents a null node.
-Given a string of comma separated values, verify whether it is a correct preorder traversal 
-serialization of a binary tree. Find an algorithm without reconstructing the tree.
-Each comma separated value in the string must be either an integer or a character '#' representing null pointer.
-You may assume that the input format is always valid, for example it could never contain two 
-consecutive commas such as "1,,3".
-
-Input: "9,3,4,#,#,1,#,#,2,#,6,#,#"
-Output: true
-
-Input: "1,#"
-Output: false
-
-Input: "9,#,#,1"
-Output: false
-*/
-class _0331_VerifyPreorderSerializationOfABinaryTree {
-public:
-    bool isValidSerialization(std::string preorder);
-};
-
-/*
-The thief has found himself a new place for his thievery again. There is only one 
-entrance to this area, called the "root." Besides the root, each house has one and 
-only one parent house. After a tour, the smart thief realized that "all houses in 
-this place forms a binary tree". It will automatically contact the police if two 
-directly-linked houses were broken into on the same night.
-
-Determine the maximum amount of money the thief can rob tonight without alerting 
-the police.
-
-Input: [3,2,3,null,3,null,1]
-
-     3
-    / \
-   2   3
-    \   \ 
-     3   1
-
-Output: 7 
-Explanation: Maximum amount of money the thief can rob = 3 + 3 + 1 = 7.
-
-Input: [3,4,5,1,3,null,1]
-
-     3
-    / \
-   4   5
-  / \   \ 
- 1   3   1
-
-Output: 9
-Explanation: Maximum amount of money the thief can rob = 4 + 5 = 9.
-*/
-class _0337_HouseRobberIII {
-private:
-    std::unordered_map<TreeNode<int>*, int> Map;
-public:
-    int rob(TreeNode<int>* root);
-private:
-    int robHelper(TreeNode<int>* root);
-};
-
-/*
-Given a non negative integer number num. For every numbers i in the range 
-0 ≤ i ≤ num calculate the number of 1's in their binary representation and 
-return them as an array.
-
-Input: 2  :  Output: [0,1,1]
-
-Input: 5  :  Output: [0,1,1,2,1,2]
-
-It is very easy to come up with a solution with run time O(n*sizeof(integer)). 
-But can you do it in linear time O(n) /possibly in a single pass?
-Space complexity should be O(n).
-Can you do it like a boss? Do it without using any builtin function like 
-__builtin_popcount in c++ or in any other language.
-*/
-class _0338_CountingBits {
-public:
-    std::vector<int> countBits(int num);
-};
-
-/*
-    Given a nested list of integers, implement an iterator to flatten it.
-    Each element is either an integer, or a list -- whose elements may 
-    also be integers or other lists.
-
-    Example 1:
-    Input: [[1,1],2,[1,1]]
-    Output: [1,1,2,1,1]
-    Explanation: By calling next repeatedly until hasNext returns false, 
-    the order of elements returned by next should be: [1,1,2,1,1].
-
-    Example 2:
-    Input: [1,[4,[6]]]
-    Output: [1,4,6]
-    Explanation: By calling next repeatedly until hasNext returns false, 
-    the order of elements returned by next should be: [1,4,6].
-*/
-
-// This is the interface that allows for creating nested lists.
-// You should not implement it, or speculate about its implementation
-class NestedInteger
-{
-public:
-    // Return true if this NestedInteger holds a single integer, rather than a nested list.
-    bool isInteger() const;
-
-    // Return the single integer that this NestedInteger holds, if it holds a single integer
-    // The result is undefined if this NestedInteger holds a nested list
-    int getInteger() const;
-
-    // Return the nested list that this NestedInteger holds, if it holds a nested list
-    // The result is undefined if this NestedInteger holds a single integer
-    const std::vector<NestedInteger> &getList() const;
-};
-
-/*
-Given a nested list of integers, return the sum of all integers in the list weighted by 
-their depth. Each element is either an integer, or a list -- whose elements may also be 
-integers or other lists.
-
-Input: [[1,1],2,[1,1]]
-Output: 10 
-Explanation: Four 1's at depth 2, one 2 at depth 1.
-
-Input: [1,[4,[6]]]
-Output: 27 
-Explanation: One 1 at depth 1, one 4 at depth 2, and one 6 at depth 3; 1 + 4*2 + 6*3 = 27.
-*/
-class _0339_NestedListWeightSum {
-public:
-    int depthSum(std::vector<NestedInteger>& nestedList);
-private:
-    int depthSum(std::vector<NestedInteger>& nestedList, int depth);
-};
-
-/*
-Tag: Sliding Window
-
-Facebook
-
-Given a string, find the length of the longest substring T that contains at most k 
-distinct characters.
-
-Input: s = "eceba", k = 2
-Output: 3
-Explanation: T is "ece" which its length is 3.
-
-Input: s = "aa", k = 1
-Output: 2
-Explanation: T is "aa" which its length is 2.
-*/
-class _0340_LongestSubstringWithAtMostKDistintCharacters {
-public:
-    int lengthOfLongestSubstringKDistinct(std::string s, int k);
-};
-
-// TODO: COPY FROM A SOLUTION
-class _0341_FlattenNestedListIterator {
-private:
-    std::vector<NestedInteger> nl;
-    _0341_FlattenNestedListIterator *itr = nullptr;
-    int index = -1;
-
-public:
-    _0341_FlattenNestedListIterator(std::vector<NestedInteger> &nestedList);
-
-    int next();
-    bool hasNext();
-    bool hasContent(std::vector<NestedInteger> V);
-    void increaseIndex();
-};
-
-/*
-    Given an integer (signed 32 bits), write a function 
-    to check whether it is a power of 4.
-    
-    Example 1:
-        Input: 16
-        Output: true
-    Example 2:
-        Input: 5
-        Output: false
-    Follow up: Could you solve it without loops/recursion?
-    */
-class _0342_PowerOfFour {
-public:
-    bool isPowerOfFour(int num);
-};
-
-/*
-Given a positive integer n, break it into the sum of at least two 
-positive integers and maximize the product of those integers. Return 
-the maximum product you can get.
-
-Input: 2      :       Output: 1
-Explanation: 2 = 1 + 1, 1 × 1 = 1.
-
-Input: 10     :       Output: 36
-Explanation: 10 = 3 + 3 + 4, 3 × 3 × 4 = 36.
-Note: You may assume that n is not less than 2 and not larger than 58.
-*/
-class _0343_IntegerBreak {
-public:
-    int intergerBreak(int n);
-};
-
-/*
-Write a function that reverses a string. The input string is given as 
-an array of characters char[].
-Do not allocate extra space for another array, you must do this by 
-modifying the input array in-place with O(1) extra memory.
-
-You may assume all the characters consist of printable ascii characters.
-
-Input: ["h","e","l","l","o"]
-Output: ["o","l","l","e","h"]
-
-Input: ["H","a","n","n","a","h"]
-Output: ["h","a","n","n","a","H"]
-*/
-class _0344_ReverseString {
-public:
-    void reverseString(std::vector<char>& s);
-};
-
-
-/*
-Write a function that takes a string as input and reverse only the vowels of a string.
-
-Input: "hello"
-Output: "holle"
-
-Input: "leetcode"
-Output: "leotcede"
-Note:
-The vowels does not include the letter "y".
-*/
-class _0345_ReverseVowelsOfAString {
-public:
-    std::string reverseVowels(std::string s);
-};
-
-
-/*
-Given a non-empty array of integers, return the k most frequent elements.
-
-Example 1:
-
-Input: nums = [1,1,1,2,2,3], k = 2
-Output: [1,2]
-Example 2:
-
-Input: nums = [1], k = 1
-Output: [1]
-Note:
-
-You may assume k is always valid, 1 ≤ k ≤ number of unique elements.
-Your algorithm's time complexity must be better than O(n log n), where n is the array's size.
-*/
-class _0347_TopKFrequentElements {
-public:
-    std::vector<int> topKFrequent(std::vector<int>& nums, int k);
-};
-
-/*
-
-Tag: hash
-
-Facebook
-
-Given two arrays, write a function to compute their intersection.
-
-Input: nums1 = [1,2,2,1], nums2 = [2,2]
-Output: [2]
-
-Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
-Output: [9,4]
-Note:
-Each element in the result must be unique.
-The result can be in any order.
-*/
-class _0349_IntersectionOfTwoArrays {
-public:
-    std::vector<int> intersection(std::vector<int>& nums1, std::vector<int>& nums2);
-};
-
-/*
-Given two arrays, write a function to compute their intersection.
-
-Input: nums1 = [1,2,2,1], nums2 = [2,2]           :          Output: [2,2]
-Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]       :          Output: [4,9]
-
-Note:
-Each element in the result should appear as many times as it shows in both arrays.
-The result can be in any order.
-Follow up:
-What if the given array is already sorted? How would you optimize your algorithm?
-What if nums1's size is small compared to nums2's size? Which algorithm is better?
-What if elements of nums2 are stored on disk, and the memory is limited such that you cannot load all elements into the memory at once?
-*/
-class _0350_IntersectionOfTwoArraysII {
-public:
-    std::vector<int> intersect(std::vector<int>& nums1, std::vector<int>& nums2);
-};
-
-/*
-        Given a non-negative integer n, count all numbers with unique 
-        digits, x, where 0 ≤ x < pow(10, n).
-        
-        Example:
-        Input: 2
-        Output: 91 
-        Explanation: The answer should be the total numbers in the range of 0 ≤ x < 100, 
-                     excluding 11,22,33,44,55,66,77,88,99
-    */
-class _0357_CountNumbersWithUniqueDigits
-{
-public:
-    int countNumbersWithUniqueDigits(int n);
-private:
-    // For n-digits, it is a simple combination problem
-    // The first digit has 9 choices.
-    // From the second digits, 9 , 8, 7 ... selections until 1
-    int countExactDigit(int n);
-};
-
-/*
-Design a logger system that receive stream of messages along with 
-its timestamps, each message should be printed if and only if it 
-is not printed in the last 10 seconds.
-
-Given a message and a timestamp (in seconds granularity), return 
-true if the message should be printed in the given timestamp, 
-otherwise returns false.
-
-It is possible that several messages arrive roughly at the same time.
-
-Logger logger = new Logger();
-
-// logging string "foo" at timestamp 1
-logger.shouldPrintMessage(1, "foo"); returns true; 
-
-// logging string "bar" at timestamp 2
-logger.shouldPrintMessage(2,"bar"); returns true;
-
-// logging string "foo" at timestamp 3
-logger.shouldPrintMessage(3,"foo"); returns false;
-
-// logging string "bar" at timestamp 8
-logger.shouldPrintMessage(8,"bar"); returns false;
-
-// logging string "foo" at timestamp 10
-logger.shouldPrintMessage(10,"foo"); returns false;
-
-// logging string "foo" at timestamp 11
-logger.shouldPrintMessage(11,"foo"); returns true;
-*/
-class _0359_LoggerRateLimiter {
-private:
-    std::unordered_map<std::string, int> map;
-public:
-    _0359_LoggerRateLimiter() {}
-    bool shouldPrintMessage(int timeStamp, std::string message);
-};
-
-/*
-Given a 2D grid, each cell is either a wall 'W', an enemy 'E' or 
-empty '0' (the number zero), return the maximum enemies you can 
-kill using one bomb. The bomb kills all the enemies in the same 
-row and column from the planted point until it hits the wall since 
-the wall is too strong to be destroyed.
-Note: You can only put the bomb at an empty cell.
-
-
-Input: [["0","E","0","0"],["E","0","W","E"],["0","E","0","0"]]
-Output: 3 
-Explanation: For the given grid,
-
-0 E 0 0 
-E 0 W E 
-0 E 0 0
-
-Placing a bomb at (1,1) kills 3 enemies.
-*/
-class _0361_BombEnemy {
-public:
-    int maxkilledEnemies(std::vector<std::vector<char>>& grid);
-};
-
-/*
-Tag: Data Structure
-Google
-
-Design a hit counter which counts the number of hits received 
-in the past 5 minutes.
-Each function accepts a timestamp parameter (in seconds granularity) 
-and you may assume that calls are being made to the system in 
-chronological order (ie, the timestamp is monotonically increasing). 
-You may assume that the earliest timestamp starts at 1.
-
-It is possible that several hits arrive roughly at the same time.
-
-HitCounter counter = new HitCounter();
-
-// hit at timestamp 1.
-counter.hit(1);
-
-// hit at timestamp 2.
-counter.hit(2);
-
-// hit at timestamp 3.
-counter.hit(3);
-
-// get hits at timestamp 4, should return 3.
-counter.getHits(4);
-
-// hit at timestamp 300.
-counter.hit(300);
-
-// get hits at timestamp 300, should return 4.
-counter.getHits(300);
-
-// get hits at timestamp 301, should return 3.
-counter.getHits(301); 
-Follow up:
-What if the number of hits per second could be very large? Does your design scale?
-*/
-class _0362_DesignHitCounter {
-    class Node {
-    public:
-        int timeStamp;
-        int hitNum;
-        Node* prev;
-        Node* next;
+    struct Node {
+        int val;
+        Node* left;
+        Node* right;
     };
+    Node* treeToDoublyList(Node* root);
 private:
-    Node* head;
-    Node* tail;
-public:
-    _0362_DesignHitCounter() {
-        head = nullptr;
-        tail = nullptr;
-    }
-    /** Record a hit.
-        @param timestamp - The current timestamp (in seconds granularity). 
-    */
-    void hit(int timestamp);
-
-    /** Return the number of hits in the past 5 minutes.
-        @param timestamp - The current timestamp (in seconds granularity). 
-    */
-    int getHits(int timestamp);
+    std::pair<Node*, Node*> conn(Node* root);
 };
 
 /*
-Given a nested list of integers, return the sum of all integers in the list 
-weighted by their depth. Each element is either an integer, or a list -- 
-whose elements may also be integers or other lists. Different from the previous 
-question where weight is increasing from root to leaf, now the weight is 
-defined from bottom up. i.e., the leaf level integers have weight 1, and the 
-root level integers have the largest weight.
+Given an n-ary tree, return the level order traversal 
+of its nodes' values. (ie, from left to right, level by level).
 
-Input: [[1,1],2,[1,1]]
-Output: 8 
-Explanation: Four 1's at depth 1, one 2 at depth 2.
-
-Input: [1,[4,[6]]]
-Output: 17 
-Explanation: One 1 at depth 3, one 4 at depth 2, and one 6 at depth 1; 1*3 + 4*2 + 6*1 = 17.
+For example, given a 3-ary tree:
+    We should return its level order traversal:
+    [
+        [1],
+        [3,2,4],
+        [5,6]
+    ]
+Note:
+    The depth of the tree is at most 1000.
+    The total number of nodes is at most 5000.
 */
-class NestedInteger;
-class _0364_NestedListWeightSumII {
-public:
-    int depthSumInv(std::vector<NestedInteger>& nestedList, int level);;
-};
-
-/*
-Given a positive integer num, write a function which returns True if num is a 
-perfect square else False. Note: Do not use any built-in library function such 
-as sqrt.
-
-Input: 16
-Returns: True
-
-Input: 14
-Returns: False
-Credits:
-Special thanks to @elmirap for adding this problem and creating all test cases.
-*/
-class _0367_ValidPerfectSquare {
-public:
-    bool isPerfectSquare(int x);
-};
-
-/*
-Given a set of distinct positive integers, find the largest subset such that every pair 
-(Si, Sj) of elements in this subset satisfies:
-
-Si % Sj = 0 or Sj % Si = 0.
-
-If there are multiple solutions, return any subset is fine.
-
-Input: [1,2,3]
-Output: [1,2] (of course, [1,3] will also be ok)
-
-Input: [1,2,4,8]
-Output: [1,2,4,8]
-*/
-class _0368_LargestDivisibleSubset {
-public:
-    std::vector<int> largestDivisibleSubset(std::vector<int>& nums);
-};
-
-/*
-Calculate the sum of two integers a and b, but you 
-are not allowed to use the operator + and -.
-
-Example 1:
-    Input: a = 1, b = 2
-    Output: 3
-Example 2:
-    Input: a = -2, b = 3
-    Output: 1
-*/
-class _0371_SumOfTwoIntegers
+class _0429_NaryTreelevelOrderTraversal
 {
 public:
-    int getSum(int a, int b);
+    std::vector<std::vector<int>> levelOrder(NaryTreeNode<int> *root);
 };
 
 /*
-Your task is to calculate ab mod 1337 where a is a positive integer 
-and b is an extremely large positive integer given in the form of an array.
+You are given a doubly linked list which in addition to the next and 
+previous pointers, it could have a child pointer, which may or may not 
+point to a separate doubly linked list. These child lists may have one
+or more children of their own, and so on, to produce a multilevel data
+ structure, as shown in the example below.
+Flatten the list so that all the nodes appear in a single-level, doubly 
+linked list. You are given the head of the first level of the list.
 
-Input: a = 2, b = [3]
-Output: 8
+Input: head = [1,2,3,4,5,6,null,null,null,7,8,9,10,null,null,11,12]
+Output: [1,2,3,7,8,11,12,9,10,4,5,6]
+Explanation:
 
-Input: a = 2, b = [1,0]
-Output: 1024
+The multilevel linked list in the input is as follows:
+After flattening the multilevel linked list it becomes:
+
+Input: head = [1,2,null,3]
+Output: [1,3,2]
+Explanation:
+
+The input multilevel linked list is as follows:
+
+  1---2---NULL
+  |
+  3---NULL
+
+Input: head = []
+Output: []
+How multilevel linked list is represented in test case:
+
+We use the multilevel linked list from Example 1 above:
+
+ 1---2---3---4---5---6--NULL
+         |
+         7---8---9---10--NULL
+             |
+             11--12--NULL
+Constraints:
+Number of Nodes will not exceed 1000.
+1 <= Node.val <= 10^5
 */
-class _0372_SuperPow {
+class _0430_FlattenAMultilevelDoublyLinkedList {
+    class Node{
+        public:
+            int val;
+            Node* prev;
+            Node* next;
+            Node* child;
+    };
 public:
-    int superPow(int a, std::vector<int>& b);
+    Node* flatten(Node* head);
 };
 
 /*
-A sequence of numbers is called a wiggle sequence if the differences between 
-successive numbers strictly alternate between positive and negative. The first 
-difference (if one exists) may be either positive or negative. A sequence 
-with fewer than two elements is trivially a wiggle sequence.
-For example, [1,7,4,9,2,5] is a wiggle sequence because the differences 
-(6,-3,5,-7,3) are alternately positive and negative. In contrast, [1,4,7,2,5] 
-and [1,7,4,5,5] are not wiggle sequences, the first because its first two 
-differences are positive and the second because its last difference is zero.
+A gene string can be represented by an 8-character long string, with choices 
+from "A", "C", "G", "T". Suppose we need to investigate about a mutation 
+(mutation from "start" to "end"), where ONE mutation is defined as ONE single 
+character changed in the gene string.
 
-Given a sequence of integers, return the length of the longest subsequence that 
-is a wiggle sequence. A subsequence is obtained by deleting some number of elements 
-(eventually, also zero) from the original sequence, leaving the remaining elements 
-in their original order.
+For example, "AACCGGTT" -> "AACCGGTA" is 1 mutation.
+Also, there is a given gene "bank", which records all the valid gene mutations. 
+A gene must be in the bank to make it a valid gene string.
+Now, given 3 things - start, end, bank, your task is to determine what is the 
+minimum number of mutations needed to mutate from "start" to "end". If there 
+is no such a mutation, return -1.
 
-Input: [1,7,4,9,2,5]
-Output: 6
-Explanation: The entire sequence is a wiggle sequence.
-Example 2:
+Starting point is assumed to be valid, so it might not be included in the bank.
+If multiple mutations are needed, all mutations during in the sequence must be valid.
+You may assume start and end string is not the same.
 
-Input: [1,17,5,10,13,15,10,5,16,8]
-Output: 7
-Explanation: There are several subsequences that achieve this length. One is [1,17,10,13,10,16,8].
-Example 3:
+start: "AACCGGTT"
+end:   "AACCGGTA"
+bank: ["AACCGGTA"]
+return: 1
+ 
+start: "AACCGGTT"
+end:   "AAACGGTA"
+bank: ["AACCGGTA", "AACCGCTA", "AAACGGTA"]
+return: 2
 
-Input: [1,2,3,4,5,6,7,8,9]
+start: "AAAAACCC"
+end:   "AACCCCCC"
+bank: ["AAAACCCC", "AAACCCCC", "AACCCCCC"]
+return: 3
+*/
+class _0433_MinimumGeneticMutation {
+public:
+    int minMutation(std::string start, std::string end, std::vector<std::string>& bank);
+};
+
+class _0434_NumberOfSegmentsInAString {
+public:
+    int countSegments(std::string s);
+};
+
+/*
+Given a collection of intervals, find the minimum number of intervals you need
+to remove to make the rest of the intervals non-overlapping.
+
+Input: [[1,2],[2,3],[3,4],[1,3]]
+Output: 1
+Explanation: [1,3] can be removed and the rest of intervals are non-overlapping.
+
+Input: [[1,2],[1,2],[1,2]]
 Output: 2
-Follow up:
-Can you do it in O(n) time?
-*/
-class _0376_WiggleSubsequence {
-public:
-    int wiggleMaxLength(std::vector<int>& nums);
-};
+Explanation: You need to remove two [1,2] to make the rest of intervals non-overlapping.
 
-/*
-Given an integer array with all positive numbers and no duplicates, find the number of possible 
-combinations that add up to a positive integer target.
-
-nums = [1, 2, 3]
-target = 4
-
-The possible combination ways are:
-(1, 1, 1, 1)
-(1, 1, 2)
-(1, 2, 1)
-(1, 3)
-(2, 1, 1)
-(2, 2)
-(3, 1)
-
-Note that different sequences are counted as different combinations.
-
-Therefore the output is 7.
-
-Follow up:
-What if negative numbers are allowed in the given array?
-How does it change the problem?
-What limitation we need to add to the question to allow negative numbers?
-
-Credits:
-Special thanks to @pbrother for adding this problem and creating all test cases.
-*/
-class _0377_CombinationSumIV {
-public:
-
-};
-
-
-/*
-    Given a n x n matrix where each of the rows and columns 
-    are sorted in ascending order, find the kth smallest element 
-    in the matrix.
-    
-    Note that it is the kth smallest element in the sorted order, 
-    not the kth distinct element.
-    
-    Example:
-    matrix = [
-            [ 1,  5,  9],
-            [10, 11, 13],
-            [12, 13, 15]
-    ], k = 8, 
-    
-    return 13.
-*/
-class _0378_KthSmallestElementInASortedMatrix
-{
-public:
-    int kthSmallest(std::vector<std::vector<int>> &matrix, int k);
-
-private:
-    int search_less_equal(std::vector<std::vector<int>> &matrix, int target);
-};
-
-/*
-Insert Delete GetRandom O(1) 
-Design a data structure that supports all following operations in average O(1) time.
-insert(val): Inserts an item val to the set if not already present.
-remove(val): Removes an item val from the set if present.
-getRandom: Returns a random element from current set of elements. Each element must have the same probability of being returned.
-
-// Init an empty set.
-RandomizedSet randomSet = new RandomizedSet();
-
-// Inserts 1 to the set. Returns true as 1 was inserted successfully.
-randomSet.insert(1);
-
-// Returns false as 2 does not exist in the set.
-randomSet.remove(2);
-
-// Inserts 2 to the set, returns true. Set now contains [1,2].
-randomSet.insert(2);
-
-// getRandom should return either 1 or 2 randomly.
-randomSet.getRandom();
-
-// Removes 1 from the set, returns true. Set now contains [2].
-randomSet.remove(1);
-
-// 2 was already in the set, so return false.
-randomSet.insert(2);
-
-// Since 2 is the only number in the set, getRandom always return 2.
-randomSet.getRandom();
-*/
-class _0380_RandomizedSet {
-private:
-    std::unordered_map<int, int> valueIndex;
-    std::vector<int> values;
-public:
-    /** Initialize your data structure here. */
-    _0380_RandomizedSet();    
-    /** Inserts a value to the set. Returns true if the set did not already contain the specified element. */
-    bool insert(int val);    
-    /** Removes a value from the set. Returns true if the set contained the specified element. */
-    bool remove(int val);    
-    /** Get a random element from the set. */
-    int getRandom();
-};
-
-/*
-Insert Delete GetRandom O(1) - Duplicates allowed
-Design a data structure that supports all following operations in average O(1) time.
-
-Note: Duplicate elements are allowed.
-insert(val): Inserts an item val to the collection.
-remove(val): Removes an item val from the collection if present.
-getRandom: Returns a random element from current collection of elements. The probability of each element being returned is linearly related to the number of same value the collection contains.
-Example:
-
-// Init an empty collection.
-RandomizedCollection collection = new RandomizedCollection();
-
-// Inserts 1 to the collection. Returns true as the collection did not contain 1.
-collection.insert(1);
-
-// Inserts another 1 to the collection. Returns false as the collection contained 1. Collection now contains [1,1].
-collection.insert(1);
-
-// Inserts 2 to the collection, returns true. Collection now contains [1,1,2].
-collection.insert(2);
-
-// getRandom should return 1 with the probability 2/3, and returns 2 with the probability 1/3.
-collection.getRandom();
-
-// Removes 1 from the collection, returns true. Collection now contains [1,2].
-collection.remove(1);
-
-// getRandom should return 1 and 2 both equally likely.
-collection.getRandom();
-*/
-class _0381_RandomizedCollection {
-private:
-    std::vector<int> data;
-    std::unordered_map<int, std::unordered_set<int>> map;
-public:
-    /** Initialize your data structure here. */
-    _0381_RandomizedCollection();
-    /** Inserts a value to the collection. Returns true if the collection did not already contain the specified element. */
-    bool insert(int val);
-    
-    /** Removes a value from the collection. Returns true if the collection contained the specified element. */
-    bool remove(int val);
-    
-    /** Get a random element from the collection. */
-    int getRandom();
-};
-
-
-/*
-Given an arbitrary ransom note string and another string containing letters from all the magazines, write a function 
-that will return true if the ransom note can be constructed from the magazines ; otherwise, it will return false.
-Each letter in the magazine string can only be used once in your ransom note.
+Input: [[1,2],[2,3]]
+Output: 0
+Explanation: You don't need to remove any of the intervals since they're already non-overlapping.
 
 Note:
-You may assume that both strings contain only lowercase letters.
-
-canConstruct("a", "b") -> false
-canConstruct("aa", "ab") -> false
-canConstruct("aa", "aab") -> true
+You may assume the interval's end point is always bigger than its start point.
+Intervals like [1,2] and [2,3] have borders "touching" but they don't overlap each other.
 */
-class _0383_RansomNote {
+class _0435_NonOverlappingIntervals {
 public:
-    bool canConstruct(std::string ransomNote, std::string magazine);
+    int eraseOverlapIntervals(std::vector<std::vector<int>>& intervals);
+};
+
+class _0437_PathSumIII {
+    
 };
 
 /*
-Given a nested list of integers represented as a string, implement a parser to deserialize it.
-
-Each element is either an integer, or a list -- whose elements may also be integers or other lists.
-
-Note: You may assume that the string is well-formed:
-
-String is non-empty.
-String does not contain white spaces.
-String contains only digits 0-9, [, - ,, ].
- 
-
-Example 1:
-
-Given s = "324",
-
-You should return a NestedInteger object which contains a single integer 324.
- 
-
-Example 2:
-
-Given s = "[123,[456,[789]]]",
-
-Return a NestedInteger object containing a nested list with 2 elements:
-
-1. An integer containing value 123.
-2. A nested list containing two elements:
-    i.  An integer containing value 456.
-    ii. A nested list with one element:
-         a. An integer containing value 789.
-*/
-class _0385_MiniParser{
-public:
-class NestedInteger {
- public:
-     // Constructor initializes an empty nested list.
-     NestedInteger();
-     // Constructor initializes a single integer.
-     NestedInteger(int value) {}
-     // Return true if this NestedInteger holds a single integer, rather than a nested list.
-     bool isInteger() const { 
-         return true; 
-     }
-     // Return the single integer that this NestedInteger holds, if it holds a single integer
-     // The result is undefined if this NestedInteger holds a nested list
-     int getInteger() const {
-         return 0;
-     }
-      // Set this NestedInteger to hold a single integer.
-     void setInteger(int value);
-      // Set this NestedInteger to hold a nested list and adds a nested integer to it.
-      void add(const NestedInteger &ni);
-      // Return the nested list that this NestedInteger holds, if it holds a nested list
-    // The result is undefined if this NestedInteger holds a single integer
-    const std::vector<NestedInteger> &getList() const {
-        return std::vector<NestedInteger>();
-    }
- };
-
-NestedInteger deserialize(std::string s);
-};
-
-
-/*
-Given an integer n, return 1 - n in lexicographical order.
-For example, given 13, return: [1,10,11,12,13,2,3,4,5,6,7,8,9].
-Please optimize your algorithm to use less time and space. 
-The input size may be as large as 5,000,000.
-*/
-class _0386_LexicographicalNumbers {
-private:
-    std::vector<int> res;
-    void dfs(int cur, int n);
-public:
-    std::vector<int> lexicalOrder(int n);
-};
-
-/*
-Given a string, find the first non-repeating character in it and return it's index. If it doesn't exist, return -1.
-
-s = "leetcode"
-return 0.
-
-s = "loveleetcode",
-return 2.
-*/
-class _0387_FirstUniqueCharacterInAString {
-public:
-    int firstUniqChar(std::string s);
-};
-
-/*
-Tag: Stack, string
-GOOGLE
-TODO:
-Suppose we abstract our file system by a string in the following manner:
-The string "dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext" represents:
-dir
-    subdir1
-    subdir2
-        file.ext
-The directory dir contains an empty sub-directory subdir1 and a sub-directory 
-subdir2 containing a file file.ext.
-The string 
-"dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext" 
-represents:
-
-dir
-    subdir1
-        file1.ext
-        subsubdir1
-    subdir2
-        subsubdir2
-            file2.ext
-The directory dir contains two sub-directories subdir1 and subdir2. subdir1 contains 
-a file file1.ext and an empty second-level sub-directory subsubdir1. subdir2 contains 
-a second-level sub-directory subsubdir2 containing a file file2.ext.
-
-We are interested in finding the longest (number of characters) absolute path to a file 
-within our file system. For example, in the second example above, the longest absolute 
-path is "dir/subdir2/subsubdir2/file2.ext", and its length is 32 (not including the 
-double quotes).
-
-Given a string representing the file system in the above format, return the length 
-of the longest absolute path to file in the abstracted file system. If there is no 
-file in the system, return 0.
-
-Note:
-The name of a file contains at least a . and an extension.
-The name of a directory or sub-directory will not contain a ..
-Time complexity required: O(n) where n is the size of the input string.
-
-Notice that a/aa/aaa/file1.txt is not the longest file path, if there is another 
-path aaaaaaaaaaaaaaaaaaaaa/sth.png.
-*/
-class _0388_LongestAbsoluteFilePath {
-public:
-    int lengthLongestPath(std::string input);
-};
-
-
-/*
-_390_ Elimination Game
-There is a list of sorted integers from 1 to n. Starting from left to right,
-remove the first number and every other number afterward until you reach the
-end of the list.
-
-Repeat the previous step again, but this time from right to left, remove the
-right most number and every other number from the remaining numbers.
-
-We keep repeating the steps again, alternating left to right and right to left,
-until a single number remains.
-
-Find the last number that remains starting with a list of length n.
-
-Input:
-n = 9,
-1 2 3 4 5 6 7 8 9
-2 4 6 8
-2 6
-6
-
-Output:
-6
-*/
-class _0390_EliminationGame {
-public:
-    int lastRemaining(int n);
-};
-
-
-/*
-A character in UTF8 can be from 1 to 4 bytes long, subjected to the following rules:
-
-For 1-byte character, the first bit is a 0, followed by its unicode code.
-For n-bytes character, the first n-bits are all one's, the n+1 bit is 0, followed 
-by n-1 bytes with most significant 2 bits being 10.
-This is how the UTF-8 encoding would work:
-
-   Char. number range  |        UTF-8 octet sequence
-      (hexadecimal)    |              (binary)
-   --------------------+---------------------------------------------
-   0000 0000-0000 007F | 0xxxxxxx
-   0000 0080-0000 07FF | 110xxxxx 10xxxxxx
-   0000 0800-0000 FFFF | 1110xxxx 10xxxxxx 10xxxxxx
-   0001 0000-0010 FFFF | 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
-Given an array of integers representing the data, return whether it is a valid utf-8 encoding.
-
-Note:
-The input is an array of integers. Only the least significant 8 bits of each integer is used to store 
-the data. This means each integer represents only 1 byte of data.
-
-data = [197, 130, 1], which represents the octet sequence: 11000101 10000010 00000001.
-Return true.
-It is a valid utf-8 encoding for a 2-bytes character followed by a 1-byte character.
-Example 2:
-
-data = [235, 140, 4], which represented the octet sequence: 11101011 10001100 00000100.
-
-Return false.
-The first 3 bits are all one's and the 4th bit is 0 means it is a 3-bytes character.
-The next byte is a continuation byte which starts with 10 and that's correct.
-But the second continuation byte does not start with 10, so it is invalid.
-*/
-class _0393_UTF8Validation {
-public:
-    bool validUTF8(std::vector<int>& data);
-};
-
-/*
-Given an encoded string, return its decoded string.
-The encoding rule is: k[encoded_string], where the encoded_string 
-inside the square brackets is being repeated exactly k times. Note 
-that k is guaranteed to be a positive integer.
-You may assume that the input string is always valid; No extra 
-white spaces, square brackets are well-formed, etc.
-Furthermore, you may assume that the original data does not contain 
-any digits and that digits are only for those repeat numbers, k. 
-For example, there won't be input like 3a or 2[4].
-
-    s = "3[a]2[bc]", return "aaabcbc".
-    s = "3[a2[c]]", return "accaccacc".
-    s = "2[abc]3[cd]ef", return "abcabccdcdcdef".
-*/
-class _0394_DecodeString {
-public:
-    std::string decodeString(std::string s);
-};
-
-/*
-Tag: hash
 
 Facebook
 
-Given an array of integers with possible duplicates, randomly output 
-the index of a given target number. You can assume that the given 
-target number must exist in the array.
+Tag: hash, string
 
-Note:
-The array size can be very large. Solution that uses too much extra 
-space will not pass the judge.
+Given a string s and a non-empty string p, find all the start indices of p's anagrams in s.
+Strings consists of lowercase English letters only and the length of both strings s and p 
+will not be larger than 20,100. The order of output does not matter.
 
-int[] nums = new int[] {1,2,3,3,3};
-Solution solution = new Solution(nums);
+Input:
+s: "cbaebabacd" p: "abc"
 
-// pick(3) should return either index 2, 3, or 4 randomly. Each index 
-should have equal probability of returning.
-solution.pick(3);
-
-// pick(1) should return 0. Since in the array only nums[0] is equal to 1.
-solution.pick(1);
-*/
-class _0398_RandomPickIndex {
-private:
-    std::unordered_map<int, std::vector<int>> map;
-public:
-    _0398_RandomPickIndex(std::vector<int>& nums);
-    int pick(int target);
-};
-
-
-/*
-Equations are given in the format A / B = k, where A and B are variables represented 
-as strings, and k is a real number (floating point number). Given some queries, 
-return the answers. If the answer does not exist, return -1.0.
-
-Given a / b = 2.0, b / c = 3.0.
-queries are: a / c = ?, b / a = ?, a / e = ?, a / a = ?, x / x = ? .
-return [6.0, 0.5, -1.0, 1.0, -1.0 ].
-
-The input is: vector<pair<string, string>> equations, vector<double>& values, 
-vector<pair<string, string>> queries , where equations.size() == values.size(), and the 
-values are positive. This represents the equations. Return vector<double>.
-
-According to the example above:
-
-equations = [ ["a", "b"], ["b", "c"] ],
-values = [2.0, 3.0],
-queries = [ ["a", "c"], ["b", "a"], ["a", "e"], ["a", "a"], ["x", "x"] ]. 
- 
-The input is always valid. You may assume that evaluating the queries will result 
-in no division by zero and there is no contradiction.
-*/
-class _0399_EvaluateDivision {
-private:
-    // A hash function used to hash a pair of any kind 
-    struct hash_pair { 
-        template <class T1, class T2> 
-        size_t operator()(const std::pair<T1, T2>& p) const
-        { 
-            auto hash1 = std::hash<T1>{}(p.first); 
-            auto hash2 = std::hash<T2>{}(p.second); 
-            return hash1 ^ hash2; 
-        } 
-    }; 
-    std::unordered_set<std::string> node;
-    std::unordered_map<std::pair<std::string, std::string>, double, hash_pair> edge;
-    std::unordered_map<std::string, bool> visited;
-    std::unordered_map<std::string, std::vector<std::string>> adjMap;
-    void resetVisit();
-    std::vector<std::string> getAdj(std::string a);
-    
-public:
-    std::vector<double> calcEquation(std::vector<std::vector<std::string>>& equations, 
-    std::vector<double>& values, std::vector<std::vector<std::string>>& queries);    
-    double calculate(std::string a, std::string b);
-};
-
-/*
-Find the nth digit of the infinite integer sequence 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ...
-
-Note:
-n is positive and will fit within the range of a 32-bit signed integer (n < 231).
-
-Input: 3      :     Output: 3
-Input: 11     :     Output: 0
+Output:
+[0, 6]
 
 Explanation:
-The 11th digit of the sequence 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ... is a 0, which is part of the number 10.
+The substring with start index = 0 is "cba", which is an anagram of "abc".
+The substring with start index = 6 is "bac", which is an anagram of "abc".
+
+Input:
+s: "abab" p: "ab"
+
+Output:
+[0, 1, 2]
+
+Explanation:
+The substring with start index = 0 is "ab", which is an anagram of "ab".
+The substring with start index = 1 is "ba", which is an anagram of "ab".
+The substring with start index = 2 is "ab", which is an anagram of "ab".
 */
-class _0400_NthDight {
+class _0438_FindAllAnagramsInAString {
 public:
-    int findNthDigit(int n);
+    std::vector<int> findAnagrams(std::string s, std::string p);
 };
+
+class _0441_ArrangingCoins {
+public:
+    int arrangeCoins(int n);
+};
+
+class _0442_FindAllDuplicatesInAnArray {
+public:
+    std::vector<int> findDuplicates(std::vector<int>& nums);
+};
+
+/*
+Given n points in the plane that are all pairwise distinct, a 
+"boomerang" is a tuple of points (i, j, k) such that the distance between 
+i and j equals the distance between i and k (the order of the tuple matters).
+
+Find the number of boomerangs. You may assume that n will be at most 500 and 
+coordinates of points are all in the range [-10000, 10000] (inclusive).
+Example:
+
+Input:
+[[0,0],[1,0],[2,0]]
+
+Output:
+2
+Explanation:
+The two boomerangs are [[1,0],[0,0],[2,0]] and [[1,0],[2,0],[0,0]]
+*/
+class _0447_NumberOfBoomerangs {
+public:
+    int numberOfBoomerangs(std::vector<std::vector<int>>& points);
+};
+
+/*
+Serialization is the process of converting a data structure or object 
+into a sequence of bits so that it can be stored in a file or memory 
+buffer, or transmitted across a network connection link to be 
+reconstructed later in the same or another computer environment.
+
+Design an algorithm to serialize and deserialize a binary search tree. 
+There is no restriction on how your serialization/deserialization 
+algorithm should work. You just need to ensure that a binary search 
+tree can be serialized to a string and this string can be deserialized 
+to the original tree structure.
+
+The encoded string should be as compact as possible.
+
+Note: Do not use class member/global/static variables to store states. 
+Your serialize and deserialize algorithms should be stateless.
+*/
+class _0449_SerializeAndDeserializeBST {
+public:
+    // Encodes a tree to a single string.
+    std::string serialize(TreeNode<int>* root) {
+        std::string s;
+        serialize(root, s);
+        return s;
+    }
+
+    // Decodes your encoded data to tree.
+    TreeNode<int>* deserialize(std::string data) {
+        int pos = 0;
+        return deserialize(data, pos, INT_MIN, INT_MAX);
+    }
+
+private:
+    void serialize(TreeNode<int>* root, std::string& s) {
+        if(!root) {
+            return;
+        }
+        s.append(reinterpret_cast<const char*>(&root->val), sizeof(root->val));
+        serialize(root->left, s);
+        serialize(root->right, s);
+    }
+    
+    TreeNode<int>* deserialize(const std::string& s, int& pos, int curMin, int curMax) {
+        if(pos >= s.size()) {
+            return nullptr;
+        }
+        int val = *reinterpret_cast<const int*>(s.data() + pos);
+        if(val < curMin || val > curMax) {
+            return nullptr;
+        }
+        pos += sizeof(val);
+        TreeNode<int>* root = new TreeNode<int>(val);
+        root->left = deserialize(s, pos, curMin, val);
+        root->right = deserialize(s, pos, val, curMax);
+        return root;
+    }
+};
+
+/*
+Given a string, sort it in decreasing order based on the frequency of characters.
+
+Example 1:
+
+Input:
+"tree"
+
+Output:
+"eert"
+
+Explanation:
+'e' appears twice while 'r' and 't' both appear once.
+So 'e' must appear before both 'r' and 't'. Therefore "eetr" is also a valid answer.
+Example 2:
+
+Input:
+"cccaaa"
+
+Output:
+"cccaaa"
+
+Explanation:
+Both 'c' and 'a' appear three times, so "aaaccc" is also a valid answer.
+Note that "cacaca" is incorrect, as the same characters must be together.
+Example 3:
+
+Input:
+"Aabb"
+
+Output:
+"bbAa"
+
+Explanation:
+"bbaA" is also a valid answer, but "Aabb" is incorrect.
+Note that 'A' and 'a' are treated as two different characters.
+*/
+class _0451_SortCharactersByFrequency {
+public:
+    std::string frequencySort(std::string s);
+};
+
+
+/*
+There are a number of spherical balloons spread in two-dimensional space. 
+For each balloon, provided input is the start and end coordinates of the 
+horizontal diameter. Since it's horizontal, y-coordinates don't matter 
+and hence the x-coordinates of start and end of the diameter suffice. Start 
+is always smaller than end. There will be at most 104 balloons.
+An arrow can be shot up exactly vertically from different points along the 
+x-axis. A balloon with xstart and xend bursts by an arrow shot at x if 
+xstart ≤ x ≤ xend. There is no limit to the number of arrows that can be 
+shot. An arrow once shot keeps travelling up infinitely. The problem is to 
+find the minimum number of arrows that must be shot to burst all balloons.
+
+Example:
+
+Input: [[10,16], [2,8], [1,6], [7,12]] :   Output:  2
+
+Explanation:
+One way is to shoot one arrow for example at x = 6 (bursting the balloons [2,8] and [1,6]) and another arrow at x = 11 (bursting the other two balloons).
+*/
+class _0452_MinimumNumberOfArrowsToBusrtBalloons {
+    public:
+        int findMinArrowShots(std::vector<std::vector<int>>& points);
+};
+
+/*
+Assume you are an awesome parent and want to give your children some cookies. 
+But, you should give each child at most one cookie. Each child i has a greed 
+factor gi, which is the minimum size of a cookie that the child will be content 
+with; and each cookie j has a size sj. If sj >= gi, we can assign the cookie 
+j to the child i, and the child i will be content. Your goal is to maximize 
+the number of your content children and output the maximum number.
+
+Note:
+You may assume the greed factor is always positive.
+You cannot assign more than one cookie to one child.
+
+Input: [1,2,3], [1,1]
+Output: 1
+
+Explanation: You have 3 children and 2 cookies. The greed factors of 3 children 
+are 1, 2, 3. And even though you have 2 cookies, since their size is both 1, 
+you could only make the child whose greed factor is 1 content. 
+You need to output 1.
+
+Input: [1,2], [1,2,3]
+Output: 2
+
+Explanation: You have 2 children and 3 cookies. The greed factors of 2 children are 1, 2. 
+You have 3 cookies and their sizes are big enough to gratify all of the children, 
+You need to output 2.
+*/
+class _0455_AssignCookies {
+public:
+    int findContentChildren(std::vector<int>& g, std::vector<int>& s);
+};
+
+/*
+There are 1000 buckets, one and only one of them is poisonous, while the rest are 
+filled with water. They all look identical. If a pig drinks the poison it will die 
+within 15 minutes. What is the minimum amount of pigs you need to figure out which 
+bucket is poisonous within one hour?
+
+Answer this question, and write an algorithm for the general case.
+General case:
+If there are n buckets and a pig drinking poison will die within m minutes, how many 
+pigs (x) you need to figure out the poisonous bucket within p minutes? There is 
+exactly one bucket with poison.
+Note:
+
+A pig can be allowed to drink simultaneously on as many buckets as one would like, 
+and the feeding takes no time. After a pig has instantly finished drinking buckets, 
+there has to be a cool down time of m minutes. During this time, only observation is 
+allowed and no feedings at all. Any given bucket can be sampled an infinite number of 
+times (by an unlimited number of pigs).
+*/
+class _0458_PoorPigs {
+public:
+    int poorPigs(int buckets, int minutesToDie, int minutesToTest);
+};
+
+/*
+The Hamming distance between two integers is the number of positions at which the 
+corresponding bits are different.
+Given two integers x and y, calculate the Hamming distance.
+
+Note:
+0 ≤ x, y < 231.
+Example:
+Input: x = 1, y = 4
+Output: 2
+Explanation:
+1   (0 0 0 1)
+4   (0 1 0 0)
+       ↑   ↑
+The above arrows point to positions where the corresponding bits are different.
+*/
+class _0461_HammingDistance {
+public:
+    int hammingDistance(int x, int y);
+};
+
+/*
+In the "100 game," two players take turns adding, to a running total, any 
+integer from 1..10. The player who first causes the running total to reach 
+or exceed 100 wins.
+What if we change the game so that players cannot re-use integers?
+For example, two players might take turns drawing from a common pool of 
+numbers of 1..15 without replacement until they reach a total >= 100.
+
+Given an integer maxChoosableInteger and another integer desiredTotal, 
+determine if the first player to move can force a win, assuming both 
+players play optimally.
+
+You can always assume that maxChoosableInteger will not be larger than 
+20 and desiredTotal will not be larger than 300.
+
+Input:
+maxChoosableInteger = 10
+desiredTotal = 11
+
+Output:
+false
+
+Explanation:
+No matter which integer the first player choose, the first player will lose.
+The first player can choose an integer from 1 up to 10.
+If the first player choose 1, the second player can only choose integers 
+from 2 up to 10.
+The second player will win by choosing 10 and get a total = 11, which is 
+>= desiredTotal. Same with other integers chosen by the first player, the 
+second player will always win.
+*/
+class _0464_CanIWin {
+public:
+    bool canIWin(int maxChoosableInteger, int desiredTotal);
+private:
+    std::vector<char> m_; //
+    bool canIWin(int M, int T, int state);
+};
+
+/*
+Remember the story of Little Match Girl? By now, you know exactly what matchsticks 
+the little match girl has, please find out a way you can make one square by using 
+up all those matchsticks. You should not break any stick, but you can link them up, 
+and each matchstick must be used exactly one time.
+
+Your input will be several matchsticks the girl has, represented with their stick 
+length. Your output will either be true or false, to represent whether you could 
+make one square using all the matchsticks the little match girl has.
+
+Input: [1,1,2,2,2]
+Output: true
+Explanation: You can form a square with length 2, one side of the square came two sticks with length 1.
+
+Input: [3,3,3,3,4]
+Output: false
+Explanation: You cannot find a way to form a square with all the matchsticks.
+Note:
+The length sum of the given matchsticks is in the range of 0 to 10^9.
+The length of the given matchstick array will not exceed 15.
+*/
+class _0473_MatchsticksToSquare {
+public:
+    bool makesquare(std::vector<int>& nums);
+private:
+    bool DFS(std::vector<int>& nums, int startidx, std::vector<int>& edges, const int EDGE);
+};
+
+/*
+Given a positive integer, output its complement number. The complement strategy 
+is to flip the bits of its binary representation.
+
+Input: 5
+Output: 2
+Explanation: The binary representation of 5 is 101 (no leading zero bits), and its complement is 010. So you need to output 2.
+
+Input: 1
+Output: 0
+Explanation: The binary representation of 1 is 1 (no leading zero bits), and its complement is 0. So you need to output 0.
+ 
+Note:
+
+The given integer is guaranteed to fit within the range of a 32-bit signed integer.
+You could assume no leading zero bit in the integer’s binary representation.
+This question is the same as 1009: https://leetcode.com/problems/complement-of-base-10-integer/
+*/
+class _0476_NumberComplement {
+public:
+    int findComplement(int num);
+};
+
+/*
+The Hamming distance between two integers is the number of positions at which the corresponding bits are different.
+
+Now your job is to find the total Hamming distance between all pairs of the given numbers.
+
+Example:
+Input: 4, 14, 2
+
+Output: 6
+
+Explanation: In binary representation, the 4 is 0100, 14 is 1110, and 2 is 0010 (just
+showing the four bits relevant in this case). So the answer will be:
+HammingDistance(4, 14) + HammingDistance(4, 2) + HammingDistance(14, 2) = 2 + 2 + 2 = 6.
+Note:
+Elements of the given array are in the range of 0 to 10^9
+Length of the array will not exceed 10^4.
+*/
+class _0477_TotalHammingDistance {
+public:
+    int totalHammingDistance(std::vector<int>& nums);
+};
+
+/*
+A magical string S consists of only '1' and '2' and obeys the following rules:
+The string S is magical because concatenating the number of contiguous occurrences 
+of characters '1' and '2' generates the string S itself.
+The first few elements of string S is the following: S = 
+"1221121221221121122……"
+If we group the consecutive '1's and '2's in S, it will be:
+1 22 11 2 1 22 1 22 11 2 11 22 ......
+and the occurrences of '1's or '2's in each group are:
+1 2 2 1 1 2 1 2 2 1 2 2 ......
+You can see that the occurrence sequence above is the S itself.
+Given an integer N as input, return the number of '1's in the first N number in the magical string S.
+Note: N will not exceed 100,000.
+Example 1:
+Input: 6
+Output: 3
+Explanation: The first 6 elements of magical string S is "12211" and it contains three 1's, so return 3.
+*/
+class _0481_MagicalString {
+public:
+    int magicalString(int n);
+};
+
+
+/*
+You are given a license key represented as a string S which consists only alphanumeric character and dashes. 
+The string is separated into N+1 groups by N dashes.
+Given a number K, we would want to reformat the strings such that each group contains exactly K characters, 
+except for the first group which could be shorter than K, but still must contain at least one character. 
+Furthermore, there must be a dash inserted between two groups and all lowercase letters should be converted to uppercase.
+
+Given a non-empty string S and a number K, format the string according to the rules described above.
+
+Example 1:
+Input: S = "5F3Z-2e-9-w", K = 4
+Output: "5F3Z-2E9W"
+
+Explanation: The string S has been split into two parts, each part has 4 characters.
+Note that the two extra dashes are not needed and can be removed.
+Example 2:
+Input: S = "2-5g-3-J", K = 2
+Output: "2-5G-3J"
+
+Explanation: The string S has been split into three parts, each part has 2 characters except the first part as it could be shorter as mentioned above.
+Note:
+The length of string S will not exceed 12,000, and K is a positive integer.
+String S consists only of alphanumerical characters (a-z and/or A-Z and/or 0-9) and dashes(-).
+String S is non-empty.
+*/
+class _0482_LicenseKeyFormatting {
+public:
+    std::string licenseKeyFormatting(std::string S, int K);
+};
+
+/*
+Tag: preSum, probability theory
+Given a list of non-overlapping axis-aligned rectangles rects, write a 
+function pick which randomly and uniformily picks an integer point in 
+the space covered by the rectangles.
+
+An integer point is a point that has integer coordinates. 
+A point on the perimeter of a rectangle is included in the space covered 
+by the rectangles. 
+ith rectangle = rects[i] = [x1,y1,x2,y2], where [x1, y1] are the integer 
+coordinates of the bottom-left corner, and [x2, y2] are the integer 
+coordinates of the top-right corner.
+length and width of each rectangle does not exceed 2000.
+1 <= rects.length <= 100
+pick return a point as an array of integer coordinates [p_x, p_y]
+pick is called at most 10000 times.
+Example 1:
+
+Input: 
+["Solution","pick","pick","pick"]
+[[[[1,1,5,5]]],[],[],[]]
+Output: 
+[null,[4,1],[4,1],[3,3]]
+
+Input: 
+["Solution","pick","pick","pick","pick","pick"]
+[[[[-2,-2,-1,-1],[1,0,3,0]]],[],[],[],[],[]]
+Output: 
+[null,[-1,-2],[2,0],[-2,-1],[3,0],[-2,-2]]
+Explanation of Input Syntax:
+
+The input is two lists: the subroutines called and their arguments. Solution's constructor has one argument, the array of rectangles rects. pick has no arguments. Arguments are always wrapped with a list, even if there aren't any.
+*/
+class _0497_RandomPointinNonoverlappingRectangles {
+private:
+    std::vector<std::vector<int>> rects;
+public:
+    _0497_RandomPointinNonoverlappingRectangles(std::vector<std::vector<int>>& rects) : rects(rects){}
+    std::vector<int> pick(); 
+};
+
+/*
+498. Diagonal Traverse
+Given a matrix of M x N elements (M rows, N columns), return all elements of the matrix in diagonal order as shown in the below image.
+
+Input:
+[
+ [ 1, 2, 3 ],
+ [ 4, 5, 6 ],
+ [ 7, 8, 9 ]
+]
+
+Output:  [1,2,4,7,5,3,6,8,9]
+The total number of elements of the given matrix will not exceed 10,000.
+*/
+class _0498_DiagonalTraverse {
+    public:
+        std::vector<int> findDiagonalOrder(std::vector<std::vector<int>>& matrix);
+};
+
 
 }
 

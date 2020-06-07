@@ -5,644 +5,258 @@
 #include <string>
 #include <stack>
 #include <queue>
-#include <unordered_map>
-#include <unordered_set>
 
 #include "Tree.hpp"
 #include "LinkList.hpp"
 
+// Problem 1401 - 1500
 namespace LeetCode {
-/*
-You are given a square board of characters. You can move on the board starting 
-at the bottom right square marked with the character 'S'.
-You need to reach the top left square marked with the character 'E'. The rest 
-of the squares are labeled either with a numeric character 1, 2, ..., 9 or with 
-an obstacle 'X'. In one move you can go up, left or up-left (diagonally) only if 
-there is no obstacle there.
-Return a list of two integers: the first integer is the maximum sum of numeric 
-characters you can collect, and the second is the number of such paths that you
- can take to get that maximum sum, taken modulo 10^9 + 7.
-In case there is no path, return [0, 0].
-
-Input: board = ["E23","2X2","12S"]
-Output: [7,1]
-
-Input: board = ["E12","1X1","21S"]
-Output: [4,2]
-
-Input: board = ["E11","XXX","11S"]
-Output: [0,0]
- 
-Constraints:
-
-2 <= board.length == board[i].length <= 100
-*/
-class _1301_NumberOfPathsWithMaxScore {
-public:
-    std::vector<int> pathsWithMaxScore(std::vector<std::string>& bd);
-};
-
-class _1302_DeepestLeavesSum {
-public:
-    int deepestLeavesSum(TreeNode<int>* root);
-};
-
-/*
-Given an integer n, return any array containing n unique integers such that they add up to 0.
-
-Input: n = 5
-Output: [-7,-1,1,3,4]
-Explanation: These arrays also are accepted [-5,-1,1,2,3] , [-3,-1,2,-2,4].
-
-Input: n = 3
-Output: [-1,0,1]
-
-Input: n = 1
-Output: [0]
-
-Constraints:
-1 <= n <= 1000
-*/
-class _1304_FindNUniqueIntegersSumupToZero {
-public:
-    std::vector<int> sumZero(int n);
-};
-
-/*
-Given two binary search trees root1 and root2.
-Return a list containing all the integers from both trees sorted in ascending order.
-
-Input: root1 = [2,1,4], root2 = [1,0,3]
-Output: [0,1,1,2,3,4]
-
-Input: root1 = [0,-10,10], root2 = [5,1,7,0,2]
-Output: [-10,0,0,1,2,5,7,10]
-
-Input: root1 = [], root2 = [5,1,7,0,2]
-Output: [0,1,2,5,7]
-
-Input: root1 = [0,-10,10], root2 = []
-Output: [-10,0,10]
-
-Input: root1 = [1,null,8], root2 = [8,1]
-Output: [1,1,8,8]
-
-Constraints:
-Each tree has at most 5000 nodes.
-Each node's value is between [-10^5, 10^5].
-*/
-class _1305_AllElementsInTwoBinarySearchTrees {
-public:
-    std::vector<int> getAllElements(TreeNode<int>* root1, TreeNode<int>* root2);
-};
-
-/*
-Given a string s formed by digits ('0' - '9') and '#' . We want to map s to English 
-lowercase characters as follows:
-
-Characters ('a' to 'i') are represented by ('1' to '9') respectively.
-Characters ('j' to 'z') are represented by ('10#' to '26#') respectively. 
-Return the string formed after mapping.
-It's guaranteed that a unique mapping will always exist.
-
-Input: s = "10#11#12"
-Output: "jkab"
-Explanation: "j" -> "10#" , "k" -> "11#" , "a" -> "1" , "b" -> "2".
-
-Input: s = "1326#"
-Output: "acz"
-
-Input: s = "25#"
-Output: "y"
-
-Input: s = "12345678910#11#12#13#14#15#16#17#18#19#20#21#22#23#24#25#26#"
-Output: "abcdefghijklmnopqrstuvwxyz"
-
-Constraints:
-1 <= s.length <= 1000
-s[i] only contains digits letters ('0'-'9') and '#' letter.
-s will be valid string such that mapping is always possible.
-*/
-class _1309_DecryptStringFromAlphabetToIngeterMapping {
-public:
-    std::string freqAlphabets(std::string s);
-};
-
-/*
-Given the array arr of positive integers and the array queries where 
-queries[i] = [Li, Ri], for each query i compute the XOR of elements 
-from Li to Ri (that is, arr[Li] xor arr[Li+1] xor ... xor arr[Ri] ). 
-Return an array containing the result for the given queries.
-
-Input: arr = [1,3,4,8], queries = [[0,1],[1,2],[0,3],[3,3]]
-Output: [2,7,14,8] 
-Explanation: 
-The binary representation of the elements in the array are:
-1 = 0001 
-3 = 0011 
-4 = 0100 
-8 = 1000 
-The XOR values for queries are:
-[0,1] = 1 xor 3 = 2 
-[1,2] = 3 xor 4 = 7 
-[0,3] = 1 xor 3 xor 4 xor 8 = 14 
-[3,3] = 8
-Example 2:
-
-Input: arr = [4,8,2,10], queries = [[2,3],[1,3],[0,0],[0,3]]
-Output: [8,0,4,4]
-*/
-class _1310_XORQueriesOfASubarray {
-public:
-    std::vector<int> xorQueries(std::vector<int>& arr, std::vector<std::vector<int>>& queries);
-};
- 
-/*
-We are given a list nums of integers representing a list compressed with run-length 
-encoding. Consider each adjacent pair of elements [a, b] = [nums[2*i], nums[2*i+1]] 
-(with i >= 0). For each such pair, there are a elements with value b in the 
-decompressed list.
-Return the decompressed list.
-
-Input: nums = [1,2,3,4]
-Output: [2,4,4,4]
-Explanation: The first pair [1,2] means we have freq = 1 and val = 2 so we generate the array [2].
-The second pair [3,4] means we have freq = 3 and val = 4 so we generate [4,4,4].
-At the end the concatenation [2] + [4,4,4,4] is [2,4,4,4].
-
-Constraints:
-
-2 <= nums.length <= 100
-nums.length % 2 == 0
-1 <= nums[i] <= 100
-*/
-class _1313_DecompressRunLengthEncodedList { 
-public:
-    std::vector<int> decompressRLElist(std::vector<int>& nums);
-};
-
-/*
-Given a m * n matrix mat and an integer K, return a matrix answer where each answer[i][j] is the sum of all elements mat[r][c] for i - K <= r <= i + K, j - K <= c <= j + K, and (r, c) is a valid position in the matrix.
-
-Example 1:
-Input: mat = [[1,2,3],[4,5,6],[7,8,9]], K = 1
-Output: [[12,21,16],[27,45,33],[24,39,28]]
-
-Example 2:
-Input: mat = [[1,2,3],[4,5,6],[7,8,9]], K = 2
-Output: [[45,45,45],[45,45,45],[45,45,45]]
-
-Constraints:
-m == mat.length
-n == mat[i].length
-1 <= m, n, K <= 100
-1 <= mat[i][j] <= 100
-*/
-class _1314_MatrixBlockSum {
-public:
-    std::vector<std::vector<int>> matrixBlockSum(std::vector<std::vector<int>>& mat, int K);
-};
-
-/*
-Given a binary tree, return the sum of values of nodes with even-valued grandparent. 
-(A grandparent of a node is the parent of its parent, if it exists.)
-If there are no nodes with an even-valued grandparent, return 0.
-
-Input: root = [6,7,8,2,7,1,3,9,null,1,4,null,null,null,5]
-Output: 18
-Explanation: The red nodes are the nodes with even-value grandparent while the blue 
-nodes are the even-value grandparents. 
-
-Constraints:
-
-The number of nodes in the tree is between 1 and 10^4.
-The value of nodes is between 1 and 100.
-*/
-class _1315_SumOfNodesWithEvenvaluedGrandparent {
-public:
-    int sumEvenGrandparent(TreeNode<int>* root);
-};
-
-/*
-Given an integer n. No-Zero integer is a positive integer 
-which doesn't contain any 0 in its decimal representation.
-Return a list of two integers [A, B] where:
-
-A and B are No-Zero integers.
-A + B = n
-It's guarateed that there is at least one valid solution. 
-If there are many valid solutions you can return any of them.
-
-Input: n = 2            Output: [1,1]
-Explanation: A = 1, B = 1. A + B = n and both A and B don't 
-contain any 0 in their decimal representation.
-
-Input: n = 11           Output: [2,9]
-Input: n = 10000        Output: [1,9999]
-Input: n = 69           Output: [1,68]
-Input: n = 1010         Output: [11,999]
-
-Constraints:
-
-2 <= n <= 10^4
-*/
-class _1317_ConvertIntegerToTheSumOfTwoNonZeroIntegers {
-public:
-    std::vector<int> getNoZeroIntegers(int n);
-};
-
-
-/*
-Given a positive integer num consisting only of digits 6 and 9.
-Return the maximum number you can get by changing at most one digit (6 becomes 9, and 9 becomes 6).
-
-Input: num = 9669
-Output: 9969
-Explanation: 
-Changing the first digit results in 6669.
-Changing the second digit results in 9969.
-Changing the third digit results in 9699.
-Changing the fourth digit results in 9666. 
-The maximum number is 9969.
-
-Input: num = 9996
-Output: 9999
-Explanation: Changing the last digit 6 to 9 results in the maximum number.
-
-Input: num = 9999
-Output: 9999
-Explanation: It is better not to apply any change. 
-
-Constraints:
-
-1 <= num <= 10^4
-num's digits are 6 or 9.
-*/
-class _1323_Maximum69Number {
-public:
-    int maximum69Number(int num);
-};
-
-/*
-Given a m * n matrix mat of integers, sort it diagonally in 
-ascending order from the top-left to the bottom-right then 
-return the sorted array.
-
-Input: mat = [[3,3,1,1],[2,2,1,2],[1,1,1,2]]
-Output: [[1,1,1,1],[1,2,2,2],[1,2,3,3]]
-
-Constraints:
-m == mat.length
-n == mat[i].length
-1 <= m, n <= 100
-1 <= mat[i][j] <= 100
-*/
-class _1329_SortTheMatrixDiagonally {
-public:
-    std::vector<std::vector<int>> diagonalSort(std::vector<std::vector<int>>& mat);
-};
-
-
-/*
-1337. The K Weakest Rows in a Matrix
-User Accepted:3626
-User Tried:3781
-Total Accepted:3727
-Total Submissions:5595
-Difficulty:Easy
-Given a m * n matrix mat of ones (representing soldiers) and zeros (representing civilians), return the indexes of the k weakest rows in the matrix ordered from the weakest to the strongest.
-
-A row i is weaker than row j, if the number of soldiers in row i is less than the number of soldiers in row j, or they have the same number of soldiers but i is less than j. Soldiers are always stand in the frontier of a row, that is, always ones may appear first and then zeros.
-
- 
-
-Example 1:
-
-Input: mat = 
-[[1,1,0,0,0],
- [1,1,1,1,0],
- [1,0,0,0,0],
- [1,1,0,0,0],
- [1,1,1,1,1]], 
-k = 3
-Output: [2,0,3]
-Explanation: 
-The number of soldiers for each row is: 
-row 0 -> 2 
-row 1 -> 4 
-row 2 -> 1 
-row 3 -> 2 
-row 4 -> 5 
-Rows ordered from the weakest to the strongest are [2,0,3,1,4]
-Example 2:
-
-Input: mat = 
-[[1,0,0,0],
- [1,1,1,1],
- [1,0,0,0],
- [1,0,0,0]], 
-k = 2
-Output: [0,2]
-Explanation: 
-The number of soldiers for each row is: 
-row 0 -> 1 
-row 1 -> 4 
-row 2 -> 1 
-row 3 -> 1 
-Rows ordered from the weakest to the strongest are [0,2,3,1]
- 
-
-Constraints:
-
-m == mat.length
-n == mat[i].length
-2 <= n, m <= 100
-1 <= k <= m
-matrix[i][j] is either 0 or 1.
-
-struct comp {
-  bool operator()(std::pair<int, int> const & p1, std::pair<int, int> const & p2) {
-      return p1.first > p2.first || (p1.first == p2.first && p1.second > p2.second);
-  }
-};
-class Solution {
-public:
-    vector<int> kWeakestRows(vector<vector<int>>& mat, int k) {
-        std::priority_queue<std::pair<int, int>, std::vector<std::pair<int,int>>, comp> pq;
-        for(int i = 0; i < mat.size(); ++i) {
-            pq.push({std::accumulate(begin(mat[i]), end(mat[i]), 0), i});
-        }
-        
-        std::vector<int> res;
-        int t = 0;
-        while (t < k) {
-            res.push_back(pq.top().second);
-            pq.pop();
-            ++t;
-        }
-        return res;
+    
+    /*
+    Given a string s of zeros and ones, return the maximum score after splitting the string into two 
+    non-empty substrings (i.e. left substring and right substring).
+    The score after splitting a string is the number of zeros in the left substring plus the number 
+    of ones in the right substring.
+    
+    Input: s = "011101"
+    Output: 5 
+    Explanation: 
+    
+    All possible ways of splitting s into two non-empty substrings are:
+    left = "0" and right = "11101", score = 1 + 4 = 5 
+    left = "01" and right = "1101", score = 1 + 3 = 4 
+    left = "011" and right = "101", score = 1 + 2 = 3 
+    left = "0111" and right = "01", score = 1 + 1 = 2 
+    left = "01110" and right = "1", score = 2 + 1 = 3
+    
+    Example 2:
+    Input: s = "00111"
+    Output: 5
+    Explanation: When left = "00" and right = "111", we get the maximum score = 2 + 3 = 5
+    
+    Input: s = "1111"
+    Output: 3
+    
+    Constraints:
+        2 <= s.length <= 500
+        The string s consists of characters '0' and '1' only.
+    */
+    class _1422_MaximumScoreAfterSplittingAString {
+        public:
+            int maxScore(std::string s);
+    };
+
+    /*
+    Given a binary tree where each path going from the root to any leaf form a valid sequence, 
+    check if a given string is a valid sequence in such binary tree. We get the given string 
+    from the concatenation of an array of integers arr and the concatenation of all values 
+    of the nodes along a path results in a sequence in the given binary tree.
+
+    Input: root = [0,1,0,0,1,0,null,null,1,0,0], arr = [0,1,0,1]
+    Output: true
+    Explanation: 
+    The path 0 -> 1 -> 0 -> 1 is a valid sequence (green color in the figure). 
+    Other valid sequences are: 
+    0 -> 1 -> 1 -> 0 
+    0 -> 0 -> 0
+
+    Input: root = [0,1,0,0,1,0,null,null,1,0,0], arr = [0,0,1]
+    Output: false 
+    Explanation: The path 0 -> 0 -> 1 does not exist, therefore it is not even a sequence.
+
+    Input: root = [0,1,0,0,1,0,null,null,1,0,0], arr = [0,1,1]
+    Output: false
+    Explanation: The path 0 -> 1 -> 1 is a sequence, but it is not a valid sequence.
+
+    Constraints:
+
+    1 <= arr.length <= 5000
+    0 <= arr[i] <= 9
+    Each node's value is between [0 - 9].
+    */
+    class _1430_CheckIfAStringIsAValidSequenceFromRootToLeavesPathInaBinaryTree {
+        public:
+            bool isValidSequence(TreeNode<int>* root, std::vector<int>& arr);
+            bool isValidSequence(TreeNode<int>* root, std::vector<int>& arr, int startIdx);
+    };
+
+
+    /*
+    You are given the array paths, where paths[i] = [cityAi, cityBi] means there exists a direct path going from 
+    cityAi to cityBi. Return the destination city, that is, the city without any path outgoing to another city.
+
+    It is guaranteed that the graph of paths forms a line without any loop, therefore, there will be exactly one destination city.
+
+    Input: paths = [["London","New York"],["New York","Lima"],["Lima","Sao Paulo"]]
+    Output: "Sao Paulo" 
+    Explanation: Starting at "London" city you will reach "Sao Paulo" city which is the destination city. Your trip consist 
+    of: "London" -> "New York" -> "Lima" -> "Sao Paulo".
+
+
+    Input: paths = [["B","C"],["D","B"],["C","A"]]
+    Output: "A"
+    Explanation: All possible trips are: 
+    "D" -> "B" -> "C" -> "A". 
+    "B" -> "C" -> "A". 
+    "C" -> "A". 
+    "A". 
+    Clearly the destination city is "A".
+
+    Input: paths = [["A","Z"]]
+    Output: "Z"
+    
+
+    Constraints:
+        1 <= paths.length <= 100
+            paths[i].length == 2
+        1 <= cityAi.length, cityBi.length <= 10
+            cityAi != cityBi
+        All strings consist of lowercase and uppercase English letters and the space character.
+    */
+    class _1436_DestinationCity {
+        public:
+            std::string destCity(std::vector<std::vector<std::string>>& paths);
+    };
+
+    /*
+    Given an array nums of 0s and 1s and an integer k, return True if all 1's are at least k places away from each other, otherwise return False.
+    Input: nums = [1,0,0,0,1,0,0,1], k = 2
+    Output: true
+    Explanation: Each of the 1s are at least 2 places away from each other.
+    
+    Input: nums = [1,0,0,1,0,1], k = 2
+    Output: false
+    Explanation: The second 1 and third 1 are only one apart from each other.
+    
+    Input: nums = [1,1,1,1,1], k = 0
+    Output: true
+    
+    Input: nums = [0,1,0,1], k = 1
+    Output: true
+    
+    Constraints:
+        1 <= nums.length <= 10^5
+        0 <= k <= nums.length
+        nums[i] is 0 or 1
+    */
+    class _1437_CheckIf1sAreAtLeastLengthKPlacesAway {
+        public:
+            bool kLengthApart(std::vector<int>& nums, int k);
+    };
+
+    /*
+    Given an array target and an integer n. In each iteration, you will read a number from  list = {1,2,3..., n}.
+
+    Build the target array using the following operations:
+
+    Push: Read a new element from the beginning list, and push it in the array.
+    Pop: delete the last element of the array.
+    If the target array is already built, stop reading more elements.
+    You are guaranteed that the target array is strictly increasing, only containing numbers between 1 to n inclusive.
+
+    Return the operations to build the target array.
+
+    You are guaranteed that the answer is unique.
+
+    
+
+    Example 1:
+
+    Input: target = [1,3], n = 3
+    Output: ["Push","Push","Pop","Push"]
+    Explanation: 
+    Read number 1 and automatically push in the array -> [1]
+    Read number 2 and automatically push in the array then Pop it -> [1]
+    Read number 3 and automatically push in the array -> [1,3]
+    Example 2:
+
+    Input: target = [1,2,3], n = 3
+    Output: ["Push","Push","Push"]
+    Example 3:
+
+    Input: target = [1,2], n = 4
+    Output: ["Push","Push"]
+    Explanation: You only need to read the first 2 numbers and stop.
+    Example 4:
+
+    Input: target = [2,3,4], n = 4
+    Output: ["Push","Pop","Push","Push","Push"]
+    */
+    class _1441_BuildAnArrayWithStackOperations {
+        public:
+            std::vector<std::string> buildArray(std::vector<int>& target, int n);
+    };
+
+    /*
+    Given a sentence text (A sentence is a string of space-separated words) in the following format:
+
+    First letter is in upper case.
+    Each word in text are separated by a single space.
+    Your task is to rearrange the words in text such that all words are rearranged in an increasing order of their lengths. If two words have the same length, arrange them in their original order.
+
+    Return the new text following the format shown above.
+
+
+    Input: text = "Leetcode is cool"
+    Output: "Is cool leetcode"
+    Explanation: There are 3 words, "Leetcode" of length 8, "is" of length 2 and "cool" of length 4.
+    Output is ordered by length and the new first word starts with capital letter.
+
+    Input: text = "Keep calm and code on"
+    Output: "On and keep calm code"
+    Explanation: Output is ordered as follows:
+    "On" 2 letters.
+    "and" 3 letters.
+    "keep" 4 letters in case of tie order by position in original text.
+    "calm" 4 letters.
+    "code" 4 letters.
+
+    Input: text = "To be or not to be"
+    Output: "To be or to be not"
+    
+
+    Constraints:
+
+    text begins with a capital letter and then contains lowercase letters and single space between words.
+    1 <= text.length <= 10^5
+    */
+    class _1451_RearrangeWordsInASentence {
+        public:
+            std::string arrangeWords(std::string text);
     }
-};
 
-
-1338. Reduce Array Size to The Half
-User Accepted:3238
-User Tried:3451
-Total Accepted:3301
-Total Submissions:5000
-Difficulty:Medium
-Given an array arr.  You can choose a set of integers and remove all the occurrences of these integers in the array.
-
-Return the minimum size of the set so that at least half of the integers of the array are removed.
-
- 
-
-Example 1:
-
-Input: arr = [3,3,3,3,5,5,5,2,2,7]
-Output: 2
-Explanation: Choosing {3,7} will make the new array [5,5,5,2,2] which has size 5 (i.e equal to half of the size of the old array).
-Possible sets of size 2 are {3,5},{3,2},{5,2}.
-Choosing set {2,7} is not possible as it will make the new array [3,3,3,3,5,5,5] which has size greater than half of the size of the old array.
-Example 2:
-
-Input: arr = [7,7,7,7,7,7]
-Output: 1
-Explanation: The only possible set you can choose is {7}. This will make the new array empty.
-Example 3:
-
-Input: arr = [1,9]
-Output: 1
-Example 4:
-
-Input: arr = [1000,1000,3,7]
-Output: 1
-Example 5:
-
-Input: arr = [1,2,3,4,5,6,7,8,9,10]
-Output: 5
- 
-
-Constraints:
-
-1 <= arr.length <= 10^5
-arr.length is even.
-1 <= arr[i] <= 10^5
-
-class Solution {
-public:
-    int minSetSize(vector<int>& arr) {
-        const int N = arr.size();
-        std::unordered_map<int, int> map;
-        for(int i = 0; i < arr.size(); ++i) {
-            ++map[arr[i]];
-        }
-        std::vector<std::pair<int,int>> statistic;
-        for(auto& m : map) {
-            statistic.push_back(m);
-        }
-        std::sort(begin(statistic), end(statistic), [](auto& a, auto& b){
-            return (a.second > b.second);
-        });
-        int removeNum = 0;
-        int accumuNum = 0;
-        for(int i = 0; i < statistic.size(); ++i) {
-            ++removeNum;
-            accumuNum += statistic[i].second;
-            if(accumuNum >= N / 2) {
-                break;
-            }
-        }
-        return removeNum;
-    }
-};
-
-
-*/
-
-
-
-/*
-Given two numbers, hour and minutes. Return the smaller angle 
-(in sexagesimal units) formed between the hour and the minute 
-hand.
-Input: hour = 12, minutes = 30
-Output: 165
-
-Input: hour = 3, minutes = 30
-Output: 75
-
-Input: hour = 3, minutes = 15
-Output: 7.5
-
-Input: hour = 4, minutes = 50
-Output: 155
-
-Input: hour = 12, minutes = 0
-Output: 0
-
-Constraints:
-1 <= hour <= 12
-0 <= minutes <= 59
-Answers within 10^-5 of the actual value will be accepted as correct.
-*/
-class _1344_AngleBetweenHandsOfAClock {
-public:
-    double angleClock(int hour, int minute);
-};
-
-
-/*
-Given an integer array arr. You have to sort the integers in the array
-in ascending order by the number of 1's in their binary representation
-and in case of two or more integers have the same number of 1's you 
-have to sort them in ascending order.
-
-Return the sorted array.
-
-Example 1:
-Input: arr = [0,1,2,3,4,5,6,7,8]
-Output: [0,1,2,4,8,3,5,6,7]
-Explantion: [0] is the only integer with 0 bits.
-[1,2,4,8] all have 1 bit.
-[3,5,6] have 2 bits.
-[7] has 3 bits.
-The sorted array by bits is [0,1,2,4,8,3,5,6,7]
-
-Example 2:
-Input: arr = [1024,512,256,128,64,32,16,8,4,2,1]
-Output: [1,2,4,8,16,32,64,128,256,512,1024]
-Explantion: All integers have 1 bit in the binary representation, 
-you should just sort them in ascending order.
-
-Example 3:
-Input: arr = [10000,10000]
-Output: [10000,10000]
-
-Example 4:
-Input: arr = [2,3,5,7,11,13,17,19]
-Output: [2,3,5,17,7,11,13,19]
-
-Example 5:
-Input: arr = [10,100,1000,10000]
-Output: [10,100,10000,1000]
- 
-Constraints:
-
-1 <= arr.length <= 500
-0 <= arr[i] <= 10^4
-*/
-class _1356_SortIntegersByTheNumberOf1Bits {
-public: 
-    std::vector<int> sortByBits(std::vector<int>& arr);
-};
-
-/*
-Given a string s consisting only of characters a, b and c.
-Return the number of substrings containing at least one 
-occurrence of all these characters a, b and c.
-
-Input: s = "abcabc"
-Output: 10
-Explanation: The substrings containing at least one 
-occurrence of the characters a, b and c are "abc", "abca", 
-"abcab", "abcabc", "bca", "bcab", "bcabc", "cab", "cabc" 
-and "abc" (again). 
-
-Input: s = "aaacb"
-Output: 3
-Explanation: The substrings containing at least one 
-occurrence of the characters a, b and c are "aaacb", "aacb" and "acb". 
-
-Input: s = "abc"
-Output: 1
-
-Constraints:
-
-3 <= s.length <= 5 x 10^4
-s only consists of a, b or c characters.
-*/
-class _1358_NumberOfSubstringsContainingAllThreeCharacters {
-private:
-    int count[3];
-    bool contains3() {
-        return count[0] >= 1 && count[1] >= 1 && count[2] >= 1;
-    }
-public:
-    int numberOfSubstrings(std::string s);
-};
-
-/*
-Given n orders, each order consist in pickup and delivery services. 
-Count all valid pickup/delivery possible sequences such that 
-delivery(i) is always after of pickup(i). 
-
-Since the answer may be too large, return it modulo 10^9 + 7.
-
-Input: n = 1
-Output: 1
-Explanation: Unique order (P1, D1), Delivery 1 always is after of Pickup 1.
-
-Input: n = 2
-Output: 6
-Explanation: All possible orders: 
-(P1,P2,D1,D2), (P1,P2,D2,D1), (P1,D1,P2,D2), (P2,P1,D1,D2), (P2,P1,D2,D1) and (P2,D2,P1,D1).
-This is an invalid order (P1,D2,P2,D1) because Pickup 2 is after of Delivery 2.
-Example 3:
-
-Input: n = 3
-Output: 90
-
-1 <= n <= 500
-*/
-class _1359_CountAllValidPickupAndDeliveryOptions {
-public:
-    int countOrders(int n );
-};
-
-
-/*
-Given a string s and an integer k. You should construct k non-empty palindrome strings using all the characters in s.
-Return True if you can use all the characters in s to construct k palindrome strings or False otherwise.
-
-
-Input: s = "annabelle", k = 2
-Output: true
-Explanation: You can construct two palindromes using all characters in s.
-Some possible constructions "anna" + "elble", "anbna" + "elle", "anellena" + "b"
-
-Input: s = "leetcode", k = 3
-Output: false
-Explanation: It is impossible to construct 3 palindromes using all the characters of s.
-
-Input: s = "true", k = 4
-Output: true
-Explanation: The only possible solution is to put each character in a separate string.
-
-Input: s = "yzyzyzyzyzyzyzy", k = 2
-Output: true
-Explanation: Simply you can put all z's in one string and all y's in the other string. Both strings will be palindrome.
-
-Input: s = "cr", k = 7
-Output: false
-Explanation: We don't have enough characters in s to construct 7 palindromes.
- 
-
-Constraints:
-
-1 <= s.length <= 10^5
-All characters in s are lower-case English letters.
-1 <= k <= 10^5
-*/
-class _1400_ConstructKPalindromeStrings {
-public:
-    // Two conditions:
-    // 1. the number of odd times characters must be <= k
-    // 2. the total length of the string must >= k;
-    bool canConstruct(std::string s, int k); 
-};
-
-
+    /*
+    Given a binary string s and an integer k.
+    
+    Return True if all binary codes of length k is a substring of s. Otherwise, return False.
+    
+    Input: s = "00110110", k = 2
+    Output: true
+    Explanation: The binary codes of length 2 are "00", "01", "10" and "11". They can be all found as substrings at indicies 0, 1, 3 and 2 respectively.
+    
+    Input: s = "00110", k = 2
+    Output: true
+    
+    Input: s = "0110", k = 1
+    Output: true
+    Explanation: The binary codes of length 1 are "0" and "1", it is clear that both exist as a substring. 
+    
+    Input: s = "0110", k = 2
+    Output: false
+    Explanation: The binary code "00" is of length 2 and doesn't exist in the array.
+    
+    Input: s = "0000000001011100", k = 4
+    Output: false
+    
+    Constraints:
+    
+    1 <= s.length <= 5 * 10^5
+    s consists of 0's and 1's only.
+    1 <= k <= 20
+     */
+    class _1461_CheckIfAStringContainsAllBinaryCodesofSizeK {
+        public:
+            bool hasAllCodes(std::string s, int k);
+    };
 }
-
 #endif

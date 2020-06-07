@@ -10,988 +10,1072 @@
 #include "LinkList.hpp"
 
 namespace LeetCode {
+
 /*
-Given a binary search tree (BST) with duplicates, find all the mode(s) (the most frequently occurred element) in the given BST.
+Tag: Data Structure
 
-Assume a BST is defined as follows:
+Google
 
-The left subtree of a node contains only nodes with keys less than or equal to the node's key.
-The right subtree of a node contains only nodes with keys greater than or equal to the node's key.
-Both the left and right subtrees must also be binary search trees.
- 
+Design and implement a data structure for a compressed string iterator. 
+It should support the following operations: next and hasNext.
 
-For example:
-Given BST [1,null,2,2],
+The given compressed string will be in the form of each letter followed 
+by a positive integer representing the number of this letter existing 
+in the original uncompressed string.
 
-   1
-    \
-     2
-    /
-   2
- 
+next() - if the original string still has uncompressed characters, 
+return the next letter; Otherwise return a white space.
 
-return [2].
+hasNext() - Judge whether there is any letter needs to be uncompressed.
 
-Note: If a tree has more than one mode, you can return them in any order.
+Note:
+Please remember to RESET your class variables declared in StringIterator, 
+as static/class variables are persisted across multiple test cases. 
+Please see here for more details.
 
-Follow up: Could you do that without using any extra space? (Assume that the implicit stack space incurred due to recursion does not count).
+StringIterator iterator = new StringIterator("L1e2t1C1o1d1e1");
+
+iterator.next(); // return 'L'
+iterator.next(); // return 'e'
+iterator.next(); // return 'e'
+iterator.next(); // return 't'
+iterator.next(); // return 'C'
+iterator.next(); // return 'o'
+iterator.next(); // return 'd'
+iterator.hasNext(); // return true
+iterator.next(); // return 'e'
+iterator.hasNext(); // return false
+iterator.next(); // return ' '
 */
-class _0501_FindModeInBinarySearchTree {
+class _0604_DesignCompressedStringIterator {
+private:
+    std::queue<std::pair<std::string, int>> q;
 public:
-    std::vector<int> findMode(TreeNode<int>* root);
+    _0604_DesignCompressedStringIterator(std::string compressedString);
+    char next();
+    bool hasNext();
 };
 
+/*
+Given a list of directory info including directory path, and all the files with contents in this 
+directory, you need to find out all the groups of duplicate files in the file system in terms of 
+their paths.
+A group of duplicate files consists of at least two files that have exactly the same content.
+A single directory info string in the input list has the following format:
+"root/d1/d2/.../dm f1.txt(f1_content) f2.txt(f2_content) ... fn.txt(fn_content)"
+It means there are n files (f1.txt, f2.txt ... fn.txt with content f1_content, f2_content ... fn_content, respectively) 
+in directory root/d1/d2/.../dm. Note that n >= 1 and m >= 0. If m = 0, it means the directory is just the root directory.
+
+The output is a list of group of duplicate file paths. For each group, it contains all the file 
+paths of the files that have the same content. A file path is a string that has the following format:
+
+"directory_path/file_name.txt"
+
+Input:
+["root/a 1.txt(abcd) 2.txt(efgh)", "root/c 3.txt(abcd)", "root/c/d 4.txt(efgh)", "root 4.txt(efgh)"]
+Output:  
+[["root/a/2.txt","root/c/d/4.txt","root/4.txt"],["root/a/1.txt","root/c/3.txt"]]
+
+Note:
+
+No order is required for the final output.
+You may assume the directory name, file name and file content only has letters and digits, 
+and the length of file content is in the range of [1,50].
+
+The number of files given is in the range of [1,20000].
+You may assume no files or directories share the same name in the same directory.
+You may assume each given directory info represents a unique directory. Directory path and 
+file info are separated by a single blank space.
+
+Follow-up beyond contest:
+Imagine you are given a real file system, how will you search files? DFS or BFS?
+If the file content is very large (GB level), how will you modify your solution?
+If you can only read the file by 1kb each time, how will you modify your solution?
+What is the time complexity of your modified solution? What is the most time-consuming part and memory consuming part of it? How to optimize?
+How to make sure the duplicated files you find are not false positive?
+*/
+class _0609_FindDuplicateFileInSystem {
+public:
+    std::vector<std::vector<std::string>> findDuplicate(std::vector<std::string>& paths);
+private:
+    std::pair<std::string, std::string> separateFileNameAndContent(const std::string& pf);
+    std::vector<std::pair<std::string, std::string>> getOneFoldersFiles(const std::string& path);
+};
 
 /*
-Given scores of N athletes, find their relative 
-ranks and the people with the top three highest scores, 
-who will be awarded medals: "Gold Medal", "Silver Medal" 
-and "Bronze Medal".
+
+*/
+class _0611_ValidTriangleNumber {
+public:
+    int triangleNumber(std::vector<int>& nums);
+};
+
+/*
+Given a string s and a list of strings dict, you need to add a closed pair of bold tag <b> and </b> to wrap the substrings 
+in s that exist in dict. If two such substrings overlap, you need to wrap them together by only one pair of closed bold tag. 
+Also, if two substrings wrapped by bold tags are consecutive, you need to combine them.
+Example 1:
+
+Input: 
+s = "abcxyz123"
+dict = ["abc","123"]
+Output:
+"<b>abc</b>xyz<b>123</b>"
+ 
+
+Example 2:
+
+Input: 
+s = "aaabbcc"
+dict = ["aaa","aab","bc"]
+Output:
+"<b>aaabbc</b>c"
+ 
+
+Constraints:
+
+The given dict won't contain duplicates, and its length won't exceed 100.
+All the strings in input have length in range [1, 1000].
+*/
+class _0616_AddBoldTagInString {
+public:
+    std::string addBoldTag(std::string s, std::vector<std::string>& dict);
+};
+
+/*
+Given two binary trees and imagine that when you put one of them to 
+cover the other, some nodes of the two trees are overlapped while 
+the others are not.
+You need to merge them into a new binary tree. The merge rule is 
+that if two nodes overlap, then sum node values up as the new 
+value of the merged node. Otherwise, the NOT null node will be 
+used as the node of new tree.
+
+Input: 
+	Tree 1                     Tree 2                  
+          1                         2                             
+         / \                       / \                            
+        3   2                     1   3                        
+       /                           \   \                      
+      5                             4   7                  
+Output: 
+Merged tree:
+	     3
+	    / \
+	   4   5
+	  / \   \ 
+	 5   4   7
+ Note: The merging process must start from the root nodes of both trees.
+*/
+class _0617_MergeTwoBinaryTrees {
+public:
+    TreeNode<int>* mergeTrees(TreeNode<int>* t1, TreeNode<int>* t2);
+};
+
+class _0621_TaskScheduler {
+public:
+    int leastInterval(std::vector<char>& tasks, int n);
+};
+
+/*
+622. Design Circular Queue
+Design your implementation of the circular queue. The circular queue is a 
+linear data structure in which the operations are performed based on FIFO 
+(First In First Out) principle and the last position is connected back to 
+the first position to make a circle. It is also called "Ring Buffer".
+
+One of the benefits of the circular queue is that we can make use of the 
+spaces in front of the queue. In a normal queue, once the queue becomes full, 
+we cannot insert the next element even if there is a space in front of the 
+queue. But using the circular queue, we can use the space to store new values.
+
+Your implementation should support following operations:
+
+MyCircularQueue(k): Constructor, set the size of the queue to be k.
+Front: Get the front item from the queue. If the queue is empty, return -1.
+Rear: Get the last item from the queue. If the queue is empty, return -1.
+enQueue(value): Insert an element into the circular queue. Return true if the operation is successful.
+deQueue(): Delete an element from the circular queue. Return true if the operation is successful.
+isEmpty(): Checks whether the circular queue is empty or not.
+isFull(): Checks whether the circular queue is full or not.
+ 
+
+Example:
+
+MyCircularQueue circularQueue = new MyCircularQueue(3); // set the size to be 3
+circularQueue.enQueue(1);  // return true
+circularQueue.enQueue(2);  // return true
+circularQueue.enQueue(3);  // return true
+circularQueue.enQueue(4);  // return false, the queue is full
+circularQueue.Rear();  // return 3
+circularQueue.isFull();  // return true
+circularQueue.deQueue();  // return true
+circularQueue.enQueue(4);  // return true
+circularQueue.Rear();  // return 4
+*/
+class _0622_DesignCircularQueue {
+    std::vector<int> q;
+    int head, tail, N;
+    bool empty;
+public:
+    /** Initialize your data structure here. Set the size of the queue to be k. */
+    _0622_DesignCircularQueue(int k);
+    
+    /** Insert an element into the circular queue. Return true if the operation is successful. */
+    bool enQueue(int value);
+    
+    /** Delete an element from the circular queue. Return true if the operation is successful. */
+    bool deQueue();
+    
+    /** Get the front item from the queue. */
+    int Front();
+    
+    /** Get the last item from the queue. */
+    int Rear();
+    
+    /** Checks whether the circular queue is empty or not. */
+    bool isEmpty();
+    
+    /** Checks whether the circular queue is full or not. */
+    bool isFull();
+};
+
+/*
+Given a non-negative integer c, your task is to decide whether there're two integers a and b such that a2 + b2 = c.
 
 Example 1:
-    Input: [5, 4, 3, 2, 1]
-    Output: ["Gold Medal", "Silver Medal", "Bronze Medal", "4", "5"]
-    Explanation: The first three athletes got the top three 
-    highest scores, so they got "Gold Medal", "Silver Medal" and 
-    "Bronze Medal".
-    For the left two athletes, you just need to output their relative 
-    ranks according to their scores.
-Note:
-    N is a positive integer and won't exceed 10,000.
-    All the scores of athletes are guaranteed to be unique.
-*/
-class _0506_RelativeRanks
-{
-public:
-    std::vector<std::string> findRelativeRanks(std::vector<int> &nums);
-};
 
-/*
-509. Fibonacci Number
-The Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci 
-sequence, such that each number is the sum of the two preceding ones, starting from 
-0 and 1. That is,
-F(0) = 0,   F(1) = 1
-F(N) = F(N - 1) + F(N - 2), for N > 1.
-Given N, calculate F(N).
+Input: 5
+Output: True
+Explanation: 1 * 1 + 2 * 2 = 5
+ 
 
-Input: 2
-Output: 1
-Explanation: F(2) = F(1) + F(0) = 1 + 0 = 1.
+Example 2:
 
 Input: 3
-Output: 2
-Explanation: F(3) = F(2) + F(1) = 1 + 1 = 2.
-
-Input: 4
-Output: 3
-Explanation: F(4) = F(3) + F(2) = 2 + 1 = 3.
-*/
-class _0509_FibonacciNumber {
-public:
-    int fib(int N);
-};
-
-
-/*
-You are given coins of different denominations and a total amount of money. 
-Write a function to compute the number of combinations that make up that 
-amount. You may assume that you have infinite number of each kind of coin.
-
-Input: amount = 5, coins = [1, 2, 5]
-Output: 4
-Explanation: there are four ways to make up the amount:
-5=5
-5=2+2+1
-5=2+1+1+1
-5=1+1+1+1+1
-
-Input: amount = 3, coins = [2]
-Output: 0
-Explanation: the amount of 3 cannot be made up just with coins of 2.
-
-Input: amount = 10, coins = [10] 
-Output: 1
-
-Note:
-
-You can assume that
-
-0 <= amount <= 5000
-1 <= coin <= 5000
-the number of coins is less than 500
-the answer is guaranteed to fit into signed 32-bit integer
-*/
-class _0518_CoinChange2 {
-public:
-    int change(int amount, std::vector<int>& coins);
-};
-
-class _0519_RandomFlipMatrix {
-private:
-    int M;
-    int N;
-    int len;
-    std::vector<int> index;    
-public:
-    _0519_RandomFlipMatrix(int n_rows, int n_cols);
-    std::vector<int> flip();
-    void reset();
-
-};
-
-/*
-Given a list of non-negative numbers and a target integer k, 
-write a function to check if the array has a continuous subarray 
-of size at least 2 that sums up to a multiple of k, that is, 
-sums up to n*k where n is also an integer.
-
-Input: [23, 2, 4, 6, 7],  k=6
-Output: True
-Explanation: Because [2, 4] is a continuous subarray of size 2 and sums up to 6.
-Example 2:
-
-Input: [23, 2, 6, 4, 7],  k=6
-Output: True
-Explanation: Because [23, 2, 6, 4, 7] is an continuous subarray of size 5 and sums up to 42.
-
-Note:
-
-The length of the array won't exceed 10,000.
-You may assume the sum of all the numbers is in the range of a signed 32-bit integer.
-*/
-class _0523_ContinuousSubarraySum {
-public:
-    bool checkSubarraySum(std::vector<int>& nums, int k);
-};
-
-/*
-Given a binary array, find the maximum length of a contiguous subarray with equal number of 0 and 1.
-
-Example 1:
-Input: [0,1]
-Output: 2
-Explanation: [0, 1] is the longest contiguous subarray with equal number of 0 and 1.
-Example 2:
-Input: [0,1,0]
-Output: 2
-Explanation: [0, 1] (or [1, 0]) is a longest contiguous subarray with equal number of 0 and 1.
-Note: The length of the given binary array will not exceed 50,000.
-*/
-class _0525_ContiguousArray {
-public:
-    int findMaxLength(std::vector<int>& nums);
-};
-
-
-/*
-   Suppose you have N integers from 1 to N. We define a beautiful arrangement as an array 
-   that is constructed by these N numbers successfully if one of the following is true for
-   the ith position (1 <= i <= N) in this array:
-   
-   The number at the ith position is divisible by i.
-   i is divisible by the number at the ith position.
-   Now given N, how many beautiful arrangements can you construct?
-   
-   Example 1:
-   Input: 2
-   Output: 2
-   Explanation:
-   
-   The first beautiful arrangement is [1, 2]:
-   
-   Number at the 1st position (i=1) is 1, and 1 is divisible by i (i=1).
-   Number at the 2nd position (i=2) is 2, and 2 is divisible by i (i=2).
-   
-   The second beautiful arrangement is [2, 1]:
-   
-   Number at the 1st position (i=1) is 2, and 2 is divisible by i (i=1).
-   Number at the 2nd position (i=2) is 1, and i (i=2) is divisible by 1.
-   这是一道典型的回溯问题
-*/
-
-class _0526_BeautifulArrangement {
-public:
-    int countArrangement(int N);
-};
-
-/*
-Given an array w of positive integers, where w[i] describes the weight of 
-index i, write a function pickIndex which randomly picks an index in 
-proportion to its weight.
-
-Note:
-1 <= w.length <= 10000
-1 <= w[i] <= 10^5
-pickIndex will be called at most 10000 times.
-
-Input: 
-["Solution","pickIndex"]
-[[[1]],[]]
-Output: [null,0]
-
-Input: 
-["Solution","pickIndex","pickIndex","pickIndex","pickIndex","pickIndex"]
-[[[1,3]],[],[],[],[],[]]
-Output: [null,0,1,1,1,0]
-Explanation of Input Syntax:
-
-The input is two lists: the subroutines called and their arguments. 
-Solution's constructor has one argument, the array w. pickIndex has no 
-arguments. Arguments are always wrapped with a list, even if there aren't any.
-*/
-class _0528_RandomPickWithWeight {
-private:
-    std::vector<int> accumulated;
-    std::vector<int> W;
-    int maxV;
-public:
-    _0528_RandomPickWithWeight(std::vector<int>& w);
-    int pickIndex();
-};
-
-/*
-Given an array of integers and an integer k, you need to find the number of unique 
-k - diff pairs in the array.Here a k - diff pair is defined as an integer pair(i, j), 
-where i and j are both numbers in the array and their absolute difference is k.
-
-Example 1:
-Input: [3, 1, 4, 1, 5], k = 2
-Output : 2
-Explanation : There are two 2 - diff pairs in the array, (1, 3) and (3, 5).
-Although we have two 1s in the input, we should only return the number of unique pairs.
-Example 2 :
-Input : [1, 2, 3, 4, 5], k = 1
-Output : 4
-Explanation : There are four 1 - diff pairs in the array, (1, 2), (2, 3), (3, 4) and (4, 5).
-Example 3 :
-Input : [1, 3, 1, 5, 4], k = 0
-Output : 1
-Explanation : There is one 0 - diff pair in the array, (1, 1).
-Note :
-The pairs(i, j) and (j, i) count as the same pair.
-The length of the array won't exceed 10,000.
-All the integers in the given input belong to the range : [-1e7, 1e7].
-这道题给了我们一个含有重复数字的无序数组，还有一个整数k，让我们找出有多少对不重复的数对(i, j)
-使得i和j的差刚好为k。由于k有可能为0，而只有含有至少两个相同的数字才能形成数对，那么就是说我们
-需要统计数组中每个数字的个数。我们可以建立每个数字和其出现次数之间的映射，然后遍历哈希表中的数
-字，如果k为0且该数字出现的次数大于1，则结果res自增1；如果k不为0，且用当前数字加上k后得到的新
-数字也在数组中存在，则结果res自增1，参见代码如下：
-*/
-class _0532_KdiffPairsInAnArray {
-public:
-    int findPairs(std::vector<int>& nums, int k) {
-		if (k < 0) {
-			return 0;
-		}
-		int res = 0;
-		int numsSize = nums.size();
-		std::unordered_map<int, int> mp;
-		for (int i = 0; i < nums.size(); ++i) {
-			mp[nums[i]]++;
-		}
-
-		for (auto a : mp) {
-			if (k == 0 && a.second > 1) {
-					res++;
-			}
-			if (k > 0 && mp.count(a.first + k) > 0) {
-				res++;
-			}
-		}
-		return res;
-	}
-};
-
-/*
-Note: This is a companion problem to the System Design problem: Design TinyURL.
-TinyURL is a URL shortening service where you enter a URL such as 
-https://leetcode.com/problems/design-tinyurl and it returns a short URL 
-such as http://tinyurl.com/4e9iAk.
-Design the encode and decode methods for the TinyURL service. There is no 
-restriction on how your encode/decode algorithm should work. You just need 
-to ensure that a URL can be encoded to a tiny URL and the tiny URL can be 
-decoded to the original URL.
-*/
-class _0535_EncodeAndDecodeTinyURL {
-public:
-    // Encodes a URL to a shortened URL
-    std::string encode(std::string longUrl);
-
-    // Decodes a shortened URL to its original URL
-    std::string decode(std::string shortUrl);
-};
-
-
-/*
-Given two strings representing two complex numbers.
-You need to return a string representing their multiplication. Note i2 = -1 according to the definition.
-
-Example 1:
-Input: "1+1i", "1+1i"
-Output: "0+2i"
-Explanation: (1 + i) * (1 + i) = 1 + i2 + 2 * i = 2i, and you need convert it to the form of 0+2i.
-Example 2:
-Input: "1+-1i", "1+-1i"
-Output: "0+-2i"
-Explanation: (1 - i) * (1 - i) = 1 + i2 - 2 * i = -2i, and you need convert it to the form of 0+-2i.
-Note:
-
-The input strings will not have extra blank.
-The input strings will be given in the form of a+bi, where the integer a and b will both belong to the range of [-100, 100]. And the output should be also in this form.
-*/
-class _0537_ComplexNumberMultiplication {
-public:
-    std::string complexNumberMultiply(std::string a, std::string b);
-};
-
-/*
-Given a Binary Search Tree (BST), convert it to a Greater Tree such that 
-every key of the original BST is changed to the original key plus sum of 
-all keys greater than the original key in BST.
-
-Input: The root of a Binary Search Tree like this:
-              5
-            /   \
-           2     13
-
-Output: The root of a Greater Tree like this:
-             18
-            /   \
-          20     13
-*/
-class _0538_ConvertBSTToGreaterTree {
-public:
-    TreeNode<int>* convertBST(TreeNode<int>* root);
-    void inOrder(TreeNode<int>* root);
-};
-
-/*
-Given a list of 24-hour clock time points in "Hour:Minutes" format, find the minimum minutes difference between any two time points in the list.
-Example 1:
-Input: ["23:59","00:00"]
-Output: 1
-Note:
-The number of time points in the given list is at least 2 and won't exceed 20000.
-The input time is legal and ranges from 00:00 to 23:59.
-*/
-class _0539_MinimumTimeDifference {
-public:
-    int findMinDifference(std::vector<std::string>& timePoints);
-};
-
-/*
-You are given a sorted array consisting of only integers where every 
-element appears exactly twice, except for one element which appears 
-exactly once. Find this single element that appears only once.
-
-Input: [1,1,2,3,3,4,4,8,8]
-Output: 2
-
-Input: [3,3,7,7,10,11,11]
-Output: 10
-*/
-class _0540_SingleElementInASortedArray {
-public:
-    int singleNonDuplicate(std::vector<int>& nums);
-private:
-    int singleNoDuplicate(std::vector<int>& nums, int bet, int end);
-};
-
-/*
-Given a string and an integer k, you need to reverse the first k 
-characters for every 2k characters counting from the start of the string. 
-If there are less than k characters left, reverse all of them. If there 
-are less than 2k but greater than or equal to k characters, then reverse 
-the first k characters and left the other as original.
-
-Input: s = "abcdefg", k = 2
-Output: "bacdfeg"
-Restrictions:
-The string consists of lower English letters only.
-Length of the given string and k will in the range [1, 10000]
-*/
-class _0541_ReverseStringII {
-public:
-    std::string reverseStr(std::string s, int k);
-};
-
-/*
-Tag: Tree
-!!! Edge case and initial condtion is very easy to have errors !!!
-Facebook 
-
-Given a binary tree, you need to compute the length of the diameter 
-of the tree. The diameter of a binary tree is the length of the 
-longest path between any two nodes in a tree. This path may or may 
-not pass through the root.
-
-Given a binary tree
-          1
-         / \
-        2   3
-       / \     
-      4   5    
-Return 3, which is the length of the path [4,2,1,3] or [5,2,1,3].
-Note: The length of path between two nodes is represented by the number 
-of edges between them.
-*/
-class _0543_DiameterofBinaryTree {
-private:
-    int res;
-    int depth(TreeNode<int>* root);
-public:
-    int diameterOfBinaryTree(TreeNode<int>* root);
-
-};
-
-/*
-553. Optimal Division
-Given a list of positive integers, the adjacent integers will 
-perform the float division. For example, [2,3,4] -> 2 / 3 / 4.
-
-However, you can add any number of parenthesis at any position 
-to change the priority of operations. You should find out how 
-to add parenthesis to get the maximum result, and return the 
-corresponding expression in string format. Your expression should NOT contain redundant parenthesis.
-
-Example:
-Input: [1000,100,10,2]
-Output: "1000/(100/10/2)"
-Explanation:
-1000/(100/10/2) = 1000/((100/10)/2) = 200
-However, the bold parenthesis in "1000/((100/10)/2)" are redundant, 
-since they don't influence the operation priority. So you should return "1000/(100/10/2)". 
-
-Other cases:
-1000/(100/10)/2 = 50
-1000/(100/(10/2)) = 50
-1000/100/10/2 = 0.5
-1000/100/(10/2) = 2
-Note:
-
-The length of the input array is [1, 10].
-Elements in the given array will be in range [2, 1000].
-There is only one optimal division for each test case.
-*/
-class _0553_OptimalDivision {
-public:
-    std::string optimalDivision(std::vector<int>& nums);
-};
-
-/*
-There is a brick wall in front of you. The wall is rectangular and has 
-several rows of bricks. The bricks have the same height but different 
-width. You want to draw a vertical line from the top to the bottom and 
-cross the least bricks.
-The brick wall is represented by a list of rows. Each row is a list of 
-integers representing the width of each brick in this row from left to right.
-If your line go through the edge of a brick, then the brick is not 
-considered as crossed. You need to find out how to draw the line to cross 
-the least bricks and return the number of crossed bricks.
-You cannot draw a line just along one of the two vertical edges of the 
-wall, in which case the line will obviously cross no bricks.
-
-Input: [[1,2,2,1],
-        [3,1,2],
-        [1,3,2],
-        [2,4],
-        [3,1,2],
-        [1,3,1,1]]
-Output: 2
-
-Note:
-The width sum of bricks in different rows are the same and won't exceed 
-INT_MAX. The number of bricks in each row is in range [1,10,000]. The height 
-of wall is in range [1,10,000]. Total number of bricks of the wall won't 
-exceed 20,000.
-*/
-class _0554_BrickWall {
-public:
-    int leastBricks(std::vector<std::vector<int>>& wall);
-};
-
-
-/*
-Given a string, you need to reverse the order of characters in each word 
-within a sentence while still preserving whitespace and initial word order.
-
-Input: "Let's take LeetCode contest"
-Output: "s'teL ekat edoCteeL tsetnoc"
-Note: In the string, each word is separated by single space and there will 
-not be any extra space in the string.
-*/
-class _0557_ReverseWordsInAStringIII {
-public:
-    std::string reverseWords(std::string s);
-};
-
-/*
-A Binary Matrix is a matrix in which all the elements are either 0 or 1.
-Given quadTree1 and quadTree2. quadTree1 represents a n * n binary matrix 
-and quadTree2 represents another n * n binary matrix. 
-Return a Quad-Tree representing the n * n binary matrix which is the result 
-of logical bitwise OR of the two binary matrixes represented by quadTree1 
-and quadTree2.
-Notice that you can assign the value of a node to True or False when isLeaf 
-is False, and both are accepted in the answer.
-A Quad-Tree is a tree data structure in which each internal node has exactly
-four children. Besides, each node has two attributes:
-
-val: True if the node represents a grid of 1's or False if the node represents a grid of 0's. 
-isLeaf: True if the node is leaf node on the tree or False if the node has the four children.
-class Node {
-    public boolean val;
-    public boolean isLeaf;
-    public Node topLeft;
-    public Node topRight;
-    public Node bottomLeft;
-    public Node bottomRight;
-}
-We can construct a Quad-Tree from a two-dimensional area using the following steps:
-
-If the current grid has the same value (i.e all 1's or all 0's) set isLeaf True and set 
-val to the value of the grid and set the four children to Null and stop.
-If the current grid has different values, set isLeaf to False and set val to any value 
-and divide the current grid into four sub-grids as shown in the photo.
-Recurse for each of the children with the proper sub-grid.
-
-If you want to know more about the Quad-Tree, you can refer to the wiki.
-Quad-Tree format:
-The input/output represents the serialized format of a Quad-Tree using level order 
-traversal, where null signifies a path terminator where no node exists below.
-It is very similar to the serialization of the binary tree. The only difference is 
-that the node is represented as a list [isLeaf, val].
-If the value of isLeaf or val is True we represent it as 1 in the list [isLeaf, val] 
-and if the value of isLeaf or val is False we represent it as 0.
- 
-Input: quadTree1 = [[0,1],[1,1],[1,1],[1,0],[1,0]]
-, quadTree2 = [[0,1],[1,1],[0,1],[1,1],[1,0],null,null,null,null,[1,0],[1,0],[1,1],[1,1]]
-Output: [[0,0],[1,1],[1,1],[1,1],[1,0]]
-Explanation: quadTree1 and quadTree2 are shown above. You can see the binary matrix which is represented by each Quad-Tree.
-If we apply logical bitwise OR on the two binary matrices we get the binary matrix below which is represented by the result Quad-Tree.
-Notice that the binary matrices shown are only for illustration, you don't have to construct the binary matrix to get the result tree.
-
-Example 2:
-
-Input: quadTree1 = [[1,0]]
-, quadTree2 = [[1,0]]
-Output: [[1,0]]
-Explanation: Each tree represents a binary matrix of size 1*1. Each matrix contains only zero.
-The resulting matrix is of size 1*1 with also zero.
-Example 3:
-
-Input: quadTree1 = [[0,0],[1,0],[1,0],[1,1],[1,1]]
-, quadTree2 = [[0,0],[1,1],[1,1],[1,0],[1,1]]
-Output: [[1,1]]
-Example 4:
-
-Input: quadTree1 = [[0,0],[1,1],[1,0],[1,1],[1,1]]
-, quadTree2 = [[0,0],[1,1],[0,1],[1,1],[1,1],null,null,null,null,[1,1],[1,0],[1,0],[1,1]]
-Output: [[0,0],[1,1],[0,1],[1,1],[1,1],null,null,null,null,[1,1],[1,0],[1,0],[1,1]]
-Example 5:
-
-Input: quadTree1 = [[0,1],[1,0],[0,1],[1,1],[1,0],null,null,null,null,[1,0],[1,0],[1,1],[1,1]]
-, quadTree2 = [[0,1],[0,1],[1,0],[1,1],[1,0],[1,0],[1,0],[1,1],[1,1]]
-Output: [[0,0],[0,1],[0,1],[1,1],[1,0],[1,0],[1,0],[1,1],[1,1],[1,0],[1,0],[1,1],[1,1]]
- 
-
-Constraints:
-
-quadTree1 and quadTree2 are both valid Quad-Trees each representing a n * n grid.
-n == 2^x where 0 <= x <= 9.
-*/
-class _0558_LogicalORofTwoBinaryGridsRepresentedAsQuadTrees {
-class Node{
-public:
-    bool val;
-    bool isLeaf;
-    Node* topLeft;
-    Node* topRight;
-    Node* bottomLeft;
-    Node* bottomRight;
-
-    Node() {}
-
-    Node(bool _val, bool _isLeaf, Node* _topLeft, Node* _topRight, Node* _bottomLeft, Node* _bottomRight) {
-        val = _val;
-        isLeaf = _isLeaf;
-        topLeft = _topLeft;
-        topRight = _topRight;
-        bottomLeft = _bottomLeft;
-        bottomRight = _bottomRight;
-    }
-    };
-public:
-    Node* intersect(Node* quadTree1, Node* quadTree2);
-};
-
-/*
-Given a n-ary tree, find its maximum depth.
-The maximum depth is the number of nodes along the longest path from the root 
-node down to the farthest leaf node.
-Nary-Tree input serialization is represented in their level order traversal, 
-each group of children is separated by the null value (See examples).
-
-Input: root = [1,null,3,2,4,null,5,6]
-Output: 3
-
-Input: root = [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]
-Output: 5
-
-Constraints:
-
-The depth of the n-ary tree is less than or equal to 1000.
-The total number of nodes is between [0, 10^4].
-*/
-class _0559_MaximumDepthOfNaryTree {
-public:
-    int maxDepth(NaryTreeNode<int>* root);
-};
-
-/*
-Tag:
-
-Facebook
-
-560. Subarray Sum Equals K
-Given an array of integers and an integer k, you need to find 
-the total number of continuous subarrays whose sum equals to k.
-Input:nums = [1,1,1], k = 2
-Output: 2
-Note:
-    The length of the array is in range [1, 20,000].
-    The range of numbers in the array is [-1000, 1000] and the 
-    range of the integer k is [-1e7, 1e7].
- */
-class _0560_SubarraySumEqualsK {
-    public:
-    int subarraySum(std::vector<int>& nums, int k);
-};
-
-
-/*
-Given an array of 2n integers, your task is to group these integers 
-into n pairs of integer, say (a1, b1), (a2, b2), ..., (an, bn) which 
-makes sum of min(ai, bi) for all i from 1 to n as large as possible.
-
-Input: [1,4,3,2]
-Output: 4
-Explanation: n is 2, and the maximum sum of pairs is 4 = min(1, 2) + min(3, 4).
-Note:
-n is a positive integer, which is in the range of [1, 10000].
-All the integers in the array will be in the range of [-10000, 10000].
-*/
-class _0561_ArrayPartitionI {
-public:
-    int arrayPairSum(std::vector<int>& nums);
-};
-
-/*
-Given a 01 matrix M, find the longest line of consecutive one in the matrix. The line could be horizontal, vertical, diagonal or anti-diagonal.
-Example:
-Input:
-[[0,1,1,0],
- [0,1,1,0],
- [0,0,0,1]]
-Output: 3
-Hint: The number of elements in the given matrix will not exceed 10,000.
-*/
-class _0562_LongestLineOfConsecutiveOneInMatrix {
-public:
-    int longestLine(std::vector<std::vector<int>>& M);
-};
-
-/*
-Given two strings s1 and s2, write a function to return true if s2 
-contains the permutation of s1. In other words, one of the first 
-string's permutations is the substring of the second string.
-
-Input: s1 = "ab" s2 = "eidbaooo"
-Output: True
-Explanation: s2 contains one permutation of s1 ("ba").
-
-Input:s1= "ab" s2 = "eidboaoo"
 Output: False
-
-Note:
-The input strings only contain lower case letters.
-The length of both given strings is in range [1, 10,000].
 */
-class _0567_PermutationInString {
+class _0633_SumOfSquareNumbers {
 public:
-    bool checkInclusion(std::string s1, std::string s2);
+    bool judgeSquareSum(int c);
 };
 
 /*
-Given two non-empty binary trees s and t, check whether tree t has exactly 
-the same structure and node values with a subtree of s. A subtree of s is 
-a tree consists of a node in s and all of this node's descendants. The tree 
-s could also be considered as a subtree of itself.
-Example 1:
-Given tree s:
+On a single threaded CPU, we execute some functions.  Each function has a unique id between 0 and N-1.
+We store logs in timestamp order that describe when a function is entered or exited.
+Each log is a string with this format: "{function_id}:{"start" | "end"}:{timestamp}".  For example, 
+"0:start:3" means the function with id 0 started at the beginning of timestamp 3.  "1:end:2" means the 
+function with id 1 ended at the end of timestamp 2.
+A function's exclusive time is the number of units of time spent in this function.  Note that this does 
+not include any recursive calls to child functions.
+The CPU is single threaded which means that only one function is being executed at a given time unit.
+Return the exclusive time of each function, sorted by their function id.
 
-     3
-    / \
-   4   5
-  / \
- 1   2
-Given tree t:
-   4 
-  / \
- 1   2
-Return true, because t has the same structure and node values with a subtree 
-of s.
-Example 2:
-Given tree s:
-
-     3
-    / \
-   4   5
-  / \
- 1   2
-    /
-   0
-Given tree t:
-   4
-  / \
- 1   2
-*/
-class _0572_SubtreeOfAnotherTree {
-public:
-    bool isSubtree(TreeNode<int>* s, TreeNode<int>* t);
-private:
-    bool isSame(TreeNode<int>* s, TreeNode<int>* t);
-};
-
-/*
-Given an integer array with even length, where different numbers in this array represent 
-different kinds of candies. Each number means one candy of the corresponding kind. You 
-need to distribute these candies equally in number to brother and sister. Return the 
-maximum number of kinds of candies the sister could gain.
-
-Input: candies = [1,1,2,2,3,3]
-Output: 3
+Input:
+n = 2
+logs = ["0:start:0","1:start:2","1:end:5","0:end:6"]
+Output: [3, 4]
 Explanation:
-There are three different kinds of candies (1, 2 and 3), and two candies for each kind.
-Optimal distribution: The sister has candies [1,2,3] and the brother has candies [1,2,3], too.
-The sister has three different kinds of candies.
-Example 2:
-Input: candies = [1,1,2,3]
-Output: 2
-Explanation: For example, the sister has candies [2,3] and the brother has candies [1,1].
-The sister has two different kinds of candies, the brother has only one kind of candies.
+Function 0 starts at the beginning of time 0, then it executes 2 units of time and reaches the end of time 1.
+Now function 1 starts at the beginning of time 2, executes 4 units of time and ends at time 5.
+Function 0 is running again at the beginning of time 6, and also ends at the end of time 6, thus executing for 1 unit of time. 
+So function 0 spends 2 + 1 = 3 units of total time executing, and function 1 spends 4 units of total time executing.
+ 
+
 Note:
 
-The length of the given array is in range [2, 10,000], and will be even.
-The number in given array is in range [-100,000, 100,000].
+1 <= n <= 100
+Two functions won't start or end at the same time.
+Functions will always log when they exit.
+ 
 */
-class _0575_DistributeCandies {
+class _0636_ExclusiveTimeOfFunctions {
 public:
-    int distributeCandies(std::vector<int>& candies) {
-        std::unordered_set<int> sisCandy;
-        int candySize = candies.size();
-        for (int i = 0; i < candies.size(); ++i) {
-            if (sisCandy.find(candies[i]) == sisCandy.end()) {
-                if (sisCandy.size() >= candySize / 2) {
-                    return sisCandy.size();
-                }
-                else {
-                    sisCandy.insert(candies[i]);
-                }
-            }
-        }
-        return sisCandy.size();
-    }
+    std::vector<int> exclusiveTime(int n, std::vector<std::string>& logs);
 };
 
 /*
-Given two words word1 and word2, find the minimum number of steps 
-required to make word1 and word2 the same, where in each step you 
-can delete one character in either string.
-
-Input: "sea", "eat"
-Output: 2
-Explanation: You need one step to make "sea" to "ea" and another step to make "eat" to "ea".
+Given a non-empty binary tree, return the average value of the nodes on each level in the form of an array.
+Input:
+    3
+   / \
+  9  20
+    /  \
+   15   7
+Output: [3, 14.5, 11]
+Explanation:
+The average value of nodes on level 0 is 3,  on level 1 is 14.5, and on level 2 is 11. Hence return [3, 14.5, 11].
 Note:
-The length of given words won't exceed 500.
-Characters in given words can only be lower-case letters.
+The range of node's value is in the range of 32-bit signed integer.
 */
-class _0583_DeleteOperationForTwoStrings {
+class _0637_AverageOfLevelsInBinaryTree {
+public:
+    std::vector<double> averageOfLevels(TreeNode<int>* root);
+};
+
+
+
+/*
+Design your implementation of the circular double-ended queue (deque).
+
+Your implementation should support following operations:
+
+MyCircularDeque(k): Constructor, set the size of the deque to be k.
+insertFront(): Adds an item at the front of Deque. Return true if the operation is successful.
+insertLast(): Adds an item at the rear of Deque. Return true if the operation is successful.
+deleteFront(): Deletes an item from the front of Deque. Return true if the operation is successful.
+deleteLast(): Deletes an item from the rear of Deque. Return true if the operation is successful.
+getFront(): Gets the front item from the Deque. If the deque is empty, return -1.
+getRear(): Gets the last item from Deque. If the deque is empty, return -1.
+isEmpty(): Checks whether Deque is empty or not. 
+isFull(): Checks whether Deque is full or not.
+ 
+
+Example:
+
+MyCircularDeque circularDeque = new MycircularDeque(3); // set the size to be 3
+circularDeque.insertLast(1);			// return true
+circularDeque.insertLast(2);			// return true
+circularDeque.insertFront(3);			// return true
+circularDeque.insertFront(4);			// return false, the queue is full
+circularDeque.getRear();  			// return 2
+circularDeque.isFull();				// return true
+circularDeque.deleteLast();			// return true
+circularDeque.insertFront(4);			// return true
+circularDeque.getFront();			// return 4
+ 
+
+Note:
+
+All values will be in the range of [0, 1000].
+The number of operations will be in the range of [1, 1000].
+Please do not use the built-in Deque library.
+*/
+class _0641_DesignCircularDeque{
 private:
-    std::vector<std::vector<int>> DP;
-    int minDistance_DP_nonLCS_based(std::string word1, std::string word2);
-    int minDistance_LCS_DP_based(std::string word1, std::string word2);
-    int minDistance_LCS_based(std::string word1, std::string word2);
-    int lcs(std::string& s1, std::string& s2, int m, int n);
+    std::vector<int> q;
+    int start;
+    int end;
+    int K;
 public:
-    int minDistance(std::string word1, std::string word2);
+    /** Initialize your data structure here. Set the size of the deque to be k. */
+    _0641_DesignCircularDeque(int k);
+    
+    /** Adds an item at the front of Deque. Return true if the operation is successful. */
+    bool insertFront(int value);
+
+    /** Adds an item at the rear of Deque. Return true if the operation is successful. */
+    bool insertLast(int value);
+    
+    /** Deletes an item from the front of Deque. Return true if the operation is successful. */
+    bool deleteFront();
+    
+    /** Deletes an item from the rear of Deque. Return true if the operation is successful. */
+    bool deleteLast();
+    
+    /** Get the front item from the deque. */
+    int getFront();
+    
+    /** Get the last item from the deque. */
+    int getRear();
+
+    /** Checks whether the circular deque is empty or not. */
+    bool isEmpty();
+    
+    /** Checks whether the circular deque is full or not. */
+    bool isFull();
 };
 
 /*
-Given an n-ary tree, return the preorder traversal of its nodes' values.
-Nary-Tree input serialization is represented in their level order 
-traversal, each group of children is separated by the null value 
-(See examples). 
+You are given n pairs of numbers. In every pair, the first number is always 
+smaller than the second number.
+Now, we define a pair (c, d) can follow another pair (a, b) if and only if 
+b < c. Chain of pairs can be formed in this fashion.
+Given a set of pairs, find the length longest chain which can be formed. You 
+needn't use up all the given pairs. You can select pairs in any order.
 
-Follow up:
-Recursive solution is trivial, could you do it iteratively?
-
-Input: root = [1,null,3,2,4,null,5,6]
-Output: [1,3,5,6,2,4]
-
-Input: root = [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]
-Output: [1,2,3,6,7,11,14,4,8,12,5,9,13,10]
-
-Constraints:
-
-The height of the n-ary tree is less than or equal to 1000
-The total number of nodes is between [0, 10^4]
-*/
-class _0589_NaryTreePreorderTraversal {
-public:
-    std::vector<int> preorder(NaryTreeNode<int>* root);
-};
-
-/*
-Given an n-ary tree, return the postorder traversal of its nodes' values.
-Nary-Tree input serialization is represented in their level order traversal, 
-each group of children is separated by the null value (See examples).
-
-Recursive solution is trivial, could you do it iteratively?
-Input: root = [1,null,3,2,4,null,5,6]
-Output: [5,6,3,2,4,1]
-
-Input: root = [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]
-Output: [2,6,14,11,7,3,12,8,4,13,9,10,5,1]
-*/
-class _0590_Node;
-class _0590_NaryTreePostOrderTraversal {
-public:
-    std::vector<int> postorder(_0590_Node* root);
-};
-
-/*
-Given a string representing an expression of fraction addition and subtraction, 
-you need to return the calculation result in string format. The final result should 
-be irreducible fraction. If your final result is an integer, say 2, you need to change 
-it to the format of fraction that has denominator 1. So in this case, 2 should be 
-converted to 2/1.
-
-Input:"-1/2+1/2"
-Output: "0/1"
-
-Input:"-1/2+1/2+1/3"
-Output: "1/3"
-
-Input:"1/3-1/2"
-Output: "-1/6"
-
-Input:"5/3+1/3"
-Output: "2/1"
+Input: [[1,2], [2,3], [3,4]]
+Output: 2
+Explanation: The longest chain is [1,2] -> [3,4]
 Note:
-The input string only contains '0' to '9', '/', '+' and '-'. So does the output.
-Each fraction (input and output) has format ±numerator/denominator. If the first input 
-fraction or the output is positive, then '+' will be omitted. The input only contains valid 
-irreducible fractions, where the numerator and denominator of each fraction will always 
-be in the range [1,10]. If the denominator is 1, it means this fraction is actually an 
-integer in a fraction format defined above.
-The number of given fractions will be in the range [1,10].
-The numerator and denominator of the final result are guaranteed to be valid and in the 
-range of 32-bit int.
+The number of given pairs will be in the range [1, 1000].
 */
-class _0592_FractionAdditionAndSubtraction {
+class _0646_MaximumLengthOfPairChain {
 public:
-    std::string fractionAddition(std::string expression);
+    int findLongestChain(std::vector<std::vector<int>>& pairs);
 };
 
 /*
-Given the coordinates of four points in 2D space, return whether the four points could construct a square.
-The coordinate (x,y) of a point is represented by an integer array with two integers.
+Given a string, your task is to count how many palindromic substrings in this string.
+The substrings with different start indexes or end indexes are counted as different 
+substrings even they consist of same characters.
 
-Input: p1 = [0,0], p2 = [1,1], p3 = [1,0], p4 = [0,1]
-Output: True
+Input: "abc"        :        Output: 3
+Explanation: Three palindromic strings: "a", "b", "c".
+ 
+Input: "aaa"        :        Output: 6
+Explanation: Six palindromic strings: "a", "a", "a", "aa", "aa", "aaa".
+*/
+class _0647_PalindromicSubstrings{
+public:
+    int countSubstrings(std::string s);
+private:
+    int sub(const std::string& s, int k);
+};
 
+/*
+Given an integer array with no duplicates. A maximum tree 
+building on this array is defined as follow:
+
+The root is the maximum number in the array.
+The left subtree is the maximum tree constructed from left 
+part subarray divided by the maximum number.
+The right subtree is the maximum tree constructed from right 
+part subarray divided by the maximum number.
+Construct the maximum tree by the given array and output 
+the root node of this tree.
+
+Input: [3,2,1,6,0,5]
+Output: return the tree root node representing the following tree:
+
+      6
+    /   \
+   3     5
+    \    / 
+     2  0   
+       \
+        1
 Note:
-All the input integers are in the range [-10000, 10000].
-A valid square has four equal sides with positive length and four equal angles (90-degree angles).
-Input points have no order.
+The size of the given array will be in the range [1,1000].
 */
-class _0593_ValidSquare {
+class _0654_MaximumBinaryTree {
 public:
-    bool validSquare(std::vector<int>& p1, std::vector<int>& p2, std::vector<int>& p3,
-    std::vector<int>& p4);
+    TreeNode<int>* constructMaximumBinaryTree(std::vector<int>& nums);
+private:
+    TreeNode<int>* constructMaximumBinaryTree_impl(std::vector<int>& nums, int l, int r);
 };
 
 /*
-Given an m * n matrix M initialized with all 0's and several update operations.
-Operations are represented by a 2D array, and each operation is represented by 
-an array with two positive integers a and b, which means M[i][j] should be added 
-by one for all 0 <= i < a and 0 <= j < b.
+Print a binary tree in an m*n 2D string array following these rules:
 
-You need to count and return the number of maximum integers in the matrix after performing all the operations.
+The row number m should be equal to the height of the given binary tree.
+The column number n should always be an odd number.
+The root node's value (in string format) should be put in the exactly middle of 
+the first row it can be put. The column and the row where the root node belongs 
+will separate the rest space into two parts (left-bottom part and right-bottom 
+part). You should print the left subtree in the left-bottom part and print the 
+right subtree in the right-bottom part. The left-bottom part and the right-bottom 
+part should have the same size. Even if one subtree is none while the other is 
+not, you don't need to print anything for the none subtree but still need to 
+leave the space as large as that for the other subtree. However, if two subtrees 
+are none, then you don't need to leave space for both of them.
+Each unused space should contain an empty string "".
+Print the subtrees following the same rules.
+Example 1:
+Input:
+     1
+    /
+   2
+Output:
+[["", "1", ""],
+ ["2", "", ""]]
+Example 2:
+Input:
+     1
+    / \
+   2   3
+    \
+     4
+Output:
+[["", "", "", "1", "", "", ""],
+ ["", "2", "", "", "", "3", ""],
+ ["", "", "4", "", "", "", ""]]
+Example 3:
+Input:
+      1
+     / \
+    2   5
+   / 
+  3 
+ / 
+4 
+Output:
+
+[["",  "",  "", "",  "", "", "", "1", "",  "",  "",  "",  "", "", ""]
+ ["",  "",  "", "2", "", "", "", "",  "",  "",  "",  "5", "", "", ""]
+ ["",  "3", "", "",  "", "", "", "",  "",  "",  "",  "",  "", "", ""]
+ ["4", "",  "", "",  "", "", "", "",  "",  "",  "",  "",  "", "", ""]]
+Note: The height of binary tree is in the range of [1, 10].
+这道题一下子蒙住了，实际上这道题很简单，还是一个递归调用，首先要建立起整个矩阵，用空字符串填满
+这里就需要计算好本身这棵树有多高，那么有多宽就可以算出来，
+每层都是在正中间填充数字，递归调用把左右两边的范围分别变成 [l mid-1]， [mid + 1, r] 就可以了
+*/
+class _0655_PrintBinaryTree {
+public:
+    std::vector<std::vector<std::string>> printTree(TreeNode<int>* root);
+private:
+    int getHeight(TreeNode<int>* root);
+    void fill(TreeNode<int>* root, std::vector<std::vector<std::string>>& res, int h, int l, int r);
+};
+
+/*
+There is a robot starting at position (0, 0), the origin, on a 2D plane. 
+Given a sequence of its moves, judge if this robot ends up at (0, 0) after 
+it completes its moves.
+The move sequence is represented by a string, and the character moves[i] 
+represents its ith move. Valid moves are R (right), L (left), U (up), 
+and D (down). If the robot returns to the origin after it finishes all of 
+its moves, return true. Otherwise, return false.
+Note: The way that the robot is "facing" is irrelevant. "R" will always 
+make the robot move to the right once, "L" will always make it move left, 
+etc. Also, assume that the magnitude of the robot's movement is the same 
+for each move.
+
+Input: "UD"
+Output: true 
+Explanation: The robot moves up once, and then down once. All moves have 
+the same magnitude, so it ended up at the origin where it started. 
+Therefore, we return true.
+
+Input: "LL"
+Output: false
+Explanation: The robot moves left twice. It ends up two "moves" to the 
+left of the origin. We return false because it is not at the origin at 
+the end of its moves.
+*/
+class _0657_RobotReturnToOrigin {
+public:
+    bool judgeCircle(std::string moves);
+};
+
+/*
+Tag: Priority Queue
+
+Google
+Given a sorted array, two integers k and x, find the k closest elements 
+to x in the array. The result should also be sorted in ascending order. 
+If there is a tie, the smaller elements are always preferred.
+
+Input: [1,2,3,4,5], k=4, x=3
+Output: [1,2,3,4]
+
+Input: [1,2,3,4,5], k=4, x=-1
+Output: [1,2,3,4]
+Note:
+The value k is positive and will always be smaller than the length of 
+the sorted array.
+Length of the given array is positive and will not exceed 104
+Absolute value of elements in the array and x will not exceed 104
+*/
+class _0658_FindKClosetElements {
+public:
+    std::vector<int> findClosetElements(std::vector<int>&arr, int k, int n);
+};
+
+/*
+You are given an integer array sorted in ascending order (may contain 
+duplicates), you need to split them into several subsequences, where 
+each subsequences consist of at least 3 consecutive integers. Return 
+whether you can make such a split.
 
 Example 1:
-Input: 
-m = 3, n = 3
-operations = [[2,2],[3,3]]
-Output: 4
-Explanation: 
-Initially, M = 
+
+Input: [1,2,3,3,4,5] :  Output: True
+You can split them into two consecutive subsequences : 
+1, 2, 3
+3, 4, 5
+
+Example 2:
+Input: [1,2,3,3,4,4,5,5] : Output: True
+You can split them into two consecutive subsequences : 
+1, 2, 3, 4, 5
+3, 4, 5
+ 
+
+Example 3:
+Input: [1,2,3,4,4,5]  :  Output: False
+
+Note:
+The length of the input is in range of [1, 10000]
+*/
+class _0659_SplitArrayIntoConsecutiveSubsequences {
+public:
+    bool isPossible(std::vector<int>& nums);
+};
+
+/*
+Given a 2D integer matrix M representing the gray scale of an image, 
+you need to design a smoother to make the gray scale of each cell 
+becomes the average gray scale (rounding down) of all the 8 surrounding 
+cells and itself. If a cell has less than 8 surrounding cells, then 
+use as many as you can.
+
+Example 1:
+Input:
+[[1,1,1],
+ [1,0,1],
+ [1,1,1]]
+Output:
 [[0, 0, 0],
  [0, 0, 0],
  [0, 0, 0]]
-
-After performing [2,2], M = 
-[[1, 1, 0],
- [1, 1, 0],
- [0, 0, 0]]
-
-After performing [3,3], M = 
-[[2, 2, 1],
- [2, 2, 1],
- [1, 1, 1]]
-
-So the maximum integer in M is 2, and there are four of it in M. So return 4.
+Explanation:
+For the point (0,0), (0,2), (2,0), (2,2): floor(3/4) = floor(0.75) = 0
+For the point (0,1), (1,0), (1,2), (2,1): floor(5/6) = floor(0.83333333) = 0
+For the point (1,1): floor(8/9) = floor(0.88888889) = 0
 Note:
-The range of m and n is [1,40000].
-The range of a is [1,m], and the range of b is [1,n].
-The range of operations size won't exceed 10,000.
+The value in the given matrix is in the range of [0, 255].
+The length and width of the given matrix are in the range of [1, 150].
 */
-class _0598_RangeAdditionII {
+class _0661_ImageSmoother {
 public:
-    int maxCount(int m, int n, std::vector<std::vector<int>>& ops);
+    std::vector<std::vector<int>> imageSmoother(std::vector<std::vector<int>>& M);
 };
 
 /*
-Suppose Andy and Doris want to choose a restaurant for dinner, and they both have a 
-list of favorite restaurants represented by strings.
-You need to help them find out their common interest with the least list index sum. 
-If there is a choice tie between answers, output all of them with no order requirement. 
-You could assume there always exists an answer.
+Given a binary tree with n nodes, your task is to check if it's possible to partition the tree to two trees which have the equal sum of values after removing exactly one edge on the original tree.
 
-Input:
-["Shogun", "Tapioca Express", "Burger King", "KFC"]
-["Piatti", "The Grill at Torrey Pines", "Hungry Hunter Steakhouse", "Shogun"]
-Output: ["Shogun"]
-Explanation: The only restaurant they both like is "Shogun".
+Example 1:
+Input:     
+    5
+   / \
+  10 10
+    /  \
+   2   3
 
-Input:
-["Shogun", "Tapioca Express", "Burger King", "KFC"]
-["KFC", "Shogun", "Burger King"]
-Output: ["Shogun"]
-Explanation: The restaurant they both like and have the least index sum is "Shogun" with index sum 1 (0+1).
+Output: True
+Explanation: 
+    5
+   / 
+  10
+      
+Sum: 15
+
+   10
+  /  \
+ 2    3
+
+Sum: 15
+Example 2:
+Input:     
+    1
+   / \
+  2  10
+    /  \
+   2   20
+
+Output: False
+Explanation: You can't split the tree into two trees with equal sum after removing exactly one edge on the tree.
 Note:
-The length of both lists will be in the range of [1, 1000].
-The length of strings in both lists will be in the range of [1, 30].
-The index is starting from 0 to the list length minus 1.
-No duplicates in both lists.
+The range of tree node value is in the range of [-100000, 100000].
+1 <= n <= 10000
 */
-class _0599_MinimumIndexSumOfTwoLists {
+class _0663_EqualTreePartition {
 public:
-    std::vector<std::string> findRestaruant(std::vector<std::string>& list1, std::vector<std::string>& list2);
+    bool checkEqualTree(TreeNode<int>* root);
+    int treeSum(TreeNode<int>* root);
+    int foo(TreeNode<int>* root, int target, bool& divisible);
 };
 
+/*
+There is a strange printer with the following two special requirements:
+The printer can only print a sequence of the same character each time.
+At each turn, the printer can print new characters starting from and ending at any 
+places, and will cover the original existing characters.
+Given a string consists of lower English letters only, your job is to count the minimum 
+number of turns the printer needed in order to print it.
+
+Input: "aaabbb"
+Output: 2
+Explanation: Print "aaa" first and then print "bbb".
+
+Input: "aba"
+Output: 2
+Explanation: Print "aaa" first and then print "b" from the second place of the string, 
+which will cover the existing character 'a'.
+Hint: Length of the given string will not exceed 100.
+*/
+class _0664_StrangePrinter {
+public:
+    int strangePrinter(const std::string& s);
+private:
+    int turn(const std::string& s, int i, int j);
+    std::vector<std::vector<int>> DP;
+};
+
+/*
+Given two integers n and k, you need to construct a list which contains 
+n different positive integers ranging from 1 to n and obeys the following 
+requirement:
+Suppose this list is [a1, a2, a3, ... , an], then the list [|a1 - a2|, 
+|a2 - a3|, |a3 - a4|, ... , |an-1 - an|] has exactly k distinct integers.
+
+If there are multiple answers, print any of them.
+
+Input: n = 3, k = 1           :            Output: [1, 2, 3]
+Input: n = 3, k = 2           :            Output: [1, 3, 2]
+Note:
+The n and k are in the range 1 <= k < n <= 104.
+*/
+class _0667_BeautifulArrangementII {
+public:
+    std::vector<int> constructArray(int n, int k);
+};
+
+
+
+/*
+On an NxN chessboard, a knight starts at the r-th row and c-th 
+column and attempts to make exactly K moves. The rows and columns 
+are 0 indexed, so the top-left square is (0, 0), and the 
+bottom-right square is (N-1, N-1).
+A chess knight has 8 possible moves it can make, as illustrated 
+below. Each move is two squares in a cardinal direction, then one 
+square in an orthogonal direction.
+
+Each time the knight is to move, it chooses one of eight possible 
+moves uniformly at random (even if the piece would go off the 
+chessboard) and moves there.
+The knight continues moving until it has made exactly K moves or 
+has moved off the chessboard. Return the probability that the knight 
+remains on the board after it has stopped moving.
+
+Input: 3, 2, 0, 0
+Output: 0.0625
+Explanation: There are two moves (to (1,2), (2,1)) that will keep 
+the knight on the board. From each of those positions, there are also 
+two moves that will keep the knight on the board. The total probability 
+the knight stays on the board is 0.0625.
+
+Note:
+N will be between 1 and 25.
+K will be between 0 and 100.
+The knight always initially starts on the board.
+*/
+class _0668_KnightProbabilityInChessboard {
+public:
+    double knightProbability(int N, int K, int r, int c);
+};
+
+/*
+Given a non-empty special binary tree consisting of nodes with the non-negative 
+value, where each node in this tree has exactly two or zero sub-node. If the node 
+has two sub-nodes, then this node's value is the smaller value among its two 
+sub-nodes. More formally, the property root.val = min(root.left.val, root.right.val) 
+always holds.
+
+Given such a binary tree, you need to output the second minimum value in the set 
+made of all the nodes' value in the whole tree.
+If no such second minimum value exists, output -1 instead.
+
+Input: 
+    2
+   / \
+  2   5
+     / \
+    5   7
+
+Output: 5
+Explanation: The smallest value is 2, the second smallest value is 5.
+ 
+
+Input: 
+    2
+   / \
+  2   2
+
+Output: -1
+Explanation: The smallest value is 2, but there isn't any second smallest value.
+*/
+class _0671_SecondMinimumNodeInABinaryTree {
+private:
+    int min1;
+    int ans = INT_MAX;
+public:
+    void dfs(TreeNode<int>* root);
+    int findSecondMinimumValue(TreeNode<int>* root);
+};
+
+/*
+Implement a magic directory with buildDict, and search methods.
+For the method buildDict, you'll be given a list of non-repetitive 
+words to build a dictionary.
+For the method search, you'll be given a word, and judge whether if you 
+modify exactly one character into another character in this word, the 
+modified word is in the dictionary you just built.
+
+Example 1:
+Input: buildDict(["hello", "leetcode"]), Output: Null
+Input: search("hello"), Output: False
+Input: search("hhllo"), Output: True
+Input: search("hell"), Output: False
+Input: search("leetcoded"), Output: False
+Note:
+You may assume that all the inputs are consist of lowercase letters a-z.
+For contest purpose, the test data is rather small by now. You could think 
+about highly efficient algorithm after the contest. Please remember to RESET 
+your class variables declared in class MagicDictionary, as static/class 
+variables are persisted across multiple test cases. Please see here for 
+more details.
+*/
+class _0676_ImplementMagicDictionary {
+public:
+    _0676_ImplementMagicDictionary();
+    void buildDict(std::vector<std::string> dict);
+    bool search(std::string word);
+private:
+    std::unordered_map<int, std::unordered_set<std::string>> _dict;
+};
+
+
+/*
+You have 4 cards each containing a number from 1 to 9. You need to judge whether they could operated 
+through *, /, +, -, (, ) to get the value of 24.
+
+Example 1:
+Input: [4, 1, 8, 7]
+Output: True
+Explanation: (8-4) * (7-1) = 24
+Example 2:
+Input: [1, 2, 1, 2]
+Output: False
+Note:
+The division operator / represents real division, not integer division. For example, 4 / (1 - 2/3) = 12.
+Every operation done is between two numbers. In particular, we cannot use - as a unary operator. For example, with [1, 1, 1, 1] as input, the expression -1 - 1 - 1 - 1 is not allowed.
+You cannot concatenate numbers together. For example, if the input is [1, 2, 1, 2], we cannot write this as 12 + 12.
+*/
+class _0679_24Games{
+public:
+    bool judgePoint24(std::vector<int>& nums);
+private:
+    bool valid(std::vector<int>& nums);
+    bool valid(double a, double b, double c);
+    bool valid(double a, double b); 
+};
+
+/*
+Given a non-empty string s, you may delete at most one character. Judge whether you can make it a palindrome.
+
+Input: "aba"
+Output: True
+
+Input: "abca"
+Output: True
+Explanation: You could delete the character 'c'.
+Note:
+The string will only contain lowercase characters a-z. The maximum length of the string is 50000.
+*/
+class _0680_ValidPalindromeII {
+public:
+    bool validPalindrome(std::string s);
+};
+
+/*
+Given a time represented in the format "HH:MM", form the next 
+closest time by reusing the current digits. There is no limit 
+on how many times a digit can be reused.
+
+You may assume the given input string is always valid. For 
+example, "01:34", "12:09" are all valid. "1:34", "12:9" are 
+all invalid.
+
+Input: "19:34"
+Output: "19:39"
+Explanation: The next closest time choosing from digits 1, 9, 
+3, 4, is 19:39, which occurs 5 minutes later.  It is not 19:33, 
+because this occurs 23 hours and 59 minutes later.
+
+Input: "23:59"
+Output: "22:22"
+Explanation: The next closest time choosing from digits 2, 3, 5, 
+9, is 22:22. It may be assumed that the returned time is next
+day's time since it is smaller than the input time numerically.
+*/
+class _0681_NextClosetTime {
+public:
+    std::string nextClosetTime(std::string time);
+};
+
+/*
+In this problem, a tree is an undirected graph that is connected and has no cycles.
+The given input is a graph that started as a tree with N nodes (with distinct values 
+1, 2, ..., N), with one additional edge added. The added edge has two different 
+vertices chosen from 1 to N, and was not an edge that already existed.
+
+The resulting graph is given as a 2D-array of edges. Each element of edges is a pair 
+[u, v] with u < v, that represents an undirected edge connecting nodes u and v.
+
+Return an edge that can be removed so that the resulting graph is a tree of N nodes. 
+If there are multiple answers, return the answer that occurs last in the given 2D-array. 
+The answer edge [u, v] should be in the same format, with u < v.
+
+Example 1:
+Input: [[1,2], [1,3], [2,3]]
+Output: [2,3]
+Explanation: The given undirected graph will be like this:
+  1
+ / \
+2 - 3
+Example 2:
+Input: [[1,2], [2,3], [3,4], [1,4], [1,5]]
+Output: [1,4]
+Explanation: The given undirected graph will be like this:
+5 - 1 - 2
+    |   |
+    4 - 3
+Note:
+The size of the input 2D-array will be between 3 and 1000.
+Every integer represented in the 2D-array will be between 1 and N, where N is the size of the input array.
+
+Update (2017-09-26):
+We have overhauled the problem description + test cases and specified clearly the graph is 
+an undirected graph. For the directed graph follow up please see Redundant Connection II). 
+We apologize for any inconvenience caused.
+*/
+class _0684_RedundantConnection {
+public:
+    std::vector<int> findRedundantConnection(std::vector<std::vector<int>>& edges);
+};
+
+/*
+Given two strings A and B, find the minimum number of times A has to be 
+repeated such that B is a substring of it. If no such solution, return -1.
+
+For example, with A = "abcd" and B = "cdabcdab".
+Return 3, because by repeating A three times (“abcdabcdabcd”), B is a substring 
+of it; and B is not a substring of A repeated two times ("abcdabcd").
+
+Note:
+The length of A and B will be between 1 and 10000.
+*/
+class _0686_RepeatedStringMatch {
+public:
+    int repeatedStringMatch(std::string A, std::string B);
+};
+
+/*
+Given a binary tree, find the length of the longest path where each 
+node in the path has the same value. This path may or may not pass 
+through the root.
+The length of path between two nodes is represented by the number 
+of edges between them.
+
+              5
+             / \
+            4   5
+           / \   \
+          1   1   5
+Output: 2
+
+              1
+             / \
+            4   5
+           / \   \
+          4   4   5
+Output: 2
+Note: The given binary tree has not more than 10000 nodes. The 
+height of the tree is not more than 1000.
+*/
+class _0687_LongestUnivaluePath {
+public:
+    int longestUnivaluePath(TreeNode<int>* root);
+private:
+    int univaluePath(TreeNode<int>* root, int* ans);
+};
+
+/*
+Given a non-empty list of words, return the k most frequent elements.
+Your answer should be sorted by frequency from highest to lowest. If 
+two words have the same frequency, then the word with the lower 
+alphabetical order comes first.
+
+Example 1:
+Input: ["i", "love", "leetcode", "i", "love", "coding"], k = 2
+Output: ["i", "love"]
+Explanation: "i" and "love" are the two most frequent words.
+    Note that "i" comes before "love" due to a lower alphabetical order.
+Example 2:
+Input: ["the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is"], k = 4
+Output: ["the", "is", "sunny", "day"]
+Explanation: "the", "is", "sunny" and "day" are the four most frequent words,
+    with the number of occurrence being 4, 3, 2 and 1 respectively.
+Note:
+You may assume k is always valid, 1 ≤ k ≤ number of unique elements.
+Input words contain only lowercase letters.
+Follow up:
+Try to solve it in O(n log k) time and O(n) extra space.
+*/
+class _0692_TopKFrequentWords {
+public:
+    std::vector<std::string> topKFrequent(std::vector<std::string>& words, int k);
+};
+
+/*
+Given a non-empty 2D array grid of 0's and 1's, an island is a group of 1's (representing land) 
+connected 4-directionally (horizontal or vertical.) You may assume all four edges of the grid are surrounded by water.
+Count the number of distinct islands. An island is considered to be the same as another if and only if one island 
+can be translated (and not rotated or reflected) to equal the other.
+
+Example 1:
+11000
+11000
+00011
+00011
+Given the above grid map, return 1.
+Example 2:
+11011
+10000
+00001
+11011
+Given the above grid map, return 3.
+
+Notice that:
+11
+1
+and
+ 1
+11
+are considered different island shapes, because we do not consider reflection / rotation.
+Note: The length of each dimension in the given grid does not exceed 50.
+*/
+class _0694_NumberOfDistinceIslands {
+private:
+int M;
+int N;
+void DFS(std::vector<std::vector<int>>& grid, std::string& path, int i, int j, const int I, const int J);
+public:
+    int numDistinctIslands(std::vector<std::vector<int>>& grid);
+};
+
+/*
+Given the root node of a binary search tree (BST) and a value. 
+You need to find the node in the BST that the node's value equals 
+the given value. Return the subtree rooted with that node. 
+If such node doesn't exist, you should return NULL.
+
+Given the tree:
+        4
+       / \
+      2   7
+     / \
+    1   3
+
+And the value to search: 2
+You should return this subtree:
+
+      2     
+     / \   
+    1   3
+In the example above, if we want to search the value 5, since 
+there is no node with value 5, we should return NULL.
+Note that an empty tree is represented by NULL, therefore you 
+would see the expected output (serialized tree format) as [], 
+not null.
+*/
+class _0700_SearchInABinarySearchTree {
+public:
+    TreeNode<int>* searchBST(TreeNode<int>* root, int val);
+};
 }
 
 #endif

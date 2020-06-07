@@ -5,2397 +5,2200 @@
 #include <string>
 #include <stack>
 #include <queue>
-#include <functional>
+#include <map>
+#include <list>
+#include <unordered_set>
+#include <unordered_map>
 #include "Tree.hpp"
 #include "LinkList.hpp"
 
-// Problem 1 - 100
+namespace LeetCode {
+/*
+Tag: Tree
+Given a binary tree, check whether it is a mirror of itself 
+(ie, symmetric around its center). For example, this binary 
+tree[1, 2, 2, 3, 4, 4, 3] is symmetric:
+         1
+        / \
+       2   2
+      / \ / \
+     3  4 4  3
+But the following[1, 2, 2, null, 3, null, 3] is not:
+        1
+       / \
+      2   2
+       \   \
+        3   3
+Note:
+Bonus points if you could solve it both recursively and iteratively.
+Solution:  utilize the preorder framework
+*/
+class _0101_SymmetricTree {
+public:
+    bool isSymmetric(TreeNode<int> *root);
+private:
+    bool preOrderIter(TreeNode<int> *root);
+};
 
-namespace LeetCode
+/*
+Tag: Tree
+Given a binary tree, return the level order traversal of its 
+nodes' values. (ie, from left to right, level by level).
+
+Given binary tree [3,9,20,null,null,15,7],
+    3
+   / \
+  9  20
+    /  \
+   15   7
+return its level order traversal as:
+[[3], [9,20], [15,7]]
+*/
+class _0102_BinaryTreeLevelOrderTraversal {
+public:
+    std::vector<std::vector<int>> levelOrder(TreeNode<int>* root);
+};
+
+/*
+Tag: Tree
+Given a binary tree, return the zigzag level order traversal of its nodes' 
+values. (ie, from left to right, then right to left for the next level and 
+alternate between).
+
+For example:
+Given binary tree [3,9,20,null,null,15,7],
+    3
+   / \
+  9  20
+    /  \
+   15   7
+return its zigzag level order traversal as:
+[[3], [20,9], [15,7]]
+*/
+class _0103_BinaryTreeZigzagLevelOrderTraversal {
+public:
+    std::vector<std::vector<int>> zigzagLevelOrder(TreeNode<int>* root);
+};
+
+/*
+Tag: Tree
+Given a binary tree, find its maximum depth.
+The maximum depth is the number of nodes along the longest path from the root 
+node down to the farthest leaf node.
+
+Note: A leaf is a node with no children.
+
+Example:
+Given binary tree [3,9,20,null,null,15,7],
+
+    3
+   / \
+  9  20
+    /  \
+   15   7
+return its depth = 3.
+*/
+class _0104_MaximumDepthOfBinaryTree {
+public:
+    int maxDepth(TreeNode<int>* root);
+};
+
+/*
+Tag: Tree
+Given preorder and inorder traversal of a tree, construct the binary tree.
+
+Note:
+You may assume that duplicates do not exist in the tree.
+For example, given
+preorder = [3,9,20,15,7]
+inorder = [9,3,15,20,7]
+Return the following binary tree:
+
+    3
+   / \
+  9  20
+    /  \
+   15   7
+*/
+class _0105_ConstructBinaryTreeFromPreorderAndInorderTraversal {
+public:
+    TreeNode<int>* buildTree(std::vector<int>& preorder, std::vector<int>& inorder);
+};
+
+
+
+/*
+Tag: Tree
+Given inorder and postorder traversal of a tree, construct the binary tree.
+
+Note:
+You may assume that duplicates do not exist in the tree.
+
+For example, given
+
+inorder = [9,3,15,20,7]
+postorder = [9,15,7,20,3]
+Return the following binary tree:
+
+    3
+   / \
+  9  20
+    /  \
+   15   7
+*/
+class _0106_ConstructBinaryTreeFromInorderAndPostorderTraversal {
+public:
+    TreeNode<int>* buildTree(std::vector<int>& inorder, std::vector<int>& postorder);
+private:
+    TreeNode<int>* buildTree(std::vector<int>& inorder, int inStart, int inEnd,
+                       std::vector<int>& postorder, int postStart, int postEnd);
+};
+
+
+/*
+Tag: Tree
+Binary Tree Level Order Traversal II
+Given a binary tree, return the bottom - up level order traversal of 
+its nodes' values. (ie, from left to right, level by level from leaf to root).
+
+For example :
+Given binary tree[3, 9, 20, null, null, 15, 7],
+    3
+   / \
+  9  20
+ / \
+15  7
+return its bottom - up level order traversal as :
+[
+    [15, 7],
+    [9, 20],
+    [3]
+]
+*/
+class _0107_BinaryTreeLevelOrderTraversalII {
+public:
+    std::vector<std::vector<int>> levelOrderBottom(TreeNode<int> *root);
+};
+
+/*
+Tag: Tree, Binary Search
+Convert Sorted Array to Binary Search Tree
+Given an array where elements are sorted in ascending order, 
+convert it to a height balanced BST.
+
+For this problem, a height-balanced binary tree is defined as a binary tree in
+which the depth of the two subtrees of every node never differ by more than 1.
+
+Example:
+Given the sorted array: [-10,-3,0,5,9],
+One possible answer is: [0,-3,9,-10,null,5], which represents the following height balanced BST:
+                0
+            / \
+            -3   9
+            /   /
+        -10  5
+*/
+class _0108_ConvertSortedArrayToBinarySearchTree {
+public:
+    TreeNode<int> *sortedArrayToBST(std::vector<int> &nums);
+private:
+    TreeNode<int> *bst(std::vector<int> &nums, int start, int end);
+};
+
+/*
+Tag: Tree
+Given a singly linked list where elements are sorted in ascending order, convert 
+it to a height balanced BST. For this problem, a height-balanced binary tree is 
+defined as a binary tree in which the depth of the two subtrees of every node 
+never differ by more than 1.
+
+Example:
+Given the sorted linked list: [-10,-3,0,5,9], 
+One possible answer is: [0,-3,9,-10,null,5], which represents the following 
+height balanced BST:
+
+      0
+     / \
+   -3   9
+   /   /
+ -10  5
+*/
+class _0109_ConvertSortedListToBinarySearchTree {
+public:
+    TreeNode<int>* sortedListToBST(ListNode<int>* head);
+    void split(ListNode<int>* head, ListNode<int>*& root, 
+        ListNode<int>*& left, ListNode<int>*& right);
+};
+
+/*
+Tag: Tree, recursive
+Given a binary tree, determine if it is height-balanced.
+For this problem, a height-balanced binary tree is defined as:
+a binary tree in which the left and right subtrees of every node differ in height by no more than 1.
+
+Example 1:
+Given the following tree [3,9,20,null,null,15,7]:
+
+    3
+   / \
+  9  20
+    /  \
+   15   7
+Return true.
+
+Example 2:
+Given the following tree [1,2,2,3,3,null,null,4,4]:
+
+       1
+      / \
+     2   2
+    / \
+   3   3
+  / \
+ 4   4
+Return false.
+*/
+class _0110_BalancedBinaryTree {
+public:
+    bool isBalanced(TreeNode<int>* root);
+private:
+    int height(TreeNode<int>* root);
+};
+
+/*
+Tag: Tree
+Given a binary tree, find its minimum depth.
+The minimum depth is the number of nodes along the shortest path 
+from the root node down to the nearest leaf node.
+
+Note: A leaf is a node with no children.
+
+Example:
+Given binary tree [3,9,20,null,null,15,7],
+
+    3
+   / \
+  9  20
+    /  \
+   15   7
+return its minimum depth = 2.
+*/
+class _0111_MinimumDepthOfBinaryTree {
+public:
+    int minDepth(TreeNode<int>* root);
+};
+
+/*
+Tag: Backtracking, Tree, recursive
+Given a binary tree and a sum, determine if the tree has a root-to-leaf path 
+such that adding up all the values along the path equals the given sum.
+Note: A leaf is a node with no children.
+
+Example:
+Given the below binary tree and sum = 22,
+
+      5
+     / \
+    4   8
+   /   / \
+  11  13  4
+ /  \      \
+7    2      1
+return true, as there exist a root-to-leaf path 5->4->11->2 which sum is 22.
+*/
+class _0112_PathSum {
+public:
+    bool hasPathSum(TreeNode<int>* root, int sum);
+};
+
+
+/*
+Tag: Backtracking, Tree, recursive
+Given a binary tree and a sum, find all root-to-leaf paths where each path's sum equals the given sum.
+Note: A leaf is a node with no children.
+
+Given the below binary tree and sum = 22,
+
+      5
+     / \
+    4   8
+   /   / \
+  11  13  4
+ /  \    / \
+7    2  5   1
+Return:
+[[5,4,11,2], [5,8,4,5]]
+*/
+class _0113_PathSumII{
+public:
+    std::vector<std::vector<int>> pathSum(TreeNode<int>* root, int sum);
+    void pathSum(TreeNode<int>* root, int sum, std::vector<int> tmp, std::vector<std::vector<int>>& res);
+};
+
+/*
+Tag: single linked list, Tree
+Given a binary tree, flatten it to a linked list in-place.
+
+For example, given the following tree:
+
+    1
+   / \
+  2   5
+ / \   \
+3   4   6
+The flattened tree should look like:
+
+1
+ \
+  2
+   \
+    3
+     \
+      4
+       \
+        5
+         \
+          6
+*/
+class _0114_FlattenBinaryTreeToLinkedList {
+public:
+    void flatten(TreeNode<int>* root);
+};
+
+/*
+Tag: Tree, recursive
+You are given a perfect binary tree where all leaves are on the same level, 
+and every parent has two children. The binary tree has the following definition:
+Populate each next pointer to point to its next right node. If there is no next 
+right node, the next pointer should be set to NULL.
+Initially, all next pointers are set to NULL.
+*/
+class _0116_PopulatingNextRightPointerInEachNode
 {
-/*  Tag: array, Hash
-    Given an array of integers, return indices of the two 
-    numbers such that they add up to a specific target.
-    You may assume that each input would have exactly one 
-    solution, and you may not use the same element twice.
-    Example:
-        Given nums = [2, 7, 11, 15], target = 9,
-        Because nums[0] + nums[1] = 2 + 7 = 9,
-    Return [0, 1].
-    */
-class _0001_TwoSum {
 public:
-    std::vector<int> twoSum(std::vector<int> &nums, int target);
-};
-
-/* Tag: single link list
-    You are given two non-empty linked lists representing 
-    two non-negative integers. The digits are stored in 
-    reverse order and each of their nodes contain a single digit. 
-    Add the two numbers and return it as a linked list.
-    You may assume the two numbers do not contain any leading zero,
-    except the number 0 itself.
-    
-    Example:
-    Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
-    Output: 7 -> 0 -> 8
-    Explanation: 342 + 465 = 807.
-    */
-class _0002_AddTwoNumbers {
-public:
-    ListNode<int> *addTwoNumbers(ListNode<int> *l1, ListNode<int> *l2);
-
-private:
-    ListNode<int> *AddTwoNodes(ListNode<int> *l1, ListNode<int> *l2, int wi);
-};
-
-/*  TODO 
-Tag : sliding Window, hash, string
-Given a string, find the length of the longest substring without repeating characters.
-
-Input: "abcabcbb"     :      Output: 3 
-Explanation: The answer is "abc", with the length of 3. 
-Input: "bbbbb"        :      Output: 1
-Explanation: The answer is "b", with the length of 1.
-Input: "pwwkew"       :      Output: 3
-Explanation: The answer is "wke", with the length of 3. 
-Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
-*/
-class _0003_LongestSubstringWithoutRepeatingCharacters {
-public:
-    int lengthOfLongestSubstring(std::string s);
-};
-
-/* TODO :
-Tag : Binary Search, array
-There are two sorted arrays nums1 and nums2 of size m and n respectively.
-Find the median of the two sorted arrays. 
-The overall run time complexity should be O(log (m+n)).
-You may assume nums1 and nums2 cannot be both empty.
-*/
-class _0004_MedianOfTwoSortedArrays {
+    class Node
+    {
     public:
-        double findMedianOfSortedArrays(
-            std::vector<int>& nums1,
-            std::vector<int>& nums2);
-};
+        int val;
+        Node *left;
+        Node *right;
+        Node *next;
+    };
 
-
-/*
-Tag: string, palindromic
-Given a string s, find the longest palindromic substring in s. You may assume that 
-the maximum length of s is 1000.
-
-Input: "babad"          :         Output: "bab"
-Note: "aba" is also a valid answer.
-
-Input: "cbbd"           :         Output: "bb"
-*/
-class _0005_LongestPalindromicSubstring {
-public:
-    std::string longestPalidrome(std::string s);
-private:
-    int expandAroundCenter(std::string &s, int i, int j);
+    void connect(Node *root);
 };
 
 /*
-Tag: string, mathematics, array
-The string "PAYPALISHIRING" is written in a zigzag pattern 
-on a given number of rows like this: (you may want to 
-display this pattern in a fixed font for better legibility)
+Tag: recursive, Tree,
+TODO: Constant space
+117. Populating Next Right Pointers in Each Node II
+Given a binary tree
+Populate each next pointer to point to its next right node. 
+If there is no next right node, the next pointer should be set to NULL.
+Initially, all next pointers are set to NULL.
 
-    P   A   H   N
-    A P L S I I G
-    Y   I   R
-And then read line by line: "PAHNAPLSIIGYIR"
+Follow up:
 
-Write the code that will take a string and make this conversion 
-given a number of rows:
+You may only use constant extra space.
+Recursive approach is fine, you may assume implicit stack space does not count as extra space for this problem.
 
-string convert(string s, int numRows);
-
-Input: s = "PAYPALISHIRING", numRows = 3
-Output: "PAHNAPLSIIGYIR"
-
-Input: s = "PAYPALISHIRING", numRows = 4
-Output: "PINALSIGYAHRPI"
-Explanation:
-
-        P     I    N
-        A   L S  I G
-        Y A   H R
-        P     I
-*/
-class _0006_ZigZagConversion {
-public:
-    std::string convert(std::string s, int numRows);
-};
-
-/*
-Tag: stack, numeric
-Given a 32-bit signed integer, reverse digits of an integer.
-
-Input: 123       :       Output: 321
-Input: -123      :       Output: -321
-Input: 120       :       Output: 21
-*/
-class _0007_ReverseInteger {
-public:
-    int reverse(int x);
-};
-
-
-/* TODO, Like: 1273, Dislike: 7740
-Tag: string, overflow consideration
-Implement atoi which converts a string to an integer.
-The function first discards as many whitespace characters as 
-necessary until the first non-whitespace character is found. 
-Then, starting from this character, takes an optional initial 
-plus or minus sign followed by as many numerical digits as 
-possible, and interprets them as a numerical value.
-
-The string can contain additional characters after those that form 
-the integral number, which are ignored and have no effect on the 
-behavior of this function.
-
-If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed.
-If no valid conversion could be performed, a zero value is returned.
-
-Note:
-Only the space character ' ' is considered as whitespace character.
-Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231,  231 − 1]. If the numerical value is out of the range of representable values, INT_MAX (231 − 1) or INT_MIN (−231) is returned.
-
-Input: "42"        :        Output: 42
-Input: "   -42"    :        Output: -42
-Explanation: The first non-whitespace character is '-', which is the minus sign.
-             Then take as many numerical digits as possible, which gets 42.
-
-Input: "4193 with words"     :      Output: 4193
-Explanation: Conversion stops at digit '3' as the next character is not a numerical digit.
-
-Input: "words and 987"       :      Output: 0
-Explanation: The first non-whitespace character is 'w', which is not a numerical 
-             digit or a +/- sign. Therefore no valid conversion could be performed.
-
-Input: "-91283472332"        :      Output: -2147483648
-Explanation: The number "-91283472332" is out of the range of a 32-bit signed integer.
-    Thefore INT_MIN (−231) is returned.
-*/
-class _0008_StringToInteger {
-public:
-    int myAtoi(std::string str);
-};
-
-
-/* Tag: string, palindrome
-Determine whether an integer is a palindrome. An integer is a 
-palindrome when it reads the same backward as forward.
-
-Input: 121             Output: true
-Input: -121            Output: false
-Explanation: From left to right, it reads -121. From right to left, 
-it becomes 121-. Therefore it is not a palindrome.
-
-Input: 10              Output: false
-Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
-*/
-class _0009_PalindromeNumber {
-public:
-    bool isPalindrome(int x);
-};
-
-/*
-Tag: dynamic programming, string matching
-TODO: Copy from the answer
-Given an input string (s) and a pattern (p), implement 
-regular expression matching with support for '.' and '*'.
-
-'.' Matches any single character.
-'*' Matches zero or more of the preceding element.
-The matching should cover the entire input string (not 
-partial).
-
-s could be empty and contains only lowercase letters a-z.
-p could be empty and contains only lowercase letters a-z, 
-and characters like . or *.
-
-Input:
-s = "aa"
-p = "a"
-Output: false
-Explanation: "a" does not match the entire string "aa".
-Example 2:
-
-Input:
-s = "aa"
-p = "a*"
-Output: true
-Explanation: '*' means zero or more of the preceding element, 'a'. Therefore, by repeating 'a' once, it becomes "aa".
-Example 3:
-
-Input:
-s = "ab"
-p = ".*"
-Output: true
-Explanation: ".*" means "zero or more (*) of any character (.)".
-Example 4:
-
-Input:
-s = "aab"
-p = "c*a*b"
-Output: true
-Explanation: c can be repeated 0 times, a can be repeated 1 time. Therefore, it matches "aab".
-Example 5:
-
-Input:
-s = "mississippi"
-p = "mis*is*p*."
-Output: false
-*/
-class _0010_RegularExpressionMatching {
-public:
-    bool isMatch(std::string s, std::string p);
-};
-
-/* TODO
-Tag: greedy algorithm
-Given n non-negative integers a1, a2, ..., an , where each represents a point 
-at coordinate (i, ai). n vertical lines are drawn such that the two endpoints 
-of line i is at (i, ai) and (i, 0). Find two lines, which together with x-axis 
-forms a container, such that the container contains the most water.
-
-Note: You may not slant the container and n is at least 2.
-The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this 
-case, the max area of water (blue section) the container can contain is 49. 
-
-Input: [1,8,6,2,5,4,8,3,7]
-Output: 49
-*/
-class _0011_ContainerWithMostWater {
-public:
-    int maxArea(std::vector<int>& height);
-};
-
-/* TODO
-Tag: greedy algorithm, hash
-Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
-Symbol       Value
-I             1
-V             5
-X             10
-L             50
-C             100
-D             500
-M             1000
-For example, two is written as II in Roman numeral, just two one's added together.
-Twelve is written as, XII, which is simply X + II. The number twenty seven is 
-written as XXVII, which is XX + V + II.
-Roman numerals are usually written largest to smallest from left to right. 
-However, the numeral for four is not IIII. Instead, the number four is written 
-as IV. Because the one is before the five we subtract it making four. The same 
-principle applies to the number nine, which is written as IX. There are six 
-instances where subtraction is used:
-
-I can be placed before V (5) and X (10) to make 4 and 9. 
-X can be placed before L (50) and C (100) to make 40 and 90. 
-C can be placed before D (500) and M (1000) to make 400 and 900.
-Given an integer, convert it to a roman numeral. Input is guaranteed to be within the range from 1 to 3999.
-
-Input: 3
-Output: "III"
-
-Input: 4
-Output: "IV"
-
-Input: 9
-Output: "IX"
-
-Input: 58
-Output: "LVIII"
-Explanation: L = 50, V = 5, III = 3.
-Example 5:
-
-Input: 1994
-Output: "MCMXCIV"
-Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
-*/
-class _0012_IntegerToRoman {
-public:
-    std::string intToRoman(int num);
-};
-
-/*
-Tag: numeric, string
-    Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
-    Symbol       Value
-    I             1
-    V             5
-    X             10
-    L             50
-    C             100
-    D             500
-    M             1000
-    For example, two is written as II in Roman numeral, just two one's added together. Twelve 
-    is written as, XII, which is simply X + II. The number twenty seven is written as XXVII, 
-    which is XX + V + II.
-    Roman numerals are usually written largest to smallest from left to right. However, the 
-    numeral for four is not IIII. Instead, the number four is written as IV. Because the one 
-    is before the five we subtract it making four. The same principle applies to the number 
-    nine, which is written as IX. There are six instances where subtraction is used:
-
-    I can be placed before V (5) and X (10) to make 4 and 9. 
-    X can be placed before L (50) and C (100) to make 40 and 90. 
-    C can be placed before D (500) and M (1000) to make 400 and 900.
-    Given a roman numeral, convert it to an integer. Input is guaranteed to be within the range 
-    from 1 to 3999.
-
-    Example:
-    Input: "III"     :      Output: 3
-    Input: "IV"      :      Output: 4
-    Input: "IX"      :      Output: 9
-    Input: "LVIII"   :      Output: 58     (Explanation: L = 50, V= 5, III = 3)
-    Input: "MCMXCIV" :      Output: 1994   (Explanation: M = 1000, CM = 900, XC = 90 and IV = 4)
-*/
-class _0013_RomanToInteger {
-public:
-    int romainToInt(std::string &s);
-private:
-    int charToInt(char c);
-};
-
-/*
-Tag: string
-Write a function to find the longest common prefix string among an array of strings.
-If there is no common prefix, return an empty string "".
-
-Input: ["flower","flow","flight"]
-Output: "fl"
-
-Input: ["dog","racecar","car"]
-Output: ""
-
-Explanation: There is no common prefix among the input strings.
-*/
-class _0014_LongestCommonPrefix {
-public:
-    std::string longestCommonPrefix(std::vector<std::string> &strs);
-};
-
-/* 
-Classical Problem
-Tag: binary search, hash, 
-Given an array nums of n integers, are there elements a, b, c in nums such 
-that a + b + c = 0? Find all unique triplets in the array which gives the 
-sum of zero.
-
-Note:
-The solution set must not contain duplicate triplets.
-
-Example:
-Given array nums = [-1, 0, 1, 2, -1, -4],
-
-A solution set is:
-[
-  [-1, 0, 1],
-  [-1, -1, 2]
-]
-*/
-class _0015_3Sum {
-public:
-    std::vector<std::vector<int>> threeSum(std::vector<int> &nums);
-};
-
-
-/* Todo
-Tag: Binary search, hash
-Given an array nums of n integers and an integer target, find three 
-integers in nums such that the sum is closest to target. Return the 
-sum of the three integers. You may assume that each input would have 
-exactly one solution.
-Example:
-Given array nums = [-1, 2, 1, -4], and target = 1.
-The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
-*/
-class _0016_3SumCloset {
-    public:
-        int threeSumCloset(std::vector<int>& nums, int target);
-};
+Input: root = [1,2,3,4,5,null,7]
+Output: [1,#,2,3,#,4,5,7,#]
+Explanation: Given the above binary tree (Figure A), your function should populate each next pointer to point to its next right node, just like in Figure B. The serialized output is in level order as connected by the next pointers, with '#' signifying the end of each level.
  
-/*
-Tag: recursive
-Given a string containing digits from 2-9 inclusive, return all possible 
-letter combinations that the number could represent.
-A mapping of digit to letters (just like on the telephone buttons) is 
-given below. Note that 1 does not map to any letters.
 
-Example:
-Input: "23"
-Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
-Note:
-Although the above answer is in lexicographical order, your answer could 
-be in any order you want.
+Constraints:
+
+The number of nodes in the given tree is less than 6000.
+-100 <= node.val <= 100
 */
-class _0017_LetterCombinationsOfAPhoneNumber {
+class _0117_PopulatingNextRightPointersInEachNodeII {
 public:
-    std::vector<std::string> letterCombinations(std::string &digits);
-private:
-    void letterCombination(const std::string &digits, int i, int N, std::string tmp, std::vector<std::string> &res);
-};
-
-
-/* Todo
-Tag: Binary search, hash
-Given an array nums of n integers and an integer target, are there elements a, b, c, and d in nums such that a + b + c + d = target? Find all unique quadruplets in the array which gives the sum of target.
-The solution set must not contain duplicate quadruplets.
-Example:
-Given array nums = [1, 0, -1, 0, -2, 2], and target = 0.
-
-A solution set is:
-[
-  [-1,  0, 0, 1],
-  [-2, -1, 1, 2],
-  [-2,  0, 0, 2]
-]
-*/
-class _0018_4Sum {
-public:
-    std::vector<std::vector<int>> fourSum(std::vector<int>& nums, int target);
-};
-
-/* 
-Tag: single link list
-Given a linked list, remove the n-th node from the end of list and return its head.
-Example:
-Given linked list: 1->2->3->4->5, and n = 2.
-After removing the second node from the end, the linked list becomes 1->2->3->5.
-Note: Given n will always be valid.
-Follow up: Could you do this in one pass?
-*/
-class _0019_RemoveNthNodeFromEndToList {
-public:
-    ListNode<int> *removeNthFromEnd(ListNode<int> *head, int n);
-};
-
-/*
-Tag: parenthesis, stack
-Given a string containing just the characters '(', ')', '{', '}', '[' and ']', 
-determine if the input string is valid.
-An input string is valid if:
-Open brackets must be closed by the same type of brackets.
-Open brackets must be closed in the correct order.
-Note that an empty string is also considered valid.
-
-Input: "()"         :     Output: true
-Input: "()[]{}"     :     Output: true
-Input: "(]"         :     Output: false
-Input: "([)]"       :     Output: false
-Input: "{[]}"       :     Output: true
-*/
-class _0020_ValidParentheses {
-public:
-    bool isValid(std::string &s);
-};
-
-/*
-Tag: single link list, recursive
-Merge two sorted linked lists and return it as a new list. The new list 
-should be made by splicing together the nodes of the first two lists.
-Example:
-Input:  1->2->4, 
-        1->3->4
-Output: 1->1->2->3->4->4
-*/
-class _0021_MergeTwoSortedLists {
-public:
-    ListNode<int> *mergeTwoLists(ListNode<int> *l1, ListNode<int> *l2);
-};
-
-/*
-Tag: recursive, parenthesis, permutation, combination
-Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
-For example, given n = 3, a solution set is:
-[
-  "((()))",
-  "(()())",
-  "(())()",
-  "()(())",
-  "()()()"
-]
-*/
-class _0022_GenerateParentheses {
-public:
-    std::vector<std::string> generateParenthesis(int n);
-private:
-    void generateParenthesis(int l, int r, std::string v, std::vector<std::string> &res);
-};
-
-/*
-
-Google
-
-Tag: single link list
-Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
-Example:
-Input:
-[
-  1->4->5,
-  1->3->4,
-  2->6
-]
-Output: 1->1->2->3->4->4->5->6
-*/
-class _0023_MergeKeSortedLists {
-private:
-    ListNode<int>* p;
-    ListNode<int>* fh;
-public:
-    ListNode<int> *mergeKLists(std::vector<ListNode<int> *> &lists);
-    bool finishSorting(std::vector<bool> notChoose);
-};
-
-/*
-Tag: single link list, recursive
-Given a linked list, swap every two adjacent nodes and return its head.
-You may not modify the values in the list's nodes, only nodes itself may be changed.
-
-Example:
-Given 1->2->3->4, you should return the list as 2->1->4->3.
-*/
-class _0024_SwapNodesInPairs {
-public:
-    ListNode<int> *swapPairs(ListNode<int> *head);
-};
-
-/*
-Tag: single link list, recursive
-Given a linked list, reverse the nodes of a linked list k at a time and return 
-its modified list.
-k is a positive integer and is less than or equal to the length of the linked list. 
-If the number of nodes is not a multiple of k then left-out nodes in the end should 
-remain as it is.
-
-Example:
-Given this linked list: 1->2->3->4->5
-For k = 2, you should return: 2->1->4->3->5
-For k = 3, you should return: 3->2->1->4->5
-Note:
-Only constant extra memory is allowed.
-You may not alter the values in the list's nodes, only nodes itself may be changed.
-*/
-class _0025_ReverseNodeInKGroup {
-public:
-    ListNode<int>* reverseGroup(ListNode<int>* head, int k);
-private:
-    ListNode<int>* reverse(ListNode<int>* head);
-};
-
-/*
-Tag: array, slow-fast pointer
-Given a sorted array nums, remove the duplicates in-place such that each element 
-appear only once and return the new length.
-Do not allocate extra space for another array, you must do this by modifying the 
-input array in-place with O(1) extra memory.
-
-Example 1:
-Given nums = [1,1,2],
-Your function should return length = 2, with the first two elements of nums 
-being 1 and 2 respectively. It doesn't matter what you leave beyond the returned 
-length.
-
-Example 2:
-Given nums = [0,0,1,1,1,2,2,3,3,4],
-Your function should return length = 5, with the first five elements of nums 
-being modified to 0, 1, 2, 3, and 4 respectively.
-It doesn't matter what values are set beyond the returned length.
-Clarification:
-Confused why the returned value is an integer but your answer is an array?
-
-Note that the input array is passed in by reference, which means modification to 
-the input array will be known to the caller as well.
-
-Internally you can think of this:
-
-// nums is passed in by reference. (i.e., without making a copy)
-int len = removeDuplicates(nums);
-
-// any modification to nums in your function would be known by the caller.
-// using the length returned by your function, it prints the first len elements.
-for (int i = 0; i < len; i++) {
-    print(nums[i]);
-}
-*/
-class _0026_RemoveDuplicatesFromSortedArray {
-public:
-    int removeDuplicates(std::vector<int> &nums);
-};
-
-/*
-Tag: array, slow-fast pointers
-Given an array nums and a value val, remove all instances of that value in-place 
-and return the new length. Do not allocate extra space for another array, you must 
-do this by modifying the input array in-place with O(1) extra memory.
-The order of elements can be changed. It doesn't matter what you leave beyond 
-the new length.
-
-Example 1:
-Given nums = [3,2,2,3], val = 3,
-Your function should return length = 2, with the first two elements of nums being 2.
-It doesn't matter what you leave beyond the returned length.
-
-Example 2:
-Given nums = [0,1,2,2,3,0,4,2], val = 2,
-Your function should return length = 5, with the first five elements of nums 
-containing 0, 1, 3, 0, and 4. Note that the order of those five elements can be 
-arbitrary. It doesn't matter what values are set beyond the returned length.
-
-Clarification:
-Confused why the returned value is an integer but your answer is an array?
-Note that the input array is passed in by reference, which means modification 
-to the input array will be known to the caller as well.
-
-Internally you can think of this:
-// nums is passed in by reference. (i.e., without making a copy)
-int len = removeElement(nums, val);
-// any modification to nums in your function would be known by the caller.
-// using the length returned by your function, it prints the first len elements.
-for (int i = 0; i < len; i++) {
-    print(nums[i]);
-}
-*/
-class _0027_RemoveElement {
-public:
-    int removeElement(std::vector<int> &nums, int val);
-};
-
-/*
-Tag: string match, KMP (it is actually a hard question, 
-but you can use brute force, which makes it easy)
-
-Implement strStr().
-Return the index of the first occurrence of needle in haystack, 
-or -1 if needle is not part of haystack.
-
-Example 1:
-Input: haystack = "hello", needle = "ll"
-Output: 2
-
-Example 2:
-Input: haystack = "aaaaa", needle = "bba"
-Output: -1
-
-Clarification:
-What should we return when needle is an empty string? This is a 
-great question to ask during an interview.
-
-For the purpose of this problem, we will return 0 when needle is 
-an empty string. This is consistent to C's strstr() and Java's indexOf().
-*/
-class _0028_ImplementStrStr {
-public:
-    int strStr(std::string &haystack, std::string &needle);
-};
-
-/*
-TODO
-Tag: Binary search, math
-Given two integers dividend and divisor, divide two integers without 
-using multiplication, division and mod operator.
-
-Return the quotient after dividing dividend by divisor.
-The integer division should truncate toward zero.
-
-Input: dividend = 10, divisor = 3
-Output: 3
-
-Input: dividend = 7, divisor = -3
-Output: -2
-Note:
-
-Both dividend and divisor will be 32-bit signed integers.
-The divisor will never be 0.
-Assume we are dealing with an environment which could only store 
-integers within the 32-bit signed integer range: [−2^31, 2^31 − 1]. 
-For the purpose of this problem, assume that your function returns 
-2^31 − 1 when the division result overflows.
-*/
-class _0029_DivideTwoIntegers {
-public:
-    int divide(int dividend, int divisor);
-};
-
-
-/* 
-You are given a string, s, and a list of words, words, that are all of 
-the same length. Find all starting indices of substring(s) in s that is 
-a concatenation of each word in words exactly once and without any 
-intervening characters.
-
-Input:
-  s = "barfoothefoobarman",
-  words = ["foo","bar"]
-Output: [0,9]
-Explanation: Substrings starting at index 0 and 9 are "barfoo" and "foobar" 
-respectively. The output order does not matter, returning [9,0] is fine too.
-
-Input:
-  s = "wordgoodgoodgoodbestword",
-  words = ["word","good","best","word"]
-Output: []
-*/
-class _0030_SubstringWithConcatenationOfAllWords {
-public:
-    std::vector<int> findSubstring(std::string s, std::vector<std::string>& words);
-};
-
-/*
-TODO: Permutation, array boundary
-Implement next permutation, which rearranges numbers into the lexicographically 
-next greater permutation of numbers. If such arrangement is not possible, it 
-must rearrange it as the lowest possible order (ie, sorted in ascending order).
-The replacement must be in-place and use only constant extra memory.
-Here are some examples. Inputs are in the left-hand column and its 
-corresponding outputs are in the right-hand column.
-1,2,3 → 1,3,2
-3,2,1 → 1,2,3
-1,1,5 → 1,5,1
-*/
-class _0031_NextPermutation {
-public:
-    void nextPermutation(std::vector<int> &nums);
-private:
-    void reverse(std::vector<int> &nums, int start, int end);
-};
-
-/*
-Given a string containing just the characters '(' and ')', find the length of the 
-longest valid (well-formed) parentheses substring.
-
-Input: "(()"
-Output: 2
-Explanation: The longest valid parentheses substring is "()"
-
-Input: ")()())"
-Output: 4
-Explanation: The longest valid parentheses substring is "()()"
-*/
-class _0032_LongestValidParentheses {
-public:
-    int longestValidParentheses(std::string s);
-};
-
-
-/*
-Tag: Binary search
-TODO
-
-discuss two cases that num[mid] > num[start] and 
-num[mid] < num[start]
-Note: it is hard for the edge cases:
-1. empty vector
-2. one value, find the exist
-3. one value, find the non-exist
-4. two value, find the exist
-4. two value, find the non-exist
-5. 3 values, find the exist (mid, mid at left, mid at right)
-6. 3 values, find the non exist (mid, mid at left, mid at right)
-7. 4 values...
-...
-
-Suppose an array sorted in ascending order is rotated at some pivot 
-unknown to you beforehand. 
-(i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]).
-You are given a target value to search. If found in the array return 
-its index, otherwise return -1. You may assume no duplicate exists 
-in the array.
-Your algorithm's runtime complexity must be in the order of O(log n).
-
-Example 1:
-Input: nums = [4,5,6,7,0,1,2], target = 0
-Output: 4
-
-Example 2:
-Input: nums = [4,5,6,7,0,1,2], target = 3
-Output: -1
-*/
-class _0033_SearchInRotatedSortedArray {
-public:
-    int search(std::vector<int> &nums, int target);
-};
-
-/*
-Facebook
-
-!!!Copy from the solution, need to be reviewed again!!!
-
-Tag: binary search
-    TODO: Modification of the binary search
-Given an array of integers nums sorted in ascending order, find the 
-starting and ending position of a given target value.
-Your algorithm's runtime complexity must be in the order of O(log n).
-
-If the target is not found in the array, return [-1, -1].
-
-Example 1:
-Input: nums = [5,7,7,8,8,10], target = 8
-Output: [3,4]
-Example 2:
-
-Input: nums = [5,7,7,8,8,10], target = 6
-Output: [-1,-1]
-*/
-class _0034_FindFirstAndLastPositionOfElementInSortedArray {
-public:
-    std::vector<int> searchRange(std::vector<int> &nums, int target);
-};
-
-
-/* 
-Tag: Binary Search
-
-Given a sorted array and a target value, return the index if the target 
-is found. If not, return the index where it would be if it were inserted 
-in order.
-You may assume no duplicates in the array.
-
-Example 
-Input: [1,3,5,6], 5         :   Output: 2
-Input: [1,3,5,6], 2         :   Output: 1
-Input: [1,3,5,6], 7         :   Output: 4
-Input: [1,3,5,6], 0         :   Output: 0
-*/
-class _0035_SearchInsertPosition {
-public:
-    int searchInsert(std::vector<int>& nums, int target);
-};
-
-
-/*
-Tag: simulate according to the condition
-Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be 
-validated according to the following rules:
-
-Each row must contain the digits 1-9 without repetition.
-Each column must contain the digits 1-9 without repetition.
-Each of the 9 3x3 sub-boxes of the grid must contain the digits 1-9 without repetition.
-
-A partially filled sudoku which is valid.
-The Sudoku board could be partially filled, where empty cells are filled with the character '.'.
-
-Note:
-A Sudoku board (partially filled) could be valid but is not necessarily solvable.
-Only the filled cells need to be validated according to the mentioned rules.
-The given board contain only digits 1-9 and the character '.'.
-The given board size is always 9x9.
-*/
-class _0036_ValidSudoku{
-public:
-    std::function<bool(char, std::vector<int>&)> containDup = [](char tmp,  std::vector<int>& ext){
-        if(tmp >= '1' && tmp <= '9') {
-            if(ext[tmp-'1'] == 0) {
-                ext[tmp - '1'] = 1;
-            } else {
-                return true;
+    struct Node {
+    int val;
+    Node *left;
+    Node *right;
+    Node *next;
+    };
+
+    Node* connect(Node* root) {
+        if(root == nullptr) {
+            return nullptr;
+        }
+        Node* p = root;
+        std::queue<std::pair<Node*, int>> q;
+        q.push({p, 0});
+        while(!q.empty()) {
+            const int N = q.size();
+            for(int i = 0; i < N; ++i) {
+                auto a = q.front();
+                auto t = a.first;
+                
+                q.pop();
+                if(!q.empty() && a.second == q.front().second) {
+                    t->next = q.front().first;
+                }
+                if(t->left) {
+                    q.push({t->left, a.second + 1});
+                }
+                if(t->right) {
+                    q.push({t->right, a.second + 1});
+                }
             }
         }
-        return false;
-    };
-    bool isValidSudoku(std::vector<std::vector<char>>& board);
-
-private:
-    bool existDuplicatePerSquare(std::vector<std::vector<char>>& board, int i, int j);
-    bool existDuplicatePerRow(std::vector<std::vector<char>>& board, int i);
-    bool existDuplicatePerColumn(std::vector<std::vector<char>>& board, int j);
+        return root;
+    }
 };
-
-/*
-TODO: Review it again
-Tag: backtracking, recursive.
-Write a program to solve a Sudoku puzzle by filling the empty cells.
-
-A sudoku solution must satisfy all of the following rules:
-
-Each of the digits 1-9 must occur exactly once in each row.
-Each of the digits 1-9 must occur exactly once in each column.
-Each of the the digits 1-9 must occur exactly once in each of the 9 3x3 sub-boxes of the grid.
-Empty cells are indicated by the character '.'.
-*/
-class _0037_SudokuSolver {
-public:
-    // Backtracing problem, but the issue is how to make the backtracing fast !!!!
-    void solveSudoku(std::vector<std::vector<char>>& board);
-};
-
-
-/*
-Tag: string
-The count-and-say sequence is the sequence of integers with the first five 
-terms as following:
-1.     1
-2.     11
-3.     21
-4.     1211
-5.     111221
-1 is read off as "one 1" or 11.
-11 is read off as "two 1s" or 21.
-21 is read off as "one 2, then one 1" or 1211.
-Given an integer n where 1 ≤ n ≤ 30, generate the nth term of the count-and-say sequence.
-Note: Each term of the sequence of integers will be represented as a string.
-*/
-class _0038_CountAndSay {
-public:
-    std::string countAndSay(int n);
-private:
-    std::string countOnce(std::string &s);
-};
-
-/*  
-Tag: backtracking
-Given a set of candidate numbers (candidates without duplicates) 
-and a target number (target), find all unique combinations in 
-candidates where the candidate numbers sums to target.
-
-The same repeated number may be chosen from candidates unlimited number of times.
-Note:
-    All numbers (including target) will be positive integers.
-    The solution set must not contain duplicate combinations.
-Example 1:
-    Input: candidates = [2,3,6,7], target = 7,
-A solution set is:
-    [  [7],  [2,2,3] ]
-Example 2:
-    Input: candidates = [2,3,5], target = 8, 
-A solution set is:
-    [  [2,2,2,2],  [2,3,3],  [3,5] ]
-*/
-class _0039_CombinationSum
-{
-public:
-    std::vector<std::vector<int>> combinationSum(std::vector<int> &candidates, int target);
-
-private:
-    void combinationSum(std::vector<int> &candidates, int target, std::vector<int> &tmp, std::vector<std::vector<int>> &res);
-};
-
-/*
-Tag: backtracking
-Given a collection of candidate numbers (candidates) and a target number (target), 
-find all unique combinations in candidates where the candidate numbers sums to target.
-
-Each number in candidates may only be used once in the combination.
-
-Note:
-
-All numbers (including target) will be positive integers.
-The solution set must not contain duplicate combinations.
-Example 1:
-
-Input: candidates = [10,1,2,7,6,1,5], target = 8,
-A solution set is:
-[
-[1, 7],
-[1, 2, 5],
-[2, 6],
-[1, 1, 6]
-]
-Example 2:
-
-Input: candidates = [2,5,2,1,2], target = 5,
-A solution set is:
-[
-[1,2,2],
-[5]
-]
-*/
-class _0040_CombinationSumII {
-private:
-    std::vector<std::vector<int>> res;
-    std::vector<int> temp;
-public:
-    void choose(std::vector<int>& candidates, int target, int begin);
-    std::vector<std::vector<int>> combinationSum2(std::vector<int>& candidates, int target);
-};
-
-/*
-TODO
-Tag: array, I don't know how to categorize.
-Given an unsorted integer array, find the smallest missing positive integer.
-Example 1:
-    Input: [1,2,0]         :         Output: 3
-    Input: [3,4,-1,1]      :         Output: 2
-    Input: [7,8,9,11,12]   :         Output: 1
-
-Your algorithm should run in O(n) time and uses constant extra space.
-*/
-class _0041_FirstMissingPositive{
-public:
-    int firstMissingPositive(std::vector<int>& nums);
-};
-
-/*
-Tag: dynamic programming, two pointers
-Google
-TODO: Review the left,right maximum height and its application
-
-Given n non-negative integers representing an elevation map where the width 
-of each bar is 1, compute how much water it is able to trap after raining.
-
-The above elevation map is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. 
-In this case, 6 units of rain water (blue section) are being trapped. Thanks 
-Marcos for contributing this image!
-
-Input: [0,1,0,2,1,0,1,3,2,1,2,1]
-Output: 6
-*/
-class _0042_TrappingRainWater {
-public:
-    int trap(std::vector<int>& height);
-};
-
-/*
-Tag: string operation, basic arithmetic operation
-Given two non-negative integers num1 and num2 represented as strings, return the product 
-of num1 and num2, also represented as a string.
-Example 1:
-Input: num1 = "2", num2 = "3"          :         Output: "6"
-Input: num1 = "123", num2 = "456"      :         Output: "56088"
-
-The length of both num1 and num2 is < 110.
-Both num1 and num2 contain only digits 0-9.
-Both num1 and num2 do not contain any leading zero, except the number 0 itself.
-You must not use any built-in BigInteger library or convert the inputs to integer directly.
-*/
-class _0043_MultiplyStrings {
-public:
-    std::string multiply(std::string num1, std::string num2);
-private:
-    std::string multiply(const std::string& num1, const std::string& num2, int idx);
-    std::string add(std::string num1, std::string num2);
-};
-
-/*
-TODO
-Tag: BFS
-Note: be careful of boundary conditions
-
-Given an array of non-negative integers, you are initially positioned at the first index of the array.
-Each element in the array represents your maximum jump length at that position.
-Your goal is to reach the last index in the minimum number of jumps.
-
-Input: [2,3,1,1,4]
-Output: 2
-The minimum number of jumps to reach the last index is 2. Jump 1 step from index 0 to 1, then 
-3 steps to the last index.
-
-You can assume that you can always reach the last index.
-*/
-class _0045_JumpGameII {
-public:
-    int jump(std::vector<int>& nums);
-};
-
-/*
-Given a collection of [distinct] integers, return all 
-possible permutations
-Example:
-Input: [1,2,3]
-Output:[[1,2,3], [1,3,2], [2,1,3], 
-        [2,3,1], [3,1,2], [3,2,1]]
-*/
-class _0046_Permutations {
-public:
-    std::vector<std::vector<int>> permute(std::vector<int> &nums);
-private:
-    void permuteRecursive(std::vector<int> &nums, int begin, std::vector<std::vector<int>> &result);
-};
-
-/*
-Given a collection of numbers that might contain 
-duplicates, return all possible unique permutations.
-
-Input: [1,1,2]
-Output:
-[
-  [1,1,2],
-  [1,2,1],
-  [2,1,1]
-]
-*/
-class _0047_PermutationsII {
-public:
-    std::vector<std::vector<int>> permuteUnique(
-        std::vector<int>& nums);
-    void genPermute(std::vector<int> nums, 
-        int start, int end, 
-        std::vector<std::vector<int>>& res);
-
-    void genPermute(std::unordered_map<int, int>& Map, 
-        int N, std::vector<int>& tmp,
-        std::vector<std::vector<int>>& res);
-};
-
-/* 
-Tag: matrix operation
-You are given an n x n 2D matrix representing an image. Rotate the image by 90 degrees (clockwise).
-Note: You have to rotate the image in-place, which means you have to modify the input 2D matrix 
-directly. DO NOT allocate another 2D matrix and do the rotation.
-*/
-class _0048_RotateImage {
-public:
-    void rotate(std::vector<std::vector<int>> &matrix);
-};
-
-
-/*
-Tag: hash
-Group Anagrams :  Given an array of strings, group anagrams together.
-
-Input: ["eat", "tea", "tan", "ate", "nat", "bat"],
-Output:
-[
-  ["ate","eat","tea"],
-  ["nat","tan"],
-  ["bat"]
-]
-*/
-class _0049_GroupAnagrams { 
-public:
-    std::vector<std::vector<std::string>> groupAnagrams(std::vector<std::string>& strs);
-};
-
-/*
-Tag: recursive
-Note: integer data overflow if n < 0 --> -n but 
-      if n is INT_MIN, then...
-Implement pow(x, n), which calculates x raised to the power n (x^n).
-
-Input: 2.00000, 10       :           Output: 1024.00000
-Input: 2.10000, 3        :           Output: 9.26100
-Input: 2.00000, -2       :           Output: 0.25000
-
--100.0 < x < 100.0
-n is a 32-bit signed integer, within the range [−231, 231 − 1]
-*/
-class _0050_PowXN {
-public:
-    double myPow(double x, int n);
-};
-
-/*
-Tag: backtracking
-The n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no 
-two queens attack each other. Given an integer n, return all distinct solutions to the 
-n-queens puzzle. Each solution contains a distinct board configuration of the n-queens' 
-placement, where 'Q' and '.' both indicate a queen and an empty space respectively.
-
-Input: 4
-Output: [
- [".Q..",  // Solution 1
-  "...Q",
-  "Q...",
-  "..Q."],
-
- ["..Q.",  // Solution 2
-  "Q...",
-  "...Q",
-  ".Q.."]
-]
-Explanation: There exist two distinct solutions to the 4-queens puzzle as shown above.
-*/
-class _0051_NQueens {
-public:
-    std::vector<std::vector<std::string>> solveNQueens(int n);
-    void solve(std::vector<std::string>& tmp, int curN, int n, std::vector<std::vector<std::string>>& res);
-    std::vector<int> availableQ(std::vector<std::string> tmp, int curN, int n);
-};
-
-/*
-Tag: backtracking
-The n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no 
-two queens attack each other. Given an integer n, return all distinct solutions to the 
-n-queens puzzle. Each solution contains a distinct board configuration of the n-queens' 
-placement, where 'Q' and '.' both indicate a queen and an empty space respectively.
-
-Input: 4
-Output: [
- [".Q..",  // Solution 1
-  "...Q",
-  "Q...",
-  "..Q."],
-
- ["..Q.",  // Solution 2
-  "Q...",
-  "...Q",
-  ".Q.."]
-]
-Explanation: There exist two distinct solutions to the 4-queens puzzle as shown above.
-*/
-class _0052_NQueensII {
-public:
-    int totalNQueens(int n);
-private:
-    void totalNQueens(std::vector<std::vector<int>>& board, int nIdx, const int totalRows, int& totalSolution);
-    void updateBoard(std::vector<std::vector<int>>& board, int i, int j);
-    void dedateBoard(std::vector<std::vector<int>>& board, int i, int j);
-};
-
-/*
-Tag: dynamic programming or conqor and merge
-TODO: Classical problem
-
-Maximum Subarray
-Given an integer array nums, find the contiguous subarray (containing at least one number) 
-which has the largest sum and return its sum.
-
-Input: [-2,1,-3,4,-1,2,1,-5,4],        :           Output: 6
-Explanation: [4,-1,2,1] has the largest sum = 6.
-Follow up:
-If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
-*/
-class _0053_MaximumSubarray {
-public:
-    int maxSubArray(std::vector<int>& nums);
-private:
-    int maxSubArrayHelp(std::vector<int>& nums, int start, int end);
-    int includeMid(std::vector<int>& nums, int start, int end, int mid);
-};
-
-/*
-Tag: matrix operations
-Note: edge condition
-Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order.
-Input:
-[
- [ 1, 2, 3 ],
- [ 4, 5, 6 ],
- [ 7, 8, 9 ]
-]
-Output: [1,2,3,6,9,8,7,4,5]
-
-Input:
-[
-  [1, 2, 3, 4],
-  [5, 6, 7, 8],
-  [9,10,11,12]
-]
-Output: [1,2,3,4,8,12,11,10,9,5,6,7]
-*/
-class _0054_SpiralMatrix{
-public:
-    std::vector<int> spiralOrder(std::vector<std::vector<int>>& matrix);
-};
-
-
-/*
-Todo: The code is hard to think of. But the idea is not hard.
-Try to write it again and again.
-
-Given an array of non-negative integers, you are initially positioned at the first index of the array.
-Each element in the array represents your maximum jump length at that position.
-Determine if you are able to reach the last index.
-Example 1:
-
-Input: [2,3,1,1,4]           :          Output: true
-Input: [3,2,1,0,4]           :          Output: false
-*/
-class _0055_JumpGame {
-public:
-    bool canJump(std::vector<int>& nums);
-};
-
-/*
-Todo: interval 
-Given a collection of intervals, merge all overlapping intervals.
-
-Input: [[1,3],[2,6],[8,10],[15,18]]            :           Output: [[1,6],[8,10],[15,18]]
-Explanation: Since intervals [1,3] and [2,6] overlaps, merge them into [1,6].
-
-Input: [[1,4],[4,5]]                           :           Output: [[1,5]]
-Explanation: Intervals [1,4] and [4,5] are considered overlapping.
-*/
-class _0056_MergeIntervals {
-public:
-    std::vector<std::vector<int>> merge(std::vector<std::vector<int>>& intervals);
-};
-
-/*
-Tag: Intervals
-Given a set of non-overlapping intervals, insert a new interval into the 
-intervals (merge if necessary).
-You may assume that the intervals were initially sorted according to their
-start times.
-
-Input: intervals = [[1,3],[6,9]], newInterval = [2,5]
-Output: [[1,5],[6,9]]
-
-Input: intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]], newInterval = [4,8]
-Output: [[1,2],[3,10],[12,16]]
-Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
-*/
-class _0057_InsertInterval {
-public:
-    std::vector<std::vector<int>> insert(std::vector<std::vector<int>>& intervals,
-    std::vector<int>& newInterval);
-    bool newIntervalSmaller(const std::vector<int>& a, const std::vector<int>& b);
-    bool intersect(const std::vector<int>& a,const std::vector<int>& b);
-};
-
-
-/*
-Tag: string
-58. Length of Last Word
-Given a string s consists of upper/lower-case alphabets and empty space characters ' ', 
-return the length of last word in the string. If the last word does not exist, return 0.
-Note: A word is defined as a character sequence consists of non-space characters only.
-
-Input: "Hello World"
-Output: 5
-*/
-class _0058_LengthOfLastWord{
-public:
-    int lengthOfLastWord(std::string s);
-};
-
-
-/*
-Tag: matrix operation
-Given a positive integer n, generate a square matrix filled with elements from 1 to n2 in spiral order.
-Input: 3
-Output:
-[
- [ 1, 2, 3 ],
- [ 8, 9, 4 ],
- [ 7, 6, 5 ]
-]
-*/
-class _0059_SpiralMatrixII{
-public:
-    std::vector<std::vector<int>> generateMatrix(int n);
-};
-
-
-/*
-Tag: Permutation, Priority Queue, String
-TODO
-Note: The same, how to generate next permuation
-
-The set [1,2,3,...,n] contains a total of n! unique 
-permutations.
-By listing and labeling all of the permutations in 
-order, we get the following sequence for n = 3:
-
-"123" "132" "213" "231" "312" "321"
-Given n and k, return the kth permutation sequence.
-
-Note:
-Given n will be between 1 and 9 inclusive.
-Given k will be between 1 and n! inclusive.
-
-Input: n = 3, k = 3
-Output: "213"
-
-Input: n = 4, k = 9
-Output: "2314"
-*/
-class _0060_PermutationSequence {
-public:
-    std::string getPermutation(int n, int k);
-    std::string getNext(std::string S);
-};
-
-
-/*
-Tag: Single Linked List
-
-Given a linked list, rotate the list to the right by k places, where k is non-negative.
-
-Example 1:
-
-Input: 1->2->3->4->5->NULL, k = 2
-Output: 4->5->1->2->3->NULL
-Explanation:
-rotate 1 steps to the right: 5->1->2->3->4->NULL
-rotate 2 steps to the right: 4->5->1->2->3->NULL
-Example 2:
-
-Input: 0->1->2->NULL, k = 4
-Output: 2->0->1->NULL
-Explanation:
-rotate 1 steps to the right: 2->0->1->NULL
-rotate 2 steps to the right: 1->2->0->NULL
-rotate 3 steps to the right: 0->1->2->NULL
-rotate 4 steps to the right: 2->0->1->NULL
-*/
-class _0061_RotateList{
-public:
-    ListNode<int>* rotateRight(ListNode<int>* head, int k);
-};
-
-/*
-Tag: Dynamic Programming
-
-62. Unique Paths
-A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below).
-The robot can only move either down or right at any point in time. The robot is trying to reach 
-the bottom-right corner of the grid (marked 'Finish' in the diagram below).
-How many possible unique paths are there?
-*/
-class _0062_UniquePaths{
-private:
-    std::vector<std::vector<int>> TABLE;
-public:
-    int uniquePaths(int m, int n);
-    int uniquePaths_impl(int m, int n);
-};
-
-
-/*
-Tag: Dynamic Programming
-
-A robot is located at the top-left corner of a m x n 
-grid (marked 'Start' in the diagram below).
-The robot can only move either down or right at any 
-point in time. The robot is trying to reach the 
-bottom-right corner of the grid (marked 'Finish' in 
-the diagram below).
-
-Now consider if some obstacles are added to the grids. 
-How many unique paths would there be?
-
-An obstacle and empty space is marked as 1 and 0 
-respectively in the grid.
-
-Note: m and n will be at most 100.
-
-Input:
-[
-  [0,0,0],
-  [0,1,0],
-  [0,0,0]
-]
-Output: 2
-Explanation:
-There is one obstacle in the middle of the 3x3 grid above.
-There are two ways to reach the bottom-right corner:
-1. Right -> Right -> Down -> Down
-2. Down -> Down -> Right -> Right
-*/
-class _0063_UniquePathsII{
-public:
-    int uniquePathsWithObstacles(std::vector<std::vector<int>>& obstacleGrid);
-};
-
-/*
-Tag: dynamic programming
-64. Minimum Path Sum
-Given a m x n grid filled with non-negative numbers, find a path from 
-top left to bottom right which minimizes the sum of all numbers along 
-its path.
-Note: You can only move either down or right at any point in time.
-
-Input:
-[
-  [1,3,1],
-  [1,5,1],
-  [4,2,1]
-]
-Output: 7
-Explanation: Because the path 1→3→1→1→1 minimizes the sum.
-*/
-class _0064_MinimumPathSum {
-public:
-    int minPathSum(std::vector<std::vector<int>>& grid);
-};
-
-/*
-Facebook
-        !!! Copy from Solution !!!
-
-Tag: String, DFA, NFA
-Validate if a given string can be interpreted as a decimal number.
-
-Some examples:
-"0" => true
-" 0.1 " => true
-"abc" => false
-"1 a" => false
-"2e10" => true
-" -90e3   " => true
-" 1e" => false
-"e3" => false
-" 6e-1" => true
-" 99e2.5 " => false
-"53.5e93" => true
-" --6 " => false
-"-+3" => false
-"95a54e53" => false
-
-Note: It is intended for the problem statement to be ambiguous. You 
-should gather all requirements up front before implementing one. 
-However, here is a list of characters that can be in a valid decimal number:
-
-Numbers 0-9
-Exponent - "e"
-Positive/negative sign - "+"/"-"
-Decimal point - "."
-Of course, the context of these characters also matters in the input.
-
-Update (2015-02-10):
-The signature of the C++ function had been updated. If you still see your 
-function signature accepts a const char * argument, please click the reload 
-button to reset your code definition. */
-class _0065_ValidNumber {
-public:
-    bool isNumber(std::string str);
-};
-
 
 /*
 Tag: array operation
-Given a non-empty array of digits representing a non-negative integer, 
-plus one to the integer. The digits are stored such that the most significant 
-digit is at the head of the list, and each element in the array contain 
-a single digit.
-You may assume the integer does not contain any leading zero, except 
-the number 0 itself.
+Given a non-negative integer numRows, generate the first numRows of Pascal's triangle.
+In Pascal's triangle, each number is the sum of the two numbers directly above it.
 
-Input: [1,2,3]             :     Output: [1,2,4]
-Input: [4,3,2,1]           :     Output: [4,3,2,2]
-Explanation: The array represents the integer 4321.
+Example:
+
+Input: 5
+Output:
+[
+     [1],
+    [1,1],
+   [1,2,1],
+  [1,3,3,1],
+ [1,4,6,4,1]
+]
 */
-class _0066_PlusOne {
+class _0118_PascalTriangle {
 public:
-    std::vector<int> plusOne(std::vector<int>& digits);
+    std::vector<std::vector<int>> generate(int numRows);
+};
+
+/*
+Tag: array operation
+Given a non-negative index k where k ≤ 33, return the kth index row of the Pascal's triangle.
+Note that the row index starts from 0.
+In Pascal's triangle, each number is the sum of the two numbers directly above it.
+
+Example:
+Input: 3
+Output: [1,3,3,1]
+Follow up:
+Could you optimize your algorithm to use only O(k) extra space?
+*/
+class _0119_PascalTriangleII {
+public:
+    std::vector<int> getRow(int rowIndex);
+};
+
+
+/*
+Tag: dynamic programming.
+Given a triangle, find the minimum path sum from top to bottom. Each step you may move to adjacent numbers on the row below.
+For example, given the following triangle
+
+[
+     [2],
+    [3,4],
+   [6,5,7],
+  [4,1,8,3]
+]
+The minimum path sum from top to bottom is 11 (i.e., 2 + 3 + 5 + 1 = 11).
+Bonus point if you are able to do this using only O(n) extra space, where n is the total number of rows in the triangle.
+*/
+class _0120_Triangle{
+public:
+    int minimumTotal(std::vector<std::vector<int>>& triangle);
+};
+
+
+/*
+Tag: Array, Special Topic. I totally have no idea about it. If possible, just remember it.
+TODO : Remember
+
+Say you have an array for which the ith element is the price of a given stock on day i.
+If you were only permitted to complete at most one transaction (i.e., buy one and sell 
+one share of the stock), design an algorithm to find the maximum profit.
+
+Note that you cannot sell a stock before you buy one.
+Input: [7,1,5,3,6,4]                   :                   Output: 5
+Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+             Not 7-1 = 6, as selling price needs to be larger than buying price.
+
+Input: [7,6,4,3,1]                     :                   Output: 0
+Explanation: In this case, no transaction is done, i.e. max profit = 0.
+*/
+class _0121_BestTimeToBuyAndSellStock {
+public:
+// Solution : 
+// The points of interest are the peaks and valleys in the given graph. We need to find 
+// the largest peak following the smallest valley. We can maintain two variables - minprice 
+// and maxprofit corresponding to the smallest valley and maximum profit (maximum 
+// difference between selling price and minprice) obtained so far respectively.
+    int maxProfit(std::vector<int>& prices);
+};
+
+/*
+Tag: greedy, array, special topic
+122. Best Time to Buy and Sell Stock II
+Say you have an array for which the ith element is the price of a given stock on day i.
+Design an algorithm to find the maximum profit. You may complete as many transactions as 
+you like (i.e., buy one and sell one share of the stock multiple times).
+
+Note: You may not engage in multiple transactions at the same time (i.e., you must sell 
+the stock before you buy again).
+
+Input: [7,1,5,3,6,4]
+Output: 7
+Explanation: Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4.
+    Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.
+
+Input: [1,2,3,4,5]
+Output: 4
+Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.
+    Note that you cannot buy on day 1, buy on day 2 and sell them later, as you are
+    engaging multiple transactions at the same time. You must sell before buying again.
+
+Input: [7,6,4,3,1]
+Output: 0
+Explanation: In this case, no transaction is done, i.e. max profit = 0.
+*/
+class _0122_BestTimeToBuyAndSellStockII {
+public:
+    int maxProfit(std::vector<int> prices);
 };
 
 /*
 Facebook
+!!! Copy from the solution !!!
 
-Tag: Array operation
-Given two binary strings, return their sum (also a binary string).
-The input strings are both non-empty and contains only characters 1 or 0.
+Tag: recursive, Tree
+TODO
+Given a non-empty binary tree, find the maximum path sum.
+For this problem, a path is defined as any sequence of nodes from some starting node to 
+any node in the tree along the parent-child connections. The path must contain at least 
+one node and does not need to go through the root.
 
-Input: a = "11", b = "1"           :        Output: "100"
-Input: a = "1010", b = "1011"      :        Output: "10101"
+Input: [1,2,3]
+
+       1
+      / \
+     2   3
+
+Output: 6
+
+Input: [-10,9,20,null,null,15,7]
+
+   -10
+   / \
+  9  20
+    /  \
+   15   7
+
+Output: 42
 */
-class _0067_AddBinary {
+class _0124_BinaryTreeMaximumPathSum {
+private:
+    int res;
 public:
-    std::string addBinary(std::string a, std::string b);
+    int helper(TreeNode<int>* root);
+    int maxPathSum(TreeNode<int>* root);
 };
 
 /*
-Given an array of words and a width maxWidth, format the text such that each 
-line has exactly maxWidth characters and is fully (left and right) justified.
-You should pack your words in a greedy approach; that is, pack as many words 
-as you can in each line. Pad extra spaces ' ' when necessary so that each 
-line has exactly maxWidthcharacters.
 
-Extra spaces between words should be distributed as evenly as possible. If the 
-number of spaces on a line do not divide evenly between words, the empty slots
-on the left will be assigned more spaces than the slots on the right.
+Facebook
 
-For the last line of text, it should be left justified and no extraspace is inserted between words.
+Tag: palindrome
+Given a string, determine if it is a palindrome, considering only alphanumeric characters 
+and ignoring cases. 
+Note: For the purpose of this problem, we define empty string as valid palindrome.
 
-Note:
+Input: "A man, a plan, a canal: Panama"     :      Output: true
+Input: "race a car"                         :      Output: false
+*/
+class _0125_ValidPalindrome {
+public:
+    bool isPalindrome(std::string s);
+};
 
-A word is defined as a character sequence consisting of non-space characters only.
-Each word's length is guaranteed to be greater than 0 and not exceed maxWidth.
-The input array words contains at least one word.
+/*
+Tag: BFS, bidirect-BFS
+TODO
+Given two words (beginWord and endWord), and a dictionary's word list, find the 
+length of shortest transformation sequence from beginWord to endWord, such that:
+
+Only one letter can be changed at a time.
+Each transformed word must exist in the word list. Note that beginWord is not a 
+transformed word.
+
+Return 0 if there is no such transformation sequence.
+All words have the same length.
+All words contain only lowercase alphabetic characters.
+You may assume no duplicates in the word list.
+You may assume beginWord and endWord are non-empty and are not the same.
 Example 1:
 
 Input:
-words = ["This", "is", "an", "example", "of", "text", "justification."]
-maxWidth = 16
-Output:
-[
-   "This    is    an",
-   "example  of text",
-   "justification.  "
-]
-Example 2:
-
-Input:
-words = ["What","must","be","acknowledgment","shall","be"]
-maxWidth = 16
-Output:
-[
-  "What   must   be",
-  "acknowledgment  ",
-  "shall be        "
-]
-Explanation: Note that the last line is "shall be    " instead of "shall     be",
-             because the last line must be left-justified instead of fully-justified.
-             Note that the second line is also left-justified becase it contains only one word.
-Example 3:
-
-Input:
-words = ["Science","is","what","we","understand","well","enough","to","explain",
-         "to","a","computer.","Art","is","everything","else","we","do"]
-maxWidth = 20
-Output:
-[
-  "Science  is  what we",
-  "understand      well",
-  "enough to explain to",
-  "a  computer.  Art is",
-  "everything  else  we",
-  "do                  "
-]
-*/
-class _0068_TextJustification {
-public:
-    std::vector<std::string> fullJustify(std::vector<std::string>& words, int L);
-};
-
-/*
-Tag: Binary search.
-Implement int sqrt(int x).
-Compute and return the square root of x, where x is guaranteed to be a non-negative integer.
-Since the return type is an integer, the decimal digits are truncated and only the integer 
-part of the result is returned.
-
-Input: 4           :          Output: 2
-Input: 8           :          Output: 2
-
-Explanation: The square root of 8 is 2.82842..., and since
-the decimal part is truncated, 2 is returned.
-*/
-class _0069_SqrtX {
-public:
-    int mySqrt(int x);
-};
-
-/*
-Tag: dynamic programming, fibnacci
-You are climbing a stair case. It takes n steps to reach to the top. Each time you can either climb 1 or 2 
-steps. In how many distinct ways can you climb to the top?
-
-Note: Given n will be a positive integer.
-
-Input: 2            :            Output: 2
-1. 1 step + 1 step
-2. 2 steps
-
-Input: 3            :            Output: 3
-1. 1 step + 1 step + 1 step
-2. 1 step + 2 steps
-3. 2 steps + 1 step
-*/
-class _0070_ClimbingStairs {
-public:
-    int climbStairs(int n);
-};
-
-
-/*
-Tag: string, stringstream operation
-Todo: familar with stringstream
-Given an absolute path for a file (Unix-style), simplify it. Or in other words, 
-convert it to the canonical path. In a UNIX-style file system, a period . refers to 
-the current directory. Furthermore, a double period .. moves the directory up a 
-level. For more information, see: Absolute path vs relative path in Linux/Unix
-
-Note that the returned canonical path must always begin with a slash /, and there 
-must be only a single slash / between two directory names. The last directory name 
-(if it exists) must not end with a trailing /. Also, the canonical path must be 
-the shortest string representing the absolute path. 
-
-Input: "/home/"                :           Output: "/home"
-Explanation: Note that there is no trailing slash after the last directory name.
-
-Input: "/../"                  :           Output: "/"
-Explanation: Going one level up from the root directory is a no-op, as the 
-root level is the highest level you can go.
-
-Input: "/home//foo/"           :           Output: "/home/foo"
-Explanation: In the canonical path, multiple consecutive slashes are replaced 
-by a single one.
-
-Input: "/a/./b/../../c/"       :           Output: "/c"
-
-Input: "/a/../../b/../c//.//"  :           Output: "/c"
-
-Input: "/a//b////c/d//././/.."
-Output: "/a/b/c"
-*/
-class _0071_SimplifyPath{
-public:
-    std::string simplifyPath(std::string path);
-};
-
-/*
-Tag: Dynamic Programming
-Given two words word1 and word2, find the minimum number 
-of operations required to convert word1 to word2.
-You have the following 3 operations permitted on a word:
-
-Insert a character
-Delete a character
-Replace a character
-
-Input: word1 = "horse", word2 = "ros"
-Output: 3
-Explanation: 
-horse -> rorse (replace 'h' with 'r')
-rorse -> rose (remove 'r')
-rose -> ros (remove 'e')
-
-Input: word1 = "intention", word2 = "execution"
+beginWord = "hit",
+endWord = "cog",
+wordList = ["hot","dot","dog","lot","log","cog"]
 Output: 5
-Explanation: 
-intention -> inention (remove 't')
-inention -> enention (replace 'i' with 'e')
-enention -> exention (replace 'n' with 'x')
-exention -> exection (replace 'n' with 'c')
-exection -> execution (insert 'u')
-*/
-class _0072_EditDistance{
-public:
-    int minDistance(std::string word1, std::string word2);
-};
 
-/*
-Tag: Matrix operation, tricks
-Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in-place.
-
-Example 1:
-
-Input: 
-[
-  [1,1,1],
-  [1,0,1],
-  [1,1,1]
-]
-Output: 
-[
-  [1,0,1],
-  [0,0,0],
-  [1,0,1]
-]
-Example 2:
-
-Input: 
-[
-  [0,1,2,0],
-  [3,4,5,2],
-  [1,3,1,5]
-]
-Output: 
-[
-  [0,0,0,0],
-  [0,4,5,0],
-  [0,3,1,0]
-]
-Follow up:
-
-A straight forward solution using O(mn) space is probably a bad idea.
-A simple improvement uses O(m + n) space, but still not the best solution.
-Could you devise a constant space solution?
-*/
-class _0073_SetMatrixZeros {
-public:
-    void setZeroes(std::vector<std::vector<int>>& matrix);
-};
-
-/*
-Tag: binary search
-Write an efficient algorithm that searches for a value in an m x n matrix. 
-This matrix has the following properties:
-Integers in each row are sorted from left to right. The first integer of 
-each row is greater than the last integer of the previous row.
-
-Example 1:
+Explanation: As one shortest transformation is 
+"hit" -> "hot" -> "dot" -> "dog" -> "cog",
+return its length 5.
 
 Input:
-matrix = [
-  [1,   3,  5,  7],
-  [10, 11, 16, 20],
-  [23, 30, 34, 50]
-]
-target = 3
-Output: true
+beginWord = "hit"
+endWord = "cog"
+wordList = ["hot","dot","dog","lot","log"]
+Output: 0
+
+Explanation: The endWord "cog" is not in wordList, 
+therefore no possible transformation.
+*/
+class _0127_Wordladder {
+public:
+    int ladderLength(std::string beginWord, std::string endWord, std::vector<std::string>& wordList);
+};
+
+
+/*
+Tag: Hash, dynamic programming
+Todo
+Given an unsorted array of integers, find the length of the 
+longest consecutive elements sequence.
+Your algorithm should run in O(n) complexity.
+
+Input: [100, 4, 200, 1, 3, 2]
+Output: 4
+Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4.
+*/
+class _0128_LongestConsecutiveSequence {
+public:
+    int longestConsecutive(std::vector<int>& nums);
+};
+
+/*
+Tag: DFS
+Todo
+Given a binary tree containing digits from 0-9 only, each root-to-leaf path 
+could represent a number. An example is the root-to-leaf path 1->2->3 which 
+represents the number 123. Find the total sum of all root-to-leaf numbers.
+
+Note: A leaf is a node with no children.
+
+Example:
+
+Input: [1,2,3]
+    1
+   / \
+  2   3
+Output: 25
+Explanation:
+The root-to-leaf path 1->2 represents the number 12.
+The root-to-leaf path 1->3 represents the number 13.
+Therefore, sum = 12 + 13 = 25.
 Example 2:
 
-Input:
-matrix = [
-  [1,   3,  5,  7],
-  [10, 11, 16, 20],
-  [23, 30, 34, 50]
-]
-target = 13
-Output: false
+Input: [4,9,0,5,1]
+    4
+   / \
+  9   0
+ / \
+5   1
+Output: 1026
+Explanation:
+The root-to-leaf path 4->9->5 represents the number 495.
+The root-to-leaf path 4->9->1 represents the number 491.
+The root-to-leaf path 4->0 represents the number 40.
+Therefore, sum = 495 + 491 + 40 = 1026.
 */
-class _0074_SearchA2DMatrix {
+class _0129_SumRootToLeafNumbers {
+private:
+    void DFS(TreeNode<int>* root, int carryValue);
+    int sum;
 public:
-    bool searchMatrix(std::vector<std::vector<int>>& matrix, int target);
-};
-
-
-/*
-Tag: array
-Given an array with n objects colored red, white or blue, sort them 
-in-place so that objects of the same color are adjacent, with the colors 
-in the order red, white and blue.
-Here, we will use the integers 0, 1, and 2 to represent the color red, white, 
-and blue respectively.
-Note: You are not suppose to use the library's sort function for this problem.
-Example:
-Input: [2,0,2,1,1,0]
-Output: [0,0,1,1,2,2]
-Follow up:
-
-A rather straight forward solution is a two-pass algorithm using counting sort.
-First, iterate the array counting number of 0's, 1's, and 2's, then overwrite 
-array with total number of 0's, then 1's and followed by 2's.
-Could you come up with a one-pass algorithm using only constant space?
-*/
-class _0075_SortColors {
-public:
-    void sortColors(std::vector<int>& nums);
-};
-
-/*
-Tag: Sliding Windows
-Google, Facebook
-TODO: ending edge cases, which is not easy to debug
-
-Given a string S and a string T, find the minimum window in S which will 
-contain all the characters in T in complexity O(n).
-
-Input: S = "ADOBECODEBANC", T = "ABC"
-Output: "BANC"
-Note:
-
-If there is no such window in S that covers all characters in T, return the empty string "".
-If there is such window, you are guaranteed that there will always be only one unique minimum window in S.
-*/
-class _0076_MinimumWindowSubstring {
-public:
-    std::string minWindow(std::string s, std::string t);
-};
-
-/*
-Tag: backtracking, combination
-Given two integers n and k, return all possible combinations of k numbers out of 1 ... n.
-Example:
-Input: n = 4, k = 2
-Output:
-[
-  [2,4],
-  [3,4],
-  [2,3],
-  [1,2],
-  [1,3],
-  [1,4],
-]
-*/
-class _0077_Combinations {
-public:
-    std::vector<std::vector<int>> combine(int n, int k);
-    void combine(std::vector<int>& nums, std::vector<int>& used, int s, int k, std::vector<int>& tmp, std::vector<std::vector<int>>& res);
-};
-
-/*
-Tag: backtracking, combination
-Given a set of distinct integers, nums, return all possible subsets (the power set).
-Note: The solution set must not contain duplicate subsets.
-Example:
-Input: nums = [1,2,3]
-Output:
-[
-  [3],
-  [1],
-  [2],
-  [1,2,3],
-  [1,3],
-  [2,3],
-  [1,2],
-  []
-]
-*/
-class _0078_Subsets{
-public:
-    std::vector<std::vector<int>> subsets(std::vector<int>& nums);
-    std::vector<std::vector<int>> subsets(std::vector<int>& nums, int beg, int end);
+    _0129_SumRootToLeafNumbers() : sum(0) {}
+    int sumNumbers(TreeNode<int>* root);
 };
 
 /*
 Tag: backtracking
-Given a 2D board and a word, find if the word exists in the grid.
-The word can be constructed from letters of sequentially adjacent 
-cell, where "adjacent" cells are those horizontally or vertically 
-neighboring. The same letter cell may not be used more than once.
+Surrounded Regions
+Given a 2D board containing 'X' and 'O' (the letter O), capture all regions surrounded by 'X'.
+A region is captured by flipping all 'O's into 'X's in that surrounded region.
 
-Example:
-
-board =
-[
-  ['A','B','C','E'],
-  ['S','F','C','S'],
-  ['A','D','E','E']
-]
-
-Given word = "ABCCED", return true.
-Given word = "SEE", return true.
-Given word = "ABCB", return false.
-*/
-class _0079_WordSearch{
-public:
-    bool exist(std::vector<std::vector<char>>& board, std::string word);
-    void exist(std::vector<std::vector<char>>& board, int i, int j, std::string& word, int start, int end, bool& res);
-};
-
-
-/*
-Tag: array
-TODO
-80. Remove Duplicates from Sorted Array II
-Given a sorted array nums, remove the duplicates in-place such that 
-duplicates appeared at most twice and return the new length.
-Do not allocate extra space for another array, you must do this by
-modifying the input array in-place with O(1) extra memory.
-
-Given nums = [1,1,1,2,2,3],
-Your function should return length = 5, with the first five elements
-of nums being 1, 1, 2, 2 and 3 respectively. It doesn't matter what 
-you leave beyond the returned length.
-
-Given nums = [0,0,1,1,1,1,2,3,3],
-Your function should return length = 7, with the first seven elements
-of nums being modified to 0, 0, 1, 1, 2, 3 and 3 respectively.
-It doesn't matter what values are set beyond the returned length.
-
-Clarification:
-Confused why the returned value is an integer but your answer is an array?
-Note that the input array is passed in by reference, which means 
-modification to the input array will be known to the caller as well.
-
-Internally you can think of this:
-// nums is passed in by reference. (i.e., without making a copy)
-int len = removeDuplicates(nums);
-*/
-class _0080_RemoveDuplicatesFromSortedArrayII {
-public:
-    int removeDuplicates(std::vector<int>& nums);
-};
-
-/*
-Tag: Binary Search
-Suppose an array sorted in ascending order is rotated at some pivot 
-unknown to you beforehand. (i.e., [0,0,1,2,2,5,6] might become 
-[2,5,6,0,0,1,2]). You are given a target value to search. If found 
-in the array return true, otherwise return false.
-
-Input: nums = [2,5,6,0,0,1,2], target = 0
-Output: true
-Input: nums = [2,5,6,0,0,1,2], target = 3
-Output: false
-Follow up:
-This is a follow up problem to Search in Rotated Sorted Array, where nums may contain duplicates.
-Would this affect the run-time complexity? How and why?
-*/
-class _0081_SearchInRotatedSortedArrayII {
-public:
-    bool search(std::vector<int>& nums, int target);
-};
-
-
-/*
-Tag: Single Linked List operation
-82. Remove Duplicates from Sorted List II
-Given a sorted linked list, delete all nodes that have duplicate numbers, 
-leaving only distinct numbers from the original list.
-
-Input: 1->2->3->3->4->4->5
-Output: 1->2->5
-
-Input: 1->1->1->2->3
-Output: 2->3
-*/
-class _0082_RemoveDuplicatesFromSortedListII{
-public:
-    ListNode<int>* deleteDuplicates(ListNode<int>* head);
-};
-
-/*
-Tag: Single Linked List Operation
-Given a sorted linked list, delete all duplicates such that each element 
-appear only once.
-
-Input: 1->1->2
-Output: 1->2
-
-Input: 1->1->2->3->3
-Output: 1->2->3
-*/
-class _0083_RemoveDuplicatesFromSortedList{
-public:
-    ListNode<int>* deleteDuplicates(ListNode<int>* head);
-};
-
-/*
-Tag: increasing stack
-TODO:
-Given n non-negative integers representing the histogram's bar height where 
-the width of each bar is 1, find the area of largest rectangle in the histogram.
-Above is a histogram where width of each bar is 1, given height = [2,1,5,6,2,3].
-The largest rectangle is shown in the shaded area, which has area = 10 unit.
-
-Input: [2,1,5,6,2,3]
-Output: 10
-*/
-class _0084_LargestRectangleInHistogram {
-public:
-    int largestRectangleArea(std::vector<int>& heights);
-};
-
-/*
-Tag: dynamic programming
-TODO
-Given a 2D binary matrix filled with 0's and 1's, find the largest rectangle containing only 1's and return its area.
-
-Input:
-[
-  ["1","0","1","0","0"],
-  ["1","0","1","1","1"],
-  ["1","1","1","1","1"],
-  ["1","0","0","1","0"]
-]
-Output: 6
-*/
-class _0085_MaximalRectangle {
-public:
-    int maximalRectangle(std::vector<std::vector<char>>& matrix);
-};
-
-/*
-Tag: single linked list operation
-Given a linked list and a value x, partition it such that all nodes less 
-than x come before nodes greater than or equal to x.
-You should preserve the original relative order of the nodes in each of 
-the two partitions.
-
-Input: head = 1->4->3->2->5->2, x = 3
-Output: 1->2->2->4->3->5
-*/
-class _0086_PartitionList {
-    public:
-        ListNode<int>* partition(ListNode<int>* head, int x);
-};
-
-/*
-Facebook 
-
-Tag: array operation, from back to front
-Merge Sorted Array
-Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.
-
-Note:
-The number of elements initialized in nums1 and nums2 are m and n respectively.
-You may assume that nums1 has enough space (size that is greater or equal to m + n) to hold additional elements from nums2.
-Example:
-
-Input:
-nums1 = [1,2,3,0,0,0], m = 3
-nums2 = [2,5,6],       n = 3
-
-Output: [1,2,2,3,5,6]
-*/
-class _0088_MergeSortedArray {
-public: 
-    void merge(std::vector<int>& nums1, int m, std::vector<int>& nums2, int n);
-};
-
-
-/*
-Tag: recursive
-The gray code is a binary numeral system where two successive values differ in only one bit.
-Given a non-negative integer n representing the total number of bits in the code, print the 
-sequence of gray code. A gray code sequence must begin with 0.
-
-
-Input: 2   Output: [0,1,3,2]
+X X X X
+X O O X
+X X O X
+X O X X
+After running your function, the board should be:
+X X X X
+X X X X
+X X X X
+X O X X
 Explanation:
-00 - 0
-01 - 1
-11 - 3
-10 - 2
-
-Example 2:
-Input: 0
-Output: [0]
-Explanation: We define the gray code sequence to begin with 0. A gray code sequence of n has 
-size = 2n, which for n = 0 the size is 20 = 1. Therefore, for n = 0 the gray code sequence is [0].
+Surrounded regions shouldn’t be on the border, which means that any 'O' on the border of the board 
+are not flipped to 'X'. Any 'O' that is not on the border and it is not connected to an 'O' on the 
+border will be flipped to 'X'. Two cells are connected if they are adjacent cells connected 
+horizontally or vertically.
 */
-class _0089_GrayCode{
+class _0130_SurroundedRegions {
 public:
-    std::vector<int> grayCode(int n);
+    void solve(std::vector<std::vector<char>>& board);
+    
+    void DFS(std::vector<std::vector<char>>& board, int i, int j, 
+             const int M, const int N, 
+             const char orig, const char newc);
 };
 
 /*
-Tag: combination
-Given a collection of integers that might contain duplicates, nums, return all possible subsets 
-(the power set).
-Note: The solution set must not contain duplicate subsets.
-Example:
+Tag: palindrome, string, Dynamic programming, DFS
+TODO:
+Given a string s, partition s such that every substring of the partition is a palindrome.
+Return all possible palindrome partitioning of s.
 
-Input: [1,2,2]
+Input: "aab"
 Output:
 [
-  [2],
-  [1],
-  [1,2,2],
-  [2,2],
-  [1,2],
-  []
+  ["aa","b"],
+  ["a","a","b"]
 ]
 */
-class _0090_SubsetII {
+class _0131_PalindromePartitioning {
 public:
-    std::vector<std::vector<int>> subsetsWithDup(std::vector<int>& nums);
-    
-    void generateAllSubsets(std::vector<int>& nums, std::vector<int>& subset,
-                           int index, std::vector<std::vector<int>>& res);
+    std::vector<std::vector<std::string>> partition(std::string s);
+private:
+    void partition(std::string& s, int start, int end,std::vector<std::string>& tmp, std::vector<std::vector<std::string>>& res);
+    bool isPalindrome(std::string& s, int start, int end); 
 };
 
 /*
-Tag: dyanmic programming
-A message containing letters from A-Z is being encoded to numbers using the following mapping:
-'A' -> 1
-'B' -> 2
-...
-'Z' -> 26
-Given a non-empty string containing only digits, determine the total number of ways to decode it.
+Tag: string, palindrome, dynamic programming
+TODO:
 
-Input: "12"
-Output: 2
-Explanation: It could be decoded as "AB" (1 2) or "L" (12).
+Given a string s, partition s such that every substring of the partition is a palindrome.
+Return the minimum cuts needed for a palindrome partitioning of s.
 
-Input: "226"
-Output: 3
-Explanation: It could be decoded as "BZ" (2 26), "VF" (22 6), or "BBF" (2 2 6).
+Example:
+
+Input: "aab"
+Output: 1
+Explanation: The palindrome partitioning ["aa","b"] could be produced using 1 cut.
 */
-class _0091_DecodeWays{
+class _0132_PalindromePartitioningII {
 public:
-    int numDecodings(std::string s);
+    std::vector<std::vector<std::string>> partition(std::string s);
+};
+
+
+/*
+Facebook
+!!! Copy from the solution, but TLE!!!
+
+Tag: DFS, Graph
+Given a reference of a node in a connected undirected graph, return a deep copy 
+(clone) of the graph. Each node in the graph contains a val (int) and a list 
+(List[Node]) of its neighbors.
+
+Input:
+{"$id":"1","neighbors":[{"$id":"2","neighbors":[{"$ref":"1"},{"$id":"3","neighbors":
+[{"$ref":"2"},{"$id":"4","neighbors":[{"$ref":"3"},{"$ref":"1"}],"val":4}],"val":3}],
+"val":2},{"$ref":"4"}],"val":1}
+
+Explanation:
+Node 1's value is 1, and it has two neighbors: Node 2 and 4.
+Node 2's value is 2, and it has two neighbors: Node 1 and 3.
+Node 3's value is 3, and it has two neighbors: Node 2 and 4.
+Node 4's value is 4, and it has two neighbors: Node 1 and 3.
+ 
+
+Note:
+
+The number of nodes will be between 1 and 100.
+The undirected graph is a simple graph, which means no repeated edges and no self-loops in the graph.
+Since the graph is undirected, if node p has node q as neighbor, then node q must have node p as neighbor too.
+You must return the copy of the given node as a reference to the cloned graph.
+*/
+class _0133_CloneGraph {
+    
+public:
+    class Node {
+        public:
+            int val;
+            std::vector<Node*> neighbors;
+            Node(){}
+            Node(int _val, std::vector<Node*> _neighbors): val(_val), neighbors(_neighbors) {}
+    };
+    Node* cloneGraph(Node* node);
+private:
+    std::unordered_map<Node*, Node*> map;
+};
+
+
+/*
+Tag: array, 
+TODO: Hard to think of
+
+There are N gas stations along a circular route, 
+where the amount of gas at station i is gas[i].
+You have a car with an unlimited gas tank and it costs 
+cost[i] of gas to travel from station i to its next station 
+(i+1). You begin the journey with an empty tank at one of 
+the gas stations.
+Return the starting gas station's index if you can travel 
+around the circuit once in the clockwise direction, otherwise 
+return -1.
+
+If there exists a solution, it is guaranteed to be unique.
+Both input arrays are non-empty and have the same length.
+Each element in the input arrays is a non-negative integer.
+Example 1:
+
+Input: 
+gas  = [1,2,3,4,5]
+cost = [3,4,5,1,2]
+
+Output: 3
+
+Explanation:
+Start at station 3 (index 3) and fill up with 4 unit of gas. Your tank = 0 + 4 = 4
+Travel to station 4. Your tank = 4 - 1 + 5 = 8
+Travel to station 0. Your tank = 8 - 2 + 1 = 7
+Travel to station 1. Your tank = 7 - 3 + 2 = 6
+Travel to station 2. Your tank = 6 - 4 + 3 = 5
+Travel to station 3. The cost is 5. Your gas is just enough to travel back to station 3.
+Therefore, return 3 as the starting index.
+Example 2:
+
+Input: 
+gas  = [2,3,4]
+cost = [3,4,3]
+
+Output: -1
+
+Explanation:
+You can't start at station 0 or 1, as there is not enough gas to travel to the next station.
+Let's start at station 2 and fill up with 4 unit of gas. Your tank = 0 + 4 = 4
+Travel to station 0. Your tank = 4 - 3 + 2 = 3
+Travel to station 1. Your tank = 3 - 3 + 3 = 3
+You cannot travel back to station 2, as it requires 4 unit of gas but you only have 3.
+Therefore, you can't travel around the circuit once no matter where you start.
+*/
+class _0134_GasStation {
+public:
+    int canCompleteCircuit(std::vector<int>& gas, std::vector<int>& cost);
+};
+
+/*
+Given a non-empty array of integers, every element appears twice except for one. Find that single one.
+Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
+
+Input: [2,2,1]
+Output: 1
+
+Input: [4,1,2,1,2]
+Output: 4
+*/
+class _0136_SingleNumber {
+public:
+    int singleNumber(std::vector<int>& nums);
+};
+
+
+/*
+Tag: array, left-right two times traversal
+TODO: Hard to think of
+There are N children standing in a line. Each child is assigned a rating value.
+You are giving candies to these children subjected to the following requirements:
+
+1. Each child must have at least one candy.
+2. Children with a higher rating get more candies than their neighbors.
+
+What is the minimum candies you must give?
+
+Input: [1,0,2]
+Output: 5
+Explanation: You can allocate to the first, second and third child with 2, 1, 2 candies respectively.
+Example 2:
+
+Input: [1,2,2]
+Output: 4
+Explanation: You can allocate to the first, second and third child with 1, 2, 1 candies respectively.
+    The third child gets 1 candy because it satisfies the above two conditions.
+*/
+
+class _0135_Candy {
+public:
+    int candy(std::vector<int>& ratings);
+};
+
+
+/*
+Tag: Bit operation
+Given a non-empty array of integers, every element appears twice except for one. 
+Find that single one.
+Your algorithm should have a linear runtime complexity. Could you implement it 
+without using extra memory?
+
+Input: [2,2,1]
+Output: 1
+
+Input: [4,1,2,1,2]
+Output: 4
+*/
+class _0136_SingleNumber {
+public:
+    int singleNumber(std::vector<int>& nums);
+};
+
+
+/*
+Tag: Bit operation
+
+Given a non-empty array of integers, every element appears three times except for one, which appears 
+exactly once. Find that single one.
+
+Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
+
+Example 1:
+
+Input: [2,2,3,2]
+Output: 3
+Example 2:
+
+Input: [0,1,0,1,0,1,99]
+Output: 99
+*/
+class _0137_SingleNumberII {
+public:
+    int singleNumber(std::vector<int>& nums);
 };
 
 /*
 Tag: single linked list
-Reverse a linked list from position m to n. Do it in one-pass.
-Note: 1 ≤ m ≤ n ≤ length of list.
+TODO:
+A linked list is given such that each node contains an additional random pointer which could point to 
+any node in the list or null. Return a deep copy of the list.
 
-Input: 1->2->3->4->5->NULL, m = 2, n = 4
-Output: 1->4->3->2->5->NULL
-*/
-class _0092_ReverseLinkedListII {
-public:
-    ListNode<int>* reverseBetween(ListNode<int>* head, int m, int n);
-};
+Example 1:
+Input:
+{"$id":"1","next":{"$id":"2","next":null,"random":{"$ref":"2"},"val":2},"random":{"$ref":"2"},"val":1}
 
-/*
-Tag: backtracking
-93. Restore IP Addresses
-Given a string containing only digits, restore it by returning all possible valid IP address combinations.
-
-Example:
-Input: "25525511135"
-Output: ["255.255.11.135", "255.255.111.35"]
-*/
-class _0093_RestoreIPAddress{
-public:
-    std::vector<std::string> restoreIPAddress(std::string s);
-private:
-    void restoreIpAddress(std::string s, int level, std::string out, std::vector<std::string>& res);
-    bool isValid(std::string s);
-};
-
-/*
-Tag: recursive, hash
-Given an integer n, generate all structurally unique BST's (binary search trees) that store values 1 ... n.
-
-Input: 3
-Output:
-[
-  [1,null,3,2],
-  [3,2,null,1],
-  [3,1,null,null,2],
-  [2,1,3],
-  [1,null,2,null,3]
-]
 Explanation:
-The above output corresponds to the 5 unique BST's shown below:
+Node 1's value is 1, both of its next and random pointer points to Node 2.
+Node 2's value is 2, its next pointer points to null and its random pointer points to itself.
+ 
 
-   1         3     3      2      1
-    \       /     /      / \      \
-     3     2     1      1   3      2
-    /     /       \                 \
-   2     1         2                 3
+Note:
+
+You must return the copy of the given head as a reference to the cloned list.
 */
-class _0095_UniqueBinarySearchTreeII {
+class _0138_CopyListWithRandomPointer {
 public:
-    std::vector<TreeNode<int>*> generateTrees(int n);
-    std::vector<TreeNode<int>*> generateTreeHelper(int l, int r);
+    struct Node {
+        public:
+            int val;
+            Node* next;
+            Node* random;
+            Node() {}
+            Node(int _val, Node* _next, Node* _random) : val(_val), next(_next), random(_random) {}
+    };
+
+    Node* copyRandomList(Node* head);
+    std::map<Node*, Node*> visit;
 };
 
 /*
-Tag: recursive, hash
-Given n, how many structurally unique BST's (binary search trees) that store values 1 ... n?
+Tag: Dynamic Programming, backtracking (TLE)
 
-Input: 3
-Output: 5
-Explanation:
-Given n = 3, there are a total of 5 unique BST's:
-
-   1         3     3      2      1
-    \       /     /      / \      \
-     3     2     1      1   3      2
-    /     /       \                 \
-   2     1         2                 3
-*/
-class _0096_UniqueBinarySearchTree {
-private:
-    std::vector<int> DP;
-public:
-    int numTrees(int n);
-    int numTreesN(int n);
-};
-
-
-/*
-Tag: dynamic programming, string
-Given s1, s2, s3, find whether s3 is formed by the interleaving of s1 and s2.
-Input: s1 = "aabcc", s2 = "dbbca", s3 = "aadbbcbcac"
-Output: true
-Input: s1 = "aabcc", s2 = "dbbca", s3 = "aadbbbaccc"
-Output: false
-*/
-class _0097_InterleavingString {
-public:
-    bool isInterleav(std::string s1, std::string s2, std::string s3);
-};
-
-/*
 Facebook
 
+Given a non-empty string s and a dictionary wordDict containing a list of non-empty 
+words, determine if s can be segmented into a space-separated sequence of one or 
+more dictionary words.
 
-Tag: Tree
-Given a binary tree, determine if it is a valid binary search tree (BST).
+Note:
 
-Assume a BST is defined as follows:
+The same word in the dictionary may be reused multiple times in the segmentation.
+You may assume the dictionary does not contain duplicate words.
+Example 1:
 
-The left subtree of a node contains only nodes with keys less than the node's key.
-The right subtree of a node contains only nodes with keys greater than the node's key.
-Both the left and right subtrees must also be binary search trees.
+Input: s = "leetcode", wordDict = ["leet", "code"]
+Output: true
+Explanation: Return true because "leetcode" can be segmented as "leet code".
+Example 2:
+
+Input: s = "applepenapple", wordDict = ["apple", "pen"]
+Output: true
+Explanation: Return true because "applepenapple" can be segmented as "apple pen apple".
+             Note that you are allowed to reuse a dictionary word.
+Example 3:
+
+Input: s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"]
+Output: false
+*/
+class _0139_WordBreak {
+public:
+    bool wordBreak(std::string s, std::vector<std::string>& wordDict);
+private:
+    bool wordBreak(std::string s, std::unordered_set<std::string>& wd);
+    bool wordBreak(std::string& s, const std::unordered_set<std::string>& wordDict);
+private:
+    std::unordered_map<std::string, bool> hasSolution;
+};
+
+/*
+Tag: Single Linked List
+
+Given a linked list, determine if it has a cycle in it.
+
+To represent a cycle in the given linked list, we use an integer pos which represents the position (0-indexed) in the linked list where tail connects to. If pos is -1, then there is no cycle in the linked list.
+
+Input: head = [3,2,0,-4], pos = 1
+Output: true
+Explanation: There is a cycle in the linked list, where tail connects to the second node.
+
+Input: head = [1,2], pos = 0
+Output: true
+Explanation: There is a cycle in the linked list, where tail connects to the first node.
+
+Input: head = [1], pos = -1
+Output: false
+Explanation: There is no cycle in the linked list.
+
+Follow up:
+
+Can you solve it using O(1) (i.e. constant) memory?
+*/
+class _0141_LinkedListCycle {
+public:
+    bool hasCycle(ListNode<int>* head);
+};
+
+
+/*
+Given a linked list, return the node where the cycle begins. If there is no cycle, return null.
+To represent a cycle in the given linked list, we use an integer pos which represents the position 
+(0-indexed) in the linked list where tail connects to. If pos is -1, then there is no cycle in 
+the linked list.
+
+Note: Do not modify the linked list.
+
+Input: head = [3,2,0,-4], pos = 1
+Output: tail connects to node index 1
+Explanation: There is a cycle in the linked list, where tail connects to the second node.
+
+Input: head = [1,2], pos = 0
+Output: tail connects to node index 0
+Explanation: There is a cycle in the linked list, where tail connects to the first node.
+
+Input: head = [1], pos = -1
+Output: no cycle
+Explanation: There is no cycle in the linked list.
+*/
+class _0142_LinkedListCycleII {
+public:
+    ListNode<int>* detectCycle(ListNode<int>* head);
+};
+
+/*
+Given a singly linked list L: L0→L1→…→Ln-1→Ln,
+reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…
+
+You may not modify the values in the list's nodes, only nodes itself may be changed.
+
+Given 1->2->3->4, reorder it to 1->4->2->3.
+Given 1->2->3->4->5, reorder it to 1->5->2->4->3.
+*/
+class _0143_ReorderList {
+public:
+    void reorderList(ListNode<int>* head);
+};
+
+
+/*
+Tag: basic knowledge
+Given a binary tree, return the preorder traversal of its nodes' values.
+
+Example:
+
+Input: [1,null,2,3]
+   1
+    \
+     2
+    /
+   3
+
+Output: [1,2,3]
+Follow up: Recursive solution is trivial, could you do it iteratively?
+*/
+class _0144_BinaryTreePreOrderTraversal {
+public:
+    std::vector<int> preorderTraversal(TreeNode<int>* root);
+};
+
+
+/*
+Tag: basic knowledge
+Given a binary tree, return the postorder traversal of its nodes' values.
+
+Example:
+
+Input: [1,null,2,3]
+   1
+    \
+     2
+    /
+   3
+
+Output: [3,2,1]
+Follow up: Recursive solution is trivial, could you do it iteratively?
+*/
+class _0145_BinaryTreePostorderTraversal {
+public:
+    std::vector<int> postorderTraversal(TreeNode<int>* root);
+};
+
+
+/*
+Tag: Special topic
+TODO:
+
+Design and implement a data structure for Least Recently Used (LRU) cache. 
+It should support the following operations: get and put.
+
+get(key) - Get the value (will always be positive) of the key if the key 
+exists in the cache, otherwise return -1. 
+put(key, value) - Set or insert the value if the key is not already present. 
+When the cache reached its capacity, it should invalidate the least recently 
+used item before inserting a new item.
+
+The cache is initialized with a positive capacity.
+
+Follow up:
+Could you do both operations in O(1) time complexity?
+
+Example:
+
+LRUCache cache = new LRUCache(2);
+
+cache.put(1, 1);
+cache.put(2, 2);
+cache.get(1);       // returns 1
+cache.put(3, 3);    // evicts key 2
+cache.get(2);       // returns -1 (not found)
+cache.put(4, 4);    // evicts key 1
+cache.get(1);       // returns -1 (not found)
+cache.get(3);       // returns 3
+cache.get(4);       // returns 4
+*/
+class _0146_LRUCache {
+private:
+    int mCapacity;
+    std::list<std::pair<int, int>> mCache;
+    std::unordered_map<int, std::list<std::pair<int, int>>::iterator> mMap;
+public:
+    _0146_LRUCache(int capacity);
+    int get(int key);
+    void put(int key, int value);
+};
+
+/*
+Tag: single linked list
+Sort a linked list using insertion sort.
+A graphical example of insertion sort. The partial sorted list (black) initially contains only the first element in the list.
+With each iteration one element (red) is removed from the input data and inserted in-place into the sorted list
+Algorithm of Insertion Sort:
+
+Insertion sort iterates, consuming one input element each repetition, and growing a sorted output list.
+At each iteration, insertion sort removes one element from the input data, finds the location it belongs within the sorted list, and inserts it there.
+It repeats until no input elements remain.
+
+Example 1:
+
+Input: 4->2->1->3
+Output: 1->2->3->4
+Example 2:
+
+Input: -1->5->3->4->0
+Output: -1->0->3->4->5
+*/
+class _0147_InsertionSortList {
+public:
+    ListNode<int>* insertionSortList(ListNode<int>* head);
+};
+
+
+// 
+// Tag: merge sort, single linked list
+// Sort a linked list in O(NlogN) time using constant space complexity.
+class _0148_SortList
+{
+public:
+    ListNode<int> *sortList(ListNode<int> *head);
+
+private:
+    ListNode<int> *merge(ListNode<int> *head1, ListNode<int> *head2);
+    void splitList(ListNode<int> *&head, ListNode<int> *&left, ListNode<int> *&right);
+};
+
+
+/*
+Tag: Geometry
+Given n points on a 2D plane, find the maximum number of points that lie on the same straight line.
+*/
+class _0149_MaxPointsOnALine {
+public:
+    int maxPoints(std::vector<std::vector<int>>& points);
+};
+
+/*
+Tag: Stack
+Evaluate the value of an arithmetic expression in Reverse Polish Notation.
+Valid operators are +, -, *, /. Each operand may be an integer or another expression.
+
+Division between two integers should truncate toward zero.
+The given RPN expression is always valid. That means the expression would always evaluate to a 
+result and there won't be any divide by zero operation.
+
+
+Input: ["2", "1", "+", "3", "*"]
+Output: 9
+Explanation: ((2 + 1) * 3) = 9
+
+Input: ["4", "13", "5", "/", "+"]
+Output: 6
+Explanation: (4 + (13 / 5)) = 6
+
+Input: ["10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"]
+Output: 22
+Explanation: 
+  ((10 * (6 / ((9 + 3) * -11))) + 17) + 5
+= ((10 * (6 / (12 * -11))) + 17) + 5
+= ((10 * (6 / -132)) + 17) + 5
+= ((10 * 0) + 17) + 5
+= (0 + 17) + 5
+= 17 + 5
+= 22
+*/
+class _0150_EvaluateReversePolishNotation {
+public:
+    int evalRPN(std::vector<std::string>& tokens);
+};
+
+/*
+TAG: string, stringstream
+TODO: Operation on stirng is very tricky and important
+Given an input string, reverse the string word by word.
+
+Example 1:
+
+Input: "the sky is blue"
+Output: "blue is sky the"
+Example 2:
+
+Input: "  hello world!  "
+Output: "world! hello"
+Explanation: Your reversed string should not contain leading or trailing spaces.
+Example 3:
+
+Input: "a good   example"
+Output: "example good a"
+Explanation: You need to reduce multiple spaces between two words to a single space in the reversed string.
+
+Note:
+
+A word is defined as a sequence of non-space characters.
+Input string may contain leading or trailing spaces. However, your reversed string should not contain leading or trailing spaces.
+You need to reduce multiple spaces between two words to a single space in the reversed string.
+*/
+class _0151_ReverseWordsInAString {
+public:
+    std::string reverseWords(std::string s);
+};
+
+
+/*
+Tag: array, dynamic programming
+Todo: I have no idea how it is solved. and why the solution is in that way
+Given an integer array nums, find the contiguous subarray within an array (containing 
+at least one number) which has the largest product.
+
+Example 1:
+
+Input: [2,3,-2,4]
+Output: 6
+Explanation: [2,3] has the largest product 6.
+Example 2:
+
+Input: [-2,0,-1]
+Output: 0
+Explanation: The result cannot be 2, because [-2,-1] is not a subarray.
+
+抄答案的
+*/
+class _0152_MaximumProductSubarray {
+public:
+    int maxProduct(std::vector<int>& nums);
+};
+
+
+/*
+Tag: binary search
+Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
+(i.e.,  [0,1,2,4,5,6,7] might become  [4,5,6,7,0,1,2]).
+
+Find the minimum element. You may assume no duplicate exists in the array.
+
+Input: [3,4,5,1,2] 
+Output: 1
+
+Input: [4,5,6,7,0,1,2]
+Output: 0
+*/
+class _0153_FindMinimumInRotatedSortedArray {
+public:
+    int findMin(std::vector<int>& nums);
+};
+
+/*
+Suppose an array sorted in ascending order is rotated at some pivot 
+unknown to you beforehand.
+(i.e.,  [0,1,2,4,5,6,7] might become  [4,5,6,7,0,1,2]).
+Find the minimum element.
+The array may contain duplicates.
+
+Input: [1,3,5]
+Output: 1
+
+Input: [2,2,2,0,1]
+Output: 0
+Note:
+This is a follow up problem to Find Minimum in Rotated Sorted Array.
+Would allow duplicates affect the run-time complexity? How and why?
+*/
+class _0154_FindMinimumInRotatedSortedArrayII {
+public:
+    int findMin(std::vector<int>& nums);
+private:
+    int findMin(std::vector<int>& nums, int start, int end);
+};
+
+/*
+Tag: Stack
+Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+    push(x) -- Push element x onto stack.
+    pop() -- Removes the element on top of the stack.
+    top() -- Get the top element.
+    getMin() -- Retrieve the minimum element in the stack.
+Example:
+    MinStack minStack = new MinStack();
+    minStack.push(-2);
+    minStack.push(0);
+    minStack.push(-3);
+    minStack.getMin();   --> Returns -3.
+    minStack.pop();
+    minStack.top();      --> Returns 0.
+    minStack.getMin();   --> Returns -2.
+*/
+class _0155_MinStack
+{
+private:
+    std::stack<int> mainStack;
+    std::stack<int> minStack;
+
+public:
+    /** initialize your data structure here. */
+    _0155_MinStack();
+    void push(int x);
+    void pop();
+    int top();
+    int getMin();
+};
+
+/*
+Given a file and assume that you can only read the file using a given method read4, implement a method to read n characters.
+
+Method read4:
+
+The API read4 reads 4 consecutive characters from the file, then writes those characters into the buffer array buf.
+The return value is the number of actual characters read.
+Note that read4() has its own file pointer, much like FILE *fp in C.
+Definition of read4:
+
+    Parameter:  char[] buf
+    Returns:    int
+
+Note: buf[] is destination not source, the results from read4 will be copied to buf[]
+Below is a high level example of how read4 works:
+
+File file("abcdefghijk"); // File is "abcdefghijk", initially file pointer (fp) points to 'a'
+char[] buf = new char[4]; // Create buffer with enough space to store characters
+read4(buf); // read4 returns 4. Now buf = "abcd", fp points to 'e'
+read4(buf); // read4 returns 4. Now buf = "efgh", fp points to 'i'
+read4(buf); // read4 returns 3. Now buf = "ijk", fp points to end of file
+ 
+
+Method read:
+By using the read4 method, implement the method read that reads n characters from the file and store it in the buffer array buf. Consider that you cannot manipulate the file directly.
+The return value is the number of actual characters read.
+
+Definition of read:
+
+    Parameters:	char[] buf, int n
+    Returns:	int
+
+Note: buf[] is destination not source, you will need to write the results to buf[]
  
 
 Example 1:
 
-    2
-   / \
-  1   3
-
-Input: [2,1,3]
-Output: true
+Input: file = "abc", n = 4
+Output: 3
+Explanation: After calling your read method, buf should contain "abc". We read a total of 3 characters from the file, so return 3. Note that "abc" is the file's content, not buf. buf is the destination buffer that you will have to write the results to.
 Example 2:
 
-    5
-   / \
-  1   4
-     / \
-    3   6
+Input: file = "abcde", n = 5
+Output: 5
+Explanation: After calling your read method, buf should contain "abcde". We read a total of 5 characters from the file, so return 5.
+Example 3:
 
-Input: [5,1,4,null,null,3,6]
-Output: false
-Explanation: The root node's value is 5 but its right child's value is 4.
+Input: file = "abcdABCD1234", n = 12
+Output: 12
+Explanation: After calling your read method, buf should contain "abcdABCD1234". We read a total of 12 characters from the file, so return 12.
+Example 4:
+
+Input: file = "leetcode", n = 5
+Output: 5
+Explanation: After calling your read method, buf should contain "leetc". We read a total of 5 characters from the file, so return 5.
+ 
+
+Note:
+
+Consider that you cannot manipulate the file directly, the file is only accesible for read4 but not for read.
+The read function will only be called once for each test case.
+You may assume the destination buffer array, buf, is guaranteed to have enough space for storing n characters.
 */
-class _0098_ValidateBinarySearchTree {
+class _0157_ReadNCharactersGivenRead4 {
 public:
-    bool isValidBST(TreeNode<int> *root);
+    int read(char* buf, int n);
+private:
+    int read4(char*); // Provided function
+};
+
+
+/*
+Given a file and assume that you can only read the file using a given method read4, implement a method read to read n characters. Your method read may be called multiple times.
+
+Method read4:
+
+The API read4 reads 4 consecutive characters from the file, then writes those characters into the buffer array buf.
+The return value is the number of actual characters read.
+Note that read4() has its own file pointer, much like FILE *fp in C.
+Definition of read4:
+
+    Parameter:  char[] buf
+    Returns:    int
+
+Note: buf[] is destination not source, the results from read4 will be copied to buf[]
+Below is a high level example of how read4 works:
+
+File file("abcdefghijk"); // File is "abcdefghijk", initially file pointer (fp) points to 'a'
+char[] buf = new char[4]; // Create buffer with enough space to store characters
+read4(buf); // read4 returns 4. Now buf = "abcd", fp points to 'e'
+read4(buf); // read4 returns 4. Now buf = "efgh", fp points to 'i'
+read4(buf); // read4 returns 3. Now buf = "ijk", fp points to end of file
+ 
+
+Method read:
+By using the read4 method, implement the method read that reads n characters from the file and store it in the buffer array buf. Consider that you cannot manipulate the file directly.
+The return value is the number of actual characters read.
+Definition of read:
+
+    Parameters:	char[] buf, int n
+    Returns:	int
+
+Note: buf[] is destination not source, you will need to write the results to buf[]
+
+File file("abc");
+Solution sol;
+Assume buf is allocated and guaranteed to have enough space for storing all characters from the file.
+sol.read(buf, 1); // After calling your read method, buf should contain "a". We read a total of 1 character from the file, so return 1.
+sol.read(buf, 2); // Now buf should contain "bc". We read a total of 2 characters from the file, so return 2.
+sol.read(buf, 1); // We have reached the end of file, no more characters can be read. So return 0.
+Example 2:
+
+File file("abc");
+Solution sol;
+sol.read(buf, 4); // After calling your read method, buf should contain "abc". We read a total of 3 characters from the file, so return 3.
+sol.read(buf, 1); // We have reached the end of file, no more characters can be read. So return 0.
+
+Note:
+
+Consider that you cannot manipulate the file directly, the file is only accesible for read4 but not for read.
+The read function may be called multiple times.
+Please remember to RESET your class variables declared in Solution, as static/class variables are persisted across multiple test cases. Please see here for more details.
+You may assume the destination buffer array, buf, is guaranteed to have enough space for storing n characters.
+It is guaranteed that in a given test case the same buffer buf is called by read.
+*/
+class _0158_ReadNCharactersGivenRead4II {
+public:
+    int read(char* buf, int n);
+private:
+    int read4(char* buf);
+    int readPos = 0;
+    int writePos = 0;
+    char buf4[4];
 };
 
 /*
-Tag: Morris Traversal, Tree
+Given a string s , find the length of the longest substring t  that contains at most 2 distinct characters.
 
-Two elements of a binary search tree (BST) are swapped by mistake.
-Recover the tree without changing its structure.
+Example 1:
 
-Input: [1,3,null,null,2]
-
-   1
-  /
- 3
-  \
-   2
-
-Output: [3,1,null,null,2]
-
-   3
-  /
- 1
-  \
-   2
+Input: "eceba"
+Output: 3
+Explanation: t is "ece" which its length is 3.
 Example 2:
 
-Input: [3,1,4,null,null,2]
-
-  3
- / \
-1   4
-   /
-  2
-
-Output: [2,1,4,null,null,3]
-
-  2
- / \
-1   4
-   /
-  3
-Follow up:
-
-A solution using O(n) space is pretty straight forward.
-Could you devise a constant space solution?
+Input: "ccaabbb"
+Output: 5
+Explanation: t is "aabbb" which its length is 5.
 */
-class _0099_RecoverBinarySearchTree {
+class _0159_LongestSubstringWithAtMostTwoDistinctCharacters {
 public:
-    void recoverTree(TreeNode<int>* root);
+    int lengthOfLongestSubstringTwoDistinct(std::string s);
 };
 
 /*
-Tag: Tree
-Given two binary trees, write a function to check if they are the same or not.
-Two binary trees are considered the same if they are structurally identical 
-and the nodes have the same value.
+Tag: single linked list
 
-Input:     1         1
-          / \       / \
-         2   3     2   3
+Write a program to find the node at which the intersection of two singly linked lists begins.
 
-        [1,2,3],   [1,2,3]
+Input: intersectVal = 8, listA = [4,1,8,4,5], listB = [5,0,1,8,4,5], skipA = 2, skipB = 3
+Output: Reference of the node with value = 8
+Input Explanation: The intersected node's value is 8 (note that this must not be 0 if the two 
+lists intersect). From the head of A, it reads as [4,1,8,4,5]. From the head of B, it reads as 
+[5,0,1,8,4,5]. There are 2 nodes before the intersected node in A; There are 3 nodes before the
+intersected node in B.
+ 
 
-Output: true
+Input: intersectVal = 2, listA = [0,9,1,2,4], listB = [3,2,4], skipA = 3, skipB = 1
+Output: Reference of the node with value = 2
+Input Explanation: The intersected node's value is 2 (note that this must not be 0 if the two 
+lists intersect). From the head of A, it reads as [0,9,1,2,4]. From the head of B, it reads as 
+[3,2,4]. There are 3 nodes before the intersected node in A; There are 1 node before the 
+intersected node in B.
 
-Input:     1         1
-          /           \
-         2             2
 
-        [1,2],     [1,null,2]
+Input: intersectVal = 0, listA = [2,6,4], listB = [1,5], skipA = 3, skipB = 2
+Output: null
+Input Explanation: From the head of A, it reads as [2,6,4]. From the head of B, it reads as [1,5].
+Since the two lists do not intersect, intersectVal must be 0, while skipA and skipB can be 
+arbitrary values. Explanation: The two lists do not intersect, so return null.
 
-Output: false
+Notes:
 
-Input:     1         1
-          / \       / \
-         2   1     1   2
-
-        [1,2,1],   [1,1,2]
-
-Output: false
+If the two linked lists have no intersection at all, return null.
+The linked lists must retain their original structure after the function returns.
+You may assume there are no cycles anywhere in the entire linked structure.
+Your code should preferably run in O(n) time and use only O(1) memory.
 */
-class _0100_SameTree {
+class _0160_IntersectionOfTwoLinkedLists {
 public:
-    bool isSameTree(TreeNode<int>* p, TreeNode<int>* q);
+    ListNode<int>* getIntersectionNode(ListNode<int>* headA, ListNode<int>* headB);
+private:
+    int length(ListNode<int>* root);
 };
 
-}
+/*
+Given two strings s and t, determine if they are both one edit distance apart.
+
+There are 3 possiblities to satisify one edit distance apart:
+
+Insert a character into s to get t
+Delete a character from s to get t
+Replace a character of s to get t
+
+Input: s = "ab", t = "acb"
+Output: true
+Explanation: We can insert 'c' into s to get t.
+
+Input: s = "cab", t = "ad"
+Output: false
+Explanation: We cannot get t from s by only one step.
+
+Input: s = "1203", t = "1213"
+Output: true
+Explanation: We can replace '0' with '1' to get t.
+*/
+class _0161_OneEditDistance {
+public:
+    bool isOneEditDistance(std::string s, std::string t);
+};
+
+
+
+/*
+A peak element is an element that is greater than its neighbors. Given an input array 
+nums, where nums[i] ≠ nums[i+1], find a peak element and return its index. The array 
+may contain multiple peaks, in that case return the index to any one of the peaks is fine.
+
+You may imagine that nums[-1] = nums[n] = -∞.
+Example 1:
+
+Input: nums = [1,2,3,1]          :         Output: 2
+Explanation: 3 is a peak element and your function should return the index number 2.
+
+Input: nums = [1,2,1,3,5,6,4]    :         Output: 1 or 5 
+Explanation: Your function can return either index number 1 where the peak element is 2, 
+or index number 5 where the peak element is 6.
+*/
+class _0162_FindPeakElement {
+public:
+    int findPeakElement(std::vector<int>& nums);
+};
+
+/*
+Tag: sort, bucket sort, very special case
+TODO
+Given an unsorted array, find the maximum difference between the successive elements in its sorted form.
+
+Return 0 if the array contains less than 2 elements.
+
+Example 1:
+
+Input: [3,6,9,1]
+Output: 3
+Explanation: The sorted form of the array is [1,3,6,9], either
+             (3,6) or (6,9) has the maximum difference 3.
+Example 2:
+
+Input: [10]
+Output: 0
+Explanation: The array contains less than 2 elements, therefore return 0.
+Note:
+
+You may assume all elements in the array are non-negative integers and fit in the 32-bit signed integer range.
+Try to solve it in linear time/space.
+*/
+class _0164_MaximumGap {
+public:
+    int maximumGap(std::vector<int>& nums);
+};
+
+/*
+Tag: string,
+TODO: Too much details need to be considered
+
+Compare two version numbers version1 and version2.
+If version1 > version2 return 1; if version1 < version2 return -1;otherwise return 0.
+You may assume that the version strings are non-empty and contain only digits and the . character.
+The . character does not represent a decimal point and is used to separate number sequences.
+For instance, 2.5 is not "two and a half" or "half way to version three", it is the fifth 
+second-level revision of the second first-level revision.
+You may assume the default revision number for each level of a version number to be 0. 
+For example, version number 3.4 has a revision number of 3 and 4 for its first and second 
+level revision number. Its third and fourth level revision number are both 0.
+
+Input: version1 = "0.1", version2 = "1.1"             :          Output: -1
+Input: version1 = "1.0.1", version2 = "1"             :          Output: 1
+Input: version1 = "7.5.2.4", version2 = "7.5.3"       :          Output: -1
+Input: version1 = "1.01", version2 = "1.001"          :          Output: 0
+Explanation: Ignoring leading zeroes, both “01” and “001" represent the same number “1”
+
+Input: version1 = "1.0", version2 = "1.0.0"
+Output: 0
+Explanation: The first version number does not have a 
+third level revision number, which means its third level 
+revision number is default to "0"
+
+Note:
+
+Version strings are composed of numeric strings separated by dots . and this numeric strings may have leading zeroes.
+Version strings do not start or end with dots, and they will not be two consecutive dots.
+*/
+class _0165_CompareVersionNumbers {
+private:
+    int findDot(const std::string& v);
+    std::string removeHeadingZeros(const std::string& v);
+public:
+    int compareVersion(std::string version1, std::string version2);
+
+};
+
+
+/*
+Tag: string, arithmatic, hash
+TODO: Copy solution, need to fully understand what happened.
+Given two integers representing the numerator and denominator of a fraction, 
+return the fraction in string format. If the fractional part is repeating, 
+enclose the repeating part in parentheses.
+
+Input: numerator = 1, denominator = 2        :               Output: "0.5"
+Input: numerator = 2, denominator = 1        :               Output: "2"
+Input: numerator = 2, denominator = 3        :               Output: "0.(6)"
+ */
+class _0166_FractionToRecurringDecimal {
+public:
+std::string fractionToDecimal(int numerator, int denominator);
+};
+
+/*
+Given an array of integers that is already sorted in ascending order, find two numbers such
+that they add up to a specific target number. The function twoSum should return indices of 
+the two numbers such that they add up to the target, where index1 must be less than index2.
+
+Note:
+
+Your returned answers (both index1 and index2) are not zero-based.
+You may assume that each input would have exactly one solution and you may not use the same
+element twice.
+
+Input: numbers = [2,7,11,15], target = 9
+Output: [1,2]
+Explanation: The sum of 2 and 7 is 9. Therefore index1 = 1, index2 = 2.
+*/
+class _0167_TwoSumII_InputArrayIsSorted {
+public:
+    std::vector<int> twoSum(std::vector<int>& numbers, int target);
+};
+
+/*
+Given a positive integer, return its corresponding column title as appear in an Excel sheet.
+
+For example:
+
+    1 -> A
+    2 -> B
+    3 -> C
+    ...
+    26 -> Z
+    27 -> AA
+    28 -> AB 
+    ...
+Example 1:
+
+Input: 1
+Output: "A"
+Example 2:
+
+Input: 28
+Output: "AB"
+Example 3:
+
+Input: 701
+Output: "ZY"
+*/
+class _0168_ExcelSheetColumnTitle {
+public:
+    std::string convertToTitle(int n);
+};
+
+
+/*
+Given an array of size n, find the majority element. The majority element is the 
+element that appears more than ⌊ n/2 ⌋ times.
+You may assume that the array is non-empty and the majority element always exist 
+in the array.
+
+Input: [3,2,3]            :            Output: 3
+Input: [2,2,1,1,1,2,2]    :            Output: 2
+*/
+class _0169_MajorityElement {
+public:
+    int majorityElement(std::vector<int>& nums);
+};
+
+/*
+Given a column title as appear in an Excel sheet, return its corresponding column number.
+For example:
+
+    A -> 1
+    B -> 2
+    C -> 3
+    ...
+    Z -> 26
+    AA -> 27
+    AB -> 28 
+    ...
+Example 1:
+
+Input: "A"
+Output: 1
+Example 2:
+
+Input: "AB"
+Output: 28
+Example 3:
+
+Input: "ZY"
+Output: 701
+*/
+class _0171_ExcellSheetColumnNumber {
+public:
+    int titleToNumber(std::string s);
+};
+
+
+/*
+Given an integer n, return the number of trailing zeroes in n!.
+
+Example 1:
+
+Input: 3
+Output: 0
+Explanation: 3! = 6, no trailing zero.
+Example 2:
+
+Input: 5
+Output: 1
+Explanation: 5! = 120, one trailing zero.
+Note: Your solution should be in logarithmic time complexity.
+*/
+class _0172_FactorialTrailingZeroes {
+public:
+    int trailingZeroes(int n);
+};
+
+
+
+/*
+Facebook
+
+Implement an iterator over a binary search tree (BST). Your iterator will be initialized 
+with the root node of a BST. Calling next() will return the next smallest number in the BST.
+BSTIterator iterator = new BSTIterator(root);
+iterator.next();    // return 3
+iterator.next();    // return 7
+iterator.hasNext(); // return true
+iterator.next();    // return 9
+iterator.hasNext(); // return true
+iterator.next();    // return 15
+iterator.hasNext(); // return true
+iterator.next();    // return 20
+iterator.hasNext(); // return false
+ 
+Note:
+next() and hasNext() should run in average O(1) time and uses O(h) memory, where h is the 
+height of the tree. You may assume that next() call will always be valid, that is, there 
+will be at least a next smallest number in the BST when next() is called.
+*/
+class _0173_BinarySearchTreeIterator {
+public:
+    _0173_BinarySearchTreeIterator(TreeNode<int>* root);
+    
+    /** @return the next smallest number */
+    int next();
+    
+    /** @return whether we have a next smallest number */
+    bool hasNext();
+private:
+    std::stack<TreeNode<int>*> st;
+};
+
+/*
+The demons had captured the princess (P) and imprisoned her in the bottom-right 
+corner of a dungeon. The dungeon consists of M x N rooms laid out in a 2D grid. 
+Our valiant knight (K) was initially positioned in the top-left room and must 
+fight his way through the dungeon to rescue the princess.
+The knight has an initial health point represented by a positive integer. If at
+any point his health point drops to 0 or below, he dies immediately.
+
+Some of the rooms are guarded by demons, so the knight loses health (negative 
+integers) upon entering these rooms; other rooms are either empty (0's) or 
+contain magic orbs that increase the knight's health (positive integers).
+
+In order to reach the princess as quickly as possible, the knight decides to 
+move only rightward or downward in each step.
+
+Write a function to determine the knight's minimum initial health so that he 
+is able to rescue the princess.
+
+For example, given the dungeon below, the initial health of the knight must 
+be at least 7 if he follows the optimal path RIGHT-> RIGHT -> DOWN -> DOWN.
+________________________
+|-2 (K)	|  -3  |  3    |
+------------------------
+|  -5   | -10  |  1    |
+------------------------
+|  10	| 30   | -5 (P)|
+------------------------
+
+Note:
+
+The knight's health has no upper bound.
+Any room can contain threats or power-ups, even the first room the knight 
+enters and the bottom-right room where the princess is imprisoned.
+*/
+class _0174_DungeonGame {
+public:
+    int calculateMinimumHP(std::vector<std::vector<int>>& dungeon);
+};
+
+/*
+Given a list of non negative integers, arrange them such that they 
+form the largest number.
+
+Input: [10,2]
+Output: "210"
+
+Input: [3,30,34,5,9]
+Output: "9534330"
+Note: The result may be very large, so you need to return a string instead of an integer.
+*/
+class _0179_LargestNumber {
+public:
+    std::string largestNumber(std::vector<int>& nums);
+};
+
+// 180 is a MySQL problem;
+class _0180_ConsecutiveNumbers;
+// 181 is a MySQL problem;
+class _0181_EmployeesEarningMoreThanTheirManagers;
+// 182 is a MySQL problem;
+class _0182_DuplicateEmails;
+// 183 is a MySQL problem;
+class _0183_CustomersWhoeNeverOrder;
+// 184 is a MySQL problem;
+class _0184_DepartmentHighestSalary;
+// 185 is a MySQL problem;
+class _0185_DepartmentTopThreeSalaries;
+
+/*
+Given an input string , reverse the string word by word. 
+
+Input:  ["t","h","e"," ","s","k","y"," ","i","s"," ","b","l","u","e"]
+Output: ["b","l","u","e"," ","i","s"," ","s","k","y"," ","t","h","e"]
+Note: 
+
+A word is defined as a sequence of non-space characters.
+The input string does not contain leading or trailing spaces.
+The words are always separated by a single space.
+Follow up: Could you do it in-place without allocating extra space?
+*/
+class _0186_ReverseWordsInAStringII {
+public:
+    void reverseWords(std::vector<char>& s);
+};
+/*
+All DNA is composed of a series of nucleotides abbreviated as A, C, G, and T, 
+for example: "ACGAATTCCG". When studying DNA, it is sometimes useful to 
+identify repeated sequences within the DNA.
+Write a function to find all the 10-letter-long sequences (substrings) that 
+occur more than once in a DNA molecule.
+
+Input: s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"
+Output: ["AAAAACCCCC", "CCCCCAAAAA"]
+*/
+class _0187_RepeatedDNASequences {
+public:
+    std::vector<std::string> findRepeatedDNASequences(std::string s);
+};
+
+/*
+Tag: special topic 
+ */
+class _0188_BestTimeToBuyAndSellStockIV {
+
+};
+
+/*
+Tag: string like reverse
+Given an array, rotate the array to the right by k steps, where k is non-negative.
+
+Input: [1,2,3,4,5,6,7] and k = 3
+Output: [5,6,7,1,2,3,4]
+Explanation:
+rotate 1 steps to the right: [7,1,2,3,4,5,6]
+rotate 2 steps to the right: [6,7,1,2,3,4,5]
+rotate 3 steps to the right: [5,6,7,1,2,3,4]
+
+Input: [-1,-100,3,99] and k = 2
+Output: [3,99,-1,-100]
+Explanation: 
+rotate 1 steps to the right: [99,-1,-100,3]
+rotate 2 steps to the right: [3,99,-1,-100]
+Note:
+
+Try to come up as many solutions as you can, there are at least 3 different ways to solve this problem.
+Could you do it in-place with O(1) extra space?
+*/
+class _0189_RotateArray {
+public:
+    void rotate(std::vector<int>& nums, int k);
+};
+
+
+
+/*
+Tag: bit operation
+Reverse bits of a given 32 bits unsigned integer.
+Example 1:
+Input: 00000010100101000001111010011100
+Output : 00111001011110000010100101000000
+Explanation : The input binary string 00000010100101000001111010011100 
+represents the unsigned integer 43261596, so return 964176192 which 
+its binary representation is 00111001011110000010100101000000.
+Example 2 :
+Input : 11111111111111111111111111111101
+Output : 10111111111111111111111111111111
+Explanation : The input binary string 11111111111111111111111111111101 
+represents the unsigned integer 4294967293, so return 3221225471 which 
+its binary representation is 10101111110010110010011101101001.
+
+Note :
+Note that in some languages such as Java, there is no unsigned integer 
+type. In this case, both input and output will be given as signed integer 
+type and should not affect your implementation, as the internal binary 
+representation of the integer is the same whether it is signed or unsigned.
+In Java, the compiler represents the signed integers using 2's complement 
+notation. Therefore, in Example 2 above the input represents the signed 
+integer -3 and the output represents the signed integer -1073741825.
+*/
+class _0190_ReverseBits {
+public:
+    uint32_t reverseBits(uint32_t n);
+};
+
+/*
+Given two non-empty binary trees s and t, check whether tree t has exactly 
+the same structure and node values with a subtree of s. A subtree of s is 
+a tree consists of a node in s and all of this node's descendants. The tree 
+s could also be considered as a subtree of itself.
+
+Given tree s:
+
+     3
+    / \
+   4   5
+  / \
+ 1   2
+Given tree t:
+   4 
+  / \
+ 1   2
+Return true, because t has the same structure and node values with a subtree
+of s.
+
+Given tree s:
+
+     3
+    / \
+   4   5
+  / \
+ 1   2
+    /
+   0
+Given tree t:
+   4
+  / \
+ 1   2
+Return false.
+*/
+class _0191_NumberOf1Bits {
+public:
+    int hammingWeight(uint32_t n);
+};
+
+// 192 is a bash problem
+class _0192_WordFrequency;
+// 193 is a bash problem
+class _0193_ValidPhoneNumbers;
+// 194 is a bash problem
+class _0194_TransposeFile;
+// 195 is a bash problem
+class _0195_TenthLine;
+// 196 is a MySQL problem
+class _0196_DeleteDuplicateEmails;
+// 197 is a MySQL problem
+class _0197_RisingTemperature;
+
+
+
+/*
+You are a professional robber planning to rob houses along 
+a street. Each house has a certain amount of money stashed, 
+the only constraint stopping you from robbing each of them 
+is that adjacent houses have security system connected and 
+it will automatically contact the police if two adjacent 
+houses were broken into on the same night.
+
+Given a list of non-negative integers representing the amount of money of each house, determine the maximum amount of money you can rob tonight without alerting the police.
+
+Example 1:
+
+Input: [1,2,3,1]
+Output: 4
+Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3).
+             Total amount you can rob = 1 + 3 = 4.
+Example 2:
+
+Input: [2,7,9,3,1]
+Output: 12
+Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (money = 1).
+             Total amount you can rob = 2 + 9 + 1 = 12.
+*/
+class _0198_HouseRobber {
+public:
+    int rob(std::vector<int>& nums);
+};
+
+
+/*
+Facebook
+
+Given a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.
+
+Example:
+
+Input: [1,2,3,null,5,null,4]
+Output: [1, 3, 4]
+Explanation:
+
+   1            <---
+ /   \
+2     3         <---
+ \     \
+  5     4       <---
+*/
+class _0199_BinaryTreeRightSideView {
+public:
+    std::vector<int> rightSideView(TreeNode<int>* root);
+};
+
+
+/*
+Tag: backtracking
+
+Given a 2d grid map of '1's (land) and '0's (water), count the number of 
+islands. An island is surrounded by water and is formed by connecting 
+adjacent lands horizontally or vertically. You may assume all four edges 
+of the grid are all surrounded by water.
+
+Input:
+11110
+11010
+11000
+00000
+
+Output: 1
+
+Input:
+11000
+11000
+00100
+00011
+
+Output: 3
+*/
+class _0200_NumberOfIslands {
+public:
+    int numIslands(std::vector<std::vector<char>>& grid);
+    void eraseIsland(std::vector<std::vector<char>>& grid, int i, int j);
+};
+
+} // end namespace leetcode
 
 #endif
