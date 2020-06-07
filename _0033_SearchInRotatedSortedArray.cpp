@@ -26,4 +26,3 @@ int LeetCode::_0033_SearchInRotatedSortedArray::search(std::vector<int>& nums, i
     }
     return -1;
 };
-

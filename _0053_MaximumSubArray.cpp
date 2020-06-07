@@ -1,9 +1,7 @@
 #include "headers.hpp"
 #include <algorithm>
-/*
-Type: Array
-*/
 
+/* Type: Array */
 static int maxSubArray(std::vector<int>& nums) {
     std::vector<int> DP(nums.size(), 0);
     DP[0] = nums[0];

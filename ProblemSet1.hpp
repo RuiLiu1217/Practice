@@ -723,18 +723,29 @@ public:
     int divide(int dividend, int divisor);
 };
 
-/////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////
-// 30 Substring with concatenation of all words            //
-/////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////
+
+/* 
+You are given a string, s, and a list of words, words, that are all of 
+the same length. Find all starting indices of substring(s) in s that is 
+a concatenation of each word in words exactly once and without any 
+intervening characters.
+
+Input:
+  s = "barfoothefoobarman",
+  words = ["foo","bar"]
+Output: [0,9]
+Explanation: Substrings starting at index 0 and 9 are "barfoo" and "foobar" 
+respectively. The output order does not matter, returning [9,0] is fine too.
+
+Input:
+  s = "wordgoodgoodgoodbestword",
+  words = ["word","good","best","word"]
+Output: []
+*/
+class _0030_SubstringWithConcatenationOfAllWords {
+public:
+    std::vector<int> findSubstring(std::string s, std::vector<std::string>& words);
+};
 
 /*
 TODO: Permutation, array boundary
@@ -754,6 +765,24 @@ public:
 private:
     void reverse(std::vector<int> &nums, int start, int end);
 };
+
+/*
+Given a string containing just the characters '(' and ')', find the length of the 
+longest valid (well-formed) parentheses substring.
+
+Input: "(()"
+Output: 2
+Explanation: The longest valid parentheses substring is "()"
+
+Input: ")()())"
+Output: 4
+Explanation: The longest valid parentheses substring is "()()"
+*/
+class _0032_LongestValidParentheses {
+public:
+    int longestValidParentheses(std::string s);
+};
+
 
 /*
 Tag: Binary search
