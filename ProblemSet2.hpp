@@ -418,6 +418,41 @@ public:
 };
 
 /*
+A city's skyline is the outer contour of the silhouette formed by all the buildings in that city when viewed from a
+distance. Now suppose you are given the locations and height of all the buildings as shown on a cityscape photo 
+(Figure A), write a program to output the skyline formed by these buildings collectively (Figure B).
+
+Buildings Skyline Contour
+The geometric information of each building is represented by a triplet of integers [Li, Ri, Hi], where Li and Ri are 
+the x coordinates of the left and right edge of the ith building, respectively, and Hi is its height. It is guaranteed 
+that 0 ≤ Li, Ri ≤ INT_MAX, 0 < Hi ≤ INT_MAX, and Ri - Li > 0. You may assume all buildings are perfect rectangles 
+grounded on an absolutely flat surface at height 0.
+
+For instance, the dimensions of all buildings in Figure A are recorded as: [ [2 9 10], [3 7 15], [5 12 12], [15 20 10], 
+[19 24 8] ] .
+The output is a list of "key points" (red dots in Figure B) in the format of [ [x1,y1], [x2, y2], [x3, y3], ... ] that 
+uniquely defines a skyline. A key point is the left endpoint of a horizontal line segment. Note that the last key point, 
+where the rightmost building ends, is merely used to mark the termination of the skyline, and always has zero height. 
+Also, the ground in between any two adjacent buildings should be considered part of the skyline contour.
+
+For instance, the skyline in Figure B should be represented as:[ [2 10], [3 15], [7 12], [12 0], [15 10], [20 8], [24, 0] ].
+
+Notes:
+
+The number of buildings in any input list is guaranteed to be in the range [0, 10000].
+The input list is already sorted in ascending order by the left x position Li.
+The output list must be sorted by the x position.
+There must be no consecutive horizontal lines of equal height in the output skyline. For instance, [...[2 3], [4 5], [7 5], 
+[11 5], [12 7]...] is not acceptable; the three lines of height 5 should be merged into one in the final output as such: 
+[...[2 3], [4 5], [12 7], ...]
+*/
+//https://youtu.be/8Kd-Tn_Rz7s
+class _0218_TheSkylineProblem {
+    public:
+        std::vector<std::vector<int>> getSkyline(std::vector<std::vector<int>>& buildings);
+};
+
+/*
 Given an array of integers and an integer k, find out whether there are
 two distinct indices i and j in the array such that nums[i] = nums[j]
 and the absolute difference between i and j is at most k.
@@ -510,6 +545,36 @@ public:
 };
 
 /*
+Implement a basic calculator to evaluate a simple expression string.
+
+The expression string may contain open ( and closing parentheses ), the plus + or minus sign -, non-negative integers and empty spaces .
+
+Example 1:
+
+Input: "1 + 1"
+Output: 2
+Example 2:
+
+Input: " 2-1 + 2 "
+Output: 3
+Example 3:
+
+Input: "(1+(4+5+2)-3)+(6+8)"
+Output: 23
+Note:
+You may assume that the given expression is always valid.
+Do not use the eval built-in library function.
+*/
+class _0224_BasicCalculator {
+public:
+    int calculate(std::string s);
+private:
+    void pushNum(std::stack<double>& numStack, std::string& tmp);
+    void cal(std::stack<double>& numStack, char op);
+    int priority(char op);
+};
+
+/*
 225. Implement Stack using Queues
 Implement the following operations of a stack using queues.
 
@@ -574,6 +639,24 @@ public:
     TreeNode<int>* invertTree(TreeNode<int>* root);
 };
 
+/*
+Implement a basic calculator to evaluate a simple expression string.
+
+The expression string contains only non-negative integers, +, -, *, / operators and empty spaces . The integer division should truncate toward zero.
+
+Input: "3+2*2"       :         Output: 7
+Input: " 3/2 "       :         Output: 1
+Input: " 3+5 / 2 "   :         Output: 5
+
+Note:
+
+You may assume that the given expression is always valid.
+Do not use the eval built-in library function.
+*/
+class _0227_BasicCalculatorII {
+public:
+    int calculate(std::string s);
+};
 
 
 /*
@@ -949,6 +1032,65 @@ You may assume that word1 does not equal to word2, and word1 and word2 are both 
 class _0243_ShortestWordDistance {
 public:
     int shortestDistance(std::vector<std::string>& words, std::string word1, std::string word2);
+};
+
+/*
+Given a list of words and two words word1 and word2, return the shortest distance between these two words in the list.
+
+word1 and word2 may be the same and they represent two individual words in the list.
+
+Example:
+Assume that words = ["practice", "makes", "perfect", "coding", "makes"].
+
+Input: word1 = “makes”, word2 = “coding”
+Output: 1
+Input: word1 = "makes", word2 = "makes"
+Output: 3
+Note:
+You may assume word1 and word2 are both in the list.
+*/
+class _0245_ShortestWordDistanceIII {
+public:
+    int shortestWordDistance(std::vector<std::string>& words, std::string word1, std::string word2);
+};
+
+/*
+A strobogrammatic number is a number that looks the same when rotated 180 degrees (looked at upside down).
+
+Write a function to determine if a number is strobogrammatic. The number is represented as a string.
+
+Example 1:
+
+Input:  "69"
+Output: true
+Example 2:
+
+Input:  "88"
+Output: true
+Example 3:
+
+Input:  "962"
+Output: false
+*/
+class _0246_StrobogrammaticNumber {
+public:
+    bool isStrobogrammatic(std::string num);
+};
+
+/*
+A strobogrammatic number is a number that looks the same when rotated 180 degrees (looked at upside down).
+Find all strobogrammatic numbers that are of length = n.
+
+Example:
+
+Input:  n = 2
+Output: ["11","69","88","96"]
+*/
+class _0247_StrobogrammaticNumberII {
+public:
+    std::vector<std::string> findStrobogrammatic(int n);
+private:
+    void DFS(std::unordered_set<char> set, int curLen, int n, std::string tmp, std::vector<std::string>& res);
 };
 
 /*
