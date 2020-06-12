@@ -3,11 +3,11 @@
  std::vector<int> LeetCode::_0260_SingleNumberII::singleNumber(const std::vector<int> &nums) {
     int r = 0;
     std::for_each(begin(nums),end(nums), [&](auto n){ r ^= n;});
-    int lasDigit = r & (~(r - 1));
+    int lasDigit = r & (~(r - 1)); // !!! Find the last bit that the only two values must be different!
     
     std::vector<int> ret(2, 0);
     std::for_each(begin(nums), end(nums), [&](auto n){
-        ret[(lasDigit & n) == 0] ^= n;
+        ret[(lasDigit & n) == 0] ^= n; 
     });
     return ret;
 }

@@ -1117,6 +1117,125 @@ public:
 };
 
 /*
+Given a binary tree, count the number of uni-value subtrees.
+A Uni-value subtree means all nodes of the subtree have the same value.
+
+Input:  root = [5,1,5,5,5,null,5]
+
+        5
+       / \
+      1   5
+     / \   \
+    5   5   5
+
+Output: 4
+*/
+class _0250_CountUnivalueSubtrees {
+public:
+    int countUnivalSubtrees(TreeNode<int>* root);
+private:
+    int count = 0;
+    bool isUnique(TreeNode<int>* root);
+};
+
+/*
+Design and implement an iterator to flatten a 2d vector. It should support the following operations: next and hasNext.
+
+Vector2D iterator = new Vector2D([[1,2],[3],[4]]);
+
+iterator.next(); // return 1
+iterator.next(); // return 2
+iterator.next(); // return 3
+iterator.hasNext(); // return true
+iterator.hasNext(); // return true
+iterator.next(); // return 4
+iterator.hasNext(); // return false
+
+Notes:
+
+Please remember to RESET your class variables declared in Vector2D, as static/class variables are persisted across multiple test cases. Please see here for more details.
+You may assume that next() call will always be valid, that is, there will be at least a next element in the 2d vector when next() is called.
+
+Follow up:
+
+As an added challenge, try to code it using only iterators in C++ or iterators in Java.
+*/
+class _0251_Flatten2DVector {
+private:
+    std::vector<std::vector<int>>::iterator i, iEnd;
+    int j = 0;
+public:
+    _0251_Flatten2DVector(std::vector<std::vector<int>>& v);
+    int next();
+    bool hasNext();
+};
+
+/*
+Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si < ei), determine if a person could attend all meetings.
+
+Input: [[0,30],[5,10],[15,20]]
+Output: false
+
+Input: [[7,10],[2,4]]
+Output: true
+NOTE: input types have been changed on April 15, 2019. Please reset to default code definition to get new method signature.
+*/
+class _0252_MeetingRooms {
+public:
+    bool canAttendMeetings(std::vector<std::vector<int>>& intervals);
+};
+
+
+/*
+Numbers can be regarded as product of its factors. For example,
+
+8 = 2 x 2 x 2;
+  = 2 x 4.
+Write a function that takes an integer n and return all possible combinations of its factors.
+
+Note:
+
+You may assume that n is always positive.
+Factors should be greater than 1 and less than n.
+Example 1:
+
+Input: 1
+Output: []
+Example 2:
+
+Input: 37
+Output:[]
+Example 3:
+
+Input: 12
+Output:
+[
+  [2, 6],
+  [2, 2, 3],
+  [3, 4]
+]
+Example 4:
+
+Input: 32
+Output:
+[
+  [2, 16],
+  [2, 2, 8],
+  [2, 2, 2, 4],
+  [2, 2, 2, 2, 2],
+  [2, 4, 4],
+  [4, 8]
+]
+*/
+class _0254_FactorCombinations {
+public:
+    // Copy from the solution
+    std::vector<std::vector<int>> getFactors(int n);
+private:
+    void DFS(std::vector<std::vector<int>>& res, std::vector<int>& tmp, int n);
+};
+
+/*
 Given a binary tree, return all root-to-leaf paths.
 Note: A leaf is a node with no children.
 
@@ -1181,6 +1300,55 @@ public:
     std::vector<int> singleNumber(const std::vector<int> &nums);
 };
 
+/*
+Given n nodes labeled from 0 to n-1 and a list of undirected edges (each edge is a 
+pair of nodes), write a function to check whether these edges make up a valid tree.
+
+Input: n = 5, and edges = [[0,1], [0,2], [0,3], [1,4]]
+Output: true
+
+Input: n = 5, and edges = [[0,1], [1,2], [2,3], [1,3], [1,4]]
+Output: false
+Note: you can assume that no duplicate edges will appear in edges. Since all edges 
+are undirected, [0,1] is the same as [1,0] and thus will not appear together in edges.
+*/
+class _0261_GraphValidTree {
+public:
+    bool validTree(int n, std::vector<std::vector<int>>& edges);
+    bool DFS(std::vector<std::unordered_set<int>>& graph, std::vector<int>& visited, int source, int target);
+};
+
+class _0262_TripsAndUsers; // it s a MySQL problem
+
+/*
+Write a program to check whether a given number is an ugly number.
+
+Ugly numbers are positive numbers whose prime factors only include 2, 3, 5.
+
+Example 1:
+
+Input: 6
+Output: true
+Explanation: 6 = 2 × 3
+Example 2:
+
+Input: 8
+Output: true
+Explanation: 8 = 2 × 2 × 2
+Example 3:
+
+Input: 14
+Output: false 
+Explanation: 14 is not ugly since it includes another prime factor 7.
+Note:
+
+1 is typically treated as an ugly number.
+Input is within the 32-bit signed integer range: [−231,  231 − 1].
+*/
+class _0263_UglyNumber {
+public:
+    bool isUgly(int num);
+};
 
 /*
 Write a program to find the n-th ugly number.
@@ -1197,6 +1365,31 @@ n does not exceed 1690.
 class _0264_UglyNumberII {
 public:
     int nthUglyNumber(int n);
+};
+
+/*
+Given a string, determine if a permutation of the string could form a palindrome.
+Input: "code"       :      Output: false
+Input: "aab"        :      Output: true
+Input: "carerac"    :      Output: true
+*/
+class _0266_PalinndromePermutation {
+public:
+    bool canPermutePalindrome(std::string s);
+};
+
+/*
+Given an array containing n distinct numbers taken from 0, 1, 2, ..., n, find the one that is missing from the array.
+
+Input: [3,0,1]               :         Output: 2
+Input: [9,6,4,2,3,5,7,0,1]   :         Output: 8
+Note:
+Your algorithm should run in linear runtime complexity. Could you implement it using only constant extra space complexity?
+*/
+class _0268_MissingNumber {
+public:
+    // How to deal with overflow?
+    int missingNumber(std::vector<int>& nums);
 };
 
 /*
@@ -1368,6 +1561,36 @@ public:
 };
 
 /*
+There is a fence with n posts, each post can be painted with one of the k colors.
+
+You have to paint all the posts such that no more than two adjacent fence posts have the same color.
+
+Return the total number of ways you can paint the fence.
+
+Note:
+n and k are non-negative integers.
+
+Example:
+
+Input: n = 3, k = 2
+Output: 6
+Explanation: Take c1 as color 1, c2 as color 2. All possible ways are:
+
+            post1  post2  post3      
+ -----      -----  -----  -----       
+   1         c1     c1     c2 
+   2         c1     c2     c1 
+   3         c1     c2     c2 
+   4         c2     c1     c1  
+   5         c2     c1     c2
+   6         c2     c2     c1
+*/
+class _0276_PaintFence {
+public:
+    int numWays(int n, int k);
+};
+
+/*
 Facebook
 
 You are a product manager and currently leading a team to develop a new product. 
@@ -1417,6 +1640,17 @@ public:
 };
 
 /*
+Given an unsorted array nums, reorder it in-place such that nums[0] <= nums[1] >= nums[2] <= nums[3]....
+
+Input: nums = [3,5,2,1,6,4]
+Output: One possible answer is [3,5,1,6,2,4]
+*/
+class _0280_WiggleSort {
+public:
+    void wiggleSort(std::vector<int>& nums);
+};
+
+/*
 Given a string that contains only digits 0-9 and a target value, return all possibilities to 
 add binary operators (not unary) +, -, or * between the digits so they evaluate to the target 
 value.
@@ -1441,6 +1675,75 @@ public:
     std::vector<std::string> addOperators(std::string num, int target);
 private:
     void DFS(const std::string& num, const int target, int pos, std::string exp, long prev, long curr, std::vector<std::string>& ans);
+};
+
+/*
+Given an array nums, write a function to move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+
+Input: [0,1,0,3,12]
+Output: [1,3,12,0,0]
+Note:
+
+You must do this in-place without making a copy of the array.
+Minimize the total number of operations.
+*/
+class _0283_MoveZeros {
+public:
+    void moveZeroes(std::vector<int>& nums);
+};
+
+/*
+Given a binary search tree and a node in it, find the in-order successor of that node in the BST.
+The successor of a node p is the node with the smallest key greater than p.val.
+
+Input: root = [2,1,3], p = 1
+Output: 2
+Explanation: 1's in-order successor node is 2. Note that both p and the return value is of TreeNode type.
+
+Input: root = [5,3,6,2,4,null,null,1], p = 6
+Output: null
+Explanation: There is no in-order successor of the current node, so the answer is null.
+ 
+Note:
+
+If the given node has no in-order successor in the tree, return null.
+It's guaranteed that the values of the tree are unique.
+
+*/
+class _0285_InorderSuccessorInBST {
+private:
+    std::stack<TreeNode<int>*> st;
+    TreeNode<int>* getNext();
+public:
+    TreeNode<int>* inorderSuccessor(TreeNode<int>* root, TreeNode<int>* p);
+};
+
+/*
+You are given a m x n 2D grid initialized with these three possible values.
+
+-1 - A wall or an obstacle.
+0 - A gate.
+INF - Infinity means an empty room. We use the value 231 - 1 = 2147483647 to represent INF as you may assume that the distance to a gate is less than 2147483647.
+Fill each empty room with the distance to its nearest gate. If it is impossible to reach a gate, it should be filled with INF.
+
+Example: 
+
+Given the 2D grid:
+
+INF  -1  0  INF
+INF INF INF  -1
+INF  -1 INF  -1
+  0  -1 INF INF
+After running your function, the 2D grid should be:
+
+  3  -1   0   1
+  2   2   1  -1
+  1  -1   2  -1
+  0  -1   3   4
+*/
+class _0286_WallsAndGates {
+public:
+    void wallsAndGates(std::vector<std::vector<int>>& rooms);
 };
 
 /*
@@ -1504,8 +1807,49 @@ private:
 public:
     _0288_UniqueWordAbbreviation(std::vector<std::string>& dictionary);
     bool isUnique(std::string word);
-
 };
+
+/*
+According to the Wikipedia's article: "The Game of Life, also known simply as Life, 
+is a cellular automaton devised by the British mathematician John Horton Conway in 1970."
+Given a board with m by n cells, each cell has an initial state live (1) or dead (0). 
+Each cell interacts with its eight neighbors (horizontal, vertical, diagonal) using 
+the following four rules (taken from the above Wikipedia article):
+
+Any live cell with fewer than two live neighbors dies, as if caused by under-population.
+Any live cell with two or three live neighbors lives on to the next generation.
+Any live cell with more than three live neighbors dies, as if by over-population..
+Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
+Write a function to compute the next state (after one update) of the board given its current 
+state. The next state is created by applying the above rules simultaneously to every cell in
+the current state, where births and deaths occur simultaneously.
+
+Input: 
+[
+  [0,1,0],
+  [0,0,1],
+  [1,1,1],
+  [0,0,0]
+]
+Output: 
+[
+  [0,0,0],
+  [1,0,1],
+  [0,1,1],
+  [0,1,0]
+]
+Follow up:
+
+Could you solve it in-place? Remember that the board needs to be updated at the same time: 
+You cannot update some cells first and then use their updated values to update other cells.
+In this question, we represent the board using a 2D array. In principle, the board is infinite, 
+which would cause problems when the active area encroaches the border of the array. How would you address these problems?
+*/
+class _0289_GameOfLife {
+public:
+    void gameOfLife(std::vector<std::vector<int>>& board);
+};
+
 
 /*
         Given a pattern and a string str, find if str follows the same pattern.
@@ -1535,6 +1879,46 @@ public:
 private:
     std::unordered_map<char, std::string> map;
     std::unordered_map<std::string, char> map2;
+};
+
+/*
+You are playing the following Nim Game with your friend: There is a heap of stones 
+on the table, each time one of you take turns to remove 1 to 3 stones. The one who 
+removes the last stone will be the winner. You will take the first turn to remove the stones.
+Both of you are very clever and have optimal strategies for the game. Write a 
+function to determine whether you can win the game given the number of stones in the heap.
+
+Input: 4
+Output: false 
+Explanation: If there are 4 stones in the heap, then you will never win the game;
+             No matter 1, 2, or 3 stones you remove, the last stone will always be 
+             removed by your friend.
+*/
+class _0292_NimGame {
+public:
+    bool canWinNim(int n);
+};
+
+
+/*
+You are playing the following Flip Game with your friend: Given a string that contains 
+only these two characters: + and -, you and your friend take turns to flip two consecutive
+"++" into "--". The game ends when a person can no longer make a move and therefore the 
+other person will be the winner.
+Write a function to compute all possible states of the string after one valid move.
+
+Input: s = "++++"
+Output: 
+[
+  "--++",
+  "+--+",
+  "++--"
+]
+Note: If there is no valid move, return an empty list [].
+*/
+class _0293_FlipGame {
+public:
+    std::vector<std::string> generatePossibleNextMoves(std::string s);
 };
 
 /*
