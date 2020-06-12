@@ -376,8 +376,7 @@ Initially, all next pointers are set to NULL.
 class _0116_PopulatingNextRightPointerInEachNode
 {
 public:
-    class Node
-    {
+    class Node {
     public:
         int val;
         Node *left;
@@ -385,7 +384,7 @@ public:
         Node *next;
     };
 
-    void connect(Node *root);
+    Node* connect(Node *root);
 };
 
 /*
@@ -421,33 +420,7 @@ public:
     Node *next;
     };
 
-    Node* connect(Node* root) {
-        if(root == nullptr) {
-            return nullptr;
-        }
-        Node* p = root;
-        std::queue<std::pair<Node*, int>> q;
-        q.push({p, 0});
-        while(!q.empty()) {
-            const int N = q.size();
-            for(int i = 0; i < N; ++i) {
-                auto a = q.front();
-                auto t = a.first;
-                
-                q.pop();
-                if(!q.empty() && a.second == q.front().second) {
-                    t->next = q.front().first;
-                }
-                if(t->left) {
-                    q.push({t->left, a.second + 1});
-                }
-                if(t->right) {
-                    q.push({t->right, a.second + 1});
-                }
-            }
-        }
-        return root;
-    }
+    Node* connect(Node* root);
 };
 
 /*
@@ -888,21 +861,6 @@ Therefore, you can't travel around the circuit once no matter where you start.
 class _0134_GasStation {
 public:
     int canCompleteCircuit(std::vector<int>& gas, std::vector<int>& cost);
-};
-
-/*
-Given a non-empty array of integers, every element appears twice except for one. Find that single one.
-Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
-
-Input: [2,2,1]
-Output: 1
-
-Input: [4,1,2,1,2]
-Output: 4
-*/
-class _0136_SingleNumber {
-public:
-    int singleNumber(std::vector<int>& nums);
 };
 
 

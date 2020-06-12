@@ -24,6 +24,21 @@ int LeetCode::_0028_ImplementStrStr::strStr(std::string& haystack, std::string& 
 }
 
 // Based on the KMP algorithm
+
+std::vector<int> kmpProcess(std::string needle) {
+    int n = needle.size();
+    std::vector<int> lps(n, 0);
+    for(int i = 1, len = 0; i < n; ) {
+        if(needle[i] == needle[len]) {
+            lps[i++] = ++len;
+        } else if(len) {
+            len = lps[len - 1];
+        } else {
+            lps[i++] = 0;
+        }
+    }
+    return lps;
+}
 int strStr(std::string haystack, std::string needle) {
     int m = haystack.size();
     int n = needle.size();
@@ -47,18 +62,3 @@ int strStr(std::string haystack, std::string needle) {
     return -1;
 }
 
-
-std::vector<int> kmpProcess(std::string needle) {
-    int n = needle.size();
-    std::vector<int> lps(n, 0);
-    for(int i = 1, len = 0; i < n; ) {
-        if(needle[i] == needle[len]) {
-            lps[i++] = ++len;
-        } else if(len) {
-            len = lps[len - 1];
-        } else {
-            lps[i++] = 0
-        }
-    }
-    return lps;
-}

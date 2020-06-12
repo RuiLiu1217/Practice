@@ -1,6 +1,6 @@
 #include "headers.hpp"
 
-int LeetCode::_0122_BestTimeToBuyAndSellStockII(std::vector<int> prices) {
+int LeetCode::_0122_BestTimeToBuyAndSellStockII::maxProfit(std::vector<int> prices) {
     int total = 0;
     for (int i=0; i < prices.size()-1; i++) {
         if (prices[i+1] > prices[i]) {

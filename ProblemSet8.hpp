@@ -5,7 +5,7 @@
 #include <string>
 #include <stack>
 #include <queue>
-
+#include <algorithm>
 #include "Tree.hpp"
 #include "LinkList.hpp"
 

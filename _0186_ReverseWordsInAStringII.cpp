@@ -1,6 +1,6 @@
 #include "headers.hpp"
 
-void LeetCode::_0186_ReverseWordsInAStringII::reverse(std::vector<char>& s) {
+void LeetCode::_0186_ReverseWordsInAStringII::reverseWords(std::vector<char>& s) {
     int startIdx = 0;
     int endIdx = 0;
     while(endIdx < s.size()) {

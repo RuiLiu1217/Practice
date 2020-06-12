@@ -223,7 +223,7 @@ namespace LeetCode {
     class _1451_RearrangeWordsInASentence {
         public:
             std::string arrangeWords(std::string text);
-    }
+    };
 
     /*
     Given a binary string s and an integer k.

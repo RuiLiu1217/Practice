@@ -38,6 +38,7 @@ int LeetCode::_0084_LargestRectangleInHistogram::largestRectangleArea(std::vecto
         }
         idx.push(i);
     }
+    return res;
 }
 
 static int largestRectangleArea(std::vector<int>& height) {

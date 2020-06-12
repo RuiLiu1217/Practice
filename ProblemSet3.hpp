@@ -1376,7 +1376,7 @@ class NestedInteger {
       void add(const NestedInteger &ni);
       // Return the nested list that this NestedInteger holds, if it holds a nested list
     // The result is undefined if this NestedInteger holds a single integer
-    const std::vector<NestedInteger> &getList() const {
+    const std::vector<NestedInteger> getList() const {
         return std::vector<NestedInteger>();
     }
  };

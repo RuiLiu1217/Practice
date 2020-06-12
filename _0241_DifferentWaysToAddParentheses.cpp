@@ -1,4 +1,5 @@
 #include "headers.hpp"
+#include <map>
 
  std::vector<int> diffWaysToComp(const std::string& input, int start, int end) {
     if(map.find(input.substr(start, end-start)) != map.end()) {

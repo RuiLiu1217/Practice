@@ -58,7 +58,7 @@ int LeetCode::_0085_MaximalRectangle::maximalRectangle(std::vector<std::vector<c
         }
 
         for(int j = N - 1; j >= 0; --j) {
-            if(matrix[i][j] == ' 1') {
+            if(matrix[i][j] == '1') {
                 right[j] = std::min(right[j], curRight);
             } else {
                 right[j] = N;

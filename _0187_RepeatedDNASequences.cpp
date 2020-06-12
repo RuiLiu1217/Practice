@@ -43,4 +43,5 @@ std::vector<std::string> findRepeatedDNASequence(std::string s) {
         }
         return r;
     }
+    return r;
 }

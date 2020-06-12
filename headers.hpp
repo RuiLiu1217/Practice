@@ -10,6 +10,7 @@
 #include "Tree.hpp"
 #include "LinkList.hpp"
 
+#include "ProblemSet0.hpp" 
 #include "ProblemSet1.hpp" 
 #include "ProblemSet2.hpp" 
 #include "ProblemSet3.hpp" 

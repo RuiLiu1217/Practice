@@ -1,9 +1,9 @@
 #include "headers.hpp"
 
 
-void LeetCode::_0116_PopulatingNextRightPointerInEachNode::connect(Node* root) {
+LeetCode::_0116_PopulatingNextRightPointerInEachNode::Node* LeetCode::_0116_PopulatingNextRightPointerInEachNode::connect(LeetCode::_0116_PopulatingNextRightPointerInEachNode::Node* root) {
     if(root==nullptr) {
-        return nullptr;
+        return root;
     }
     if(root->left != nullptr && root->right != nullptr) {
         root->left->next = root->right;
