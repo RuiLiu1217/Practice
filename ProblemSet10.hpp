@@ -772,6 +772,48 @@ public:
 };
 
 /*
+Given a number N, return true if and only if it is a confusing number, 
+which satisfies the following condition:
+We can rotate digits by 180 degrees to form new digits. 
+When 0, 1, 6, 8, 9 are rotated 180 degrees, they become 0, 1, 9, 8, 6 respectively. 
+When 2, 3, 4, 5 and 7 are rotated 180 degrees, they become invalid. 
+A confusing number is a number that when rotated 180 degrees becomes a different 
+number with each digit valid.
+
+Input: 6
+Output: true
+Explanation: 
+We get 9 after rotating 6, 9 is a valid number and 9!=6.
+
+Input: 89
+Output: true
+Explanation: 
+We get 68 after rotating 89, 86 is a valid number and 86!=89.
+
+Input: 11
+Output: false
+Explanation: 
+We get 11 after rotating 11, 11 is a valid number but the value remains the same, 
+thus 11 is not a confusing number.
+
+Input: 25
+Output: false
+Explanation: 
+We get an invalid number after rotating 25.
+ 
+
+Note:
+
+0 <= N <= 10^9
+After the rotation we can ignore leading zeros, for example if after rotation we 
+have 0008 then this number is considered as just 8.
+*/
+class _1056_ConfusingNumber {
+public:
+    bool confusingNumber(int N);
+};
+
+/*
 Given a sorted array A of unique numbers, find the K-th missing number starting from 
 the leftmost number of the array.
 
@@ -800,6 +842,32 @@ class _1060_MissingElementInSortedArray {
 public:
     int missingElement(std::vector<int>& nums, int k);
 };
+
+/*
+Given a text string and words (a list of strings), return all index pairs [i, j] so that the substring text[i]...text[j] is in the list of words.
+
+Input: text = "thestoryofleetcodeandme", words = ["story","fleet","leetcode"]
+Output: [[3,7],[9,13],[10,17]]
+
+Input: text = "ababa", words = ["aba","ab"]
+Output: [[0,1],[0,2],[2,3],[2,4]]
+Explanation: 
+Notice that matches can overlap, see "aba" is found in [0,2] and [2,4]. 
+
+Note:
+
+All strings contains only lowercase English letters.
+It's guaranteed that all strings in words are different.
+1 <= text.length <= 100
+1 <= words.length <= 20
+1 <= words[i].length <= 50
+Return the pairs [i,j] in sorted order (i.e. sort them by their first coordinate in case of ties sort them by their second coordinate).
+*/
+class _1065_IndexPairOfAString {
+public:
+    std::vector<std::vector<int>> indexPairs(std::string text, std::vector<std::string>& words);
+};
+
 
 /*
 1074. Number of Submatrices That Sum to Target

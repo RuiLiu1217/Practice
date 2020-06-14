@@ -10,7 +10,7 @@ int LeetCode::_0339_NestedListWeightSum::depthSum(std::vector<NestedInteger>& ne
         if(nstl.isInteger()) {
             sum += nstl.getInteger() * depth;
         } else {
-            const auto& list = nstl.getList();
+            auto& list = nstl.getList();
             sum += depthSum(list, depth + 1);
         }
     }

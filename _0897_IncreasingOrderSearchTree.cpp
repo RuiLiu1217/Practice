@@ -1,7 +1,7 @@
 #include "headers.hpp"
 
 TreeNode<int>* LeetCode::_0897_IncreasingOrderSearchTree::increasingBST(TreeNode<int>* root) {
-    TreeNode<int>* head = new TreeNode(-1);
+    TreeNode<int>* head = new TreeNode<int>(-1);
     head->right = root;
     TreeNode<int>* t = head;
     TreeNode<int>* p = root;

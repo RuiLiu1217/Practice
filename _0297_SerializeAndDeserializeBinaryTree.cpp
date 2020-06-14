@@ -33,7 +33,7 @@ static TreeNode<int>* Deserialize(std::istringstream& in) {
     return root;
 }
 
-TreeNode<int> deserialize(std::string data) {
+TreeNode<int>* LeetCode::_0297_SerializeAndDeserializeBinaryTree::deserialize(std::string data) {
     std::istringstream in(data);
     return Deserialize(in);
 }

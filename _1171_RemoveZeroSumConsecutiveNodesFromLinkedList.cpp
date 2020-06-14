@@ -1,7 +1,7 @@
 #include "headers.hpp"
 
 ListNode<int>* LeetCode::_1171_RemoveZeroSumConsecutiveNodesFromLinkedList::removeZeroSumSublists(ListNode<int>* head) {
-    ListNode<int>* newHead = new ListNode(0);
+    ListNode<int>* newHead = new ListNode<int>(0);
     newHead->next = head;
     std::unordered_set<int> meetValue;
     meetValue.insert(0);

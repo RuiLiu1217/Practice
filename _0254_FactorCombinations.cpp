@@ -41,10 +41,8 @@ static void helper(int n, int start, std::vector<int> out, std::vector<std::vect
         out.pop_back();
     }
 }
-static vector<vector<int>> getFactors_2(int n) {
+static std::vector<std::vector<int>> getFactors_2(int n) {
     std::vector<std::vector<int>> res;
     helper(n, 2, {}, res);
     return res;
 }
-
-// 

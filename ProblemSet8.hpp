@@ -694,43 +694,10 @@ Note:
 */
 class _0870_AdvancedShuffle {
 public:
-    std::vector<int> advantageCount(std::vector<int>& A, std::vector<int>& B) {
-        std::sort(begin(A), end(A));
-        std::vector<int> res;
-        for(int i = 0; i < B.size(); ++i) {
-            int idx = binarySearch(A, B[i]);
-            res.push_back(A[idx]);
-            updateA(A, idx);
-        }
-        return res;
-    }
+    std::vector<int> advantageCount(std::vector<int>& A, std::vector<int>& B);
 private:
-    void updateA(std::vector<int>& A, int idx) {
-        for(int i = idx + 1; i < A.size(); ++i) {
-            A[i-1] = A[i];
-        }
-        A.resize(A.size() - 1);
-    }
-    
-    int binarySearch(std::vector<int>& A, int v) {
-        int s = 0;
-        int e = A.size();
-        while(s < e) {
-            int m = s + (e - s) / 2;
-            if(A[m] == v) {
-                s = m + 1;
-            } else if(A[m] < v) {
-                s = m + 1;
-            } else {
-                e = m;
-            }
-        }
-        if(s == A.size()) {
-            return 0; // there is no such value that greater than v, just give a smallest one;
-        } else {
-            return s;
-        }
-    }
+    void updateA(std::vector<int>& A, int idx);
+    int binarySearch(std::vector<int>& A, int v);
 };
 
 /*

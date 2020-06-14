@@ -1,8 +1,5 @@
 #include "headers.hpp"
 // 本身不难，但是懵住的一道题
-LeetCode::_0716_MaxStack::_0716_MaxStack() {
-
-}
 
 void LeetCode::_0716_MaxStack::push(int x) {
     normal.push(x);

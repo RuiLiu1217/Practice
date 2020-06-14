@@ -1,6 +1,6 @@
 #include "headers.hpp"
 #include <queue>
-static class Compare {
+class Compare {
 public:
     int x;
 public:

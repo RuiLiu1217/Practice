@@ -46,5 +46,5 @@ bool LeetCode::_1153_StringTransformsIntoAnotherString::canConvert(std::string s
             }
         }
     }
-    return std::unordered_set(begin(str2), end(str2)).size() < 26;
+    return std::unordered_set<char>(begin(str2), end(str2)).size() < 26;
 }

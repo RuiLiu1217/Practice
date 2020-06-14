@@ -971,12 +971,39 @@ Example:
     Given target = 5, return true.
     Given target = 20, return false.
 */
-class _0240_SearchA2DMatrix_II
-{
+class _0240_SearchA2DMatrix_II {
 private:
     std::map<std::string, std::vector<int>> map;
 public:
     bool searchMatrix(const std::vector<std::vector<int>> &matrix, int target);
+};
+
+/*
+Given a string of numbers and operators, return all possible results from computing 
+all the different possible ways to group numbers and operators. The valid operators 
+are +, - and *.
+
+Input: "2-1-1"
+Output: [0, 2]
+Explanation: 
+((2-1)-1) = 0 
+(2-(1-1)) = 2
+
+Input: "2*3-4*5"
+Output: [-34, -14, -10, -10, 10]
+Explanation: 
+(2*(3-(4*5))) = -34 
+((2*3)-(4*5)) = -14 
+((2*(3-4))*5) = -10 
+(2*((3-4)*5)) = -10 
+(((2*3)-4)*5) = 10
+*/
+class _0241_DifferentWaysToAddParentheses {
+private:
+    std::unordered_map<std::string, std::vector<int>> map;
+public:
+    std::vector<int> diffWaysToCompute(std::string input);
+    std::vector<int> diffWaysToComp(const std::string& input, int start, int end);
 };
 
 /*
@@ -1213,6 +1240,35 @@ public:
     std::vector<std::vector<int>> getFactors(int n);
 private:
     void DFS(std::vector<std::vector<int>>& res, std::vector<int>& tmp, int n);
+};
+
+/*
+Given an array of numbers, verify whether it is the correct preorder traversal sequence of a binary search tree.
+
+You may assume each number in the sequence is unique.
+
+Consider the following binary search tree: 
+
+     5
+    / \
+   2   6
+  / \
+ 1   3
+Example 1:
+
+Input: [5,2,6,1,3]
+Output: false
+Example 2:
+
+Input: [5,2,1,3,6]
+Output: true
+Follow up:
+Could you do it using only constant space complexity?
+*/
+class _0255_VerifyPreorderSequenceInBinarySearchTree {
+public:
+    bool verifyPreorder(std::vector<int>& preorder);
+    bool isPreorder(std::vector<int>& preorder, int startIdx, int endIdx);
 };
 
 /*
@@ -1628,6 +1684,43 @@ Output: One possible answer is [3,5,1,6,2,4]
 class _0280_WiggleSort {
 public:
     void wiggleSort(std::vector<int>& nums);
+};
+
+/*
+Given two 1d vectors, implement an iterator to return their elements alternately.
+
+Input:
+v1 = [1,2]
+v2 = [3,4,5,6] 
+Output: [1,3,2,4,5,6]
+Explanation: By calling next repeatedly until hasNext returns false, the order of 
+elements returned by next should be: [1,3,2,4,5,6].
+ 
+Follow up:
+
+What if you are given k 1d vectors? How well can your code be extended to such cases?
+
+Clarification for the follow up question:
+The "Zigzag" order is not clearly defined and is ambiguous for k > 2 cases. 
+If "Zigzag" does not look right to you, replace "Zigzag" with "Cyclic". For example:
+
+Input:
+[1,2,3]
+[4,5,6,7]
+[8,9]
+
+Output: [1,4,8,2,5,9,3,6,7].
+*/
+class _0281_ZigzagIterator {
+private:
+    std::vector<std::vector<int>::iterator> it;
+    std::vector<std::vector<int>::iterator> endIt;
+    int N; 
+    int i;
+public:
+    _0281_ZigzagIterator(std::vector<int>&v1, std::vector<int>& v2);
+    int next();
+    bool hasNext();
 };
 
 /*

@@ -42,7 +42,7 @@ static int findDuplicate_LinkListCycleII(std::vector<int>& nums) {
 // 字中该位上的1的个数应该是固定的，如果 nums 数组中所有数字中该位上1的个数
 // 多了，说明重复数字在该位上一定是1，这样我们把重复数字的所有为1的位都累加
 // 起来，就可以还原出了这个重复数字，参见代码如下：
-static int findDuplicate_LinkListCycleII(std::vector<int>& nums) {
+static int findDuplicate_LinkListCycleII_2(std::vector<int>& nums) {
     int res = 0, n = nums.size();
     for (int i = 0; i < 32; ++i) {
         int bit = (1 << i), cnt1 = 0, cnt2 = 0;

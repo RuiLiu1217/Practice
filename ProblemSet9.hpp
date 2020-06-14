@@ -398,6 +398,47 @@ private:
 };
 
 /*
+A chess knight can move as indicated in the chess diagram below:
+This time, we place our chess knight on any numbered key of a phone pad 
+(indicated above), and the knight makes N-1 hops. Each hop must be from 
+one key to another numbered key.
+Each time it lands on a key (including the initial placement of the 
+knight), it presses the number of that key, pressing N digits total.
+How many distinct numbers can you dial in this manner?
+Since the answer may be large, output the answer modulo 10^9 + 7.
+
+Input: 1
+Output: 10
+
+Input: 2
+Output: 20
+
+Input: 3
+Output: 46
+
+1 <= N <= 5000
+*/
+class _0935_KnightDialer {
+private:
+    std::vector<std::vector<int>> A = {
+        {0, 0, 0, 0, 1, 0, 1, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 1, 0, 1, 0},
+        {0, 0, 0, 0, 0, 0, 0, 1, 0, 1},
+        {0, 0, 0, 0, 1, 0, 0, 0, 1, 0},
+        {1, 0, 0, 1, 0, 0, 0, 0, 0, 1},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {1, 1, 0, 0, 0, 0, 0, 1, 0, 0},
+        {0, 0, 1, 0, 0, 0, 1, 0, 0, 0},
+        {0, 1, 0, 1, 0, 0, 0, 0, 0, 0},
+        {0, 0, 1, 0, 1, 0, 0, 0, 0, 0}};
+    std::vector<std::vector<int>> multiply(const std::vector<std::vector<int>>& A,const std::vector<std::vector<int>>& B);
+    std::vector<std::vector<int>> pow(std::vector<std::vector<int>>& A, int N);
+    int summ(std::vector<std::vector<int>>& A);
+public:
+    int knightDialer(int N);
+};
+
+/*
 Given the root node of a binary search tree, return the sum of 
 values of all nodes with value between L and R (inclusive).
 The binary search tree is guaranteed to have unique values.
@@ -757,6 +798,24 @@ public:
 };
 
 /*
+Given an array A of integers, return the number of (contiguous, non-empty) subarrays that have a sum divisible by K.
+
+Input: A = [4,5,0,-2,-3,1], K = 5
+Output: 7
+Explanation: There are 7 subarrays with a sum divisible by K = 5:
+[4, 5, 0, -2, -3, 1], [5], [5, 0], [5, 0, -2, -3], [0], [0, -2, -3], [-2, -3] 
+
+Note:
+
+1 <= A.length <= 30000
+-10000 <= A[i] <= 10000
+2 <= K <= 10000
+*/
+class _0974_SubarraySumsDivisibleByK {
+public:
+    int subarrayDivByK(std::vector<int>& A, int K);
+};
+/*
 Given the root of a binary tree with N nodes, each node in the tree has node.val coins, 
 and there are N coins total.
 In one move, we may choose two adjacent nodes and move one coin from one node to another.
@@ -949,6 +1008,47 @@ arrays or lists.
 class _0986_IntervalListIntersections {
 public:
     std::vector<std::vector<int>> intervalIntersection(std::vector<std::vector<int>>& A, std::vector<std::vector<int>>& B);
+};
+
+/*
+Given a binary tree, return the vertical order traversal of its nodes values.
+For each node at position (X, Y), its left and right children respectively will 
+be at positions (X-1, Y-1) and (X+1, Y-1).
+Running a vertical line from X = -infinity to X = +infinity, whenever the 
+vertical line touches some nodes, we report the values of the nodes in order 
+from top to bottom (decreasing Y coordinates).
+If two nodes have the same position, then the value of the node that is reported 
+first is the value that is smaller.
+Return an list of non-empty reports in order of X coordinate. Every report will 
+have a list of values of nodes.
+
+Input: [3,9,20,null,null,15,7]
+Output: [[9],[3,15],[20],[7]]
+Explanation: 
+Without loss of generality, we can assume the root node is at position (0, 0):
+Then, the node with value 9 occurs at position (-1, -1);
+The nodes with values 3 and 15 occur at positions (0, 0) and (0, -2);
+The node with value 20 occurs at position (1, -1);
+The node with value 7 occurs at position (2, -2).
+
+Input: [1,2,3,4,5,6,7]
+Output: [[4],[2],[1,5,6],[3],[7]]
+Explanation: 
+The node with value 5 and the node with value 6 have the same position according to the given scheme.
+However, in the report "[1,5,6]", the node value of 5 comes first since 5 is smaller than 6.
+
+Note:
+
+The tree will have between 1 and 1000 nodes.
+Each node's value will be between 0 and 1000.
+*/
+class _0987_VerticalOrderTraversalOfABinaryTree {
+public:
+    std::vector<std::vector<int>> verticalTraversal(TreeNode<int>* root);
+private:
+    std::map<int, std::map<int, std::set<int>>> nodesDFS;
+    void traverse(TreeNode<int>* root, int x, int y);
+    std::vector<std::vector<int>> verticalTraversalDFS(TreeNode<int>* root);
 };
 
 /*

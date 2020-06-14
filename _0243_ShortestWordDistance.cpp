@@ -1,7 +1,7 @@
 #include "headers.hpp"
 #include <algorithm>
 #include <math.h>
-int LeetCode::_0243_ShortestWordDistance::shortestDistance(std::vector<std::string>& words, std::string word1, std::String word2) {
+int LeetCode::_0243_ShortestWordDistance::shortestDistance(std::vector<std::string>& words, std::string word1, std::string word2) {
     int iw1 = -1;
     int iw2 = -1;
     int dis = words.size();
@@ -17,3 +17,4 @@ int LeetCode::_0243_ShortestWordDistance::shortestDistance(std::vector<std::stri
     }
     return dis;
 }
+

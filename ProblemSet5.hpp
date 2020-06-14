@@ -280,27 +280,7 @@ All the integers in the given input belong to the range : [-1e7, 1e7].
 */
 class _0532_KdiffPairsInAnArray {
 public:
-    int findPairs(std::vector<int>& nums, int k) {
-		if (k < 0) {
-			return 0;
-		}
-		int res = 0;
-		int numsSize = nums.size();
-		std::unordered_map<int, int> mp;
-		for (int i = 0; i < nums.size(); ++i) {
-			mp[nums[i]]++;
-		}
-
-		for (auto a : mp) {
-			if (k == 0 && a.second > 1) {
-					res++;
-			}
-			if (k > 0 && mp.count(a.first + k) > 0) {
-				res++;
-			}
-		}
-		return res;
-	}
+    int findPairs(std::vector<int>& nums, int k);
 };
 
 /*
@@ -788,21 +768,7 @@ The number in given array is in range [-100,000, 100,000].
 */
 class _0575_DistributeCandies {
 public:
-    int distributeCandies(std::vector<int>& candies) {
-        std::unordered_set<int> sisCandy;
-        int candySize = candies.size();
-        for (int i = 0; i < candies.size(); ++i) {
-            if (sisCandy.find(candies[i]) == sisCandy.end()) {
-                if (sisCandy.size() >= candySize / 2) {
-                    return sisCandy.size();
-                }
-                else {
-                    sisCandy.insert(candies[i]);
-                }
-            }
-        }
-        return sisCandy.size();
-    }
+    int distributeCandies(std::vector<int>& candies);
 };
 
 /*

@@ -6,7 +6,7 @@ int LeetCode::_0264_UglyNumberII::nthUglyNumber(int n) {
     int idx3 = 0;
     int idx5 = 0;
     while(res.size() < n) {
-        int nextNum = min(res[idx5] * 5, min(res[idx2] * 2, res[idx3] * 3));
+        int nextNum = std::min(res[idx5] * 5, std::min(res[idx2] * 2, res[idx3] * 3));
         if(nextNum == res[idx5] * 5) {
             idx5++;
         }

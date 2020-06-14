@@ -243,6 +243,79 @@ private:
     int _min(std::vector<int>& res, std::vector<int>& idx, std::vector<int>& primes);
 };
 
+/*
+Given a binary tree, return the vertical order traversal of its nodes' values. (ie, from top to bottom, column by column).
+If two nodes are in the same row and column, the order should be from left to right.
+
+Input: [3,9,20,null,null,15,7]
+
+   3
+  /\
+ /  \
+ 9  20
+    /\
+   /  \
+  15   7 
+
+Output:
+
+[
+  [9],
+  [3,15],
+  [20],
+  [7]
+]
+Examples 2:
+
+Input: [3,9,8,4,0,1,7]
+
+     3
+    /\
+   /  \
+   9   8
+  /\  /\
+ /  \/  \
+ 4  01   7 
+
+Output:
+
+[
+  [4],
+  [9],
+  [3,0,1],
+  [8],
+  [7]
+]
+Examples 3:
+
+Input: [3,9,8,4,0,1,7,null,null,null,2,5] (0's right child is 2 and 1's left child is 5)
+
+     3
+    /\
+   /  \
+   9   8
+  /\  /\
+ /  \/  \
+ 4  01   7
+    /\
+   /  \
+   5   2
+
+Output:
+
+[
+  [4],
+  [9,5],
+  [3,0,1],
+  [8,2],
+  [7]
+]
+*/
+class _0314_BinaryTreeVertialOrderTraversal {
+public:
+    std::vector<std::vector<int>> verticalOrder(TreeNode<int>* root);
+};
+
 
 /*
 You are given an integer array nums and you have to return a new counts array. The 
@@ -270,9 +343,9 @@ is the smallest in lexicographical order among all possible results.
 Input: "bcabc"          :           Output: "abc"
 Input: "cbacdcbc"       :           Output: "acdb"
 
-// https://www.youtube.com/watch?v=SrlvMmfG8sA
-// 分别用两个数组来记录，第一个数组统计各个字母出现的次数
-// 第二个数组用于记录这个字符是否用过了
+ https://www.youtube.com/watch?v=SrlvMmfG8sA
+ 分别用两个数组来记录，第一个数组统计各个字母出现的次数
+ 第二个数组用于记录这个字符是否用过了
 */
 class _0316_RemoveDuplicateLetters {
 public:   
@@ -379,9 +452,9 @@ nums2 = [8, 9]
 k = 3
 Output:
 [9, 8, 9]
-// 经典题，必会的，DP + Greedy
-//将问题拆分成两步，第一步两个数组合并，如果都用上，如何得到最大，第二步，在一个数组中拿k个数，怎么得到最大。
-// 第三步，分别在两个数组中拿k1，k-k1 个元素，各自最大，然后合并出最大于当前的，直到遍历所有可能的k1
+ 经典题，必会的，DP + Greedy
+将问题拆分成两步，第一步两个数组合并，如果都用上，如何得到最大，第二步，在一个数组中拿k个数，怎么得到最大。
+ 第三步，分别在两个数组中拿k1，k-k1 个元素，各自最大，然后合并出最大于当前的，直到遍历所有可能的k1
 */
 class _0321_CreateMaximumNumber {
 public:
@@ -682,7 +755,7 @@ public:
 
     // Return the nested list that this NestedInteger holds, if it holds a nested list
     // The result is undefined if this NestedInteger holds a single integer
-    const std::vector<NestedInteger> &getList() const;
+    std::vector<NestedInteger> &getList() const;
 };
 
 /*
@@ -909,22 +982,22 @@ It is possible that several messages arrive roughly at the same time.
 
 Logger logger = new Logger();
 
-// logging string "foo" at timestamp 1
+logging string "foo" at timestamp 1
 logger.shouldPrintMessage(1, "foo"); returns true; 
 
-// logging string "bar" at timestamp 2
+logging string "bar" at timestamp 2
 logger.shouldPrintMessage(2,"bar"); returns true;
 
-// logging string "foo" at timestamp 3
+logging string "foo" at timestamp 3
 logger.shouldPrintMessage(3,"foo"); returns false;
 
-// logging string "bar" at timestamp 8
+logging string "bar" at timestamp 8
 logger.shouldPrintMessage(8,"bar"); returns false;
 
-// logging string "foo" at timestamp 10
+logging string "foo" at timestamp 10
 logger.shouldPrintMessage(10,"foo"); returns false;
 
-// logging string "foo" at timestamp 11
+logging string "foo" at timestamp 11
 logger.shouldPrintMessage(11,"foo"); returns true;
 */
 class _0359_LoggerRateLimiter {
@@ -933,6 +1006,25 @@ private:
 public:
     _0359_LoggerRateLimiter() {}
     bool shouldPrintMessage(int timeStamp, std::string message);
+};
+
+/*
+Given a sorted array of integers nums and integer values a, b and c. 
+Apply a quadratic function of the form f(x) = ax2 + bx + c to each 
+element x in the array.
+
+The returned array must be in sorted order.
+Expected time complexity: O(n)
+
+Input: nums = [-4,-2,2,4], a = 1, b = 3, c = 5
+Output: [3,9,15,33]
+
+Input: nums = [-4,-2,2,4], a = -1, b = 3, c = 5
+Output: [-23,-5,1,7]
+*/
+class _0360_SortTransformedArray {
+public:
+    std::vector<int> sortTransformedArray(std::vector<int>& nums, int a, int b, int c);
 };
 
 /*

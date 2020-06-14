@@ -503,6 +503,24 @@ public:
 };
 
 /*
+You have some sticks with positive integer lengths.
+You can connect any two sticks of lengths X and Y into one 
+stick by paying a cost of X + Y.  You perform this action until there is one stick remaining.
+
+Return the minimum cost of connecting all the given sticks into one stick in this way.
+
+Input: sticks = [2,4,3]
+Output: 14
+
+Input: sticks = [1,8,3,5]
+Output: 30
+*/
+class _1167_MinimumCostToConnectSticks {
+public:
+    int connectSticks(std::vector<int>& sticks);
+};
+
+/*
 Let's define a function f(s) over a non-empty string s, which calculates the frequency 
 of the smallest character in s. For example, if s = "dcce" then f(s) = 2 because the 
 smallest character is "c" and its frequency is 2.

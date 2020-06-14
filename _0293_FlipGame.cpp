@@ -2,7 +2,7 @@
 
 std::vector<std::string> LeetCode::_0293_FlipGame::generatePossibleNextMoves(std::string s) {
     std::vector<std::string> res;
-    if(s.emtpy()) {
+    if(s.empty()) {
         return {};
     }
 

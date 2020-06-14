@@ -1,7 +1,11 @@
 #include "headers.hpp"
 #include <map>
 
- std::vector<int> diffWaysToComp(const std::string& input, int start, int end) {
+std::vector<int> LeetCode::_0241_DifferentWaysToAddParentheses::diffWaysToCompute(std::string input) {
+    return diffWaysToComp(input, 0, input.size());;
+}
+
+std::vector<int> LeetCode::_0241_DifferentWaysToAddParentheses::diffWaysToComp(const std::string& input, int start, int end) {
     if(map.find(input.substr(start, end-start)) != map.end()) {
         return map[input.substr(start, end-start)];
     }
@@ -36,8 +40,4 @@
         }
     }
     return map[input.substr(start, end-start)] = res;
-}
-
-std::vector<int> LeetCode::_0241_DifferentWaysToAddParentheses::diffWaysToCompute(std::string input) {
-    return diffWaysToComp(input, 0, input.size());
 }

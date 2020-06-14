@@ -51,19 +51,6 @@ int LeetCode::_1273_DeleteTreeNodes::deleteTreeNodes(int nodes, std::vector<int>
     return value[0] ? res[0] + 1 : 0;
 }
 
-
-// Classical DFS solution
-static int deleteTreeNodeDFS(int nodes, std::vector<int>& parent, std::vector<int>& value) {
-    // Create Graph
-    std::vector<std::vector<int>> graph(nodes);
-    for(int i = 0; i < nodes; ++i) {
-        if(parent[i] != -1) {
-            graph[parent[i]].push_back[i];
-        }
-    }
-    return dfs(graph, value, 0)[1];
-}
-
 static std::vector<int> dfs(std::vector<std::vector<int>>& graph, std::vector<int>& value, int root) {
     int sum = value[root];
     int cntRemainNodes = 1;
@@ -76,4 +63,16 @@ static std::vector<int> dfs(std::vector<std::vector<int>>& graph, std::vector<in
         cntRemainNodes = 0;
     }
     return {sum, cntRemainNodes};
+}
+
+// Classical DFS solution
+static int deleteTreeNodeDFS(int nodes, std::vector<int>& parent, std::vector<int>& value) {
+    // Create Graph
+    std::vector<std::vector<int>> graph(nodes);
+    for(int i = 0; i < nodes; ++i) {
+        if(parent[i] != -1) {
+            graph[parent[i]].push_back(i);
+        }
+    }
+    return dfs(graph, value, 0)[1];
 }

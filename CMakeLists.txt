@@ -277,6 +277,7 @@ ADD_LIBRARY(Practice STATIC
 	_0278_FirstBadVersion.cpp
 	_0279_PerfectSquares.cpp
 	_0280_WiggleSort.cpp
+	_0281_ZigzagIterator.cpp
 	_0282_ExpressionAddOperators.cpp
 	_0283_MoveZeros.cpp
 	_0285_InorderSuccessorInBST.cpp
@@ -298,6 +299,7 @@ ADD_LIBRARY(Practice STATIC
 	_0310_MinimumHeightTrees.cpp
 	_0311_SparseMatrixMultiplication.cpp
 	_0313_SuperUglyNumber.cpp
+	_0314_BinaryTreeVertialOrderTraversal.cpp
 	_0315_CountOfSmallerNumberAfterSelf.cpp
 	_0316_RemoveDuplicateLetters.cpp
 	_0318_MaximumProductOfWordLengths.cpp
@@ -325,6 +327,7 @@ ADD_LIBRARY(Practice STATIC
 	_0350_IntersectionOfTwoArraysII.cpp
 	_0357_CountNumbersWithUniqueDigits.cpp
 	_0359_LoggerRateLimiter.cpp
+	_0360_SortTransformedArray.cpp
 	_0361_BombEnemy.cpp
 	_0362_DesignHitCounter.cpp
 	_0364_NestedListWeightSumII.cpp
@@ -531,6 +534,7 @@ ADD_LIBRARY(Practice STATIC
 	_0931_MinimumFallingPathSum.cpp
 	_0933_NumberOfRecentCalls.cpp
 	_0934_ShortestBridge.cpp
+	_0935_KnightDialer.cpp
 	_0938_RangeSumOfBST.cpp
 	_0942_DIStringMatch.cpp
 	_0944_DeleteColumnsToMakeSorted.cpp
@@ -544,12 +548,14 @@ ADD_LIBRARY(Practice STATIC
 	_0970_PowerfulIntegers.cpp
 	_0971_FlipBinaryTreeToMatchPreorderTraversal.cpp
 	_0973_KClosestPointsToOrigin.cpp
+	_0974_SubarraySumsDivisibleByK.cpp
 	_0979_DistributeCoinsInBinaryTree.cpp
 	_0980_UniquePathsIII.cpp
 	_0981_TimeBasedKeyValueStore.cpp
 	_0982_TriplesWithBitwiseAndEqualToZero.cpp
 	_0984_StringWithoutAAAOrBBB.cpp
 	_0986_IntervalListIntersections.cpp
+	_0987_VerticalOrderTraversalOfABinaryTree.cpp
 	_0990_SatisfiabilityOfEqualityEquations.cpp
 	_0993_CousinsInBinaryTree.cpp
 	_0997_FindTheTownJudge.cpp
@@ -579,7 +585,9 @@ ADD_LIBRARY(Practice STATIC
 	_1047_RemoveAllAdjacentDuplicatesInString.cpp
 	_1048_LongestStringChain.cpp
 	_1051_HeightChecker.cpp
+	_1056_ConfusingNumber.cpp
 	_1060_MissingElementInSortedArray.cpp
+	_1065_IndexPairOfAString.cpp
 	_1074_NumberOfSubmatricesThatSumToTarget.cpp
 	_1079_LetterTilePossibilities.cpp
 	_1081_SmallestSubsequenceOfDistinctCharacters.cpp
@@ -605,6 +613,7 @@ ADD_LIBRARY(Practice STATIC
 	_1154_DayOfTheYear.cpp
 	_1160_FindWordsThatCanBeFormedByCharacters.cpp
 	_1161_MaximumLevelSumOfABinaryTree.cpp
+	_1167_MinimumCostToConnectSticks.cpp
 	_1170_CompareStringByFrequencyOfTheSmallestCharacter.cpp
 	_1171_RemoveZeroSumConsecutiveNodesFromLinkedList.cpp
 	_1175_PrimeArrangements.cpp
