@@ -702,3 +702,9 @@ ADD_LIBRARY(Practice STATIC
 	__1535_ToLowerCase.cpp
 	__1592_FindAndReplacePattern.cpp
 )
+
+
+enable_testing()
+add_subdirectory(gooletest)
+
+
