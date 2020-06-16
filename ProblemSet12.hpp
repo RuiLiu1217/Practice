@@ -599,6 +599,25 @@ private:
 };
 
 /*
+Given a non-negative integer num, Return its encoding string.
+
+The encoding is done by converting the integer to a string using a secret function that you should deduce from the following table:
+n    f(n)
+0     ""
+1     "0"
+2     "1"
+3     "00"
+4     "01"
+5     "10"
+6     "11"
+7     "000"
+*/
+class _1256_EncodeNumber {
+public:
+    std::string encode(int num);
+};
+
+/*
 Given a 2D grid of size m x n and an integer k. You need to shift the grid k times.
 In one shift operation:
     Element at grid[i][j] becomes at grid[i][j + 1].

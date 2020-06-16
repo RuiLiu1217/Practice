@@ -741,6 +741,27 @@ private:
 };
 
 /*
+Given a list of points that form a polygon when joined sequentially, find if this polygon is convex (Convex polygon definition).
+
+There are at least 3 and at most 10,000 points.
+Coordinates are in the range -10,000 to 10,000.
+You may assume the polygon formed by given points is always a simple polygon (Simple polygon definition). 
+In other words, we ensure that exactly two edges intersect at each vertex, and that edges otherwise don't intersect each other.
+
+[[0,0],[0,1],[1,1],[1,0]]
+Answer: True
+Explanation:
+
+[[0,0],[0,10],[10,10],[10,0],[5,5]]
+Answer: False
+Explanation:
+*/
+class _0469_ConvexPolygon {
+public:
+    bool isConvex(std::vector<std::vector<int>>& points);
+};
+
+/*
 Remember the story of Little Match Girl? By now, you know exactly what matchsticks 
 the little match girl has, please find out a way you can make one square by using 
 up all those matchsticks. You should not break any stick, but you can link them up, 

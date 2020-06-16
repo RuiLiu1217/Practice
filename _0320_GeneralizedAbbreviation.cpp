@@ -59,3 +59,43 @@ std::vector<std::string> LeetCode::_0320_GeneralizedAbbreviation::generalizeAbbr
     }
     return res;
 }
+
+// Copy from the solution. 
+std::vector<std::string> LeetCode::_0320_GeneralizedAbbreviation::generateAbbreviations(std::string word) {
+    std::vector<std::string> res;
+    res.push_back(word.empty() ? "" : std::to_string(word.size())); // empty string is necessary
+    for(int i = 0; i < word.size(); ++i) {
+        std::string left = i > 0 ? std::to_string(i) : "";
+        for(auto a : generateAbbreviations(word.substr(i + 1))) { // neighbor cannot be the same, so generate substr(i+1) not substr(i)
+            res.push_back(left + word.substr(i, 1) + a);
+        }
+    }
+    return res;
+}
+    
+std::vector<std::string> LeetCode::_0320_GeneralizedAbbreviation::generateAbbreviations_v2(std::string word) {
+    std::vector<std::string> res;
+    const int p2 = std::pow(2, word.size());
+    for(int i = 0; i < p2; ++i) {
+        std::string out = "";
+        int cnt = 0;
+        int t = i;
+        for(int j = 0; j < word.size(); ++j) {
+            if(t & 1 == 1) {
+                ++cnt;
+                if(j == word.size() - 1) {
+                    out += std::to_string(cnt);
+                }
+            } else {
+                if(cnt != 0) {
+                    out += std::to_string(cnt);
+                    cnt = 0;
+                }
+                out += word[j];
+            }
+            t >>= 1;
+        }
+        res.push_back(out);
+    }
+    return res;
+}

@@ -418,6 +418,11 @@ Output:
 class _0320_GeneralizedAbbreviation {
 public:
     std::vector<std::string> generalizeAbbreviations(std::string word);
+
+    // Copy from the solution. 
+    std::vector<std::string> generateAbbreviations(std::string word);
+private:
+    std::vector<std::string> generateAbbreviations_v2(std::string word);
 };
 
 /*
