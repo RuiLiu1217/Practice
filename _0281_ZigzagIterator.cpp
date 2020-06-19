@@ -20,7 +20,7 @@ int LeetCode::_0281_ZigzagIterator::next() {
         ++it[i];
         i = (i + 1) % N;
         return res;
-    }   
+    }
     return -1;
 }
 
