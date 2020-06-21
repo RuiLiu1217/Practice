@@ -280,6 +280,23 @@ public:
     double nthPersionGetsNthSeat(int n);
 };
 
+/*
+In some array arr, the values were in arithmetic progression: the values arr[i+1] - arr[i] are all equal for every 0 <= i < arr.length - 1.
+Then, a value from arr was removed that was not the first or last value in the array.
+Return the removed value.
+
+Input: arr = [5,7,11,13]
+Output: 9
+Explanation: The previous array was [5,7,9,11,13].
+
+Input: arr = [15,13,12]
+Output: 14
+Explanation: The previous array was [15,14,13,12].
+*/
+class _1228_MissingNumberInArithmeticProgression {
+public:
+    int missingNumber(std::vector<int>& arr);
+};
 
 /*
 You are given an array coordinates, coordinates[i] = [x, y], 

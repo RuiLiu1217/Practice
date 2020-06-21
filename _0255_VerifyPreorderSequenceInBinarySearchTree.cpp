@@ -31,3 +31,11 @@ bool LeetCode::_0255_VerifyPreorderSequenceInBinarySearchTree::isPreorder(std::v
     
     return isPreorder(preorder, startIdx + 1, newLeftEndIdx) && isPreorder(preorder, newLeftEndIdx, endIdx);
 }
+
+// Concise solution
+static int i = 0;
+static bool verifyPreorder(vector<int>& A, int left=INT_MIN, int right=INT_MAX) {
+    if (i == A.size() || A[i] > right) return true;
+    int mid = A[i++];
+    return mid > left && verifyPreorder(A, left, mid) && verifyPreorder(A, mid, right);
+}

@@ -1192,6 +1192,15 @@ public:
     bool canAttendMeetings(std::vector<std::vector<int>>& intervals);
 };
 
+/*
+Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si < ei), find the minimum number of conference rooms required.
+Input: [[0, 30],[5, 10],[15, 20]]            :         Output: 2
+Input: [[7,10],[2,4]]                        :         Output: 1
+*/
+class _0253_MeetingRoomsII {
+public:
+    int minMeetingRooms(std::vector<std::vector<int>>& intervals);
+};
 
 /*
 Numbers can be regarded as product of its factors. For example,
@@ -1412,6 +1421,25 @@ Input: "carerac"    :      Output: true
 class _0266_PalinndromePermutation {
 public:
     bool canPermutePalindrome(std::string s);
+};
+
+/*
+Given a string s, return all the palindromic permutations (without duplicates) of it. Return an empty list if no palindromic permutation could be form.
+
+Example 1:
+
+Input: "aabb"
+Output: ["abba", "baab"]
+Example 2:
+
+Input: "abc"
+Output: []
+*/
+class _0267_PalindromePermutationII {
+public:
+    std::vector<std::string> generatePalindromes(std::string s);
+private:
+    void backtracking(std::string hs, int level, std::vector<int>& visited, std::string& tmp, std::vector<std::string>& res)
 };
 
 /*
@@ -1763,6 +1791,45 @@ Minimize the total number of operations.
 class _0283_MoveZeros {
 public:
     void moveZeroes(std::vector<int>& nums);
+};
+
+
+/*
+Given an Iterator class interface with methods: next() and hasNext(), design and implement a PeekingIterator that support the peek() 
+operation -- it essentially peek() at the element that will be returned by the next call to next().
+
+
+Assume that the iterator is initialized to the beginning of the list: [1,2,3].
+
+Call next() gets you 1, the first element in the list.
+Now you call peek() and it returns 2, the next element. Calling next() after that still return 2. 
+You call next() the final time and it returns 3, the last element. 
+Calling hasNext() after that should return false.
+Follow up: How would you extend your design to be generic and work with all types, not just integer?
+*/
+class Iterator {
+    struct Data {};
+    Data* data;
+    Iterator(const std::vector<int>& nums) {
+
+    }
+    Iterator(const Iterator& iter);
+
+    int next();
+    bool hasNext() const;
+};
+class _0284_PeekingIterator : public Iterator {
+public:
+    _0284_PeekingIterator(const std::vector<int>& nums) : Iterator(nums) {}
+    int peek() {
+        return Iterator(*this).next(); // The only difficulty is why here?
+    }
+    int next() {
+        return Iterator::next();
+    }
+    bool hasNext() const {
+        return Iterator::hasNext();
+    }
 };
 
 /*
