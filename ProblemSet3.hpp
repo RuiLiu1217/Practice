@@ -954,6 +954,35 @@ public:
 };
 
 /*
+Given n points on a 2D plane, find if there is such a line parallel to y-axis that reflect the given 
+points symmetrically, in other words, answer whether or not if there exists a line that after reflecting 
+all points over the given line the set of the original points is the same that the reflected ones.
+
+Note that there can be repeated points.
+
+Follow up:
+Could you do better than O(n2) ?
+
+Input: points = [[1,1],[-1,1]]
+Output: true
+Explanation: We can choose the line x = 0.
+
+Input: points = [[1,1],[-1,-1]]
+Output: false
+Explanation: We can't choose a line.
+
+Constraints:
+
+n == points.length
+1 <= n <= 10^4
+-10^8 <= points[i][j] <= 10^8
+*/
+class _0356_LineReflection {
+public:
+    bool isReflected(std::vector<std::vector<int>>& points);
+};
+
+/*
         Given a non-negative integer n, count all numbers with unique 
         digits, x, where 0 ≤ x < pow(10, n).
         

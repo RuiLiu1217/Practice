@@ -284,6 +284,40 @@ public:
 };
 
 /*
+Given a string s. Return all the words vertically in the same order in which they appear in s.
+Words are returned as a list of strings, complete with spaces when is necessary. (Trailing spaces are not allowed).
+Each word would be put on only one column and that in one column there will be only one word.
+
+
+Input: s = "HOW ARE YOU"
+Output: ["HAY","ORO","WEU"]
+Explanation: Each word is printed vertically. 
+ "HAY"
+ "ORO"
+ "WEU"
+
+Input: s = "TO BE OR NOT TO BE"
+Output: ["TBONTB","OEROOE","   T"]
+Explanation: Trailing spaces is not allowed. 
+"TBONTB"
+"OEROOE"
+"   T"
+
+Input: s = "CONTEST IS COMING"
+Output: ["CIC","OSO","N M","T I","E N","S G","T"]
+
+Constraints:
+
+1 <= s.length <= 200
+s contains only upper case English letters.
+It's guaranteed that there is only one space between 2 words.
+*/
+class _1324_PrintWordsVertically {
+public:
+    std::vector<std::string> printVertically(std::string s);
+};
+
+/*
 Given a m * n matrix mat of integers, sort it diagonally in 
 ascending order from the top-left to the bottom-right then 
 return the sorted array.

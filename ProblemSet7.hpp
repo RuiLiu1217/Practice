@@ -340,6 +340,25 @@ public:
 };
 
 /*
+Given a non-negative integer N, find the largest number that is less than or equal to N with monotone increasing digits.
+(Recall that an integer has monotone increasing digits if and only if each pair of adjacent digits x and y satisfy x <= y.)
+
+Example 1:
+Input: N = 10
+Output: 9
+Example 2:
+Input: N = 1234
+Output: 1234
+Example 3:
+Input: N = 332
+Output: 299
+Note: N is an integer in the range [0, 10^9].
+*/
+class _0738_MonotoneIncreasingDigits {
+
+};
+
+/*
 Given an array nums of integers, you can perform operations on the array.
 In each operation, you pick any nums[i] and delete it to earn nums[i] points. 
 After, you must delete every element equal to nums[i] - 1 or nums[i] + 1.
