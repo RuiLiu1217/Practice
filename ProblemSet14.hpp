@@ -323,7 +323,9 @@ namespace LeetCode {
         };
         
         private:
-            std::unordered_map<Node*, NodeCopy*>
+            std::unordered_map<Node*, NodeCopy*> map;
+        public:
+            NodeCopy* copyRandomBinaryTree(Node*, root);
     };
 }
 #endif

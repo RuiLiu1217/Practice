@@ -1,0 +1,2 @@
+C:\mingw64\mingw64\bin\ar.exe qc libPractice.a  CMakeFiles/Practice.dir/LintCode.cpp.obj
+C:\mingw64\mingw64\bin\ranlib.exe libPractice.a

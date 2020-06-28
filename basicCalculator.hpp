@@ -1,6 +1,5 @@
 #ifndef BASICCALCULATOR_HPP
 #define BASICCALCULATOR_HPP
-
 #include <string>
 #include <stack>
 #include <functional>

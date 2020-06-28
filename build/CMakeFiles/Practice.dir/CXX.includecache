@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LintCode.cpp
+LintCode.hpp
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LintCode.hpp
+algorithm
+-
+
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LintCode.hpp
+string
+-
+vector
+-
+functional
+-
+Tree.hpp
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/Tree.hpp
+
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/Tree.hpp
+

@@ -48,7 +48,7 @@ public:
     }
 };
 
-
+/*
 void preorderMorrisTraversal(TreeNode<int>* root) {
     TreeNode<int>* cur = root;
     TreeNode<int>* prev = nullptr;
@@ -96,7 +96,7 @@ void inordermorrisTraversal(TreeNode<int>* root) {
         }
     }
 }
-
+*/
 
 
 

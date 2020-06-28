@@ -1,12 +1,22 @@
 cmake_minimum_required(VERSION 3.8)
 
-set(SOURCES
+set(This PracticeTest)
+
+
+set(Sources
+    LintCodeTest.cpp
 )
 
-add_executable(penguin_test ${SOURCES})
-target_link_libraries( penguin_test PUBLIC
+add_executable(${This} ${Sources})
+
+target_link_libraries(${This} PUBLIC
     gtest_main
-    core
+    Practice
+)
+
+add_test(
+    NAME ${This}
+    COMMAND ${This}
 )
 
 

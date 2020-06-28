@@ -355,7 +355,8 @@ Output: 299
 Note: N is an integer in the range [0, 10^9].
 */
 class _0738_MonotoneIncreasingDigits {
-
+public:
+    int monotoneIncreasingDigits(int N);
 };
 
 /*

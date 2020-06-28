@@ -1,0 +1,32 @@
+[
+{
+  "directory": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build",
+  "command": "C:\\mingw64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=gnu++17 -o CMakeFiles\\Practice.dir\\LintCode.cpp.obj -c C:\\Users\\liuru\\OneDrive\\Documents\\GitHub\\Practice\\LintCode.cpp",
+  "file": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LintCode.cpp"
+},
+{
+  "directory": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/googletest/googlemock",
+  "command": "C:\\mingw64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe   @CMakeFiles/gmock_main.dir/includes_CXX.rsp -g   -Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++17 -o CMakeFiles\\gmock_main.dir\\src\\gmock_main.cc.obj -c C:\\Users\\liuru\\OneDrive\\Documents\\GitHub\\Practice\\googletest\\googlemock\\src\\gmock_main.cc",
+  "file": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/googletest/googlemock/src/gmock_main.cc"
+},
+{
+  "directory": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/googletest/googlemock",
+  "command": "C:\\mingw64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe   @CMakeFiles/gmock.dir/includes_CXX.rsp -g   -Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++17 -o CMakeFiles\\gmock.dir\\src\\gmock-all.cc.obj -c C:\\Users\\liuru\\OneDrive\\Documents\\GitHub\\Practice\\googletest\\googlemock\\src\\gmock-all.cc",
+  "file": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/googletest/googlemock/src/gmock-all.cc"
+},
+{
+  "directory": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/googletest/googletest",
+  "command": "C:\\mingw64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe   @CMakeFiles/gtest.dir/includes_CXX.rsp -g   -Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++17 -o CMakeFiles\\gtest.dir\\src\\gtest-all.cc.obj -c C:\\Users\\liuru\\OneDrive\\Documents\\GitHub\\Practice\\googletest\\googletest\\src\\gtest-all.cc",
+  "file": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/googletest/googletest/src/gtest-all.cc"
+},
+{
+  "directory": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/googletest/googletest",
+  "command": "C:\\mingw64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe   @CMakeFiles/gtest_main.dir/includes_CXX.rsp -g   -Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++17 -o CMakeFiles\\gtest_main.dir\\src\\gtest_main.cc.obj -c C:\\Users\\liuru\\OneDrive\\Documents\\GitHub\\Practice\\googletest\\googletest\\src\\gtest_main.cc",
+  "file": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/googletest/googletest/src/gtest_main.cc"
+},
+{
+  "directory": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test",
+  "command": "C:\\mingw64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe   @CMakeFiles/PracticeTest.dir/includes_CXX.rsp -g   -std=gnu++17 -o CMakeFiles\\PracticeTest.dir\\LintCodeTest.cpp.obj -c C:\\Users\\liuru\\OneDrive\\Documents\\GitHub\\Practice\\test\\LintCodeTest.cpp",
+  "file": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LintCodeTest.cpp"
+}
+]
