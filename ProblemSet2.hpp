@@ -1439,7 +1439,7 @@ class _0267_PalindromePermutationII {
 public:
     std::vector<std::string> generatePalindromes(std::string s);
 private:
-    void backtracking(std::string hs, int level, std::vector<int>& visited, std::string& tmp, std::vector<std::string>& res)
+    void backtracking(std::string hs, int level, std::vector<int>& visited, std::string& tmp, std::vector<std::string>& res);
 };
 
 /*
@@ -1808,6 +1808,7 @@ Calling hasNext() after that should return false.
 Follow up: How would you extend your design to be generic and work with all types, not just integer?
 */
 class Iterator {
+public:
     struct Data {};
     Data* data;
     Iterator(const std::vector<int>& nums) {
@@ -1818,6 +1819,7 @@ class Iterator {
     int next();
     bool hasNext() const;
 };
+
 class _0284_PeekingIterator : public Iterator {
 public:
     _0284_PeekingIterator(const std::vector<int>& nums) : Iterator(nums) {}
