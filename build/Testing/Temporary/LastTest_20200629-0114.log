@@ -1,0 +1,63 @@
+Start testing: Jun 28 22:27 Eastern Daylight Time
+----------------------------------------------------------
+1/1 Testing: PracticeTest
+1/1 Test: PracticeTest
+Command: "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test/PracticeTest.exe"
+Directory: C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test
+"PracticeTest" start time: Jun 28 22:27 Eastern Daylight Time
+Output:
+----------------------------------------------------------
+Running main() from C:\Users\liuru\OneDrive\Documents\GitHub\Practice\googletest\googletest\src\gtest_main.cc
+[==========] Running 18 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 18 tests from LINTCODE
+[ RUN      ] LINTCODE._0001_APlusBProblem
+[       OK ] LINTCODE._0001_APlusBProblem (0 ms)
+[ RUN      ] LINTCODE._0002_TrailingZeros
+[       OK ] LINTCODE._0002_TrailingZeros (0 ms)
+[ RUN      ] LINTCODE._0004_UglyNumberII
+[       OK ] LINTCODE._0004_UglyNumberII (0 ms)
+[ RUN      ] LINTCODE._0006_MergeTwoSortedArrays
+[       OK ] LINTCODE._0006_MergeTwoSortedArrays (0 ms)
+[ RUN      ] LINTCODE._0008_RotateString
+[       OK ] LINTCODE._0008_RotateString (0 ms)
+[ RUN      ] LINTCODE._0009_FizzBuzz
+[       OK ] LINTCODE._0009_FizzBuzz (0 ms)
+[ RUN      ] LINTCODE._1010_MaxIncreaseToKeepCitySkyline
+[       OK ] LINTCODE._1010_MaxIncreaseToKeepCitySkyline (0 ms)
+[ RUN      ] LINTCODE._1038_JewelsAndStones
+[       OK ] LINTCODE._1038_JewelsAndStones (0 ms)
+[ RUN      ] LINTCODE._1104_JudgeRouteCircle
+[       OK ] LINTCODE._1104_JudgeRouteCircle (0 ms)
+[ RUN      ] LINTCODE._1115_AverageOfLevelsInBinaryTree
+[       OK ] LINTCODE._1115_AverageOfLevelsInBinaryTree (0 ms)
+[ RUN      ] LINTCODE._1126_MergeTwoBinaryTrees
+[       OK ] LINTCODE._1126_MergeTwoBinaryTrees (0 ms)
+[ RUN      ] LINTCODE._1317_CountCompleteTreeNode
+[       OK ] LINTCODE._1317_CountCompleteTreeNode (0 ms)
+[ RUN      ] LINTCODE._1332_NumberOf1Bits
+[       OK ] LINTCODE._1332_NumberOf1Bits (0 ms)
+[ RUN      ] LINTCODE._1355_PascalsTriangle
+[       OK ] LINTCODE._1355_PascalsTriangle (0 ms)
+[ RUN      ] LINTCODE._1508_ScoreAfterFlippingMatrix
+[       OK ] LINTCODE._1508_ScoreAfterFlippingMatrix (0 ms)
+[ RUN      ] LINTCODE._1511_MirrorReflection
+[       OK ] LINTCODE._1511_MirrorReflection (0 ms)
+[ RUN      ] LINTCODE._1535_ToLowerCase
+[       OK ] LINTCODE._1535_ToLowerCase (0 ms)
+[ RUN      ] LINTCODE._1592_FindAndReplacePattern
+[       OK ] LINTCODE._1592_FindAndReplacePattern (0 ms)
+[----------] 18 tests from LINTCODE (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 18 tests from 1 test suite ran. (0 ms total)
+[  PASSED  ] 18 tests.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"PracticeTest" end time: Jun 28 22:27 Eastern Daylight Time
+"PracticeTest" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Jun 28 22:27 Eastern Daylight Time

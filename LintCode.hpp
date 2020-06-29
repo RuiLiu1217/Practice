@@ -425,9 +425,6 @@ public:
     class _1511_MirrorReflection {
         public:
             int mirrorReflection(int p, int q);
-        private:
-            int gcd(int p, int q);
-
     };
 
     /*

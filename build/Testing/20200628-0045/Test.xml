@@ -24,25 +24,19 @@
 	ProcessorClockFrequency="3597"
 	>
 	<Testing>
-		<StartDateTime>Jun 28 00:36 Eastern Daylight Time</StartDateTime>
-		<StartTestTime>1593318988</StartTestTime>
+		<StartDateTime>Jun 28 16:48 Eastern Daylight Time</StartDateTime>
+		<StartTestTime>1593377327</StartTestTime>
 		<TestList>
 			<Test>./test/PracticeTest</Test>
 		</TestList>
-		<Test Status="failed">
+		<Test Status="passed">
 			<Name>PracticeTest</Name>
 			<Path>./test</Path>
 			<FullName>./test/PracticeTest</FullName>
 			<FullCommandLine>C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\test\PracticeTest.exe</FullCommandLine>
 			<Results>
-				<NamedMeasurement type="text/string" name="Exit Code">
-					<Value>Failed</Value>
-				</NamedMeasurement>
-				<NamedMeasurement type="text/string" name="Exit Value">
-					<Value>1</Value>
-				</NamedMeasurement>
 				<NamedMeasurement type="numeric/double" name="Execution Time">
-					<Value>0.0572445</Value>
+					<Value>0.0254573</Value>
 				</NamedMeasurement>
 				<NamedMeasurement type="numeric/double" name="Processors">
 					<Value>1</Value>
@@ -54,12 +48,12 @@
 					<Value>C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\test\PracticeTest.exe</Value>
 				</NamedMeasurement>
 				<Measurement>
-					<Value encoding="base64" compression="gzip">eJy1VNuO2jAQffdXjHhapBLBalm1kfrAvagUEARVKkGRE4ZgybGpL1D4+jpkRcuqJVuJzos9zvGZ48nRzKwQTKSQUSYeqrBRMoOOHy40Kh1yZpUNJwK7iu0x7MrEZiiMDgfMfLJxOFU0MSzBMJUy5WhQm9+3WiVhmu+inN1LErL8eIkVzF5KP0OO0UXtxjkBbZlBjyxrl1jBgMuY8uI7ij1TUuRqQKOp2d0r8BXpaDgOOpNujyxhthjDOVaXUy+q1+uNqDXlVrenSsYcM4csYvK5BAkPdch09Qb1YxQoyrh76jdUUt+gfoUsp36KFik/jm0WoxoObzBfA8uJn6MvqFIMDnIulcF1Syl6vCX9zxfKC72PZtJQg3Oj3LPJv1vv7LQRE6Yj1xi4xEt2O//p0Ye+a6VVSHo/dpg4SYDfLeXMHEFuwGxRI+wpt6h9Ame3OA0kl/h1y5ItMO1DpdXudHv9QcWdVwZFUrmfyOZ9RNI4WeMmPYt0a57eT2Sz8R9FOj/1W8NRr1vii3IffYj67HRq29Pphkl/gS6EpTOjQIJxaniVvG0iGaSqtpYHcT3w/jroQFHhXRdyj5i25vOiM83ionfdr4LhHXCm838SI5cH/80tJcQRvCCD3jwgPwEOQOMh====</Value>
+					<Value encoding="base64" compression="gzip">eJyFk1Fv2jAQx9/zKe6xfWiUdNXEJu2BwtaxroAgvJQgK3GuwZpjo7MNDZ9+DkysVCW5Jyf+3e9vy7qZU0qoEqpMqKtreCFdweBrujBIJpXCkUsnCocktpgONXcVKmvSB2F/ujydUsat4JiWWpcSLRr7dmmIp2WzYo095DxYfjvVCmb/onvQMOaYHR8+wDhhMQyWN6dawYPUeSaP+6i2grRqTgMG7Y3bvIPPpL9H42QwGX4PljBbjOFQq9PfkEVRFLP+VDpzPyWdS6w8eazJYwcJVxFU5rpFfcsSyoT0V31G0qZF/Y7sVt+xRSnrsatypNGoxXwOdos/syekEpOdnmuyWPSJsrrt6B83dAf12EzbzOLckr92S8A52C3+wn6I/f7e7fct0v9QhzCO4og9Za8jxQkzg4l+RNwMhK3nf2r/YHgppLOxM/hTj/3CHUrTV8XcaoUXn+Ej9qS/MBxhGAbJGoGaqdIvYP36MGHa2Y2zsMuM36v0FgswQnEE4afvlSMW5givfetay6LpjqPbO8hrLwiDv8pZTjw=</Value>
 				</Measurement>
 			</Results>
 		</Test>
-		<EndDateTime>Jun 28 00:36 Eastern Daylight Time</EndDateTime>
-		<EndTestTime>1593318988</EndTestTime>
+		<EndDateTime>Jun 28 16:48 Eastern Daylight Time</EndDateTime>
+		<EndTestTime>1593377327</EndTestTime>
 		<ElapsedMinutes>0</ElapsedMinutes>
 	</Testing>
 </Site>

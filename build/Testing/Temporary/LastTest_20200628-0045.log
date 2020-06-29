@@ -1,16 +1,16 @@
-Start testing: Jun 28 00:36 Eastern Daylight Time
+Start testing: Jun 28 16:48 Eastern Daylight Time
 ----------------------------------------------------------
 1/1 Testing: PracticeTest
 1/1 Test: PracticeTest
 Command: "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test/PracticeTest.exe"
 Directory: C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test
-"PracticeTest" start time: Jun 28 00:36 Eastern Daylight Time
+"PracticeTest" start time: Jun 28 16:48 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 Running main() from C:\Users\liuru\OneDrive\Documents\GitHub\Practice\googletest\googletest\src\gtest_main.cc
-[==========] Running 6 tests from 1 test suite.
+[==========] Running 8 tests from 1 test suite.
 [----------] Global test environment set-up.
-[----------] 6 tests from LINTCODE
+[----------] 8 tests from LINTCODE
 [ RUN      ] LINTCODE._0001_APlusBProblem
 [       OK ] LINTCODE._0001_APlusBProblem (0 ms)
 [ RUN      ] LINTCODE._0002_TrailingZeros
@@ -20,39 +20,24 @@ Running main() from C:\Users\liuru\OneDrive\Documents\GitHub\Practice\googletest
 [ RUN      ] LINTCODE._0006_MergeTwoSortedArrays
 [       OK ] LINTCODE._0006_MergeTwoSortedArrays (0 ms)
 [ RUN      ] LINTCODE._0008_RotateString
-C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LintCodeTest.cpp:42: Failure
-Expected equality of these values:
-  testStr
-    Which is: "ABCDEFG"
-  "GABCDEF"
-C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LintCodeTest.cpp:45: Failure
-Expected equality of these values:
-  testStr
-    Which is: "abcdefg"
-  "efgabcd"
-C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LintCodeTest.cpp:51: Failure
-Expected equality of these values:
-  testStr
-    Which is: "abcdefg"
-  "efgabcd"
-[  FAILED  ] LINTCODE._0008_RotateString (0 ms)
+[       OK ] LINTCODE._0008_RotateString (0 ms)
 [ RUN      ] LINTCODE._0009_FizzBuzz
 [       OK ] LINTCODE._0009_FizzBuzz (0 ms)
-[----------] 6 tests from LINTCODE (0 ms total)
+[ RUN      ] LINTCODE._1010_MaxIncreaseToKeepCitySkyline
+[       OK ] LINTCODE._1010_MaxIncreaseToKeepCitySkyline (0 ms)
+[ RUN      ] LINTCODE._1038_JewelsAndStones
+[       OK ] LINTCODE._1038_JewelsAndStones (0 ms)
+[----------] 8 tests from LINTCODE (0 ms total)
 
 [----------] Global test environment tear-down
-[==========] 6 tests from 1 test suite ran. (0 ms total)
-[  PASSED  ] 5 tests.
-[  FAILED  ] 1 test, listed below:
-[  FAILED  ] LINTCODE._0008_RotateString
-
- 1 FAILED TEST
+[==========] 8 tests from 1 test suite ran. (0 ms total)
+[  PASSED  ] 8 tests.
 <end of output>
-Test time =   0.06 sec
+Test time =   0.03 sec
 ----------------------------------------------------------
-Test Failed.
-"PracticeTest" end time: Jun 28 00:36 Eastern Daylight Time
+Test Passed.
+"PracticeTest" end time: Jun 28 16:48 Eastern Daylight Time
 "PracticeTest" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Jun 28 00:36 Eastern Daylight Time
+End testing: Jun 28 16:48 Eastern Daylight Time
