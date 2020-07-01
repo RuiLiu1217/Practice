@@ -264,6 +264,33 @@ PracticeTest/fast:
 	$(MAKE) $(MAKESILENT) -f test\CMakeFiles\PracticeTest.dir\build.make test/CMakeFiles/PracticeTest.dir/build
 .PHONY : PracticeTest/fast
 
+LeetCode_GraphProblems.obj: LeetCode_GraphProblems.cpp.obj
+
+.PHONY : LeetCode_GraphProblems.obj
+
+# target to build an object file
+LeetCode_GraphProblems.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_GraphProblems.cpp.obj
+.PHONY : LeetCode_GraphProblems.cpp.obj
+
+LeetCode_GraphProblems.i: LeetCode_GraphProblems.cpp.i
+
+.PHONY : LeetCode_GraphProblems.i
+
+# target to preprocess a source file
+LeetCode_GraphProblems.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_GraphProblems.cpp.i
+.PHONY : LeetCode_GraphProblems.cpp.i
+
+LeetCode_GraphProblems.s: LeetCode_GraphProblems.cpp.s
+
+.PHONY : LeetCode_GraphProblems.s
+
+# target to generate assembly for a file
+LeetCode_GraphProblems.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_GraphProblems.cpp.s
+.PHONY : LeetCode_GraphProblems.cpp.s
+
 LintCode.obj: LintCode.cpp.obj
 
 .PHONY : LintCode.obj
@@ -310,6 +337,9 @@ help:
 	@echo ... gmock_main
 	@echo ... gtest
 	@echo ... gtest_main
+	@echo ... LeetCode_GraphProblems.obj
+	@echo ... LeetCode_GraphProblems.i
+	@echo ... LeetCode_GraphProblems.s
 	@echo ... LintCode.obj
 	@echo ... LintCode.i
 	@echo ... LintCode.s

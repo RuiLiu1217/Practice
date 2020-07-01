@@ -201,6 +201,33 @@ PracticeTest/fast:
 	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\PracticeTest.dir\build.make test/CMakeFiles/PracticeTest.dir/build
 .PHONY : PracticeTest/fast
 
+LeetCode_GraphProblemsTest.obj: LeetCode_GraphProblemsTest.cpp.obj
+
+.PHONY : LeetCode_GraphProblemsTest.obj
+
+# target to build an object file
+LeetCode_GraphProblemsTest.cpp.obj:
+	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\PracticeTest.dir\build.make test/CMakeFiles/PracticeTest.dir/LeetCode_GraphProblemsTest.cpp.obj
+.PHONY : LeetCode_GraphProblemsTest.cpp.obj
+
+LeetCode_GraphProblemsTest.i: LeetCode_GraphProblemsTest.cpp.i
+
+.PHONY : LeetCode_GraphProblemsTest.i
+
+# target to preprocess a source file
+LeetCode_GraphProblemsTest.cpp.i:
+	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\PracticeTest.dir\build.make test/CMakeFiles/PracticeTest.dir/LeetCode_GraphProblemsTest.cpp.i
+.PHONY : LeetCode_GraphProblemsTest.cpp.i
+
+LeetCode_GraphProblemsTest.s: LeetCode_GraphProblemsTest.cpp.s
+
+.PHONY : LeetCode_GraphProblemsTest.s
+
+# target to generate assembly for a file
+LeetCode_GraphProblemsTest.cpp.s:
+	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\PracticeTest.dir\build.make test/CMakeFiles/PracticeTest.dir/LeetCode_GraphProblemsTest.cpp.s
+.PHONY : LeetCode_GraphProblemsTest.cpp.s
+
 LintCodeTest.obj: LintCodeTest.cpp.obj
 
 .PHONY : LintCodeTest.obj
@@ -242,6 +269,9 @@ help:
 	@echo ... rebuild_cache
 	@echo ... test
 	@echo ... PracticeTest
+	@echo ... LeetCode_GraphProblemsTest.obj
+	@echo ... LeetCode_GraphProblemsTest.i
+	@echo ... LeetCode_GraphProblemsTest.s
 	@echo ... LintCodeTest.obj
 	@echo ... LintCodeTest.i
 	@echo ... LintCodeTest.s
