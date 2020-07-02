@@ -14,12 +14,21 @@ add_subdirectory(googletest)
 
 set(Headers
     LintCode.hpp
+    LeetCode_ArrayProblems.hpp
     LeetCode_GraphProblems.hpp
+    LeetCode_LinkListProblems.hpp
+    LeetCode_SlidingWindowProblems.hpp
+    LeetCode_StringProblems.hpp
+
 )
 
 set(Sources
     LintCode.cpp
+    LeetCode_ArrayProblems.cpp
     LeetCode_GraphProblems.cpp
+    LeetCode_LinkListProblems.cpp
+    LeetCode_SlidingWindowProblems.cpp
+    LeetCode_StringProblems.cpp
 )
 
 add_library(${This} STATIC ${Sources} ${Headers})

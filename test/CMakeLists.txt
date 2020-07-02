@@ -6,6 +6,10 @@ set(This PracticeTest)
 set(Sources
     LintCodeTest.cpp
     LeetCode_GraphProblemsTest.cpp
+    LeetCode_ArrayProblemTests.cpp
+    LeetCode_LinkListProblemTests.cpp
+    LeetCode_SlidingWindowProblemTests.cpp
+    LeetCode_StringProblemTests.cpp
 )
 
 add_executable(${This} ${Sources})

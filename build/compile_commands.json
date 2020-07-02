@@ -6,8 +6,28 @@
 },
 {
   "directory": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build",
+  "command": "C:\\mingw64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=gnu++17 -o CMakeFiles\\Practice.dir\\LeetCode_ArrayProblems.cpp.obj -c C:\\Users\\liuru\\OneDrive\\Documents\\GitHub\\Practice\\LeetCode_ArrayProblems.cpp",
+  "file": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_ArrayProblems.cpp"
+},
+{
+  "directory": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build",
   "command": "C:\\mingw64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=gnu++17 -o CMakeFiles\\Practice.dir\\LeetCode_GraphProblems.cpp.obj -c C:\\Users\\liuru\\OneDrive\\Documents\\GitHub\\Practice\\LeetCode_GraphProblems.cpp",
   "file": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_GraphProblems.cpp"
+},
+{
+  "directory": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build",
+  "command": "C:\\mingw64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=gnu++17 -o CMakeFiles\\Practice.dir\\LeetCode_LinkListProblems.cpp.obj -c C:\\Users\\liuru\\OneDrive\\Documents\\GitHub\\Practice\\LeetCode_LinkListProblems.cpp",
+  "file": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_LinkListProblems.cpp"
+},
+{
+  "directory": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build",
+  "command": "C:\\mingw64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=gnu++17 -o CMakeFiles\\Practice.dir\\LeetCode_SlidingWindowProblems.cpp.obj -c C:\\Users\\liuru\\OneDrive\\Documents\\GitHub\\Practice\\LeetCode_SlidingWindowProblems.cpp",
+  "file": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_SlidingWindowProblems.cpp"
+},
+{
+  "directory": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build",
+  "command": "C:\\mingw64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=gnu++17 -o CMakeFiles\\Practice.dir\\LeetCode_StringProblems.cpp.obj -c C:\\Users\\liuru\\OneDrive\\Documents\\GitHub\\Practice\\LeetCode_StringProblems.cpp",
+  "file": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_StringProblems.cpp"
 },
 {
   "directory": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/googletest/googlemock",
@@ -38,5 +58,25 @@
   "directory": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test",
   "command": "C:\\mingw64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe   @CMakeFiles/PracticeTest.dir/includes_CXX.rsp -g   -std=gnu++17 -o CMakeFiles\\PracticeTest.dir\\LeetCode_GraphProblemsTest.cpp.obj -c C:\\Users\\liuru\\OneDrive\\Documents\\GitHub\\Practice\\test\\LeetCode_GraphProblemsTest.cpp",
   "file": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_GraphProblemsTest.cpp"
+},
+{
+  "directory": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test",
+  "command": "C:\\mingw64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe   @CMakeFiles/PracticeTest.dir/includes_CXX.rsp -g   -std=gnu++17 -o CMakeFiles\\PracticeTest.dir\\LeetCode_ArrayProblemTests.cpp.obj -c C:\\Users\\liuru\\OneDrive\\Documents\\GitHub\\Practice\\test\\LeetCode_ArrayProblemTests.cpp",
+  "file": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_ArrayProblemTests.cpp"
+},
+{
+  "directory": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test",
+  "command": "C:\\mingw64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe   @CMakeFiles/PracticeTest.dir/includes_CXX.rsp -g   -std=gnu++17 -o CMakeFiles\\PracticeTest.dir\\LeetCode_LinkListProblemTests.cpp.obj -c C:\\Users\\liuru\\OneDrive\\Documents\\GitHub\\Practice\\test\\LeetCode_LinkListProblemTests.cpp",
+  "file": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_LinkListProblemTests.cpp"
+},
+{
+  "directory": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test",
+  "command": "C:\\mingw64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe   @CMakeFiles/PracticeTest.dir/includes_CXX.rsp -g   -std=gnu++17 -o CMakeFiles\\PracticeTest.dir\\LeetCode_SlidingWindowProblemTests.cpp.obj -c C:\\Users\\liuru\\OneDrive\\Documents\\GitHub\\Practice\\test\\LeetCode_SlidingWindowProblemTests.cpp",
+  "file": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_SlidingWindowProblemTests.cpp"
+},
+{
+  "directory": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test",
+  "command": "C:\\mingw64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe   @CMakeFiles/PracticeTest.dir/includes_CXX.rsp -g   -std=gnu++17 -o CMakeFiles\\PracticeTest.dir\\LeetCode_StringProblemTests.cpp.obj -c C:\\Users\\liuru\\OneDrive\\Documents\\GitHub\\Practice\\test\\LeetCode_StringProblemTests.cpp",
+  "file": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_StringProblemTests.cpp"
 }
 ]

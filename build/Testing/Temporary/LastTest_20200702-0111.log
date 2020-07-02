@@ -1,0 +1,81 @@
+Start testing: Jul 01 22:44 Eastern Daylight Time
+----------------------------------------------------------
+1/1 Testing: PracticeTest
+1/1 Test: PracticeTest
+Command: "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test/PracticeTest.exe"
+Directory: C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test
+"PracticeTest" start time: Jul 01 22:44 Eastern Daylight Time
+Output:
+----------------------------------------------------------
+Running main() from C:\Users\liuru\OneDrive\Documents\GitHub\Practice\googletest\googletest\src\gtest_main.cc
+[==========] Running 24 tests from 3 test suites.
+[----------] Global test environment set-up.
+[----------] 5 tests from LC
+[ RUN      ] LC._0005_LongestPalindromicSubstring
+[       OK ] LC._0005_LongestPalindromicSubstring (0 ms)
+[ RUN      ] LC._0003_LongestSubstringWithoutRepeatingCharacters
+[       OK ] LC._0003_LongestSubstringWithoutRepeatingCharacters (0 ms)
+[ RUN      ] LC.LC__0002_Test
+[       OK ] LC.LC__0002_Test (0 ms)
+[ RUN      ] LC._0001_TwoSum
+[       OK ] LC._0001_TwoSum (0 ms)
+[ RUN      ] LC.LC__0004__Test
+[       OK ] LC.LC__0004__Test (0 ms)
+[----------] 5 tests from LC (0 ms total)
+
+[----------] 1 test from Lc
+[ RUN      ] Lc.GRAPHPROBLEMS
+[       OK ] Lc.GRAPHPROBLEMS (0 ms)
+[----------] 1 test from Lc (0 ms total)
+
+[----------] 18 tests from LINTCODE
+[ RUN      ] LINTCODE._0001_APlusBProblem
+[       OK ] LINTCODE._0001_APlusBProblem (0 ms)
+[ RUN      ] LINTCODE._0002_TrailingZeros
+[       OK ] LINTCODE._0002_TrailingZeros (0 ms)
+[ RUN      ] LINTCODE._0004_UglyNumberII
+[       OK ] LINTCODE._0004_UglyNumberII (0 ms)
+[ RUN      ] LINTCODE._0006_MergeTwoSortedArrays
+[       OK ] LINTCODE._0006_MergeTwoSortedArrays (0 ms)
+[ RUN      ] LINTCODE._0008_RotateString
+[       OK ] LINTCODE._0008_RotateString (0 ms)
+[ RUN      ] LINTCODE._0009_FizzBuzz
+[       OK ] LINTCODE._0009_FizzBuzz (0 ms)
+[ RUN      ] LINTCODE._1010_MaxIncreaseToKeepCitySkyline
+[       OK ] LINTCODE._1010_MaxIncreaseToKeepCitySkyline (0 ms)
+[ RUN      ] LINTCODE._1038_JewelsAndStones
+[       OK ] LINTCODE._1038_JewelsAndStones (0 ms)
+[ RUN      ] LINTCODE._1104_JudgeRouteCircle
+[       OK ] LINTCODE._1104_JudgeRouteCircle (0 ms)
+[ RUN      ] LINTCODE._1115_AverageOfLevelsInBinaryTree
+[       OK ] LINTCODE._1115_AverageOfLevelsInBinaryTree (0 ms)
+[ RUN      ] LINTCODE._1126_MergeTwoBinaryTrees
+[       OK ] LINTCODE._1126_MergeTwoBinaryTrees (0 ms)
+[ RUN      ] LINTCODE._1317_CountCompleteTreeNode
+[       OK ] LINTCODE._1317_CountCompleteTreeNode (0 ms)
+[ RUN      ] LINTCODE._1332_NumberOf1Bits
+[       OK ] LINTCODE._1332_NumberOf1Bits (0 ms)
+[ RUN      ] LINTCODE._1355_PascalsTriangle
+[       OK ] LINTCODE._1355_PascalsTriangle (0 ms)
+[ RUN      ] LINTCODE._1508_ScoreAfterFlippingMatrix
+[       OK ] LINTCODE._1508_ScoreAfterFlippingMatrix (0 ms)
+[ RUN      ] LINTCODE._1511_MirrorReflection
+[       OK ] LINTCODE._1511_MirrorReflection (0 ms)
+[ RUN      ] LINTCODE._1535_ToLowerCase
+[       OK ] LINTCODE._1535_ToLowerCase (0 ms)
+[ RUN      ] LINTCODE._1592_FindAndReplacePattern
+[       OK ] LINTCODE._1592_FindAndReplacePattern (0 ms)
+[----------] 18 tests from LINTCODE (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 24 tests from 3 test suites ran. (1 ms total)
+[  PASSED  ] 24 tests.
+<end of output>
+Test time =   0.08 sec
+----------------------------------------------------------
+Test Passed.
+"PracticeTest" end time: Jul 01 22:44 Eastern Daylight Time
+"PracticeTest" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Jul 01 22:44 Eastern Daylight Time

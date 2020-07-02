@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include "../LeetCode_GraphProblems.hpp"
 #include <vector>
+
 TEST(Lc, GRAPHPROBLEMS) {
     LC::_0802_FindEventualSafeStates obj;
     std::vector<std::vector<int>> graph{{1,2},{2,3},{5},{0},{5},{},{}};

@@ -264,6 +264,33 @@ PracticeTest/fast:
 	$(MAKE) $(MAKESILENT) -f test\CMakeFiles\PracticeTest.dir\build.make test/CMakeFiles/PracticeTest.dir/build
 .PHONY : PracticeTest/fast
 
+LeetCode_ArrayProblems.obj: LeetCode_ArrayProblems.cpp.obj
+
+.PHONY : LeetCode_ArrayProblems.obj
+
+# target to build an object file
+LeetCode_ArrayProblems.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_ArrayProblems.cpp.obj
+.PHONY : LeetCode_ArrayProblems.cpp.obj
+
+LeetCode_ArrayProblems.i: LeetCode_ArrayProblems.cpp.i
+
+.PHONY : LeetCode_ArrayProblems.i
+
+# target to preprocess a source file
+LeetCode_ArrayProblems.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_ArrayProblems.cpp.i
+.PHONY : LeetCode_ArrayProblems.cpp.i
+
+LeetCode_ArrayProblems.s: LeetCode_ArrayProblems.cpp.s
+
+.PHONY : LeetCode_ArrayProblems.s
+
+# target to generate assembly for a file
+LeetCode_ArrayProblems.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_ArrayProblems.cpp.s
+.PHONY : LeetCode_ArrayProblems.cpp.s
+
 LeetCode_GraphProblems.obj: LeetCode_GraphProblems.cpp.obj
 
 .PHONY : LeetCode_GraphProblems.obj
@@ -290,6 +317,87 @@ LeetCode_GraphProblems.s: LeetCode_GraphProblems.cpp.s
 LeetCode_GraphProblems.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_GraphProblems.cpp.s
 .PHONY : LeetCode_GraphProblems.cpp.s
+
+LeetCode_LinkListProblems.obj: LeetCode_LinkListProblems.cpp.obj
+
+.PHONY : LeetCode_LinkListProblems.obj
+
+# target to build an object file
+LeetCode_LinkListProblems.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_LinkListProblems.cpp.obj
+.PHONY : LeetCode_LinkListProblems.cpp.obj
+
+LeetCode_LinkListProblems.i: LeetCode_LinkListProblems.cpp.i
+
+.PHONY : LeetCode_LinkListProblems.i
+
+# target to preprocess a source file
+LeetCode_LinkListProblems.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_LinkListProblems.cpp.i
+.PHONY : LeetCode_LinkListProblems.cpp.i
+
+LeetCode_LinkListProblems.s: LeetCode_LinkListProblems.cpp.s
+
+.PHONY : LeetCode_LinkListProblems.s
+
+# target to generate assembly for a file
+LeetCode_LinkListProblems.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_LinkListProblems.cpp.s
+.PHONY : LeetCode_LinkListProblems.cpp.s
+
+LeetCode_SlidingWindowProblems.obj: LeetCode_SlidingWindowProblems.cpp.obj
+
+.PHONY : LeetCode_SlidingWindowProblems.obj
+
+# target to build an object file
+LeetCode_SlidingWindowProblems.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_SlidingWindowProblems.cpp.obj
+.PHONY : LeetCode_SlidingWindowProblems.cpp.obj
+
+LeetCode_SlidingWindowProblems.i: LeetCode_SlidingWindowProblems.cpp.i
+
+.PHONY : LeetCode_SlidingWindowProblems.i
+
+# target to preprocess a source file
+LeetCode_SlidingWindowProblems.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_SlidingWindowProblems.cpp.i
+.PHONY : LeetCode_SlidingWindowProblems.cpp.i
+
+LeetCode_SlidingWindowProblems.s: LeetCode_SlidingWindowProblems.cpp.s
+
+.PHONY : LeetCode_SlidingWindowProblems.s
+
+# target to generate assembly for a file
+LeetCode_SlidingWindowProblems.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_SlidingWindowProblems.cpp.s
+.PHONY : LeetCode_SlidingWindowProblems.cpp.s
+
+LeetCode_StringProblems.obj: LeetCode_StringProblems.cpp.obj
+
+.PHONY : LeetCode_StringProblems.obj
+
+# target to build an object file
+LeetCode_StringProblems.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_StringProblems.cpp.obj
+.PHONY : LeetCode_StringProblems.cpp.obj
+
+LeetCode_StringProblems.i: LeetCode_StringProblems.cpp.i
+
+.PHONY : LeetCode_StringProblems.i
+
+# target to preprocess a source file
+LeetCode_StringProblems.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_StringProblems.cpp.i
+.PHONY : LeetCode_StringProblems.cpp.i
+
+LeetCode_StringProblems.s: LeetCode_StringProblems.cpp.s
+
+.PHONY : LeetCode_StringProblems.s
+
+# target to generate assembly for a file
+LeetCode_StringProblems.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_StringProblems.cpp.s
+.PHONY : LeetCode_StringProblems.cpp.s
 
 LintCode.obj: LintCode.cpp.obj
 
@@ -337,9 +445,21 @@ help:
 	@echo ... gmock_main
 	@echo ... gtest
 	@echo ... gtest_main
+	@echo ... LeetCode_ArrayProblems.obj
+	@echo ... LeetCode_ArrayProblems.i
+	@echo ... LeetCode_ArrayProblems.s
 	@echo ... LeetCode_GraphProblems.obj
 	@echo ... LeetCode_GraphProblems.i
 	@echo ... LeetCode_GraphProblems.s
+	@echo ... LeetCode_LinkListProblems.obj
+	@echo ... LeetCode_LinkListProblems.i
+	@echo ... LeetCode_LinkListProblems.s
+	@echo ... LeetCode_SlidingWindowProblems.obj
+	@echo ... LeetCode_SlidingWindowProblems.i
+	@echo ... LeetCode_SlidingWindowProblems.s
+	@echo ... LeetCode_StringProblems.obj
+	@echo ... LeetCode_StringProblems.i
+	@echo ... LeetCode_StringProblems.s
 	@echo ... LintCode.obj
 	@echo ... LintCode.i
 	@echo ... LintCode.s

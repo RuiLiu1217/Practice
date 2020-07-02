@@ -6,15 +6,13 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_GraphProblems.cpp
-LeetCode_GraphProblems.hpp
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_GraphProblems.hpp
-set
--
-queue
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_StringProblems.cpp
+LeetCode_StringProblems.hpp
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_StringProblems.hpp
+functional
 -
 
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_GraphProblems.hpp
-vector
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_StringProblems.hpp
+string
 -
 
