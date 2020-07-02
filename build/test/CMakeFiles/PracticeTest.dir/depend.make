@@ -24,6 +24,29 @@ test/CMakeFiles/PracticeTest.dir/LeetCode_ArrayProblemTests.cpp.obj: ../googlete
 test/CMakeFiles/PracticeTest.dir/LeetCode_ArrayProblemTests.cpp.obj: ../LeetCode_ArrayProblems.hpp
 test/CMakeFiles/PracticeTest.dir/LeetCode_ArrayProblemTests.cpp.obj: ../test/LeetCode_ArrayProblemTests.cpp
 
+test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-death-test.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-matchers.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-message.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-param-test.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-printers.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-test-part.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-typed-test.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest_pred_impl.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest_prod.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/custom/gtest-port.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/custom/gtest-printers.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-death-test-internal.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-filepath.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-internal.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-param-util.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-port-arch.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-port.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-string.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-type-util.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.obj: ../LeetCode_DynamicProgrammingProblems.hpp
+test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.obj: ../test/LeetCode_DynamicProgrammingProblemTests.cpp
+
 test/CMakeFiles/PracticeTest.dir/LeetCode_GraphProblemsTest.cpp.obj: ../googletest/googletest/include/gtest/gtest-death-test.h
 test/CMakeFiles/PracticeTest.dir/LeetCode_GraphProblemsTest.cpp.obj: ../googletest/googletest/include/gtest/gtest-matchers.h
 test/CMakeFiles/PracticeTest.dir/LeetCode_GraphProblemsTest.cpp.obj: ../googletest/googletest/include/gtest/gtest-message.h
@@ -69,6 +92,29 @@ test/CMakeFiles/PracticeTest.dir/LeetCode_LinkListProblemTests.cpp.obj: ../googl
 test/CMakeFiles/PracticeTest.dir/LeetCode_LinkListProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-type-util.h
 test/CMakeFiles/PracticeTest.dir/LeetCode_LinkListProblemTests.cpp.obj: ../LeetCode_LinkListProblems.hpp
 test/CMakeFiles/PracticeTest.dir/LeetCode_LinkListProblemTests.cpp.obj: ../test/LeetCode_LinkListProblemTests.cpp
+
+test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-death-test.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-matchers.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-message.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-param-test.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-printers.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-test-part.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-typed-test.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest_pred_impl.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest_prod.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/custom/gtest-port.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/custom/gtest-printers.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-death-test-internal.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-filepath.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-internal.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-param-util.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-port-arch.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-port.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-string.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-type-util.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.obj: ../LeetCode_MathProblems.hpp
+test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.obj: ../test/LeetCode_MathProblemTests.cpp
 
 test/CMakeFiles/PracticeTest.dir/LeetCode_SlidingWindowProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-death-test.h
 test/CMakeFiles/PracticeTest.dir/LeetCode_SlidingWindowProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-matchers.h

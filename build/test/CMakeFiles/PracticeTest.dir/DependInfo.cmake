@@ -5,8 +5,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_ArrayProblemTests.cpp" "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test/CMakeFiles/PracticeTest.dir/LeetCode_ArrayProblemTests.cpp.obj"
+  "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_DynamicProgrammingProblemTests.cpp" "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.obj"
   "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_GraphProblemsTest.cpp" "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test/CMakeFiles/PracticeTest.dir/LeetCode_GraphProblemsTest.cpp.obj"
   "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_LinkListProblemTests.cpp" "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test/CMakeFiles/PracticeTest.dir/LeetCode_LinkListProblemTests.cpp.obj"
+  "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_MathProblemTests.cpp" "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.obj"
   "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_SlidingWindowProblemTests.cpp" "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test/CMakeFiles/PracticeTest.dir/LeetCode_SlidingWindowProblemTests.cpp.obj"
   "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_StringProblemTests.cpp" "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test/CMakeFiles/PracticeTest.dir/LeetCode_StringProblemTests.cpp.obj"
   "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LintCodeTest.cpp" "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test/CMakeFiles/PracticeTest.dir/LintCodeTest.cpp.obj"

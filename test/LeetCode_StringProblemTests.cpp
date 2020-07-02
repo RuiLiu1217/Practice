@@ -14,3 +14,12 @@ TEST(LC, _0006_ZigZagConversion) {
     EXPECT_EQ(obj.convert("PAYPALISHIRING", 3), "PAHNAPLSIIGYIR");
     EXPECT_EQ(obj.convert("PAYPALISHIRING", 4), "PINALSIGYAHRPI");
 }
+
+TEST(LC, _0008_StringToInteger) {
+    LC::_0008_StringToInteger obj;
+    EXPECT_EQ(obj.myAtoi("42"), 42);
+    EXPECT_EQ(obj.myAtoi("   -42"), -42);
+    EXPECT_EQ(obj.myAtoi("4193 with words"), 4193);
+    EXPECT_EQ(obj.myAtoi("words and 987"),  0);
+    EXPECT_EQ(obj.myAtoi("-91283472332"), -2147483648);
+}

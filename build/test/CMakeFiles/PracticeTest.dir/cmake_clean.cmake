@@ -1,7 +1,9 @@
 file(REMOVE_RECURSE
   "CMakeFiles/PracticeTest.dir/LeetCode_ArrayProblemTests.cpp.obj"
+  "CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.obj"
   "CMakeFiles/PracticeTest.dir/LeetCode_GraphProblemsTest.cpp.obj"
   "CMakeFiles/PracticeTest.dir/LeetCode_LinkListProblemTests.cpp.obj"
+  "CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.obj"
   "CMakeFiles/PracticeTest.dir/LeetCode_SlidingWindowProblemTests.cpp.obj"
   "CMakeFiles/PracticeTest.dir/LeetCode_StringProblemTests.cpp.obj"
   "CMakeFiles/PracticeTest.dir/LintCodeTest.cpp.obj"

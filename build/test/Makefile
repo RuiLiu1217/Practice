@@ -228,6 +228,33 @@ LeetCode_ArrayProblemTests.cpp.s:
 	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\PracticeTest.dir\build.make test/CMakeFiles/PracticeTest.dir/LeetCode_ArrayProblemTests.cpp.s
 .PHONY : LeetCode_ArrayProblemTests.cpp.s
 
+LeetCode_DynamicProgrammingProblemTests.obj: LeetCode_DynamicProgrammingProblemTests.cpp.obj
+
+.PHONY : LeetCode_DynamicProgrammingProblemTests.obj
+
+# target to build an object file
+LeetCode_DynamicProgrammingProblemTests.cpp.obj:
+	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\PracticeTest.dir\build.make test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.obj
+.PHONY : LeetCode_DynamicProgrammingProblemTests.cpp.obj
+
+LeetCode_DynamicProgrammingProblemTests.i: LeetCode_DynamicProgrammingProblemTests.cpp.i
+
+.PHONY : LeetCode_DynamicProgrammingProblemTests.i
+
+# target to preprocess a source file
+LeetCode_DynamicProgrammingProblemTests.cpp.i:
+	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\PracticeTest.dir\build.make test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.i
+.PHONY : LeetCode_DynamicProgrammingProblemTests.cpp.i
+
+LeetCode_DynamicProgrammingProblemTests.s: LeetCode_DynamicProgrammingProblemTests.cpp.s
+
+.PHONY : LeetCode_DynamicProgrammingProblemTests.s
+
+# target to generate assembly for a file
+LeetCode_DynamicProgrammingProblemTests.cpp.s:
+	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\PracticeTest.dir\build.make test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.s
+.PHONY : LeetCode_DynamicProgrammingProblemTests.cpp.s
+
 LeetCode_GraphProblemsTest.obj: LeetCode_GraphProblemsTest.cpp.obj
 
 .PHONY : LeetCode_GraphProblemsTest.obj
@@ -281,6 +308,33 @@ LeetCode_LinkListProblemTests.s: LeetCode_LinkListProblemTests.cpp.s
 LeetCode_LinkListProblemTests.cpp.s:
 	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\PracticeTest.dir\build.make test/CMakeFiles/PracticeTest.dir/LeetCode_LinkListProblemTests.cpp.s
 .PHONY : LeetCode_LinkListProblemTests.cpp.s
+
+LeetCode_MathProblemTests.obj: LeetCode_MathProblemTests.cpp.obj
+
+.PHONY : LeetCode_MathProblemTests.obj
+
+# target to build an object file
+LeetCode_MathProblemTests.cpp.obj:
+	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\PracticeTest.dir\build.make test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.obj
+.PHONY : LeetCode_MathProblemTests.cpp.obj
+
+LeetCode_MathProblemTests.i: LeetCode_MathProblemTests.cpp.i
+
+.PHONY : LeetCode_MathProblemTests.i
+
+# target to preprocess a source file
+LeetCode_MathProblemTests.cpp.i:
+	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\PracticeTest.dir\build.make test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.i
+.PHONY : LeetCode_MathProblemTests.cpp.i
+
+LeetCode_MathProblemTests.s: LeetCode_MathProblemTests.cpp.s
+
+.PHONY : LeetCode_MathProblemTests.s
+
+# target to generate assembly for a file
+LeetCode_MathProblemTests.cpp.s:
+	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\PracticeTest.dir\build.make test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.s
+.PHONY : LeetCode_MathProblemTests.cpp.s
 
 LeetCode_SlidingWindowProblemTests.obj: LeetCode_SlidingWindowProblemTests.cpp.obj
 
@@ -380,12 +434,18 @@ help:
 	@echo ... LeetCode_ArrayProblemTests.obj
 	@echo ... LeetCode_ArrayProblemTests.i
 	@echo ... LeetCode_ArrayProblemTests.s
+	@echo ... LeetCode_DynamicProgrammingProblemTests.obj
+	@echo ... LeetCode_DynamicProgrammingProblemTests.i
+	@echo ... LeetCode_DynamicProgrammingProblemTests.s
 	@echo ... LeetCode_GraphProblemsTest.obj
 	@echo ... LeetCode_GraphProblemsTest.i
 	@echo ... LeetCode_GraphProblemsTest.s
 	@echo ... LeetCode_LinkListProblemTests.obj
 	@echo ... LeetCode_LinkListProblemTests.i
 	@echo ... LeetCode_LinkListProblemTests.s
+	@echo ... LeetCode_MathProblemTests.obj
+	@echo ... LeetCode_MathProblemTests.i
+	@echo ... LeetCode_MathProblemTests.s
 	@echo ... LeetCode_SlidingWindowProblemTests.obj
 	@echo ... LeetCode_SlidingWindowProblemTests.i
 	@echo ... LeetCode_SlidingWindowProblemTests.s

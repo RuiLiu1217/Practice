@@ -10,6 +10,8 @@ set(Sources
     LeetCode_LinkListProblemTests.cpp
     LeetCode_SlidingWindowProblemTests.cpp
     LeetCode_StringProblemTests.cpp
+    LeetCode_MathProblemTests.cpp
+    LeetCode_DynamicProgrammingProblemTests.cpp
 )
 
 add_executable(${This} ${Sources})

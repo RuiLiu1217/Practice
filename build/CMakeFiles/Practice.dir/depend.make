@@ -4,11 +4,17 @@
 CMakeFiles/Practice.dir/LeetCode_ArrayProblems.cpp.obj: ../LeetCode_ArrayProblems.cpp
 CMakeFiles/Practice.dir/LeetCode_ArrayProblems.cpp.obj: ../LeetCode_ArrayProblems.hpp
 
+CMakeFiles/Practice.dir/LeetCode_DynamicProgrammingProblems.cpp.obj: ../LeetCode_DynamicProgrammingProblems.cpp
+CMakeFiles/Practice.dir/LeetCode_DynamicProgrammingProblems.cpp.obj: ../LeetCode_DynamicProgrammingProblems.hpp
+
 CMakeFiles/Practice.dir/LeetCode_GraphProblems.cpp.obj: ../LeetCode_GraphProblems.cpp
 CMakeFiles/Practice.dir/LeetCode_GraphProblems.cpp.obj: ../LeetCode_GraphProblems.hpp
 
 CMakeFiles/Practice.dir/LeetCode_LinkListProblems.cpp.obj: ../LeetCode_LinkListProblems.cpp
 CMakeFiles/Practice.dir/LeetCode_LinkListProblems.cpp.obj: ../LeetCode_LinkListProblems.hpp
+
+CMakeFiles/Practice.dir/LeetCode_MathProblems.cpp.obj: ../LeetCode_MathProblems.cpp
+CMakeFiles/Practice.dir/LeetCode_MathProblems.cpp.obj: ../LeetCode_MathProblems.hpp
 
 CMakeFiles/Practice.dir/LeetCode_SlidingWindowProblems.cpp.obj: ../LeetCode_SlidingWindowProblems.cpp
 CMakeFiles/Practice.dir/LeetCode_SlidingWindowProblems.cpp.obj: ../LeetCode_SlidingWindowProblems.hpp

@@ -6,13 +6,13 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_StringProblems.cpp
-LeetCode_StringProblems.hpp
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_StringProblems.hpp
-functional
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_DynamicProgrammingProblems.cpp
+LeetCode_DynamicProgrammingProblems.hpp
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_DynamicProgrammingProblems.hpp
+vector
 -
 
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_StringProblems.hpp
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_DynamicProgrammingProblems.hpp
 string
 -
 

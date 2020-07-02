@@ -1,18 +1,32 @@
-Start testing: Jul 01 22:44 Eastern Daylight Time
+Start testing: Jul 02 00:16 Eastern Daylight Time
 ----------------------------------------------------------
 1/1 Testing: PracticeTest
 1/1 Test: PracticeTest
 Command: "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test/PracticeTest.exe"
 Directory: C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test
-"PracticeTest" start time: Jul 01 22:44 Eastern Daylight Time
+"PracticeTest" start time: Jul 02 00:16 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 Running main() from C:\Users\liuru\OneDrive\Documents\GitHub\Practice\googletest\googletest\src\gtest_main.cc
-[==========] Running 24 tests from 3 test suites.
+[==========] Running 29 tests from 3 test suites.
 [----------] Global test environment set-up.
-[----------] 5 tests from LC
+[----------] 10 tests from LC
+[ RUN      ] LC._0010_RegularExpressionMatching
+C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LeetCode_DynamicProgrammingProblemTests.cpp:5: Failure
+Expected equality of these values:
+  1
+  2
+[  FAILED  ] LC._0010_RegularExpressionMatching (0 ms)
+[ RUN      ] LC._0007_ReverseInteger
+[       OK ] LC._0007_ReverseInteger (0 ms)
+[ RUN      ] LC._0009_PalindromeNumber
+[       OK ] LC._0009_PalindromeNumber (0 ms)
 [ RUN      ] LC._0005_LongestPalindromicSubstring
 [       OK ] LC._0005_LongestPalindromicSubstring (0 ms)
+[ RUN      ] LC._0006_ZigZagConversion
+[       OK ] LC._0006_ZigZagConversion (0 ms)
+[ RUN      ] LC._0008_StringToInteger
+[       OK ] LC._0008_StringToInteger (0 ms)
 [ RUN      ] LC._0003_LongestSubstringWithoutRepeatingCharacters
 [       OK ] LC._0003_LongestSubstringWithoutRepeatingCharacters (0 ms)
 [ RUN      ] LC.LC__0002_Test
@@ -21,7 +35,7 @@ Running main() from C:\Users\liuru\OneDrive\Documents\GitHub\Practice\googletest
 [       OK ] LC._0001_TwoSum (0 ms)
 [ RUN      ] LC.LC__0004__Test
 [       OK ] LC.LC__0004__Test (0 ms)
-[----------] 5 tests from LC (0 ms total)
+[----------] 10 tests from LC (0 ms total)
 
 [----------] 1 test from Lc
 [ RUN      ] Lc.GRAPHPROBLEMS
@@ -68,14 +82,18 @@ Running main() from C:\Users\liuru\OneDrive\Documents\GitHub\Practice\googletest
 [----------] 18 tests from LINTCODE (1 ms total)
 
 [----------] Global test environment tear-down
-[==========] 24 tests from 3 test suites ran. (1 ms total)
-[  PASSED  ] 24 tests.
+[==========] 29 tests from 3 test suites ran. (1 ms total)
+[  PASSED  ] 28 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] LC._0010_RegularExpressionMatching
+
+ 1 FAILED TEST
 <end of output>
-Test time =   0.08 sec
+Test time =   0.03 sec
 ----------------------------------------------------------
-Test Passed.
-"PracticeTest" end time: Jul 01 22:44 Eastern Daylight Time
+Test Failed.
+"PracticeTest" end time: Jul 02 00:16 Eastern Daylight Time
 "PracticeTest" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Jul 01 22:44 Eastern Daylight Time
+End testing: Jul 02 00:16 Eastern Daylight Time

@@ -21,22 +21,28 @@
 	TotalVirtualMemory="75171"
 	TotalPhysicalMemory="65443"
 	LogicalProcessorsPerPhysical="2"
-	ProcessorClockFrequency="3598"
+	ProcessorClockFrequency="3597"
 	>
 	<Testing>
-		<StartDateTime>Jul 01 22:44 Eastern Daylight Time</StartDateTime>
-		<StartTestTime>1593657855</StartTestTime>
+		<StartDateTime>Jul 02 00:16 Eastern Daylight Time</StartDateTime>
+		<StartTestTime>1593663412</StartTestTime>
 		<TestList>
 			<Test>./test/PracticeTest</Test>
 		</TestList>
-		<Test Status="passed">
+		<Test Status="failed">
 			<Name>PracticeTest</Name>
 			<Path>./test</Path>
 			<FullName>./test/PracticeTest</FullName>
 			<FullCommandLine>C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\test\PracticeTest.exe</FullCommandLine>
 			<Results>
+				<NamedMeasurement type="text/string" name="Exit Code">
+					<Value>Failed</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Exit Value">
+					<Value>1</Value>
+				</NamedMeasurement>
 				<NamedMeasurement type="numeric/double" name="Execution Time">
-					<Value>0.0836163</Value>
+					<Value>0.0264453</Value>
 				</NamedMeasurement>
 				<NamedMeasurement type="numeric/double" name="Processors">
 					<Value>1</Value>
@@ -48,12 +54,12 @@
 					<Value>C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\test\PracticeTest.exe</Value>
 				</NamedMeasurement>
 				<Measurement>
-					<Value encoding="base64" compression="gzip">eJyVU01v2zAMvftX8Ngcajj9AIYBO7ROkQ7LGsNJMWBxYMgKawuQpUAf6fbvR8dpkHie2/Fi0Xx8fKTE1CslVAk1E+piBC9G1xB/zp4tGptJ4Y3P5gonRuwwm2jua1TOZlPhHn2RJYZxJzhmpdalRIfWnR6t4VnZnPKGPeQ8WH052hrSQ+mrG2hAti1+vXfAekHfMFhdHm0NU6kLJlsAqp0wWjV6wKK79NsO+PaUdRYHK0ifn2Bva/LDPIqi23ymVUmwhEmhNoQUfOEL6wwJo4zW5t8+mAEXEdR21Fvq+i3xiP4hXKW9S3GLzJEfV6yZJw2+t/L/EPxLyCzOG6qrfEk8f1U5iw71Ms6Xr3rh616db8F3NNzkgyIO4SPJwM22GHDaMTkKzqHj9rG0SN7RwsNpepc8Jun8fvbwfdGR0on2KjmnHxTy6Uz016dlPJ88dAQd/h7GeJdIb+8TowuJ3VEPIPvnfppAF2yYoOdb/sQwDINlhWCaPvQLODrve6KHtfUOXpmlWK13uAErFEcQtHu/OOLGtuCKUistN032OKJlLn7vN/cPr4ZLxg==</Value>
+					<Value encoding="base64" compression="gzip">eJyVV11v4joQfc+v8GMrbRGBZbdFug8Q2i67UFBIdaWWyjJhSK3r2FzbKaW/fifA0gKJs42EmjRnzjnjr5mEmZRcJiRlXJ6dk4VWKQna03sD2kwFz3Q2HUnoaf4C056KsxSkNdNbbn9ks+lYs9jyGKaJUokAC8Z+vDU6nib5Hc3Za3HsPf6zv55IuJNuXJEcZLbizc0DMRnHvzXv8WJ/PZFboWZMbAEgX7hWMvdDDNiLbHkE9usfaQeB90jC+zuyuZ7wuUbrdb9OQ0gywfT161KDMVzJIbPxM/ryPj8Mm6wHADZQc6C9tWQpj8daJZqlKVLi7UxAGuW2avFy2W61yQ3jItPgoQGILcwJ/J8xwe2aqAWxz2CAvDCRgWl7hPj4a2Ai5KbTH1z3/i4RclYnqTkvyr/+HcNeMEfoSwsJ6Jx7c41+lYNchFd0jO7lHMcc7rJ0VkJ5CnORtuhAyQRHbR/E40k2M1bn81TE74xwSX2jDzx5YEmgZJ4yDmMh/ynMRXpJJxvhSLmG+QTlomz+SXCf1b/cPqvMhrAEZvE5eGb5ukR3hWqfISgzMghoTtWg+Yo+UTl468rFp9FKTbK00OeflxUevlKnid3rPYnroNiCiFWWiXPvCLs9fLbI+MhMXLsNO+Mf43DUHVwPJ0dejt4WWzmgdxq5PDDdv4uCUe/6yNDuv7tx7IxFZrq7M+jInANZPPAfA3CGNZ5iuGQeQKvj5eZAVlN/pfeJWG9PiH7fwXwIrCb+RoegE8jXltJ47Ha0ZmuX9eKAaqFLGuL8WZgUHVblwGriK3rD39662dubg/QdVEHo5yVkyF77MtbADETqF8AywDo0+W+NEwZlIpWBlcLNS/oTViBMR84nVkkonYYibBW9j0vjZzZPIMSzDQKuY1GeSxG4UsBv0Q4WAZbAaDHAQilMX3a5ZHodaXBoueMqZRvvK/I9qnzoSvBVMk3/Ow1UJrGlSZd5X5dH3WF7UypUGlEp1WzQ7QYeLfwut+W5nCArqVstbDhMzISJNGcycayBAmwVfSuv3bHS0FlgubwRfLnELYz9l+avpTquoEpB36dDrrXSISwE9o2nfYobXCnQbNFIDdQKdICbupz7EFdJe9XAA0nOcfdimyFYDGNmMXuH+bKI4vpZWBXJmV9aR8s+KSwwfTFXK3n4zeL4ViGaydqhFCY17kwm20a9sfNWO+zftyX/CxHc5N3/DIRatT/b4nse8uwCoutJ5P0GbpcP+Q==</Value>
 				</Measurement>
 			</Results>
 		</Test>
-		<EndDateTime>Jul 01 22:44 Eastern Daylight Time</EndDateTime>
-		<EndTestTime>1593657855</EndTestTime>
+		<EndDateTime>Jul 02 00:16 Eastern Daylight Time</EndDateTime>
+		<EndTestTime>1593663412</EndTestTime>
 		<ElapsedMinutes>0</ElapsedMinutes>
 	</Testing>
 </Site>

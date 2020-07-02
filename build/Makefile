@@ -291,6 +291,33 @@ LeetCode_ArrayProblems.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_ArrayProblems.cpp.s
 .PHONY : LeetCode_ArrayProblems.cpp.s
 
+LeetCode_DynamicProgrammingProblems.obj: LeetCode_DynamicProgrammingProblems.cpp.obj
+
+.PHONY : LeetCode_DynamicProgrammingProblems.obj
+
+# target to build an object file
+LeetCode_DynamicProgrammingProblems.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_DynamicProgrammingProblems.cpp.obj
+.PHONY : LeetCode_DynamicProgrammingProblems.cpp.obj
+
+LeetCode_DynamicProgrammingProblems.i: LeetCode_DynamicProgrammingProblems.cpp.i
+
+.PHONY : LeetCode_DynamicProgrammingProblems.i
+
+# target to preprocess a source file
+LeetCode_DynamicProgrammingProblems.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_DynamicProgrammingProblems.cpp.i
+.PHONY : LeetCode_DynamicProgrammingProblems.cpp.i
+
+LeetCode_DynamicProgrammingProblems.s: LeetCode_DynamicProgrammingProblems.cpp.s
+
+.PHONY : LeetCode_DynamicProgrammingProblems.s
+
+# target to generate assembly for a file
+LeetCode_DynamicProgrammingProblems.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_DynamicProgrammingProblems.cpp.s
+.PHONY : LeetCode_DynamicProgrammingProblems.cpp.s
+
 LeetCode_GraphProblems.obj: LeetCode_GraphProblems.cpp.obj
 
 .PHONY : LeetCode_GraphProblems.obj
@@ -344,6 +371,33 @@ LeetCode_LinkListProblems.s: LeetCode_LinkListProblems.cpp.s
 LeetCode_LinkListProblems.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_LinkListProblems.cpp.s
 .PHONY : LeetCode_LinkListProblems.cpp.s
+
+LeetCode_MathProblems.obj: LeetCode_MathProblems.cpp.obj
+
+.PHONY : LeetCode_MathProblems.obj
+
+# target to build an object file
+LeetCode_MathProblems.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_MathProblems.cpp.obj
+.PHONY : LeetCode_MathProblems.cpp.obj
+
+LeetCode_MathProblems.i: LeetCode_MathProblems.cpp.i
+
+.PHONY : LeetCode_MathProblems.i
+
+# target to preprocess a source file
+LeetCode_MathProblems.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_MathProblems.cpp.i
+.PHONY : LeetCode_MathProblems.cpp.i
+
+LeetCode_MathProblems.s: LeetCode_MathProblems.cpp.s
+
+.PHONY : LeetCode_MathProblems.s
+
+# target to generate assembly for a file
+LeetCode_MathProblems.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_MathProblems.cpp.s
+.PHONY : LeetCode_MathProblems.cpp.s
 
 LeetCode_SlidingWindowProblems.obj: LeetCode_SlidingWindowProblems.cpp.obj
 
@@ -448,12 +502,18 @@ help:
 	@echo ... LeetCode_ArrayProblems.obj
 	@echo ... LeetCode_ArrayProblems.i
 	@echo ... LeetCode_ArrayProblems.s
+	@echo ... LeetCode_DynamicProgrammingProblems.obj
+	@echo ... LeetCode_DynamicProgrammingProblems.i
+	@echo ... LeetCode_DynamicProgrammingProblems.s
 	@echo ... LeetCode_GraphProblems.obj
 	@echo ... LeetCode_GraphProblems.i
 	@echo ... LeetCode_GraphProblems.s
 	@echo ... LeetCode_LinkListProblems.obj
 	@echo ... LeetCode_LinkListProblems.i
 	@echo ... LeetCode_LinkListProblems.s
+	@echo ... LeetCode_MathProblems.obj
+	@echo ... LeetCode_MathProblems.i
+	@echo ... LeetCode_MathProblems.s
 	@echo ... LeetCode_SlidingWindowProblems.obj
 	@echo ... LeetCode_SlidingWindowProblems.i
 	@echo ... LeetCode_SlidingWindowProblems.s
