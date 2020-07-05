@@ -1,7 +1,7 @@
 #include "LeetCode_ArrayProblems.hpp"
 #include <algorithm>
 #include <unordered_map>
-
+#include <climits>
 std::vector<int> LC::_0001_TwoSum::twoSum(std::vector<int> &nums, int target) {
     std::unordered_map<int, int> map;
     for(int i = 0; i < nums.size(); ++i)

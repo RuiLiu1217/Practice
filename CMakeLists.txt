@@ -21,6 +21,7 @@ set(Headers
     LeetCode_StringProblems.hpp
     LeetCode_MathProblems.hpp
     LeetCode_DynamicProgrammingProblems.hpp
+    LeetCode_GreedyAlgorithmProblems.hpp
 )
 
 set(Sources
@@ -32,6 +33,7 @@ set(Sources
     LeetCode_StringProblems.cpp
     LeetCode_MathProblems.cpp
     LeetCode_DynamicProgrammingProblems.cpp
+    LeetCode_GreedyAlgorithmProblems.cpp
 )
 
 add_library(${This} STATIC ${Sources} ${Headers})

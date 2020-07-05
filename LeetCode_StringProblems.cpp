@@ -1,5 +1,6 @@
 #include "LeetCode_StringProblems.hpp"
 #include <functional>
+#include <climits>
 std::string LC::_0005_LongestPalindromicSubstring::longestPalidrome(std::string s) {
     if(s.size() == 0) {
         return "";

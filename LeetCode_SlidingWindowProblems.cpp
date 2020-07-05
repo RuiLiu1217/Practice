@@ -1,5 +1,7 @@
 #include "LeetCode_SlidingWindowProblems.hpp"
 #include <vector>
+#include <climits>
+#include <string>
 // Google
 // HashTable + Sliding Window:
 // Using a hashtable to remember the last index of every char, And keep tracking the starting

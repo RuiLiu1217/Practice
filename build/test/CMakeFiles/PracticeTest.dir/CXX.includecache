@@ -326,23 +326,13 @@ cxxabi.h
 acxx_demangle.h
 -
 
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_DynamicProgrammingProblems.hpp
+/home/ruiliu/Github/Practice_new/Practice/LeetCode_GreedyAlgorithmProblems.hpp
 string
 -
 
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_StringProblems.hpp
-string
--
-
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_DynamicProgrammingProblemTests.cpp
+/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_GreedyAlgorithmProblemTests.cpp
 gtest/gtest.h
 -
-../LeetCode_DynamicProgrammingProblems.hpp
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_DynamicProgrammingProblems.hpp
-
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_StringProblemTests.cpp
-gtest/gtest.h
--
-../LeetCode_StringProblems.hpp
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_StringProblems.hpp
+../LeetCode_GreedyAlgorithmProblems.hpp
+/home/ruiliu/Github/Practice_new/Practice/LeetCode_GreedyAlgorithmProblems.hpp
 

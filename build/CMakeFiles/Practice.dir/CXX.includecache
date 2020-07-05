@@ -6,13 +6,13 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_DynamicProgrammingProblems.cpp
-LeetCode_DynamicProgrammingProblems.hpp
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_DynamicProgrammingProblems.hpp
-vector
+/home/ruiliu/Github/Practice_new/Practice/LeetCode_GreedyAlgorithmProblems.cpp
+LeetCode_GreedyAlgorithmProblems.hpp
+/home/ruiliu/Github/Practice_new/Practice/LeetCode_GreedyAlgorithmProblems.hpp
+functional
 -
 
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_DynamicProgrammingProblems.hpp
+/home/ruiliu/Github/Practice_new/Practice/LeetCode_GreedyAlgorithmProblems.hpp
 string
 -
 
