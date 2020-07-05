@@ -45,6 +45,11 @@
   "file": "/home/ruiliu/Github/Practice_new/Practice/LeetCode_GreedyAlgorithmProblems.cpp"
 },
 {
+  "directory": "/home/ruiliu/Github/Practice_new/Practice/build",
+  "command": "/bin/g++-9    -g -fPIC   -std=gnu++17 -o CMakeFiles/Practice.dir/LeetCode_BacktracingProblems.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/LeetCode_BacktracingProblems.cpp",
+  "file": "/home/ruiliu/Github/Practice_new/Practice/LeetCode_BacktracingProblems.cpp"
+},
+{
   "directory": "/home/ruiliu/Github/Practice_new/Practice/build/googletest/googlemock",
   "command": "/bin/g++-9   -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googlemock/include -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googlemock -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googletest/include -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googletest  -g -fPIC   -Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++17 -o CMakeFiles/gmock_main.dir/src/gmock_main.cc.o -c /home/ruiliu/Github/Practice_new/Practice/googletest/googlemock/src/gmock_main.cc",
   "file": "/home/ruiliu/Github/Practice_new/Practice/googletest/googlemock/src/gmock_main.cc"
@@ -108,5 +113,10 @@
   "directory": "/home/ruiliu/Github/Practice_new/Practice/build/test",
   "command": "/bin/g++-9   -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googletest/include -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googletest  -g -fPIE   -std=gnu++17 -o CMakeFiles/PracticeTest.dir/LeetCode_GreedyAlgorithmProblemTests.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/test/LeetCode_GreedyAlgorithmProblemTests.cpp",
   "file": "/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_GreedyAlgorithmProblemTests.cpp"
+},
+{
+  "directory": "/home/ruiliu/Github/Practice_new/Practice/build/test",
+  "command": "/bin/g++-9   -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googletest/include -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googletest  -g -fPIE   -std=gnu++17 -o CMakeFiles/PracticeTest.dir/LeetCode_BacktracingProblemTests.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/test/LeetCode_BacktracingProblemTests.cpp",
+  "file": "/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_BacktracingProblemTests.cpp"
 }
 ]

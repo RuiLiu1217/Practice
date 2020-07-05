@@ -1,14 +1,14 @@
-Start testing: Jul 05 16:08 EDT
+Start testing: Jul 05 16:56 EDT
 ----------------------------------------------------------
 1/1 Testing: PracticeTest
 1/1 Test: PracticeTest
 Command: "/home/ruiliu/Github/Practice_new/Practice/build/test/PracticeTest"
 Directory: /home/ruiliu/Github/Practice_new/Practice/build/test
-"PracticeTest" start time: Jul 05 16:08 EDT
+"PracticeTest" start time: Jul 05 16:56 EDT
 Output:
 ----------------------------------------------------------
 Running main() from /home/ruiliu/Github/Practice_new/Practice/googletest/googletest/src/gtest_main.cc
-[==========] Running 31 tests from 3 test suites.
+[==========] Running 33 tests from 3 test suites.
 [----------] Global test environment set-up.
 [----------] 18 tests from LINTCODE
 [ RUN      ] LINTCODE._0001_APlusBProblem
@@ -54,11 +54,13 @@ Running main() from /home/ruiliu/Github/Practice_new/Practice/googletest/googlet
 [       OK ] Lc.GRAPHPROBLEMS (0 ms)
 [----------] 1 test from Lc (0 ms total)
 
-[----------] 12 tests from LC
+[----------] 14 tests from LC
 [ RUN      ] LC._0001_TwoSum
 [       OK ] LC._0001_TwoSum (0 ms)
 [ RUN      ] LC.LC__0004__Test
 [       OK ] LC.LC__0004__Test (0 ms)
+[ RUN      ] LC._0015_3sum
+[       OK ] LC._0015_3sum (0 ms)
 [ RUN      ] LC.LC__0002_Test
 [       OK ] LC.LC__0002_Test (0 ms)
 [ RUN      ] LC._0003_LongestSubstringWithoutRepeatingCharacters
@@ -79,17 +81,19 @@ Running main() from /home/ruiliu/Github/Practice_new/Practice/googletest/googlet
 [       OK ] LC._0012_IntegerToRoman (0 ms)
 [ RUN      ] LC._0013_RomanToInteger
 [       OK ] LC._0013_RomanToInteger (0 ms)
-[----------] 12 tests from LC (1 ms total)
+[ RUN      ] LC.LC__0017__Test
+[       OK ] LC.LC__0017__Test (0 ms)
+[----------] 14 tests from LC (0 ms total)
 
 [----------] Global test environment tear-down
-[==========] 31 tests from 3 test suites ran. (1 ms total)
-[  PASSED  ] 31 tests.
+[==========] 33 tests from 3 test suites ran. (1 ms total)
+[  PASSED  ] 33 tests.
 <end of output>
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"PracticeTest" end time: Jul 05 16:08 EDT
+"PracticeTest" end time: Jul 05 16:56 EDT
 "PracticeTest" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Jul 05 16:08 EDT
+End testing: Jul 05 16:56 EDT

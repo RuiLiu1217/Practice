@@ -174,6 +174,19 @@ CMakeFiles/Practice.dir/LeetCode_GreedyAlgorithmProblems.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Practice.dir/LeetCode_GreedyAlgorithmProblems.cpp.s"
 	/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ruiliu/Github/Practice_new/Practice/LeetCode_GreedyAlgorithmProblems.cpp -o CMakeFiles/Practice.dir/LeetCode_GreedyAlgorithmProblems.cpp.s
 
+CMakeFiles/Practice.dir/LeetCode_BacktracingProblems.cpp.o: CMakeFiles/Practice.dir/flags.make
+CMakeFiles/Practice.dir/LeetCode_BacktracingProblems.cpp.o: ../LeetCode_BacktracingProblems.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ruiliu/Github/Practice_new/Practice/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Practice.dir/LeetCode_BacktracingProblems.cpp.o"
+	/bin/g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Practice.dir/LeetCode_BacktracingProblems.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/LeetCode_BacktracingProblems.cpp
+
+CMakeFiles/Practice.dir/LeetCode_BacktracingProblems.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Practice.dir/LeetCode_BacktracingProblems.cpp.i"
+	/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ruiliu/Github/Practice_new/Practice/LeetCode_BacktracingProblems.cpp > CMakeFiles/Practice.dir/LeetCode_BacktracingProblems.cpp.i
+
+CMakeFiles/Practice.dir/LeetCode_BacktracingProblems.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Practice.dir/LeetCode_BacktracingProblems.cpp.s"
+	/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ruiliu/Github/Practice_new/Practice/LeetCode_BacktracingProblems.cpp -o CMakeFiles/Practice.dir/LeetCode_BacktracingProblems.cpp.s
+
 # Object files for target Practice
 Practice_OBJECTS = \
 "CMakeFiles/Practice.dir/LintCode.cpp.o" \
@@ -184,7 +197,8 @@ Practice_OBJECTS = \
 "CMakeFiles/Practice.dir/LeetCode_StringProblems.cpp.o" \
 "CMakeFiles/Practice.dir/LeetCode_MathProblems.cpp.o" \
 "CMakeFiles/Practice.dir/LeetCode_DynamicProgrammingProblems.cpp.o" \
-"CMakeFiles/Practice.dir/LeetCode_GreedyAlgorithmProblems.cpp.o"
+"CMakeFiles/Practice.dir/LeetCode_GreedyAlgorithmProblems.cpp.o" \
+"CMakeFiles/Practice.dir/LeetCode_BacktracingProblems.cpp.o"
 
 # External object files for target Practice
 Practice_EXTERNAL_OBJECTS =
@@ -198,9 +212,10 @@ libPractice.a: CMakeFiles/Practice.dir/LeetCode_StringProblems.cpp.o
 libPractice.a: CMakeFiles/Practice.dir/LeetCode_MathProblems.cpp.o
 libPractice.a: CMakeFiles/Practice.dir/LeetCode_DynamicProgrammingProblems.cpp.o
 libPractice.a: CMakeFiles/Practice.dir/LeetCode_GreedyAlgorithmProblems.cpp.o
+libPractice.a: CMakeFiles/Practice.dir/LeetCode_BacktracingProblems.cpp.o
 libPractice.a: CMakeFiles/Practice.dir/build.make
 libPractice.a: CMakeFiles/Practice.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ruiliu/Github/Practice_new/Practice/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX static library libPractice.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ruiliu/Github/Practice_new/Practice/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX static library libPractice.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/Practice.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Practice.dir/link.txt --verbose=$(VERBOSE)
 

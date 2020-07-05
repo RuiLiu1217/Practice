@@ -18,3 +18,13 @@ TEST(LC, LC__0004__Test) {
     nums2 = {3, 4};
     EXPECT_EQ(obj.findMedianOfSortedArrays(nums1, nums2), 3.5);
 }
+
+TEST(LC, _0015_3sum) {
+    LC::_0015_3Sum obj;
+    std::vector<int> input{-1, 0, 1, 2, -1, -4};
+    std::vector<std::vector<int>> res = obj.threeSum(input);
+    std::vector<int> groundTruth1{-1, 0, 1};
+    std::vector<int> groundTruth2{-1, -1, 2};
+    EXPECT_EQ(res[0], groundTruth2);
+    EXPECT_EQ(res[1], groundTruth1);   
+}

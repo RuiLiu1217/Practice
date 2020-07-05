@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_ArrayProblemTests.cpp" "/home/ruiliu/Github/Practice_new/Practice/build/test/CMakeFiles/PracticeTest.dir/LeetCode_ArrayProblemTests.cpp.o"
+  "/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_BacktracingProblemTests.cpp" "/home/ruiliu/Github/Practice_new/Practice/build/test/CMakeFiles/PracticeTest.dir/LeetCode_BacktracingProblemTests.cpp.o"
   "/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_DynamicProgrammingProblemTests.cpp" "/home/ruiliu/Github/Practice_new/Practice/build/test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.o"
   "/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_GraphProblemsTest.cpp" "/home/ruiliu/Github/Practice_new/Practice/build/test/CMakeFiles/PracticeTest.dir/LeetCode_GraphProblemsTest.cpp.o"
   "/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_GreedyAlgorithmProblemTests.cpp" "/home/ruiliu/Github/Practice_new/Practice/build/test/CMakeFiles/PracticeTest.dir/LeetCode_GreedyAlgorithmProblemTests.cpp.o"

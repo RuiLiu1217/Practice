@@ -157,12 +157,12 @@ test/clean: test/CMakeFiles/PracticeTest.dir/clean
 CMakeFiles/Practice.dir/all:
 	$(MAKE) -f CMakeFiles/Practice.dir/build.make CMakeFiles/Practice.dir/depend
 	$(MAKE) -f CMakeFiles/Practice.dir/build.make CMakeFiles/Practice.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ruiliu/Github/Practice_new/Practice/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10 "Built target Practice"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ruiliu/Github/Practice_new/Practice/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11 "Built target Practice"
 .PHONY : CMakeFiles/Practice.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Practice.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ruiliu/Github/Practice_new/Practice/build/CMakeFiles 10
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ruiliu/Github/Practice_new/Practice/build/CMakeFiles 11
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Practice.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ruiliu/Github/Practice_new/Practice/build/CMakeFiles 0
 .PHONY : CMakeFiles/Practice.dir/rule
@@ -185,7 +185,7 @@ googletest/googlemock/CMakeFiles/gmock_main.dir/all: googletest/googlemock/CMake
 googletest/googlemock/CMakeFiles/gmock_main.dir/all: googletest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f googletest/googlemock/CMakeFiles/gmock_main.dir/build.make googletest/googlemock/CMakeFiles/gmock_main.dir/depend
 	$(MAKE) -f googletest/googlemock/CMakeFiles/gmock_main.dir/build.make googletest/googlemock/CMakeFiles/gmock_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ruiliu/Github/Practice_new/Practice/build/CMakeFiles --progress-num=23,24 "Built target gmock_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ruiliu/Github/Practice_new/Practice/build/CMakeFiles --progress-num=25,26 "Built target gmock_main"
 .PHONY : googletest/googlemock/CMakeFiles/gmock_main.dir/all
 
 # Build rule for subdir invocation for target.
@@ -212,7 +212,7 @@ googletest/googlemock/CMakeFiles/gmock_main.dir/clean:
 googletest/googlemock/CMakeFiles/gmock.dir/all: googletest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f googletest/googlemock/CMakeFiles/gmock.dir/build.make googletest/googlemock/CMakeFiles/gmock.dir/depend
 	$(MAKE) -f googletest/googlemock/CMakeFiles/gmock.dir/build.make googletest/googlemock/CMakeFiles/gmock.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ruiliu/Github/Practice_new/Practice/build/CMakeFiles --progress-num=21,22 "Built target gmock"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ruiliu/Github/Practice_new/Practice/build/CMakeFiles --progress-num=23,24 "Built target gmock"
 .PHONY : googletest/googlemock/CMakeFiles/gmock.dir/all
 
 # Build rule for subdir invocation for target.
@@ -239,7 +239,7 @@ googletest/googlemock/CMakeFiles/gmock.dir/clean:
 googletest/googletest/CMakeFiles/gtest_main.dir/all: googletest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f googletest/googletest/CMakeFiles/gtest_main.dir/build.make googletest/googletest/CMakeFiles/gtest_main.dir/depend
 	$(MAKE) -f googletest/googletest/CMakeFiles/gtest_main.dir/build.make googletest/googletest/CMakeFiles/gtest_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ruiliu/Github/Practice_new/Practice/build/CMakeFiles --progress-num=27,28 "Built target gtest_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ruiliu/Github/Practice_new/Practice/build/CMakeFiles --progress-num=29,30 "Built target gtest_main"
 .PHONY : googletest/googletest/CMakeFiles/gtest_main.dir/all
 
 # Build rule for subdir invocation for target.
@@ -266,7 +266,7 @@ googletest/googletest/CMakeFiles/gtest_main.dir/clean:
 googletest/googletest/CMakeFiles/gtest.dir/all:
 	$(MAKE) -f googletest/googletest/CMakeFiles/gtest.dir/build.make googletest/googletest/CMakeFiles/gtest.dir/depend
 	$(MAKE) -f googletest/googletest/CMakeFiles/gtest.dir/build.make googletest/googletest/CMakeFiles/gtest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ruiliu/Github/Practice_new/Practice/build/CMakeFiles --progress-num=25,26 "Built target gtest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ruiliu/Github/Practice_new/Practice/build/CMakeFiles --progress-num=27,28 "Built target gtest"
 .PHONY : googletest/googletest/CMakeFiles/gtest.dir/all
 
 # Build rule for subdir invocation for target.
@@ -295,12 +295,12 @@ test/CMakeFiles/PracticeTest.dir/all: googletest/googletest/CMakeFiles/gtest_mai
 test/CMakeFiles/PracticeTest.dir/all: googletest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f test/CMakeFiles/PracticeTest.dir/build.make test/CMakeFiles/PracticeTest.dir/depend
 	$(MAKE) -f test/CMakeFiles/PracticeTest.dir/build.make test/CMakeFiles/PracticeTest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ruiliu/Github/Practice_new/Practice/build/CMakeFiles --progress-num=11,12,13,14,15,16,17,18,19,20 "Built target PracticeTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ruiliu/Github/Practice_new/Practice/build/CMakeFiles --progress-num=12,13,14,15,16,17,18,19,20,21,22 "Built target PracticeTest"
 .PHONY : test/CMakeFiles/PracticeTest.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/PracticeTest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ruiliu/Github/Practice_new/Practice/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ruiliu/Github/Practice_new/Practice/build/CMakeFiles 26
 	$(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/PracticeTest.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ruiliu/Github/Practice_new/Practice/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/PracticeTest.dir/rule

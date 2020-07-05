@@ -4,6 +4,9 @@
 CMakeFiles/Practice.dir/LeetCode_ArrayProblems.cpp.o: ../LeetCode_ArrayProblems.cpp
 CMakeFiles/Practice.dir/LeetCode_ArrayProblems.cpp.o: ../LeetCode_ArrayProblems.hpp
 
+CMakeFiles/Practice.dir/LeetCode_BacktracingProblems.cpp.o: ../LeetCode_BacktracingProblems.cpp
+CMakeFiles/Practice.dir/LeetCode_BacktracingProblems.cpp.o: ../LeetCode_BacktracingProblems.hpp
+
 CMakeFiles/Practice.dir/LeetCode_DynamicProgrammingProblems.cpp.o: ../LeetCode_DynamicProgrammingProblems.cpp
 CMakeFiles/Practice.dir/LeetCode_DynamicProgrammingProblems.cpp.o: ../LeetCode_DynamicProgrammingProblems.hpp
 

@@ -34,48 +34,6 @@ public:
 };
 
 
-/*
-Tag: string
-Write a function to find the longest common prefix string among an array of strings.
-If there is no common prefix, return an empty string "".
-
-Input: ["flower","flow","flight"]
-Output: "fl"
-
-Input: ["dog","racecar","car"]
-Output: ""
-
-Explanation: There is no common prefix among the input strings.
-*/
-class _0014_LongestCommonPrefix {
-public:
-    std::string longestCommonPrefix(std::vector<std::string> &strs);
-};
-
-/* 
-Classical Problem
-Tag: binary search, hash, 
-Given an array nums of n integers, are there elements a, b, c in nums such 
-that a + b + c = 0? Find all unique triplets in the array which gives the 
-sum of zero.
-
-Note:
-The solution set must not contain duplicate triplets.
-
-Example:
-Given array nums = [-1, 0, 1, 2, -1, -4],
-
-A solution set is:
-[
-  [-1, 0, 1],
-  [-1, -1, 2]
-]
-*/
-class _0015_3Sum {
-public:
-    std::vector<std::vector<int>> threeSum(std::vector<int> &nums);
-};
-
 
 /* Todo
 Tag: Binary search, hash
@@ -92,26 +50,6 @@ class _0016_3SumCloset {
         int threeSumCloset(std::vector<int>& nums, int target);
 };
  
-/*
-Tag: recursive
-Given a string containing digits from 2-9 inclusive, return all possible 
-letter combinations that the number could represent.
-A mapping of digit to letters (just like on the telephone buttons) is 
-given below. Note that 1 does not map to any letters.
-
-Example:
-Input: "23"
-Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
-Note:
-Although the above answer is in lexicographical order, your answer could 
-be in any order you want.
-*/
-class _0017_LetterCombinationsOfAPhoneNumber {
-public:
-    std::vector<std::string> letterCombinations(std::string &digits);
-private:
-    void letterCombination(const std::string &digits, int i, int N, std::string tmp, std::vector<std::string> &res);
-};
 
 
 /* Todo

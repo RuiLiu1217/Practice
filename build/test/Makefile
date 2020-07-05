@@ -209,6 +209,33 @@ LeetCode_ArrayProblemTests.cpp.s:
 	cd /home/ruiliu/Github/Practice_new/Practice/build && $(MAKE) -f test/CMakeFiles/PracticeTest.dir/build.make test/CMakeFiles/PracticeTest.dir/LeetCode_ArrayProblemTests.cpp.s
 .PHONY : LeetCode_ArrayProblemTests.cpp.s
 
+LeetCode_BacktracingProblemTests.o: LeetCode_BacktracingProblemTests.cpp.o
+
+.PHONY : LeetCode_BacktracingProblemTests.o
+
+# target to build an object file
+LeetCode_BacktracingProblemTests.cpp.o:
+	cd /home/ruiliu/Github/Practice_new/Practice/build && $(MAKE) -f test/CMakeFiles/PracticeTest.dir/build.make test/CMakeFiles/PracticeTest.dir/LeetCode_BacktracingProblemTests.cpp.o
+.PHONY : LeetCode_BacktracingProblemTests.cpp.o
+
+LeetCode_BacktracingProblemTests.i: LeetCode_BacktracingProblemTests.cpp.i
+
+.PHONY : LeetCode_BacktracingProblemTests.i
+
+# target to preprocess a source file
+LeetCode_BacktracingProblemTests.cpp.i:
+	cd /home/ruiliu/Github/Practice_new/Practice/build && $(MAKE) -f test/CMakeFiles/PracticeTest.dir/build.make test/CMakeFiles/PracticeTest.dir/LeetCode_BacktracingProblemTests.cpp.i
+.PHONY : LeetCode_BacktracingProblemTests.cpp.i
+
+LeetCode_BacktracingProblemTests.s: LeetCode_BacktracingProblemTests.cpp.s
+
+.PHONY : LeetCode_BacktracingProblemTests.s
+
+# target to generate assembly for a file
+LeetCode_BacktracingProblemTests.cpp.s:
+	cd /home/ruiliu/Github/Practice_new/Practice/build && $(MAKE) -f test/CMakeFiles/PracticeTest.dir/build.make test/CMakeFiles/PracticeTest.dir/LeetCode_BacktracingProblemTests.cpp.s
+.PHONY : LeetCode_BacktracingProblemTests.cpp.s
+
 LeetCode_DynamicProgrammingProblemTests.o: LeetCode_DynamicProgrammingProblemTests.cpp.o
 
 .PHONY : LeetCode_DynamicProgrammingProblemTests.o
@@ -442,6 +469,9 @@ help:
 	@echo "... LeetCode_ArrayProblemTests.o"
 	@echo "... LeetCode_ArrayProblemTests.i"
 	@echo "... LeetCode_ArrayProblemTests.s"
+	@echo "... LeetCode_BacktracingProblemTests.o"
+	@echo "... LeetCode_BacktracingProblemTests.i"
+	@echo "... LeetCode_BacktracingProblemTests.s"
 	@echo "... LeetCode_DynamicProgrammingProblemTests.o"
 	@echo "... LeetCode_DynamicProgrammingProblemTests.i"
 	@echo "... LeetCode_DynamicProgrammingProblemTests.s"

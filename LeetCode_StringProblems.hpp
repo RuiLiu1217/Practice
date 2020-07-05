@@ -1,5 +1,6 @@
 #ifndef LEETCODE_STRINGPROBLEMS_HPP
 #define LEETCODE_STRINGPROBLEMS_HPP
+#include <vector>
 #include <string>
 namespace LC {
 /*
@@ -93,6 +94,23 @@ public:
     int myAtoi(std::string str);
 };
 
+/*
+Tag: string
+Write a function to find the longest common prefix string among an array of strings.
+If there is no common prefix, return an empty string "".
+
+Input: ["flower","flow","flight"]
+Output: "fl"
+
+Input: ["dog","racecar","car"]
+Output: ""
+
+Explanation: There is no common prefix among the input strings.
+*/
+class _0014_LongestCommonPrefix {
+public:
+    std::string longestCommonPrefix(std::vector<std::string> &strs);
+};
 
 }
 #endif
