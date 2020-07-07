@@ -6,13 +6,16 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_ArrayProblemTests.cpp" "/home/ruiliu/Github/Practice_new/Practice/build/test/CMakeFiles/PracticeTest.dir/LeetCode_ArrayProblemTests.cpp.o"
   "/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_BacktracingProblemTests.cpp" "/home/ruiliu/Github/Practice_new/Practice/build/test/CMakeFiles/PracticeTest.dir/LeetCode_BacktracingProblemTests.cpp.o"
+  "/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_BitOperationProblemTests.cpp" "/home/ruiliu/Github/Practice_new/Practice/build/test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.o"
   "/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_DynamicProgrammingProblemTests.cpp" "/home/ruiliu/Github/Practice_new/Practice/build/test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.o"
   "/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_GraphProblemsTest.cpp" "/home/ruiliu/Github/Practice_new/Practice/build/test/CMakeFiles/PracticeTest.dir/LeetCode_GraphProblemsTest.cpp.o"
   "/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_GreedyAlgorithmProblemTests.cpp" "/home/ruiliu/Github/Practice_new/Practice/build/test/CMakeFiles/PracticeTest.dir/LeetCode_GreedyAlgorithmProblemTests.cpp.o"
   "/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_LinkListProblemTests.cpp" "/home/ruiliu/Github/Practice_new/Practice/build/test/CMakeFiles/PracticeTest.dir/LeetCode_LinkListProblemTests.cpp.o"
   "/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_MathProblemTests.cpp" "/home/ruiliu/Github/Practice_new/Practice/build/test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.o"
+  "/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_RecursiveProblemTests.cpp" "/home/ruiliu/Github/Practice_new/Practice/build/test/CMakeFiles/PracticeTest.dir/LeetCode_RecursiveProblemTests.cpp.o"
   "/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_SlidingWindowProblemTests.cpp" "/home/ruiliu/Github/Practice_new/Practice/build/test/CMakeFiles/PracticeTest.dir/LeetCode_SlidingWindowProblemTests.cpp.o"
   "/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_StringProblemTests.cpp" "/home/ruiliu/Github/Practice_new/Practice/build/test/CMakeFiles/PracticeTest.dir/LeetCode_StringProblemTests.cpp.o"
+  "/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_TreeProblemTests.cpp" "/home/ruiliu/Github/Practice_new/Practice/build/test/CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.o"
   "/home/ruiliu/Github/Practice_new/Practice/test/LintCodeTest.cpp" "/home/ruiliu/Github/Practice_new/Practice/build/test/CMakeFiles/PracticeTest.dir/LintCodeTest.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

@@ -4,119 +4,190 @@
   "command": "/bin/g++-9    -g -fPIC   -std=gnu++17 -o CMakeFiles/Practice.dir/LintCode.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/LintCode.cpp",
   "file": "/home/ruiliu/Github/Practice_new/Practice/LintCode.cpp"
 },
+
 {
   "directory": "/home/ruiliu/Github/Practice_new/Practice/build",
   "command": "/bin/g++-9    -g -fPIC   -std=gnu++17 -o CMakeFiles/Practice.dir/LeetCode_ArrayProblems.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/LeetCode_ArrayProblems.cpp",
   "file": "/home/ruiliu/Github/Practice_new/Practice/LeetCode_ArrayProblems.cpp"
 },
+
 {
   "directory": "/home/ruiliu/Github/Practice_new/Practice/build",
   "command": "/bin/g++-9    -g -fPIC   -std=gnu++17 -o CMakeFiles/Practice.dir/LeetCode_GraphProblems.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/LeetCode_GraphProblems.cpp",
   "file": "/home/ruiliu/Github/Practice_new/Practice/LeetCode_GraphProblems.cpp"
 },
+
 {
   "directory": "/home/ruiliu/Github/Practice_new/Practice/build",
   "command": "/bin/g++-9    -g -fPIC   -std=gnu++17 -o CMakeFiles/Practice.dir/LeetCode_LinkListProblems.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/LeetCode_LinkListProblems.cpp",
   "file": "/home/ruiliu/Github/Practice_new/Practice/LeetCode_LinkListProblems.cpp"
 },
+
 {
   "directory": "/home/ruiliu/Github/Practice_new/Practice/build",
   "command": "/bin/g++-9    -g -fPIC   -std=gnu++17 -o CMakeFiles/Practice.dir/LeetCode_SlidingWindowProblems.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/LeetCode_SlidingWindowProblems.cpp",
   "file": "/home/ruiliu/Github/Practice_new/Practice/LeetCode_SlidingWindowProblems.cpp"
 },
+
 {
   "directory": "/home/ruiliu/Github/Practice_new/Practice/build",
   "command": "/bin/g++-9    -g -fPIC   -std=gnu++17 -o CMakeFiles/Practice.dir/LeetCode_StringProblems.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/LeetCode_StringProblems.cpp",
   "file": "/home/ruiliu/Github/Practice_new/Practice/LeetCode_StringProblems.cpp"
 },
+
 {
   "directory": "/home/ruiliu/Github/Practice_new/Practice/build",
   "command": "/bin/g++-9    -g -fPIC   -std=gnu++17 -o CMakeFiles/Practice.dir/LeetCode_MathProblems.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/LeetCode_MathProblems.cpp",
   "file": "/home/ruiliu/Github/Practice_new/Practice/LeetCode_MathProblems.cpp"
 },
+
 {
   "directory": "/home/ruiliu/Github/Practice_new/Practice/build",
   "command": "/bin/g++-9    -g -fPIC   -std=gnu++17 -o CMakeFiles/Practice.dir/LeetCode_DynamicProgrammingProblems.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/LeetCode_DynamicProgrammingProblems.cpp",
   "file": "/home/ruiliu/Github/Practice_new/Practice/LeetCode_DynamicProgrammingProblems.cpp"
 },
+
 {
   "directory": "/home/ruiliu/Github/Practice_new/Practice/build",
   "command": "/bin/g++-9    -g -fPIC   -std=gnu++17 -o CMakeFiles/Practice.dir/LeetCode_GreedyAlgorithmProblems.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/LeetCode_GreedyAlgorithmProblems.cpp",
   "file": "/home/ruiliu/Github/Practice_new/Practice/LeetCode_GreedyAlgorithmProblems.cpp"
 },
+
 {
   "directory": "/home/ruiliu/Github/Practice_new/Practice/build",
   "command": "/bin/g++-9    -g -fPIC   -std=gnu++17 -o CMakeFiles/Practice.dir/LeetCode_BacktracingProblems.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/LeetCode_BacktracingProblems.cpp",
   "file": "/home/ruiliu/Github/Practice_new/Practice/LeetCode_BacktracingProblems.cpp"
 },
+
 {
-  "directory": "/home/ruiliu/Github/Practice_new/Practice/build/googletest/googlemock",
-  "command": "/bin/g++-9   -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googlemock/include -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googlemock -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googletest/include -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googletest  -g -fPIC   -Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++17 -o CMakeFiles/gmock_main.dir/src/gmock_main.cc.o -c /home/ruiliu/Github/Practice_new/Practice/googletest/googlemock/src/gmock_main.cc",
+  "directory": "/home/ruiliu/Github/Practice_new/Practice/build",
+  "command": "/bin/g++-9    -g -fPIC   -std=gnu++17 -o CMakeFiles/Practice.dir/LeetCode_BitOperationProblems.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/LeetCode_BitOperationProblems.cpp",
+  "file": "/home/ruiliu/Github/Practice_new/Practice/LeetCode_BitOperationProblems.cpp"
+},
+
+{
+  "directory": "/home/ruiliu/Github/Practice_new/Practice/build",
+  "command": "/bin/g++-9    -g -fPIC   -std=gnu++17 -o CMakeFiles/Practice.dir/LeetCode_TreeProblems.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/LeetCode_TreeProblems.cpp",
+  "file": "/home/ruiliu/Github/Practice_new/Practice/LeetCode_TreeProblems.cpp"
+},
+
+{
+  "directory": "/home/ruiliu/Github/Practice_new/Practice/build",
+  "command": "/bin/g++-9    -g -fPIC   -std=gnu++17 -o CMakeFiles/Practice.dir/LeetCode_RecursiveProblems.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/LeetCode_RecursiveProblems.cpp",
+  "file": "/home/ruiliu/Github/Practice_new/Practice/LeetCode_RecursiveProblems.cpp"
+},
+
+{
+  "directory": "/home/ruiliu/Github/Practice_new/Practice/build",
+  "command": "/bin/g++-9    -g -fPIC   -std=gnu++17 -o CMakeFiles/Practice.dir/LeetCode_HashProblems.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/LeetCode_HashProblems.cpp",
+  "file": "/home/ruiliu/Github/Practice_new/Practice/LeetCode_HashProblems.cpp"
+},
+
+{
+  "directory": "/home/ruiliu/Github/Practice_new/Practice/build",
+  "command": "/bin/g++-9   -isystem ../googletest/googlemock/include -isystem ../googletest/googlemock -isystem ../googletest/googletest/include -isystem ../googletest/googletest  -g -fPIC   -Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++17 -o googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o -c /home/ruiliu/Github/Practice_new/Practice/googletest/googlemock/src/gmock_main.cc",
   "file": "/home/ruiliu/Github/Practice_new/Practice/googletest/googlemock/src/gmock_main.cc"
 },
+
 {
-  "directory": "/home/ruiliu/Github/Practice_new/Practice/build/googletest/googlemock",
-  "command": "/bin/g++-9   -I/home/ruiliu/Github/Practice_new/Practice/googletest/googlemock/include -I/home/ruiliu/Github/Practice_new/Practice/googletest/googlemock -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googletest/include -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googletest  -g -fPIC   -Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++17 -o CMakeFiles/gmock.dir/src/gmock-all.cc.o -c /home/ruiliu/Github/Practice_new/Practice/googletest/googlemock/src/gmock-all.cc",
+  "directory": "/home/ruiliu/Github/Practice_new/Practice/build",
+  "command": "/bin/g++-9   -I../googletest/googlemock/include -I../googletest/googlemock -isystem ../googletest/googletest/include -isystem ../googletest/googletest  -g -fPIC   -Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++17 -o googletest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o -c /home/ruiliu/Github/Practice_new/Practice/googletest/googlemock/src/gmock-all.cc",
   "file": "/home/ruiliu/Github/Practice_new/Practice/googletest/googlemock/src/gmock-all.cc"
 },
+
 {
-  "directory": "/home/ruiliu/Github/Practice_new/Practice/build/googletest/googletest",
-  "command": "/bin/g++-9   -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googletest/include -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googletest  -g -fPIC   -Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++17 -o CMakeFiles/gtest_main.dir/src/gtest_main.cc.o -c /home/ruiliu/Github/Practice_new/Practice/googletest/googletest/src/gtest_main.cc",
+  "directory": "/home/ruiliu/Github/Practice_new/Practice/build",
+  "command": "/bin/g++-9   -isystem ../googletest/googletest/include -isystem ../googletest/googletest  -g -fPIC   -Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++17 -o googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o -c /home/ruiliu/Github/Practice_new/Practice/googletest/googletest/src/gtest_main.cc",
   "file": "/home/ruiliu/Github/Practice_new/Practice/googletest/googletest/src/gtest_main.cc"
 },
+
 {
-  "directory": "/home/ruiliu/Github/Practice_new/Practice/build/googletest/googletest",
-  "command": "/bin/g++-9   -I/home/ruiliu/Github/Practice_new/Practice/googletest/googletest/include -I/home/ruiliu/Github/Practice_new/Practice/googletest/googletest  -g -fPIC   -Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++17 -o CMakeFiles/gtest.dir/src/gtest-all.cc.o -c /home/ruiliu/Github/Practice_new/Practice/googletest/googletest/src/gtest-all.cc",
+  "directory": "/home/ruiliu/Github/Practice_new/Practice/build",
+  "command": "/bin/g++-9   -I../googletest/googletest/include -I../googletest/googletest  -g -fPIC   -Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++17 -o googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o -c /home/ruiliu/Github/Practice_new/Practice/googletest/googletest/src/gtest-all.cc",
   "file": "/home/ruiliu/Github/Practice_new/Practice/googletest/googletest/src/gtest-all.cc"
 },
+
 {
-  "directory": "/home/ruiliu/Github/Practice_new/Practice/build/test",
-  "command": "/bin/g++-9   -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googletest/include -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googletest  -g -fPIE   -std=gnu++17 -o CMakeFiles/PracticeTest.dir/LintCodeTest.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/test/LintCodeTest.cpp",
+  "directory": "/home/ruiliu/Github/Practice_new/Practice/build",
+  "command": "/bin/g++-9   -isystem ../googletest/googletest/include -isystem ../googletest/googletest  -g -fPIE   -std=gnu++17 -o test/CMakeFiles/PracticeTest.dir/LintCodeTest.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/test/LintCodeTest.cpp",
   "file": "/home/ruiliu/Github/Practice_new/Practice/test/LintCodeTest.cpp"
 },
+
 {
-  "directory": "/home/ruiliu/Github/Practice_new/Practice/build/test",
-  "command": "/bin/g++-9   -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googletest/include -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googletest  -g -fPIE   -std=gnu++17 -o CMakeFiles/PracticeTest.dir/LeetCode_GraphProblemsTest.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/test/LeetCode_GraphProblemsTest.cpp",
+  "directory": "/home/ruiliu/Github/Practice_new/Practice/build",
+  "command": "/bin/g++-9   -isystem ../googletest/googletest/include -isystem ../googletest/googletest  -g -fPIE   -std=gnu++17 -o test/CMakeFiles/PracticeTest.dir/LeetCode_GraphProblemsTest.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/test/LeetCode_GraphProblemsTest.cpp",
   "file": "/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_GraphProblemsTest.cpp"
 },
+
 {
-  "directory": "/home/ruiliu/Github/Practice_new/Practice/build/test",
-  "command": "/bin/g++-9   -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googletest/include -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googletest  -g -fPIE   -std=gnu++17 -o CMakeFiles/PracticeTest.dir/LeetCode_ArrayProblemTests.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/test/LeetCode_ArrayProblemTests.cpp",
+  "directory": "/home/ruiliu/Github/Practice_new/Practice/build",
+  "command": "/bin/g++-9   -isystem ../googletest/googletest/include -isystem ../googletest/googletest  -g -fPIE   -std=gnu++17 -o test/CMakeFiles/PracticeTest.dir/LeetCode_ArrayProblemTests.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/test/LeetCode_ArrayProblemTests.cpp",
   "file": "/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_ArrayProblemTests.cpp"
 },
+
 {
-  "directory": "/home/ruiliu/Github/Practice_new/Practice/build/test",
-  "command": "/bin/g++-9   -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googletest/include -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googletest  -g -fPIE   -std=gnu++17 -o CMakeFiles/PracticeTest.dir/LeetCode_LinkListProblemTests.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/test/LeetCode_LinkListProblemTests.cpp",
+  "directory": "/home/ruiliu/Github/Practice_new/Practice/build",
+  "command": "/bin/g++-9   -isystem ../googletest/googletest/include -isystem ../googletest/googletest  -g -fPIE   -std=gnu++17 -o test/CMakeFiles/PracticeTest.dir/LeetCode_LinkListProblemTests.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/test/LeetCode_LinkListProblemTests.cpp",
   "file": "/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_LinkListProblemTests.cpp"
 },
+
 {
-  "directory": "/home/ruiliu/Github/Practice_new/Practice/build/test",
-  "command": "/bin/g++-9   -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googletest/include -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googletest  -g -fPIE   -std=gnu++17 -o CMakeFiles/PracticeTest.dir/LeetCode_SlidingWindowProblemTests.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/test/LeetCode_SlidingWindowProblemTests.cpp",
+  "directory": "/home/ruiliu/Github/Practice_new/Practice/build",
+  "command": "/bin/g++-9   -isystem ../googletest/googletest/include -isystem ../googletest/googletest  -g -fPIE   -std=gnu++17 -o test/CMakeFiles/PracticeTest.dir/LeetCode_SlidingWindowProblemTests.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/test/LeetCode_SlidingWindowProblemTests.cpp",
   "file": "/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_SlidingWindowProblemTests.cpp"
 },
+
 {
-  "directory": "/home/ruiliu/Github/Practice_new/Practice/build/test",
-  "command": "/bin/g++-9   -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googletest/include -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googletest  -g -fPIE   -std=gnu++17 -o CMakeFiles/PracticeTest.dir/LeetCode_StringProblemTests.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/test/LeetCode_StringProblemTests.cpp",
+  "directory": "/home/ruiliu/Github/Practice_new/Practice/build",
+  "command": "/bin/g++-9   -isystem ../googletest/googletest/include -isystem ../googletest/googletest  -g -fPIE   -std=gnu++17 -o test/CMakeFiles/PracticeTest.dir/LeetCode_StringProblemTests.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/test/LeetCode_StringProblemTests.cpp",
   "file": "/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_StringProblemTests.cpp"
 },
+
 {
-  "directory": "/home/ruiliu/Github/Practice_new/Practice/build/test",
-  "command": "/bin/g++-9   -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googletest/include -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googletest  -g -fPIE   -std=gnu++17 -o CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/test/LeetCode_MathProblemTests.cpp",
+  "directory": "/home/ruiliu/Github/Practice_new/Practice/build",
+  "command": "/bin/g++-9   -isystem ../googletest/googletest/include -isystem ../googletest/googletest  -g -fPIE   -std=gnu++17 -o test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/test/LeetCode_MathProblemTests.cpp",
   "file": "/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_MathProblemTests.cpp"
 },
+
 {
-  "directory": "/home/ruiliu/Github/Practice_new/Practice/build/test",
-  "command": "/bin/g++-9   -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googletest/include -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googletest  -g -fPIE   -std=gnu++17 -o CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/test/LeetCode_DynamicProgrammingProblemTests.cpp",
+  "directory": "/home/ruiliu/Github/Practice_new/Practice/build",
+  "command": "/bin/g++-9   -isystem ../googletest/googletest/include -isystem ../googletest/googletest  -g -fPIE   -std=gnu++17 -o test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/test/LeetCode_DynamicProgrammingProblemTests.cpp",
   "file": "/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_DynamicProgrammingProblemTests.cpp"
 },
+
 {
-  "directory": "/home/ruiliu/Github/Practice_new/Practice/build/test",
-  "command": "/bin/g++-9   -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googletest/include -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googletest  -g -fPIE   -std=gnu++17 -o CMakeFiles/PracticeTest.dir/LeetCode_GreedyAlgorithmProblemTests.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/test/LeetCode_GreedyAlgorithmProblemTests.cpp",
+  "directory": "/home/ruiliu/Github/Practice_new/Practice/build",
+  "command": "/bin/g++-9   -isystem ../googletest/googletest/include -isystem ../googletest/googletest  -g -fPIE   -std=gnu++17 -o test/CMakeFiles/PracticeTest.dir/LeetCode_GreedyAlgorithmProblemTests.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/test/LeetCode_GreedyAlgorithmProblemTests.cpp",
   "file": "/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_GreedyAlgorithmProblemTests.cpp"
 },
+
 {
-  "directory": "/home/ruiliu/Github/Practice_new/Practice/build/test",
-  "command": "/bin/g++-9   -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googletest/include -isystem /home/ruiliu/Github/Practice_new/Practice/googletest/googletest  -g -fPIE   -std=gnu++17 -o CMakeFiles/PracticeTest.dir/LeetCode_BacktracingProblemTests.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/test/LeetCode_BacktracingProblemTests.cpp",
+  "directory": "/home/ruiliu/Github/Practice_new/Practice/build",
+  "command": "/bin/g++-9   -isystem ../googletest/googletest/include -isystem ../googletest/googletest  -g -fPIE   -std=gnu++17 -o test/CMakeFiles/PracticeTest.dir/LeetCode_BacktracingProblemTests.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/test/LeetCode_BacktracingProblemTests.cpp",
   "file": "/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_BacktracingProblemTests.cpp"
+},
+
+{
+  "directory": "/home/ruiliu/Github/Practice_new/Practice/build",
+  "command": "/bin/g++-9   -isystem ../googletest/googletest/include -isystem ../googletest/googletest  -g -fPIE   -std=gnu++17 -o test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/test/LeetCode_BitOperationProblemTests.cpp",
+  "file": "/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_BitOperationProblemTests.cpp"
+},
+
+{
+  "directory": "/home/ruiliu/Github/Practice_new/Practice/build",
+  "command": "/bin/g++-9   -isystem ../googletest/googletest/include -isystem ../googletest/googletest  -g -fPIE   -std=gnu++17 -o test/CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/test/LeetCode_TreeProblemTests.cpp",
+  "file": "/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_TreeProblemTests.cpp"
+},
+
+{
+  "directory": "/home/ruiliu/Github/Practice_new/Practice/build",
+  "command": "/bin/g++-9   -isystem ../googletest/googletest/include -isystem ../googletest/googletest  -g -fPIE   -std=gnu++17 -o test/CMakeFiles/PracticeTest.dir/LeetCode_RecursiveProblemTests.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/test/LeetCode_RecursiveProblemTests.cpp",
+  "file": "/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_RecursiveProblemTests.cpp"
+},
+
+{
+  "directory": "/home/ruiliu/Github/Practice_new/Practice/build",
+  "command": "/bin/g++-9   -isystem ../googletest/googletest/include -isystem ../googletest/googletest  -g -fPIE   -std=gnu++17 -o test/CMakeFiles/PracticeTest.dir/LeetCode_HashProblemTests.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/test/LeetCode_HashProblemTests.cpp",
+  "file": "/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_HashProblemTests.cpp"
 }
 ]

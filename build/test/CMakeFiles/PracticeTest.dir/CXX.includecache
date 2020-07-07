@@ -326,15 +326,17 @@ cxxabi.h
 acxx_demangle.h
 -
 
-/home/ruiliu/Github/Practice_new/Practice/LeetCode_BacktracingProblems.hpp
+/home/ruiliu/Github/Practice_new/Practice/LeetCode_ArrayProblems.hpp
 vector
 -
 string
 -
 
-/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_BacktracingProblemTests.cpp
+/home/ruiliu/Github/Practice_new/Practice/test/LeetCode_ArrayProblemTests.cpp
 gtest/gtest.h
 -
-../LeetCode_BacktracingProblems.hpp
-/home/ruiliu/Github/Practice_new/Practice/LeetCode_BacktracingProblems.hpp
+../LeetCode_ArrayProblems.hpp
+/home/ruiliu/Github/Practice_new/Practice/LeetCode_ArrayProblems.hpp
+vector
+-
 

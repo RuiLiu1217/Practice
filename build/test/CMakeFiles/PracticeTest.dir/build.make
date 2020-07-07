@@ -187,6 +187,45 @@ test/CMakeFiles/PracticeTest.dir/LeetCode_BacktracingProblemTests.cpp.s: cmake_f
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PracticeTest.dir/LeetCode_BacktracingProblemTests.cpp.s"
 	cd /home/ruiliu/Github/Practice_new/Practice/build/test && /bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ruiliu/Github/Practice_new/Practice/test/LeetCode_BacktracingProblemTests.cpp -o CMakeFiles/PracticeTest.dir/LeetCode_BacktracingProblemTests.cpp.s
 
+test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.o: test/CMakeFiles/PracticeTest.dir/flags.make
+test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.o: ../test/LeetCode_BitOperationProblemTests.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ruiliu/Github/Practice_new/Practice/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.o"
+	cd /home/ruiliu/Github/Practice_new/Practice/build/test && /bin/g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/test/LeetCode_BitOperationProblemTests.cpp
+
+test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.i"
+	cd /home/ruiliu/Github/Practice_new/Practice/build/test && /bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ruiliu/Github/Practice_new/Practice/test/LeetCode_BitOperationProblemTests.cpp > CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.i
+
+test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.s"
+	cd /home/ruiliu/Github/Practice_new/Practice/build/test && /bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ruiliu/Github/Practice_new/Practice/test/LeetCode_BitOperationProblemTests.cpp -o CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.s
+
+test/CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.o: test/CMakeFiles/PracticeTest.dir/flags.make
+test/CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.o: ../test/LeetCode_TreeProblemTests.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ruiliu/Github/Practice_new/Practice/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object test/CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.o"
+	cd /home/ruiliu/Github/Practice_new/Practice/build/test && /bin/g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/test/LeetCode_TreeProblemTests.cpp
+
+test/CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.i"
+	cd /home/ruiliu/Github/Practice_new/Practice/build/test && /bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ruiliu/Github/Practice_new/Practice/test/LeetCode_TreeProblemTests.cpp > CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.i
+
+test/CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.s"
+	cd /home/ruiliu/Github/Practice_new/Practice/build/test && /bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ruiliu/Github/Practice_new/Practice/test/LeetCode_TreeProblemTests.cpp -o CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.s
+
+test/CMakeFiles/PracticeTest.dir/LeetCode_RecursiveProblemTests.cpp.o: test/CMakeFiles/PracticeTest.dir/flags.make
+test/CMakeFiles/PracticeTest.dir/LeetCode_RecursiveProblemTests.cpp.o: ../test/LeetCode_RecursiveProblemTests.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ruiliu/Github/Practice_new/Practice/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object test/CMakeFiles/PracticeTest.dir/LeetCode_RecursiveProblemTests.cpp.o"
+	cd /home/ruiliu/Github/Practice_new/Practice/build/test && /bin/g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PracticeTest.dir/LeetCode_RecursiveProblemTests.cpp.o -c /home/ruiliu/Github/Practice_new/Practice/test/LeetCode_RecursiveProblemTests.cpp
+
+test/CMakeFiles/PracticeTest.dir/LeetCode_RecursiveProblemTests.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PracticeTest.dir/LeetCode_RecursiveProblemTests.cpp.i"
+	cd /home/ruiliu/Github/Practice_new/Practice/build/test && /bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ruiliu/Github/Practice_new/Practice/test/LeetCode_RecursiveProblemTests.cpp > CMakeFiles/PracticeTest.dir/LeetCode_RecursiveProblemTests.cpp.i
+
+test/CMakeFiles/PracticeTest.dir/LeetCode_RecursiveProblemTests.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PracticeTest.dir/LeetCode_RecursiveProblemTests.cpp.s"
+	cd /home/ruiliu/Github/Practice_new/Practice/build/test && /bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ruiliu/Github/Practice_new/Practice/test/LeetCode_RecursiveProblemTests.cpp -o CMakeFiles/PracticeTest.dir/LeetCode_RecursiveProblemTests.cpp.s
+
 # Object files for target PracticeTest
 PracticeTest_OBJECTS = \
 "CMakeFiles/PracticeTest.dir/LintCodeTest.cpp.o" \
@@ -198,7 +237,10 @@ PracticeTest_OBJECTS = \
 "CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.o" \
 "CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.o" \
 "CMakeFiles/PracticeTest.dir/LeetCode_GreedyAlgorithmProblemTests.cpp.o" \
-"CMakeFiles/PracticeTest.dir/LeetCode_BacktracingProblemTests.cpp.o"
+"CMakeFiles/PracticeTest.dir/LeetCode_BacktracingProblemTests.cpp.o" \
+"CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.o" \
+"CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.o" \
+"CMakeFiles/PracticeTest.dir/LeetCode_RecursiveProblemTests.cpp.o"
 
 # External object files for target PracticeTest
 PracticeTest_EXTERNAL_OBJECTS =
@@ -213,12 +255,15 @@ test/PracticeTest: test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cp
 test/PracticeTest: test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.o
 test/PracticeTest: test/CMakeFiles/PracticeTest.dir/LeetCode_GreedyAlgorithmProblemTests.cpp.o
 test/PracticeTest: test/CMakeFiles/PracticeTest.dir/LeetCode_BacktracingProblemTests.cpp.o
+test/PracticeTest: test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.o
+test/PracticeTest: test/CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.o
+test/PracticeTest: test/CMakeFiles/PracticeTest.dir/LeetCode_RecursiveProblemTests.cpp.o
 test/PracticeTest: test/CMakeFiles/PracticeTest.dir/build.make
 test/PracticeTest: lib/libgtest_maind.a
 test/PracticeTest: libPractice.a
 test/PracticeTest: lib/libgtestd.a
 test/PracticeTest: test/CMakeFiles/PracticeTest.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ruiliu/Github/Practice_new/Practice/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable PracticeTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ruiliu/Github/Practice_new/Practice/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable PracticeTest"
 	cd /home/ruiliu/Github/Practice_new/Practice/build/test && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/PracticeTest.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

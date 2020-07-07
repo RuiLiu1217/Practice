@@ -299,6 +299,33 @@ LeetCode_BacktracingProblems.cpp.s:
 	$(MAKE) -f CMakeFiles/Practice.dir/build.make CMakeFiles/Practice.dir/LeetCode_BacktracingProblems.cpp.s
 .PHONY : LeetCode_BacktracingProblems.cpp.s
 
+LeetCode_BitOperationProblems.o: LeetCode_BitOperationProblems.cpp.o
+
+.PHONY : LeetCode_BitOperationProblems.o
+
+# target to build an object file
+LeetCode_BitOperationProblems.cpp.o:
+	$(MAKE) -f CMakeFiles/Practice.dir/build.make CMakeFiles/Practice.dir/LeetCode_BitOperationProblems.cpp.o
+.PHONY : LeetCode_BitOperationProblems.cpp.o
+
+LeetCode_BitOperationProblems.i: LeetCode_BitOperationProblems.cpp.i
+
+.PHONY : LeetCode_BitOperationProblems.i
+
+# target to preprocess a source file
+LeetCode_BitOperationProblems.cpp.i:
+	$(MAKE) -f CMakeFiles/Practice.dir/build.make CMakeFiles/Practice.dir/LeetCode_BitOperationProblems.cpp.i
+.PHONY : LeetCode_BitOperationProblems.cpp.i
+
+LeetCode_BitOperationProblems.s: LeetCode_BitOperationProblems.cpp.s
+
+.PHONY : LeetCode_BitOperationProblems.s
+
+# target to generate assembly for a file
+LeetCode_BitOperationProblems.cpp.s:
+	$(MAKE) -f CMakeFiles/Practice.dir/build.make CMakeFiles/Practice.dir/LeetCode_BitOperationProblems.cpp.s
+.PHONY : LeetCode_BitOperationProblems.cpp.s
+
 LeetCode_DynamicProgrammingProblems.o: LeetCode_DynamicProgrammingProblems.cpp.o
 
 .PHONY : LeetCode_DynamicProgrammingProblems.o
@@ -434,6 +461,33 @@ LeetCode_MathProblems.cpp.s:
 	$(MAKE) -f CMakeFiles/Practice.dir/build.make CMakeFiles/Practice.dir/LeetCode_MathProblems.cpp.s
 .PHONY : LeetCode_MathProblems.cpp.s
 
+LeetCode_RecursiveProblems.o: LeetCode_RecursiveProblems.cpp.o
+
+.PHONY : LeetCode_RecursiveProblems.o
+
+# target to build an object file
+LeetCode_RecursiveProblems.cpp.o:
+	$(MAKE) -f CMakeFiles/Practice.dir/build.make CMakeFiles/Practice.dir/LeetCode_RecursiveProblems.cpp.o
+.PHONY : LeetCode_RecursiveProblems.cpp.o
+
+LeetCode_RecursiveProblems.i: LeetCode_RecursiveProblems.cpp.i
+
+.PHONY : LeetCode_RecursiveProblems.i
+
+# target to preprocess a source file
+LeetCode_RecursiveProblems.cpp.i:
+	$(MAKE) -f CMakeFiles/Practice.dir/build.make CMakeFiles/Practice.dir/LeetCode_RecursiveProblems.cpp.i
+.PHONY : LeetCode_RecursiveProblems.cpp.i
+
+LeetCode_RecursiveProblems.s: LeetCode_RecursiveProblems.cpp.s
+
+.PHONY : LeetCode_RecursiveProblems.s
+
+# target to generate assembly for a file
+LeetCode_RecursiveProblems.cpp.s:
+	$(MAKE) -f CMakeFiles/Practice.dir/build.make CMakeFiles/Practice.dir/LeetCode_RecursiveProblems.cpp.s
+.PHONY : LeetCode_RecursiveProblems.cpp.s
+
 LeetCode_SlidingWindowProblems.o: LeetCode_SlidingWindowProblems.cpp.o
 
 .PHONY : LeetCode_SlidingWindowProblems.o
@@ -488,6 +542,33 @@ LeetCode_StringProblems.cpp.s:
 	$(MAKE) -f CMakeFiles/Practice.dir/build.make CMakeFiles/Practice.dir/LeetCode_StringProblems.cpp.s
 .PHONY : LeetCode_StringProblems.cpp.s
 
+LeetCode_TreeProblems.o: LeetCode_TreeProblems.cpp.o
+
+.PHONY : LeetCode_TreeProblems.o
+
+# target to build an object file
+LeetCode_TreeProblems.cpp.o:
+	$(MAKE) -f CMakeFiles/Practice.dir/build.make CMakeFiles/Practice.dir/LeetCode_TreeProblems.cpp.o
+.PHONY : LeetCode_TreeProblems.cpp.o
+
+LeetCode_TreeProblems.i: LeetCode_TreeProblems.cpp.i
+
+.PHONY : LeetCode_TreeProblems.i
+
+# target to preprocess a source file
+LeetCode_TreeProblems.cpp.i:
+	$(MAKE) -f CMakeFiles/Practice.dir/build.make CMakeFiles/Practice.dir/LeetCode_TreeProblems.cpp.i
+.PHONY : LeetCode_TreeProblems.cpp.i
+
+LeetCode_TreeProblems.s: LeetCode_TreeProblems.cpp.s
+
+.PHONY : LeetCode_TreeProblems.s
+
+# target to generate assembly for a file
+LeetCode_TreeProblems.cpp.s:
+	$(MAKE) -f CMakeFiles/Practice.dir/build.make CMakeFiles/Practice.dir/LeetCode_TreeProblems.cpp.s
+.PHONY : LeetCode_TreeProblems.cpp.s
+
 LintCode.o: LintCode.cpp.o
 
 .PHONY : LintCode.o
@@ -540,6 +621,9 @@ help:
 	@echo "... LeetCode_BacktracingProblems.o"
 	@echo "... LeetCode_BacktracingProblems.i"
 	@echo "... LeetCode_BacktracingProblems.s"
+	@echo "... LeetCode_BitOperationProblems.o"
+	@echo "... LeetCode_BitOperationProblems.i"
+	@echo "... LeetCode_BitOperationProblems.s"
 	@echo "... LeetCode_DynamicProgrammingProblems.o"
 	@echo "... LeetCode_DynamicProgrammingProblems.i"
 	@echo "... LeetCode_DynamicProgrammingProblems.s"
@@ -555,12 +639,18 @@ help:
 	@echo "... LeetCode_MathProblems.o"
 	@echo "... LeetCode_MathProblems.i"
 	@echo "... LeetCode_MathProblems.s"
+	@echo "... LeetCode_RecursiveProblems.o"
+	@echo "... LeetCode_RecursiveProblems.i"
+	@echo "... LeetCode_RecursiveProblems.s"
 	@echo "... LeetCode_SlidingWindowProblems.o"
 	@echo "... LeetCode_SlidingWindowProblems.i"
 	@echo "... LeetCode_SlidingWindowProblems.s"
 	@echo "... LeetCode_StringProblems.o"
 	@echo "... LeetCode_StringProblems.i"
 	@echo "... LeetCode_StringProblems.s"
+	@echo "... LeetCode_TreeProblems.o"
+	@echo "... LeetCode_TreeProblems.i"
+	@echo "... LeetCode_TreeProblems.s"
 	@echo "... LintCode.o"
 	@echo "... LintCode.i"
 	@echo "... LintCode.s"

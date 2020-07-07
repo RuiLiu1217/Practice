@@ -28,3 +28,90 @@ TEST(LC, _0015_3sum) {
     EXPECT_EQ(res[0], groundTruth2);
     EXPECT_EQ(res[1], groundTruth1);   
 }
+
+TEST(LC, _0020_ValidParentheses) {
+    LC::_0020_ValidParentheses obj;
+    std::string a = "[](){}";
+    EXPECT_TRUE(obj.isValid(a));
+    a = "[){{}";
+    EXPECT_FALSE(obj.isValid(a));
+    a = "[(){}[]{()()(((())))}]";
+    EXPECT_TRUE(obj.isValid(a));
+    a = "";
+    EXPECT_TRUE(obj.isValid(a));
+    
+}
+
+TEST(LC, _0026_RemoveDuplicatesFromSortedArray) {
+    LC::_0026_RemoveDuplicatesFromSortedArray obj;
+    std::vector<int> org{0,0,1,1,1,2,2,3,3,4};
+    EXPECT_EQ(obj.removeDuplicates(org), 5);
+}
+
+TEST(LC, _0027_RemoveElement) {
+    LC::_0027_RemoveElement obj;
+    std::vector<int> t1{3,2,2,3};
+    EXPECT_EQ(obj.removeElement(t1, 2), 2);
+    std::vector<int> t2{0,1,2,2,3,0,4,2};
+    EXPECT_EQ(obj.removeElement(t2, 2), 5);
+}
+
+TEST(LC, _0031_NextPermutation) {
+    LC::_0031_NextPermutation obj;
+    std::vector<int> a{1,2,3,4};
+    obj.nextPermutation(a);
+    std::vector<int> ta{1,2,4,3};
+    EXPECT_EQ(a, ta);
+
+}
+
+TEST(LC, _0056_MergeIntervals) {
+    LC::_0056_MergeIntervals obj;
+    std::vector<std::vector<int>> input{{1,3},{2,6}, {8,10},{15,18}};
+    std::vector<std::vector<int>> output = obj.merge(input);
+    std::vector<std::vector<int>> res{{1,6},{8,10},{15,18}};
+    EXPECT_EQ(output, res);
+    std::vector<std::vector<int>> input2{{1,4},{4,5}};
+    std::vector<std::vector<int>> output2 = obj.merge(input2);
+    std::vector<std::vector<int>> res2{{1,5}};
+    EXPECT_EQ(output2, res2);
+}
+
+TEST(LC, _0059_SpiralMatrixII) {
+    LC::_0059_SpiralMatrixII obj;
+    std::vector<std::vector<int>> res = obj.generateMatrix(4);
+    std::vector<std::vector<int>> groundTruth{
+    {1,2,3,4}, {12 ,13 ,14 ,5}, { 11, 16, 15,6}, {10,9,8,7}};
+    EXPECT_EQ(res, groundTruth);
+}
+
+TEST(LC, _0033_SearchInRotatedSortedArray) {
+    LC::_0033_SearchInRotatedSortedArray obj;
+
+    std::vector<int> nums{4,5,6,7,0,1,2};
+    int target = 0;
+    EXPECT_EQ(obj.search(nums, target), 4);
+
+    std::vector<int> nums2{4,5,6,7,0,1,2};
+    int target2 = 3;
+    EXPECT_EQ(obj.search(nums2, target2), -1);
+}
+
+TEST(LC, _0036_ValidSudoku) { // WILL NOT TEST THIS
+    EXPECT_EQ(1,1);
+}
+
+TEST(LC, _0048_RotateImage) {
+    LC::_0048_RotateImage obj;
+    std::vector<std::vector<int>> t1 = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}};
+    obj.rotate(t1);
+    std::vector<std::vector<int>> t3 = {
+        {7, 4, 1}, 
+        {8, 5, 2},
+        {9, 6, 3}};
+    EXPECT_EQ(t1, t3);
+}
+

@@ -112,5 +112,62 @@ public:
     std::string longestCommonPrefix(std::vector<std::string> &strs);
 };
 
+
+/*
+Tag: string
+The count-and-say sequence is the sequence of integers with the first five 
+terms as following:
+1.     1
+2.     11
+3.     21
+4.     1211
+5.     111221
+1 is read off as "one 1" or 11.
+11 is read off as "two 1s" or 21.
+21 is read off as "one 2, then one 1" or 1211.
+Given an integer n where 1 ≤ n ≤ 30, generate the nth term of the count-and-say sequence.
+Note: Each term of the sequence of integers will be represented as a string.
+*/
+class _0038_CountAndSay {
+public:
+    std::string countAndSay(int n);
+};
+
+/*
+Tag: string operation, basic arithmetic operation
+Given two non-negative integers num1 and num2 represented as strings, return the product 
+of num1 and num2, also represented as a string.
+Example 1:
+Input: num1 = "2", num2 = "3"          :         Output: "6"
+Input: num1 = "123", num2 = "456"      :         Output: "56088"
+
+The length of both num1 and num2 is < 110.
+Both num1 and num2 contain only digits 0-9.
+Both num1 and num2 do not contain any leading zero, except the number 0 itself.
+You must not use any built-in BigInteger library or convert the inputs to integer directly.
+*/
+class _0043_MultiplyStrings {
+public:
+    std::string multiply(std::string num1, std::string num2);
+private:
+    std::string multiply(const std::string& num1, const std::string& num2, int idx);
+    std::string add(std::string num1, std::string num2);
+};
+
+
+/*  Length of Last Word
+Given a string s consists of upper/lower-case alphabets and empty space characters ' ', 
+return the length of last word in the string. If the last word does not exist, return 0.
+Note: A word is defined as a character sequence consists of non-space characters only.
+
+Input: "Hello World"
+Output: 5
+*/
+class _0058_LengthOfLastWord{
+public:
+    int lengthOfLastWord(std::string s);
+};
+
+
 }
 #endif

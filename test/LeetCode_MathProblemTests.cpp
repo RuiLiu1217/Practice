@@ -13,3 +13,11 @@ TEST(LC, _0009_PalindromeNumber) {
     EXPECT_FALSE(obj.isPalindrome(-121));
     EXPECT_FALSE(obj.isPalindrome(10));
 }
+
+TEST(LC, _0029_DivideTwoIntegers) {
+    LC::_0029_DivideTwoIntegers obj;
+    EXPECT_EQ(obj.divide(4, 2), 2);
+    EXPECT_EQ(obj.divide(6, 3), 2);
+    EXPECT_EQ(obj.divide(14, 2), 7);
+    EXPECT_EQ(obj.divide(24, 7), 3);
+}

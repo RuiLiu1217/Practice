@@ -1,9 +1,26 @@
 #include "LeetCode_GreedyAlgorithmProblems.hpp"
 #include <functional>
-/*
-Google
-*/
-// Greedy algorithm: 
+
+// Google
+int LC::_0011_ContainerWithMostWater::maxArea(std::vector<int>& height) {
+    int i = 0;
+    int j = height.size() - 1;
+    int water = 0;
+    while(i < j) {
+        int h = std::min(height[i], height[j]);
+        water = std::max(water, h * (j - i));
+        while(i < j && height[i] <= h) { // Caution: the edge case it should be <= not < to guarantee that it can terminate
+            ++i;
+        }
+        while(i < j && height[j] <= h) {
+            --j;
+        }
+    }
+    return water;
+}
+
+
+// Google
 std::string LC::_0012_IntegerToRoman::intToRoman(int num) {
     int value[13] =       {1000,   900,   500,    400,   100,    90,    50,    40,   10,     9,    5,     4,   1};
     std::string str[13] = {"M",   "CM",   "D",   "CD",   "C",  "XC",   "L",  "XL",  "X",  "IX",  "V",  "IV",  "I"};

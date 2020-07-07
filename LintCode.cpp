@@ -26,7 +26,6 @@ int LintCode::_0001_APlusBProblem::aplusb(int a, int b) {
     return res;
 }
 
-// 0002
 long long LintCode::_0002_TrailingZeros::trailingZeros(long long n) { 
     long long res = 0;
     while(n) {
@@ -36,7 +35,6 @@ long long LintCode::_0002_TrailingZeros::trailingZeros(long long n) {
     return res;
 }
 
-// 0004
 int LintCode::_0004_UglyNumberII::nthUglyNumber(int n) {
     std::vector<int> ugly;
     ugly.reserve(n+1);
@@ -57,7 +55,7 @@ int LintCode::_0004_UglyNumberII::nthUglyNumber(int n) {
     return ugly.back();
 }
 
-// 0006
+
 std::vector<int> LintCode::_0006_MergeTwoSortedArrays::mergeSortedArray(std::vector<int> &A, std::vector<int> &B) {
     std::vector<int> res(A.size() + B.size(), 0);
     int i = 0; 
@@ -77,7 +75,6 @@ std::vector<int> LintCode::_0006_MergeTwoSortedArrays::mergeSortedArray(std::vec
     return res;
 }
 
-// 0008
 void LintCode::_0008_RotateString::rotateString(std::string &str, int offset) {
     // write your code here
     int strSize = str.size(); 
@@ -96,7 +93,7 @@ void LintCode::_0008_RotateString::rotateString(std::string &str, int offset) {
     SWAP(0, strSize -1);
 }
 
-// 0009
+
 std::vector<std::string> LintCode::_0009_FizzBuzz::fizzBuzz(int n) {
     // write your code here
     std::vector<std::string> res;
@@ -114,8 +111,6 @@ std::vector<std::string> LintCode::_0009_FizzBuzz::fizzBuzz(int n) {
     return res;
 }
 
-
-// 1010 
 int LintCode::_1010_MaxIncreaseToKeepCitySkyline::maxIncreaseKeepingSkyline(std::vector<std::vector<int>> &grid) {
     std::vector<std::vector<int>> res;
     std::vector<int> rowMax(grid.size());
@@ -150,7 +145,7 @@ int LintCode::_1010_MaxIncreaseToKeepCitySkyline::maxIncreaseKeepingSkyline(std:
     return count;
 }
 
-// 1038
+
 int LintCode::_1038_JewelsAndStones::numJewelInStones(std::string& J, std::string& S) {
     std::unordered_set<char> jewels;
     for(int i = 0; i < J.size(); ++i) {
@@ -166,7 +161,7 @@ int LintCode::_1038_JewelsAndStones::numJewelInStones(std::string& J, std::strin
     return bt;
 }
 
-// 1104
+
 bool LintCode::_1104_JudgeRouteCircle::judgeCircle(std::string &moves) {
     int x = 0; 
     int y = 0;

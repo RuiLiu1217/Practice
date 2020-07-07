@@ -21,11 +21,11 @@
 	TotalVirtualMemory="2047"
 	TotalPhysicalMemory="64232"
 	LogicalProcessorsPerPhysical="2"
-	ProcessorClockFrequency="1414.05"
+	ProcessorClockFrequency="1561.3"
 	>
 	<Testing>
-		<StartDateTime>Jul 05 16:56 EDT</StartDateTime>
-		<StartTestTime>1593982560</StartTestTime>
+		<StartDateTime>Jul 05 19:55 EDT</StartDateTime>
+		<StartTestTime>1593993325</StartTestTime>
 		<TestList>
 			<Test>./test/PracticeTest</Test>
 		</TestList>
@@ -36,7 +36,7 @@
 			<FullCommandLine>/home/ruiliu/Github/Practice_new/Practice/build/test/PracticeTest</FullCommandLine>
 			<Results>
 				<NamedMeasurement type="numeric/double" name="Execution Time">
-					<Value>0.00474585</Value>
+					<Value>0.00234954</Value>
 				</NamedMeasurement>
 				<NamedMeasurement type="numeric/double" name="Processors">
 					<Value>1</Value>
@@ -48,12 +48,12 @@
 					<Value>/home/ruiliu/Github/Practice_new/Practice/build/test/PracticeTest</Value>
 				</NamedMeasurement>
 				<Measurement>
-					<Value encoding="base64" compression="gzip">eJyFk0tP4zAQgO/9FXOEA3lQtOoe9lBgFxWWUrXhQlVZTjIk1jqeyg9K+uvXaVZdQBDPJePkm2+cOLN0SglVQcOFOjmFZ00NxDU1GGsnpHDxjbC1y+OF5oUVBTKFu+MirogqiRaNfZsaXcRVl7HOGhXFaP3jGBtY/ms5HkMHmb5pvwDjhL9Go/XZMTZwIynnsgdQvQhNqkHlYbRnbvsBTidvtb9n8+zq4frnaA3LxzkcYnO8G7EkSVI2XUhnLheacomNJ/t4uAuQcJJAY04H1Ocs09x/RlU9oSYzoP5AhtUX7LGS7dw1OerZbMD8HgyLv7F71BVmO1qRtlhOtebt0NY/Lwg3mrAlWW5xZbV/7YEG78Gw+Dv7Jfb7S7ffD0j/QwFhmqQJu+evM1Vo5AYzukPcXgnbrv60/sDwqybBwmDj8YTd4g6lmapyZUnhl8fwGRvSp/7XuI2iaJTVCLqbLXoG6/PDnJGzW2dhx41/1tALlmCEKhCEn8HXArE0PVz70ppk2VWnyfkF5O1hgv8CSSpLNw==</Value>
+					<Value encoding="base64" compression="gzip">eJyFk0tP4zAQgO/9FXOEA3lQtJTDHgq7i8qjVG24bFVZTjIk1jqeyg9K+utxWtQFBPFcMk6++caJM3OnlFAVNFyoo2N40tRAXFODsXZCChdfC1u7PJ5pXlhRIFO4OSziiqiSaNHY96nRRVx1GeusUVEMlj8PsYL5W8vhOXSQ2Tcd7hZgnPDXaLA8OcQKriXlXO4BVM9Ck2pQeRjtiVt/gtPRe+3dZJpdPfz6PVjC/HEKu1gd7kYsSZKUjWfSmcuZplxi48l9PNwGSDhKoDHHPepTlmnuP6Oq/qIm06P+RIbVZ+yxku3UNTnqyaTH/BEMi3+we9QVZhtakLZYjrXmbd/Wvy4INxqxOVlucWG1f+2eBh/BsPiC/RHb7aXbbnuk/6GAME3ShN3zl4kqNHKDGd0irq+EbRf/Wn9g+F2TYGGw8XDEbnCD0oxVubCk8Ntj+IoN6VP/a9xEUTTIagTdzRY9gfX5bs7I2bWzsOHGP2voGUswQhUIws/gS4FYmj1c+9KaZNlVp8npGeTtboJfAViiSzs=</Value>
 				</Measurement>
 			</Results>
 		</Test>
-		<EndDateTime>Jul 05 16:56 EDT</EndDateTime>
-		<EndTestTime>1593982560</EndTestTime>
+		<EndDateTime>Jul 05 19:55 EDT</EndDateTime>
+		<EndTestTime>1593993325</EndTestTime>
 		<ElapsedMinutes>0</ElapsedMinutes>
 	</Testing>
 </Site>

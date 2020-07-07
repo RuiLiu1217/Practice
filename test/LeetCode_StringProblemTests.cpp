@@ -23,3 +23,26 @@ TEST(LC, _0008_StringToInteger) {
     EXPECT_EQ(obj.myAtoi("words and 987"),  0);
     EXPECT_EQ(obj.myAtoi("-91283472332"), -2147483648);
 }
+
+TEST(LC, _0038_CountAndSay) {
+    LC::_0038_CountAndSay obj;
+    EXPECT_EQ(obj.countAndSay(0), "1");
+    EXPECT_EQ(obj.countAndSay(1), "11");
+    EXPECT_EQ(obj.countAndSay(2), "21");
+    EXPECT_EQ(obj.countAndSay(3), "1211");
+    EXPECT_EQ(obj.countAndSay(4), "111221");
+}
+
+TEST(LC, _0043_MultiplyStrings) {
+    LC::_0043_MultiplyStrings obj;
+    std::string a = "11";
+    std::string b = "13";
+    std::string g = "143";
+    EXPECT_EQ(obj.multiply(a, b), g);
+}
+
+TEST(LC, _0058_) {
+    LC::_0058_LengthOfLastWord obj;
+    EXPECT_EQ(obj.lengthOfLastWord("Hello World"), 5);
+}
+    

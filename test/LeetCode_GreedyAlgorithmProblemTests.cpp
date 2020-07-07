@@ -1,6 +1,12 @@
 #include <gtest/gtest.h>
 #include "../LeetCode_GreedyAlgorithmProblems.hpp"
 
+TEST(LC, _0011_ContainerWithMostWater) {
+    LC::_0011_ContainerWithMostWater obj;
+    std::vector<int> t{1,8,6,2,5,4,8,3,7};
+    EXPECT_EQ(obj.maxArea(t), 49);
+}
+
 TEST(LC, _0012_IntegerToRoman) {
     LC::_0012_IntegerToRoman obj;
     EXPECT_EQ(obj.intToRoman(3), "III");
@@ -16,3 +22,5 @@ TEST(LC, _0013_RomanToInteger) {
     EXPECT_EQ(obj.romainToInt("IV"), 4);
     EXPECT_EQ(obj.romainToInt("VI"), 6);
 }
+
+

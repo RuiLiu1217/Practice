@@ -14,6 +14,10 @@ set(Sources
     LeetCode_DynamicProgrammingProblemTests.cpp
     LeetCode_GreedyAlgorithmProblemTests.cpp
     LeetCode_BacktracingProblemTests.cpp
+    LeetCode_BitOperationProblemTests.cpp
+    LeetCode_TreeProblemTests.cpp
+    LeetCode_RecursiveProblemTests.cpp
+    LeetCode_HashProblemTests.cpp
 )
 
 add_executable(${This} ${Sources})

@@ -1,6 +1,7 @@
 #include "LeetCode_StringProblems.hpp"
 #include <functional>
 #include <climits>
+#include <algorithm>
 std::string LC::_0005_LongestPalindromicSubstring::longestPalidrome(std::string s) {
     if(s.size() == 0) {
         return "";
@@ -122,3 +123,145 @@ std::string LC::_0014_LongestCommonPrefix::longestCommonPrefix(std::vector<std::
 }
 
 
+std::string LC::_0038_CountAndSay::countAndSay(int n) {
+    std::string s = "1";
+    std::function<std::string()> countOnce = [&](){
+        int i = 0;
+        int j = 0;
+        std::string res;
+        int c = 0;
+        while(i < s.size()) {
+            c = 0;
+            while(j < s.size() && s[i] == s[j]) {
+                ++j;
+                ++c;
+            }
+
+            res += std::to_string(c);
+            res += s[i];
+            i = j;
+        }
+        return res;
+    };
+
+    for(int i = 0; i < n; ++i) {
+        s = countOnce();
+    }
+    return s;
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+std::string LC::_0043_MultiplyStrings::multiply(std::string num1, std::string num2)
+{
+    const int L1 = num1.size();
+    const int L2 = num2.size();
+    if(num1 == "0" || num2 == "0") {
+        return "0";
+    }
+
+    std::function<std::string(int)> mult = [&num1, &num2](int idx) {
+        const int ic = num2[idx] - '0';
+        std::string res;
+        int carry = 0;
+        for (int i = num1.size() - 1; i >= 0; --i) {
+            int curC = (num1[i] - '0');
+            int prd = curC * ic + carry;
+            if (prd >= 10) {
+                carry = prd / 10;
+                prd = prd % 10;
+            } else {
+                carry = 0;
+            }
+            res += (prd + '0');
+        }
+
+        if (carry) {
+            res += (carry + '0');
+            carry = 0;
+        }
+
+        std::reverse(res.begin(), res.end());
+        res += std::string(num2.size() - 1 - idx, '0');
+        return res;
+    };
+
+    std::function<std::string(std::string, std::string)> add = [](std::string num1, std::string num2) {
+        std::reverse(num1.begin(), num1.end());
+        std::reverse(num2.begin(), num2.end());
+        int minL = std::min(num1.size(), num2.size());
+        int carry = 0;
+        int i = 0;
+        std::string res;
+        for (i = 0; i < minL; ++i) {
+            int v = ((num1[i] - '0') + (num2[i] - '0') + carry);
+            if (v >= 10) {
+                carry = 1;
+                v -= 10;
+            } else {
+                carry = 0;
+            }
+            res += ('0' + v);
+        }
+        if (minL < num1.size()) {
+            for (; i < num1.size(); ++i) {
+                int v = (carry + (num1[i] - '0'));
+                if (v >= 10) {
+                    carry = 1;
+                    v -= 10;
+                } else {
+                    carry = 0;
+                }
+                res += ('0' + v);
+            }
+            if (carry) {
+                res += (carry + '0');
+            }
+        } else if (minL < num2.size()) {
+            for (; i < num2.size(); ++i) {
+                int v = (carry + (num2[i] - '0'));
+                if (v >= 10) {
+                    carry = 1;
+                    v -= 10;
+                } else {
+                    carry = 0;
+                }
+                res += ('0' + v);
+            }
+            if (carry) {
+                res += (carry + '0');
+            }
+        } else if (carry != 0) {
+            res += (carry + '0');
+        }
+
+        std::reverse(res.begin(), res.end());
+        return res;
+    };
+
+
+    if (L2 < L1) {
+        return multiply(num2, num1);
+    } else {
+        std::string res;
+        for (int i = 0; i < L2; ++i) {
+            std::string p = mult(L2 - 1 - i);
+            res = add(res, p);
+        }
+        return res;
+    }
+}
+
+int LC::_0058_LengthOfLastWord::lengthOfLastWord(std::string s) {
+    int len = 0;
+    int t = s.size() - 1;
+    while(t >= 0 && s[t] == ' ') {
+        --t;
+    }
+    while(t >= 0 && s[t] != ' ') {
+        ++len;
+        --t;
+    }
+    return len;
+}

@@ -6,13 +6,23 @@
 
 #IncludeRegexTransform: 
 
-/home/ruiliu/Github/Practice_new/Practice/LeetCode_BacktracingProblems.cpp
-LeetCode_BacktracingProblems.hpp
-/home/ruiliu/Github/Practice_new/Practice/LeetCode_BacktracingProblems.hpp
+/home/ruiliu/Github/Practice_new/Practice/LeetCode_ArrayProblems.cpp
+LeetCode_ArrayProblems.hpp
+/home/ruiliu/Github/Practice_new/Practice/LeetCode_ArrayProblems.hpp
+stack
+-
+algorithm
+-
+unordered_map
+-
+climits
+-
 functional
 -
+cmath
+-
 
-/home/ruiliu/Github/Practice_new/Practice/LeetCode_BacktracingProblems.hpp
+/home/ruiliu/Github/Practice_new/Practice/LeetCode_ArrayProblems.hpp
 vector
 -
 string

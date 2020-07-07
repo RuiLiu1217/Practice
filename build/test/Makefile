@@ -236,6 +236,33 @@ LeetCode_BacktracingProblemTests.cpp.s:
 	cd /home/ruiliu/Github/Practice_new/Practice/build && $(MAKE) -f test/CMakeFiles/PracticeTest.dir/build.make test/CMakeFiles/PracticeTest.dir/LeetCode_BacktracingProblemTests.cpp.s
 .PHONY : LeetCode_BacktracingProblemTests.cpp.s
 
+LeetCode_BitOperationProblemTests.o: LeetCode_BitOperationProblemTests.cpp.o
+
+.PHONY : LeetCode_BitOperationProblemTests.o
+
+# target to build an object file
+LeetCode_BitOperationProblemTests.cpp.o:
+	cd /home/ruiliu/Github/Practice_new/Practice/build && $(MAKE) -f test/CMakeFiles/PracticeTest.dir/build.make test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.o
+.PHONY : LeetCode_BitOperationProblemTests.cpp.o
+
+LeetCode_BitOperationProblemTests.i: LeetCode_BitOperationProblemTests.cpp.i
+
+.PHONY : LeetCode_BitOperationProblemTests.i
+
+# target to preprocess a source file
+LeetCode_BitOperationProblemTests.cpp.i:
+	cd /home/ruiliu/Github/Practice_new/Practice/build && $(MAKE) -f test/CMakeFiles/PracticeTest.dir/build.make test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.i
+.PHONY : LeetCode_BitOperationProblemTests.cpp.i
+
+LeetCode_BitOperationProblemTests.s: LeetCode_BitOperationProblemTests.cpp.s
+
+.PHONY : LeetCode_BitOperationProblemTests.s
+
+# target to generate assembly for a file
+LeetCode_BitOperationProblemTests.cpp.s:
+	cd /home/ruiliu/Github/Practice_new/Practice/build && $(MAKE) -f test/CMakeFiles/PracticeTest.dir/build.make test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.s
+.PHONY : LeetCode_BitOperationProblemTests.cpp.s
+
 LeetCode_DynamicProgrammingProblemTests.o: LeetCode_DynamicProgrammingProblemTests.cpp.o
 
 .PHONY : LeetCode_DynamicProgrammingProblemTests.o
@@ -371,6 +398,33 @@ LeetCode_MathProblemTests.cpp.s:
 	cd /home/ruiliu/Github/Practice_new/Practice/build && $(MAKE) -f test/CMakeFiles/PracticeTest.dir/build.make test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.s
 .PHONY : LeetCode_MathProblemTests.cpp.s
 
+LeetCode_RecursiveProblemTests.o: LeetCode_RecursiveProblemTests.cpp.o
+
+.PHONY : LeetCode_RecursiveProblemTests.o
+
+# target to build an object file
+LeetCode_RecursiveProblemTests.cpp.o:
+	cd /home/ruiliu/Github/Practice_new/Practice/build && $(MAKE) -f test/CMakeFiles/PracticeTest.dir/build.make test/CMakeFiles/PracticeTest.dir/LeetCode_RecursiveProblemTests.cpp.o
+.PHONY : LeetCode_RecursiveProblemTests.cpp.o
+
+LeetCode_RecursiveProblemTests.i: LeetCode_RecursiveProblemTests.cpp.i
+
+.PHONY : LeetCode_RecursiveProblemTests.i
+
+# target to preprocess a source file
+LeetCode_RecursiveProblemTests.cpp.i:
+	cd /home/ruiliu/Github/Practice_new/Practice/build && $(MAKE) -f test/CMakeFiles/PracticeTest.dir/build.make test/CMakeFiles/PracticeTest.dir/LeetCode_RecursiveProblemTests.cpp.i
+.PHONY : LeetCode_RecursiveProblemTests.cpp.i
+
+LeetCode_RecursiveProblemTests.s: LeetCode_RecursiveProblemTests.cpp.s
+
+.PHONY : LeetCode_RecursiveProblemTests.s
+
+# target to generate assembly for a file
+LeetCode_RecursiveProblemTests.cpp.s:
+	cd /home/ruiliu/Github/Practice_new/Practice/build && $(MAKE) -f test/CMakeFiles/PracticeTest.dir/build.make test/CMakeFiles/PracticeTest.dir/LeetCode_RecursiveProblemTests.cpp.s
+.PHONY : LeetCode_RecursiveProblemTests.cpp.s
+
 LeetCode_SlidingWindowProblemTests.o: LeetCode_SlidingWindowProblemTests.cpp.o
 
 .PHONY : LeetCode_SlidingWindowProblemTests.o
@@ -425,6 +479,33 @@ LeetCode_StringProblemTests.cpp.s:
 	cd /home/ruiliu/Github/Practice_new/Practice/build && $(MAKE) -f test/CMakeFiles/PracticeTest.dir/build.make test/CMakeFiles/PracticeTest.dir/LeetCode_StringProblemTests.cpp.s
 .PHONY : LeetCode_StringProblemTests.cpp.s
 
+LeetCode_TreeProblemTests.o: LeetCode_TreeProblemTests.cpp.o
+
+.PHONY : LeetCode_TreeProblemTests.o
+
+# target to build an object file
+LeetCode_TreeProblemTests.cpp.o:
+	cd /home/ruiliu/Github/Practice_new/Practice/build && $(MAKE) -f test/CMakeFiles/PracticeTest.dir/build.make test/CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.o
+.PHONY : LeetCode_TreeProblemTests.cpp.o
+
+LeetCode_TreeProblemTests.i: LeetCode_TreeProblemTests.cpp.i
+
+.PHONY : LeetCode_TreeProblemTests.i
+
+# target to preprocess a source file
+LeetCode_TreeProblemTests.cpp.i:
+	cd /home/ruiliu/Github/Practice_new/Practice/build && $(MAKE) -f test/CMakeFiles/PracticeTest.dir/build.make test/CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.i
+.PHONY : LeetCode_TreeProblemTests.cpp.i
+
+LeetCode_TreeProblemTests.s: LeetCode_TreeProblemTests.cpp.s
+
+.PHONY : LeetCode_TreeProblemTests.s
+
+# target to generate assembly for a file
+LeetCode_TreeProblemTests.cpp.s:
+	cd /home/ruiliu/Github/Practice_new/Practice/build && $(MAKE) -f test/CMakeFiles/PracticeTest.dir/build.make test/CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.s
+.PHONY : LeetCode_TreeProblemTests.cpp.s
+
 LintCodeTest.o: LintCodeTest.cpp.o
 
 .PHONY : LintCodeTest.o
@@ -472,6 +553,9 @@ help:
 	@echo "... LeetCode_BacktracingProblemTests.o"
 	@echo "... LeetCode_BacktracingProblemTests.i"
 	@echo "... LeetCode_BacktracingProblemTests.s"
+	@echo "... LeetCode_BitOperationProblemTests.o"
+	@echo "... LeetCode_BitOperationProblemTests.i"
+	@echo "... LeetCode_BitOperationProblemTests.s"
 	@echo "... LeetCode_DynamicProgrammingProblemTests.o"
 	@echo "... LeetCode_DynamicProgrammingProblemTests.i"
 	@echo "... LeetCode_DynamicProgrammingProblemTests.s"
@@ -487,12 +571,18 @@ help:
 	@echo "... LeetCode_MathProblemTests.o"
 	@echo "... LeetCode_MathProblemTests.i"
 	@echo "... LeetCode_MathProblemTests.s"
+	@echo "... LeetCode_RecursiveProblemTests.o"
+	@echo "... LeetCode_RecursiveProblemTests.i"
+	@echo "... LeetCode_RecursiveProblemTests.s"
 	@echo "... LeetCode_SlidingWindowProblemTests.o"
 	@echo "... LeetCode_SlidingWindowProblemTests.i"
 	@echo "... LeetCode_SlidingWindowProblemTests.s"
 	@echo "... LeetCode_StringProblemTests.o"
 	@echo "... LeetCode_StringProblemTests.i"
 	@echo "... LeetCode_StringProblemTests.s"
+	@echo "... LeetCode_TreeProblemTests.o"
+	@echo "... LeetCode_TreeProblemTests.i"
+	@echo "... LeetCode_TreeProblemTests.s"
 	@echo "... LintCodeTest.o"
 	@echo "... LintCodeTest.i"
 	@echo "... LintCodeTest.s"
