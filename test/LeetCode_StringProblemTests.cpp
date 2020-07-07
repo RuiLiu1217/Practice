@@ -41,7 +41,7 @@ TEST(LC, _0043_MultiplyStrings) {
     EXPECT_EQ(obj.multiply(a, b), g);
 }
 
-TEST(LC, _0058_) {
+TEST(LC, _0058_LengthOfLastWord) {
     LC::_0058_LengthOfLastWord obj;
     EXPECT_EQ(obj.lengthOfLastWord("Hello World"), 5);
 }
