@@ -130,3 +130,19 @@ TEST(LC, _0025_ReverseNodeInKGroup) {
     EXPECT_EQ(n->next->next->next->val, 3);
     EXPECT_EQ(n->next->next->next->next->val, 5);
 }
+
+
+TEST(LC, _0061_RotateList) {
+    LC::_0061_RotateList obj;
+    LC::ListNode* h = new LC::ListNode(1);
+    h->next = new LC::ListNode(2);
+    h->next->next = new LC::ListNode(3);
+    h->next->next->next = new LC::ListNode(4);
+    h->next->next->next->next = new LC::ListNode(5);
+    LC::ListNode* n = obj.rotateRight(h, 2);
+    EXPECT_EQ(n->val, 4);
+    EXPECT_EQ(n->next->val, 5);
+    EXPECT_EQ(n->next->next->val, 1);
+    EXPECT_EQ(n->next->next->next->val, 2);
+    EXPECT_EQ(n->next->next->next->next->val, 3);
+}

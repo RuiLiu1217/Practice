@@ -60,6 +60,49 @@ public:
     void solveSudoku(std::vector<std::vector<char>>& board);
 };
 
+
+/*  
+Tag: backtracking
+Given a set of candidate numbers (candidates without duplicates) 
+and a target number (target), find all unique combinations in 
+candidates where the candidate numbers sums to target.
+
+The same repeated number may be chosen from candidates unlimited number of times.
+Note:
+    All numbers (including target) will be positive integers.
+    The solution set must not contain duplicate combinations.
+Example 1:
+    Input: candidates = [2,3,6,7], target = 7,
+A solution set is:
+    [  [7],  [2,2,3] ]
+Example 2:
+    Input: candidates = [2,3,5], target = 8, 
+A solution set is:
+    [  [2,2,2,2],  [2,3,3],  [3,5] ]
+*/
+class _0039_CombinationSum {
+public:
+    std::vector<std::vector<int>> combinationSum(std::vector<int> &candidates, int target);
+private:
+    void combinationSum(std::vector<int> &candidates, int target, std::vector<int> &tmp, std::vector<std::vector<int>> &res);
+};
+
+/*
+Given a collection of [distinct] integers, return all 
+possible permutations
+Example:
+Input: [1,2,3]
+Output:[[1,2,3], [1,3,2], [2,1,3], 
+        [2,3,1], [3,1,2], [3,2,1]]
+*/
+class _0046_Permutations {
+public:
+    std::vector<std::vector<int>> permute(std::vector<int> &nums);
+private:
+    void permuteRecursive(std::vector<int> &nums, int begin, std::vector<std::vector<int>> &result);
+};
+
+
 /*
 The n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no 
 two queens attack each other. Given an integer n, return all distinct solutions to the 

@@ -79,10 +79,10 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -fPIC  "
+					"fragment" : "-g  "
 				},
 				{
-					"fragment" : "-Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers"
+					"fragment" : "-Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers"
 				},
 				{
 					"fragment" : "-std=c++17"
@@ -93,22 +93,22 @@
 				{
 					"backtrace" : 7,
 					"isSystem" : true,
-					"path" : "/home/ruiliu/Github/Practice_new/Practice/googletest/googlemock/include"
+					"path" : "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/googletest/googlemock/include"
 				},
 				{
 					"backtrace" : 7,
 					"isSystem" : true,
-					"path" : "/home/ruiliu/Github/Practice_new/Practice/googletest/googlemock"
+					"path" : "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/googletest/googlemock"
 				},
 				{
 					"backtrace" : 7,
 					"isSystem" : true,
-					"path" : "/home/ruiliu/Github/Practice_new/Practice/googletest/googletest/include"
+					"path" : "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/googletest/googletest/include"
 				},
 				{
 					"backtrace" : 7,
 					"isSystem" : true,
-					"path" : "/home/ruiliu/Github/Practice_new/Practice/googletest/googletest"
+					"path" : "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/googletest/googletest"
 				}
 			],
 			"language" : "CXX",
@@ -122,11 +122,11 @@
 	[
 		{
 			"backtrace" : 6,
-			"id" : "gmock::@d68da25237a7ca2351af"
+			"id" : "gtest::@f95b5c00bd49b3b4698d"
 		},
 		{
 			"backtrace" : 6,
-			"id" : "gtest::@f95b5c00bd49b3b4698d"
+			"id" : "gmock::@d68da25237a7ca2351af"
 		}
 	],
 	"id" : "gmock_main::@d68da25237a7ca2351af",
@@ -141,7 +141,7 @@
 		],
 		"prefix" : 
 		{
-			"path" : "/usr/local"
+			"path" : "C:/Program Files (x86)/Practice"
 		}
 	},
 	"name" : "gmock_main",

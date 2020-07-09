@@ -103,6 +103,53 @@ void LC::_0037_SudokuSolver::solveSudoku(std::vector<std::vector<char>>& board) 
 }
 
 
+
+std::vector<std::vector<int>> LC::_0039_CombinationSum::combinationSum(std::vector<int>& candidates, int target) {
+    std::vector<int> tmp;
+    std::vector<std::vector<int>> res;
+
+    std::function<void(int)> fun = [&](int target) {
+        if(target < 0) {
+            return;
+        }
+        if(target == 0) {
+            res.push_back(tmp);
+        }
+
+        for(int i = 0; i < candidates.size(); ++i) { // select element from the beginning each time
+            // <= is to avoid reselect for example, after 1, 2 are generated, we should not generate 2, 1 again.
+            if(tmp.empty() || (!tmp.empty() && tmp.back() <= candidates[i])) { 
+                tmp.push_back(candidates[i]);
+                fun(target - candidates[i]);
+                tmp.pop_back();
+            }
+        }
+    };
+
+    fun(target);
+    return res;
+}
+
+std::vector<std::vector<int>> LC::_0046_Permutations::permute(std::vector<int> &nums) {
+    std::vector<std::vector<int>> result;
+
+    std::function<void(int)> permuteFun = [&](int begin) {
+        if (begin == nums.size() - 1) {
+            result.push_back(nums);
+            return;
+        }
+
+        for (int i = begin; i < nums.size(); ++i) {
+            std::swap(nums[begin], nums[i]);
+            permuteFun(begin + 1);
+            std::swap(nums[begin], nums[i]);
+        }
+    };
+
+    permuteFun(0);
+    return result;
+}
+
 std::vector<std::vector<std::string>> LC::_0051_NQueens::solveNQueens(int n) {
     std::string ol(n, '.');
     std::vector<std::string> tmp(n, ol);

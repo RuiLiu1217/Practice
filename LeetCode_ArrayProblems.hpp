@@ -219,6 +219,26 @@ public:
 };
 
 
+/* 
+Tag: Binary Search
+
+Given a sorted array and a target value, return the index if the target 
+is found. If not, return the index where it would be if it were inserted 
+in order.
+You may assume no duplicates in the array.
+
+Example 
+Input: [1,3,5,6], 5         :   Output: 2
+Input: [1,3,5,6], 2         :   Output: 1
+Input: [1,3,5,6], 7         :   Output: 4
+Input: [1,3,5,6], 0         :   Output: 0
+*/
+class _0035_SearchInsertPosition {
+public:
+    int searchInsert(std::vector<int>& nums, int target);
+};
+
+
 /*
 Tag: simulate according to the condition
 Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be 
@@ -285,6 +305,96 @@ public:
     std::vector<std::vector<int>> generateMatrix(int n);
 };
 
+
+/*
+Given a non-empty array of digits representing a non-negative integer, 
+plus one to the integer. The digits are stored such that the most significant 
+digit is at the head of the list, and each element in the array contain 
+a single digit.
+You may assume the integer does not contain any leading zero, except 
+the number 0 itself.
+
+Input: [1,2,3]             :     Output: [1,2,4]
+Input: [4,3,2,1]           :     Output: [4,3,2,2]
+Explanation: The array represents the integer 4321.
+*/
+class _0066_PlusOne {
+public:
+    std::vector<int> plusOne(std::vector<int>& digits);
+};
+
+
+
+/*
+Facebook
+Given two binary strings, return their sum (also a binary string).
+The input strings are both non-empty and contains only characters 1 or 0.
+
+Input: a = "11", b = "1"           :        Output: "100"
+Input: a = "1010", b = "1011"      :        Output: "10101"
+*/
+class _0067_AddBinary {
+public:
+    std::string addBinary(std::string a, std::string b);
+};
+
+
+/*
+Tag: binary search
+Write an efficient algorithm that searches for a value in an m x n matrix. 
+This matrix has the following properties:
+Integers in each row are sorted from left to right. The first integer of 
+each row is greater than the last integer of the previous row.
+
+Example 1:
+
+Input:
+matrix = [
+  [1,   3,  5,  7],
+  [10, 11, 16, 20],
+  [23, 30, 34, 50]
+]
+target = 3
+Output: true
+Example 2:
+
+Input:
+matrix = [
+  [1,   3,  5,  7],
+  [10, 11, 16, 20],
+  [23, 30, 34, 50]
+]
+target = 13
+Output: false
+*/
+class _0074_SearchA2DMatrix {
+public:
+    bool searchMatrix(std::vector<std::vector<int>>& matrix, int target);
+};
+
+
+/*
+Tag: array
+Given an array with n objects colored red, white or blue, sort them 
+in-place so that objects of the same color are adjacent, with the colors 
+in the order red, white and blue.
+Here, we will use the integers 0, 1, and 2 to represent the color red, white, 
+and blue respectively.
+Note: You are not suppose to use the library's sort function for this problem.
+Example:
+Input: [2,0,2,1,1,0]
+Output: [0,0,1,1,2,2]
+Follow up:
+
+A rather straight forward solution is a two-pass algorithm using counting sort.
+First, iterate the array counting number of 0's, 1's, and 2's, then overwrite 
+array with total number of 0's, then 1's and followed by 2's.
+Could you come up with a one-pass algorithm using only constant space?
+*/
+class _0075_SortColors {
+public:
+    void sortColors(std::vector<int>& nums);
+};
 
 
 }

@@ -358,6 +358,29 @@ int LC::_0033_SearchInRotatedSortedArray::search(std::vector<int>& nums, int tar
 };
 
 
+// Binary search
+int LC::_0035_SearchInsertPosition::searchInsert(std::vector<int>& nums, int target) {
+    if(nums.size() == 0) {
+        return 1;
+    }
+    int mid = 0;
+    int left = 0;
+    int right = nums.size() - 1; // the last element is included
+    while(left <= right) { 
+        mid = left + (right - left) / 2;
+        if(nums[mid] == target) {
+            return mid;
+        }
+        else if(target < nums[mid]) {
+            right = mid - 1;
+        } else {
+            left = mid + 1; // every time we have to modify the right and left NOT give mid, otherwise may infinite-loop
+        }
+    }
+    return left; // return the first one
+}
+
+
 
 bool LC::_0036_ValidSudoku::isValidSudoku(std::vector<std::vector<char>> &board) {
     std::function<bool(char, std::vector<int>&)> containDup = [](char tmp,  std::vector<int>& ext){
@@ -437,5 +460,117 @@ void LC::_0048_RotateImage::rotate(std::vector<std::vector<int>>& matrix) {
 
     for(int i = 0; i < matrix.size(); ++i) {
         std::reverse(matrix[i].begin(), matrix[i].end());
+    }
+}
+
+
+
+std::string LC::_0067_AddBinary::addBinary(std::string a, std::string b) {
+    std::stack<char> ast;
+    std::stack<char> bst;
+    std::stack<char> resst;
+    for(auto& ch : a) {
+        ast.push(ch);
+    }
+    for(auto& ch : b) {
+        bst.push(ch);
+    }
+
+    int carry = 0;
+    while(!ast.empty() && !bst.empty()) {
+        int cha = ast.top() - '0';
+        int chb = bst.top() - '0';
+        ast.pop();
+        bst.pop();
+        int re = cha + chb + carry;
+        if(re >= 2) {
+            re -= 2;
+            carry = 1;
+        } else {
+            carry = 0;
+        }
+        resst.push(static_cast<char>('0' + re));            
+    }
+
+    while(!ast.empty()) {
+        int cha = ast.top() - '0';
+        ast.pop();
+        int re = cha + carry;
+        if(re >= 2) {
+            re -= 2;
+            carry = 1;
+        } else {
+            carry = 0;
+        }
+        resst.push(static_cast<char>('0' + re));
+    }
+
+    while(!bst.empty()) {
+        int chb = bst.top() - '0';
+        bst.pop();
+        int re = chb + carry;
+        if(re >= 2) {
+            re -= 2;
+            carry = 1;
+        } else {
+            carry = 0;
+        }
+        resst.push(static_cast<char>('0' + re));
+    }
+
+    if(carry == 1) {
+        resst.push('1');
+    }
+    
+    std::string res;
+    while(!resst.empty())
+    {
+        res = res + resst.top();
+        resst.pop();
+    }
+    return res;
+}
+
+
+
+bool LC::_0074_SearchA2DMatrix::searchMatrix(std::vector<std::vector<int>>& matrix, int target) {
+    const int M = matrix.size();
+    if(M == 0) {
+        return false;
+    }
+    const int N = matrix[0].size();
+    if(N == 0) {
+        return false;
+    }
+    int i = 0;
+    int j = N - 1;
+    while(i < M && j >= 0) {
+        if(matrix[i][j] == target) {
+            return true;
+        } else if(matrix[i][j] > target) {
+            --j;
+        } else {
+            ++i;
+        }
+    }
+    return false;
+}
+
+
+void LC::_0075_SortColors::sortColors(std::vector<int>& nums) {
+    int s1 = 0;
+    int s2 = 0;
+    for(auto& n : nums) {
+        if(n == 0) {
+            n = nums[s2];
+            nums[s2] = nums[s1];
+            nums[s1] = 0;
+            ++s1;
+            ++s2;
+        } else if(n == 1) {
+            n = nums[s2];
+            nums[s2] = 1;
+            ++s2;
+        }
     }
 }

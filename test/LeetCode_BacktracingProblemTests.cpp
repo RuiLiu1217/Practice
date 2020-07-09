@@ -30,8 +30,26 @@ TEST(LC, _0037_SudokuSolver) {
     obj.solveSudoku(board);
 }
 
+TEST(LC, _0039_CombinationSum) {
+    LC::_0039_CombinationSum obj;
+    std::vector<int> test{2,3,6,7};
+    std::vector<std::vector<int>> res = obj.combinationSum(test, 7);
+    std::vector<std::vector<int>> groundTruth {{2,2,3}, {7}};
+    EXPECT_EQ(groundTruth, res);
+}
+
+TEST(LC, _0046_Permutations) {
+    LC::_0046_Permutations obj;
+
+    std::vector<int> input{1,2};
+    std::vector<std::vector<int>> res = obj.permute(input);
+    std::vector<std::vector<int>> groundTruth = {{1,2}, {2,1}};
+    EXPECT_EQ(res, groundTruth);
+}
+
 TEST(LC, _0052_NQueensII) {
     LC::_0052_NQueensII obj;
     EXPECT_EQ(obj.totalNQueens(4), 2);
     EXPECT_EQ(obj.totalNQueens(8), 92);
 }
+

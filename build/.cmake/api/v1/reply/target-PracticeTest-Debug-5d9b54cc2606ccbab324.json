@@ -2,7 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "test/PracticeTest"
+			"path" : "test/PracticeTest.exe"
+		},
+		{
+			"path" : "test/PracticeTest.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -15,7 +18,8 @@
 		],
 		"files" : 
 		[
-			"test/CMakeLists.txt"
+			"test/CMakeLists.txt",
+			"googletest/googletest/CMakeLists.txt"
 		],
 		"nodes" : 
 		[
@@ -33,6 +37,15 @@
 				"file" : 0,
 				"line" : 25,
 				"parent" : 0
+			},
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 143,
+				"parent" : 3
 			}
 		]
 	},
@@ -42,7 +55,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -fPIE  "
+					"fragment" : "-g  "
 				},
 				{
 					"fragment" : "-std=gnu++17"
@@ -53,12 +66,12 @@
 				{
 					"backtrace" : 2,
 					"isSystem" : true,
-					"path" : "/home/ruiliu/Github/Practice_new/Practice/googletest/googletest/include"
+					"path" : "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/googletest/googletest/include"
 				},
 				{
 					"backtrace" : 2,
 					"isSystem" : true,
-					"path" : "/home/ruiliu/Github/Practice_new/Practice/googletest/googletest"
+					"path" : "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/googletest/googletest"
 				}
 			],
 			"language" : "CXX",
@@ -89,11 +102,11 @@
 		},
 		{
 			"backtrace" : 2,
-			"id" : "gtest_main::@f95b5c00bd49b3b4698d"
+			"id" : "gtest::@f95b5c00bd49b3b4698d"
 		},
 		{
 			"backtrace" : 2,
-			"id" : "gtest::@f95b5c00bd49b3b4698d"
+			"id" : "gtest_main::@f95b5c00bd49b3b4698d"
 		}
 	],
 	"id" : "PracticeTest::@36f028580bb02cc8272a",
@@ -111,27 +124,28 @@
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "../lib/libgtest_maind.a",
+				"fragment" : "..\\lib\\libgtest_maind.a",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "../libPractice.a",
+				"fragment" : "..\\libPractice.a",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "../lib/libgtestd.a",
+				"backtrace" : 4,
+				"fragment" : "..\\lib\\libgtestd.a",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lpthread",
+				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
 				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
 	"name" : "PracticeTest",
-	"nameOnDisk" : "PracticeTest",
+	"nameOnDisk" : "PracticeTest.exe",
 	"paths" : 
 	{
 		"build" : "test",

@@ -169,3 +169,40 @@ LC::ListNode* LC::_0025_ReverseNodeInKGroup::reverseGroup(ListNode* head, int k)
         return newHead;
     }
 }
+
+
+
+LC::ListNode *LC::_0061_RotateList::rotateRight(ListNode* head, int k)
+{
+    if (!head) {
+        return nullptr;
+    }
+
+    ListNode *p = head;
+    int count = 1;
+    while (p->next != nullptr) {
+        p = p->next;
+        ++count;
+    }
+
+    k = k % count;
+    if (k == 0) {
+        return head;
+    }
+
+    ListNode *q = head;
+    while (k) {
+        q = q->next;
+        --k;
+    }
+    ListNode *t = head;
+    while (q->next != nullptr) {
+        t = t->next;
+        q = q->next;
+    }
+    ListNode *nh = t->next;
+    t->next = nullptr;
+    q->next = head;
+
+    return nh;
+}

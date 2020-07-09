@@ -3,29 +3,30 @@
 	{
 		"generator" : 
 		{
-			"name" : "Ninja"
+			"multiConfig" : false,
+			"name" : "MinGW Makefiles"
 		},
 		"paths" : 
 		{
-			"cmake" : "/usr/bin/cmake",
-			"cpack" : "/usr/bin/cpack",
-			"ctest" : "/usr/bin/ctest",
-			"root" : "/usr/share/cmake-3.16"
+			"cmake" : "C:/Program Files/CMake/bin/cmake.exe",
+			"cpack" : "C:/Program Files/CMake/bin/cpack.exe",
+			"ctest" : "C:/Program Files/CMake/bin/ctest.exe",
+			"root" : "C:/Program Files/CMake/share/cmake-3.17"
 		},
 		"version" : 
 		{
 			"isDirty" : false,
 			"major" : 3,
-			"minor" : 16,
+			"minor" : 17,
 			"patch" : 3,
-			"string" : "3.16.3",
+			"string" : "3.17.3",
 			"suffix" : ""
 		}
 	},
 	"objects" : 
 	[
 		{
-			"jsonFile" : "codemodel-v2-2a4c5eef4465b06330f8.json",
+			"jsonFile" : "codemodel-v2-cc4bec5000e2a9a03f3f.json",
 			"kind" : "codemodel",
 			"version" : 
 			{
@@ -34,7 +35,7 @@
 			}
 		},
 		{
-			"jsonFile" : "cache-v2-b4707c8dfb58cb6e4602.json",
+			"jsonFile" : "cache-v2-0a169132a7eb05376688.json",
 			"kind" : "cache",
 			"version" : 
 			{
@@ -63,7 +64,7 @@
 				"responses" : 
 				[
 					{
-						"jsonFile" : "cache-v2-b4707c8dfb58cb6e4602.json",
+						"jsonFile" : "cache-v2-0a169132a7eb05376688.json",
 						"kind" : "cache",
 						"version" : 
 						{
@@ -72,7 +73,7 @@
 						}
 					},
 					{
-						"jsonFile" : "codemodel-v2-2a4c5eef4465b06330f8.json",
+						"jsonFile" : "codemodel-v2-cc4bec5000e2a9a03f3f.json",
 						"kind" : "codemodel",
 						"version" : 
 						{

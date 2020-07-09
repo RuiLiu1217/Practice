@@ -97,6 +97,18 @@ TEST(LC, _0033_SearchInRotatedSortedArray) {
     EXPECT_EQ(obj.search(nums2, target2), -1);
 }
 
+TEST(LC, _0035_SearchInsertPosition) {
+    LC::_0035_SearchInsertPosition obj;
+    std::vector<int> test1{1,3,5,6};
+    EXPECT_EQ(obj.searchInsert(test1, 5), 2);
+    std::vector<int> test2{1,3,5,6};
+    EXPECT_EQ(obj.searchInsert(test1, 2), 1);
+    std::vector<int> test3{1,3,5,6};
+    EXPECT_EQ(obj.searchInsert(test3, 7), 4);
+    std::vector<int> test4{1,3,5,6};
+    EXPECT_EQ(obj.searchInsert(test4, 0), 0);
+}
+
 TEST(LC, _0036_ValidSudoku) { // WILL NOT TEST THIS
     EXPECT_EQ(1,1);
 }
@@ -115,3 +127,26 @@ TEST(LC, _0048_RotateImage) {
     EXPECT_EQ(t1, t3);
 }
 
+TEST(LC, _0067_AddBinary) {
+    LC::_0067_AddBinary obj;
+    std::string a = "1101";
+    std::string b = "11001";
+    std::string res = obj.addBinary(a, b);
+    std::string groundTruth = "100110";
+    EXPECT_EQ(res, groundTruth);
+}
+
+TEST(LC, _0074_SearchA2DMatrix) {
+    LC::_0074_SearchA2DMatrix obj;
+    std::vector<std::vector<int>> t1{{1,   3,  5,  7}, {10, 11, 16, 20}, {23, 30, 34, 50}};
+    EXPECT_TRUE(obj.searchMatrix(t1, 3));
+    EXPECT_FALSE(obj.searchMatrix(t1, 13));
+}
+
+TEST(LC, _0075_SortColors) {
+    LC::_0075_SortColors obj;
+    std::vector<int> input{2,0,2,1,1,0};
+    std::vector<int> ground{0,0,1,1,2,2};
+    obj.sortColors(input);
+    EXPECT_EQ(input, ground);
+}
