@@ -138,7 +138,11 @@ TEST(LC, _0067_AddBinary) {
 
 TEST(LC, _0074_SearchA2DMatrix) {
     LC::_0074_SearchA2DMatrix obj;
-    std::vector<std::vector<int>> t1{{1,   3,  5,  7}, {10, 11, 16, 20}, {23, 30, 34, 50}};
+    std::vector<std::vector<int>> t1 {
+        {1, 3, 5, 7}, 
+        {10, 11, 16, 20}, 
+        {23, 30, 34, 50}
+    };
     EXPECT_TRUE(obj.searchMatrix(t1, 3));
     EXPECT_FALSE(obj.searchMatrix(t1, 13));
 }
@@ -149,4 +153,17 @@ TEST(LC, _0075_SortColors) {
     std::vector<int> ground{0,0,1,1,2,2};
     obj.sortColors(input);
     EXPECT_EQ(input, ground);
+}
+
+TEST(LC, _0088_MergeSortedArray) {
+    LC::_0088_MergeSortedArray obj;
+    std::vector<int> nums1{1,2,3,0,0,0};
+    int m = 3;
+    std::vector<int> nums2{2,5,6};
+    int n = 3;
+    obj.merge(nums1, 3, nums2, 3);
+    std::vector<int> res{1,2,2,3,5,6};
+    EXPECT_EQ(res, nums1);
+
+   
 }

@@ -163,6 +163,79 @@ private:
 
 
 
+/*
+Given two integers n and k, return all possible combinations of k numbers out of 1 ... n.
+Example:
+Input: n = 4, k = 2
+Output:
+[
+  [2,4],
+  [3,4],
+  [2,3],
+  [1,2],
+  [1,3],
+  [1,4],
+]
+*/
+class _0077_Combinations {
+private:
+    int N;
+    int K;
+public:
+    std::vector<std::vector<int>> combine(int n, int k);
+};
+
+
+/*
+Given a set of distinct integers, nums, return all possible subsets (the power set).
+Note: The solution set must not contain duplicate subsets.
+Example:
+Input: nums = [1,2,3]
+Output:
+[
+  [3],
+  [1],
+  [2],
+  [1,2,3],
+  [1,3],
+  [2,3],
+  [1,2],
+  []
+]
+*/
+class _0078_Subsets{
+public:
+    std::vector<std::vector<int>> subsets(std::vector<int>& nums);
+    std::vector<std::vector<int>> subsets(std::vector<int>& nums, int beg, int end);
+};
+
+
+
+/*
+Given a 2D board and a word, find if the word exists in the grid.
+The word can be constructed from letters of sequentially adjacent 
+cell, where "adjacent" cells are those horizontally or vertically 
+neighboring. The same letter cell may not be used more than once.
+
+Example:
+
+board =
+[
+  ['A','B','C','E'],
+  ['S','F','C','S'],
+  ['A','D','E','E']
+]
+
+Given word = "ABCCED", return true.
+Given word = "SEE", return true.
+Given word = "ABCB", return false.
+*/
+class _0079_WordSearch {
+public:
+    bool exist(std::vector<std::vector<char>>& board, std::string word);
+    void exist(std::vector<std::vector<char>>& board, int i, int j, std::string& word, int start, int end, bool& res);
+};
+
 }
 
 

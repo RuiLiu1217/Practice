@@ -1,0 +1,189 @@
+Start testing: Jul 10 00:15 Eastern Daylight Time
+----------------------------------------------------------
+1/1 Testing: PracticeTest
+1/1 Test: PracticeTest
+Command: "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test/PracticeTest.exe"
+Directory: C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test
+"PracticeTest" start time: Jul 10 00:15 Eastern Daylight Time
+Output:
+----------------------------------------------------------
+Running main() from C:\Users\liuru\OneDrive\Documents\GitHub\Practice\googletest\googletest\src\gtest_main.cc
+[==========] Running 78 tests from 3 test suites.
+[----------] Global test environment set-up.
+[----------] 59 tests from LC
+[ RUN      ] LC._0049_GroupAnagrams
+[       OK ] LC._0049_GroupAnagrams (0 ms)
+[ RUN      ] LC._0050_PowXN
+[       OK ] LC._0050_PowXN (0 ms)
+[ RUN      ] LC._1485_
+[       OK ] LC._1485_ (0 ms)
+[ RUN      ] LC._0098_ValidateBinarySearchTree
+[       OK ] LC._0098_ValidateBinarySearchTree (0 ms)
+[ RUN      ] LC._0100_SameTree
+[       OK ] LC._0100_SameTree (0 ms)
+[ RUN      ] LC.LC__0017__Test
+[       OK ] LC.LC__0017__Test (0 ms)
+[ RUN      ] LC._0022_GenerateParentheses
+[       OK ] LC._0022_GenerateParentheses (0 ms)
+[ RUN      ] LC._0037_SudokuSolver
+[       OK ] LC._0037_SudokuSolver (6 ms)
+[ RUN      ] LC._0039_CombinationSum
+[       OK ] LC._0039_CombinationSum (0 ms)
+[ RUN      ] LC._0046_Permutations
+[       OK ] LC._0046_Permutations (0 ms)
+[ RUN      ] LC._0052_NQueensII
+[       OK ] LC._0052_NQueensII (1 ms)
+[ RUN      ] LC._0077_Combinations
+[       OK ] LC._0077_Combinations (0 ms)
+[ RUN      ] LC._0078_Subsets
+[       OK ] LC._0078_Subsets (0 ms)
+[ RUN      ] LC._0079_WordSearch
+[       OK ] LC._0079_WordSearch (0 ms)
+[ RUN      ] LC._0011_ContainerWithMostWater
+[       OK ] LC._0011_ContainerWithMostWater (0 ms)
+[ RUN      ] LC._0012_IntegerToRoman
+[       OK ] LC._0012_IntegerToRoman (0 ms)
+[ RUN      ] LC._0013_RomanToInteger
+[       OK ] LC._0013_RomanToInteger (0 ms)
+[ RUN      ] LC._0010_RegularExpressionMatching
+[       OK ] LC._0010_RegularExpressionMatching (0 ms)
+[ RUN      ] LC._0062_UniquePaths
+[       OK ] LC._0062_UniquePaths (0 ms)
+[ RUN      ] LC._0063_UniquePathsII
+[       OK ] LC._0063_UniquePathsII (0 ms)
+[ RUN      ] LC._0064_MinimumPathSum
+[       OK ] LC._0064_MinimumPathSum (0 ms)
+[ RUN      ] LC._0070_ClimbingStairs
+[       OK ] LC._0070_ClimbingStairs (0 ms)
+[ RUN      ] LC._0007_ReverseInteger
+[       OK ] LC._0007_ReverseInteger (0 ms)
+[ RUN      ] LC._0009_PalindromeNumber
+[       OK ] LC._0009_PalindromeNumber (0 ms)
+[ RUN      ] LC._0029_DivideTwoIntegers
+[       OK ] LC._0029_DivideTwoIntegers (0 ms)
+[ RUN      ] LC._0005_LongestPalindromicSubstring
+[       OK ] LC._0005_LongestPalindromicSubstring (0 ms)
+[ RUN      ] LC._0006_ZigZagConversion
+[       OK ] LC._0006_ZigZagConversion (0 ms)
+[ RUN      ] LC._0008_StringToInteger
+[       OK ] LC._0008_StringToInteger (0 ms)
+[ RUN      ] LC._0038_CountAndSay
+[       OK ] LC._0038_CountAndSay (0 ms)
+[ RUN      ] LC._0043_MultiplyStrings
+[       OK ] LC._0043_MultiplyStrings (0 ms)
+[ RUN      ] LC._0058_LengthOfLastWord
+[       OK ] LC._0058_LengthOfLastWord (0 ms)
+[ RUN      ] LC._0003_LongestSubstringWithoutRepeatingCharacters
+[       OK ] LC._0003_LongestSubstringWithoutRepeatingCharacters (0 ms)
+[ RUN      ] LC.LC__0002_Test
+[       OK ] LC.LC__0002_Test (0 ms)
+[ RUN      ] LC._0019_RemoveNthNodeFromEndToList
+[       OK ] LC._0019_RemoveNthNodeFromEndToList (0 ms)
+[ RUN      ] LC._0021_MergeTwoSortedLists
+[       OK ] LC._0021_MergeTwoSortedLists (0 ms)
+[ RUN      ] LC._0023_MergeKeSortedLists
+[       OK ] LC._0023_MergeKeSortedLists (0 ms)
+[ RUN      ] LC._0024_
+[       OK ] LC._0024_ (0 ms)
+[ RUN      ] LC._0025_ReverseNodeInKGroup
+[       OK ] LC._0025_ReverseNodeInKGroup (0 ms)
+[ RUN      ] LC._0061_RotateList
+[       OK ] LC._0061_RotateList (0 ms)
+[ RUN      ] LC._0082_RemoveDuplicatesFromSortedListII
+[       OK ] LC._0082_RemoveDuplicatesFromSortedListII (0 ms)
+[ RUN      ] LC._0083_RemoveDuplicatesFromSortedList
+[       OK ] LC._0083_RemoveDuplicatesFromSortedList (0 ms)
+[ RUN      ] LC._0086_PartitionList
+[       OK ] LC._0086_PartitionList (0 ms)
+[ RUN      ] LC._0001_TwoSum
+[       OK ] LC._0001_TwoSum (0 ms)
+[ RUN      ] LC.LC__0004__Test
+[       OK ] LC.LC__0004__Test (0 ms)
+[ RUN      ] LC._0015_3sum
+[       OK ] LC._0015_3sum (0 ms)
+[ RUN      ] LC._0020_ValidParentheses
+[       OK ] LC._0020_ValidParentheses (0 ms)
+[ RUN      ] LC._0026_RemoveDuplicatesFromSortedArray
+[       OK ] LC._0026_RemoveDuplicatesFromSortedArray (0 ms)
+[ RUN      ] LC._0027_RemoveElement
+[       OK ] LC._0027_RemoveElement (0 ms)
+[ RUN      ] LC._0031_NextPermutation
+[       OK ] LC._0031_NextPermutation (0 ms)
+[ RUN      ] LC._0056_MergeIntervals
+[       OK ] LC._0056_MergeIntervals (0 ms)
+[ RUN      ] LC._0059_SpiralMatrixII
+[       OK ] LC._0059_SpiralMatrixII (0 ms)
+[ RUN      ] LC._0033_SearchInRotatedSortedArray
+[       OK ] LC._0033_SearchInRotatedSortedArray (0 ms)
+[ RUN      ] LC._0035_SearchInsertPosition
+[       OK ] LC._0035_SearchInsertPosition (0 ms)
+[ RUN      ] LC._0036_ValidSudoku
+[       OK ] LC._0036_ValidSudoku (0 ms)
+[ RUN      ] LC._0048_RotateImage
+[       OK ] LC._0048_RotateImage (0 ms)
+[ RUN      ] LC._0067_AddBinary
+[       OK ] LC._0067_AddBinary (0 ms)
+[ RUN      ] LC._0074_SearchA2DMatrix
+[       OK ] LC._0074_SearchA2DMatrix (0 ms)
+[ RUN      ] LC._0075_SortColors
+[       OK ] LC._0075_SortColors (0 ms)
+[ RUN      ] LC._0088_MergeSortedArray
+[       OK ] LC._0088_MergeSortedArray (0 ms)
+[----------] 59 tests from LC (7 ms total)
+
+[----------] 1 test from Lc
+[ RUN      ] Lc.GRAPHPROBLEMS
+[       OK ] Lc.GRAPHPROBLEMS (0 ms)
+[----------] 1 test from Lc (0 ms total)
+
+[----------] 18 tests from LINTCODE
+[ RUN      ] LINTCODE._0001_APlusBProblem
+[       OK ] LINTCODE._0001_APlusBProblem (0 ms)
+[ RUN      ] LINTCODE._0002_TrailingZeros
+[       OK ] LINTCODE._0002_TrailingZeros (0 ms)
+[ RUN      ] LINTCODE._0004_UglyNumberII
+[       OK ] LINTCODE._0004_UglyNumberII (0 ms)
+[ RUN      ] LINTCODE._0006_MergeTwoSortedArrays
+[       OK ] LINTCODE._0006_MergeTwoSortedArrays (0 ms)
+[ RUN      ] LINTCODE._0008_RotateString
+[       OK ] LINTCODE._0008_RotateString (0 ms)
+[ RUN      ] LINTCODE._0009_FizzBuzz
+[       OK ] LINTCODE._0009_FizzBuzz (0 ms)
+[ RUN      ] LINTCODE._1010_MaxIncreaseToKeepCitySkyline
+[       OK ] LINTCODE._1010_MaxIncreaseToKeepCitySkyline (0 ms)
+[ RUN      ] LINTCODE._1038_JewelsAndStones
+[       OK ] LINTCODE._1038_JewelsAndStones (0 ms)
+[ RUN      ] LINTCODE._1104_JudgeRouteCircle
+[       OK ] LINTCODE._1104_JudgeRouteCircle (0 ms)
+[ RUN      ] LINTCODE._1115_AverageOfLevelsInBinaryTree
+[       OK ] LINTCODE._1115_AverageOfLevelsInBinaryTree (0 ms)
+[ RUN      ] LINTCODE._1126_MergeTwoBinaryTrees
+[       OK ] LINTCODE._1126_MergeTwoBinaryTrees (0 ms)
+[ RUN      ] LINTCODE._1317_CountCompleteTreeNode
+[       OK ] LINTCODE._1317_CountCompleteTreeNode (1 ms)
+[ RUN      ] LINTCODE._1332_NumberOf1Bits
+[       OK ] LINTCODE._1332_NumberOf1Bits (0 ms)
+[ RUN      ] LINTCODE._1355_PascalsTriangle
+[       OK ] LINTCODE._1355_PascalsTriangle (0 ms)
+[ RUN      ] LINTCODE._1508_ScoreAfterFlippingMatrix
+[       OK ] LINTCODE._1508_ScoreAfterFlippingMatrix (0 ms)
+[ RUN      ] LINTCODE._1511_MirrorReflection
+[       OK ] LINTCODE._1511_MirrorReflection (0 ms)
+[ RUN      ] LINTCODE._1535_ToLowerCase
+[       OK ] LINTCODE._1535_ToLowerCase (0 ms)
+[ RUN      ] LINTCODE._1592_FindAndReplacePattern
+[       OK ] LINTCODE._1592_FindAndReplacePattern (0 ms)
+[----------] 18 tests from LINTCODE (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 78 tests from 3 test suites ran. (8 ms total)
+[  PASSED  ] 78 tests.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"PracticeTest" end time: Jul 10 00:15 Eastern Daylight Time
+"PracticeTest" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Jul 10 00:15 Eastern Daylight Time

@@ -146,3 +146,53 @@ TEST(LC, _0061_RotateList) {
     EXPECT_EQ(n->next->next->next->val, 2);
     EXPECT_EQ(n->next->next->next->next->val, 3);
 }
+
+TEST(LC, _0082_RemoveDuplicatesFromSortedListII) {
+    LC::_0082_RemoveDuplicatesFromSortedListII obj;
+    LC::ListNode* h = new LC::ListNode(1);
+    h->next = new LC::ListNode(2);
+    h->next->next = new LC::ListNode(3);
+    h->next->next->next = new LC::ListNode(3);
+    h->next->next->next->next = new LC::ListNode(4);
+    h->next->next->next->next->next = new LC::ListNode(4);
+    h->next->next->next->next->next->next = new LC::ListNode(5);
+    LC::ListNode* res = obj.deleteDuplicates(h);
+    EXPECT_EQ(res->val, 1);
+    EXPECT_EQ(res->next->val, 2);
+    EXPECT_EQ(res->next->next->val, 5);
+
+}
+
+TEST(LC, _0083_RemoveDuplicatesFromSortedList) {
+    LC::_0083_RemoveDuplicatesFromSortedList obj;
+    LC::ListNode* h = new LC::ListNode(1);
+    h->next = new LC::ListNode(2);
+    h->next->next = new LC::ListNode(3);
+    h->next->next->next = new LC::ListNode(3);
+    h->next->next->next->next = new LC::ListNode(4);
+    h->next->next->next->next->next = new LC::ListNode(4);
+    h->next->next->next->next->next->next = new LC::ListNode(5);
+    LC::ListNode* res = obj.deleteDuplicates(h);
+    EXPECT_EQ(res->val, 1);
+    EXPECT_EQ(res->next->val, 2);
+    EXPECT_EQ(res->next->next->val, 3);
+    EXPECT_EQ(res->next->next->next->val, 4);
+    EXPECT_EQ(res->next->next->next->next->val, 5);
+}
+
+TEST(LC, _0086_PartitionList) {
+    LC::_0086_PartitionList obj;
+    LC::ListNode* h = new LC::ListNode(1);
+    h->next = new LC::ListNode(4);
+    h->next->next = new LC::ListNode(3);
+    h->next->next->next = new LC::ListNode(2);
+    h->next->next->next->next = new LC::ListNode(5);
+    h->next->next->next->next->next = new LC::ListNode(2);
+    LC::ListNode* r = obj.partition(h, 3);
+    EXPECT_EQ(h->val, 1);
+    EXPECT_EQ(h->next->val, 2);
+    EXPECT_EQ(h->next->next->val, 2);
+    EXPECT_EQ(h->next->next->next->val, 4);
+    EXPECT_EQ(h->next->next->next->next->val, 3);
+    EXPECT_EQ(h->next->next->next->next->next->val, 5);   
+}

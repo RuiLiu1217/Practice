@@ -273,3 +273,97 @@ void LC::_0052_NQueensII::dedateBoard(std::vector<std::vector<int>>& board, int 
     }
 }
 
+
+
+std::vector<std::vector<int>> LC::_0077_Combinations::combine(int n, int k) {
+    N = n;
+    K = k;
+    std::vector<std::vector<int>> res;
+    if(n < k) {
+        return res;
+    }
+    std::vector<int> temp;
+    std::function<void(int, int)> comb = [&](int start, int num) {
+        if(num == K){
+            res.push_back(temp);
+            return;
+        }
+        for(int i = start; i < N; i++) {
+            temp.push_back(i+1);
+            comb(i + 1, num + 1);
+            temp.pop_back();
+        }
+    };
+    comb(0, 0);
+    return res;
+}
+
+
+std::vector<std::vector<int>> LC::_0078_Subsets::subsets(std::vector<int>& nums) {
+    if(nums.size() == 0) {
+        std::vector<std::vector<int>> res;
+        res.push_back(std::vector<int>());
+        return res;
+    }
+    std::function<std::vector<std::vector<int>>(int, int)> subset = [&](int beg, int end) {
+        if(beg == end) {
+            std::vector<std::vector<int>> res;
+            res.push_back(std::vector<int>());
+            return res;
+        }
+
+        int num = nums[beg];
+        std::vector<std::vector<int>> sub1 = subset(beg+1, end);
+        std::vector<std::vector<int>> res;
+        res.reserve(sub1.size() * 2);
+        for(int i = 0; i < sub1.size(); ++i) {
+            auto t = sub1[i];
+            res.push_back(t);
+            t.push_back(num);
+            res.push_back(t);
+        }
+        return res;
+    };
+    return subset(0, nums.size());
+}
+
+
+bool LC::_0079_WordSearch::exist(std::vector<std::vector<char>>& board, std::string word) {
+    bool res = false;
+    int end = word.size();
+    
+    std::function<bool(int, int, int)> EXIST = [&] (int i, int j, int start) {
+         if(start == end) {
+            return true;
+        }
+        if(i < 0 || i >= board.size() || j < 0 || j >= board[0].size()) {
+            return false;
+        }
+
+        if(board[i][j] == word[start]) {
+            char t = board[i][j];
+            board[i][j] = '1';
+            if (!(EXIST( i + 1, j, start + 1) ||
+                EXIST(i - 1, j, start + 1) ||
+                EXIST(i, j + 1, start + 1) ||
+                EXIST(i, j - 1, start + 1))) {
+                    board[i][j] = t;
+                    return false;
+            } else {
+                board[i][j] = t;
+                return true;
+            }
+        } else {
+            return false;
+        }
+    };
+
+    for(int i = 0; i < board.size(); ++i) {
+        for(int j = 0; j < board[i].size(); ++j) {
+            if (EXIST(i, j, 0)) {
+                return true;
+            }
+        }
+    }
+    return res;
+}

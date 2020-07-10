@@ -310,8 +310,8 @@ googletest/googletest/CMakeFiles/gtest_main.dir/clean:
 
 # All Build rule for target.
 test/CMakeFiles/PracticeTest.dir/all: CMakeFiles/Practice.dir/all
-test/CMakeFiles/PracticeTest.dir/all: googletest/googletest/CMakeFiles/gtest.dir/all
 test/CMakeFiles/PracticeTest.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
+test/CMakeFiles/PracticeTest.dir/all: googletest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) $(MAKESILENT) -f test\CMakeFiles\PracticeTest.dir\build.make test/CMakeFiles/PracticeTest.dir/depend
 	$(MAKE) $(MAKESILENT) -f test\CMakeFiles\PracticeTest.dir\build.make test/CMakeFiles/PracticeTest.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=16,17,18,19,20,21,22,23,24,25,26,27,28,29,30 "Built target PracticeTest"

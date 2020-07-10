@@ -53,3 +53,22 @@ TEST(LC, _0052_NQueensII) {
     EXPECT_EQ(obj.totalNQueens(8), 92);
 }
 
+TEST(LC, _0077_Combinations) {
+    LC::_0077_Combinations obj;
+    std::vector<std::vector<int>> res = obj.combine(4, 2);
+    std::vector<std::vector<int>> groundTruth{{1, 2},{1, 3},{1, 4},{2, 3},{2, 4},{3, 4}};
+    EXPECT_EQ(res, groundTruth);
+}
+
+TEST(LC, _0078_Subsets) {
+    LC::_0078_Subsets obj;
+    std::vector<int> input {1,2,3};
+    std::vector<std::vector<int>> groundTruth{{},{1},{2},{2,1},{3},{3,1},{3,2},{3,2,1}};
+    EXPECT_EQ(obj.subsets(input), groundTruth);
+}
+
+TEST(LC, _0079_WordSearch) {
+    LC::_0079_WordSearch obj;
+    std::vector<std::vector<char>> input{{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}};
+    EXPECT_TRUE(obj.exist(input, "ABCCED"));
+}

@@ -651,77 +651,6 @@ public:
     std::string minWindow(std::string s, std::string t);
 };
 
-/*
-Tag: backtracking, combination
-Given two integers n and k, return all possible combinations of k numbers out of 1 ... n.
-Example:
-Input: n = 4, k = 2
-Output:
-[
-  [2,4],
-  [3,4],
-  [2,3],
-  [1,2],
-  [1,3],
-  [1,4],
-]
-*/
-class _0077_Combinations {
-public:
-    std::vector<std::vector<int>> combine(int n, int k);
-    void combine(std::vector<int>& nums, std::vector<int>& used, int s, int k, std::vector<int>& tmp, std::vector<std::vector<int>>& res);
-};
-
-/*
-Tag: backtracking, combination
-Given a set of distinct integers, nums, return all possible subsets (the power set).
-Note: The solution set must not contain duplicate subsets.
-Example:
-Input: nums = [1,2,3]
-Output:
-[
-  [3],
-  [1],
-  [2],
-  [1,2,3],
-  [1,3],
-  [2,3],
-  [1,2],
-  []
-]
-*/
-class _0078_Subsets{
-public:
-    std::vector<std::vector<int>> subsets(std::vector<int>& nums);
-    std::vector<std::vector<int>> subsets(std::vector<int>& nums, int beg, int end);
-};
-
-/*
-Tag: backtracking
-Given a 2D board and a word, find if the word exists in the grid.
-The word can be constructed from letters of sequentially adjacent 
-cell, where "adjacent" cells are those horizontally or vertically 
-neighboring. The same letter cell may not be used more than once.
-
-Example:
-
-board =
-[
-  ['A','B','C','E'],
-  ['S','F','C','S'],
-  ['A','D','E','E']
-]
-
-Given word = "ABCCED", return true.
-Given word = "SEE", return true.
-Given word = "ABCB", return false.
-*/
-class _0079_WordSearch{
-public:
-    bool exist(std::vector<std::vector<char>>& board, std::string word);
-    void exist(std::vector<std::vector<char>>& board, int i, int j, std::string& word, int start, int end, bool& res);
-};
-
 
 /*
 Tag: array
@@ -776,40 +705,6 @@ public:
     bool search(std::vector<int>& nums, int target);
 };
 
-
-/*
-Tag: Single Linked List operation
-82. Remove Duplicates from Sorted List II
-Given a sorted linked list, delete all nodes that have duplicate numbers, 
-leaving only distinct numbers from the original list.
-
-Input: 1->2->3->3->4->4->5
-Output: 1->2->5
-
-Input: 1->1->1->2->3
-Output: 2->3
-*/
-class _0082_RemoveDuplicatesFromSortedListII{
-public:
-    ListNode<int>* deleteDuplicates(ListNode<int>* head);
-};
-
-/*
-Tag: Single Linked List Operation
-Given a sorted linked list, delete all duplicates such that each element 
-appear only once.
-
-Input: 1->1->2
-Output: 1->2
-
-Input: 1->1->2->3->3
-Output: 1->2->3
-*/
-class _0083_RemoveDuplicatesFromSortedList{
-public:
-    ListNode<int>* deleteDuplicates(ListNode<int>* head);
-};
-
 /*
 Tag: increasing stack
 TODO:
@@ -844,45 +739,6 @@ class _0085_MaximalRectangle {
 public:
     int maximalRectangle(std::vector<std::vector<char>>& matrix);
 };
-
-/*
-Tag: single linked list operation
-Given a linked list and a value x, partition it such that all nodes less 
-than x come before nodes greater than or equal to x.
-You should preserve the original relative order of the nodes in each of 
-the two partitions.
-
-Input: head = 1->4->3->2->5->2, x = 3
-Output: 1->2->2->4->3->5
-*/
-class _0086_PartitionList {
-    public:
-        ListNode<int>* partition(ListNode<int>* head, int x);
-};
-
-/*
-Facebook 
-
-Tag: array operation, from back to front
-Merge Sorted Array
-Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.
-
-Note:
-The number of elements initialized in nums1 and nums2 are m and n respectively.
-You may assume that nums1 has enough space (size that is greater or equal to m + n) to hold additional elements from nums2.
-Example:
-
-Input:
-nums1 = [1,2,3,0,0,0], m = 3
-nums2 = [2,5,6],       n = 3
-
-Output: [1,2,2,3,5,6]
-*/
-class _0088_MergeSortedArray {
-public: 
-    void merge(std::vector<int>& nums1, int m, std::vector<int>& nums2, int n);
-};
-
 
 /*
 Tag: recursive
@@ -957,18 +813,6 @@ public:
     int numDecodings(std::string s);
 };
 
-/*
-Tag: single linked list
-Reverse a linked list from position m to n. Do it in one-pass.
-Note: 1 ≤ m ≤ n ≤ length of list.
-
-Input: 1->2->3->4->5->NULL, m = 2, n = 4
-Output: 1->4->3->2->5->NULL
-*/
-class _0092_ReverseLinkedListII {
-public:
-    ListNode<int>* reverseBetween(ListNode<int>* head, int m, int n);
-};
 
 /*
 Tag: backtracking
@@ -1052,44 +896,7 @@ public:
     bool isInterleav(std::string s1, std::string s2, std::string s3);
 };
 
-/*
-Facebook
 
-
-Tag: Tree
-Given a binary tree, determine if it is a valid binary search tree (BST).
-
-Assume a BST is defined as follows:
-
-The left subtree of a node contains only nodes with keys less than the node's key.
-The right subtree of a node contains only nodes with keys greater than the node's key.
-Both the left and right subtrees must also be binary search trees.
- 
-
-Example 1:
-
-    2
-   / \
-  1   3
-
-Input: [2,1,3]
-Output: true
-Example 2:
-
-    5
-   / \
-  1   4
-     / \
-    3   6
-
-Input: [5,1,4,null,null,3,6]
-Output: false
-Explanation: The root node's value is 5 but its right child's value is 4.
-*/
-class _0098_ValidateBinarySearchTree {
-public:
-    bool isValidBST(TreeNode<int> *root);
-};
 
 /*
 Tag: Morris Traversal, Tree
@@ -1139,40 +946,6 @@ public:
     void recoverTree(TreeNode<int>* root);
 };
 
-/*
-Tag: Tree
-Given two binary trees, write a function to check if they are the same or not.
-Two binary trees are considered the same if they are structurally identical 
-and the nodes have the same value.
-
-Input:     1         1
-          / \       / \
-         2   3     2   3
-
-        [1,2,3],   [1,2,3]
-
-Output: true
-
-Input:     1         1
-          /           \
-         2             2
-
-        [1,2],     [1,null,2]
-
-Output: false
-
-Input:     1         1
-          / \       / \
-         2   1     1   2
-
-        [1,2,1],   [1,1,2]
-
-Output: false
-*/
-class _0100_SameTree {
-public:
-    bool isSameTree(TreeNode<int>* p, TreeNode<int>* q);
-};
 
 }
 

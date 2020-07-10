@@ -206,3 +206,108 @@ LC::ListNode *LC::_0061_RotateList::rotateRight(ListNode* head, int k)
 
     return nh;
 }
+
+
+LC::ListNode*  LC::_0082_RemoveDuplicatesFromSortedListII::deleteDuplicates(ListNode* head) {
+    ListNode* nh = new ListNode(INT_MAX);
+    nh->next = head;
+    ListNode* p = nh;
+    while(p->next && p->next->next) {
+        if(p->next->val == p->next->next->val) { // Found duplicates
+            ListNode* q = p->next->next;
+            while(q && q->val == p->next->val) {
+                q = q->next;
+            }
+            // Delete duplicate lists
+            ListNode* t = p->next;
+            while(t != q) {
+                ListNode* m = t;
+                t = t->next;
+                delete m;
+            }
+            
+            // re-point to the next position
+            p->next = q;
+        } else {
+            p = p->next;
+        }
+    }
+    head = nh->next;
+    delete nh;
+    return head;
+}
+
+
+LC::ListNode* LC::_0083_RemoveDuplicatesFromSortedList::deleteDuplicates(ListNode* head) {
+    if(head == nullptr || head->next == nullptr) {
+        return head;
+    }
+    ListNode* h = head;
+    ListNode* t = h->next;
+    while(t != nullptr) {
+        if(h->val == t-> val) {
+            h->next = t->next;
+            t = h->next;
+            continue;
+        } else {
+            h = t;
+            t = t->next;
+        }
+    }
+    return head;
+}
+
+
+LC::ListNode* LC::_0086_PartitionList::partition(ListNode* head, int x) {
+    ListNode node1(0);
+    ListNode node2(0);
+    ListNode* p1 = &node1;
+    ListNode* p2 = &node2;
+    while(head) {
+        if(head->val < x) {
+            p1 = p1->next = head;
+        } else {
+            p2 = p2->next = head;
+        }
+        head = head->next;
+    }
+    p2->next = nullptr;
+    p1->next = node2.next;
+    return node1.next;
+}
+
+
+LC::ListNode* LC::_0092_ReverseLinkedListII::reverseBetween(ListNode* head, int m, int n) {
+    if(m == n) {
+        return head;
+    }
+    ListNode* newHead = new ListNode(-1);
+    newHead->next = head;
+    ListNode* pre = newHead;
+    ListNode* cur = head;
+    ListNode* nex = cur->next;
+    ListNode* startNode = nullptr;
+    int count = 0;
+    // Reverse
+    while(cur) {
+        if(count + 1 == m) {
+            startNode = pre;
+        }
+        if(count + 1 >= m && count + 1 <= n) {
+            cur->next = pre;
+        }
+        if(count + 1 == n) {
+            startNode->next->next = nex;
+            startNode->next = cur;
+            break;
+        }
+        pre = cur;
+        cur = nex;
+        nex = nex->next;
+        ++count;
+    }
+    head = newHead->next;
+    newHead->next = nullptr;
+    delete newHead;
+    return head;
+}

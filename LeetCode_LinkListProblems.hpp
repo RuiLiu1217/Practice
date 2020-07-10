@@ -153,6 +153,69 @@ public:
 };
 
 
+/*
+82. Remove Duplicates from Sorted List II
+Given a sorted linked list, delete all nodes that have duplicate numbers, 
+leaving only distinct numbers from the original list.
+
+Input: 1->2->3->3->4->4->5
+Output: 1->2->5
+
+Input: 1->1->1->2->3
+Output: 2->3
+*/
+class _0082_RemoveDuplicatesFromSortedListII {
+public:
+    ListNode* deleteDuplicates(ListNode* head);
+};
+
+
+
+/*
+Given a sorted linked list, delete all duplicates such that each element 
+appear only once.
+
+Input: 1->1->2
+Output: 1->2
+
+Input: 1->1->2->3->3
+Output: 1->2->3
+*/
+class _0083_RemoveDuplicatesFromSortedList {
+public:
+    ListNode* deleteDuplicates(ListNode* head);
+};
+
+
+/*
+Tag: single linked list operation
+Given a linked list and a value x, partition it such that all nodes less 
+than x come before nodes greater than or equal to x.
+You should preserve the original relative order of the nodes in each of 
+the two partitions.
+
+Input: head = 1->4->3->2->5->2, x = 3
+Output: 1->2->2->4->3->5
+*/
+class _0086_PartitionList {
+    public:
+        ListNode* partition(ListNode* head, int x);
+};
+
+
+/*
+Reverse a linked list from position m to n. Do it in one-pass.
+Note: 1 ≤ m ≤ n ≤ length of list.
+
+Input: 1->2->3->4->5->NULL, m = 2, n = 4
+Output: 1->4->3->2->5->NULL
+*/
+class _0092_ReverseLinkedListII {
+public:
+    ListNode* reverseBetween(ListNode* head, int m, int n);
+};
+
+
 } // end namespace LC
 
 #endif
