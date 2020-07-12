@@ -137,6 +137,18 @@ public:
 };
 
 
+/*
+Tag: dynamic programming, string
+Given s1, s2, s3, find whether s3 is formed by the interleaving of s1 and s2.
+Input: s1 = "aabcc", s2 = "dbbca", s3 = "aadbbcbcac"
+Output: true
+Input: s1 = "aabcc", s2 = "dbbca", s3 = "aadbbbaccc"
+Output: false
+*/
+class _0097_InterleavingString {
+public:
+    bool isInterleav(std::string s1, std::string s2, std::string s3);
+};
 
 
 }

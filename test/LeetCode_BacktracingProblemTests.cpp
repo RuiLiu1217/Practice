@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+#include <iostream>
 #include "../LeetCode_BacktracingProblems.hpp"
 
 TEST(LC, LC__0017__Test) {
@@ -71,4 +72,13 @@ TEST(LC, _0079_WordSearch) {
     LC::_0079_WordSearch obj;
     std::vector<std::vector<char>> input{{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}};
     EXPECT_TRUE(obj.exist(input, "ABCCED"));
+}
+
+TEST(LC, _0090_SubsetII) {
+    LC::_0090_SubsetII obj;
+    std::vector<int> nums{1,2,2};    
+    std::vector<std::vector<int>> res = obj.subsetsWithDup(nums);
+    std::vector<std::vector<int>> ground{{},{1},{1,2},{1,2,2},{2},{2,2}};
+    
+    EXPECT_EQ(ground, res);
 }

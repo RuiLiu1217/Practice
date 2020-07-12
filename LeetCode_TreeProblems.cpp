@@ -1,7 +1,9 @@
 #include "LeetCode_TreeProblems.hpp"
 #include <queue>
 #include <stack>
-
+#include <algorithm>
+#include <numeric>
+#include <cmath>
 // Facebook
 
 /*
@@ -102,4 +104,361 @@ bool LC::_0100_SameTree::isSameTree(TreeNode *p, TreeNode *q) {
         return (isSameTree(p->left,q->left) && isSameTree(p->right,q->right));
     }
     
+}
+
+
+
+
+std::vector<LC::TreeNode*> LC::_0095_UniqueBinarySearchTreeII::generateTrees(int n) {
+    return generateTreeHelper(1, n);
+}
+
+std::vector<LC::TreeNode*>  LC::_0095_UniqueBinarySearchTreeII::generateTreeHelper(int l, int r) {
+    if(l > r) {
+        return {};
+    }
+    if(l == r) {
+        TreeNode* root = new TreeNode(l);
+        std::vector<TreeNode*> res{root};
+        return res;
+    }
+    std::vector<TreeNode*> res;
+    for(int i = l; i <= r; ++i) {
+        std::vector<TreeNode*> lft = generateTreeHelper(l, i-1);
+        std::vector<TreeNode*> rgh = generateTreeHelper(i+1, r);
+        if(lft.size() == 0 && rgh.size() == 0) {
+            TreeNode* root = new TreeNode(i);
+            res.push_back(root);
+        } else if(lft.size() == 0 && rgh.size() != 0) {
+            for(int rr = 0; rr < rgh.size(); ++rr) {
+                TreeNode* root = new TreeNode(i);
+                root->right = rgh[rr];                
+                res.push_back(root);
+            }
+        } else if(lft.size() != 0 && rgh.size() == 0) {
+            for(int ll = 0; ll < lft.size(); ++ll) {
+                TreeNode* root = new TreeNode(i);
+                root->left = lft[ll];                
+                res.push_back(root);
+            }
+        } else {
+            for(int ll = 0; ll < lft.size(); ++ll) {
+                for(int rr = 0; rr < rgh.size(); ++rr) {
+                    TreeNode* root = new TreeNode(i);
+                    root->left = lft[ll];                
+                    root->right = rgh[rr];                
+                    res.push_back(root);
+                }
+            }
+        }
+    }
+    return res;
+}
+
+
+bool LC::_0101_SymmetricTree::isSymmetric(TreeNode* root) {
+    return preOrderIter(root);
+}
+
+bool LC::_0101_SymmetricTree::preOrderIter(TreeNode* root) {
+    TreeNode *p = root;
+    TreeNode *q = root;
+    std::stack<TreeNode*> stLft;
+    std::stack<TreeNode*> stRgh;
+    while (p != nullptr || !stLft.empty()) {
+        if (p != nullptr) {
+            if (q == nullptr || p->val != q->val) {
+                return false;
+            }
+            stLft.push(p);
+            stRgh.push(q);
+            p = p->left;
+            q = q->right;
+        } else {
+            TreeNode* tmplft = stLft.top();
+            stLft.pop();
+            TreeNode* tmpRgh = nullptr;
+            if (stRgh.empty()) {
+                return false;
+            } else {
+                tmpRgh = stRgh.top();
+                stRgh.pop();
+            }
+            p = tmplft->right;
+            q = tmpRgh->left;
+        }
+    }
+    return true;
+}
+
+
+std::vector<std::vector<int>> LC::_0102_BinaryTreeLevelOrderTraversal::levelOrder(TreeNode* root) {
+    TreeNode* p = root;
+    std::queue<TreeNode*> q;
+    q.push(p);
+    if(!root) {
+        return {};
+    }
+
+    std::vector<std::vector<int>> res;
+    while(!q.empty()) {
+        const int N = q.size();
+        std::vector<int> tmp;
+        for(int i = 0; i < N; ++i) {
+            TreeNode* t = q.front();
+            q.pop();
+            tmp.push_back(t->val);
+
+            if(t->left) {
+                q.push(t->left);
+            }
+            if(t->right) {
+                q.push(t->right);
+            }
+        }
+        res.push_back(tmp);
+    }
+    return res;
+}
+
+
+std::vector<std::vector<int>> LC::_0103_BinaryTreeZigzagLevelOrderTraversal::zigzagLevelOrder(TreeNode* root) {
+    TreeNode* p = root;
+    if(!p) {
+        return {};
+    }
+    
+    std::queue<TreeNode*> qu;
+    qu.push(p);
+    int l = 1;
+
+    std::vector<std::vector<int>> res;
+    while(!qu.empty()) {
+        const int N = qu.size();
+        std::vector<int> tmp;
+        for(int i = 0; i < N; ++i) {
+            TreeNode* t = qu.front();
+            qu.pop();
+
+            tmp.push_back(t->val);
+
+            if(t->left) {
+                qu.push(t->left);
+            }
+            if(t->right) {
+                qu.push(t->right);
+            }
+        }
+        if(l%2==0) {
+            std::reverse(tmp.begin(), tmp.end());
+        }
+        res.push_back(tmp);
+        ++l;
+    }
+    return res;
+}
+
+
+int LC::_0104_MaximumDepthOfBinaryTree::maxDepth(TreeNode* root) {
+    if(root == nullptr) {
+        return 0;
+    }
+    if(root->left == nullptr && root->right == nullptr) {
+        return 1;
+    }
+    return std::max(maxDepth(root->left), maxDepth(root->right)) + 1;
+}
+
+
+/*
+Type: Array
+*/
+static LC::TreeNode* tb(std::vector<int>& preorder, int ps, int pe, std::vector<int>& inorder, int is, int ie) {
+    if(ps > pe) {
+        return nullptr;
+    }
+    if(ps == pe) {
+        LC::TreeNode* r = new LC::TreeNode(preorder[ps]);
+        return r;
+    }
+    int rootV = preorder[ps];
+    auto iter = std::find(inorder.begin() + is, inorder.begin() + ie + 1, rootV);
+    int iterIdx = iter - inorder.begin();
+    int leftLen = iterIdx - is;
+    int rightLen = ie - iterIdx;
+    LC::TreeNode* root = new LC::TreeNode(preorder[ps]);
+    root->left = tb(preorder, ps + 1, ps + leftLen, inorder, is, iterIdx - 1);
+    root->right = tb(preorder, ps+leftLen+1, pe, inorder, iterIdx + 1, ie);
+    return root;
+    
+}
+
+LC::TreeNode* LC::_0105_ConstructBinaryTreeFromPreorderAndInorderTraversal::buildTree(std::vector<int>& preorder, std::vector<int>& inorder) {
+    return tb(preorder, 0, preorder.size() - 1, inorder, 0, inorder.size() - 1);
+}
+
+
+
+LC::TreeNode* LC::_0106_ConstructBinaryTreeFromInorderAndPostorderTraversal::buildTree(std::vector<int>& inorder, std::vector<int>& postorder) {
+    return buildTree(inorder, 0, inorder.size(), postorder, 0, postorder.size());
+}
+
+
+LC::TreeNode* LC::_0106_ConstructBinaryTreeFromInorderAndPostorderTraversal::buildTree(std::vector<int>& inorder, int inStart, int inEnd, 
+                       std::vector<int>& postorder, int postStart, int postEnd) {
+    if(postStart >= postEnd) {
+        return nullptr;
+    }
+    
+    TreeNode* root = new TreeNode(postorder[postEnd - 1]);
+    if(postEnd - postStart == 1) {            
+        return root;
+    }
+
+    auto iter = std::find(inorder.begin() + inStart, inorder.begin() + inEnd, root->val);
+    int lftLength = std::distance(inorder.begin() + inStart, iter);
+    
+    root->left = buildTree(inorder, inStart, inStart + lftLength,
+                            postorder, postStart, postStart + lftLength);
+    root->right = buildTree(inorder, inStart + lftLength + 1, inEnd,
+                            postorder, postStart + lftLength, postEnd - 1); // 这道题的index计算折磨了半天
+    
+    return root;
+}
+
+
+std::vector<std::vector<int>> LC::_0107_BinaryTreeLevelOrderTraversalII::levelOrderBottom(LC::TreeNode* root) {
+    std::queue<TreeNode*> q;
+    q.push(root);
+    std::vector<std::vector<int>> res;
+    while (!q.empty()) {
+        const int N = q.size();
+        std::vector<int> tmp;
+        for (int i = 0; i < N; ++i) {
+            auto t = q.front();
+            q.pop();
+            tmp.push_back(t->val);
+
+            if (t->left) {
+                q.push(t->left);
+            }
+            if (t->right) {
+                q.push(t->right);
+            }
+        }
+        res.push_back(tmp);
+    }
+    std::reverse(res.begin(), res.end());
+    return res;
+};
+
+
+LC::TreeNode* LC::_0108_ConvertSortedArrayToBinarySearchTree::sortedArrayToBST(std::vector<int>& nums) {
+    return bst(nums, 0, nums.size() - 1);
+}
+
+LC::TreeNode* LC::_0108_ConvertSortedArrayToBinarySearchTree::bst(std::vector<int>& nums, int start, int end) {
+    if(start > end || end < 0) { // end < 0 is a edge conditional case
+        return nullptr;
+    }
+    if(start == end) {
+        TreeNode* p = new TreeNode(nums[start]);
+        return p;
+    } else {
+        int mid = start + (end - start) / 2;
+        TreeNode* root = new TreeNode(nums[mid]);
+        root->left = bst(nums, start, mid - 1);
+        root->right = bst(nums, mid + 1, end);
+        return root;
+    }
+}
+
+
+
+LC::TreeNode* LC::_0109_ConvertSortedListToBinarySearchTree::sortedListToBST(LC::_0109_ConvertSortedListToBinarySearchTree::ListNode* head) {
+    if(!head) {
+        return nullptr;
+    }
+    LC::_0109_ConvertSortedListToBinarySearchTree::ListNode* lRoot = nullptr;
+    LC::_0109_ConvertSortedListToBinarySearchTree::ListNode* lleft = nullptr;
+    LC::_0109_ConvertSortedListToBinarySearchTree::ListNode* lright= nullptr;
+    split(head, lRoot, lleft, lright);
+    
+    TreeNode* root = new TreeNode(lRoot->val);
+    root->left = sortedListToBST(lleft);
+    root->right = sortedListToBST(lright);
+    return root;
+}
+    
+void LC::_0109_ConvertSortedListToBinarySearchTree::split(
+    LC::_0109_ConvertSortedListToBinarySearchTree::ListNode* head, 
+    LC::_0109_ConvertSortedListToBinarySearchTree::ListNode*& root, 
+    LC::_0109_ConvertSortedListToBinarySearchTree::ListNode*& left, 
+    LC::_0109_ConvertSortedListToBinarySearchTree::ListNode*& right) {
+    if(!head) {
+        root = nullptr;
+        left = nullptr;
+        right = nullptr;
+        return;
+    }
+    
+    if(!head->next) {
+        root = head;
+        left = nullptr;
+        right = nullptr;
+        return;
+    }
+    
+    LC::_0109_ConvertSortedListToBinarySearchTree::ListNode* nh = new LC::_0109_ConvertSortedListToBinarySearchTree::ListNode(INT_MAX);
+    nh->next = head;
+    
+    LC::_0109_ConvertSortedListToBinarySearchTree::ListNode* slow = nh;
+    LC::_0109_ConvertSortedListToBinarySearchTree::ListNode* fast = nh;
+    while(fast && fast->next && fast->next->next) {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    root = slow->next;
+    slow->next = nullptr;
+    right = root->next;
+    root->next = nullptr;
+    left = nh->next;
+    nh->next = nullptr;
+    delete nh;
+    return;
+    
+}
+
+
+bool LC::_0110_BalancedBinaryTree::isBalanced(TreeNode* root) {
+    if(root== nullptr)
+        return true;
+    if(root->left == nullptr && root->right == nullptr) {
+        return true;
+    }
+    if(root->left != nullptr && root->right == nullptr) {
+        if(height(root->left) == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    if(root->right != nullptr && root->left == nullptr) {
+        if(height(root->right)==1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    return isBalanced(root->left) && isBalanced(root->right) && (abs(height(root->left) - height(root->right)) <= 1);
+}
+
+int LC::_0110_BalancedBinaryTree::height(TreeNode* root) {
+    if(root == nullptr) {
+        return 0;
+    }
+    if(root->left == nullptr && root->right == nullptr) {
+        return 1;
+    }
+    return 1 + std::max(height(root->left),height(root->right));
 }

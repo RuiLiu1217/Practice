@@ -236,6 +236,34 @@ public:
     void exist(std::vector<std::vector<char>>& board, int i, int j, std::string& word, int start, int end, bool& res);
 };
 
+
+
+/*
+Tag: combination
+Given a collection of integers that might contain duplicates, nums, return all possible subsets 
+(the power set).
+Note: The solution set must not contain duplicate subsets.
+Example:
+
+Input: [1,2,2]
+Output:
+[
+  [2],
+  [1],
+  [1,2,2],
+  [2,2],
+  [1,2],
+  []
+]
+*/
+class _0090_SubsetII {
+public:
+    std::vector<std::vector<int>> subsetsWithDup(std::vector<int>& nums);
+    void subset(std::vector<std::vector<int>>& res, std::vector<int>& tmp,
+            std::vector<int>& nums, int pos);
+    
+};
+
 }
 
 

@@ -740,56 +740,6 @@ public:
     int maximalRectangle(std::vector<std::vector<char>>& matrix);
 };
 
-/*
-Tag: recursive
-The gray code is a binary numeral system where two successive values differ in only one bit.
-Given a non-negative integer n representing the total number of bits in the code, print the 
-sequence of gray code. A gray code sequence must begin with 0.
-
-
-Input: 2   Output: [0,1,3,2]
-Explanation:
-00 - 0
-01 - 1
-11 - 3
-10 - 2
-
-Example 2:
-Input: 0
-Output: [0]
-Explanation: We define the gray code sequence to begin with 0. A gray code sequence of n has 
-size = 2n, which for n = 0 the size is 20 = 1. Therefore, for n = 0 the gray code sequence is [0].
-*/
-class _0089_GrayCode{
-public:
-    std::vector<int> grayCode(int n);
-};
-
-/*
-Tag: combination
-Given a collection of integers that might contain duplicates, nums, return all possible subsets 
-(the power set).
-Note: The solution set must not contain duplicate subsets.
-Example:
-
-Input: [1,2,2]
-Output:
-[
-  [2],
-  [1],
-  [1,2,2],
-  [2,2],
-  [1,2],
-  []
-]
-*/
-class _0090_SubsetII {
-public:
-    std::vector<std::vector<int>> subsetsWithDup(std::vector<int>& nums);
-    
-    void generateAllSubsets(std::vector<int>& nums, std::vector<int>& subset,
-                           int index, std::vector<std::vector<int>>& res);
-};
 
 /*
 Tag: dyanmic programming
@@ -830,73 +780,6 @@ private:
     void restoreIpAddress(std::string s, int level, std::string out, std::vector<std::string>& res);
     bool isValid(std::string s);
 };
-
-/*
-Tag: recursive, hash
-Given an integer n, generate all structurally unique BST's (binary search trees) that store values 1 ... n.
-
-Input: 3
-Output:
-[
-  [1,null,3,2],
-  [3,2,null,1],
-  [3,1,null,null,2],
-  [2,1,3],
-  [1,null,2,null,3]
-]
-Explanation:
-The above output corresponds to the 5 unique BST's shown below:
-
-   1         3     3      2      1
-    \       /     /      / \      \
-     3     2     1      1   3      2
-    /     /       \                 \
-   2     1         2                 3
-*/
-class _0095_UniqueBinarySearchTreeII {
-public:
-    std::vector<TreeNode<int>*> generateTrees(int n);
-    std::vector<TreeNode<int>*> generateTreeHelper(int l, int r);
-};
-
-/*
-Tag: recursive, hash
-Given n, how many structurally unique BST's (binary search trees) that store values 1 ... n?
-
-Input: 3
-Output: 5
-Explanation:
-Given n = 3, there are a total of 5 unique BST's:
-
-   1         3     3      2      1
-    \       /     /      / \      \
-     3     2     1      1   3      2
-    /     /       \                 \
-   2     1         2                 3
-*/
-class _0096_UniqueBinarySearchTree {
-private:
-    std::vector<int> DP;
-public:
-    int numTrees(int n);
-    int numTreesN(int n);
-};
-
-
-/*
-Tag: dynamic programming, string
-Given s1, s2, s3, find whether s3 is formed by the interleaving of s1 and s2.
-Input: s1 = "aabcc", s2 = "dbbca", s3 = "aadbbcbcac"
-Output: true
-Input: s1 = "aabcc", s2 = "dbbca", s3 = "aadbbbaccc"
-Output: false
-*/
-class _0097_InterleavingString {
-public:
-    bool isInterleav(std::string s1, std::string s2, std::string s3);
-};
-
-
 
 /*
 Tag: Morris Traversal, Tree

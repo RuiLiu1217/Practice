@@ -29,3 +29,9 @@ TEST(LC, _0070_ClimbingStairs) {
     EXPECT_EQ(obj.climbStairs(2), 2);
     EXPECT_EQ(obj.climbStairs(3), 3);
 }
+
+TEST(LC, _0097_InterleavingString) {
+    LC::_0097_InterleavingString obj;
+    EXPECT_TRUE(obj.isInterleav("aabcc", "dbbca", "aadbbcbcac"));
+    EXPECT_FALSE(obj.isInterleav("aabcc", "dbbca", "aadbbbaccc"));
+}

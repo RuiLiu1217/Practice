@@ -1,6 +1,6 @@
 #include "LeetCode_BacktracingProblems.hpp"
 #include <functional>
-
+#include <algorithm>
 /*
 Google
 */
@@ -366,4 +366,27 @@ bool LC::_0079_WordSearch::exist(std::vector<std::vector<char>>& board, std::str
         }
     }
     return res;
+}
+
+
+
+std::vector<std::vector<int>> LC::_0090_SubsetII::subsetsWithDup(std::vector<int>& nums) {
+    std::sort(nums.begin(), nums.end());
+    std::vector<std::vector<int>> res;
+    std::vector<int> tmp;
+    subset(res, tmp, nums, 0);
+    return res;
+}
+    
+void LC::_0090_SubsetII::subset(std::vector<std::vector<int>>& res, std::vector<int>& tmp,
+            std::vector<int>& nums, int pos) {
+    res.push_back(tmp);
+    for(int i = pos; i < nums.size(); ++i) {
+        if(i != pos && nums[i] == nums[i-1]) {
+            continue;
+        }
+        tmp.push_back(nums[i]);
+        subset(res, tmp, nums, i + 1); // i + 1, not pos + 1
+        tmp.pop_back();
+    }
 }
