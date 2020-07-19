@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <numeric>
 #include <cmath>
+
 // Facebook
 
 /*
@@ -461,4 +462,17 @@ int LC::_0110_BalancedBinaryTree::height(TreeNode* root) {
         return 1;
     }
     return 1 + std::max(height(root->left),height(root->right));
+}
+
+
+int LC::_0111_MinimumDepthOfBinaryTree::minDepth(TreeNode* root) {
+    if(!root) {
+        return 0;
+    } else if(!root->left) {
+        return minDepth(root->right) + 1;
+    } else if(!root->right) {
+        return minDepth(root->left) + 1;
+    } else {
+        return std::min(minDepth(root->left), minDepth(root->right)) + 1;
+    }
 }
