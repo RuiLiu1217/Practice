@@ -419,5 +419,122 @@ public:
     void merge(std::vector<int>& nums1, int m, std::vector<int>& nums2, int n);
 };
 
+
+/*
+Tag: array operation
+Given a non-negative integer numRows, generate the first numRows of Pascal's triangle.
+In Pascal's triangle, each number is the sum of the two numbers directly above it.
+
+Example:
+
+Input: 5
+Output:
+[
+     [1],
+    [1,1],
+   [1,2,1],
+  [1,3,3,1],
+ [1,4,6,4,1]
+]
+*/
+class _0118_PascalTriangle {
+public:
+    std::vector<std::vector<int>> generate(int numRows);
+};
+
+
+/*
+Tag: array operation
+Given a non-negative index k where k ≤ 33, return the kth index row of the Pascal's triangle.
+Note that the row index starts from 0.
+In Pascal's triangle, each number is the sum of the two numbers directly above it.
+
+Example:
+Input: 3
+Output: [1,3,3,1]
+Follow up:
+Could you optimize your algorithm to use only O(k) extra space?
+*/
+class _0119_PascalTriangleII {
+public:
+    std::vector<int> getRow(int rowIndex);
+};
+
+template<unsigned int n>
+class _0119_Pascal_meta {
+public:
+    static std::vector<int> get() {
+        auto las = _0119_Pascal_meta<n-1>::get();
+        std::vector<int> res(las.size()+1, 0);
+        res[0] = 1;
+        for(int i = 0; i < las.size() - 1; ++i) {
+            res[i+1] = las[i] + las[i+1];
+        }
+        res.back() = 1;
+        return res;
+    }
+};
+
+template<>
+class _0119_Pascal_meta<1> {
+public:
+    static std::vector<int> get() {
+        return {1};
+    }
+};
+
+
+
+
+/*
+Tag: dynamic programming.
+Given a triangle, find the minimum path sum from top to bottom. Each step you may move to adjacent numbers on the row below.
+For example, given the following triangle
+
+[
+     [2],
+    [3,4],
+   [6,5,7],
+  [4,1,8,3]
+]
+The minimum path sum from top to bottom is 11 (i.e., 2 + 3 + 5 + 1 = 11).
+Bonus point if you are able to do this using only O(n) extra space, where n is the total number of rows in the triangle.
+*/
+class _0120_Triangle{
+public:
+    int minimumTotal(std::vector<std::vector<int>>& triangle);
+};
+
+
+
+template<unsigned int i>
+class _0120_Triangle_meta {
+public:
+    static std::vector<int> get(std::vector<std::vector<int>>& triangle) {
+        std::vector<int> lasOpt = _0120_Triangle_meta<i-1>::get(triangle);
+        std::vector<int> res(i + 1, 0);
+        for(int j = 0; j <= i; ++j) {
+            if(j == 0) {
+                res[j] = lasOpt[j] + triangle[i][j];
+            } else if(j == i) {
+                res[j] = lasOpt[j-1] + triangle[i][j];
+            } else {
+                res[j] = std::min(lasOpt[j], lasOpt[j-1]) + triangle[i][j];
+            }
+        }
+        return res;
+    }
+
+};
+
+template<>
+class _0120_Triangle_meta<0> {
+public:
+    static std::vector<int> get(std::vector<std::vector<int>>& triangle) {
+        return triangle[0];
+    }
+};
+
+
 }
 #endif

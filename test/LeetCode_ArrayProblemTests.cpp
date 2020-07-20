@@ -164,6 +164,25 @@ TEST(LC, _0088_MergeSortedArray) {
     obj.merge(nums1, 3, nums2, 3);
     std::vector<int> res{1,2,2,3,5,6};
     EXPECT_EQ(res, nums1);
+}
 
-   
+TEST(LC, _0118_PascalTriangle) {
+    LC::_0118_PascalTriangle obj;
+    std::vector<std::vector<int>> res = obj.generate(3);
+    std::vector<std::vector<int>> grd{{1}, {1,1}, {1,2,1}};
+    EXPECT_EQ(res, grd);
+}
+
+TEST(LC, _0119_) {
+    LC::_0119_Pascal_meta<6> obj;
+    std::vector<int> res = obj.get();
+    std::vector<int> grd{1,5,10,10,5,1};
+    EXPECT_EQ(res, grd);
+}
+
+TEST(LC, _0120_Triangle_meta) {
+    LC::_0120_Triangle_meta<3> obj;
+    std::vector<std::vector<int>> input{{2}, {3, 4}, {6,5,7}, {4,1,8,3}};
+    auto tmp = obj.get(input);
+    EXPECT_EQ(*std::min_element(begin(tmp), end(tmp)), 11);
 }

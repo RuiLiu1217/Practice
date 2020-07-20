@@ -291,6 +291,33 @@ LeetCode_ArrayProblems.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_ArrayProblems.cpp.s
 .PHONY : LeetCode_ArrayProblems.cpp.s
 
+LeetCode_BFS.obj: LeetCode_BFS.cpp.obj
+
+.PHONY : LeetCode_BFS.obj
+
+# target to build an object file
+LeetCode_BFS.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_BFS.cpp.obj
+.PHONY : LeetCode_BFS.cpp.obj
+
+LeetCode_BFS.i: LeetCode_BFS.cpp.i
+
+.PHONY : LeetCode_BFS.i
+
+# target to preprocess a source file
+LeetCode_BFS.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_BFS.cpp.i
+.PHONY : LeetCode_BFS.cpp.i
+
+LeetCode_BFS.s: LeetCode_BFS.cpp.s
+
+.PHONY : LeetCode_BFS.s
+
+# target to generate assembly for a file
+LeetCode_BFS.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_BFS.cpp.s
+.PHONY : LeetCode_BFS.cpp.s
+
 LeetCode_BacktracingProblems.obj: LeetCode_BacktracingProblems.cpp.obj
 
 .PHONY : LeetCode_BacktracingProblems.obj
@@ -344,6 +371,33 @@ LeetCode_BitOperationProblems.s: LeetCode_BitOperationProblems.cpp.s
 LeetCode_BitOperationProblems.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_BitOperationProblems.cpp.s
 .PHONY : LeetCode_BitOperationProblems.cpp.s
+
+LeetCode_DFS.obj: LeetCode_DFS.cpp.obj
+
+.PHONY : LeetCode_DFS.obj
+
+# target to build an object file
+LeetCode_DFS.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_DFS.cpp.obj
+.PHONY : LeetCode_DFS.cpp.obj
+
+LeetCode_DFS.i: LeetCode_DFS.cpp.i
+
+.PHONY : LeetCode_DFS.i
+
+# target to preprocess a source file
+LeetCode_DFS.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_DFS.cpp.i
+.PHONY : LeetCode_DFS.cpp.i
+
+LeetCode_DFS.s: LeetCode_DFS.cpp.s
+
+.PHONY : LeetCode_DFS.s
+
+# target to generate assembly for a file
+LeetCode_DFS.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_DFS.cpp.s
+.PHONY : LeetCode_DFS.cpp.s
 
 LeetCode_DynamicProgrammingProblems.obj: LeetCode_DynamicProgrammingProblems.cpp.obj
 
@@ -664,12 +718,18 @@ help:
 	@echo ... LeetCode_ArrayProblems.obj
 	@echo ... LeetCode_ArrayProblems.i
 	@echo ... LeetCode_ArrayProblems.s
+	@echo ... LeetCode_BFS.obj
+	@echo ... LeetCode_BFS.i
+	@echo ... LeetCode_BFS.s
 	@echo ... LeetCode_BacktracingProblems.obj
 	@echo ... LeetCode_BacktracingProblems.i
 	@echo ... LeetCode_BacktracingProblems.s
 	@echo ... LeetCode_BitOperationProblems.obj
 	@echo ... LeetCode_BitOperationProblems.i
 	@echo ... LeetCode_BitOperationProblems.s
+	@echo ... LeetCode_DFS.obj
+	@echo ... LeetCode_DFS.i
+	@echo ... LeetCode_DFS.s
 	@echo ... LeetCode_DynamicProgrammingProblems.obj
 	@echo ... LeetCode_DynamicProgrammingProblems.i
 	@echo ... LeetCode_DynamicProgrammingProblems.s

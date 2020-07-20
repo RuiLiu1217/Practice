@@ -18,6 +18,8 @@ set(Sources
     LeetCode_TreeProblemTests.cpp
     LeetCode_RecursiveProblemTests.cpp
     LeetCode_HashProblemTests.cpp
+    LeetCode_BFSTests.cpp
+    LeetCode_DFSTests.cpp
 )
 
 add_executable(${This} ${Sources})

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="(empty)"
+	BuildStamp="20200720-0046-Experimental"
+	Name="(empty)"
+	Generator="ctest-3.17.3"
+	CompilerName=""
+	CompilerVersion=""
+	OSName="Windows"
+	Hostname="DESKTOP-ILNPTKP"
+	OSRelease=" Personal"
+	OSVersion=" (Build 18362)"
+	OSPlatform="AMD64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="15"
+	ProcessorCacheSize="-1"
+	NumberOfLogicalCPU="12"
+	NumberOfPhysicalCPU="6"
+	TotalVirtualMemory="75171"
+	TotalPhysicalMemory="65443"
+	LogicalProcessorsPerPhysical="2"
+	ProcessorClockFrequency="3597"
+	>
+	<Testing>
+		<StartDateTime>Jul 19 20:46 Eastern Daylight Time</StartDateTime>
+		<StartTestTime>1595205971</StartTestTime>
+		<TestList>
+			<Test>./test/PracticeTest</Test>
+		</TestList>
+		<Test Status="passed">
+			<Name>PracticeTest</Name>
+			<Path>./test</Path>
+			<FullName>./test/PracticeTest</FullName>
+			<FullCommandLine>C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\test\PracticeTest.exe</FullCommandLine>
+			<Results>
+				<NamedMeasurement type="numeric/double" name="Execution Time">
+					<Value>0.0174768</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="Processors">
+					<Value>1</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Completion Status">
+					<Value>Completed</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Command Line">
+					<Value>C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\test\PracticeTest.exe</Value>
+				</NamedMeasurement>
+				<Measurement>
+					<Value encoding="base64" compression="gzip">eJyNk09r4zAQxe/5FHNsDjXOblKSQg+7CaSlpSn5sxTiIBR56ggsKR1JbvPtK9vdErq22blY8rz3ex7DLL3WUmeguNQXfXgho2B6nWwskk1y6cknC40zkgUmMyO8Qu1sMpfu1u+TJ+LCSYFJZkyWo0Przo+WRJKVJ1bSIyF625uv2sHyM3oygVJk6/Cf1QWsl+EZ9baXX7WDeW72PK8FqAtJRpffAxbdpT9+E4/jc+zDtLeF5eYRqtqFe8TieDhhczL++EvzjLiyQVPX4r5VAxcxKNtvwo1i9mTenh+bMH97HfbJiG20fPX4W2pOpxVyEoc1Id7dNRE75F0hVy2uxog2cUfAuPxf/DQ1aSPyrN0KGQzHI/avuXrdNdqY/eG5TLn7v+Ha5e0hgzhmK66wBXre7oIM2OqkFDqSopX0TdOF+8HqCUrdAxaYLyhFWhMvwhrzvBFfe6Io6q0PCFTulHkBF87Vfhnvjt7BG7ehp0yBKVipBYIMu/cuEFNbiw/BejB5WroDdQj7U7W5H/r6SN4=</Value>
+				</Measurement>
+			</Results>
+		</Test>
+		<EndDateTime>Jul 19 20:46 Eastern Daylight Time</EndDateTime>
+		<EndTestTime>1595205971</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>

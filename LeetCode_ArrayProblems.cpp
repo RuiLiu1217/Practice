@@ -587,3 +587,101 @@ void LC::_0088_MergeSortedArray::merge(std::vector<int>& nums1, int m, std::vect
         nums1[pos--] = (i >= 0 && nums1[i] > nums2[j]) ? nums1[i--] : nums2[j--];
     }
 }
+
+
+std::vector<std::vector<int>> LC::_0118_PascalTriangle::generate(int numRows) {
+    if(numRows == 0) {
+        return std::vector<std::vector<int>>();
+    }
+    std::vector<std::vector<int>> res;
+    std::vector<int> a{1};
+    res.push_back(a);
+    if(numRows == 1) {
+        return res;
+    }
+    std::vector<int> b{1,1};
+    res.push_back(b);
+    if(numRows == 2) {
+        return res;
+    }
+    for(int i = 2; i < numRows; ++i) {
+        std::vector<int> t(i+1, 0);
+        t[0] = 1;
+        for(int j = 1; j < t.size() - 1; ++j) {
+            t[j] = res[i-1][j-1] + res[i-1][j];
+        }
+        t[t.size()-1] = 1;
+        res.push_back(t);
+    }
+    return res;
+}
+
+
+
+/*
+Type: Array
+*/
+std::vector<int> LC::_0119_PascalTriangleII::getRow(int rowIndex) {
+    if(rowIndex == 0) {
+        return {1};
+    }
+    std::vector<int> p{1,1};
+    if(rowIndex == 1) {
+        return p;
+    }
+
+    int rdx = 2;
+    while(rdx <= rowIndex) {
+        std::vector<int> c(p.size() + 1);
+        c[0] = 1;
+        for(int i = 1; i < p.size(); ++i) {
+            c[i] = p[i-1] + p[i];
+        }
+        c[c.size() - 1] = 1;
+        p = c;
+        ++rdx;
+    }
+    return p;
+}
+
+int LC::_0120_Triangle::minimumTotal(std::vector<std::vector<int>>& triangle) {
+    /*std::vector<std::vector<int>> DP = triangle;
+    DP[0][0] = triangle[0][0];
+    for(int i = 1; i < DP.size(); ++i) {
+        for(int j = 0; j <= i; ++j) {
+            if(j == 0) {
+                DP[i][j] = DP[i-1][j] + triangle[i][j];
+            } else if(j == i) {
+                DP[i][j] = DP[i-1][j-1] + triangle[i][j];
+            } else {
+                DP[i][j] = std::min(DP[i-1][j-1], DP[i-1][j]) + triangle[i][j];
+            }
+        }
+    }
+    DP.back().resize(triangle.size());
+    auto it = std::min_element(DP.back().begin(), DP.back().end());
+    return *it;
+    */
+    
+    std::vector<int> DP[2];
+    DP[0].resize(1);
+    DP[0] = triangle[0];
+    for(int i = 1; i < triangle.size(); ++i) {
+        const int rowIdx = i % 2;
+        const int lstIdx = (i-1) % 2;
+        DP[rowIdx].resize(i + 1);
+        for(int j = 0; j <= i; ++j) {
+            if(j == 0) {
+                DP[rowIdx][j] = DP[lstIdx][j] + triangle[i][j];
+            } else if(j == i) {
+                DP[rowIdx][j] = DP[lstIdx][j-1] + triangle[i][j];
+            } else {
+                DP[rowIdx][j] = std::min(DP[lstIdx][j-1], DP[lstIdx][j]) + triangle[i][j];
+            }
+        }
+    }
+    std::vector<int>& r = DP[(triangle.size() - 1) % 2];
+    auto it = std::min_element(r.begin(), r.end());
+    return *it;
+}
+

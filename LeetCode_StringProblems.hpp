@@ -169,5 +169,21 @@ public:
 };
 
 
+/*
+
+Facebook
+Tag: palindrome
+Given a string, determine if it is a palindrome, considering only alphanumeric characters 
+and ignoring cases. 
+Note: For the purpose of this problem, we define empty string as valid palindrome.
+
+Input: "A man, a plan, a canal: Panama"     :      Output: true
+Input: "race a car"                         :      Output: false
+*/
+class _0125_ValidPalindrome {
+public:
+    bool isPalindrome(std::string s);
+};
+
 }
 #endif

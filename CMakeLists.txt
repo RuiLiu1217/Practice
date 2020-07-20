@@ -27,6 +27,8 @@ set(Headers
     LeetCode_TreeProblems.hpp
     LeetCode_RecursiveProblems.hpp
     LeetCode_HashProblems.hpp
+    LeetCode_BFS.hpp
+    LeetCode_DFS.hpp
 )
 
 set(Sources
@@ -44,6 +46,8 @@ set(Sources
     LeetCode_TreeProblems.cpp
     LeetCode_RecursiveProblems.cpp
     LeetCode_HashProblems.cpp
+    LeetCode_BFS.cpp
+    LeetCode_DFS.cpp
 )
 
 add_library(${This} STATIC ${Sources} ${Headers})

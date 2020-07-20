@@ -476,3 +476,134 @@ int LC::_0111_MinimumDepthOfBinaryTree::minDepth(TreeNode* root) {
         return std::min(minDepth(root->left), minDepth(root->right)) + 1;
     }
 }
+
+bool LC::_0112_PathSum::hasPathSum(TreeNode* root, int sum) {
+    if(root == nullptr) {
+        return false;
+    }
+
+    if(root->left == nullptr && root->right == nullptr) {
+        return (sum == root->val);
+    }
+
+    if(root->left == nullptr && root->right != nullptr) {
+        return hasPathSum(root->right,sum - root->val);
+    }
+
+    if(root->left != nullptr && root->right == nullptr) {
+        return hasPathSum(root->left,sum - root->val);
+    }
+    
+    return (hasPathSum(root->left,sum-root->val) || hasPathSum(root->right,sum-root->val));
+}
+
+std::vector<std::vector<int>> LC::_0113_PathSumII::pathSum(TreeNode* root, int sum) {
+    std::vector<int> tmp;
+    std::vector<std::vector<int>> res;
+    pathSum(root, sum, tmp, res);
+    return res;
+}
+
+void LC::_0113_PathSumII::pathSum(TreeNode* root, int sum, std::vector<int> tmp, std::vector<std::vector<int>>& res) {
+    if(root == nullptr) {
+        return;            
+    } else if(root->val == sum && root->left == nullptr && root->right == nullptr) {
+        tmp.push_back(root->val);
+        res.push_back(tmp);
+        return;
+    }
+    tmp.push_back(root->val);
+    pathSum(root->left, sum - root->val, tmp, res);
+    pathSum(root->right, sum - root->val, tmp, res);
+}
+
+/** 这个解法非常巧妙，记得当时是看答案得到的
+ * 一般能想到的方法就是用一个栈或者queue之类的，对树做一次遍历，然后按照栈或者队列中的指针一个一个连起来;
+ * 这里是直接处理，也就是如果见到一个节点有左右孩子，那么右子树一定接在左子树最有叶子节点的后面，然后依次调用
+ * 如果该节点只有左孩子，那么想办法把他变成右孩子。如果只有右孩子，就不用管了。
+ **/
+void LC::_0114_FlattenBinaryTreeToLinkedList::flatten(TreeNode* root) {
+    TreeNode* ptr = root;
+    while(root) {
+        if(root->left && root->right) {
+            TreeNode* p = root->left;
+            while(p->right) {
+                p = p->right;
+            }
+            p->right = root->right;
+            root->right = nullptr;
+        }
+        if(root->left) {
+            root->right = root->left;
+            root->left = nullptr;
+        }
+        root = root->right;
+    }
+}
+
+
+
+LC::_0116_PopulatingNextRightPointerInEachNode::Node* LC::_0116_PopulatingNextRightPointerInEachNode::connect(
+    LC::_0116_PopulatingNextRightPointerInEachNode::Node* root) {
+    if(root==nullptr) {
+        return root;
+    }
+    if(root->left != nullptr && root->right != nullptr) {
+        root->left->next = root->right;
+        if(root->next != nullptr) {
+            root->right->next = root->next->left;
+        }
+        root->left = connect(root->left);
+        root->right = connect(root->right);
+    }
+    return root;
+}
+
+
+LC::_0117_PopulatingNextRightPointersInEachNodeII::Node* LC::_0117_PopulatingNextRightPointersInEachNodeII::connect(Node* root) {
+    if(root == nullptr) {
+        return nullptr;
+    }
+    Node* p = root;
+    std::queue<std::pair<Node*, int>> q;
+    q.push({p, 0});
+    while(!q.empty()) {
+        const int N = q.size();
+        for(int i = 0; i < N; ++i) {
+            auto a = q.front();
+            auto t = a.first;
+            
+            q.pop();
+            if(!q.empty() && a.second == q.front().second) {
+                t->next = q.front().first;
+            }
+            if(t->left) {
+                q.push({t->left, a.second + 1});
+            }
+            if(t->right) {
+                q.push({t->right, a.second + 1});
+            }
+        }
+    }
+    return root;
+}
+
+
+// Facebook
+// 这道题的解法还是很巧妙的，
+// 设计一个 helper 函数，这个函数以树的某个节点为参数，它返回"以这个节点为一侧端点的最长路径"。也就是选左边子树还是选右边子树.
+// 然后在这个函数里面夹带一个全局变量，这个全局变量才是要求解的结果
+int LC::_0124_BinaryTreeMaximumPathSum::helper(TreeNode* root) {
+    if(!root) {
+        return 0;
+    }
+    int left = std::max(helper(root->left), 0); // 一旦发现比0小说明这条路径 不如不要了
+    int right = std::max(helper(root->right), 0);
+    res = std::max(res, left + right + root->val);
+    return std::max(left, right) + root->val;
+}
+int LC::_0124_BinaryTreeMaximumPathSum::maxPathSum(TreeNode* root) {
+    res = INT_MIN;
+    helper(root);
+    return res;
+}

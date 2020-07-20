@@ -70,6 +70,16 @@
   "file": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_HashProblems.cpp"
 },
 {
+  "directory": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build",
+  "command": "C:\\mingw64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=gnu++17 -o CMakeFiles\\Practice.dir\\LeetCode_BFS.cpp.obj -c C:\\Users\\liuru\\OneDrive\\Documents\\GitHub\\Practice\\LeetCode_BFS.cpp",
+  "file": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_BFS.cpp"
+},
+{
+  "directory": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build",
+  "command": "C:\\mingw64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=gnu++17 -o CMakeFiles\\Practice.dir\\LeetCode_DFS.cpp.obj -c C:\\Users\\liuru\\OneDrive\\Documents\\GitHub\\Practice\\LeetCode_DFS.cpp",
+  "file": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_DFS.cpp"
+},
+{
   "directory": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/googletest/googlemock",
   "command": "C:\\mingw64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe   @CMakeFiles/gmock_main.dir/includes_CXX.rsp -g   -Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++17 -o CMakeFiles\\gmock_main.dir\\src\\gmock_main.cc.obj -c C:\\Users\\liuru\\OneDrive\\Documents\\GitHub\\Practice\\googletest\\googlemock\\src\\gmock_main.cc",
   "file": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/googletest/googlemock/src/gmock_main.cc"
@@ -158,5 +168,10 @@
   "directory": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test",
   "command": "C:\\mingw64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe   @CMakeFiles/PracticeTest.dir/includes_CXX.rsp -g   -std=gnu++17 -o CMakeFiles\\PracticeTest.dir\\LeetCode_HashProblemTests.cpp.obj -c C:\\Users\\liuru\\OneDrive\\Documents\\GitHub\\Practice\\test\\LeetCode_HashProblemTests.cpp",
   "file": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_HashProblemTests.cpp"
+},
+{
+  "directory": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test",
+  "command": "C:\\mingw64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe   @CMakeFiles/PracticeTest.dir/includes_CXX.rsp -g   -std=gnu++17 -o CMakeFiles\\PracticeTest.dir\\LeetCode_BFSTests.cpp.obj -c C:\\Users\\liuru\\OneDrive\\Documents\\GitHub\\Practice\\test\\LeetCode_BFSTests.cpp",
+  "file": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_BFSTests.cpp"
 }
 ]

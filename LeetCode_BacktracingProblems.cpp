@@ -390,3 +390,46 @@ void LC::_0090_SubsetII::subset(std::vector<std::vector<int>>& res, std::vector<
         tmp.pop_back();
     }
 }
+
+
+void LC::_0130_SurroundedRegions::solve(std::vector<std::vector<char>>& board) {
+    const int M = board.size();
+    const int N = board[0].size();
+
+    std::function<void(int, int, const char, const char)> dfs = [&] (int i, int j, const char orig, const char newc) {
+        if(i < 0 || i >= M || j < 0 || j >= N) {
+            return;
+        }
+        if(board[i][j] == orig) {
+            board[i][j] = newc;
+            dfs(i + 1, j, orig, newc);
+            dfs(i - 1, j, orig, newc);
+            dfs(i, j + 1, orig, newc);
+            dfs(i, j - 1, orig, newc);
+        }
+    };
+
+    // die to '.' first
+    if(board.empty() || board[0].empty()) {
+        return;
+    }
+    
+    for(int i = 0; i < M; ++i) {
+        dfs(i, 0, 'O', '.');
+        dfs(i, N-1, 'O', '.');
+    }
+    for(int j = 0; j < N; ++j) {
+        dfs(0, j, 'O', '.');
+        dfs(M-1, j, 'O', '.');
+    }
+    
+    for(int i = 0; i < M; ++i) {
+        for(int j = 0; j < N; ++j) {
+            if(board[i][j] == '.') {
+                board[i][j] = 'O';
+            } else {
+                board[i][j] = 'X';
+            }
+        }
+    }
+}

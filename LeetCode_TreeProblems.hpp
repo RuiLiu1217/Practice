@@ -333,28 +333,6 @@ public:
 };
 
 
-/*
-Tag: Tree
-Given a binary tree, find its minimum depth.
-The minimum depth is the number of nodes along the shortest path 
-from the root node down to the nearest leaf node.
-
-Note: A leaf is a node with no children.
-
-Example:
-Given binary tree [3,9,20,null,null,15,7],
-
-    3
-   / \
-  9  20
-    /  \
-   15   7
-return its minimum depth = 2.
-*/
-class _0111_MinimumDepthOfBinaryTree {
-public:
-    int minDepth(TreeNode* root);
-};
 
 /*
 Tag: Tree, recursive
@@ -390,6 +368,243 @@ public:
 private:
     int height(TreeNode* root);
 };
+
+/*
+Tag: Tree
+Given a binary tree, find its minimum depth.
+The minimum depth is the number of nodes along the shortest path 
+from the root node down to the nearest leaf node.
+
+Note: A leaf is a node with no children.
+
+Example:
+Given binary tree [3,9,20,null,null,15,7],
+
+    3
+   / \
+  9  20
+    /  \
+   15   7
+return its minimum depth = 2.
+*/
+class _0111_MinimumDepthOfBinaryTree {
+public:
+    int minDepth(TreeNode* root);
+};
+
+
+/*
+Tag: Backtracking, Tree, recursive
+Given a binary tree and a sum, determine if the tree has a root-to-leaf path 
+such that adding up all the values along the path equals the given sum.
+Note: A leaf is a node with no children.
+
+Example:
+Given the below binary tree and sum = 22,
+
+      5
+     / \
+    4   8
+   /   / \
+  11  13  4
+ /  \      \
+7    2      1
+return true, as there exist a root-to-leaf path 5->4->11->2 which sum is 22.
+*/
+class _0112_PathSum {
+public:
+    bool hasPathSum(TreeNode* root, int sum);
+};
+
+
+/*
+Tag: Backtracking, Tree, recursive
+Given a binary tree and a sum, find all root-to-leaf paths where each path's sum equals the given sum.
+Note: A leaf is a node with no children.
+
+Given the below binary tree and sum = 22,
+
+      5
+     / \
+    4   8
+   /   / \
+  11  13  4
+ /  \    / \
+7    2  5   1
+Return:
+[[5,4,11,2], [5,8,4,5]]
+*/
+class _0113_PathSumII {
+public:
+    std::vector<std::vector<int>> pathSum(TreeNode* root, int sum);
+    void pathSum(TreeNode* root, int sum, std::vector<int> tmp, std::vector<std::vector<int>>& res);
+};
+
+
+
+/*
+Tag: single linked list, Tree
+Given a binary tree, flatten it to a linked list in-place.
+
+For example, given the following tree:
+
+    1
+   / \
+  2   5
+ / \   \
+3   4   6
+The flattened tree should look like:
+
+1
+ \
+  2
+   \
+    3
+     \
+      4
+       \
+        5
+         \
+          6
+*/
+class _0114_FlattenBinaryTreeToLinkedList {
+public:
+    void flatten(TreeNode* root);
+};
+
+
+/*
+Tag: Tree, recursive
+You are given a perfect binary tree where all leaves are on the same level, 
+and every parent has two children. The binary tree has the following definition:
+Populate each next pointer to point to its next right node. If there is no next 
+right node, the next pointer should be set to NULL.
+Initially, all next pointers are set to NULL.
+*/
+class _0116_PopulatingNextRightPointerInEachNode
+{
+public:
+    class Node {
+    public:
+        int val;
+        Node *left;
+        Node *right;
+        Node *next;
+    };
+
+    Node* connect(Node *root);
+};
+
+
+
+/*
+Tag: recursive, Tree,
+TODO: Constant space
+117. Populating Next Right Pointers in Each Node II
+Given a binary tree
+Populate each next pointer to point to its next right node. 
+If there is no next right node, the next pointer should be set to NULL.
+Initially, all next pointers are set to NULL.
+
+Follow up:
+
+You may only use constant extra space.
+Recursive approach is fine, you may assume implicit stack space does not count as extra space for this problem.
+
+Input: root = [1,2,3,4,5,null,7]
+Output: [1,#,2,3,#,4,5,7,#]
+Explanation: Given the above binary tree (Figure A), your function should populate each next pointer to point to its next right node, just like in Figure B. The serialized output is in level order as connected by the next pointers, with '#' signifying the end of each level.
+ 
+
+Constraints:
+
+The number of nodes in the given tree is less than 6000.
+-100 <= node.val <= 100
+*/
+class _0117_PopulatingNextRightPointersInEachNodeII {
+public:
+    struct Node {
+    int val;
+    Node *left;
+    Node *right;
+    Node *next;
+    };
+
+    Node* connect(Node* root);
+
+    // /* Space Complexity O(1) Solution */
+// struct myNode {
+//     int val;
+//     myNode* left;
+//     myNode* right;
+//     myNode* next;
+//     myNode(int v, myNode* l, myNode* r, myNode* n) : val(v), left(l), right(r), next(n) {}
+// };
+
+// myNode* connect(myNode* root) {
+//     myNode* dummy = new myNode(0, nullptr, nullptr, nullptr);
+//     myNode* cur = dummy;
+//     myNode* head = root;
+//     while(root) {
+//         if(root->left) {
+//             cur->next = root->left;
+//             cur = cur->next;
+//         }
+//         if(root->right) {
+//             cur->next = root->right;
+//             cur = cur->next;
+//         }
+//         root = root->next;
+//         if(!root) {
+//             cur = dummy;
+//             root = dummy->next;
+//             dummy->next = nullptr;
+//         }
+//     }
+//     return head;
+// }
+};
+
+
+/*
+Facebook
+!!! Copy from the solution !!!
+
+Tag: recursive, Tree
+TODO
+Given a non-empty binary tree, find the maximum path sum.
+For this problem, a path is defined as any sequence of nodes from some starting node to 
+any node in the tree along the parent-child connections. The path must contain at least 
+one node and does not need to go through the root.
+
+Input: [1,2,3]
+
+       1
+      / \
+     2   3
+
+Output: 6
+
+Input: [-10,9,20,null,null,15,7]
+
+   -10
+   / \
+  9  20
+    /  \
+   15   7
+
+Output: 42
+*/
+class _0124_BinaryTreeMaximumPathSum {
+private:
+    int res;
+public:
+    int helper(TreeNode* root);
+    int maxPathSum(TreeNode* root);
+};
+
+
+
 
     /*
     A binary tree is given such that each node contains an additional random pointer which could point to any node in the tree or null.
