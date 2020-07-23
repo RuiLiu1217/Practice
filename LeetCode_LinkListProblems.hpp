@@ -1,6 +1,7 @@
 #ifndef LEETCODE_LINKLISTPROBLEMS_HPP
 #define LEETCODE_LINKLISTPROBLEMS_HPP
 #include <vector>
+#include <map>
 namespace LC {
 
 class ListNode {
@@ -126,8 +127,6 @@ public:
 
 
 /*
-Tag: Single Linked List
-
 Given a linked list, rotate the list to the right by k places, where k is non-negative.
 
 Example 1:
@@ -188,7 +187,6 @@ public:
 
 
 /*
-Tag: single linked list operation
 Given a linked list and a value x, partition it such that all nodes less 
 than x come before nodes greater than or equal to x.
 You should preserve the original relative order of the nodes in each of 
@@ -214,6 +212,129 @@ class _0092_ReverseLinkedListII {
 public:
     ListNode* reverseBetween(ListNode* head, int m, int n);
 };
+
+
+/*
+TODO:
+A linked list is given such that each node contains an additional random pointer which could point to 
+any node in the list or null. Return a deep copy of the list.
+
+Example 1:
+Input:
+{"$id":"1","next":{"$id":"2","next":null,"random":{"$ref":"2"},"val":2},"random":{"$ref":"2"},"val":1}
+
+Explanation:
+Node 1's value is 1, both of its next and random pointer points to Node 2.
+Node 2's value is 2, its next pointer points to null and its random pointer points to itself.
+ 
+
+Note:
+
+You must return the copy of the given head as a reference to the cloned list.
+*/
+class _0138_CopyListWithRandomPointer {
+public:
+    struct Node {
+        public:
+            int val;
+            Node* next;
+            Node* random;
+            Node() {}
+            Node(int _val, Node* _next, Node* _random) : val(_val), next(_next), random(_random) {}
+    };
+
+    Node* copyRandomList(Node* head);
+    std::map<Node*, Node*> visit;
+};
+
+/*
+Given a linked list, determine if it has a cycle in it.
+
+To represent a cycle in the given linked list, we use an integer pos which represents the position (0-indexed) in the linked list where tail connects to. If pos is -1, then there is no cycle in the linked list.
+
+Input: head = [3,2,0,-4], pos = 1
+Output: true
+Explanation: There is a cycle in the linked list, where tail connects to the second node.
+
+Input: head = [1,2], pos = 0
+Output: true
+Explanation: There is a cycle in the linked list, where tail connects to the first node.
+
+Input: head = [1], pos = -1
+Output: false
+Explanation: There is no cycle in the linked list.
+
+Follow up:
+
+Can you solve it using O(1) (i.e. constant) memory?
+*/
+class _0141_LinkedListCycle {
+public:
+    bool hasCycle(ListNode* head);
+};
+
+/*
+Given a linked list, return the node where the cycle begins. If there is no cycle, return null.
+To represent a cycle in the given linked list, we use an integer pos which represents the position 
+(0-indexed) in the linked list where tail connects to. If pos is -1, then there is no cycle in 
+the linked list.
+
+Note: Do not modify the linked list.
+
+Input: head = [3,2,0,-4], pos = 1
+Output: tail connects to node index 1
+Explanation: There is a cycle in the linked list, where tail connects to the second node.
+
+Input: head = [1,2], pos = 0
+Output: tail connects to node index 0
+Explanation: There is a cycle in the linked list, where tail connects to the first node.
+
+Input: head = [1], pos = -1
+Output: no cycle
+Explanation: There is no cycle in the linked list.
+*/
+class _0142_LinkedListCycleII {
+public:
+    ListNode* detectCycle(ListNode* head);
+};
+
+
+/*
+Sort a linked list using insertion sort.
+A graphical example of insertion sort. The partial sorted list (black) initially contains only the first element in the list.
+With each iteration one element (red) is removed from the input data and inserted in-place into the sorted list
+Algorithm of Insertion Sort:
+
+Insertion sort iterates, consuming one input element each repetition, and growing a sorted output list.
+At each iteration, insertion sort removes one element from the input data, finds the location it belongs within the sorted list, and inserts it there.
+It repeats until no input elements remain.
+
+Example 1:
+
+Input: 4->2->1->3
+Output: 1->2->3->4
+Example 2:
+
+Input: -1->5->3->4->0
+Output: -1->0->3->4->5
+*/
+class _0147_InsertionSortList {
+public:
+    ListNode* insertionSortList(ListNode* head);
+};
+
+
+// Sort a linked list in O(NlogN) time using constant space complexity.
+class _0148_SortList {
+public:
+    ListNode *sortList(ListNode *head);
+private:
+    ListNode *merge(ListNode *head1, ListNode *head2);
+    void splitList(ListNode* &head, ListNode* &left, ListNode* &right);
+};
+
+
+
 
 
 } // end namespace LC

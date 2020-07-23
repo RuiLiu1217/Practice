@@ -311,3 +311,155 @@ LC::ListNode* LC::_0092_ReverseLinkedListII::reverseBetween(ListNode* head, int 
     delete newHead;
     return head;
 }
+
+
+// 做过，但是一时想不起来了，需要再看几遍. 这道题跟 cloneGraph 很像
+LC::_0138_CopyListWithRandomPointer::Node* LC::_0138_CopyListWithRandomPointer::copyRandomList(LC::_0138_CopyListWithRandomPointer::Node* head) {
+    if(head == nullptr) {
+        return nullptr;
+    }
+    if(visit.find(head) != visit.end()) {
+        return visit[head];
+    }
+    LC::_0138_CopyListWithRandomPointer::Node* res = new LC::_0138_CopyListWithRandomPointer::Node();
+    res->val = head->val;
+    visit[head] = res; // this has to be done before recursive call
+
+    res->next = copyRandomList(head->next);   // 跟 cloneGraph 一个意思只不过没那么多而已;
+    res->random = copyRandomList(head->random);
+    return res;
+}
+
+// 快慢指针追逐
+bool LC::_0141_LinkedListCycle::hasCycle(ListNode* head) {
+    ListNode* fastPtr = head;
+    ListNode* slowPtr = head;
+    if(head == nullptr) {
+        return false;
+    }
+    if(head->next == nullptr) {
+        return false;
+    }
+    while(fastPtr) {
+        fastPtr = fastPtr->next;
+        if(fastPtr) {
+            fastPtr = fastPtr->next;
+        } else {
+            return false;
+        }
+
+        slowPtr = slowPtr->next;
+
+        if(fastPtr == slowPtr) {
+            return true;
+        }
+    }
+    return false;    
+}
+
+
+// 使用快慢指针，先找到快慢指针相遇的地方，然后入口指针从开始点跟着慢指针一起向前走，直到相遇。
+LC::ListNode* LC::_0142_LinkedListCycleII::detectCycle(ListNode* head) {
+    if(head == nullptr || head->next == nullptr) {
+        return nullptr;
+    }
+
+    ListNode* slow = head;
+    ListNode* fast = head;
+    ListNode* entry = head;
+    while(fast->next && fast->next->next) {
+        slow = slow->next;
+        fast = fast->next->next;
+        if(fast == slow) {
+            while(entry != slow) {
+                entry = entry->next;
+                slow = slow->next;
+            }
+            return entry;
+        }
+    }
+    return nullptr;    
+}
+
+
+LC::ListNode* LC::_0147_InsertionSortList::insertionSortList(LC::ListNode* head) {
+    LC::ListNode* nh = new LC::ListNode(INT_MIN);
+    nh->next = head;
+    LC::ListNode* toSort = head;
+    while(toSort) {
+        LC::ListNode* nxt = toSort->next;
+        toSort->next = nullptr;
+        LC::ListNode* p = nh;
+        while(p->next && (p->next->val < toSort->val)) {
+            p = p->next;
+        }
+        if (p->next != toSort) {
+            toSort->next = p->next;
+            p->next = toSort;
+        }
+        toSort = nxt;
+    }
+    head = nh->next;
+    delete nh;
+    nh = nullptr;
+    return head;
+}
+
+
+LC::ListNode* LC::_0148_SortList::sortList(LC::ListNode* head) {
+    if(!head) {
+        return nullptr;
+    }
+    if(head->next == nullptr) {
+        return head;
+    }
+    LC::ListNode* left = head;
+    LC::ListNode* right = head;
+    
+    splitList(head, left, right);
+    left = sortList(left);
+    right = sortList(right);
+    head = merge(left, right);
+    return head;        
+}
+
+
+void LC::_0148_SortList::splitList(LC::ListNode*& head, LC::ListNode*& left, LC::ListNode*& right) {
+    LC::ListNode* slow = head;
+    LC::ListNode* sprev = head;
+    LC::ListNode* fast = head;
+    while(fast && fast->next) {
+        sprev = slow;
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    sprev->next = nullptr;
+    left = head;
+    right = slow;        
+}
+
+LC::ListNode* LC::_0148_SortList::merge(LC::ListNode* a, LC::ListNode* b) {
+    LC::ListNode* h = new LC::ListNode(-1);
+    LC::ListNode* p = h;
+    while(a && b) {
+        if(a->val < b->val) {
+            p->next = a;
+            a = a->next;
+        } else {
+            p->next = b;
+            b = b->next;                
+        }
+        p = p->next;
+    }
+    if(a) {
+        p->next = a;
+    }
+    if(b) {
+        p->next = b;
+    }
+    LC::ListNode* head = h->next;
+    h->next = nullptr;
+    delete h;
+    h = nullptr;
+    return head;
+}

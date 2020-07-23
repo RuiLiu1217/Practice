@@ -1,10 +1,9 @@
 #include "LeetCode_TreeProblems.hpp"
 #include <queue>
-#include <stack>
 #include <algorithm>
 #include <numeric>
 #include <cmath>
-
+#include <stack>
 // Facebook
 
 /*
@@ -606,4 +605,70 @@ int LC::_0124_BinaryTreeMaximumPathSum::maxPathSum(TreeNode* root) {
     res = INT_MIN;
     helper(root);
     return res;
+}
+
+std::vector<int> LC::_0144_BinaryTreePreOrderTraversal::preorderTraversal(LC::TreeNode* root) {
+    LC::TreeNode* p = root;
+    std::stack<LC::TreeNode*> st;
+    std::vector<int> res;
+    while(p != nullptr || !st.empty()) {
+        if(p != nullptr) {
+            res.push_back(p->val);
+            st.push(p);
+            p = p->left;
+        } else {
+            LC::TreeNode* q = st.top();
+            st.pop();
+            p = q->right;
+        }
+    }
+    return res;
+}
+
+std::vector<int> LC::_0145_BinaryTreePostorderTraversal::postorderTraversal(LC::TreeNode* root) {
+    LC::TreeNode* p = root;
+    std::stack<std::pair<LC::TreeNode*, int>> st;
+    std::vector<int> res;
+    while(p != nullptr || !st.empty()) {
+        while(p != nullptr) {
+            st.push(std::make_pair(p, 0));
+            p = p->left;
+        }
+        if(!st.empty()) {
+            auto temp = st.top();
+            st.pop();
+            if(temp.second == 0) {
+                temp.second = 1;
+                st.push(temp);
+                p = temp.first->right;
+            } else {
+                res.emplace_back(temp.first->val);
+                p = nullptr; // need to set it as null, otherwise, there will be an error.
+            }
+        }
+    }
+    return res;
+}
+
+LC::ListNode* LC::_0147_InsertionSortList::insertionSortList(LC::ListNode* head) {
+    LC::ListNode* nh = new LC::ListNode(INT_MIN);
+    nh->next = head;
+    LC::ListNode* toSort = head;
+    while(toSort) {
+        LC::ListNode* nxt = toSort->next;
+        toSort->next = nullptr;
+        LC::ListNode* p = nh;
+        while(p->next && (p->next->val < toSort->val)) {
+            p = p->next;
+        }
+        if (p->next != toSort) {
+            toSort->next = p->next;
+            p->next = toSort;
+        }
+        toSort = nxt;
+    }
+    head = nh->next;
+    delete nh;
+    nh = nullptr;
+    return head;
 }

@@ -198,65 +198,6 @@ public:
 };
 
 
-
-
-
-/*
-Tag: Bit operation
-
-Given a non-empty array of integers, every element appears three times except for one, which appears 
-exactly once. Find that single one.
-
-Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
-
-Example 1:
-
-Input: [2,2,3,2]
-Output: 3
-Example 2:
-
-Input: [0,1,0,1,0,1,99]
-Output: 99
-*/
-class _0137_SingleNumberII {
-public:
-    int singleNumber(std::vector<int>& nums);
-};
-
-/*
-Tag: single linked list
-TODO:
-A linked list is given such that each node contains an additional random pointer which could point to 
-any node in the list or null. Return a deep copy of the list.
-
-Example 1:
-Input:
-{"$id":"1","next":{"$id":"2","next":null,"random":{"$ref":"2"},"val":2},"random":{"$ref":"2"},"val":1}
-
-Explanation:
-Node 1's value is 1, both of its next and random pointer points to Node 2.
-Node 2's value is 2, its next pointer points to null and its random pointer points to itself.
- 
-
-Note:
-
-You must return the copy of the given head as a reference to the cloned list.
-*/
-class _0138_CopyListWithRandomPointer {
-public:
-    struct Node {
-        public:
-            int val;
-            Node* next;
-            Node* random;
-            Node() {}
-            Node(int _val, Node* _next, Node* _random) : val(_val), next(_next), random(_random) {}
-    };
-
-    Node* copyRandomList(Node* head);
-    std::map<Node*, Node*> visit;
-};
-
 /*
 Tag: Dynamic Programming, backtracking (TLE)
 
@@ -296,59 +237,9 @@ private:
     std::unordered_map<std::string, bool> hasSolution;
 };
 
-/*
-Tag: Single Linked List
-
-Given a linked list, determine if it has a cycle in it.
-
-To represent a cycle in the given linked list, we use an integer pos which represents the position (0-indexed) in the linked list where tail connects to. If pos is -1, then there is no cycle in the linked list.
-
-Input: head = [3,2,0,-4], pos = 1
-Output: true
-Explanation: There is a cycle in the linked list, where tail connects to the second node.
-
-Input: head = [1,2], pos = 0
-Output: true
-Explanation: There is a cycle in the linked list, where tail connects to the first node.
-
-Input: head = [1], pos = -1
-Output: false
-Explanation: There is no cycle in the linked list.
-
-Follow up:
-
-Can you solve it using O(1) (i.e. constant) memory?
-*/
-class _0141_LinkedListCycle {
-public:
-    bool hasCycle(ListNode<int>* head);
-};
 
 
-/*
-Given a linked list, return the node where the cycle begins. If there is no cycle, return null.
-To represent a cycle in the given linked list, we use an integer pos which represents the position 
-(0-indexed) in the linked list where tail connects to. If pos is -1, then there is no cycle in 
-the linked list.
 
-Note: Do not modify the linked list.
-
-Input: head = [3,2,0,-4], pos = 1
-Output: tail connects to node index 1
-Explanation: There is a cycle in the linked list, where tail connects to the second node.
-
-Input: head = [1,2], pos = 0
-Output: tail connects to node index 0
-Explanation: There is a cycle in the linked list, where tail connects to the first node.
-
-Input: head = [1], pos = -1
-Output: no cycle
-Explanation: There is no cycle in the linked list.
-*/
-class _0142_LinkedListCycleII {
-public:
-    ListNode<int>* detectCycle(ListNode<int>* head);
-};
 
 /*
 Given a singly linked list L: L0→L1→…→Ln-1→Ln,
@@ -365,48 +256,6 @@ public:
 };
 
 
-/*
-Tag: basic knowledge
-Given a binary tree, return the preorder traversal of its nodes' values.
-
-Example:
-
-Input: [1,null,2,3]
-   1
-    \
-     2
-    /
-   3
-
-Output: [1,2,3]
-Follow up: Recursive solution is trivial, could you do it iteratively?
-*/
-class _0144_BinaryTreePreOrderTraversal {
-public:
-    std::vector<int> preorderTraversal(TreeNode<int>* root);
-};
-
-
-/*
-Tag: basic knowledge
-Given a binary tree, return the postorder traversal of its nodes' values.
-
-Example:
-
-Input: [1,null,2,3]
-   1
-    \
-     2
-    /
-   3
-
-Output: [3,2,1]
-Follow up: Recursive solution is trivial, could you do it iteratively?
-*/
-class _0145_BinaryTreePostorderTraversal {
-public:
-    std::vector<int> postorderTraversal(TreeNode<int>* root);
-};
 
 
 /*
@@ -452,45 +301,6 @@ public:
     void put(int key, int value);
 };
 
-/*
-Tag: single linked list
-Sort a linked list using insertion sort.
-A graphical example of insertion sort. The partial sorted list (black) initially contains only the first element in the list.
-With each iteration one element (red) is removed from the input data and inserted in-place into the sorted list
-Algorithm of Insertion Sort:
-
-Insertion sort iterates, consuming one input element each repetition, and growing a sorted output list.
-At each iteration, insertion sort removes one element from the input data, finds the location it belongs within the sorted list, and inserts it there.
-It repeats until no input elements remain.
-
-Example 1:
-
-Input: 4->2->1->3
-Output: 1->2->3->4
-Example 2:
-
-Input: -1->5->3->4->0
-Output: -1->0->3->4->5
-*/
-class _0147_InsertionSortList {
-public:
-    ListNode<int>* insertionSortList(ListNode<int>* head);
-};
-
-
-// 
-// Tag: merge sort, single linked list
-// Sort a linked list in O(NlogN) time using constant space complexity.
-class _0148_SortList
-{
-public:
-    ListNode<int> *sortList(ListNode<int> *head);
-
-private:
-    ListNode<int> *merge(ListNode<int> *head1, ListNode<int> *head2);
-    void splitList(ListNode<int> *&head, ListNode<int> *&left, ListNode<int> *&right);
-};
-
 
 /*
 Tag: Geometry
@@ -501,39 +311,6 @@ public:
     int maxPoints(std::vector<std::vector<int>>& points);
 };
 
-/*
-Tag: Stack
-Evaluate the value of an arithmetic expression in Reverse Polish Notation.
-Valid operators are +, -, *, /. Each operand may be an integer or another expression.
-
-Division between two integers should truncate toward zero.
-The given RPN expression is always valid. That means the expression would always evaluate to a 
-result and there won't be any divide by zero operation.
-
-
-Input: ["2", "1", "+", "3", "*"]
-Output: 9
-Explanation: ((2 + 1) * 3) = 9
-
-Input: ["4", "13", "5", "/", "+"]
-Output: 6
-Explanation: (4 + (13 / 5)) = 6
-
-Input: ["10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"]
-Output: 22
-Explanation: 
-  ((10 * (6 / ((9 + 3) * -11))) + 17) + 5
-= ((10 * (6 / (12 * -11))) + 17) + 5
-= ((10 * (6 / -132)) + 17) + 5
-= ((10 * 0) + 17) + 5
-= (0 + 17) + 5
-= 17 + 5
-= 22
-*/
-class _0150_EvaluateReversePolishNotation {
-public:
-    int evalRPN(std::vector<std::string>& tokens);
-};
 
 /*
 TAG: string, stringstream

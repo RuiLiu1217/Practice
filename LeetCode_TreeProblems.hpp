@@ -603,7 +603,48 @@ public:
     int maxPathSum(TreeNode* root);
 };
 
+/*
+Given a binary tree, return the preorder traversal of its nodes' values.
 
+Example:
+
+Input: [1,null,2,3]
+   1
+    \
+     2
+    /
+   3
+
+Output: [1,2,3]
+Follow up: Recursive solution is trivial, could you do it iteratively?
+*/
+class _0144_BinaryTreePreOrderTraversal {
+public:
+    std::vector<int> preorderTraversal(TreeNode* root);
+};
+
+
+
+/*
+Tag: basic knowledge
+Given a binary tree, return the postorder traversal of its nodes' values.
+
+Example:
+
+Input: [1,null,2,3]
+   1
+    \
+     2
+    /
+   3
+
+Output: [3,2,1]
+Follow up: Recursive solution is trivial, could you do it iteratively?
+*/
+class _0145_BinaryTreePostorderTraversal {
+public:
+    std::vector<int> postorderTraversal(TreeNode* root);
+};
 
 
     /*
