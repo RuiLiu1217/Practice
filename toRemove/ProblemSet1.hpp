@@ -665,60 +665,6 @@ public:
     std::vector<int> twoSum(std::vector<int>& numbers, int target);
 };
 
-/*
-Given a positive integer, return its corresponding column title as appear in an Excel sheet.
-
-For example:
-
-    1 -> A
-    2 -> B
-    3 -> C
-    ...
-    26 -> Z
-    27 -> AA
-    28 -> AB 
-    ...
-Example 1:
-
-Input: 1
-Output: "A"
-Example 2:
-
-Input: 28
-Output: "AB"
-Example 3:
-
-Input: 701
-Output: "ZY"
-*/
-class _0168_ExcelSheetColumnTitle {
-public:
-    std::string convertToTitle(int n);
-};
-
-
-
-/*
-Given an integer n, return the number of trailing zeroes in n!.
-
-Example 1:
-
-Input: 3
-Output: 0
-Explanation: 3! = 6, no trailing zero.
-Example 2:
-
-Input: 5
-Output: 1
-Explanation: 5! = 120, one trailing zero.
-Note: Your solution should be in logarithmic time complexity.
-*/
-class _0172_FactorialTrailingZeroes {
-public:
-    int trailingZeroes(int n);
-};
-
-
 
 /*
 The demons had captured the princess (P) and imprisoned her in the bottom-right 
@@ -774,20 +720,6 @@ class _0179_LargestNumber {
 public:
     std::string largestNumber(std::vector<int>& nums);
 };
-
-// 180 is a MySQL problem;
-class _0180_ConsecutiveNumbers;
-// 181 is a MySQL problem;
-class _0181_EmployeesEarningMoreThanTheirManagers;
-// 182 is a MySQL problem;
-class _0182_DuplicateEmails;
-// 183 is a MySQL problem;
-class _0183_CustomersWhoeNeverOrder;
-// 184 is a MySQL problem;
-class _0184_DepartmentHighestSalary;
-// 185 is a MySQL problem;
-class _0185_DepartmentTopThreeSalaries;
-
 
 /*
 Tag: special topic 

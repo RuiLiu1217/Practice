@@ -6,19 +6,19 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_BFS.cpp
-LeetCode_BFS.hpp
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_BFS.hpp
-unordered_set
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_MathProblems.cpp
+LeetCode_MathProblems.hpp
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_MathProblems.hpp
+cmath
 -
-queue
+climits
 -
-functional
+cstdlib
 -
-
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_BFS.hpp
 string
 -
-vector
+
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_MathProblems.hpp
+string
 -
 

@@ -92,6 +92,57 @@ public:
     int titleToNumber(std::string s);
 };
 
+/*
+Given an integer n, return the number of trailing zeroes in n!.
+
+Example 1:
+
+Input: 3
+Output: 0
+Explanation: 3! = 6, no trailing zero.
+Example 2:
+
+Input: 5
+Output: 1
+Explanation: 5! = 120, one trailing zero.
+Note: Your solution should be in logarithmic time complexity.
+*/
+class _0172_FactorialTrailingZeroes {
+public:
+    int trailingZeroes(int n);
+};
+
+/*
+Given a positive integer, return its corresponding column title as appear in an Excel sheet.
+
+For example:
+
+    1 -> A
+    2 -> B
+    3 -> C
+    ...
+    26 -> Z
+    27 -> AA
+    28 -> AB 
+    ...
+Example 1:
+
+Input: 1
+Output: "A"
+Example 2:
+
+Input: 28
+Output: "AB"
+Example 3:
+
+Input: 701
+Output: "ZY"
+*/
+class _0168_ExcelSheetColumnTitle {
+public:
+    std::string convertToTitle(int n);
+};
+
 
 }
 

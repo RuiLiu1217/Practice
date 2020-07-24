@@ -73,3 +73,12 @@ int LC::_0171_ExcellSheetColumnNumber::titleToNumber(std::string s) {
         return titleToNumber(subS) * 26 + (ss - 'A' + 1);
     }
 }
+
+std::string LC::_0168_ExcelSheetColumnTitle::convertToTitle(int n) {
+    return n == 0 ? "" : convertToTitle(n / 26) + (char) (--n % 26 + 'A');
+}
+
+// Recursive, mathematics
+int LC::_0172_FactorialTrailingZeroes::trailingZeroes(int n) {
+    return n == 0 ? 0 : n / 5 + trailingZeroes(n / 5);
+}
