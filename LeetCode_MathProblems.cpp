@@ -3,6 +3,8 @@
 #include <climits>
 #include <cstdlib>
 #include <string>
+#include <algorithm>
+#include <unordered_set>
 /*
 Google
 */
@@ -81,4 +83,30 @@ std::string LC::_0168_ExcelSheetColumnTitle::convertToTitle(int n) {
 // Recursive, mathematics
 int LC::_0172_FactorialTrailingZeroes::trailingZeroes(int n) {
     return n == 0 ? 0 : n / 5 + trailingZeroes(n / 5);
+}
+
+
+int LC::_0202_HappyNumber::gat(int n) {
+    int sum = 0;
+    while(n > 0) {
+        sum += std::pow(n % 10, 2);
+        n = n / 10;
+    }
+    return sum;
+}
+
+bool LC::_0202_HappyNumber::isHappy(int n) {
+    int newN = gat(n);
+    std::unordered_set<int> loops;
+    if(newN == 1) {
+        return true;
+    }
+    while(!loops.count(newN)) {
+        loops.insert(newN);
+        newN = gat(newN);
+        if(newN == 1) {
+            return true;
+        }
+    }
+    return false;        
 }

@@ -881,3 +881,23 @@ void LC::_0189_RotateArray::rotate(std::vector<int>& nums, int k) {
         }
     }
 }
+
+std::vector<int> LC::_0167_TwoSumII_InputArrayIsSorted::twoSum(std::vector<int>& numbers, int target) {
+    std::vector<int> res;
+    int i = 0;
+    int j = numbers.size() - 1;
+    while(i < j) {
+        int sum = numbers[i] + numbers[j];
+        if(sum < target) {
+            ++i;
+        } else if(sum > target) {
+            --j;
+        } else {
+            res.push_back(i + 1);
+            res.push_back(j + 1);
+            ++i;
+            --j;
+        }
+    }
+    return res;
+}
