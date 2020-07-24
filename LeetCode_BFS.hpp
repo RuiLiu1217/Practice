@@ -1,5 +1,7 @@
 #ifndef LEETCODE_BFS_HPP
 #define LEETCODE_BFS_HPP
+#include <string>
+#include <vector>
 namespace LC {
 /*
 Tag: BFS, bidirect-BFS

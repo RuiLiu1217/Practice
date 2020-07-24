@@ -2,6 +2,8 @@
 #define LEETCODE_ARRAYPROBLEMS_HPP
 #include <vector>
 #include <string>
+#include <stack>
+
 namespace LC {
 /*  Tag: array, Hash
     Given an array of integers, return indices of the two 
@@ -534,6 +536,109 @@ public:
         return triangle[0];
     }
 };
+
+
+/*
+Tag: Stack
+Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+    push(x) -- Push element x onto stack.
+    pop() -- Removes the element on top of the stack.
+    top() -- Get the top element.
+    getMin() -- Retrieve the minimum element in the stack.
+Example:
+    MinStack minStack = new MinStack();
+    minStack.push(-2);
+    minStack.push(0);
+    minStack.push(-3);
+    minStack.getMin();   --> Returns -3.
+    minStack.pop();
+    minStack.top();      --> Returns 0.
+    minStack.getMin();   --> Returns -2.
+*/
+class _0155_MinStack
+{
+private:
+    std::stack<int> mainStack;
+    std::stack<int> minStack;
+
+public:
+    /** initialize your data structure here. */
+    _0155_MinStack();
+    void push(int x);
+    void pop();
+    int top();
+    int getMin();
+};
+
+
+/*
+A peak element is an element that is greater than its neighbors. Given an input array 
+nums, where nums[i] ≠ nums[i+1], find a peak element and return its index. The array 
+may contain multiple peaks, in that case return the index to any one of the peaks is fine.
+
+You may imagine that nums[-1] = nums[n] = -∞.
+Example 1:
+
+Input: nums = [1,2,3,1]          :         Output: 2
+Explanation: 3 is a peak element and your function should return the index number 2.
+
+Input: nums = [1,2,1,3,5,6,4]    :         Output: 1 or 5 
+Explanation: Your function can return either index number 1 where the peak element is 2, 
+or index number 5 where the peak element is 6.
+*/
+class _0162_FindPeakElement {
+public:
+    int findPeakElement(std::vector<int>& nums);
+};
+
+
+/*
+Given an array of size n, find the majority element. The majority element is the 
+element that appears more than ⌊ n/2 ⌋ times.
+You may assume that the array is non-empty and the majority element always exist 
+in the array.
+
+Input: [3,2,3]            :            Output: 3
+Input: [2,2,1,1,1,2,2]    :            Output: 2
+*/
+class _0169_MajorityElement {
+public:
+    int majorityElement(std::vector<int>& nums);
+    int majorityElement_hash(std::vector<int>& nums);
+    int majorityElement_Nth(std::vector<int>& nums);
+    int majorityElement_Random(std::vector<int>& nums);
+    int majorityElement_DivideAndConquer(std::vector<int>& nums, int l, int r);
+    int majorityElement_MooreVoting(std::vector<int>& nums);
+    int majorityElement_bit(std::vector<int>& nums);
+};
+
+
+/*
+Tag: string like reverse
+Given an array, rotate the array to the right by k steps, where k is non-negative.
+
+Input: [1,2,3,4,5,6,7] and k = 3
+Output: [5,6,7,1,2,3,4]
+Explanation:
+rotate 1 steps to the right: [7,1,2,3,4,5,6]
+rotate 2 steps to the right: [6,7,1,2,3,4,5]
+rotate 3 steps to the right: [5,6,7,1,2,3,4]
+
+Input: [-1,-100,3,99] and k = 2
+Output: [3,99,-1,-100]
+Explanation: 
+rotate 1 steps to the right: [99,-1,-100,3]
+rotate 2 steps to the right: [3,99,-1,-100]
+Note:
+
+Try to come up as many solutions as you can, there are at least 3 different ways to solve this problem.
+Could you do it in-place with O(1) extra space?
+*/
+class _0189_RotateArray {
+public:
+    void rotate(std::vector<int>& nums, int k);
+};
+
 
 
 }

@@ -463,3 +463,37 @@ LC::ListNode* LC::_0148_SortList::merge(LC::ListNode* a, LC::ListNode* b) {
     h = nullptr;
     return head;
 }
+
+
+
+LC::ListNode* LC::_0160_IntersectionOfTwoLinkedLists::getIntersectionNode(LC::ListNode* headA, LC::ListNode* headB) {
+    int lengthOfA = length(headA);
+    int lengthOfB = length(headB);
+    int moveCount = std::abs(lengthOfA - lengthOfB);
+    if(lengthOfA > lengthOfB) {
+        while(moveCount) {
+            headA = headA->next;
+            moveCount--;
+        }
+    } else if(lengthOfA < lengthOfB) {
+        while(moveCount) {
+            headB = headB->next;
+            moveCount--;
+        }
+    }
+    while(headA != headB) {
+        headA = headA->next;
+        headB = headB->next;
+    }
+    return headA;
+}
+
+int LC::_0160_IntersectionOfTwoLinkedLists::length(LC::ListNode* root) {
+    if(!root) {
+        return 0;
+    } else {
+        return 1 + length(root->next);
+    }
+}
+
+

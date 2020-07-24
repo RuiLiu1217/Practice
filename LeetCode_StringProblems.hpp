@@ -222,5 +222,71 @@ public:
 };
 
 
+
+/*
+TAG: string, stringstream
+TODO: Operation on stirng is very tricky and important
+Given an input string, reverse the string word by word.
+
+Example 1:
+
+Input: "the sky is blue"
+Output: "blue is sky the"
+Example 2:
+
+Input: "  hello world!  "
+Output: "world! hello"
+Explanation: Your reversed string should not contain leading or trailing spaces.
+Example 3:
+
+Input: "a good   example"
+Output: "example good a"
+Explanation: You need to reduce multiple spaces between two words to a single space in the reversed string.
+
+Note:
+
+A word is defined as a sequence of non-space characters.
+Input string may contain leading or trailing spaces. However, your reversed string should not contain leading or trailing spaces.
+You need to reduce multiple spaces between two words to a single space in the reversed string.
+*/
+class _0151_ReverseWordsInAString {
+public:
+    std::string reverseWords(std::string s);
+    std::string reverseWords_O1(std::string s);
+};
+
+/*
+Given an input string , reverse the string word by word. 
+
+Input:  ["t","h","e"," ","s","k","y"," ","i","s"," ","b","l","u","e"]
+Output: ["b","l","u","e"," ","i","s"," ","s","k","y"," ","t","h","e"]
+Note: 
+
+A word is defined as a sequence of non-space characters.
+The input string does not contain leading or trailing spaces.
+The words are always separated by a single space.
+Follow up: Could you do it in-place without allocating extra space?
+*/
+class _0186_ReverseWordsInAStringII {
+public:
+    void reverseWords(std::vector<char>& s);
+};
+
+/*
+All DNA is composed of a series of nucleotides abbreviated as A, C, G, and T, 
+for example: "ACGAATTCCG". When studying DNA, it is sometimes useful to 
+identify repeated sequences within the DNA.
+Write a function to find all the 10-letter-long sequences (substrings) that 
+occur more than once in a DNA molecule.
+
+Input: s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"
+Output: ["AAAAACCCCC", "CCCCCAAAAA"]
+*/
+class _0187_RepeatedDNASequences {
+public:
+    std::vector<std::string> findRepeatedDNASequences(std::string s);
+    std::vector<std::string> findRepeatedDNASequence_NoMap(std::string s);
+};
+
 }
 #endif

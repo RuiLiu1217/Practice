@@ -31,7 +31,8 @@ int LC::_0127_Wordladder::ladderLength(std::string beginWord, std::string endWor
         int prefix;
         std::string data;
         IndexNode* node;
-        explicit LstNode(std::string dat) : color(0), distance(0), prefix(INT_MIN), data(dat), node(nullptr) {}
+        LstNode(std::string dat) : color(0), distance(0), prefix(INT_MIN), data(dat), node(nullptr) {}
+        LstNode() : color(0), distance(0), prefix(INT_MIN), data(), node(nullptr) {}
     };
 
     class Graph {

@@ -309,6 +309,33 @@ LeetCode_BitOperationProblemTests.cpp.s:
 	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\PracticeTest.dir\build.make test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.s
 .PHONY : LeetCode_BitOperationProblemTests.cpp.s
 
+LeetCode_DFSTests.obj: LeetCode_DFSTests.cpp.obj
+
+.PHONY : LeetCode_DFSTests.obj
+
+# target to build an object file
+LeetCode_DFSTests.cpp.obj:
+	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\PracticeTest.dir\build.make test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj
+.PHONY : LeetCode_DFSTests.cpp.obj
+
+LeetCode_DFSTests.i: LeetCode_DFSTests.cpp.i
+
+.PHONY : LeetCode_DFSTests.i
+
+# target to preprocess a source file
+LeetCode_DFSTests.cpp.i:
+	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\PracticeTest.dir\build.make test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.i
+.PHONY : LeetCode_DFSTests.cpp.i
+
+LeetCode_DFSTests.s: LeetCode_DFSTests.cpp.s
+
+.PHONY : LeetCode_DFSTests.s
+
+# target to generate assembly for a file
+LeetCode_DFSTests.cpp.s:
+	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\PracticeTest.dir\build.make test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.s
+.PHONY : LeetCode_DFSTests.cpp.s
+
 LeetCode_DynamicProgrammingProblemTests.obj: LeetCode_DynamicProgrammingProblemTests.cpp.obj
 
 .PHONY : LeetCode_DynamicProgrammingProblemTests.obj
@@ -632,6 +659,9 @@ help:
 	@echo ... LeetCode_BitOperationProblemTests.obj
 	@echo ... LeetCode_BitOperationProblemTests.i
 	@echo ... LeetCode_BitOperationProblemTests.s
+	@echo ... LeetCode_DFSTests.obj
+	@echo ... LeetCode_DFSTests.i
+	@echo ... LeetCode_DFSTests.s
 	@echo ... LeetCode_DynamicProgrammingProblemTests.obj
 	@echo ... LeetCode_DynamicProgrammingProblemTests.i
 	@echo ... LeetCode_DynamicProgrammingProblemTests.s

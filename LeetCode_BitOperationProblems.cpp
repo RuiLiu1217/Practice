@@ -1,5 +1,5 @@
 #include "LeetCode_BitOperationProblems.hpp"
-
+#include <bitset>
 int LC::_0136_SingleNumber::singleNumber(std::vector<int>& nums) {
     int v = nums[0];
     for(int i = 1; i != nums.size(); ++i)
@@ -107,6 +107,29 @@ int LC::_0137_SingleNumberII::singleNumber(std::vector<int>& nums) {
             sum += (nums[j] >> i) & 1;
         }
         res |= (sum % 3) << i;
+    }
+    return res;
+}
+
+
+
+// Bit operations
+//! This problem is to practice to use the library bitset
+uint32_t LC::_0190_ReverseBits::reverseBits(uint32_t n) {
+    std::bitset<32> bit(n);
+    std::bitset<32> ans;
+    for (int i = 0; i < 32; ++i) {
+        ans[i] = bit[32 - i];
+    }
+    return ans.to_ullong();
+}
+
+
+int LC::_0191_NumberOf1Bits::hammingWeight(uint32_t n) {
+    int res = 0;
+    while(n) {
+        n = n & (n - 1);
+        ++res;
     }
     return res;
 }

@@ -5,6 +5,9 @@
 #include <climits>
 #include <functional>
 #include <cmath>
+#include <random>
+#include <ctime>
+
 std::vector<int> LC::_0001_TwoSum::twoSum(std::vector<int> &nums, int target) {
     std::unordered_map<int, int> map;
     for(int i = 0; i < nums.size(); ++i)
@@ -685,3 +688,196 @@ int LC::_0120_Triangle::minimumTotal(std::vector<std::vector<int>>& triangle) {
     return *it;
 }
 
+
+LC::_0155_MinStack::_0155_MinStack() {}
+void LC::_0155_MinStack::push(int x) {
+    mainStack.push(x);
+    if(minStack.empty() || minStack.top() >= x) {
+        minStack.push(x);
+    }
+}
+
+void LC::_0155_MinStack::pop() {
+    if(!mainStack.empty()) {
+        int topV = mainStack.top();
+        mainStack.pop();
+        if(!minStack.empty() && minStack.top() == topV) {
+            minStack.pop();
+        }
+    }
+}
+
+int LC::_0155_MinStack::top() {
+    if(!mainStack.empty()) {
+        return mainStack.top();
+    } else {
+        return -1;
+    }
+}
+
+int LC::_0155_MinStack::getMin() {
+    if(!minStack.empty()) {
+        return minStack.top();
+    } else {
+        return -1;
+    }
+}
+
+int LC::_0162_FindPeakElement::findPeakElement(std::vector<int>& nums) {
+    if(nums.size() == 1) {
+        return 0;
+    } else if(nums.size() == 2) {
+        if(nums[0] > nums[1]) {
+            return 0;
+        } else {
+            return 1;
+        }
+    }
+    int i = 1;
+    for(; i < nums.size() - 1; ++i) {
+        if(i == 1 && nums[i-1] > nums[i]) {
+            return 0;
+        }
+        if(i == nums.size() - 2 && nums[i] < nums[i+1]) {
+            return i+1;
+        }
+        if(nums[i-1] < nums[i] && nums[i] > nums[i+1]) {
+            return i;
+        }
+    }
+    return i;
+}
+
+
+
+// There is better solution without sorting. (TODO)
+int LC::_0169_MajorityElement::majorityElement(std::vector<int>& nums) {
+    std::sort(nums.begin(), nums.end());
+    return nums[nums.size() / 2];
+}
+
+/*
+Hash Table
+Count the number of appearances for each distinct number
+in nums, once we see a number appear more than n / 2 times, 
+it is the majority element.
+*/
+int LC::_0169_MajorityElement::majorityElement_hash(std::vector<int>& nums) {
+    std::unordered_map<int, int> counter;
+    for (int num : nums) {
+        if (++counter[num] > nums.size() / 2) {
+            return num;
+        }
+    }
+    return 0;
+}
+
+/*
+Sorting
+Since the majority element appears more than n / 2 times, 
+the n / 2-th element in the sorted nums must be the majority 
+element. In this case, a partial sort by nth_element is enough.
+*/
+int LC::_0169_MajorityElement::majorityElement_Nth(std::vector<int>& nums) {
+    std::nth_element(nums.begin(), nums.begin() + nums.size() / 2, nums.end());
+    return nums[nums.size() / 2];
+}
+
+/*
+Randomization
+Pick an element randomly and check whether it is the majority one.
+*/
+int LC::_0169_MajorityElement::majorityElement_Random(std::vector<int>& nums) {
+    int n = nums.size(), candidate, counter;
+    std::srand(unsigned(std::time(NULL)));
+    while (true) {
+        candidate = nums[rand() % n], counter = 0;
+        for (int num : nums) {
+            if (num == candidate) {
+                counter++;
+            }
+        }
+        if (counter > n / 2) {
+            break;
+        }
+    }
+    return candidate;
+}
+
+/*
+Divide and Conquer
+Recursively find the majority in the two halves of nums and combine the results. The base case is that the majority element of a single-element array is just that element.
+*/
+int LC::_0169_MajorityElement::majorityElement_DivideAndConquer(std::vector<int>& nums, int l, int r) {
+    if (l == r) {
+        return nums[l];
+    }
+    int m = l + (r - l) / 2, lm = majorityElement_DivideAndConquer(nums, l, m), rm = majorityElement_DivideAndConquer(nums, m + 1, r);
+    if (lm == rm) {
+        return lm;
+    }
+    return count(nums.begin() + l, nums.begin() + r + 1, lm) > count(nums.begin() + l, nums.begin() + r + 1, rm) ? lm : rm;
+}
+
+/*
+Moore Voting Algorithm
+*/
+int LC::_0169_MajorityElement::majorityElement_MooreVoting(std::vector<int>& nums) {
+    int counter = 0, majority;
+    for (int num : nums) {
+        if (!counter) {
+            majority = num;
+        }
+        counter += num == majority ? 1 : -1;
+    }
+    return majority;
+}
+
+/*
+Bit Manipulation
+The bits in the majority are just the majority bits of all numbers.
+*/
+int LC::_0169_MajorityElement::majorityElement_bit(std::vector<int>& nums) {
+    int majority = 0;
+    for (unsigned int i = 0, mask = 1; i < 32; i++, mask <<= 1) {
+        int bits = 0;
+        for (int num : nums) {
+            if (num & mask) {
+                bits++;
+            }
+        }
+        if (bits > nums.size() / 2) {
+            majority |= mask;
+        }
+    }
+    return majority;
+}
+
+
+void LC::_0189_RotateArray::rotate(std::vector<int>& nums, int k) {
+    int numVecSize = nums.size();
+    k = k % numVecSize;
+    if(k != 0) {
+        int i1 = 0;
+        int i2 = numVecSize - k - 1;
+        int i3 = numVecSize - k;
+        int i4 = numVecSize - 1;
+        while(i1 < i2) {
+            std::swap(nums[i1],nums[i2]);
+            i1++;
+            i2--;
+        }
+        while(i3 < i4) {
+            std::swap(nums[i3], nums[i4]);
+            i3++;
+            i4--;
+        }
+        i1 = 0;
+        i2 = numVecSize-1;
+        while(i1<i2) {
+            std::swap(nums[i1], nums[i2]);
+            i1++;
+            i2--;
+        }
+    }
+}

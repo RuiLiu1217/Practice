@@ -4,6 +4,7 @@
 #include <numeric>
 #include <cmath>
 #include <stack>
+
 // Facebook
 
 /*
@@ -650,25 +651,62 @@ std::vector<int> LC::_0145_BinaryTreePostorderTraversal::postorderTraversal(LC::
     return res;
 }
 
-LC::ListNode* LC::_0147_InsertionSortList::insertionSortList(LC::ListNode* head) {
-    LC::ListNode* nh = new LC::ListNode(INT_MIN);
-    nh->next = head;
-    LC::ListNode* toSort = head;
-    while(toSort) {
-        LC::ListNode* nxt = toSort->next;
-        toSort->next = nullptr;
-        LC::ListNode* p = nh;
-        while(p->next && (p->next->val < toSort->val)) {
-            p = p->next;
-        }
-        if (p->next != toSort) {
-            toSort->next = p->next;
-            p->next = toSort;
-        }
-        toSort = nxt;
+
+
+LC::_0173_BinarySearchTreeIterator::_0173_BinarySearchTreeIterator(LC::TreeNode* root) {
+    TreeNode* p = root;
+    while(p != nullptr) {
+        st.push(p);
+        p = p->left;
     }
-    head = nh->next;
-    delete nh;
-    nh = nullptr;
-    return head;
+}
+
+/** @return the next smallest number */
+int LC::_0173_BinarySearchTreeIterator::next() {
+    if(hasNext()) {
+        TreeNode* q = st.top();
+        st.pop();
+        TreeNode* p = q->right;
+        while(p) {
+            st.push(p);
+            p = p->left;
+        }
+        return q->val;
+    } else {
+        return INT_MAX;
+    }        
+}
+
+/** @return whether we have a next smallest number */
+bool LC::_0173_BinarySearchTreeIterator::hasNext() {
+    return !st.empty();
+}
+
+
+// Tree Level-traversal
+std::vector<int> LC::_0199_BinaryTreeRightSideView::rightSideView(TreeNode* root) {
+    if(!root) {
+        return std::vector<int>();
+    }
+    std::queue<TreeNode*> Q;
+    std::vector<int> res;
+    Q.push(root);
+    
+    while(!Q.empty()) {
+        const int N = Q.size();
+        int v = -1;
+        for(int i = 0; i < N; ++i) {
+            auto t = Q.front();
+            Q.pop();
+            v = t->val;
+            if(t->left) {
+                Q.push(t->left);
+            }
+            if(t->right) {
+                Q.push(t->right);
+            }
+        }
+        res.push_back(v);            
+    }
+    return res;
 }

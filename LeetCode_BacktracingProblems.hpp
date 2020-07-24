@@ -266,7 +266,6 @@ public:
 
 
 /*
-Tag: backtracking
 Surrounded Regions
 Given a 2D board containing 'X' and 'O' (the letter O), capture all regions surrounded by 'X'.
 A region is captured by flipping all 'O's into 'X's in that surrounded region.
@@ -293,6 +292,37 @@ public:
     void DFS(std::vector<std::vector<char>>& board, int i, int j, 
              const int M, const int N, 
              const char orig, const char newc);
+};
+
+
+
+
+/*
+Given a 2d grid map of '1's (land) and '0's (water), count the number of 
+islands. An island is surrounded by water and is formed by connecting 
+adjacent lands horizontally or vertically. You may assume all four edges 
+of the grid are all surrounded by water.
+
+Input:
+11110
+11010
+11000
+00000
+
+Output: 1
+
+Input:
+11000
+11000
+00100
+00011
+
+Output: 3
+*/
+class _0200_NumberOfIslands {
+public:
+    int numIslands(std::vector<std::vector<char>>& grid);
+    void eraseIsland(std::vector<std::vector<char>>& grid, int i, int j);
 };
 
 }

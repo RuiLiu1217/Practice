@@ -2,6 +2,7 @@
 #define LEETCODE_TREEPROBLEMS_HPP
 #include <unordered_map>
 #include <vector>
+#include <stack>
 namespace LC {
 
     struct TreeNode {
@@ -716,6 +717,64 @@ public:
             NodeCopy* copyRandomBinaryTree(Node* root);
     };
 
+
+    
+    /*
+    Facebook
+
+    Implement an iterator over a binary search tree (BST). Your iterator will be initialized 
+    with the root node of a BST. Calling next() will return the next smallest number in the BST.
+    BSTIterator iterator = new BSTIterator(root);
+    iterator.next();    // return 3
+    iterator.next();    // return 7
+    iterator.hasNext(); // return true
+    iterator.next();    // return 9
+    iterator.hasNext(); // return true
+    iterator.next();    // return 15
+    iterator.hasNext(); // return true
+    iterator.next();    // return 20
+    iterator.hasNext(); // return false
+    
+    Note:
+    next() and hasNext() should run in average O(1) time and uses O(h) memory, where h is the 
+    height of the tree. You may assume that next() call will always be valid, that is, there 
+    will be at least a next smallest number in the BST when next() is called.
+    */
+    class _0173_BinarySearchTreeIterator {
+    public:
+        _0173_BinarySearchTreeIterator(TreeNode* root);
+        
+        /** @return the next smallest number */
+        int next();
+        
+        /** @return whether we have a next smallest number */
+        bool hasNext();
+    private:
+        std::stack<TreeNode*> st;
+    };
+
+
+/*
+Facebook
+
+Given a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.
+
+Example:
+
+Input: [1,2,3,null,5,null,4]
+Output: [1, 3, 4]
+Explanation:
+
+   1            <---
+ /   \
+2     3         <---
+ \     \
+  5     4       <---
+*/
+class _0199_BinaryTreeRightSideView {
+public:
+    std::vector<int> rightSideView(TreeNode* root);
+};
 
 
     

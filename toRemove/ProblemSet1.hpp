@@ -313,38 +313,6 @@ public:
 
 
 /*
-TAG: string, stringstream
-TODO: Operation on stirng is very tricky and important
-Given an input string, reverse the string word by word.
-
-Example 1:
-
-Input: "the sky is blue"
-Output: "blue is sky the"
-Example 2:
-
-Input: "  hello world!  "
-Output: "world! hello"
-Explanation: Your reversed string should not contain leading or trailing spaces.
-Example 3:
-
-Input: "a good   example"
-Output: "example good a"
-Explanation: You need to reduce multiple spaces between two words to a single space in the reversed string.
-
-Note:
-
-A word is defined as a sequence of non-space characters.
-Input string may contain leading or trailing spaces. However, your reversed string should not contain leading or trailing spaces.
-You need to reduce multiple spaces between two words to a single space in the reversed string.
-*/
-class _0151_ReverseWordsInAString {
-public:
-    std::string reverseWords(std::string s);
-};
-
-
-/*
 Tag: array, dynamic programming
 Todo: I have no idea how it is solved. and why the solution is in that way
 Given an integer array nums, find the contiguous subarray within an array (containing 
@@ -410,37 +378,6 @@ private:
     int findMin(std::vector<int>& nums, int start, int end);
 };
 
-/*
-Tag: Stack
-Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
-    push(x) -- Push element x onto stack.
-    pop() -- Removes the element on top of the stack.
-    top() -- Get the top element.
-    getMin() -- Retrieve the minimum element in the stack.
-Example:
-    MinStack minStack = new MinStack();
-    minStack.push(-2);
-    minStack.push(0);
-    minStack.push(-3);
-    minStack.getMin();   --> Returns -3.
-    minStack.pop();
-    minStack.top();      --> Returns 0.
-    minStack.getMin();   --> Returns -2.
-*/
-class _0155_MinStack
-{
-private:
-    std::stack<int> mainStack;
-    std::stack<int> minStack;
-
-public:
-    /** initialize your data structure here. */
-    _0155_MinStack();
-    void push(int x);
-    void pop();
-    int top();
-    int getMin();
-};
 
 /*
 Given a file and assume that you can only read the file using a given method read4, implement a method to read n characters.
@@ -596,46 +533,6 @@ public:
     int lengthOfLongestSubstringTwoDistinct(std::string s);
 };
 
-/*
-Tag: single linked list
-
-Write a program to find the node at which the intersection of two singly linked lists begins.
-
-Input: intersectVal = 8, listA = [4,1,8,4,5], listB = [5,0,1,8,4,5], skipA = 2, skipB = 3
-Output: Reference of the node with value = 8
-Input Explanation: The intersected node's value is 8 (note that this must not be 0 if the two 
-lists intersect). From the head of A, it reads as [4,1,8,4,5]. From the head of B, it reads as 
-[5,0,1,8,4,5]. There are 2 nodes before the intersected node in A; There are 3 nodes before the
-intersected node in B.
- 
-
-Input: intersectVal = 2, listA = [0,9,1,2,4], listB = [3,2,4], skipA = 3, skipB = 1
-Output: Reference of the node with value = 2
-Input Explanation: The intersected node's value is 2 (note that this must not be 0 if the two 
-lists intersect). From the head of A, it reads as [0,9,1,2,4]. From the head of B, it reads as 
-[3,2,4]. There are 3 nodes before the intersected node in A; There are 1 node before the 
-intersected node in B.
-
-
-Input: intersectVal = 0, listA = [2,6,4], listB = [1,5], skipA = 3, skipB = 2
-Output: null
-Input Explanation: From the head of A, it reads as [2,6,4]. From the head of B, it reads as [1,5].
-Since the two lists do not intersect, intersectVal must be 0, while skipA and skipB can be 
-arbitrary values. Explanation: The two lists do not intersect, so return null.
-
-Notes:
-
-If the two linked lists have no intersection at all, return null.
-The linked lists must retain their original structure after the function returns.
-You may assume there are no cycles anywhere in the entire linked structure.
-Your code should preferably run in O(n) time and use only O(1) memory.
-*/
-class _0160_IntersectionOfTwoLinkedLists {
-public:
-    ListNode<int>* getIntersectionNode(ListNode<int>* headA, ListNode<int>* headB);
-private:
-    int length(ListNode<int>* root);
-};
 
 /*
 Given two strings s and t, determine if they are both one edit distance apart.
@@ -661,28 +558,6 @@ Explanation: We can replace '0' with '1' to get t.
 class _0161_OneEditDistance {
 public:
     bool isOneEditDistance(std::string s, std::string t);
-};
-
-
-
-/*
-A peak element is an element that is greater than its neighbors. Given an input array 
-nums, where nums[i] ≠ nums[i+1], find a peak element and return its index. The array 
-may contain multiple peaks, in that case return the index to any one of the peaks is fine.
-
-You may imagine that nums[-1] = nums[n] = -∞.
-Example 1:
-
-Input: nums = [1,2,3,1]          :         Output: 2
-Explanation: 3 is a peak element and your function should return the index number 2.
-
-Input: nums = [1,2,1,3,5,6,4]    :         Output: 1 or 5 
-Explanation: Your function can return either index number 1 where the peak element is 2, 
-or index number 5 where the peak element is 6.
-*/
-class _0162_FindPeakElement {
-public:
-    int findPeakElement(std::vector<int>& nums);
 };
 
 /*
@@ -822,50 +697,6 @@ public:
 };
 
 
-/*
-Given an array of size n, find the majority element. The majority element is the 
-element that appears more than ⌊ n/2 ⌋ times.
-You may assume that the array is non-empty and the majority element always exist 
-in the array.
-
-Input: [3,2,3]            :            Output: 3
-Input: [2,2,1,1,1,2,2]    :            Output: 2
-*/
-class _0169_MajorityElement {
-public:
-    int majorityElement(std::vector<int>& nums);
-};
-
-/*
-Given a column title as appear in an Excel sheet, return its corresponding column number.
-For example:
-
-    A -> 1
-    B -> 2
-    C -> 3
-    ...
-    Z -> 26
-    AA -> 27
-    AB -> 28 
-    ...
-Example 1:
-
-Input: "A"
-Output: 1
-Example 2:
-
-Input: "AB"
-Output: 28
-Example 3:
-
-Input: "ZY"
-Output: 701
-*/
-class _0171_ExcellSheetColumnNumber {
-public:
-    int titleToNumber(std::string s);
-};
-
 
 /*
 Given an integer n, return the number of trailing zeroes in n!.
@@ -888,40 +719,6 @@ public:
 };
 
 
-
-/*
-Facebook
-
-Implement an iterator over a binary search tree (BST). Your iterator will be initialized 
-with the root node of a BST. Calling next() will return the next smallest number in the BST.
-BSTIterator iterator = new BSTIterator(root);
-iterator.next();    // return 3
-iterator.next();    // return 7
-iterator.hasNext(); // return true
-iterator.next();    // return 9
-iterator.hasNext(); // return true
-iterator.next();    // return 15
-iterator.hasNext(); // return true
-iterator.next();    // return 20
-iterator.hasNext(); // return false
- 
-Note:
-next() and hasNext() should run in average O(1) time and uses O(h) memory, where h is the 
-height of the tree. You may assume that next() call will always be valid, that is, there 
-will be at least a next smallest number in the BST when next() is called.
-*/
-class _0173_BinarySearchTreeIterator {
-public:
-    _0173_BinarySearchTreeIterator(TreeNode<int>* root);
-    
-    /** @return the next smallest number */
-    int next();
-    
-    /** @return whether we have a next smallest number */
-    bool hasNext();
-private:
-    std::stack<TreeNode<int>*> st;
-};
 
 /*
 The demons had captured the princess (P) and imprisoned her in the bottom-right 
@@ -991,36 +788,6 @@ class _0184_DepartmentHighestSalary;
 // 185 is a MySQL problem;
 class _0185_DepartmentTopThreeSalaries;
 
-/*
-Given an input string , reverse the string word by word. 
-
-Input:  ["t","h","e"," ","s","k","y"," ","i","s"," ","b","l","u","e"]
-Output: ["b","l","u","e"," ","i","s"," ","s","k","y"," ","t","h","e"]
-Note: 
-
-A word is defined as a sequence of non-space characters.
-The input string does not contain leading or trailing spaces.
-The words are always separated by a single space.
-Follow up: Could you do it in-place without allocating extra space?
-*/
-class _0186_ReverseWordsInAStringII {
-public:
-    void reverseWords(std::vector<char>& s);
-};
-/*
-All DNA is composed of a series of nucleotides abbreviated as A, C, G, and T, 
-for example: "ACGAATTCCG". When studying DNA, it is sometimes useful to 
-identify repeated sequences within the DNA.
-Write a function to find all the 10-letter-long sequences (substrings) that 
-occur more than once in a DNA molecule.
-
-Input: s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"
-Output: ["AAAAACCCCC", "CCCCCAAAAA"]
-*/
-class _0187_RepeatedDNASequences {
-public:
-    std::vector<std::string> findRepeatedDNASequences(std::string s);
-};
 
 /*
 Tag: special topic 
@@ -1029,200 +796,6 @@ class _0188_BestTimeToBuyAndSellStockIV {
 
 };
 
-/*
-Tag: string like reverse
-Given an array, rotate the array to the right by k steps, where k is non-negative.
-
-Input: [1,2,3,4,5,6,7] and k = 3
-Output: [5,6,7,1,2,3,4]
-Explanation:
-rotate 1 steps to the right: [7,1,2,3,4,5,6]
-rotate 2 steps to the right: [6,7,1,2,3,4,5]
-rotate 3 steps to the right: [5,6,7,1,2,3,4]
-
-Input: [-1,-100,3,99] and k = 2
-Output: [3,99,-1,-100]
-Explanation: 
-rotate 1 steps to the right: [99,-1,-100,3]
-rotate 2 steps to the right: [3,99,-1,-100]
-Note:
-
-Try to come up as many solutions as you can, there are at least 3 different ways to solve this problem.
-Could you do it in-place with O(1) extra space?
-*/
-class _0189_RotateArray {
-public:
-    void rotate(std::vector<int>& nums, int k);
-};
-
-
-
-/*
-Tag: bit operation
-Reverse bits of a given 32 bits unsigned integer.
-Example 1:
-Input: 00000010100101000001111010011100
-Output : 00111001011110000010100101000000
-Explanation : The input binary string 00000010100101000001111010011100 
-represents the unsigned integer 43261596, so return 964176192 which 
-its binary representation is 00111001011110000010100101000000.
-Example 2 :
-Input : 11111111111111111111111111111101
-Output : 10111111111111111111111111111111
-Explanation : The input binary string 11111111111111111111111111111101 
-represents the unsigned integer 4294967293, so return 3221225471 which 
-its binary representation is 10101111110010110010011101101001.
-
-Note :
-Note that in some languages such as Java, there is no unsigned integer 
-type. In this case, both input and output will be given as signed integer 
-type and should not affect your implementation, as the internal binary 
-representation of the integer is the same whether it is signed or unsigned.
-In Java, the compiler represents the signed integers using 2's complement 
-notation. Therefore, in Example 2 above the input represents the signed 
-integer -3 and the output represents the signed integer -1073741825.
-*/
-class _0190_ReverseBits {
-public:
-    uint32_t reverseBits(uint32_t n);
-};
-
-/*
-Given two non-empty binary trees s and t, check whether tree t has exactly 
-the same structure and node values with a subtree of s. A subtree of s is 
-a tree consists of a node in s and all of this node's descendants. The tree 
-s could also be considered as a subtree of itself.
-
-Given tree s:
-
-     3
-    / \
-   4   5
-  / \
- 1   2
-Given tree t:
-   4 
-  / \
- 1   2
-Return true, because t has the same structure and node values with a subtree
-of s.
-
-Given tree s:
-
-     3
-    / \
-   4   5
-  / \
- 1   2
-    /
-   0
-Given tree t:
-   4
-  / \
- 1   2
-Return false.
-*/
-class _0191_NumberOf1Bits {
-public:
-    int hammingWeight(uint32_t n);
-};
-
-// 192 is a bash problem
-class _0192_WordFrequency;
-// 193 is a bash problem
-class _0193_ValidPhoneNumbers;
-// 194 is a bash problem
-class _0194_TransposeFile;
-// 195 is a bash problem
-class _0195_TenthLine;
-// 196 is a MySQL problem
-class _0196_DeleteDuplicateEmails;
-// 197 is a MySQL problem
-class _0197_RisingTemperature;
-
-
-
-/*
-You are a professional robber planning to rob houses along 
-a street. Each house has a certain amount of money stashed, 
-the only constraint stopping you from robbing each of them 
-is that adjacent houses have security system connected and 
-it will automatically contact the police if two adjacent 
-houses were broken into on the same night.
-
-Given a list of non-negative integers representing the amount of money of each house, determine the maximum amount of money you can rob tonight without alerting the police.
-
-Example 1:
-
-Input: [1,2,3,1]
-Output: 4
-Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3).
-             Total amount you can rob = 1 + 3 = 4.
-Example 2:
-
-Input: [2,7,9,3,1]
-Output: 12
-Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (money = 1).
-             Total amount you can rob = 2 + 9 + 1 = 12.
-*/
-class _0198_HouseRobber {
-public:
-    int rob(std::vector<int>& nums);
-};
-
-
-/*
-Facebook
-
-Given a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.
-
-Example:
-
-Input: [1,2,3,null,5,null,4]
-Output: [1, 3, 4]
-Explanation:
-
-   1            <---
- /   \
-2     3         <---
- \     \
-  5     4       <---
-*/
-class _0199_BinaryTreeRightSideView {
-public:
-    std::vector<int> rightSideView(TreeNode<int>* root);
-};
-
-
-/*
-Tag: backtracking
-
-Given a 2d grid map of '1's (land) and '0's (water), count the number of 
-islands. An island is surrounded by water and is formed by connecting 
-adjacent lands horizontally or vertically. You may assume all four edges 
-of the grid are all surrounded by water.
-
-Input:
-11110
-11010
-11000
-00000
-
-Output: 1
-
-Input:
-11000
-11000
-00100
-00011
-
-Output: 3
-*/
-class _0200_NumberOfIslands {
-public:
-    int numIslands(std::vector<std::vector<char>>& grid);
-    void eraseIsland(std::vector<std::vector<char>>& grid, int i, int j);
-};
 
 } // end namespace leetcode
 

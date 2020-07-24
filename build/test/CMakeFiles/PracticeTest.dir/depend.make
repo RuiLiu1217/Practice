@@ -24,6 +24,8 @@ test/CMakeFiles/PracticeTest.dir/LeetCode_ArrayProblemTests.cpp.obj: ../googlete
 test/CMakeFiles/PracticeTest.dir/LeetCode_ArrayProblemTests.cpp.obj: ../LeetCode_ArrayProblems.hpp
 test/CMakeFiles/PracticeTest.dir/LeetCode_ArrayProblemTests.cpp.obj: ../test/LeetCode_ArrayProblemTests.cpp
 
+test/CMakeFiles/PracticeTest.dir/LeetCode_BFSTests.cpp.obj: ../test/LeetCode_BFSTests.cpp
+
 test/CMakeFiles/PracticeTest.dir/LeetCode_BacktracingProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-death-test.h
 test/CMakeFiles/PracticeTest.dir/LeetCode_BacktracingProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-matchers.h
 test/CMakeFiles/PracticeTest.dir/LeetCode_BacktracingProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-message.h
@@ -69,6 +71,8 @@ test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.obj: ../g
 test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-type-util.h
 test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.obj: ../LeetCode_BitOperationProblems.hpp
 test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.obj: ../test/LeetCode_BitOperationProblemTests.cpp
+
+test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: ../test/LeetCode_DFSTests.cpp
 
 test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-death-test.h
 test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-matchers.h
