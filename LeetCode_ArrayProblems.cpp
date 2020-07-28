@@ -7,6 +7,8 @@
 #include <cmath>
 #include <random>
 #include <ctime>
+#include <queue>
+#include <unordered_set>
 
 std::vector<int> LC::_0001_TwoSum::twoSum(std::vector<int> &nums, int target) {
     std::unordered_map<int, int> map;
@@ -900,4 +902,94 @@ std::vector<int> LC::_0167_TwoSumII_InputArrayIsSorted::twoSum(std::vector<int>&
         }
     }
     return res;
+}
+
+
+// Tag: sliding window
+// TODO: while < or <= and edge conditions is hard to make right
+int LC::_0209_MinimumSizeSubarraySum::minSubArrayLen(int s, std::vector<int>& nums) {
+    int l = 0;
+    int r = 0;
+    int n = nums.size();
+    int sum = 0;
+    int len = INT_MAX;
+    while(r < n) {
+        sum += nums[r++];
+        while(sum >= s) {
+            len = std::min(len, r - l);
+            sum -= nums[l++];
+        }
+    }
+    return len == INT_MAX ? 0 : len;
+}
+
+//! This solution is copied.
+// NlogN solution is harder.
+// Tag: presum, binary search
+// 1. sums[0] = 0
+// 2. sums[i] = nums[0] + ... + nums[i-1] for  i > 0
+// 对于每个 sum[i] >= s, 我们用二分搜索找到这样的 j : sums[j] > sums[i] - s (j < i), 同样 sums[j - 1] <= sums[i] - s.
+// 将定义带入公式:
+// nums[0] + ... + nums[j-1] > nums[0] + ... + nums[j - 1] + nums[j] + ... + nums[i-1] - s
+// nums[0] + ... + nums[j-2] <= nums[0] + ... + nums[j - 2] + nums[j - 1] + ... + nums[i - 1] - s
+// 这样就有：
+// nums[j - 1] + ... + nums[i - 1] >= s
+// nums[j] + ... + nums[i - 1] < s
+// 那么 {nums[j-1], ... nums[i-1]} 就是以nums[i-1]结尾的最短的subarray，其和不小于s
+// 然后我们遍历所有的 i 
+// 需要注意的是，我们要在数组的开头放一个 0， 这是为了以防: nums[3] = 3, s = 3; 这样的情况
+int LC::_0209_MinimumSizeSubarraySum::minSubArrayNlogN(int s, std::vector<int>& nums) {
+    int n = nums.size();
+    int len = INT_MAX;
+    std::vector<int> sums(n + 1, 0);
+    for(int i = 1; i <= n; ++i) {
+        sums[i] = sums[i-1] + nums[i-1];
+    }
+
+    for(int i = n; i >= 0 && sums[i] >= s; --i) {
+        int j = std::upper_bound(sums.begin(), sums.end(), sums[i] - s) - sums.begin();
+        len = std::min(len, i - j + 1);
+    }
+    return len == INT_MAX ? 0 : len;
+}
+
+
+// Facebook
+int LC::_0215_KthLargestElementInAnArray::findKthLargest(std::vector<int>& nums, int k) {
+    std::nth_element(begin(nums), begin(nums) + k-1, end(nums), std::greater<int>());
+    return nums[k-1];
+}
+
+bool LC::_0217_ContainsDuplicate::containsDuplicate(std::vector<int>& nums) {
+    std::unordered_set<int> se;
+    for(auto n : nums) {
+        if(se.find(n) != se.end()) {
+            return true;
+        }
+        se.insert(n);
+    }
+    return false;
+}
+
+//! TODO: easy problem but suddenly forget how to solve it.
+// Sliding window based
+bool LC::_0219_ContainsDuplicateII::containsNearbyDuplicate(std::vector<int>& nums, int k) {
+    std::unordered_set<int> s;
+    if(k <= 0) {
+        return false;
+    }
+    if(k >= nums.size() - 1) {
+        k = nums.size() - 1;
+    }
+
+    for(int i = 0; i < nums.size(); ++i) {
+        if(i > k) {
+            s.erase(nums[i - k - 1]);
+        }
+        if(s.find(nums[i]) != s.end()) {
+            return true;
+        }
+        s.insert(nums[i]);
+    }
+    return false;
 }

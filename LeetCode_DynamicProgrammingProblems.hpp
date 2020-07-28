@@ -196,5 +196,54 @@ public:
     int rob(std::vector<int>& nums);
 };
 
+/*
+You are a professional robber planning to rob houses along a street. Each house 
+has a certain amount of money stashed. All houses at this place are arranged in 
+a circle. That means the first house is the neighbor of the last one. Meanwhile, 
+adjacent houses have security system connected and it will automatically contact 
+the police if two adjacent houses were broken into on the same night.
+
+Given a list of non-negative integers representing the amount of money of each 
+house, determine the maximum amount of money you can rob tonight without alerting 
+the police.
+
+Input: [2,3,2]            :            Output: 3
+Explanation: You cannot rob house 1 (money = 2) and then rob house 3 (money = 2),
+because they are adjacent houses.
+
+Input: [1,2,3,1]          :            Output: 4
+Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3).
+Total amount you can rob = 1 + 3 = 4.
+这道题也是一下子蒙住了，实际上很简单，因为第一个房子和最后一个房子不能都抢，因此分别算两次，
+即排除第一个房子的情况，以及排除最后一个房子的情况。然后取大的。
+*/
+class _0213_HouseRobberII {
+public:
+    int rob(std::vector<int>& nums);
+private:
+    int robHelp(std::vector<int>& nums);
+};
+
+
+/*
+Tag: dynamic programming
+Google
+TODO: State Transition Equation
+Given a 2D binary matrix filled with 0's and 1's, find the largest 
+square containing only 1's and return its area.
+
+Input: 
+1 0 1 0 0
+1 0 1 1 1
+1 1 1 1 1
+1 0 0 1 0
+
+Output: 4
+*/
+class _0221_MaximalSquare {
+public:
+    int maximalSquare(std::vector<std::vector<char>>& matrix);
+};
+
 }
 #endif

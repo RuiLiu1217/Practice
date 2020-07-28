@@ -6,6 +6,8 @@
 #include <stack>
 #include <unordered_map>
 #include <unordered_set>
+#include <map>
+#include <string>
 
 std::string LC::_0005_LongestPalindromicSubstring::longestPalidrome(std::string s) {
     if(s.size() == 0) {
@@ -450,4 +452,106 @@ std::vector<std::string> LC::_0187_RepeatedDNASequences::findRepeatedDNASequence
         return r;
     }
     return r;
+}
+
+
+// Tag: hash, double hash
+bool LC::_0205_IsomorphicStrings::isIsomorphic(std::string s, std::string t) {
+    if(s.size() != t.size()) {
+        return false;
+    }
+    std::map<char, char> strMap;
+    std::map<char, char> strMap2;
+    for(int i = 0; i != s.size(); ++i) {
+        auto iter = strMap.find(s[i]);
+        auto iter2 = strMap2.find(t[i]);
+        if(iter == strMap.end()) {
+            strMap[s[i]] = t[i];
+        } else {
+            if (iter->second != t[i]) {
+                return false;
+            }
+        }
+        if(iter2 == strMap2.end()) {
+            strMap2[t[i]] = s[i];
+        } else {
+            if(iter2->second != s[i]) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+// Tag: Trie, string
+// Todo: important
+LC::_0208_ImplementTrie::_0208_ImplementTrie() {}    
+void LC::_0208_ImplementTrie::insert(std::string word) {
+    _0208_ImplementTrie* p = this;
+    for(int i = 0; i < word.size(); ++i) {
+        if(p->children.find(word[i]) == p->children.end()) {
+            p->children[word[i]] = new _0208_ImplementTrie();
+        }
+        p = p->children[word[i]];
+    }
+    p->isWord = true;   
+}
+    
+bool LC::_0208_ImplementTrie::search(std::string word) {
+    _0208_ImplementTrie* p = this;
+    for(int i = 0; i < word.size(); ++i) {
+        if(p->children.find(word[i]) == p->children.end()) {
+            return false;
+        } else {
+            p = p->children[word[i]];
+        }
+    }
+    return p && p->isWord;
+}
+
+bool LC::_0208_ImplementTrie::startsWith(std::string prefix) {
+    _0208_ImplementTrie* p = this;
+    for(int i = 0; i < prefix.size(); ++i) {
+        if(p->children.find(prefix[i]) == p->children.end()) {
+            return false;
+        } else {
+            p = p->children[prefix[i]];
+        }
+    }
+    return (p != nullptr);
+}
+
+
+// Copy from a solution
+// Trie implementation
+void LC::_0211_AddAndSearchWordDataStructureDesign::addWord(std::string word) {
+    TrieNode* node = root;
+    for(char c : word) {
+        if(!node->children[c - 'a']) {
+            node->children[c - 'a'] = new TrieNode();
+        }
+        node = node->children[c - 'a'];
+    }
+    node->word = true;
+}
+
+bool LC::_0211_AddAndSearchWordDataStructureDesign::search(std::string word) {
+    return search(word.c_str(), root);
+}
+
+bool LC::_0211_AddAndSearchWordDataStructureDesign::search(const char* word, TrieNode* node) {
+    for(int i = 0; word[i] && node; ++i) {
+        if(word[i] != '.') {
+            node = node->children[word[i] - 'a'];
+        } else {
+            TrieNode* tmp = node;
+            for(int j = 0; j < 26; ++j) {
+                node = tmp->children[j];
+                if(search(word + i + 1, node)) {
+                    return true;
+                }
+            }
+        }
+    }
+    return node && node->word;
 }

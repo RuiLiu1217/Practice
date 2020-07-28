@@ -375,6 +375,34 @@ private:
     int length(ListNode* root);
 };
 
+/*
+Remove all elements from a linked list of integers that have value val.
+Input:  1->2->6->3->4->5->6, val = 6
+Output: 1->2->3->4->5
+*/
+class _0203_RemoveLinkedListElements {
+public:
+    ListNode* removeElements(ListNode* head, int val);
+};
+
+
+
+/*
+Reverse a singly linked list.
+
+Example:
+
+Input: 1->2->3->4->5->NULL
+Output: 5->4->3->2->1->NULL
+Follow up:
+
+A linked list can be reversed either iteratively or recursively. Could you implement both?
+*/
+class _0206_ReverseLinkedList {
+public:
+    ListNode* reverseList(ListNode* head);
+};
+
 
 
 } // end namespace LC

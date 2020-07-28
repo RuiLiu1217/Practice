@@ -171,8 +171,30 @@ public:
 };
 
 
+
+/*
+Count the number of prime numbers less than a non-negative number, n.
+Example:
+
+Input: 10
+Output: 4
+Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.
+*/
+class _0204_CountPrimes {
+public:
+    int countPrimes(int n);
+};
+
+/*
+Find the total area covered by two rectilinear rectangles 
+in a 2D plane. Each rectangle is defined by its bottom left 
+corner and top right corner as shown in the figure.
+*/
+class _0223_RectangleArea {
+public:
+    int computeArea(int A, int B, int C, int D, int E, int F, int G, int H);
+};
+
+
 }
-
-
-
 #endif

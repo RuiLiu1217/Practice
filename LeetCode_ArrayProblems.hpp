@@ -639,7 +639,105 @@ public:
     void rotate(std::vector<int>& nums, int k);
 };
 
+/*
+Given an array of integers that is already sorted in ascending order, find two numbers such
+that they add up to a specific target number. The function twoSum should return indices of 
+the two numbers such that they add up to the target, where index1 must be less than index2.
 
+Note:
+
+Your returned answers (both index1 and index2) are not zero-based.
+You may assume that each input would have exactly one solution and you may not use the same
+element twice.
+
+Input: numbers = [2,7,11,15], target = 9
+Output: [1,2]
+Explanation: The sum of 2 and 7 is 9. Therefore index1 = 1, index2 = 2.
+*/
+class _0167_TwoSumII_InputArrayIsSorted {
+public:
+    std::vector<int> twoSum(std::vector<int>& numbers, int target);
+};
+
+
+/*
+Tag: Sliding windows
+Google
+TODO: edge cases and edge condition
+
+Given an array of n positive integers and a positive integer s, find the minimal length 
+of a contiguous subarray of which the sum ≥ s. If there isn't one, return 0 instead.
+
+Input: s = 7, nums = [2,3,1,2,4,3]
+Output: 2
+Explanation: the subarray [4,3] has the minimal length under the problem constraint.
+Follow up:
+If you have figured out the O(n) solution, try coding another solution of which the time complexity is O(n log n). 
+*/
+class _0209_MinimumSizeSubarraySum {
+public:
+    int minSubArrayLen(int s, std::vector<int>& nums);
+    int minSubArrayNlogN(int s, std::vector<int>& nums);
+};
+
+
+/*
+Facebook
+
+Find the kth largest element in an unsorted array. Note that it is the kth largest 
+element in the sorted order, not the kth distinct element.
+
+Input: [3,2,1,5,6,4] and k = 2
+Output: 5
+
+Input: [3,2,3,1,2,4,5,5,6] and k = 4
+Output: 4
+Note:
+You may assume k is always valid, 1 ≤ k ≤ array's length.
+*/
+class _0215_KthLargestElementInAnArray {
+public:
+    int findKthLargest(std::vector<int>& nums, int k);
+};
+
+/*
+217. Contains Duplicate
+Given an array of integers, find if the array contains any duplicates.
+Your function should return true if any value appears at least twice in 
+the array, and it should return false if every element is distinct.
+Input: [1,2,3,1]
+Output: true
+
+Input: [1,2,3,4]
+Output: false
+
+Input: [1,1,1,3,3,4,3,2,4,2]
+Output: true
+*/
+class _0217_ContainsDuplicate {
+public:
+    bool containsDuplicate(std::vector<int>& nums);
+};
+
+
+/*
+Given an array of integers and an integer k, find out whether there are
+two distinct indices i and j in the array such that nums[i] = nums[j]
+and the absolute difference between i and j is at most k.
+
+Input: nums = [1,2,3,1], k = 3
+Output: true
+
+Input: nums = [1,0,1,1], k = 1
+Output: true
+
+Input: nums = [1,2,3,1,2,3], k = 2
+Output: false
+*/
+class _0219_ContainsDuplicateII {
+public:
+    bool containsNearbyDuplicate(std::vector<int>& nums, int k);
+};
 
 }
 #endif

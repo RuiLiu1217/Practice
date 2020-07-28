@@ -5,6 +5,7 @@
 #include <string>
 #include <algorithm>
 #include <unordered_set>
+#include <vector>
 /*
 Google
 */
@@ -109,4 +110,36 @@ bool LC::_0202_HappyNumber::isHappy(int n) {
         }
     }
     return false;        
+}
+
+
+// Very tricky solution
+int LC::_0204_CountPrimes::countPrimes(int n) {
+    if(n <= 2) {
+        return 0;
+    }
+    std::vector<bool> isPrime(n,true);
+    isPrime[0] = false;
+    isPrime[1] = false;
+    for(int i = 4; i < n; i = i + 2) {
+        isPrime[i] = false;
+    }
+
+    int sqt = std::sqrt(n);
+    for(int i = 3; i <= sqt; i = i + 2) {
+        if(isPrime[i]) {
+            for(int j = i * i; j < n; j = j + i) {
+                isPrime[j] = false;
+            }
+        }
+    }
+    return std::count(isPrime.begin(), isPrime.end(), true);   
+}
+
+
+// Tag: Computational Geometry
+int LC::_0223_RectangleArea::computeArea(int A, int B, int C, int D, int E, int F, int G, int H) {
+    int x = std::min(G, C) > std::max(E, A) ? (std::min(G, C) - std::max(E, A)) : 0;
+    int y = std::min(D, H) > std::max(B, F) ? (std::min(D, H) - std::max(B, F)) : 0;
+    return (D - B) * (C - A) + ((G - E) * (H - F) - x * y); // calculate minus first to avoid overflow
 }

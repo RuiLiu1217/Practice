@@ -119,3 +119,106 @@ LC::_0133_CloneGraph::Node* LC::_0133_CloneGraph::cloneGraph(Node* node) {
         return map[node]; // 如果这个节点已经有了，就不需要clone了，直接返回新节点的指针。
     }
 }
+
+
+// Tag: topological sorting, Graph
+// TODO: DFS based topological sorting 
+LC::_0207_CourseSchedule::Graph LC::_0207_CourseSchedule::createGraph(
+    int numCourses, std::vector<std::vector<int>>& prerequisites) {
+    Graph g(numCourses);
+    for(auto p : prerequisites) {
+        g[p[1]].push_back(p[0]);
+    }
+    return g;
+}
+
+bool LC::_0207_CourseSchedule::isCyclicUtils(LC::_0207_CourseSchedule::Graph g, 
+    int v, std::vector<bool>& visited, std::vector<bool>& recStack) {
+    if(visited[v] == false) {
+        visited[v] = true;
+        recStack[v] = true;
+        
+        auto& adj = g[v];
+        for(auto i : adj) {
+            if(!visited[i] && isCyclicUtils(g, i, visited, recStack)) {
+                return true;
+            } else if(recStack[i]) {
+                return true;
+            }
+        }
+    }
+    recStack[v] = false;
+    return false;
+}
+
+std::vector<int> LC::_0207_CourseSchedule::computeIndegrees(
+    LC::_0207_CourseSchedule::Graph& g) {
+    std::vector<int> degrees(g.size(), 0);
+    for (auto adj : g) {
+        for (int v : adj) {
+            degrees[v]++;
+        }
+    }
+    return degrees;
+}
+
+bool LC::_0207_CourseSchedule::canFinish(int numCourses, std::vector<std::vector<int>>& prerequisites) {
+    Graph g = createGraph(numCourses, prerequisites);
+    std::vector<int> degrees = computeIndegrees(g);
+    for (int i = 0; i < numCourses; i++) {
+        int j = 0;
+        for (; j < numCourses; j++) {
+            if (!degrees[j]) {
+                break;
+            }
+        }
+        if (j == numCourses) {
+            return false;
+        }
+        degrees[j]--;
+        for (int v : g[j]) {
+            degrees[v]--;
+        }
+    }
+    return true;
+}
+
+
+// Tag: Topological sorting
+std::vector<int> LC::_0210_CourseScheduleII::findOrder(int numCourses, std::vector<std::vector<int>>& prerequisites) {
+    std::vector<int> inDegree(numCourses, 0);
+    std::vector<std::vector<int>> graph(numCourses, std::vector<int>());
+    for(auto edge : prerequisites) {
+        graph[edge[1]].push_back(edge[0]);
+        ++inDegree[edge[0]];
+    }
+    
+    // BFS
+    std::vector<int> res;
+    BFS(graph, inDegree, res);
+    return res.size() == numCourses ? res : std::vector<int>();
+}
+
+void LC::_0210_CourseScheduleII::BFS(const std::vector<std::vector<int>>& graph, std::vector<int>& inDegree, std::vector<int>& res) {
+    std::vector<int> visited(inDegree.size(), 0);
+    std::queue<int> q;
+    for(int i = 0; i < inDegree.size(); ++i) {
+        if(inDegree[i] == 0) {
+            q.push(i);
+        }
+    }
+    while(!q.empty()) {
+        int canLearn = q.front();
+        res.push_back(canLearn);
+        q.pop();
+        visited[canLearn] = 1;
+        
+        std::vector<int> toLearn = graph[canLearn];
+        for(int i = 0; i < toLearn.size(); ++i) {
+            --inDegree[toLearn[i]];
+            if(inDegree[toLearn[i]] == 0 && !visited[toLearn[i]]) {
+                q.push(toLearn[i]);
+            }
+        }
+    }        
+}

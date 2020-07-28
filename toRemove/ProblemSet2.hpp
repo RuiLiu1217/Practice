@@ -30,290 +30,7 @@ public:
 };
 
 
-/*
-Remove all elements from a linked list of integers that have value val.
 
-Input:  1->2->6->3->4->5->6, val = 6
-Output: 1->2->3->4->5
-*/
-class _0203_RemoveLinkedListElements {
-public:
-    ListNode<int>* removeElements(ListNode<int>* head, int val);
-};
-
-/*
-Count the number of prime numbers less than a non-negative number, n.
-
-Example:
-
-Input: 10
-Output: 4
-Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.
-*/
-class _0204_CountPrimes {
-public:
-    int countPrimes(int n);
-};
-
-
-/*
-Given two strings s and t, determine if they are isomorphic.
-Two strings are isomorphic if the characters in s can be replaced to get t.
-All occurrences of a character must be replaced with another character while 
-preserving the order of characters. No two characters may map to the same 
-character but a character may map to itself.
-
-Input: s = "egg", t = "add"
-Output: true
-
-Input: s = "foo", t = "bar"
-Output: false
-
-Input: s = "paper", t = "title"
-Output: true
-*/
-class _0205_IsomorphicStrings {
-public:
-    bool isIsomorphic(std::string s, std::string t);
-};
-
-/*
-Reverse a singly linked list.
-
-Example:
-
-Input: 1->2->3->4->5->NULL
-Output: 5->4->3->2->1->NULL
-Follow up:
-
-A linked list can be reversed either iteratively or recursively. Could you implement both?
-*/
-class _0206_ReverseLinkedList {
-public:
-    ListNode<int>* reverseList(ListNode<int>* head);
-};
-
-/*
-There are a total of n courses you have to take, labeled from 0 to n-1.
-Some courses may have prerequisites, for example to take course 0 you have to 
-first take course 1, which is expressed as a pair: [0,1]
-Given the total number of courses and a list of prerequisite pairs, is it possible 
-for you to finish all courses?
-
-Input: 2, [[1,0]] 
-Output: true
-Explanation: There are a total of 2 courses to take. 
-             To take course 1 you should have finished course 0. So it is possible.
-Example 2:
-
-Input: 2, [[1,0],[0,1]]
-Output: false
-Explanation: There are a total of 2 courses to take. 
-             To take course 1 you should have finished course 0, and to take course 0 you should
-             also have finished course 1. So it is impossible.
-Note:
-
-The input prerequisites is a graph represented by a list of edges, not adjacency matrices. Read more about how a graph is represented.
-You may assume that there are no duplicate edges in the input prerequisites.
-*/
-class _0207_CourseSchedule {
-    using Graph = std::vector<std::vector<int>>;
-    Graph createGraph(int numCourses, std::vector<std::vector<int>>& prerequisites);
-    bool isCyclicUtils(Graph g, int v, std::vector<bool>& visited, std::vector<bool>& recStack);
-    std::vector<int> computeIndegrees(Graph& g);
-public:    
-    bool canFinish(int numCourses, std::vector<std::vector<int>>& prerequisites);
-};
-
-/*
-Implement a trie with insert, search, and startsWith methods.
-
-Example:
-
-Trie trie = new Trie();
-
-trie.insert("apple");
-trie.search("apple");   // returns true
-trie.search("app");     // returns false
-trie.startsWith("app"); // returns true
-trie.insert("app");   
-trie.search("app");     // returns true
-Note:
-
-You may assume that all inputs are consist of lowercase letters a-z.
-All inputs are guaranteed to be non-empty strings.
-*/
-class _0208_ImplementTrie {
-public:
-     /** Initialize your data structure here. */
-    _0208_ImplementTrie();
-    
-    /** Inserts a word into the trie. */
-    void insert(std::string word);
-    
-    /** Returns if the word is in the trie. */
-    bool search(std::string word);
-
-    /** Returns if there is any word in the trie that starts with the given prefix. */
-    bool startsWith(std::string prefix);
-private:
-    std::unordered_map<char, _0208_ImplementTrie*> children;
-    bool isWord = false;
-};
-
-/*
-Tag: Sliding windows
-Google
-TODO: edge cases and edge condition
-
-Given an array of n positive integers and a positive integer s, find the minimal length 
-of a contiguous subarray of which the sum ≥ s. If there isn't one, return 0 instead.
-
-Input: s = 7, nums = [2,3,1,2,4,3]
-Output: 2
-Explanation: the subarray [4,3] has the minimal length under the problem constraint.
-Follow up:
-If you have figured out the O(n) solution, try coding another solution of which the time complexity is O(n log n). 
-*/
-class _0209_MinimumSizeSubarraySum {
-public:
-    int minSubArrayLen(int s, std::vector<int>& nums);
-};
-
-/*
-There are a total of n courses you have to take, labeled from 0 to n-1.
-Some courses may have prerequisites, for example to take course 0 you 
-have to first take course 1, which is expressed as a pair: [0,1]
-
-Given the total number of courses and a list of prerequisite pairs, 
-return the ordering of courses you should take to finish all courses.
-
-There may be multiple correct orders, you just need to return one of 
-them. If it is impossible to finish all courses, return an empty array.
-
-Example 1:
-
-Input: 2, [[1,0]] 
-Output: [0,1]
-Explanation: There are a total of 2 courses to take. To take course 1 
-you should have finished course 0. So the correct course order is [0,1].
-Example 2:
-
-Input: 4, [[1,0],[2,0],[3,1],[3,2]]
-Output: [0,1,2,3] or [0,2,1,3]
-There are a total of 4 courses to take. To take course 3 you should have finished both     
-courses 1 and 2. Both courses 1 and 2 should be taken after you finished course 0. 
-So one correct course order is [0,1,2,3]. Another correct ordering is [0,2,1,3] .
-Note:
-
-The input prerequisites is a graph represented by a list of edges, not 
-adjacency matrices. Read more about how a graph is represented.
-You may assume that there are no duplicate edges in the input prerequisites.
-*/
-class _0210_CourseScheduleII {
-public:
-    std::vector<int> findOrder(int numCourses, std::vector<std::vector<int>>& prerequisites);
-private:
-     void BFS(const std::vector<std::vector<int>>& graph, std::vector<int>& inDegree, std::vector<int>& res);
-};
-
-/*
-Facebook
-
-!!! Copy from solution !!!
-
-Design a data structure that supports the following two operations:
-void addWord(word)
-bool search(word)
-search(word) can search a literal word or a regular expression string 
-containing only letters a-z or .. A . means it can represent any one letter.
-
-addWord("bad")
-addWord("dad")
-addWord("mad")
-search("pad") -> false
-search("bad") -> true
-search(".ad") -> true
-search("b..") -> true
-Note:
-You may assume that all words are consist of lowercase letters a-z. */
-class _0211_AddAndSearchWordDataStructureDesign {
-    class TrieNode {
-    public:
-        bool word;
-        TrieNode* children[26];
-        TrieNode() {
-            word = false;
-            for(int i = 0; i < 26; ++i) {
-                children[i] = nullptr;
-            }
-        }
-    };
-public:
-    _0211_AddAndSearchWordDataStructureDesign() {}
-    void addWord(std::string word);
-    bool search(std::string word);
-private:
-    TrieNode* root = new TrieNode();
-    bool search(const char* word, TrieNode* node);
-};
-
-
-/*
-Given a 2D board and a list of words from the dictionary, find all words in the board.
-Each word must be constructed from letters of sequentially adjacent cell, where "adjacent" 
-cells are those horizontally or vertically neighboring. The same letter cell may not 
-be used more than once in a word.
-
-Input: 
-board = [
-  ['o','a','a','n'],
-  ['e','t','a','e'],
-  ['i','h','k','r'],
-  ['i','f','l','v']
-]
-words = ["oath","pea","eat","rain"]
-Output: ["eat","oath"]
-
-Note:
-All inputs are consist of lowercase letters a-z.
-The values of words are distinct.
-*/
-class _0212_WordSearchII {
-private:
-    std::unordered_set<std::string> res;
-public:
-    std::vector<std::string> findWords(std::vector<std::vector<char>>& board, std::vector<std::string>& words);
-    void findWords(std::vector<std::vector<char>>& board, int i, int j, const std::string& word, int idx);
-};
-
-/*
-You are a professional robber planning to rob houses along a street. Each house 
-has a certain amount of money stashed. All houses at this place are arranged in 
-a circle. That means the first house is the neighbor of the last one. Meanwhile, 
-adjacent houses have security system connected and it will automatically contact 
-the police if two adjacent houses were broken into on the same night.
-
-Given a list of non-negative integers representing the amount of money of each 
-house, determine the maximum amount of money you can rob tonight without alerting 
-the police.
-
-Input: [2,3,2]            :            Output: 3
-Explanation: You cannot rob house 1 (money = 2) and then rob house 3 (money = 2),
-because they are adjacent houses.
-
-Input: [1,2,3,1]          :            Output: 4
-Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3).
-Total amount you can rob = 1 + 3 = 4.
-这道题也是一下子蒙住了，实际上很简单，因为第一个房子和最后一个房子不能都抢，因此分别算两次，
-即排除第一个房子的情况，以及排除最后一个房子的情况。然后取大的。
-*/
-class _0213_HouseRobberII {
-public:
-    int rob(std::vector<int>& nums);
-private:
-    int robHelp(std::vector<int>& nums);
-};
 
 /*
 Tag: palindrome, KMP
@@ -334,24 +51,6 @@ public:
     std::string shortestPalindrome(std::string s);
 };
 
-/*
-Facebook
-
-Find the kth largest element in an unsorted array. Note that it is the kth largest 
-element in the sorted order, not the kth distinct element.
-
-Input: [3,2,1,5,6,4] and k = 2
-Output: 5
-
-Input: [3,2,3,1,2,4,5,5,6] and k = 4
-Output: 4
-Note:
-You may assume k is always valid, 1 ≤ k ≤ array's length.
-*/
-class _0215_KthLargestElementInAnArray {
-public:
-    int findKthLargest(std::vector<int>& nums, int k);
-};
 
 /*
 Find all possible combinations of k numbers that add up to a number n, given that 
@@ -374,24 +73,6 @@ private:
     void DFS(int k, int n, int curV, std::vector<int>& tmp, std::vector<std::vector<int>>& res);
 };
 
-/*
-217. Contains Duplicate
-Given an array of integers, find if the array contains any duplicates.
-Your function should return true if any value appears at least twice in 
-the array, and it should return false if every element is distinct.
-Input: [1,2,3,1]
-Output: true
-
-Input: [1,2,3,4]
-Output: false
-
-Input: [1,1,1,3,3,4,3,2,4,2]
-Output: true
-*/
-class _0217_ContainsDuplicate {
-public:
-    bool containsDuplicate(std::vector<int>& nums);
-};
 
 /*
 A city's skyline is the outer contour of the silhouette formed by all the buildings in that city when viewed from a
@@ -428,24 +109,7 @@ class _0218_TheSkylineProblem {
         std::vector<std::vector<int>> getSkyline(std::vector<std::vector<int>>& buildings);
 };
 
-/*
-Given an array of integers and an integer k, find out whether there are
-two distinct indices i and j in the array such that nums[i] = nums[j]
-and the absolute difference between i and j is at most k.
 
-Input: nums = [1,2,3,1], k = 3
-Output: true
-
-Input: nums = [1,0,1,1], k = 1
-Output: true
-
-Input: nums = [1,2,3,1,2,3], k = 2
-Output: false
-*/
-class _0219_ContainsDuplicateII {
-public:
-    bool containsNearbyDuplicate(std::vector<int>& nums, int k);
-};
 
 /*
 Given an array of integers, find out whether there are two distinct 
@@ -467,25 +131,7 @@ public:
     bool containsNearbyAlmostDuplicate(std::vector<int>& nums, int k, int t);
 };
 
-/*
-Tag: dynamic programming
-Google
-TODO: State Transition Equation
-Given a 2D binary matrix filled with 0's and 1's, find the largest 
-square containing only 1's and return its area.
 
-Input: 
-1 0 1 0 0
-1 0 1 1 1
-1 1 1 1 1
-1 0 0 1 0
-
-Output: 4
-*/
-class _0221_MaximalSquare {
-public:
-    int maximalSquare(std::vector<std::vector<char>>& matrix);
-};
 
 /*
 Given a complete binary tree, count the number of nodes.
@@ -510,15 +156,6 @@ public:
     int countNodes(TreeNode<int>* root);
 };
 
-/*
-Find the total area covered by two rectilinear rectangles 
-in a 2D plane. Each rectangle is defined by its bottom left 
-corner and top right corner as shown in the figure.
-*/
-class _0223_RectangleArea {
-public:
-    int computeArea(int A, int B, int C, int D, int E, int F, int G, int H);
-};
 
 /*
 Implement a basic calculator to evaluate a simple expression string.

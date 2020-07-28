@@ -211,3 +211,79 @@ int LC::_0198_HouseRobber::rob(std::vector<int>& nums) {
     
     return DP[nums.size()-1];
 }
+
+// Tag: dynamic programming, two times calculation, {0~N-1, 1~N}
+int LC::_0213_HouseRobberII::rob(std::vector<int>& nums) {
+    if(nums.size() == 0) {
+        return 0;
+    }
+    if(nums.size() == 1) {
+        return nums[0];
+    }
+    if(nums.size() == 2) {
+        return std::max(nums[0], nums[1]);
+    }
+    
+    std::vector<int> A(nums.begin(), nums.end() - 1);
+    std::vector<int> B(nums.begin() + 1, nums.end());
+    int rA = robHelp(A);
+    int rB = robHelp(B);
+    return std::max(rA, rB);        
+}
+
+int LC::_0213_HouseRobberII::robHelp(std::vector<int>& nums) {
+    if(nums.size() == 1) {
+        return nums[0];
+    }
+    if(nums.size() == 2) {
+        return std::max(nums[0], nums[1]);
+    }
+    
+    std::vector<std::vector<int>> DP(2, std::vector<int>(nums.size(), 0));
+    DP[0][0] = 0;
+    DP[1][0] = nums[0];
+    for(int i = 1; i < nums.size(); ++i) {
+        DP[0][i] = std::max(DP[0][i-1], DP[1][i-1]);
+        DP[1][i] = DP[0][i-1] + nums[i];
+    }
+    return std::max(DP[0].back(), DP[1].back());
+}
+
+
+// Tag: Dynamic Programming
+// Google
+// TODO: state transition equation
+int LC::_0221_MaximalSquare::maximalSquare(std::vector<std::vector<char>>& matrix) {
+    const int M = matrix.size();
+    if(M == 0) {
+        return 0;
+    }
+    const int N = matrix[0].size();
+    if(N == 0) {
+        return 0;
+    }
+    
+    std::vector<std::vector<int>> DP(M, std::vector<int>(N, 0));
+    int maxS = 0;
+    for(int j = 0; j < N; ++j) {
+        if(matrix[0][j] == '1') {
+            DP[0][j] = 1;
+            maxS = std::max(maxS, DP[0][j]);
+        }
+    }
+    for(int i = 0; i < M; ++i) {
+        if(matrix[i][0] == '1') {
+            DP[i][0] = 1;
+            maxS = std::max(maxS, DP[i][0]);
+        }
+    }
+    for(int i = 1; i < M; ++i) {
+        for(int j = 1; j < N; ++j) {
+            if(matrix[i][j] == '1') {
+                DP[i][j] = std::min(std::min(DP[i-1][j], DP[i][j-1]), DP[i-1][j-1]) + 1;
+                maxS = std::max(maxS, DP[i][j]);
+            }
+        }
+    }
+    return maxS * maxS;
+}

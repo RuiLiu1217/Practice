@@ -497,3 +497,43 @@ int LC::_0160_IntersectionOfTwoLinkedLists::length(LC::ListNode* root) {
 }
 
 
+// Tag: single linked list
+LC::ListNode* LC::_0203_RemoveLinkedListElements::removeElements(ListNode* head, int val) {
+    if(!head) {
+        return nullptr;
+    }
+    if(head && head->next == nullptr) {
+        if(head->val == val) {
+            delete head;
+            return nullptr;
+        }
+    }
+    ListNode* newHead = new ListNode(-1);
+    newHead->next = head;
+
+    ListNode* p = newHead;
+    while(p->next) {
+        if(p->next->val == val) {
+            ListNode* toRemove = p->next;
+            p->next = p->next->next;
+            delete toRemove;
+        } else {
+            p = p->next;
+        }
+    }
+    head = newHead->next;
+    return head;      
+}
+
+// TODO: recursive is harder to understand
+LC::ListNode* LC::_0206_ReverseLinkedList::reverseList(ListNode* head) {
+    if(head == nullptr || head->next == nullptr) {
+        return head;
+    }
+    // (x[head])-->(o)-->(.)-->(.)-->(*)
+    ListNode* newHead = reverseList(head->next);
+    // (*[newHead])-->(.)-->(.)-->(o)<--(x[head])
+    head->next->next = head; // (*[newHead])-->(.)-->(.)-->(o)<-->(x[head])
+    head->next = nullptr;// (*[newHead])-->(.)-->(.)-->(o)-->(x[head])
+    return newHead;
+}

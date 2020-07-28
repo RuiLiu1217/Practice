@@ -288,5 +288,108 @@ public:
     std::vector<std::string> findRepeatedDNASequence_NoMap(std::string s);
 };
 
+
+/*
+Given two strings s and t, determine if they are isomorphic.
+Two strings are isomorphic if the characters in s can be replaced to get t.
+All occurrences of a character must be replaced with another character while 
+preserving the order of characters. No two characters may map to the same 
+character but a character may map to itself.
+
+Input: s = "egg", t = "add"
+Output: true
+
+Input: s = "foo", t = "bar"
+Output: false
+
+Input: s = "paper", t = "title"
+Output: true
+*/
+class _0205_IsomorphicStrings {
+public:
+    bool isIsomorphic(std::string s, std::string t);
+};
+
+
+
+
+/*
+Implement a trie with insert, search, and startsWith methods.
+
+Example:
+
+Trie trie = new Trie();
+
+trie.insert("apple");
+trie.search("apple");   // returns true
+trie.search("app");     // returns false
+trie.startsWith("app"); // returns true
+trie.insert("app");   
+trie.search("app");     // returns true
+Note:
+
+You may assume that all inputs are consist of lowercase letters a-z.
+All inputs are guaranteed to be non-empty strings.
+*/
+class _0208_ImplementTrie {
+public:
+     /** Initialize your data structure here. */
+    _0208_ImplementTrie();
+    
+    /** Inserts a word into the trie. */
+    void insert(std::string word);
+    
+    /** Returns if the word is in the trie. */
+    bool search(std::string word);
+
+    /** Returns if there is any word in the trie that starts with the given prefix. */
+    bool startsWith(std::string prefix);
+private:
+    std::unordered_map<char, _0208_ImplementTrie*> children;
+    bool isWord = false;
+};
+
+
+
+/*
+Facebook
+!!! Copy from solution !!!
+Design a data structure that supports the following two operations:
+void addWord(word)
+bool search(word)
+search(word) can search a literal word or a regular expression string 
+containing only letters a-z or .. A . means it can represent any one letter.
+
+addWord("bad")
+addWord("dad")
+addWord("mad")
+search("pad") -> false
+search("bad") -> true
+search(".ad") -> true
+search("b..") -> true
+Note:
+You may assume that all words are consist of lowercase letters a-z. */
+class _0211_AddAndSearchWordDataStructureDesign {
+    class TrieNode {
+    public:
+        bool word;
+        TrieNode* children[26];
+        TrieNode() {
+            word = false;
+            for(int i = 0; i < 26; ++i) {
+                children[i] = nullptr;
+            }
+        }
+    };
+public:
+    _0211_AddAndSearchWordDataStructureDesign() {}
+    void addWord(std::string word);
+    bool search(std::string word);
+private:
+    TrieNode* root = new TrieNode();
+    bool search(const char* word, TrieNode* node);
+};
+
+
 }
 #endif
