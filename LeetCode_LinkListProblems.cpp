@@ -537,3 +537,51 @@ LC::ListNode* LC::_0206_ReverseLinkedList::reverseList(ListNode* head) {
     head->next = nullptr;// (*[newHead])-->(.)-->(.)-->(o)-->(x[head])
     return newHead;
 }
+
+
+LC::ListNode* LC::_0234_PalindromeLinkedList::reverse(ListNode* head) {
+    if(!head || !head->next) {
+        return head;
+    }
+    ListNode* nh = reverse(head->next);
+    head->next->next = head;
+    head->next = nullptr;
+    return nh;
+}
+bool LC::_0234_PalindromeLinkedList::isPalindrome(ListNode* head) {
+    if(!head || (!head->next)) {
+        return true;
+    }
+    
+    ListNode* slow = head;
+    ListNode* fast = head;
+    ListNode* prev = nullptr;
+    while(fast && fast->next) {
+        prev = slow;
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    
+    ListNode* secondList = prev->next;
+    prev->next = nullptr;
+    secondList = reverse(secondList);
+    while(head && secondList) {
+        if(head->val != secondList->val) {
+            return false;
+        }
+        head = head->next;
+        secondList = secondList->next;            
+    }
+    return true;
+}
+
+void LC::_0237_DeleteNodeInALinkedList::deleteNode(ListNode* node) {
+    if(!node->next) {
+        return;        
+    } else {
+        std::swap(node->val, node->next->val);
+        ListNode* p = node->next;
+        node->next = node->next->next;
+        delete p;
+    }
+}

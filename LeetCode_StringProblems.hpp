@@ -2,6 +2,8 @@
 #define LEETCODE_STRINGPROBLEMS_HPP
 #include <vector>
 #include <string>
+#include <unordered_set>
+#include <unordered_map>
 namespace LC {
 /*
     Tag: string, palindromic
@@ -17,7 +19,6 @@ class _0005_LongestPalindromicSubstring {
 public:
     std::string longestPalidrome(std::string s);
 };
-
 
 /*
 Tag: string, mathematics, array
@@ -388,6 +389,109 @@ public:
 private:
     TrieNode* root = new TrieNode();
     bool search(const char* word, TrieNode* node);
+};
+
+
+/*
+Given an array nums, there is a sliding window of size k which is moving from the 
+very left of the array to the very right. You can only see the k numbers in the 
+window. Each time the sliding window moves right by one position. Return the max 
+sliding window.
+
+Input: nums = [1,3,-1,-3,5,3,6,7], and k = 3
+Output: [3,3,5,5,6,7] 
+Explanation: 
+
+Window position                Max
+---------------               -----
+[1  3  -1] -3  5  3  6  7       3
+ 1 [3  -1  -3] 5  3  6  7       3
+ 1  3 [-1  -3  5] 3  6  7       5
+ 1  3  -1 [-3  5  3] 6  7       5
+ 1  3  -1  -3 [5  3  6] 7       6
+ 1  3  -1  -3  5 [3  6  7]      7
+Note:
+You may assume k is always valid, 1 ≤ k ≤ input array's size for non-empty array.
+
+Follow up:
+Could you solve it in linear time?
+*/
+class _0239_SlidingWindowMaximum {
+public:
+    std::vector<int> maxSlidingWindow(std::vector<int>& nums, int k);
+};
+
+
+/*
+Given two strings s and t , write a function to determine if t is an anagram of s.
+
+Input: s = "anagram", t = "nagaram"
+Output: true
+
+Input: s = "rat", t = "car"
+Output: false
+Note:
+You may assume the string contains only lowercase alphabets.
+
+Follow up:
+What if the inputs contain unicode characters? How would you adapt your solution to such case?
+*/
+class _0242_ValidAnagram {
+public:
+    bool isAnagram(std::string s, std::string t);
+};
+
+
+/*
+A strobogrammatic number is a number that looks the same when rotated 180 degrees (looked at upside down).
+
+Write a function to determine if a number is strobogrammatic. The number is represented as a string.
+
+Example 1:
+
+Input:  "69"
+Output: true
+Example 2:
+
+Input:  "88"
+Output: true
+Example 3:
+
+Input:  "962"
+Output: false
+*/
+class _0246_StrobogrammaticNumber {
+public:
+    bool isStrobogrammatic(std::string num);
+};
+
+
+/*
+A strobogrammatic number is a number that looks the same when rotated 180 degrees (looked at upside down).
+Find all strobogrammatic numbers that are of length = n.
+
+Example:
+
+Input:  n = 2
+Output: ["11","69","88","96"]
+*/
+class _0247_StrobogrammaticNumberII {
+public:
+    std::vector<std::string> findStrobogrammatic(int n);
+private:
+    void DFS(std::unordered_set<char> set, int curLen, int n, std::string tmp, std::vector<std::string>& res);
+};
+
+
+/*
+Given a string, determine if a permutation of the string could form a palindrome.
+Input: "code"       :      Output: false
+Input: "aab"        :      Output: true
+Input: "carerac"    :      Output: true
+*/
+class _0266_PalinndromePermutation {
+public:
+    bool canPermutePalindrome(std::string s);
 };
 
 

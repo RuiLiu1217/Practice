@@ -710,3 +710,44 @@ std::vector<int> LC::_0199_BinaryTreeRightSideView::rightSideView(TreeNode* root
     }
     return res;
 }
+
+
+// Todo: I don't know why the solution is totally different from what I think of but my solution can pass.
+int LC::_0222_CountCompleteTreeNodes::countNodes(TreeNode* root) {
+    if(!root) {
+        return 0;
+    }
+    return 1 + countNodes(root->left) + countNodes(root->right);
+}
+
+LC::TreeNode* LC::_0226_InvertBinaryTree::invertTree(LC::TreeNode* root)  {
+    if(!root) {
+        return nullptr;
+    } else {
+        TreeNode* lft = invertTree(root->left);
+        TreeNode* rgh = invertTree(root->right);
+        root->left = rgh;
+        root->right = lft;
+        return root;
+    }    
+}
+
+
+std::vector<std::string> LC::_0257_BinaryTreePaths::binaryTreePaths(LC::TreeNode* root) {
+    if(root == nullptr) {
+        return {};
+    }
+    if(root->left == nullptr && root->right == nullptr) {
+        return {std::to_string(root->val)};
+    }
+    std::vector<std::string> leftString = binaryTreePaths(root->left);
+    std::vector<std::string> rightString = binaryTreePaths(root->right);
+    std::vector<std::string> res;
+    for(int i = 0; i < leftString.size(); ++i) {
+        res.push_back(std::to_string(root->val) + "->" + leftString[i]);
+    }
+    for(int i = 0; i < rightString.size(); ++i) {
+        res.push_back(std::to_string(root->val) + "->" + rightString[i]);
+    }
+    return res;
+}

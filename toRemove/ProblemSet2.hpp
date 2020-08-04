@@ -52,26 +52,7 @@ public:
 };
 
 
-/*
-Find all possible combinations of k numbers that add up to a number n, given that 
-only numbers from 1 to 9 can be used and each combination should be a unique set of numbers.
-Note:
 
-All numbers will be positive integers.
-The solution set must not contain duplicate combinations.
-
-Input: k = 3, n = 7
-Output: [[1,2,4]]
-
-Input: k = 3, n = 9
-Output: [[1,2,6], [1,3,5], [2,3,4]]
-*/
-class _0216_CombinationSumIII{
-public:
-    std::vector<std::vector<int>> combinationSum3(int k, int n);
-private:
-    void DFS(int k, int n, int curV, std::vector<int>& tmp, std::vector<std::vector<int>>& res);
-};
 
 
 /*
@@ -133,28 +114,6 @@ public:
 
 
 
-/*
-Given a complete binary tree, count the number of nodes.
-
-Definition of a complete binary tree from Wikipedia:
-In a complete binary tree every level, except possibly the 
-last, is completely filled, and all nodes in the last level 
-are as far left as possible. It can have between 1 and 2h 
-nodes inclusive at the last level h.
-
-Input: 
-    1
-   / \
-  2   3
- / \  /
-4  5 6
-
-Output: 6
-*/
-class _0222_CountCompleteTreeNodes {
-public:
-    int countNodes(TreeNode<int>* root);
-};
 
 
 /*
@@ -187,70 +146,6 @@ private:
     int priority(char op);
 };
 
-/*
-225. Implement Stack using Queues
-Implement the following operations of a stack using queues.
-
-push(x) -- Push element x onto stack.
-pop() -- Removes the element on top of the stack.
-top() -- Get the top element.
-empty() -- Return whether the stack is empty.
-
-MyStack stack = new MyStack();
-
-stack.push(1);
-stack.push(2);  
-stack.top();   // returns 2
-stack.pop();   // returns 2
-stack.empty(); // returns false
-Notes:
-
-You must use only standard operations of a queue -- which means only 
-push to back, peek/pop from front, size, and is empty operations are valid.
-
-Depending on your language, queue may not be supported natively. You may 
-simulate a queue by using a list or deque (double-ended queue), as long 
-as you use only standard operations of a queue. You may assume that all 
-operations are valid (for example, no pop or top operations will be 
-called on an empty stack).
-*/
-class _0225_ImplementStackUsingQueues {
-public:
-    _0225_ImplementStackUsingQueues();
-
-    void push(int x);
-
-    int pop();
-
-    int top();
-
-    bool empty();
-
-private:
-    std::queue<int> nums;
-};
-
-/*
-Invert a binary tree.
-Input:
-
-     4
-   /   \
-  2     7
- / \   / \
-1   3 6   9
-Output:
-
-     4
-   /   \
-  7     2
- / \   / \
-9   6 3   1
-*/
-class _0226_InvertBinaryTree {
-public:
-    TreeNode<int>* invertTree(TreeNode<int>* root);
-};
 
 /*
 Implement a basic calculator to evaluate a simple expression string.
@@ -271,26 +166,6 @@ public:
     int calculate(std::string s);
 };
 
-
-/*
-Given a sorted integer array without duplicates, return the summary of its ranges.
-
-Example 1:
-
-Input:  [0,1,2,4,5,7]
-Output: ["0->2","4->5","7"]
-Explanation: 0,1,2 form a continuous range; 4,5 form a continuous range.
-Example 2:
-
-Input:  [0,2,3,4,6,8,9]
-Output: ["0","2->4","6","8->9"]
-Explanation: 2,3,4 form a continuous range; 8,9 form a continuous range.
-*/
-class _0228_SummaryRange {
-public:
-    std::vector<std::string> summaryRanges(std::vector<int>& nums);
-};
-
 /*
 Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times.
 Note: The algorithm should run in linear time and in O(1) space.
@@ -306,91 +181,8 @@ public:
     std::vector<int> majorityElement(std::vector<int>& nums);
 };
 
-/*
-Given a binary search tree, write a function kthSmallest to find the kth smallest element in it.
-Note:
-You may assume k is always valid, 1 ≤ k ≤ BST's total elements.
 
-Input: root = [3,1,4,null,2], k = 1
-   3
-  / \
- 1   4
-  \
-   2
-Output: 1
 
-Input: root = [5,3,6,2,4,null,null,1], k = 3
-       5
-      / \
-     3   6
-    / \
-   2   4
-  /
- 1
-Output: 3
-Follow up:
-What if the BST is modified (insert/delete operations) often and you need to find the kth 
-smallest frequently? How would you optimize the kthSmallest routine?
-*/
-class _0230_KthSmallestElementInABST {
-public:
-    int kthSmallest(TreeNode<int>* root, int k);
-};
-
-/*
-Given an integer, write a function to determine if it is a power of two.
-
-Input: 1
-Output: true 
-Explanation: 20 = 1
-
-Input: 16
-Output: true
-Explanation: 24 = 16
-
-Input: 218
-Output: false
-*/
-class _0231_PowerOfTwo {
-public:
-    bool isPowerOfTwo(int n);
-};
-
-/*
-Implement the following operations of a queue using stacks.
-
-push(x) -- Push element x to the back of queue.
-pop() -- Removes the element from in front of queue.
-peek() -- Get the front element.
-empty() -- Return whether the queue is empty.
-Example:
-
-MyQueue queue = new MyQueue();
-
-queue.push(1);
-queue.push(2);  
-queue.peek();  // returns 1
-queue.pop();   // returns 1
-queue.empty(); // returns false
-Notes:
-
-You must use only standard operations of a stack -- which means only push to top, peek/pop
-from top, size, and is empty operations are valid. Depending on your language, stack may 
-not be supported natively. You may simulate a stack by using a list or deque (double-ended 
-queue), as long as you use only standard operations of a stack. You may assume that all 
-operations are valid (for example, no pop or peek operations will be called on an empty queue).
-*/
-class _0232_ImplementQueueUsingStacks {
-private:
-    std::stack<int> left;
-    std::stack<int> right;
-public:
-    _0232_ImplementQueueUsingStacks();
-    void push(int x);
-    int pop();
-    int peek();
-    bool empty();
-};
 
 /*
 Given an integer n, count the total number of digit 1 appearing 
@@ -405,27 +197,6 @@ Beware of overflow.
 class _0233_NumberOfDigitOne {
 public:
     int countDigitOne(int n);
-};
-
-/*
-Given a singly linked list, determine if it is a palindrome.
-
-Example 1:
-
-Input: 1->2
-Output: false
-Example 2:
-
-Input: 1->2->2->1
-Output: true
-Follow up:
-Could you do it in O(n) time and O(1) space?
-*/
-class _0234_PalindromeLinkedList {
-public:
-    bool isPalindrome(ListNode<int>* head);
-private:
-    ListNode<int>* reverse(ListNode<int>* head);
 };
 
 
@@ -494,30 +265,7 @@ public:
     TreeNode<int>* lowestCommonAncestor(TreeNode<int>* root, TreeNode<int>* p, TreeNode<int>* q);
 };
 
-/*
-Write a function to delete a node (except the tail) in a singly linked list, 
-given only access to that node.
-Given linked list -- head = [4,5,1,9], which looks like following:
 
-Input: head = [4,5,1,9], node = 5
-Output: [4,1,9]
-Explanation: You are given the second node with value 5, the linked list should become 4 -> 1 -> 9 after calling your function.
-
-Input: head = [4,5,1,9], node = 1
-Output: [4,5,9]
-Explanation: You are given the third node with value 1, the linked list should become 4 -> 5 -> 9 after calling your function.
-
-Note:
-
-The linked list will have at least two elements.
-All of the nodes' values will be unique.
-The given node will not be the tail and it will always be a valid node of the linked list.
-Do not return anything from your function.
-*/
-class _0237_DeleteNodeInALinkedList {
-public:
-    void deleteNode(ListNode<int>* node);
-};
 
 /*
 Given an array nums of n integers where n > 1,  return an array output such that output[i] is equal 
@@ -536,34 +284,6 @@ public:
     std::vector<int> productExceptSelf(std::vector<int>& nums);
 };
 
-/*
-Given an array nums, there is a sliding window of size k which is moving from the 
-very left of the array to the very right. You can only see the k numbers in the 
-window. Each time the sliding window moves right by one position. Return the max 
-sliding window.
-
-Input: nums = [1,3,-1,-3,5,3,6,7], and k = 3
-Output: [3,3,5,5,6,7] 
-Explanation: 
-
-Window position                Max
----------------               -----
-[1  3  -1] -3  5  3  6  7       3
- 1 [3  -1  -3] 5  3  6  7       3
- 1  3 [-1  -3  5] 3  6  7       5
- 1  3  -1 [-3  5  3] 6  7       5
- 1  3  -1  -3 [5  3  6] 7       6
- 1  3  -1  -3  5 [3  6  7]      7
-Note:
-You may assume k is always valid, 1 ≤ k ≤ input array's size for non-empty array.
-
-Follow up:
-Could you solve it in linear time?
-*/
-class _0239_SlidingWindowMaximum {
-public:
-    std::vector<int> maxSlidingWindow(std::vector<int>& nums, int k);
-};
 
 /*
 Write an efficient algorithm that searches for a value 
@@ -619,40 +339,6 @@ public:
     std::vector<int> diffWaysToComp(const std::string& input, int start, int end);
 };
 
-/*
-Given two strings s and t , write a function to determine if t is an anagram of s.
-
-Input: s = "anagram", t = "nagaram"
-Output: true
-
-Input: s = "rat", t = "car"
-Output: false
-Note:
-You may assume the string contains only lowercase alphabets.
-
-Follow up:
-What if the inputs contain unicode characters? How would you adapt your solution to such case?
-*/
-class _0242_ValidAnagram {
-public:
-    bool isAnagram(std::string s, std::string t);
-};
-
-/*
-Given a list of words and two words word1 and word2, return the shortest distance between these two words in the list.
-Assume that words = ["practice", "makes", "perfect", "coding", "makes"].
-
-Input: word1 = “coding”, word2 = “practice”
-Output: 3
-Input: word1 = "makes", word2 = "coding"
-Output: 1
-Note:
-You may assume that word1 does not equal to word2, and word1 and word2 are both in the list.
-*/
-class _0243_ShortestWordDistance {
-public:
-    int shortestDistance(std::vector<std::string>& words, std::string word1, std::string word2);
-};
 
 /*
 Given a list of words and two words word1 and word2, return the shortest distance between these two words in the list.
@@ -674,44 +360,6 @@ public:
     int shortestWordDistance(std::vector<std::string>& words, std::string word1, std::string word2);
 };
 
-/*
-A strobogrammatic number is a number that looks the same when rotated 180 degrees (looked at upside down).
-
-Write a function to determine if a number is strobogrammatic. The number is represented as a string.
-
-Example 1:
-
-Input:  "69"
-Output: true
-Example 2:
-
-Input:  "88"
-Output: true
-Example 3:
-
-Input:  "962"
-Output: false
-*/
-class _0246_StrobogrammaticNumber {
-public:
-    bool isStrobogrammatic(std::string num);
-};
-
-/*
-A strobogrammatic number is a number that looks the same when rotated 180 degrees (looked at upside down).
-Find all strobogrammatic numbers that are of length = n.
-
-Example:
-
-Input:  n = 2
-Output: ["11","69","88","96"]
-*/
-class _0247_StrobogrammaticNumberII {
-public:
-    std::vector<std::string> findStrobogrammatic(int n);
-private:
-    void DFS(std::unordered_set<char> set, int curLen, int n, std::string tmp, std::vector<std::string>& res);
-};
 
 /*
 Given a string, we can "shift" each of its letter to its successive letter, for example: "abc" -> "bcd". We can keep "shifting" which forms the sequence:
@@ -759,38 +407,6 @@ private:
 };
 
 /*
-Design and implement an iterator to flatten a 2d vector. It should support the following operations: next and hasNext.
-
-Vector2D iterator = new Vector2D([[1,2],[3],[4]]);
-
-iterator.next(); // return 1
-iterator.next(); // return 2
-iterator.next(); // return 3
-iterator.hasNext(); // return true
-iterator.hasNext(); // return true
-iterator.next(); // return 4
-iterator.hasNext(); // return false
-
-Notes:
-
-Please remember to RESET your class variables declared in Vector2D, as static/class variables are persisted across multiple test cases. Please see here for more details.
-You may assume that next() call will always be valid, that is, there will be at least a next element in the 2d vector when next() is called.
-
-Follow up:
-
-As an added challenge, try to code it using only iterators in C++ or iterators in Java.
-*/
-class _0251_Flatten2DVector {
-private:
-    std::vector<std::vector<int>>::iterator i, iEnd;
-    int j = 0;
-public:
-    _0251_Flatten2DVector(std::vector<std::vector<int>>& v);
-    int next();
-    bool hasNext();
-};
-
-/*
 Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si < ei), determine if a person could attend all meetings.
 
 Input: [[0,30],[5,10],[15,20]]
@@ -815,54 +431,6 @@ public:
     int minMeetingRooms(std::vector<std::vector<int>>& intervals);
 };
 
-/*
-Numbers can be regarded as product of its factors. For example,
-
-8 = 2 x 2 x 2;
-  = 2 x 4.
-Write a function that takes an integer n and return all possible combinations of its factors.
-
-Note:
-
-You may assume that n is always positive.
-Factors should be greater than 1 and less than n.
-Example 1:
-
-Input: 1
-Output: []
-Example 2:
-
-Input: 37
-Output:[]
-Example 3:
-
-Input: 12
-Output:
-[
-  [2, 6],
-  [2, 2, 3],
-  [3, 4]
-]
-Example 4:
-
-Input: 32
-Output:
-[
-  [2, 16],
-  [2, 2, 8],
-  [2, 2, 2, 4],
-  [2, 2, 2, 2, 2],
-  [2, 4, 4],
-  [4, 8]
-]
-*/
-class _0254_FactorCombinations {
-public:
-    // Copy from the solution
-    std::vector<std::vector<int>> getFactors(int n);
-private:
-    void DFS(std::vector<std::vector<int>>& res, std::vector<int>& tmp, int n);
-};
 
 /*
 Given an array of numbers, verify whether it is the correct preorder traversal sequence of a binary search tree.
@@ -893,25 +461,6 @@ public:
     bool isPreorder(std::vector<int>& preorder, int startIdx, int endIdx);
 };
 
-/*
-Given a binary tree, return all root-to-leaf paths.
-Note: A leaf is a node with no children.
-
-Input:
-
-   1
- /   \
-2     3
- \
-  5
-
-Output: ["1->2->5", "1->3"]
-Explanation: All root-to-leaf paths are: 1->2->5, 1->3
-*/
-class _0257_BinaryTreePaths {
-public:
-    std::vector<std::string> binaryTreePaths(TreeNode<int>* root);
-};
 
 /*
 Given a non-negative integer num, repeatedly add all its digits until the 
@@ -957,26 +506,6 @@ class _0260_SingleNumberII
 public:
     std::vector<int> singleNumber(const std::vector<int> &nums);
 };
-
-/*
-Given n nodes labeled from 0 to n-1 and a list of undirected edges (each edge is a 
-pair of nodes), write a function to check whether these edges make up a valid tree.
-
-Input: n = 5, and edges = [[0,1], [0,2], [0,3], [1,4]]
-Output: true
-
-Input: n = 5, and edges = [[0,1], [1,2], [2,3], [1,3], [1,4]]
-Output: false
-Note: you can assume that no duplicate edges will appear in edges. Since all edges 
-are undirected, [0,1] is the same as [1,0] and thus will not appear together in edges.
-*/
-class _0261_GraphValidTree {
-public:
-    bool validTree(int n, std::vector<std::vector<int>>& edges);
-    bool DFS(std::vector<std::unordered_set<int>>& graph, std::vector<int>& visited, int source, int target);
-};
-
-class _0262_TripsAndUsers; // it s a MySQL problem
 
 /*
 Write a program to check whether a given number is an ugly number.
@@ -1025,16 +554,6 @@ public:
     int nthUglyNumber(int n);
 };
 
-/*
-Given a string, determine if a permutation of the string could form a palindrome.
-Input: "code"       :      Output: false
-Input: "aab"        :      Output: true
-Input: "carerac"    :      Output: true
-*/
-class _0266_PalinndromePermutation {
-public:
-    bool canPermutePalindrome(std::string s);
-};
 
 /*
 Given a string s, return all the palindromic permutations (without duplicates) of it. Return an empty list if no palindromic permutation could be form.

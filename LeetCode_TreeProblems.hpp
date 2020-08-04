@@ -777,6 +777,107 @@ public:
 };
 
 
+
+/*
+Given a complete binary tree, count the number of nodes.
+
+Definition of a complete binary tree from Wikipedia:
+In a complete binary tree every level, except possibly the 
+last, is completely filled, and all nodes in the last level 
+are as far left as possible. It can have between 1 and 2h 
+nodes inclusive at the last level h.
+
+Input: 
+    1
+   / \
+  2   3
+ / \  /
+4  5 6
+
+Output: 6
+*/
+class _0222_CountCompleteTreeNodes {
+public:
+    int countNodes(TreeNode* root);
+};
+
+
+
+/*
+Invert a binary tree.
+Input:
+
+     4
+   /   \
+  2     7
+ / \   / \
+1   3 6   9
+Output:
+
+     4
+   /   \
+  7     2
+ / \   / \
+9   6 3   1
+*/
+class _0226_InvertBinaryTree {
+public:
+    TreeNode* invertTree(TreeNode* root);
+};
+
+
+/*
+Given a binary search tree, write a function kthSmallest to find the kth smallest element in it.
+Note:
+You may assume k is always valid, 1 ≤ k ≤ BST's total elements.
+
+Input: root = [3,1,4,null,2], k = 1
+   3
+  / \
+ 1   4
+  \
+   2
+Output: 1
+
+Input: root = [5,3,6,2,4,null,null,1], k = 3
+       5
+      / \
+     3   6
+    / \
+   2   4
+  /
+ 1
+Output: 3
+Follow up:
+What if the BST is modified (insert/delete operations) often and you need to find the kth 
+smallest frequently? How would you optimize the kthSmallest routine?
+*/
+class _0230_KthSmallestElementInABST {
+public:
+    int kthSmallest(TreeNode* root, int k);
+};
+
+
+/*
+Given a binary tree, return all root-to-leaf paths.
+Note: A leaf is a node with no children.
+
+Input:
+
+   1
+ /   \
+2     3
+ \
+  5
+
+Output: ["1->2->5", "1->3"]
+Explanation: All root-to-leaf paths are: 1->2->5, 1->3
+*/
+class _0257_BinaryTreePaths {
+public:
+    std::vector<std::string> binaryTreePaths(TreeNode* root);
+};
+
     
 }
 #endif

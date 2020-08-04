@@ -5,11 +5,12 @@
 #include <climits>
 #include <functional>
 #include <cmath>
+#include <cstdlib>
 #include <random>
 #include <ctime>
 #include <queue>
 #include <unordered_set>
-
+#include <math.h>
 std::vector<int> LC::_0001_TwoSum::twoSum(std::vector<int> &nums, int target) {
     std::unordered_map<int, int> map;
     for(int i = 0; i < nums.size(); ++i)
@@ -992,4 +993,146 @@ bool LC::_0219_ContainsDuplicateII::containsNearbyDuplicate(std::vector<int>& nu
         s.insert(nums[i]);
     }
     return false;
+}
+
+
+
+void LC::_0225_ImplementStackUsingQueues::push(int x) {
+    const int len = nums.size();
+    nums.push(x);
+    for(int i = 0; i != len; ++i) { // keep it last in first out structure
+        nums.push(nums.front());
+        nums.pop();
+    }
+}
+
+// Removes the element on top of the stack;
+int LC::_0225_ImplementStackUsingQueues::pop() {
+    const int c = nums.front();
+    nums.pop();
+    return c;
+}
+
+// get the top element
+int LC::_0225_ImplementStackUsingQueues::top() {
+    return nums.front();
+}
+
+// Return whether the stack is empty
+bool LC::_0225_ImplementStackUsingQueues::empty() {
+    return nums.empty();
+}
+
+std::vector<std::string> LC::_0228_SummaryRange::summaryRanges(std::vector<int>& nums) {
+    if (nums.size() == 0) {
+        return {};
+    }
+    int startNum = nums[0];
+    int length = 1;
+    std::vector<std::string> res;
+    for(int i = 1; i < nums.size(); ++i) {
+        if(nums[i-1] + 1 == nums[i]) {
+            ++length;
+        } else {
+            if (length == 1) {
+                res.push_back(std::to_string(startNum));
+            } else {
+                std::string rightSide;
+                if(startNum == INT_MIN) {
+                    rightSide = std::to_string(startNum+length-1);
+                } else if (startNum == INT_MAX) {
+                    rightSide = std::to_string(startNum-1+length);
+                } else {
+                    rightSide = std::to_string(startNum-1+length);
+                }
+                res.push_back(std::to_string(startNum) + "->" + rightSide); 
+            }
+            startNum = nums[i];
+            length = 1;
+        }
+    }
+    if (length == 1) {
+        res.push_back(std::to_string(startNum));
+    } else {
+        std::string rightSide;
+        if(startNum == INT_MIN) {
+            rightSide = std::to_string(startNum+length-1);
+        } else if (startNum == INT_MAX) {
+            rightSide = std::to_string(startNum-1+length);
+        } else {
+            rightSide = std::to_string(startNum-1+length);
+        }
+        res.push_back(std::to_string(startNum) + "->" + rightSide); 
+    }
+    return res;
+}
+
+// Tag: basic data structure
+LC::_0232_ImplementQueueUsingStacks::_0232_ImplementQueueUsingStacks(){
+
+}
+void LC::_0232_ImplementQueueUsingStacks::push(int x) {
+    while(!right.empty()){
+        left.push(right.top());
+        right.pop();
+    }
+    left.push(x);
+}
+int LC::_0232_ImplementQueueUsingStacks::pop() {
+    while(!left.empty()){
+        right.push(left.top());
+        left.pop();
+    }
+    int a = right.top();
+    
+    right.pop();
+    return a;
+}
+int LC::_0232_ImplementQueueUsingStacks::peek() {
+    while(!left.empty()){
+        right.push(left.top());
+        left.pop();
+    }
+    return right.top();
+}
+bool LC::_0232_ImplementQueueUsingStacks::empty() {
+    return (left.empty() && right.empty());
+}
+
+int LC::_0243_ShortestWordDistance::shortestDistance(std::vector<std::string>& words, std::string word1, std::string word2) {
+    int iw1 = -1;
+    int iw2 = -1;
+    int dis = words.size();
+    for(int i = 0; i < words.size(); ++i) {
+        if(words[i] == word1) {
+            iw1 = i;
+        } else if(words[i] == word2) {
+            iw2 = i;
+        }
+        if(iw1 != -1 && iw2 != -1) {
+            dis = std::min(dis, std::abs(iw1 - iw2));
+        }
+    }
+    return dis;
+}
+
+
+LC::_0251_Flatten2DVector::_0251_Flatten2DVector(std::vector<std::vector<int>>& v) {
+    i = v.begin();
+    iEnd = v.end();
+}
+
+int LC::_0251_Flatten2DVector::next() {
+    if(hasNext()) {
+        return (*i)[j++];
+    }
+    return -1;
+}
+
+bool LC::_0251_Flatten2DVector::hasNext() {
+    while(i != iEnd && j == (*i).size()) { // update next pointer in this function
+        ++i;
+        j = 0;
+    }
+    return i != iEnd;
 }

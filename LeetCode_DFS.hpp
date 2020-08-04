@@ -1,6 +1,8 @@
 #ifndef LEETCODE_DFS_HPP
 #define LEETCODE_DFS_HPP
 #include "LeetCode_TreeProblems.hpp"
+#include <unordered_map>
+#include <unordered_set>
 namespace LC {
 /*
     Tag: DFS
@@ -42,6 +44,76 @@ private:
 public:
     _0129_SumRootToLeafNumbers() : sum(0) {}
     int sumNumbers(TreeNode* root);
+};
+
+
+/*
+Numbers can be regarded as product of its factors. For example,
+
+8 = 2 x 2 x 2;
+  = 2 x 4.
+Write a function that takes an integer n and return all possible combinations of its factors.
+
+Note:
+
+You may assume that n is always positive.
+Factors should be greater than 1 and less than n.
+Example 1:
+
+Input: 1
+Output: []
+Example 2:
+
+Input: 37
+Output:[]
+Example 3:
+
+Input: 12
+Output:
+[
+  [2, 6],
+  [2, 2, 3],
+  [3, 4]
+]
+Example 4:
+
+Input: 32
+Output:
+[
+  [2, 16],
+  [2, 2, 8],
+  [2, 2, 2, 4],
+  [2, 2, 2, 2, 2],
+  [2, 4, 4],
+  [4, 8]
+]
+*/
+class _0254_FactorCombinations {
+public:
+    // Copy from the solution
+    std::vector<std::vector<int>> getFactors(int n);
+private:
+    void DFS(std::vector<std::vector<int>>& res, std::vector<int>& tmp, int n);
+};
+
+
+/*
+Given n nodes labeled from 0 to n-1 and a list of undirected edges (each edge is a 
+pair of nodes), write a function to check whether these edges make up a valid tree.
+
+Input: n = 5, and edges = [[0,1], [0,2], [0,3], [1,4]]
+Output: true
+
+Input: n = 5, and edges = [[0,1], [1,2], [2,3], [1,3], [1,4]]
+Output: false
+Note: you can assume that no duplicate edges will appear in edges. Since all edges 
+are undirected, [0,1] is the same as [1,0] and thus will not appear together in edges.
+*/
+class _0261_GraphValidTree {
+public:
+    bool validTree(int n, std::vector<std::vector<int>>& edges);
+    bool DFS(std::vector<std::unordered_set<int>>& graph, std::vector<int>& visited, int source, int target);
+    //! Try to rewrite it using Union-Find
 };
 
 }

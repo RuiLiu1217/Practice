@@ -3,7 +3,7 @@
 #include <vector>
 #include <string>
 #include <stack>
-
+#include <queue>
 namespace LC {
 /*  Tag: array, Hash
     Given an array of integers, return indices of the two 
@@ -738,6 +738,159 @@ class _0219_ContainsDuplicateII {
 public:
     bool containsNearbyDuplicate(std::vector<int>& nums, int k);
 };
+
+
+
+/*
+225. Implement Stack using Queues
+Implement the following operations of a stack using queues.
+
+push(x) -- Push element x onto stack.
+pop() -- Removes the element on top of the stack.
+top() -- Get the top element.
+empty() -- Return whether the stack is empty.
+
+MyStack stack = new MyStack();
+
+stack.push(1);
+stack.push(2);  
+stack.top();   // returns 2
+stack.pop();   // returns 2
+stack.empty(); // returns false
+Notes:
+
+You must use only standard operations of a queue -- which means only 
+push to back, peek/pop from front, size, and is empty operations are valid.
+
+Depending on your language, queue may not be supported natively. You may 
+simulate a queue by using a list or deque (double-ended queue), as long 
+as you use only standard operations of a queue. You may assume that all 
+operations are valid (for example, no pop or top operations will be 
+called on an empty stack).
+*/
+class _0225_ImplementStackUsingQueues {
+public:
+    _0225_ImplementStackUsingQueues();
+
+    void push(int x);
+
+    int pop();
+
+    int top();
+
+    bool empty();
+
+private:
+    std::queue<int> nums;
+};
+
+/*
+Implement the following operations of a queue using stacks.
+
+push(x) -- Push element x to the back of queue.
+pop() -- Removes the element from in front of queue.
+peek() -- Get the front element.
+empty() -- Return whether the queue is empty.
+Example:
+
+MyQueue queue = new MyQueue();
+
+queue.push(1);
+queue.push(2);  
+queue.peek();  // returns 1
+queue.pop();   // returns 1
+queue.empty(); // returns false
+Notes:
+
+You must use only standard operations of a stack -- which means only push to top, peek/pop
+from top, size, and is empty operations are valid. Depending on your language, stack may 
+not be supported natively. You may simulate a stack by using a list or deque (double-ended 
+queue), as long as you use only standard operations of a stack. You may assume that all 
+operations are valid (for example, no pop or peek operations will be called on an empty queue).
+*/
+class _0232_ImplementQueueUsingStacks {
+private:
+    std::stack<int> left;
+    std::stack<int> right;
+public:
+    _0232_ImplementQueueUsingStacks();
+    void push(int x);
+    int pop();
+    int peek();
+    bool empty();
+};
+
+
+/*
+Given a sorted integer array without duplicates, return the summary of its ranges.
+
+Example 1:
+
+Input:  [0,1,2,4,5,7]
+Output: ["0->2","4->5","7"]
+Explanation: 0,1,2 form a continuous range; 4,5 form a continuous range.
+Example 2:
+
+Input:  [0,2,3,4,6,8,9]
+Output: ["0","2->4","6","8->9"]
+Explanation: 2,3,4 form a continuous range; 8,9 form a continuous range.
+*/
+class _0228_SummaryRange {
+public:
+    std::vector<std::string> summaryRanges(std::vector<int>& nums);
+};
+
+
+/*
+Given a list of words and two words word1 and word2, return the shortest distance between these two words in the list.
+Assume that words = ["practice", "makes", "perfect", "coding", "makes"].
+
+Input: word1 = “coding”, word2 = “practice”
+Output: 3
+Input: word1 = "makes", word2 = "coding"
+Output: 1
+Note:
+You may assume that word1 does not equal to word2, and word1 and word2 are both in the list.
+*/
+class _0243_ShortestWordDistance {
+public:
+    int shortestDistance(std::vector<std::string>& words, std::string word1, std::string word2);
+};
+
+
+/*
+Design and implement an iterator to flatten a 2d vector. It should support the following operations: next and hasNext.
+
+Vector2D iterator = new Vector2D([[1,2],[3],[4]]);
+
+iterator.next(); // return 1
+iterator.next(); // return 2
+iterator.next(); // return 3
+iterator.hasNext(); // return true
+iterator.hasNext(); // return true
+iterator.next(); // return 4
+iterator.hasNext(); // return false
+
+Notes:
+
+Please remember to RESET your class variables declared in Vector2D, as static/class variables are persisted across multiple test cases. Please see here for more details.
+You may assume that next() call will always be valid, that is, there will be at least a next element in the 2d vector when next() is called.
+
+Follow up:
+
+As an added challenge, try to code it using only iterators in C++ or iterators in Java.
+*/
+class _0251_Flatten2DVector {
+private:
+    std::vector<std::vector<int>>::iterator i, iEnd;
+    int j = 0;
+public:
+    _0251_Flatten2DVector(std::vector<std::vector<int>>& v);
+    int next();
+    bool hasNext();
+};
+
+
 
 }
 #endif

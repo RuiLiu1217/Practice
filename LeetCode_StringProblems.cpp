@@ -555,3 +555,156 @@ bool LC::_0211_AddAndSearchWordDataStructureDesign::search(const char* word, Tri
     }
     return node && node->word;
 }
+
+// There is also dynamic programming solution which is very elegant: 
+// https://leetcode.com/problems/sliding-window-maximum/solution/
+std::vector<int> LC::_0239_SlidingWindowMaximum::maxSlidingWindow(std::vector<int>& nums, int k) {
+    if(k == 1) {
+        return nums;
+    }
+    std::deque<int> qIndex; // 双向队列
+    std::vector<int> result;
+    for(int i = 0; i < nums.size(); ++i) {
+        if(qIndex.empty()) {
+            qIndex.push_back(i);
+        } else {
+            while(!qIndex.empty() && nums[qIndex.back()] < nums[i]) {
+                qIndex.pop_back();
+            }
+            qIndex.push_back(i);
+        }
+        
+        while(!qIndex.empty() && i - qIndex.front() >= k) {
+            qIndex.pop_front();
+        }
+        if(i >= k - 1) {
+            result.push_back(nums[qIndex.front()]);
+        }
+        
+    }
+    return result;
+}
+
+
+bool LC::_0242_ValidAnagram::isAnagram(std::string s, std::string t) {
+    int c1[26] = {0};
+    int c2[26] = {0};
+    if(s.size() != t.size()) {
+        return false;
+    }
+    for(int i = 0; i < s.size(); ++i) {
+        ++c1[s[i] - 'a'];
+        ++c2[t[i] - 'a'];
+    }
+    for(int i = 0; i < 26; ++i) {
+        if(c1[i] != c2[i]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool LC::_0246_StrobogrammaticNumber::isStrobogrammatic(std::string num) {
+    std::unordered_map<char, char> map;
+    map['0'] = '0';
+    map['1'] = '1';
+    map['2'] = '#';
+    map['3'] = '#';
+    map['4'] = '#';
+    map['5'] = '#';
+    map['6'] = '9';
+    map['7'] = '#';
+    map['8'] = '8';
+    map['9'] = '6';
+    std::string res;
+    for(auto c : num) {
+        if(map[c] == '#') {
+            return false;
+        }
+        res += map[c];            
+    }
+    std::reverse(begin(res), end(res));
+    return res == num;
+}
+
+
+std::vector<std::string> LC::_0247_StrobogrammaticNumberII::findStrobogrammatic(int n) {
+    if(n == 0) {
+        return {};
+    }
+    if(n == 1) {
+        return {"0", "1", "8"};
+    }
+    if(n == 2) {
+        return {"69", "96", "88", "11"};
+    }
+    std::unordered_set<char> set{'0', '1', '6', '8', '9'};
+    std::unordered_map<char, char> map;
+    map['0'] = '0';
+    map['1'] = '1';
+    map['6'] = '9';
+    map['8'] = '8';
+    map['9'] = '6';
+
+    int N = n / 2;
+    std::vector<std::string> halfRes;
+    std::string tmp;
+    DFS(set, 0, N, tmp, halfRes);
+    std::vector<std::string> res;
+
+    for(int i = 0; i < halfRes.size(); ++i) {
+        std::string left = halfRes[i];
+        std::string right;
+        for(char c : left) {
+            right += map[c];
+        }
+        std::reverse(begin(right), end(right));
+        if(n % 2) {
+            res.push_back(left + "1" + right);
+            res.push_back(left + "8" + right);
+            res.push_back(left + "0" + right);
+        } else {
+            res.push_back(left + right);
+        }
+    }
+    return res;
+
+}
+
+void LC::_0247_StrobogrammaticNumberII::DFS(std::unordered_set<char> set, int curLen, int n, std::string tmp, std::vector<std::string>& res) {
+    if(curLen == n) {
+        res.push_back(tmp);
+        return;
+    }
+
+    for(char c : set) {
+        if(curLen == 0 && c == '0') { //!! number cannot start with 0
+            continue;
+        }
+        tmp.push_back(c);
+        DFS(set, curLen+1, n, tmp, res);
+        tmp.pop_back();
+    }
+}
+
+bool LC::_0266_PalinndromePermutation::canPermutePalindrome(std::string s) {
+    std::vector<int> charMap(256, 0);
+    for(char c : s) {
+        if(charMap[c] == 1) {
+            --charMap[c];
+        } else {
+            charMap[c] = 1;
+        }
+    }
+
+    int countOne = 0;
+    for(int i = 0; i < 256; ++i) {
+        if(charMap[i] == 1) {
+            ++countOne;
+            if(countOne > 1) {
+                return false;
+            }
+        }
+    }
+    return true;
+}

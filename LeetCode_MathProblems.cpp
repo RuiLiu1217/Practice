@@ -143,3 +143,8 @@ int LC::_0223_RectangleArea::computeArea(int A, int B, int C, int D, int E, int 
     int y = std::min(D, H) > std::max(B, F) ? (std::min(D, H) - std::max(B, F)) : 0;
     return (D - B) * (C - A) + ((G - E) * (H - F) - x * y); // calculate minus first to avoid overflow
 }
+
+
+bool LC::_0231_PowerOfTwo::isPowerOfTwo(int n) {
+    return (n > 0) && !(n & (n - 1));
+}
