@@ -11,7 +11,36 @@
 
 // Problem 1401 - 1500
 namespace LeetCode {
+
+    /*
+    Given an array of string words. Return all strings in words which is 
+    substring of another word in any order. 
+    String words[i] is substring of words[j], if can be obtained removing 
+    some characters to left and/or right side of words[j].
+
+    Input: words = ["mass","as","hero","superhero"]
+    Output: ["as","hero"]
+    Explanation: "as" is substring of "mass" and "hero" is substring of 
+    "superhero". ["hero","as"] is also a valid answer.
+
+    Input: words = ["leetcode","et","code"]
+    Output: ["et","code"]
+    Explanation: "et", "code" are substring of "leetcode".
+
+    Input: words = ["blue","green","bu"]
+    Output: []
     
+    Constraints:
+        1 <= words.length <= 100
+        1 <= words[i].length <= 30
+        words[i] contains only lowercase English letters.
+        It's guaranteed that words[i] will be unique.
+    */
+    class _1408_StringMatchingInAnArray {
+        public:
+            std::vector<std::string> stringMatching(std::vector<std::string>& words);
+    };
+
     /*
     Given a string s of zeros and ones, return the maximum score after splitting the string into two 
     non-empty substrings (i.e. left substring and right substring).
@@ -257,6 +286,46 @@ namespace LeetCode {
     class _1461_CheckIfAStringContainsAllBinaryCodesofSizeK {
         public:
             bool hasAllCodes(std::string s, int k);
+    };
+
+    /*
+    Given an array of integers arr of even length n and an integer k.
+    We want to divide the array into exactly n / 2 pairs such that the 
+    sum of each pair is divisible by k.
+    Return True If you can find a way to do that or False otherwise.
+
+    Input: arr = [1,2,3,4,5,10,6,7,8,9], k = 5
+    Output: true
+    Explanation: Pairs are (1,9),(2,8),(3,7),(4,6) and (5,10).
+
+    Input: arr = [1,2,3,4,5,6], k = 7
+    Output: true
+    Explanation: Pairs are (1,6),(2,5) and(3,4).
+
+    Input: arr = [1,2,3,4,5,6], k = 10
+    Output: false
+    Explanation: You can try all possible pairs to see that there is no 
+    way to divide arr into 3 pairs each with sum divisible by 10.
+
+    Input: arr = [-10,10], k = 2
+    Output: true
+
+    Input: arr = [-1,1,-2,2,-3,3,-4,4], k = 3
+    Output: true
+    
+
+    Constraints:
+
+    arr.length == n
+    1 <= n <= 10^5
+    n is even.
+    -10^9 <= arr[i] <= 10^9
+    1 <= k <= 10^5
+    */
+    class _1497_CheckIfArraypairsAreDivisibleByK {
+    public:
+        bool canArrange(std::vector<int>& arr, int k);
+
     };
 
     

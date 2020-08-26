@@ -666,6 +666,115 @@ public:
 
 
 /*
+Given a string s. You should re-order the string using the following algorithm:
+
+Pick the smallest character from s and append it to the result.
+Pick the smallest character from s which is greater than the last appended character to the result and append it.
+Repeat step 2 until you cannot pick more characters.
+Pick the largest character from s and append it to the result.
+Pick the largest character from s which is smaller than the last appended character to the result and append it.
+Repeat step 5 until you cannot pick more characters.
+Repeat the steps from 1 to 6 until you pick all characters from s.
+In each step, If the smallest or the largest character appears more than once you can choose any occurrence and append it to the result.
+
+Return the result string after sorting s with this algorithm.
+
+Input: s = "aaaabbbbcccc"
+Output: "abccbaabccba"
+Explanation: After steps 1, 2 and 3 of the first iteration, result = "abc"
+After steps 4, 5 and 6 of the first iteration, result = "abccba"
+First iteration is done. Now s = "aabbcc" and we go back to step 1
+After steps 1, 2 and 3 of the second iteration, result = "abccbaabc"
+After steps 4, 5 and 6 of the second iteration, result = "abccbaabccba"
+Example 2:
+
+Input: s = "rat"
+Output: "art"
+Explanation: The word "rat" becomes "art" after re-ordering it with the mentioned algorithm.
+
+Input: s = "leetcode"
+Output: "cdelotee"
+
+Input: s = "ggggggg"
+Output: "ggggggg"
+
+Input: s = "spo"
+Output: "ops"
+ 
+
+Constraints:
+
+1 <= s.length <= 500
+s contains only lower-case English letters.
+*/
+class _1370_IncreasingDecreasingString {
+public:
+    std::string sortString(std::string s);
+};
+
+/*
+Given two binary trees original and cloned and given a reference to a node 
+target in the original tree.
+The cloned tree is a copy of the original tree. Return a reference to the 
+same node in the cloned tree. Note that you are not allowed to change any 
+of the two trees or the target node and the answer must be a reference to 
+a node in the cloned tree.
+Follow up: Solve the problem if repeated values on the tree are allowed.
+
+Input: tree = [7,4,3,null,null,6,19], target = 3
+Output: 3
+Explanation: In all examples the original and cloned trees are shown. The target node is a green node from the original tree. The answer is the yellow node from the cloned tree.
+
+Input: tree = [7], target =  7
+Output: 7
+
+Input: tree = [8,null,6,null,5,null,4,null,3,null,2,null,1], target = 4
+Output: 4
+
+Input: tree = [1,2,3,4,5,6,7,8,9,10], target = 5
+Output: 5
+
+Input: tree = [1,2,null,3], target = 2
+Output: 2
+
+Constraints:
+
+The number of nodes in the tree is in the range [1, 10^4].
+The values of the nodes of the tree are unique.
+target node is a node from the original tree and is not null.
+*/
+class _1379_FindACorrespondingNodeOfABinaryTreeInACloneOfThatTree {
+public:
+    TreeNode<int>* getTargetCopy(TreeNode<int>* original, TreeNode<int>* cloned, TreeNode<int>* target);
+};
+
+/*
+Given a binary search tree, return a balanced binary search tree with 
+the same node values.
+A binary search tree is balanced if and only if the depth of the two 
+subtrees of every node never differ by more than 1.
+If there is more than one answer, return any of them.
+
+
+Input: root = [1,null,2,null,3,null,4,null,null]
+Output: [2,1,3,null,null,null,4]
+Explanation: This is not the only correct answer, 
+[3,1,4,null,2,null,null] is also correct.
+
+Constraints:
+
+The number of nodes in the tree is between 1 and 10^4.
+The tree nodes will have distinct values between 1 and 10^5.
+*/
+class _1382_BalanceABinarySearchTree {
+public:
+    TreeNode<int>* balanceBST(TreeNode<int>* root);
+private:
+    TreeNode<int>* createBST(const std::vector<int>& arr, int start, int end);
+    std::vector<int> inOrderTraverse(TreeNode<int>* root);
+};
+
+/*
 Given a string s and an integer k. You should construct k non-empty palindrome strings using all the characters in s.
 Return True if you can use all the characters in s to construct k palindrome strings or False otherwise.
 
