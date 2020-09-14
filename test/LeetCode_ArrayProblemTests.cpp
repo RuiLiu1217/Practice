@@ -186,3 +186,25 @@ TEST(LC, _0120_Triangle_meta) {
     auto tmp = obj.get(input);
     EXPECT_EQ(*std::min_element(begin(tmp), end(tmp)), 11);
 }
+
+TEST(LC, _0533_LonelyPixelII) {
+    LC::_0533_LonelyPixelII obj;
+    std::vector<std::vector<char>> input1 {
+        {'W','B','W','B','B','B'},
+        {'W','B','W','B','B','B'},
+        {'W','B','W','B','B','B'},
+        {'W','W','B','W','B','W'},
+        {'W','B','W','B','B','B'}};
+
+    EXPECT_EQ(obj.findBlackPixel(input1, 4), 12);
+}
+
+TEST(LC, _1582_SpecialPositionsInABinaryMatrix) {
+    LC::_1582_SpecialPositionsInABinaryMatrix obj;
+    std::vector<std::vector<int>> input1{
+        {0,0,0,0,0}, {1,0,0,0,0}, {0,1,0,0,0}, {0,0,1,0,0}, {0,0,0,1,1}};
+    std::vector<std::vector<int>> input2{
+        {1,0,0},{0,0,1},{1,0,0}};
+    EXPECT_EQ(obj.numSpecial(input1), 3);
+    EXPECT_EQ(obj.numSpecial(input2), 1);
+}

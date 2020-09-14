@@ -1136,3 +1136,70 @@ bool LC::_0251_Flatten2DVector::hasNext() {
     }
     return i != iEnd;
 }
+
+
+// Copy from solution
+int LC::_0533_LonelyPixelII::findBlackPixel(std::vector<std::vector<char>>& picture, int N) {
+    if(picture.empty() || picture[0].empty()) {return 0;}
+    const int m = picture.size();
+    const int n = picture[0].size();
+    int res = 0;
+    int k = 0;
+
+    std::vector<int> rowCnt(m, 0);
+    std::vector<int> colCnt(n, 0);
+    std::vector<std::string> rows(m, "");
+    for(int i = 0; i < m; ++i) {
+        for(int j = 0; j < n; ++j) {
+            rows[i].push_back(picture[i][j]);
+            if(picture[i][j] == 'B') {
+                ++rowCnt[i];
+                ++colCnt[j];
+            }
+        }
+    }
+
+    for(int i = 0; i < m; ++i) {
+        for(int j = 0; j < n; ++j) {
+            if(rowCnt[i] == N && colCnt[j] == N) {
+                for(k = 0; k < m; ++k) {
+                    if(picture[k][j] == 'B') {
+                        if(rows[i] != rows[k]) break;
+                    }
+                }
+                if(k == m) {
+                    res += colCnt[j];
+                    colCnt[j] = 0; // erase the colCount to avoid calculate multiple times
+                }
+            }
+        }
+    }
+    return res;
+}
+
+int LC::_1582_SpecialPositionsInABinaryMatrix::numSpecial(std::vector<std::vector<int>>& mat) {
+    if(mat.empty() || mat[0].empty()) {
+        return 0;
+    }
+    int res = 0;
+    const int M = mat.size();
+    const int N = mat[0].size();
+    std::vector<int> rowCnt(M, 0);
+    std::vector<int> colCnt(N, 0);
+    for(int i = 0; i < M; ++i) {
+        for(int j = 0; j < N; ++j) {
+            if(mat[i][j]) {
+                ++rowCnt[i];
+                ++colCnt[j];
+            }
+        }
+    }
+    for(int i = 0; i < M; ++i) {
+        for(int j = 0; j < N; ++j) {
+            if(mat[i][j] == 1 && rowCnt[i] == 1 && colCnt[j] == 1) {
+                ++res;
+            }
+        }
+    }
+    return res;
+}
