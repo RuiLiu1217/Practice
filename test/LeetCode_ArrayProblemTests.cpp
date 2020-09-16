@@ -187,6 +187,14 @@ TEST(LC, _0120_Triangle_meta) {
     EXPECT_EQ(*std::min_element(begin(tmp), end(tmp)), 11);
 }
 
+TEST(LC, _0406_QueueReconstructionByHeight) {
+    LC::_0406_QueueReconstructionByHeight obj;
+    std::vector<std::pair<int,int>> input{{7,0}, {4,4}, {7,1}, {5,0}, {6,1}, {5,2}};
+    std::vector<std::pair<int,int>> res = obj.reconstructQueue(input);
+    std::vector<std::pair<int,int>> base{{5,0}, {7,0}, {5,2}, {6,1}, {4,4}, {7,1}};
+    EXPECT_EQ(res, base);
+}
+
 TEST(LC, _0533_LonelyPixelII) {
     LC::_0533_LonelyPixelII obj;
     std::vector<std::vector<char>> input1 {
@@ -207,4 +215,13 @@ TEST(LC, _1582_SpecialPositionsInABinaryMatrix) {
         {1,0,0},{0,0,1},{1,0,0}};
     EXPECT_EQ(obj.numSpecial(input1), 3);
     EXPECT_EQ(obj.numSpecial(input2), 1);
+}
+
+
+TEST(LC, _1144_DecreaseElementsToMakeArrayZigzag) {
+    LC::_1144_DecreaseElementsToMakeArrayZigzag obj;
+    std::vector<int> v1{1,2,3};
+    std::vector<int> v2{9,6,1,6,2};
+    EXPECT_EQ(obj.movesToMakeZigzag(v1), 2);
+    EXPECT_EQ(obj.movesToMakeZigzag(v2), 4);
 }

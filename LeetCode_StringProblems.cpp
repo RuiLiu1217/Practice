@@ -708,3 +708,86 @@ bool LC::_0266_PalinndromePermutation::canPermutePalindrome(std::string s) {
     }
     return true;
 }
+
+std::string LC::_0544_OutputContestMatches::findContestMatch(int n) {
+    std::vector<std::string> t;
+    for(int i = 0; i < n; ++i) {
+        t.emplace_back(std::to_string(i+1));
+    }
+
+    std::function<void()> half = [&](){
+        int i = 0;
+        int j = t.size() - 1;
+        while(i < j) {
+            t[i] = "(" + t[i] + "," + t[j] + ")";
+            ++i;
+            --j;
+        }
+        t.resize(t.size()/2);
+    };
+
+    while(t.size() > 1) {
+        half();
+    }
+    return t[0];
+}
+
+std::vector<std::string> LC::_0816_AmbiguousCoordinates::ambiguousCoordinates(std::string S) {
+    std::function<bool(const std::string&)> isAllZero = [] (const std::string& s) {
+        for(char c : s) {
+            if(c != '0') {
+                return false;
+            }
+        }
+        return true;
+    };
+
+    std::function<bool(const std::string&)> endWithZero = [] (const std::string& s) {
+        return s.back() == '0';
+    };
+
+    // Edge cases driven problem!
+    std::function<std::vector<std::string>(std::string)> validNum = [&] (std::string s) {
+        std::vector<std::string> res;
+        if(s.length() == 1) {
+            return std::vector<std::string>{s};
+        } else {
+            if(s[0] == '0') {
+                if(!isAllZero(s.substr(1)) && !endWithZero(s.substr(1))) {
+                    std::string t = s.substr(0, 1) + "." + s.substr(1);
+                    return std::vector<std::string>{t};
+                } else {
+                    return std::vector<std::string>{};
+                }
+            } else {
+                res.push_back(s);
+                for(int l = 1; l < s.size(); ++l) {
+                    if(!isAllZero(s.substr(1)) && !endWithZero(s.substr(1))) {
+                        std::string t = s.substr(0, l) + "." + s.substr(l);
+                        res.push_back(t);
+                    }                    
+                }
+                return res;
+            }
+        }
+    };
+
+
+    std::string subS = S.substr(1, S.size()-2);
+    std::vector<std::string> res;
+    for(int l = 1; l < subS.size(); ++l) {
+        std::string lft = subS.substr(0, l);
+        std::string rgh = subS.substr(l);
+        std::vector<std::string> lv = validNum(lft);
+        std::vector<std::string> rv = validNum(rgh);
+        if(!lv.empty() && !rv.empty()) {
+            for(auto& l : lv) {
+                for(auto& r : rv) {
+                    std::string t = "(" + l + ", " + r + ")";
+                    res.push_back(t);
+                }
+            }
+        }
+    }
+    return res;
+}

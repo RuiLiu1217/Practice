@@ -11,6 +11,7 @@
 #include <queue>
 #include <unordered_set>
 #include <math.h>
+#include <utility>
 std::vector<int> LC::_0001_TwoSum::twoSum(std::vector<int> &nums, int target) {
     std::unordered_map<int, int> map;
     for(int i = 0; i < nums.size(); ++i)
@@ -64,7 +65,6 @@ double LC::_0004_MedianOfTwoSortedArrays::findMedianOfSortedArrays(std::vector<i
     const int C2 = std::min(M1 >= N1 ? INT_MAX : nums1[M1], M2 >= N2 ? INT_MAX : nums2[M2]);
     return (C1 + C2) * 0.5;
 }
-
 
 /*
 Google
@@ -1137,6 +1137,24 @@ bool LC::_0251_Flatten2DVector::hasNext() {
     return i != iEnd;
 }
 
+// Copy from the solution
+std::vector<std::pair<int, int>> LC::_0406_QueueReconstructionByHeight::reconstructQueue(std::vector<std::pair<int, int>>& people) {
+    int n = people.size();
+    if (n == 0) {
+        return {};
+    }
+    // 从高到矮排列
+    std::sort(people.begin(), people.end(), [](std::pair<int, int>& p1, std::pair<int,int>& p2) {
+        return p1.first > p2.first || (p1.first == p2.first && p1.second < p2.second);});
+
+    //每次在头部 + n 个位置处插入当前最高的人
+    std::vector<std::pair<int, int>> res;
+    for (const auto& p : people) {
+        res.insert(res.begin() + p.second, p);
+    }
+    return res;
+}
+
 
 // Copy from solution
 int LC::_0533_LonelyPixelII::findBlackPixel(std::vector<std::vector<char>>& picture, int N) {
@@ -1202,4 +1220,25 @@ int LC::_1582_SpecialPositionsInABinaryMatrix::numSpecial(std::vector<std::vecto
         }
     }
     return res;
+}
+
+int LC::_1144_DecreaseElementsToMakeArrayZigzag::movesToMakeZigzag(std::vector<int>& nums) {
+    int count[2] = {0, 0};
+    int lower, higher, n = nums.size();
+    std::function<int(const std::vector<int>&, int, int)> get = [](const std::vector<int>& nums, int a, int n) {
+        if(a < 0 || a >= n) {
+            return INT_MAX;
+        }
+        return nums[a];
+    };
+    
+    for(int i = 0; i < n; ++i) {
+        lower = get(nums, i-1, n);
+        higher = get(nums, i+1, n);
+        lower = std::min(lower, higher);
+        if(lower <= nums[i]) {
+            count[i%2] += nums[i] - lower + 1;
+        }
+    }
+    return std::min(count[0], count[1]);
 }

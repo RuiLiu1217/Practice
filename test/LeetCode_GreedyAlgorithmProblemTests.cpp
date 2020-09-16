@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include "../LeetCode_GreedyAlgorithmProblems.hpp"
 
-TEST(LC, _0011_ContainerWithMostWater) {
+TEST(LC, _0011_ContainerWithMostWater2) {
     LC::_0011_ContainerWithMostWater obj;
     std::vector<int> t{1,8,6,2,5,4,8,3,7};
     EXPECT_EQ(obj.maxArea(t), 49);

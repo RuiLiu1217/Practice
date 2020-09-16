@@ -35,3 +35,48 @@ TEST(LC, _0097_InterleavingString) {
     EXPECT_TRUE(obj.isInterleav("aabcc", "dbbca", "aadbbcbcac"));
     EXPECT_FALSE(obj.isInterleav("aabcc", "dbbca", "aadbbbaccc"));
 }
+
+TEST(LC, _0312_BurstBalloons) {
+    LC::_0312_BurstBalloons obj;
+    std::vector<int> t{{3,1,5,8}};
+    EXPECT_EQ(obj.maxCoins(t), 167);
+}
+
+TEST(LC, _0139_wordBreak) {
+    LC::_0139_WordBreak obj;
+    std::string s = "leetcode";
+    std::vector<std::string> wordDict = {"leet", "code"};
+
+    EXPECT_TRUE(obj.wordBreak(s,wordDict));
+
+    std::string s1 = "applepenapple";
+    std::vector<std::string> wordDict1 = {"apple", "pen"};
+    EXPECT_TRUE(obj.wordBreak(s1, wordDict1));
+
+    std::string s2 = "catsandog";
+    std::vector<std::string> wordDict2 = {"cats", "dog", "sand", "and", "cat"};
+    EXPECT_FALSE(obj.wordBreak(s2, wordDict2));
+}
+
+
+TEST(LC, _0472_ConcatenatedWords) {
+    LC::_0472_ConcatenatedWords obj;
+    std::vector<std::string> words{"cat","cats","catsdogcats","dog","dogcatsdog","hippopotamuses","rat","ratcatdogcat"};
+    std::vector<std::string> res{obj.findAllConcatenatedWordsInADict(words)};
+    std::vector<std::string> base{"catsdogcats","dogcatsdog","ratcatdogcat"};
+    EXPECT_EQ(res, base);
+}
+
+TEST(LC, _1494_ParallelCoursesII) {
+    LC::_1494_ParallelCoursesII obj;
+    std::vector<std::vector<int>> dep1{{2,1},{3,1},{1,4}};
+    EXPECT_EQ(obj.minNumberOfSemesters(4, dep1, 2), 3);
+    std::vector<std::vector<int>> dep2{{2,1},{3,1},{4,1},{1,5}};
+    EXPECT_EQ(obj.minNumberOfSemesters(5, dep2, 2), 4);
+}
+
+TEST(LC, _0375_GuessNumberHigherOrLowerII) {
+    LC::_0375_GuessNumberHigherOrLowerII obj;
+    EXPECT_EQ(obj.getMoneyAmount(2), 1);
+    EXPECT_EQ(obj.getMoneyAmount(1), 0);
+}

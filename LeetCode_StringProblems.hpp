@@ -495,5 +495,77 @@ public:
 };
 
 
+/*
+During the NBA playoffs, we always arrange the rather strong team to play with the rather weak team, like make the rank 1 team play with the rank nth team, which is a good strategy to make the contest more interesting. Now, you're given n teams, you need to output their final contest matches in the form of a string.
+
+The n teams are given in the form of positive integers from 1 to n, which represents their initial rank. (Rank 1 is the strongest team and Rank n is the weakest team.) We'll use parentheses('(', ')') and commas(',') to represent the contest team pairing - parentheses('(' , ')') for pairing and commas(',') for partition. During the pairing process in each round, you always need to follow the strategy of making the rather strong one pair with the rather weak one.
+
+Example 1:
+Input: 2
+Output: (1,2)
+Explanation: 
+Initially, we have the team 1 and the team 2, placed like: 1,2.
+Then we pair the team (1,2) together with '(', ')' and ',', which is the final answer.
+Example 2:
+Input: 4
+Output: ((1,4),(2,3))
+Explanation: 
+In the first round, we pair the team 1 and 4, the team 2 and 3 together, as we need to make the strong team and weak team together.
+And we got (1,4),(2,3).
+In the second round, the winners of (1,4) and (2,3) need to play again to generate the final winner, so you need to add the paratheses outside them.
+And we got the final answer ((1,4),(2,3)).
+Example 3:
+Input: 8
+Output: (((1,8),(4,5)),((2,7),(3,6)))
+Explanation: 
+First round: (1,8),(2,7),(3,6),(4,5)
+Second round: ((1,8),(4,5)),((2,7),(3,6))
+Third round: (((1,8),(4,5)),((2,7),(3,6)))
+Since the third round will generate the final winner, you need to output the answer (((1,8),(4,5)),((2,7),(3,6))).
+Note:
+The n is in range [2, 212].
+We ensure that the input n can be converted into the form 2k, where k is a positive integer.
+*/
+class _0544_OutputContestMatches {
+public:
+    std::string findContestMatch(int n);
+};
+
+/*
+We had some 2-dimensional coordinates, like "(1, 3)" or "(2, 0.5)".  Then, we removed all commas, decimal points, 
+and spaces, and ended up with the string S.  Return a list of strings representing all possibilities for what our 
+original coordinates could have been.
+Our original representation never had extraneous zeroes, so we never started with numbers like "00", "0.0", "0.00", 
+"1.0", "001", "00.01", or any other number that can be represented with less digits. Also, a decimal point within 
+a number never occurs without at least one digit occuring before it, so we never started with numbers like ".1".
+The final answer list can be returned in any order.  Also note that all coordinates in the final answer have 
+exactly one space between them (occurring after the comma.)
+
+Input: "(123)"
+Output: ["(1, 23)", "(12, 3)", "(1.2, 3)", "(1, 2.3)"]
+
+Input: "(00011)"
+Output:  ["(0.001, 1)", "(0, 0.011)"]
+Explanation: 
+0.0, 00, 0001 or 00.01 are not allowed.
+
+Input: "(0123)"
+Output: ["(0, 123)", "(0, 12.3)", "(0, 1.23)", "(0.1, 23)", "(0.1, 2.3)", "(0.12, 3)"]
+
+Input: "(100)"
+Output: [(10, 0)]
+Explanation: 
+1.0 is not allowed.
+
+Note:
+
+4 <= S.length <= 12.
+S[0] = "(", S[S.length - 1] = ")", and the other elements in S are digits.
+*/
+class _0816_AmbiguousCoordinates {
+public:
+    std::vector<std::string> ambiguousCoordinates(std::string S);
+};
+
 }
 #endif

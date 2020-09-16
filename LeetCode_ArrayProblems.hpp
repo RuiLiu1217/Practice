@@ -35,8 +35,6 @@ public:
 };
 
 
-
-
 /* 
 Classical Problem
 Tag: binary search, hash, 
@@ -891,6 +889,27 @@ public:
 };
 
 /*
+Suppose you have a random list of people standing in a queue. Each person is described by a pair of integers (h, k), where h is the height of the person and k is the number of people in front of this person who have a height greater than or equal to h. Write an algorithm to reconstruct the queue.
+
+Note:
+The number of people is less than 1,100.
+
+ 
+Example
+
+Input:
+[[7,0], [4,4], [7,1], [5,0], [6,1], [5,2]]
+
+Output:
+[[5,0], [7,0], [5,2], [6,1], [4,4], [7,1]]
+*/
+class _0406_QueueReconstructionByHeight {
+public:
+    std::vector<std::pair<int, int>> reconstructQueue(std::vector<std::pair<int, int>>& people);
+};
+
+
+/*
 
 Given a picture consisting of black and white pixels, and a positive integer N, find the number of black pixels located at some specific row R and column C that align with all the following rules:
 
@@ -930,6 +949,32 @@ Solution:  给了一个整数N，说对于均含有N个个黑像素的某行某�
 class _0533_LonelyPixelII {
 public:
     int findBlackPixel(std::vector<std::vector<char>>& picture, int N);
+};
+
+/*
+Given an array nums of integers, a move consists of choosing any element and decreasing it by 1.
+
+An array A is a zigzag array if either:
+
+Every even-indexed element is greater than adjacent elements, ie. A[0] > A[1] < A[2] > A[3] < A[4] > ...
+OR, every odd-indexed element is greater than adjacent elements, ie. A[0] < A[1] > A[2] < A[3] > A[4] < ...
+Return the minimum number of moves to transform the given array nums into a zigzag array.
+
+Input: nums = [1,2,3]
+Output: 2
+Explanation: We can decrease 2 to 0 or 3 to 1.
+
+Input: nums = [9,6,1,6,2]
+Output: 4
+
+Constraints:
+
+1 <= nums.length <= 1000
+1 <= nums[i] <= 1000
+*/
+class _1144_DecreaseElementsToMakeArrayZigzag {
+public:
+    int movesToMakeZigzag(std::vector<int>& nums);
 };
 
 /*

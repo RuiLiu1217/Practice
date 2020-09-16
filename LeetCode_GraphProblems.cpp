@@ -222,3 +222,34 @@ void LC::_0210_CourseScheduleII::BFS(const std::vector<std::vector<int>>& graph,
         }
     }        
 }
+
+int LC::_1135_ConnectingCitiesWithMinimumCost::minimumCost(int N, std::vector<std::vector<int>>& connections) {
+    createGraph(N, connections);
+    visit(0);
+    while(!pq.empty()) {
+        Edge e = pq.top();
+        pq.pop();
+        int v = e.from;
+        int w = e.to;
+        if(marked[v] && marked[w]) {
+            continue;
+        }
+        mst.push(e);
+        if(!marked[v]) {
+            visit(v);
+        }
+        if(!marked[w]) {
+            visit(w);
+        }
+    }
+    
+    if(mst.size() < N - 1) {
+        return -1;
+    }
+    int cost = 0;
+    while(!mst.empty()) {
+        cost += mst.front().weight;
+        mst.pop();
+    }
+    return cost;
+}

@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <unordered_set>
 #include <vector>
+#include <numeric>
 /*
 Google
 */
@@ -147,4 +148,18 @@ int LC::_0223_RectangleArea::computeArea(int A, int B, int C, int D, int E, int 
 
 bool LC::_0231_PowerOfTwo::isPowerOfTwo(int n) {
     return (n > 0) && !(n & (n - 1));
+}
+
+
+std::vector<std::string> LC::_1447_SimplifiedFractions::simplifiedFractions(int n) {
+    std::vector<std::string> res;
+    for(int i = 1; i <= n; ++i) {
+        for(int j = 1; j < i; ++j) {
+            if(std::gcd(i,j) == 1) {
+                res.push_back(std::to_string(j) + "/" + std::to_string(i));
+            }
+        }
+    }
+    
+    return res;
 }

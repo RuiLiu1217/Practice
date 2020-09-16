@@ -107,3 +107,8 @@ TEST(LC, _0114_FlattenBinaryTreeToLinkedList) {
 TEST(LC, _0116_PopulatingNextRightPointerInEachNode) {
     EXPECT_TRUE(true);
 }
+
+// Nary tree serialize and deserialize, hard to test
+TEST(LC, _0428_SerializeAndDeserializeNAryTree) {
+    EXPECT_TRUE(true);
+}

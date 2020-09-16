@@ -287,3 +287,166 @@ int LC::_0221_MaximalSquare::maximalSquare(std::vector<std::vector<char>>& matri
     }
     return maxS * maxS;
 }
+
+// Copy from the solution
+// Use DP
+//需要建立一个二维的 dp 数组，其中 dp[i][j] 表示从数字i到j之间猜中任意一个数字最少需要花费的钱数，
+// 那么需要遍历每一段区间 [j, i]，维护一个全局最小值 global_min 变量，然后遍历该区间中的每一个数
+// 字，计算局部最大值 local_max = k + max(dp[j][k - 1], dp[k + 1][i])，这个正好是将该区间在每
+// 一个位置都分为两段，然后取当前位置的花费加上左右两段中较大的花费之和为局部最大值，为啥要取两者之
+// 间的较大值呢，因为要 cover 所有的情况，就得取最坏的情况。然后更新全局最小值，最后在更新 dp[j][i]
+// 的时候看j和i是否是相邻的，相邻的话赋为j，否则赋为 global_min。这里为啥又要取较小值呢，因为 dp 数
+// 组是求的 [j, i] 范围中的最低 cost，比如只有两个数字1和2，那么肯定是猜1的 cost 低，
+//!! Copy from the solution
+int LC::_0375_GuessNumberHigherOrLowerII::getMoneyAmount(int n) {
+    std::vector<std::vector<int>> dp(n+1, std::vector<int>(n+1, 0));
+    for(int i = 2; i <= n; ++i) {
+        for(int j = i - 1; j > 0; --j) {
+            int globalMin = INT_MAX;
+            for(int k = j + 1; k < i; ++k) {
+                int localMax = k + std::max(dp[j][k-1], dp[k+1][i]);
+                globalMin = std::min(globalMin, localMax);
+            }
+            dp[j][i] = j+1 == i ? j : globalMin;
+        }
+    }
+    return dp[1][n];
+}
+
+
+int LC::_0312_BurstBalloons::maxCoins(std::vector<int>& nums) {
+    const int n = nums.size();
+    nums.insert(nums.begin(), 1);
+    nums.push_back(1);
+
+    std::vector<std::vector<int>> DP(n+2, std::vector<int>(n+2, 0));
+    // 现在是想知道 dp[i][j] 的值，这个区间可能比较大，但是如果知道了所有的小区间的 dp 值，
+    // 然后聚沙成塔，逐步的就能推出大区间的 dp 值了。
+
+    for(int len = 1; len <= n; ++len) {
+        for(int left = 1; left <= n - len + 1; ++left) {
+            int right = left + len - 1;
+            for(int k = left; k <= right; ++k) {
+                // 还是要遍历这个区间内的每个气球，就用k来遍历吧，k在区间 [i, j] 中，假如第k个气球最后被打爆，
+                // 那么此时区间 [i, j] 被分成了三部分，[i, k-1]，[k]，和 [k+1, j]，只要之前更新过了 [i, k-1] 
+                // 和 [k+1, j] 这两个子区间的 dp 值，可以直接用 dp[i][k-1] 和 dp[k+1][j]，那么最后被打爆的
+                // 第k个气球的得分该怎么算呢，你可能会下意识的说，就乘以周围两个气球被 nums[k-1] * nums[k] * nums[k+1]，
+                // 但其实这样是错误的，为啥呢？dp[i][k-1] 的意义是什么呢，是打爆区间 [i, k-1] 内所有的气球
+                // 后的最大得分，此时第 k-1 个气球已经不能用了，同理，第 k+1 个气球也不能用了，相当于区间 [i, j] 中
+                // 除了第k个气球，其他的已经爆了，那么周围的气球只能是第 i-1 个，和第 j+1 个了，所以得分应为 
+                // nums[i-1] * nums[k] * nums[j+1]，分析到这里，状态转移方程应该已经跃然纸上了吧，如下所示：
+                DP[left][right] = std::max(DP[left][right], nums[left-1] * nums[right+1] * nums[k] + DP[left][k-1] + DP[k+1][right]);
+            }
+        }
+    }
+    return DP[1][n];
+}
+
+
+bool LC::_0139_WordBreak::wordBreak(std::string s, std::vector<std::string>& wordDict) {
+    std::unordered_set<std::string> wd(begin(wordDict), end(wordDict));
+    std::vector<bool> DP(s.size() + 1, false);
+    DP[0] = true; // empty string definitely can be divided, it means whether the substr s[0, i) can be divided
+    for(int len = 0; len < DP.size(); ++len) {
+        for(int j = 0; j < len; ++j) {
+            if(DP[j] && wd.count(s.substr(j, len - j))) {
+                DP[len] = true;
+                break;
+            }
+        }
+    }
+    return DP.back();
+}
+
+std::vector<std::string> LC::_0472_ConcatenatedWords::findAllConcatenatedWordsInADict(std::vector<std::string>& words) {
+    if(words.size() < 2) {
+        return {};
+    }
+
+    std::vector<std::string> res;
+    std::unordered_set<std::string> dict(begin(words), end(words));
+
+    for(std::string word : words) {
+        dict.erase(word);
+        if(word.size() == 0) {
+            continue;
+        }
+
+        std::vector<bool> DP(word.size() + 1, false);
+        DP[0] = true;
+        for(int l = 0; l < DP.size(); ++l) {
+            for(int j = 0; j < l; ++j) {
+                if(DP[j] && dict.count(word.substr(j, l - j))) {
+                    DP[l] = true;
+                    break;
+                }
+            }
+        }
+        if(DP.back()) {
+            res.push_back(word);
+        }
+        dict.insert(word);
+    }
+    return res;
+}
+
+
+// 完全抄答案的，Huahua的解法
+// NOTE: This is a NP problem, any polynomial-time algorithm is incorrect otherwise P = NP.
+// dp[m] := whether state m is reachable, where m is the bitmask of courses studied.
+// For each semester, we enumerate all possible states from 0 to 2^n – 1, if that state is 
+// reachable, then we choose c (c <= k) courses from n and check whether we can study those 
+// courses.
+// If we can study those courses, we have a new reachable state, we set dp[m | courses] = true.
+// Time complexity: O(n*2^n*2^n) = O(n*n^4) <– This will be much smaller in practice.
+// and can be reduced to O(n*3^n).
+// Space complexity: O(2^n)
+// Helper function: __builtin_popcount(int) function is used to count the number of one’s(set bits) in an integer.
+static int numberOfCourses(int mask) {
+    return __builtin_popcount(mask);
+}
+int LC::_1494_ParallelCoursesII::minNumberOfSemesters(int n, std::vector<std::vector<int>>& dependencies, int k) {
+    const int S = 1 << n; // 各门课是否已经被上过用0-1表示，那么就有S中组合。 S每个位表示某门课是否已经上过
+    std::vector<int> deps(n); // n 个元素，每个元素表示这门课 i 的dependency mask for course i.
+    for(const auto& d : dependencies) {
+        deps[d[1] - 1] |= 1 << (d[0] - 1); // 第d[1]门课的先决条件为 以d[0]编码的一个数字。
+    }
+
+    std::vector<int> dp(S); // 一共有S种状态, dp[s] 表示这个 s 的各个位如果是1，则这门课上过，否则没上过，那么dp[s]表示s这样一种上课组合能否到达.
+    dp[0] = 1; // 什么课都不上是最初的状态，肯定是可达的
+    for(int d = 1; d <= n; ++d) { // 最多d个学期能把所有课上完
+        std::vector<int> tmp(S); // 一个新学期起始状态
+        for(int s = 0; s < S; ++s) { // 把所有状态都试一遍
+            if(!dp[s]) {
+                continue; // 如果这个状态不可达，则跳过
+            }
+            int mask = 0;
+            for(int i = 0; i < n; ++i) { // 开始选课
+                if(
+                    !(s & (1 << n)) &&  // 这门课不在可达状态中，即还没上过
+                    (s & deps[i]) == deps[i] //这门课的所有先决课程已经上完了
+                ) {
+                    mask |= (1 << i); // 选这门课
+                }
+            }
+
+            // Prunning, take all.
+            if(numberOfCourses(mask) <= k) { // 选的课数量少于规定的量
+                tmp[s | mask] = 1; // 所有课都上
+            } else { // 选择的课程多于k个
+                //只能上其中的子集
+                // try all subsets
+                for(int c = mask; c ; c = (c - 1) & mask) {
+                    if(numberOfCourses(c) <= k) {
+                        tmp[s | c] = 1;
+                    }
+                }
+            }
+            if(tmp.back()) { // 表示最后所有状态为tmp[0b111111] = 1, 即所有的课都上完了.
+                return d; 
+            }
+        }
+        dp.swap(tmp);
+    }
+    return -1;
+}

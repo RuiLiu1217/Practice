@@ -183,3 +183,54 @@ static int ladderLengthBiBFS(std::string beginWord, std::string endWord,
     }
     return 0;
 }
+
+
+bool LC::_0403_FrogJump::canCross(std::vector<int>& stones) {
+    std::queue<std::pair<int, int>> q;
+    std::unordered_set<std::string> visited;
+    std::unordered_set<int> val;
+    for(int s : stones) {
+        val.insert(s);
+    }
+    q.push({0, 0});
+    visited.insert("0_0");
+    while(!q.empty()) {
+        const int N = q.size();
+        for(int i = 0; i < N; ++i) {
+            auto f = q.front();
+            q.pop();
+            
+            if (f.first == stones.back()) {
+                return true;
+            }
+            
+            int v1 = f.first + f.second - 1;
+            if (v1 > f.first) {
+                std::string sv1 = std::to_string(v1) + "_" + std::to_string(f.second - 1);
+                if(val.count(v1) && !visited.count(sv1)) {
+                    q.push({v1, f.second-1});
+                    visited.insert(sv1);
+                }
+            }
+            
+            int v2 = f.first + f.second;
+            if(v2 > f.first) {
+                std::string sv2 = std::to_string(v2) + "_" + std::to_string(f.second);
+                if(val.count(v2) && !visited.count(sv2)) {
+                    q.push({v2, f.second});
+                    visited.insert(sv2);
+                }
+            }
+            
+            int v3 = f.first + f.second + 1;
+            if(v3 > f.first) {
+                std::string sv3 = std::to_string(v3) + "_" + std::to_string(f.second + 1);
+                if(val.count(v3) && !visited.count(sv3)) {
+                    q.push({v3, f.second+1});
+                    visited.insert(sv3);
+                }
+            }                
+        }
+    }
+    return false;
+}

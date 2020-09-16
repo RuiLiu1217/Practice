@@ -45,4 +45,22 @@ TEST(LC, _0058_LengthOfLastWord) {
     LC::_0058_LengthOfLastWord obj;
     EXPECT_EQ(obj.lengthOfLastWord("Hello World"), 5);
 }
-    
+
+TEST(LC, _0544_OutputContestMatches) {
+    LC::_0544_OutputContestMatches obj;
+    std::string base="((((1,16),(8,9)),((4,13),(5,12))),(((2,15),(7,10)),((3,14),(6,11))))";
+    EXPECT_EQ(base, obj.findContestMatch(16));
+}
+
+
+TEST(LC, _0816_AmbiguousCoordinates) {
+    LC::_0816_AmbiguousCoordinates obj;
+    std::vector<std::string> base1{"(0, 123)","(0, 1.23)","(0, 12.3)","(0.1, 23)","(0.1, 2.3)","(0.12, 3)"};
+    EXPECT_EQ(obj.ambiguousCoordinates("(0123)"), base1);
+
+    std::vector<std::string> base2{"(0.001, 1)", "(0, 0.011)"};
+    EXPECT_EQ(obj.ambiguousCoordinates("(00011)"), base2);
+
+    std::vector<std::string> base3{"(10, 0)"};
+    EXPECT_EQ(obj.ambiguousCoordinates("(100)"), base3);
+}

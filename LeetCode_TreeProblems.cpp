@@ -4,7 +4,7 @@
 #include <numeric>
 #include <cmath>
 #include <stack>
-
+#include <sstream>
 // Facebook
 
 /*
@@ -750,4 +750,16 @@ std::vector<std::string> LC::_0257_BinaryTreePaths::binaryTreePaths(LC::TreeNode
         res.push_back(std::to_string(root->val) + "->" + rightString[i]);
     }
     return res;
+}
+
+
+std::string LC::_0428_SerializeAndDeserializeNAryTree::serialize(NAryNode* root) {
+    std::string res;
+    serializeHelper(root, res);
+    return res;
+}
+
+LC::NAryNode* LC::_0428_SerializeAndDeserializeNAryTree::deserialize(std::string data) {
+    std::istringstream iss(data);
+    return deserializeHelper(iss);
 }

@@ -22,6 +22,21 @@ std::vector<std::vector<std::string>> LC::_0049_GroupAnagrams::groupAnagrams(std
     return res;
 }
 
+LC::_0519_RandomFlipMatrix::_0519_RandomFlipMatrix(int n_rows, int n_cols) : nRows(n_rows), nCols(n_cols) {
+    remain = n_rows * n_cols;
+}
+
+std::vector<int> LC::_0519_RandomFlipMatrix::flip() {
+    int r = randInt(--remain);
+    int x = occupied.count(r) ? occupied[r] : occupied[r] = r;
+    occupied[r] = occupied.count(remain) ? occupied[remain] : occupied[remain] = remain;
+    return {x / nCols, x % nCols};
+}
+
+void LC::_0519_RandomFlipMatrix::reset() {
+    occupied.clear();
+    remain = nRows * nCols;
+}
 
 LC::_0710_RandomPickWithBlacklist::_0710_RandomPickWithBlacklist(int N, std::vector<int>& blacklist) {
     n = N;

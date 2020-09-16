@@ -101,10 +101,6 @@ public:
     std::string toHex(int num);
 };
 
-class _0406_QueueReconstructionByHeight {
-    public:
-        std::vector<std::pair<int, int>> reconstructQueue(std::vector<std::pair<int, int>>& people);
-};
 
 class _0409_LongestPalindrome {
 public:

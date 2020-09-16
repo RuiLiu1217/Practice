@@ -1,6 +1,6 @@
 #ifndef LEETCODE_GRAPHPROBLEM_HPP
 #define LEETCODE_GRAPHPROBLEM_HPP
-
+#include <queue>
 #include <vector>
 #include <unordered_map>
 namespace LC {
@@ -145,6 +145,75 @@ public:
     std::vector<int> findOrder(int numCourses, std::vector<std::vector<int>>& prerequisites);
 private:
      void BFS(const std::vector<std::vector<int>>& graph, std::vector<int>& inDegree, std::vector<int>& res);
+};
+
+
+/*
+There are N cities numbered from 1 to N.
+You are given connections, where each connections[i] = [city1, city2, cost] represents the cost to connect 
+city1 and city2 together. (A connection is bidirectional: connecting city1 and city2 is the same as 
+connecting city2 and city1.)
+
+Return the minimum cost so that for every pair of cities, there exists a path of connections (possibly of 
+length 1) that connects those two cities together. The cost is the sum of the connection costs used. If the 
+task is impossible, return -1.
+
+Input: N = 3, connections = [[1,2,5],[1,3,6],[2,3,1]]
+Output: 6
+Explanation: 
+Choosing any 2 edges will connect all cities so we choose the minimum 2.
+
+Input: N = 4, connections = [[1,2,3],[3,4,4]]
+Output: -1
+Explanation: 
+There is no way to connect all cities even if all edges are used.
+
+Note:
+
+1 <= N <= 10000
+1 <= connections.length <= 10000
+1 <= connections[i][0], connections[i][1] <= N
+0 <= connections[i][2] <= 10^5
+connections[i][0] != connections[i][1]
+*/
+class _1135_ConnectingCitiesWithMinimumCost {
+    struct Edge {
+        int from;
+        int to;
+        int weight;
+        Edge(int f, int t, int w) : from(f), to(t), weight(w) {}
+    };
+    class compare {
+    public:
+        bool operator()(Edge a, Edge b) {
+            return a.weight > b.weight;
+        };
+    };
+
+    std::vector<bool> marked;
+    std::queue<Edge> mst;
+    std::priority_queue<Edge,std::vector<Edge>, compare> pq;
+    std::vector<std::vector<Edge>> graph;
+
+    void createGraph(int N, std::vector<std::vector<int>>& connections) {
+        graph.resize(N);
+        marked = std::vector<bool>(N, false);
+        for(auto& connection : connections) {
+            graph[connection[0]-1].emplace_back(Edge(connection[0]-1, connection[1]-1, connection[2]));
+            graph[connection[1]-1].emplace_back(Edge(connection[1]-1, connection[0]-1, connection[2]));
+        }
+    }
+    
+    void visit(int v) {
+        marked[v] = true;
+        for(Edge& e : graph[v]) {
+            if(!marked[e.to]) {
+                pq.push(e);
+            }
+        }
+    }
+public:
+    int minimumCost(int N, std::vector<std::vector<int>>& connections);
 };
 
 }

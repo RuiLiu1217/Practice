@@ -169,6 +169,40 @@ public:
 
 
 /*
+Tag: Dynamic Programming, backtracking (TLE)
+
+Facebook
+
+Given a non-empty string s and a dictionary wordDict containing a list of non-empty 
+words, determine if s can be segmented into a space-separated sequence of one or 
+more dictionary words.
+
+Note:
+
+The same word in the dictionary may be reused multiple times in the segmentation.
+You may assume the dictionary does not contain duplicate words.
+Example 1:
+
+Input: s = "leetcode", wordDict = ["leet", "code"]
+Output: true
+Explanation: Return true because "leetcode" can be segmented as "leet code".
+Example 2:
+
+Input: s = "applepenapple", wordDict = ["apple", "pen"]
+Output: true
+Explanation: Return true because "applepenapple" can be segmented as "apple pen apple".
+             Note that you are allowed to reuse a dictionary word.
+Example 3:
+
+Input: s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"]
+Output: false
+*/
+class _0139_WordBreak {
+public:
+    bool wordBreak(std::string s, std::vector<std::string>& wordDict);
+};
+
+/*
 You are a professional robber planning to rob houses along 
 a street. Each house has a certain amount of money stashed, 
 the only constraint stopping you from robbing each of them 
@@ -243,6 +277,158 @@ Output: 4
 class _0221_MaximalSquare {
 public:
     int maximalSquare(std::vector<std::vector<char>>& matrix);
+};
+
+/*
+Given n balloons, indexed from 0 to n-1. Each balloon is painted with a number on it 
+represented by array nums. You are asked to burst all the balloons. If the you burst 
+balloon i you will get nums[left] * nums[i] * nums[right] coins. Here left and right 
+are adjacent indices of i. After the burst, the left and right then becomes adjacent.
+
+Find the maximum coins you can collect by bursting the balloons wisely.
+
+Note:
+
+You may imagine nums[-1] = nums[n] = 1. They are not real therefore you can not burst them.
+0 ≤ n ≤ 500, 0 ≤ nums[i] ≤ 100
+
+Input: [3,1,5,8]
+Output: 167 
+
+Explanation: nums = [3,1,5,8] --> [3,5,8] -->   [3,8]   -->  [8]  --> []
+             coins =  3*1*5      +  3*5*8    +  1*3*8      + 1*8*1   = 167
+*/
+class _0312_BurstBalloons {
+public:
+    int maxCoins(std::vector<int>& nums);
+
+};
+
+/*
+We are playing the Guessing Game. The game will work as follows:
+
+I pick a number between 1 and n.
+You guess a number.
+If you guess the right number, you win the game.
+If you guess the wrong number, then I will tell you whether the number I picked is higher or lower, and you will continue guessing.
+Every time you guess a wrong number x, you will pay x dollars. If you run out of money, you lose the game.
+Given a particular n, return the minimum amount of money you need to guarantee a win regardless of what number I pick.
+
+ 
+
+Example 1:
+
+
+Input: n = 10
+Output: 16
+Explanation: The winning strategy is as follows:
+- The range is [1,10]. Guess 7.
+    - If this is my number, your total is $0. Otherwise, you pay $7.
+    - If my number is higher, the range is [8,10]. Guess 9.
+        - If this is my number, your total is $7. Otherwise, you pay $9.
+        - If my number is higher, it must be 10. Guess 10. Your total is $7 + $9 = $16.
+        - If my number is lower, it must be 8. Guess 8. Your total is $7 + $9 = $16.
+    - If my number is lower, the range is [1,6]. Guess 3.
+        - If this is my number, your total is $7. Otherwise, you pay $3.
+        - If my number is higher, the range is [4,6]. Guess 5.
+            - If this is my number, your total is $7 + $3 = $10. Otherwise, you pay $5.
+            - If my number is higher, it must be 6. Guess 6. Your total is $7 + $3 + $5 = $15.
+            - If my number is lower, it must be 4. Guess 4. Your total is $7 + $3 + $5 = $15.
+        - If my number is lower, the range is [1,2]. Guess 1.
+            - If this is my number, your total is $7 + $3 = $10. Otherwise, you pay $1.
+            - If my number is higher, it must be 2. Guess 2. Your total is $7 + $3 + $1 = $11.
+The worst case in all these scenarios is that you pay $16. Hence, you only need $16 to guarantee a win.
+Example 2:
+
+Input: n = 1
+Output: 0
+Explanation: There is only one possible number, so you can guess 1 and not have to pay anything.
+Example 3:
+
+Input: n = 2
+Output: 1
+Explanation: There are two possible numbers, 1 and 2.
+- Guess 1.
+    - If this is my number, your total is $0. Otherwise, you pay $1.
+    - If my number is higher, it must be 2. Guess 2. Your total is $1.
+The worst case is that you pay $1.
+ 
+
+Constraints:
+1 <= n <= 200
+
+*/
+class _0375_GuessNumberHigherOrLowerII {
+public:
+    int getMoneyAmount(int n);
+};
+
+/*
+Given a list of words (without duplicates), please write a program that returns all concatenated words in the given list of words.
+A concatenated word is defined as a string that is comprised entirely of at least two shorter words in the given array.
+
+Example:
+Input: ["cat","cats","catsdogcats","dog","dogcatsdog","hippopotamuses","rat","ratcatdogcat"]
+
+Output: ["catsdogcats","dogcatsdog","ratcatdogcat"]
+
+Explanation: "catsdogcats" can be concatenated by "cats", "dog" and "cats"; 
+ "dogcatsdog" can be concatenated by "dog", "cats" and "dog"; 
+"ratcatdogcat" can be concatenated by "rat", "cat", "dog" and "cat".
+Note:
+The number of elements of the given array will not exceed 10,000
+The length sum of elements in the given array will not exceed 600,000.
+All the input string will only include lower case letters.
+The returned elements order does not matter.
+*/
+class _0472_ConcatenatedWords {
+public:
+    std::vector<std::string> findAllConcatenatedWordsInADict(std::vector<std::string>& words);
+};
+
+
+
+/*
+Given the integer n representing the number of courses at some university labeled from 1 to n, 
+and the array dependencies where dependencies[i] = [xi, yi]  represents a prerequisite relationship, 
+that is, the course xi must be taken before the course yi.  Also, you are given the integer k.
+In one semester you can take at most k courses as long as you have taken all the prerequisites 
+for the courses you are taking.
+Return the minimum number of semesters to take all courses. It is guaranteed that you can take all 
+courses in some way. 
+
+Example 1:
+Input: n = 4, dependencies = [[2,1],[3,1],[1,4]], k = 2
+Output: 3 
+Explanation: The figure above represents the given graph. In this case we can take courses 2 and 3 
+in the first semester, then take course 1 in the second semester and finally take course 4 in the 
+third semester.
+
+Example 2:
+Input: n = 5, dependencies = [[2,1],[3,1],[4,1],[1,5]], k = 2
+Output: 4 
+Explanation: The figure above represents the given graph. In this case one optimal way to take all 
+courses is: take courses 2 and 3 in the first semester and take course 4 in the second semester, 
+then take course 1 in the third semester and finally take course 5 in the fourth semester.
+Example 3:
+
+Input: n = 11, dependencies = [], k = 2
+Output: 6
+
+Constraints:
+
+1 <= n <= 15
+1 <= k <= n
+0 <= dependencies.length <= n * (n-1) / 2
+dependencies[i].length == 2
+1 <= xi, yi <= n
+xi != yi
+All prerequisite relationships are distinct, that is, dependencies[i] != dependencies[j].
+The given graph is a directed acyclic graph.
+*/
+class _1494_ParallelCoursesII {
+public:
+    int minNumberOfSemesters(int n, std::vector<std::vector<int>>& dependencies, int k);
 };
 
 }
