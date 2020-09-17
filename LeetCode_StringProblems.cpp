@@ -791,3 +791,24 @@ std::vector<std::string> LC::_0816_AmbiguousCoordinates::ambiguousCoordinates(st
     }
     return res;
 }
+
+
+// Sorting the string from large to small, there is a tricky point
+std::string LC::_0179_LargestNumber::largestNumber(std::vector<int>& nums) {
+    std::vector<std::string> numstr;
+    std::for_each(begin(nums), end(nums), [&](int n){
+        numstr.emplace_back(std::to_string(n));
+    });
+    std::sort(begin(numstr), end(numstr), [](std::string& s1, std::string& s2){
+        return s1 + s2 > s2 + s1;
+    });
+    std::string res;
+    for(auto& n : numstr) {
+        res += n;
+    }
+    int i = 0;
+    while(res[i] == '0' && i < res.size() - 1) {
+        ++i;
+    }
+    return res.substr(i);
+}

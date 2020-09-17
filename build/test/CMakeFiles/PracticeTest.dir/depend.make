@@ -95,6 +95,8 @@ test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.obj: ../t
 
 test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: ../test/LeetCode_DFSTests.cpp
 
+test/CMakeFiles/PracticeTest.dir/LeetCode_DesignDrivenProblemsTests.cpp.obj: ../test/LeetCode_DesignDrivenProblemsTests.cpp
+
 test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-death-test.h
 test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-matchers.h
 test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-message.h

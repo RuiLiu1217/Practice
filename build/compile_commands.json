@@ -41,6 +41,11 @@
 },
 {
   "directory": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build",
+  "command": "C:\\mingw64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=gnu++17 -o CMakeFiles\\Practice.dir\\LeetCode_DesignDrivenProblems.cpp.obj -c C:\\Users\\liuru\\OneDrive\\Documents\\GitHub\\Practice\\LeetCode_DesignDrivenProblems.cpp",
+  "file": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_DesignDrivenProblems.cpp"
+},
+{
+  "directory": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build",
   "command": "C:\\mingw64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=gnu++17 -o CMakeFiles\\Practice.dir\\LeetCode_GreedyAlgorithmProblems.cpp.obj -c C:\\Users\\liuru\\OneDrive\\Documents\\GitHub\\Practice\\LeetCode_GreedyAlgorithmProblems.cpp",
   "file": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_GreedyAlgorithmProblems.cpp"
 },
@@ -138,6 +143,11 @@
   "directory": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test",
   "command": "C:\\mingw64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe   @CMakeFiles/PracticeTest.dir/includes_CXX.rsp -g   -std=gnu++17 -o CMakeFiles\\PracticeTest.dir\\LeetCode_DynamicProgrammingProblemTests.cpp.obj -c C:\\Users\\liuru\\OneDrive\\Documents\\GitHub\\Practice\\test\\LeetCode_DynamicProgrammingProblemTests.cpp",
   "file": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_DynamicProgrammingProblemTests.cpp"
+},
+{
+  "directory": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test",
+  "command": "C:\\mingw64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe   @CMakeFiles/PracticeTest.dir/includes_CXX.rsp -g   -std=gnu++17 -o CMakeFiles\\PracticeTest.dir\\LeetCode_DesignDrivenProblemsTests.cpp.obj -c C:\\Users\\liuru\\OneDrive\\Documents\\GitHub\\Practice\\test\\LeetCode_DesignDrivenProblemsTests.cpp",
+  "file": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_DesignDrivenProblemsTests.cpp"
 },
 {
   "directory": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test",

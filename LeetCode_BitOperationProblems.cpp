@@ -1,5 +1,6 @@
 #include "LeetCode_BitOperationProblems.hpp"
 #include <bitset>
+#include <algorithm>
 int LC::_0136_SingleNumber::singleNumber(std::vector<int>& nums) {
     int v = nums[0];
     for(int i = 1; i != nums.size(); ++i)
@@ -131,5 +132,28 @@ int LC::_0191_NumberOf1Bits::hammingWeight(uint32_t n) {
         n = n & (n - 1);
         ++res;
     }
+    return res;
+}
+
+/*
+Solution
+    1. assume that A and B are the two elements which we want to find;
+    2. use XOR for all elements,the result is : r = A^B,we just need 
+    to distinguish A from B next step;
+    3. if we can find a bit '1' in r,then the bit in corresponding 
+        position in A and B must be different.We can use 
+        {last = r & (~(r-1))} to get the last bit 1 int r;
+    4. we use last to divide all numbers into two groups,then A and B 
+        must fall into the two distrinct groups. XOR elements in eash 
+        group,get the A and B.
+*/
+std::vector<int> LC::_0260_SingleNumberII::singleNumber(const std::vector<int> &nums) {
+    int r = 0;
+    std::for_each(begin(nums), end(nums), [&](auto n){ r ^= n;});
+    int lasDigit = r & (~(r - 1)); //! Find the last bit that the only two values must be different
+    std::vector<int> res(2, 0);
+    std::for_each(begin(nums), end(nums), [&](auto n){
+        res[(lasDigit & n) == 0] ^= n;
+    });
     return res;
 }

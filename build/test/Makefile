@@ -336,6 +336,33 @@ LeetCode_DFSTests.cpp.s:
 	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\PracticeTest.dir\build.make test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.s
 .PHONY : LeetCode_DFSTests.cpp.s
 
+LeetCode_DesignDrivenProblemsTests.obj: LeetCode_DesignDrivenProblemsTests.cpp.obj
+
+.PHONY : LeetCode_DesignDrivenProblemsTests.obj
+
+# target to build an object file
+LeetCode_DesignDrivenProblemsTests.cpp.obj:
+	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\PracticeTest.dir\build.make test/CMakeFiles/PracticeTest.dir/LeetCode_DesignDrivenProblemsTests.cpp.obj
+.PHONY : LeetCode_DesignDrivenProblemsTests.cpp.obj
+
+LeetCode_DesignDrivenProblemsTests.i: LeetCode_DesignDrivenProblemsTests.cpp.i
+
+.PHONY : LeetCode_DesignDrivenProblemsTests.i
+
+# target to preprocess a source file
+LeetCode_DesignDrivenProblemsTests.cpp.i:
+	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\PracticeTest.dir\build.make test/CMakeFiles/PracticeTest.dir/LeetCode_DesignDrivenProblemsTests.cpp.i
+.PHONY : LeetCode_DesignDrivenProblemsTests.cpp.i
+
+LeetCode_DesignDrivenProblemsTests.s: LeetCode_DesignDrivenProblemsTests.cpp.s
+
+.PHONY : LeetCode_DesignDrivenProblemsTests.s
+
+# target to generate assembly for a file
+LeetCode_DesignDrivenProblemsTests.cpp.s:
+	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\PracticeTest.dir\build.make test/CMakeFiles/PracticeTest.dir/LeetCode_DesignDrivenProblemsTests.cpp.s
+.PHONY : LeetCode_DesignDrivenProblemsTests.cpp.s
+
 LeetCode_DynamicProgrammingProblemTests.obj: LeetCode_DynamicProgrammingProblemTests.cpp.obj
 
 .PHONY : LeetCode_DynamicProgrammingProblemTests.obj
@@ -662,6 +689,9 @@ help:
 	@echo ... LeetCode_DFSTests.obj
 	@echo ... LeetCode_DFSTests.i
 	@echo ... LeetCode_DFSTests.s
+	@echo ... LeetCode_DesignDrivenProblemsTests.obj
+	@echo ... LeetCode_DesignDrivenProblemsTests.i
+	@echo ... LeetCode_DesignDrivenProblemsTests.s
 	@echo ... LeetCode_DynamicProgrammingProblemTests.obj
 	@echo ... LeetCode_DynamicProgrammingProblemTests.i
 	@echo ... LeetCode_DynamicProgrammingProblemTests.s

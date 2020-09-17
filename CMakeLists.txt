@@ -21,6 +21,7 @@ set(Headers
     LeetCode_StringProblems.hpp
     LeetCode_MathProblems.hpp
     LeetCode_DynamicProgrammingProblems.hpp
+    LeetCode_DesignDrivenProblems.hpp
     LeetCode_GreedyAlgorithmProblems.hpp
     LeetCode_BacktracingProblems.hpp
     LeetCode_BitOperationProblems.hpp
@@ -40,6 +41,7 @@ set(Sources
     LeetCode_StringProblems.cpp
     LeetCode_MathProblems.cpp
     LeetCode_DynamicProgrammingProblems.cpp
+    LeetCode_DesignDrivenProblems.cpp
     LeetCode_GreedyAlgorithmProblems.cpp
     LeetCode_BacktracingProblems.cpp
     LeetCode_BitOperationProblems.cpp

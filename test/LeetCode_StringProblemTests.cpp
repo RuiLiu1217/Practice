@@ -58,9 +58,15 @@ TEST(LC, _0816_AmbiguousCoordinates) {
     std::vector<std::string> base1{"(0, 123)","(0, 1.23)","(0, 12.3)","(0.1, 23)","(0.1, 2.3)","(0.12, 3)"};
     EXPECT_EQ(obj.ambiguousCoordinates("(0123)"), base1);
 
-    std::vector<std::string> base2{"(0.001, 1)", "(0, 0.011)"};
+    std::vector<std::string> base2{"(0, 0.011)", "(0.001, 1)"};
     EXPECT_EQ(obj.ambiguousCoordinates("(00011)"), base2);
 
     std::vector<std::string> base3{"(10, 0)"};
     EXPECT_EQ(obj.ambiguousCoordinates("(100)"), base3);
+}
+
+TEST(LC, _0179_LargestNumber) {
+    LC::_0179_LargestNumber obj;
+    std::vector<int> v{10, 2};
+    EXPECT_EQ(obj.largestNumber(v), "210");
 }

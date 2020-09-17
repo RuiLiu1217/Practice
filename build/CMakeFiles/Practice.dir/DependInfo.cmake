@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_BacktracingProblems.cpp" "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/CMakeFiles/Practice.dir/LeetCode_BacktracingProblems.cpp.obj"
   "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_BitOperationProblems.cpp" "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/CMakeFiles/Practice.dir/LeetCode_BitOperationProblems.cpp.obj"
   "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_DFS.cpp" "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/CMakeFiles/Practice.dir/LeetCode_DFS.cpp.obj"
+  "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_DesignDrivenProblems.cpp" "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/CMakeFiles/Practice.dir/LeetCode_DesignDrivenProblems.cpp.obj"
   "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_DynamicProgrammingProblems.cpp" "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/CMakeFiles/Practice.dir/LeetCode_DynamicProgrammingProblems.cpp.obj"
   "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_GraphProblems.cpp" "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/CMakeFiles/Practice.dir/LeetCode_GraphProblems.cpp.obj"
   "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_GreedyAlgorithmProblems.cpp" "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/CMakeFiles/Practice.dir/LeetCode_GreedyAlgorithmProblems.cpp.obj"

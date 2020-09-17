@@ -476,36 +476,6 @@ public:
     int addDigits(int num);
 };
 
-class _0260_SingleNumberII
-{
-    /*
-        Given an array of numbers nums, in which exactly two elements 
-        appear only once and all the other elements appear exactly twice.
-        Find the two elements that appear only once.
-        
-        Example:
-            Input:  [1,2,1,3,2,5]
-            Output: [3,5]
-        Note:
-        The order of the result is not important. So in the above example, 
-        [5, 3] is also correct. Your algorithm should run in linear runtime 
-        complexity. Could you implement it using only constant space 
-        complexity?
-        
-        Solution
-            1. assume that A and B are the two elements which we want to find;
-            2. use XOR for all elements,the result is : r = A^B,we just need 
-            to distinguish A from B next step;
-            3. if we can find a bit '1' in r,then the bit in corresponding 
-                position in A and B must be different.We can use 
-                {last = r & (~(r-1))} to get the last bit 1 int r;
-            4. we use last to divide all numbers into two groups,then A and B 
-                must fall into the two distrinct groups. XOR elements in eash 
-                group,get the A and B.
-    */
-public:
-    std::vector<int> singleNumber(const std::vector<int> &nums);
-};
 
 /*
 Write a program to check whether a given number is an ugly number.

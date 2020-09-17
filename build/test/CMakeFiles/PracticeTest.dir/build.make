@@ -188,10 +188,24 @@ test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.s: 
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.s"
 	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\test && C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LeetCode_DynamicProgrammingProblemTests.cpp -o CMakeFiles\PracticeTest.dir\LeetCode_DynamicProgrammingProblemTests.cpp.s
 
+test/CMakeFiles/PracticeTest.dir/LeetCode_DesignDrivenProblemsTests.cpp.obj: test/CMakeFiles/PracticeTest.dir/flags.make
+test/CMakeFiles/PracticeTest.dir/LeetCode_DesignDrivenProblemsTests.cpp.obj: test/CMakeFiles/PracticeTest.dir/includes_CXX.rsp
+test/CMakeFiles/PracticeTest.dir/LeetCode_DesignDrivenProblemsTests.cpp.obj: ../test/LeetCode_DesignDrivenProblemsTests.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object test/CMakeFiles/PracticeTest.dir/LeetCode_DesignDrivenProblemsTests.cpp.obj"
+	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\test && C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\PracticeTest.dir\LeetCode_DesignDrivenProblemsTests.cpp.obj -c C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LeetCode_DesignDrivenProblemsTests.cpp
+
+test/CMakeFiles/PracticeTest.dir/LeetCode_DesignDrivenProblemsTests.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PracticeTest.dir/LeetCode_DesignDrivenProblemsTests.cpp.i"
+	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\test && C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LeetCode_DesignDrivenProblemsTests.cpp > CMakeFiles\PracticeTest.dir\LeetCode_DesignDrivenProblemsTests.cpp.i
+
+test/CMakeFiles/PracticeTest.dir/LeetCode_DesignDrivenProblemsTests.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PracticeTest.dir/LeetCode_DesignDrivenProblemsTests.cpp.s"
+	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\test && C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LeetCode_DesignDrivenProblemsTests.cpp -o CMakeFiles\PracticeTest.dir\LeetCode_DesignDrivenProblemsTests.cpp.s
+
 test/CMakeFiles/PracticeTest.dir/LeetCode_GreedyAlgorithmProblemTests.cpp.obj: test/CMakeFiles/PracticeTest.dir/flags.make
 test/CMakeFiles/PracticeTest.dir/LeetCode_GreedyAlgorithmProblemTests.cpp.obj: test/CMakeFiles/PracticeTest.dir/includes_CXX.rsp
 test/CMakeFiles/PracticeTest.dir/LeetCode_GreedyAlgorithmProblemTests.cpp.obj: ../test/LeetCode_GreedyAlgorithmProblemTests.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object test/CMakeFiles/PracticeTest.dir/LeetCode_GreedyAlgorithmProblemTests.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object test/CMakeFiles/PracticeTest.dir/LeetCode_GreedyAlgorithmProblemTests.cpp.obj"
 	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\test && C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\PracticeTest.dir\LeetCode_GreedyAlgorithmProblemTests.cpp.obj -c C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LeetCode_GreedyAlgorithmProblemTests.cpp
 
 test/CMakeFiles/PracticeTest.dir/LeetCode_GreedyAlgorithmProblemTests.cpp.i: cmake_force
@@ -205,7 +219,7 @@ test/CMakeFiles/PracticeTest.dir/LeetCode_GreedyAlgorithmProblemTests.cpp.s: cma
 test/CMakeFiles/PracticeTest.dir/LeetCode_BacktracingProblemTests.cpp.obj: test/CMakeFiles/PracticeTest.dir/flags.make
 test/CMakeFiles/PracticeTest.dir/LeetCode_BacktracingProblemTests.cpp.obj: test/CMakeFiles/PracticeTest.dir/includes_CXX.rsp
 test/CMakeFiles/PracticeTest.dir/LeetCode_BacktracingProblemTests.cpp.obj: ../test/LeetCode_BacktracingProblemTests.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object test/CMakeFiles/PracticeTest.dir/LeetCode_BacktracingProblemTests.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object test/CMakeFiles/PracticeTest.dir/LeetCode_BacktracingProblemTests.cpp.obj"
 	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\test && C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\PracticeTest.dir\LeetCode_BacktracingProblemTests.cpp.obj -c C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LeetCode_BacktracingProblemTests.cpp
 
 test/CMakeFiles/PracticeTest.dir/LeetCode_BacktracingProblemTests.cpp.i: cmake_force
@@ -219,7 +233,7 @@ test/CMakeFiles/PracticeTest.dir/LeetCode_BacktracingProblemTests.cpp.s: cmake_f
 test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.obj: test/CMakeFiles/PracticeTest.dir/flags.make
 test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.obj: test/CMakeFiles/PracticeTest.dir/includes_CXX.rsp
 test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.obj: ../test/LeetCode_BitOperationProblemTests.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.obj"
 	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\test && C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\PracticeTest.dir\LeetCode_BitOperationProblemTests.cpp.obj -c C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LeetCode_BitOperationProblemTests.cpp
 
 test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.i: cmake_force
@@ -233,7 +247,7 @@ test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.s: cmake_
 test/CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.obj: test/CMakeFiles/PracticeTest.dir/flags.make
 test/CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.obj: test/CMakeFiles/PracticeTest.dir/includes_CXX.rsp
 test/CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.obj: ../test/LeetCode_TreeProblemTests.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object test/CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object test/CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.obj"
 	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\test && C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\PracticeTest.dir\LeetCode_TreeProblemTests.cpp.obj -c C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LeetCode_TreeProblemTests.cpp
 
 test/CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.i: cmake_force
@@ -247,7 +261,7 @@ test/CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.s: cmake_force
 test/CMakeFiles/PracticeTest.dir/LeetCode_RecursiveProblemTests.cpp.obj: test/CMakeFiles/PracticeTest.dir/flags.make
 test/CMakeFiles/PracticeTest.dir/LeetCode_RecursiveProblemTests.cpp.obj: test/CMakeFiles/PracticeTest.dir/includes_CXX.rsp
 test/CMakeFiles/PracticeTest.dir/LeetCode_RecursiveProblemTests.cpp.obj: ../test/LeetCode_RecursiveProblemTests.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object test/CMakeFiles/PracticeTest.dir/LeetCode_RecursiveProblemTests.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object test/CMakeFiles/PracticeTest.dir/LeetCode_RecursiveProblemTests.cpp.obj"
 	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\test && C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\PracticeTest.dir\LeetCode_RecursiveProblemTests.cpp.obj -c C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LeetCode_RecursiveProblemTests.cpp
 
 test/CMakeFiles/PracticeTest.dir/LeetCode_RecursiveProblemTests.cpp.i: cmake_force
@@ -261,7 +275,7 @@ test/CMakeFiles/PracticeTest.dir/LeetCode_RecursiveProblemTests.cpp.s: cmake_for
 test/CMakeFiles/PracticeTest.dir/LeetCode_HashProblemTests.cpp.obj: test/CMakeFiles/PracticeTest.dir/flags.make
 test/CMakeFiles/PracticeTest.dir/LeetCode_HashProblemTests.cpp.obj: test/CMakeFiles/PracticeTest.dir/includes_CXX.rsp
 test/CMakeFiles/PracticeTest.dir/LeetCode_HashProblemTests.cpp.obj: ../test/LeetCode_HashProblemTests.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object test/CMakeFiles/PracticeTest.dir/LeetCode_HashProblemTests.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object test/CMakeFiles/PracticeTest.dir/LeetCode_HashProblemTests.cpp.obj"
 	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\test && C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\PracticeTest.dir\LeetCode_HashProblemTests.cpp.obj -c C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LeetCode_HashProblemTests.cpp
 
 test/CMakeFiles/PracticeTest.dir/LeetCode_HashProblemTests.cpp.i: cmake_force
@@ -275,7 +289,7 @@ test/CMakeFiles/PracticeTest.dir/LeetCode_HashProblemTests.cpp.s: cmake_force
 test/CMakeFiles/PracticeTest.dir/LeetCode_BFSTests.cpp.obj: test/CMakeFiles/PracticeTest.dir/flags.make
 test/CMakeFiles/PracticeTest.dir/LeetCode_BFSTests.cpp.obj: test/CMakeFiles/PracticeTest.dir/includes_CXX.rsp
 test/CMakeFiles/PracticeTest.dir/LeetCode_BFSTests.cpp.obj: ../test/LeetCode_BFSTests.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object test/CMakeFiles/PracticeTest.dir/LeetCode_BFSTests.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object test/CMakeFiles/PracticeTest.dir/LeetCode_BFSTests.cpp.obj"
 	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\test && C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\PracticeTest.dir\LeetCode_BFSTests.cpp.obj -c C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LeetCode_BFSTests.cpp
 
 test/CMakeFiles/PracticeTest.dir/LeetCode_BFSTests.cpp.i: cmake_force
@@ -289,7 +303,7 @@ test/CMakeFiles/PracticeTest.dir/LeetCode_BFSTests.cpp.s: cmake_force
 test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: test/CMakeFiles/PracticeTest.dir/flags.make
 test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: test/CMakeFiles/PracticeTest.dir/includes_CXX.rsp
 test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: ../test/LeetCode_DFSTests.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj"
 	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\test && C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\PracticeTest.dir\LeetCode_DFSTests.cpp.obj -c C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LeetCode_DFSTests.cpp
 
 test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.i: cmake_force
@@ -310,6 +324,7 @@ PracticeTest_OBJECTS = \
 "CMakeFiles/PracticeTest.dir/LeetCode_StringProblemTests.cpp.obj" \
 "CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.obj" \
 "CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.obj" \
+"CMakeFiles/PracticeTest.dir/LeetCode_DesignDrivenProblemsTests.cpp.obj" \
 "CMakeFiles/PracticeTest.dir/LeetCode_GreedyAlgorithmProblemTests.cpp.obj" \
 "CMakeFiles/PracticeTest.dir/LeetCode_BacktracingProblemTests.cpp.obj" \
 "CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.obj" \
@@ -330,6 +345,7 @@ test/PracticeTest.exe: test/CMakeFiles/PracticeTest.dir/LeetCode_SlidingWindowPr
 test/PracticeTest.exe: test/CMakeFiles/PracticeTest.dir/LeetCode_StringProblemTests.cpp.obj
 test/PracticeTest.exe: test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.obj
 test/PracticeTest.exe: test/CMakeFiles/PracticeTest.dir/LeetCode_DynamicProgrammingProblemTests.cpp.obj
+test/PracticeTest.exe: test/CMakeFiles/PracticeTest.dir/LeetCode_DesignDrivenProblemsTests.cpp.obj
 test/PracticeTest.exe: test/CMakeFiles/PracticeTest.dir/LeetCode_GreedyAlgorithmProblemTests.cpp.obj
 test/PracticeTest.exe: test/CMakeFiles/PracticeTest.dir/LeetCode_BacktracingProblemTests.cpp.obj
 test/PracticeTest.exe: test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.obj
@@ -345,7 +361,7 @@ test/PracticeTest.exe: lib/libgtestd.a
 test/PracticeTest.exe: test/CMakeFiles/PracticeTest.dir/linklibs.rsp
 test/PracticeTest.exe: test/CMakeFiles/PracticeTest.dir/objects1.rsp
 test/PracticeTest.exe: test/CMakeFiles/PracticeTest.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Linking CXX executable PracticeTest.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Linking CXX executable PracticeTest.exe"
 	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\test && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\PracticeTest.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

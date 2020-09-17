@@ -17,6 +17,9 @@ CMakeFiles/Practice.dir/LeetCode_DFS.cpp.obj: ../LeetCode_DFS.cpp
 CMakeFiles/Practice.dir/LeetCode_DFS.cpp.obj: ../LeetCode_DFS.hpp
 CMakeFiles/Practice.dir/LeetCode_DFS.cpp.obj: ../LeetCode_TreeProblems.hpp
 
+CMakeFiles/Practice.dir/LeetCode_DesignDrivenProblems.cpp.obj: ../LeetCode_DesignDrivenProblems.cpp
+CMakeFiles/Practice.dir/LeetCode_DesignDrivenProblems.cpp.obj: ../LeetCode_DesignDrivenProblems.hpp
+
 CMakeFiles/Practice.dir/LeetCode_DynamicProgrammingProblems.cpp.obj: ../LeetCode_DynamicProgrammingProblems.cpp
 CMakeFiles/Practice.dir/LeetCode_DynamicProgrammingProblems.cpp.obj: ../LeetCode_DynamicProgrammingProblems.hpp
 

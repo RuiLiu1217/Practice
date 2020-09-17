@@ -257,6 +257,24 @@ public:
 };
 
 /*
+Given a list of non negative integers, arrange them such that they 
+form the largest number.
+
+Input: [10,2]
+Output: "210"
+
+Input: [3,30,34,5,9]
+Output: "9534330"
+Note: The result may be very large, so you need to return a string instead of an integer.
+*/
+class _0179_LargestNumber {
+public:
+    std::string largestNumber(std::vector<int>& nums);
+};
+
+
+
+/*
 Given an input string , reverse the string word by word. 
 
 Input:  ["t","h","e"," ","s","k","y"," ","i","s"," ","b","l","u","e"]

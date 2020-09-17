@@ -58,7 +58,6 @@ TEST(LC, _0139_wordBreak) {
     EXPECT_FALSE(obj.wordBreak(s2, wordDict2));
 }
 
-
 TEST(LC, _0472_ConcatenatedWords) {
     LC::_0472_ConcatenatedWords obj;
     std::vector<std::string> words{"cat","cats","catsdogcats","dog","dogcatsdog","hippopotamuses","rat","ratcatdogcat"};

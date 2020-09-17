@@ -399,6 +399,33 @@ LeetCode_DFS.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_DFS.cpp.s
 .PHONY : LeetCode_DFS.cpp.s
 
+LeetCode_DesignDrivenProblems.obj: LeetCode_DesignDrivenProblems.cpp.obj
+
+.PHONY : LeetCode_DesignDrivenProblems.obj
+
+# target to build an object file
+LeetCode_DesignDrivenProblems.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_DesignDrivenProblems.cpp.obj
+.PHONY : LeetCode_DesignDrivenProblems.cpp.obj
+
+LeetCode_DesignDrivenProblems.i: LeetCode_DesignDrivenProblems.cpp.i
+
+.PHONY : LeetCode_DesignDrivenProblems.i
+
+# target to preprocess a source file
+LeetCode_DesignDrivenProblems.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_DesignDrivenProblems.cpp.i
+.PHONY : LeetCode_DesignDrivenProblems.cpp.i
+
+LeetCode_DesignDrivenProblems.s: LeetCode_DesignDrivenProblems.cpp.s
+
+.PHONY : LeetCode_DesignDrivenProblems.s
+
+# target to generate assembly for a file
+LeetCode_DesignDrivenProblems.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_DesignDrivenProblems.cpp.s
+.PHONY : LeetCode_DesignDrivenProblems.cpp.s
+
 LeetCode_DynamicProgrammingProblems.obj: LeetCode_DynamicProgrammingProblems.cpp.obj
 
 .PHONY : LeetCode_DynamicProgrammingProblems.obj
@@ -730,6 +757,9 @@ help:
 	@echo ... LeetCode_DFS.obj
 	@echo ... LeetCode_DFS.i
 	@echo ... LeetCode_DFS.s
+	@echo ... LeetCode_DesignDrivenProblems.obj
+	@echo ... LeetCode_DesignDrivenProblems.i
+	@echo ... LeetCode_DesignDrivenProblems.s
 	@echo ... LeetCode_DynamicProgrammingProblems.obj
 	@echo ... LeetCode_DynamicProgrammingProblems.i
 	@echo ... LeetCode_DynamicProgrammingProblems.s

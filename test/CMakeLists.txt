@@ -12,6 +12,7 @@ set(Sources
     LeetCode_StringProblemTests.cpp
     LeetCode_MathProblemTests.cpp
     LeetCode_DynamicProgrammingProblemTests.cpp
+    LeetCode_DesignDrivenProblemsTests.cpp
     LeetCode_GreedyAlgorithmProblemTests.cpp
     LeetCode_BacktracingProblemTests.cpp
     LeetCode_BitOperationProblemTests.cpp
