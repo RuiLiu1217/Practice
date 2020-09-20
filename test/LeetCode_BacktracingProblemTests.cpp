@@ -82,3 +82,15 @@ TEST(LC, _0090_SubsetII) {
     
     EXPECT_EQ(ground, res);
 }
+
+TEST(LC, LC__0267_Test) {
+    LC::_0267_PalindromePermutationII obj;
+    std::vector<std::string> base{"abba", "baab"};
+    EXPECT_EQ(obj.generatePalindromes("aabb"), base);
+
+    std::vector<std::string> base1{"a"};
+    EXPECT_EQ(obj.generatePalindromes("a"), base1);
+
+    std::vector<std::string> base2{};
+    EXPECT_EQ(obj.generatePalindromes("abc"), base2);
+}

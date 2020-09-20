@@ -58,6 +58,11 @@ TEST(LC, _0139_wordBreak) {
     EXPECT_FALSE(obj.wordBreak(s2, wordDict2));
 }
 
+TEST(LC, _0264_nthUglyNumber) {
+    LC::_0264_UglyNumberII obj;
+    EXPECT_EQ(obj.nthUglyNumber(10), 12);
+}
+
 TEST(LC, _0472_ConcatenatedWords) {
     LC::_0472_ConcatenatedWords obj;
     std::vector<std::string> words{"cat","cats","catsdogcats","dog","dogcatsdog","hippopotamuses","rat","ratcatdogcat"};

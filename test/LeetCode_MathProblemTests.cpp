@@ -27,3 +27,9 @@ TEST(LC, _1447_SimplifiedFractions) {
     std::vector<std::string> base{"1/2","1/3","2/3"};
     EXPECT_EQ(obj.simplifiedFractions(3), base);
 }
+
+TEST(LC, _0263_UglyNumber) {
+    LC::_0263_UglyNumber obj;
+    EXPECT_TRUE(obj.isUgly(2));
+    EXPECT_FALSE(obj.isUgly(7));
+}

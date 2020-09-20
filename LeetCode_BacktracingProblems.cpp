@@ -539,3 +539,83 @@ std::vector<std::vector<int>> LC::_0216_CombinationSumIII::combinationSum3(int k
         tmp.pop_back();
     }   
 }
+
+
+std::vector<std::string> LC::_0267_PalindromePermutationII::generatePalindromes(std::string S) {
+    std::unordered_map<char, int> freq;
+    for(char s : S) {
+        ++freq[s];
+    }
+    int flag = 0;
+    char extra = 0;
+    std::string halfS;
+    for(auto& c : freq) {
+        if(c.second % 2 && flag == 1)  {
+            return {};
+        } else if(c.second % 2 && flag == 0) {
+            flag = 1;
+            extra = c.first;
+        }
+        halfS += std::string(c.second/2, c.first);
+    }
+    std::sort(begin(halfS), end(halfS));
+    std::vector<int> visited(halfS.size(), 0);
+    std::string tmp;
+    std::vector<std::string> res;
+
+    backtracking2(halfS, 0, halfS.size() - 1, res);
+    if(extra && res.empty()) {
+        res.push_back("");
+    }
+    
+    std::vector<std::string> ret;
+    for(auto r : res) {
+        std::string rr = r;
+        std::reverse(begin(rr), end(rr));
+        if(extra == 0) {
+            ret.push_back(r + rr);
+        } else {
+            ret.push_back(r + extra + rr);
+        }
+    }
+    return ret;
+}
+
+// LeetCode:: 47 How to generate permutation with duplicates. 
+void LC::_0267_PalindromePermutationII::backtracking(
+    std::string hs, int level, std::vector<int>& visited, 
+    std::string& tmp, std::vector<std::string>& res) {
+    if(level >= hs.size()) {
+        res.push_back(tmp);
+    }
+    for(int i = 0; i < hs.size(); ++i) {
+        if(visited[i] == 1) {
+            continue;
+        }
+        if(i > 0 && hs[i] == hs[i-1] && visited[i-1] == 0) { // avoid recalculate if duplicate character exist
+            continue;
+        }
+        visited[i] = 1;
+        tmp += hs[i];
+        backtracking(hs, level + 1, visited, tmp, res);
+        tmp.pop_back();
+        visited[i] = 0;
+    }
+}
+
+void LC::_0267_PalindromePermutationII::backtracking2(
+    std::string hs, int start, int end, std::vector<std::string>& res ) {
+    if(start == end) {
+        res.push_back(hs);
+        return;
+    }
+
+    for(int i = start; i <= end; ++i) {
+        if(i != start && hs[i] == hs[start]) {
+            continue;
+        }
+        std::swap(hs[i], hs[start]);
+        backtracking2(hs, start+1, end, res);
+    }
+}
+

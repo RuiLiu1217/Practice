@@ -288,6 +288,28 @@ int LC::_0221_MaximalSquare::maximalSquare(std::vector<std::vector<char>>& matri
     return maxS * maxS;
 }
 
+
+int LC::_0264_UglyNumberII::nthUglyNumber(int n) {
+    std::vector<int> res(1,1);
+    int idx2 = 0;
+    int idx3 = 0;
+    int idx5 = 0;
+    while(res.size() < n) {
+        int nextNum = std::min(res[idx5] * 5, std::min(res[idx2] * 2, res[idx3] * 3));
+        if(nextNum == res[idx5] * 5) {
+            idx5++;
+        }
+        if(nextNum == res[idx2] * 2) {
+            idx2++;
+        }
+        if(nextNum == res[idx3] * 3) {
+            idx3++;
+        }
+        res.push_back(nextNum);
+    }
+    return res.back();
+}
+
 // Copy from the solution
 // Use DP
 //需要建立一个二维的 dp 数组，其中 dp[i][j] 表示从数字i到j之间猜中任意一个数字最少需要花费的钱数，

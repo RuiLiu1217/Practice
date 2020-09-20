@@ -378,6 +378,24 @@ private:
 };
 
 
+/*
+Given a string s, return all the palindromic permutations (without duplicates) of it. 
+Return an empty list if no palindromic permutation could be form.
+
+Input: "aabb"
+Output: ["abba", "baab"]
+
+Input: "abc"
+Output: []
+*/
+class _0267_PalindromePermutationII {
+public:
+    std::vector<std::string> generatePalindromes(std::string s);
+private:
+    void backtracking(std::string hs, int level, std::vector<int>& visited, std::string& tmp, std::vector<std::string>& res);
+    void backtracking2(std::string hs, int start, int end, std::vector<std::string>& res );
+};
+
 }
 
 
