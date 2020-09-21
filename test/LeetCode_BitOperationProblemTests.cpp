@@ -7,3 +7,8 @@ TEST(LC, _0260_SingleNumberII) {
     std::vector<int> b{3,4};
     EXPECT_EQ(obj.singleNumber(a), b);
 }
+
+TEST(LC, _0201_BitwiseANDofNumbersRange) {
+    LC::_0201_BitwiseANDofNumbersRange obj;
+    EXPECT_EQ(obj.rangeBitwiseAnd(5345, 7734), 4096);
+}

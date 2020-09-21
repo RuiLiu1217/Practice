@@ -7,6 +7,8 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <map>
+#include <sstream>
+#include <functional>
 #include <string>
 
 std::string LC::_0005_LongestPalindromicSubstring::longestPalidrome(std::string s) {
@@ -782,4 +784,204 @@ std::string LC::_0179_LargestNumber::largestNumber(std::vector<int>& nums) {
         ++i;
     }
     return res.substr(i);
+}
+
+
+int LC::_0165_CompareVersionNumbers::compareVersion(std::string version1, std::string version2) {
+    std::function<std::vector<int>(std::istringstream& iss)> convert = [](std::istringstream& iss) {
+        std::vector<int> res;
+        std::string token;
+        while(getline(iss, token, '.')) {
+            res.push_back(std::stoi(token));
+        }
+        return res;
+    };
+
+    std::istringstream iss1(version1);
+    std::istringstream iss2(version2);
+    std::vector<int> vs1 = convert(iss1);
+    std::vector<int> vs2 = convert(iss2);
+    int minL = std::min(vs1.size(), vs2.size());
+    int i = 0;
+    for(; i < minL; ++i) {
+        if(vs1[i] < vs2[i]) {
+            return -1;
+        } else if(vs1[i] > vs2[i]) {
+            return 1;
+        }
+    }
+    if(vs1.size() > minL) {
+        for(i = minL; i < vs1.size(); ++i) {
+            if(vs1[i] != 0) {
+                return 1;
+            }
+        }
+    }
+    if(vs2.size() > minL) {
+        for(i = minL; i < vs2.size(); ++i) {
+            if(vs2[i] != 0) {
+                return -1;
+            }
+        }
+    }
+    return 0;
+}
+
+
+// Simple Calculator 
+// !Copy from the solution, need to review carefully.
+void LC::_0224_BasicCalculator::pushNum(std::stack<double>& numStack, std::string& tmp) {
+    if(!tmp.empty()) {
+        numStack.push(std::stod(tmp));
+        tmp.clear();
+    }
+}
+
+void LC::_0224_BasicCalculator::cal(std::stack<double>& numStack, char op) {
+    double rOpNum = numStack.top();
+    numStack.pop();
+    double lOpNum = numStack.top();
+    numStack.pop();
+    int res = 0;
+    switch(op) {
+        case '+' :
+            res = lOpNum + rOpNum;
+            break;
+        case '-' :
+            res = lOpNum - rOpNum;
+            break;
+        case '*' :
+            res = lOpNum * rOpNum;
+            break;
+        case '/' :
+            res = lOpNum / rOpNum;
+            break;
+    }
+    numStack.push(res);
+}
+
+int LC::_0224_BasicCalculator::priority(char op) {
+    int p = 0;
+    if(op == '(') {
+        p = 1;
+    }
+    if(op == '+' || op == '-') {
+        p = 2;
+    }
+    if(op == '*' || op == '/') {
+        p = 3;
+    }
+    return p;
+}
+
+int LC::_0224_BasicCalculator::calculate(std::string s) {
+    size_t startIdx = 0;
+    size_t endIdx = s.size() - 1;
+    while(s[startIdx] == ' ') {
+        ++startIdx;
+    }
+    while(s[endIdx] == ' ') {
+        --endIdx;
+    }
+
+    std::stack<double> numStack;
+    std::stack<char> opStack;
+    std::string tmp;
+    for(size_t i = startIdx; i <= endIdx; ++i) {
+        char token = s[i];
+        if(token == '+' || token == '-' || token == '*' || token == '/') { // is operator
+            pushNum(numStack, tmp);
+            if(opStack.empty()) {
+                opStack.push(token);
+            } else {
+                int curPri = priority(token); // current operator's priority
+                char topOp = opStack.top();   // operator in the opStack
+                int topPri = priority(topOp); // opStack top operator's priority
+                if(curPri > topPri) {         // if current operator's priority is higher than opStack top operator's priority
+                    opStack.push(token);      // push current operator to the stack
+                } else {                      // otherwise 
+                    while(curPri <= topPri) { // calculate based on the topPriority until the current operator's priority is higher than opStack top operator's priority
+                        opStack.pop();
+                        cal(numStack, topOp);
+                        if(opStack.size() > 0) {
+                            topOp = opStack.top();
+                            topPri = priority(topOp);
+                        } else {
+                            break;
+                        }
+                    }
+                    opStack.push(token);
+                }
+            }
+        } else if(token == '(') {
+            pushNum(numStack, tmp);
+            opStack.push(token); // always push "(" to the stack
+        } else if(token == ')') {
+            pushNum(numStack, tmp);
+            // Calculate until see the '('
+            while(!opStack.empty() && opStack.top() != '(') {
+                char topOp = opStack.top();
+                cal(numStack, topOp);
+                opStack.pop();
+            }
+            opStack.pop(); // pop "(";
+        } else if(token >= '0' && token <= '9') {
+            tmp += token;
+        } else {
+            continue;
+        }
+    }
+
+    if(!tmp.empty()) {
+        numStack.push(std::stod(tmp));
+        tmp.clear();
+    }
+    while(!opStack.empty()) {
+        char topOp = opStack.top();
+        cal(numStack, topOp);
+        opStack.pop();
+    }
+    return numStack.top();
+}
+
+
+std::vector<int> LC::_0241_DifferentWaysToAddParentheses::diffWaysToCompute(std::string input) {
+    return diffWaysToComp(input, 0, input.size());;
+}
+
+std::vector<int> LC::_0241_DifferentWaysToAddParentheses::diffWaysToComp(const std::string& input, int start, int end) {
+    if(map.find(input.substr(start, end-start)) != map.end()) { // if the expression is already evaluated
+        return map[input.substr(start, end-start)];
+    }
+    if(start == end) {
+        return {};
+    }
+    
+    std::string su = input.substr(start, end-start); 
+    if(su.find("+") == std::string::npos && su.find("-") == std::string::npos && su.find("*") == std::string::npos) { // it is a number
+        return map[su] = {std::stoi(su)};
+    }
+
+    std::vector<int> res;
+    for(int i = start; i < end; ++i) {
+        if(input[i] == '+' || input[i] == '-' || input[i] == '*') { // if we saw an operator, split it there
+            const auto& left = diffWaysToComp(input, start, i);
+            const auto& right = diffWaysToComp(input, i+1, end);
+            for(auto l : left) { //for each left evaluated value
+                for(auto r : right) { // for each right evaluated value
+                    if(input[i] == '+') {
+                        res.push_back(l + r);
+                    }
+                    if(input[i] == '-') {
+                        res.push_back(l - r);
+                    }
+                    if(input[i] == '*') {
+                        res.push_back(l * r);
+                    }
+                }
+            }
+            
+        }
+    }
+    return map[input.substr(start, end-start)] = res; // put the evaluated value to a map
 }

@@ -187,6 +187,19 @@ TEST(LC, _0120_Triangle_meta) {
     EXPECT_EQ(*std::min_element(begin(tmp), end(tmp)), 11);
 }
 
+TEST(LC, _0238_ProductOfArrayExceptSelf) {
+    LC::_0238_ProductOfArrayExceptSelf obj;
+    std::vector<int> t{1,2,3,4};
+    std::vector<int> base{24,12,8,6};
+    EXPECT_EQ(obj.productExceptSelf(t), base);
+}
+
+TEST(LC, _0243_ShortestWordDistance) {
+    LC::_0243_ShortestWordDistance obj;
+    std::vector<std::string> input{"practice", "makes", "perfect", "coding", "makes"};
+    EXPECT_EQ(obj.shortestDistance(input, "coding", "practice"), 3);
+}
+
 TEST(LC, _0406_QueueReconstructionByHeight) {
     LC::_0406_QueueReconstructionByHeight obj;
     std::vector<std::pair<int,int>> input{{7,0}, {4,4}, {7,1}, {5,0}, {6,1}, {5,2}};

@@ -782,6 +782,28 @@ private:
     std::queue<int> nums;
 };
 
+
+
+/*
+Given a sorted integer array without duplicates, return the summary of its ranges.
+
+Example 1:
+
+Input:  [0,1,2,4,5,7]
+Output: ["0->2","4->5","7"]
+Explanation: 0,1,2 form a continuous range; 4,5 form a continuous range.
+Example 2:
+
+Input:  [0,2,3,4,6,8,9]
+Output: ["0","2->4","6","8->9"]
+Explanation: 2,3,4 form a continuous range; 8,9 form a continuous range.
+*/
+class _0228_SummaryRange {
+public:
+    std::vector<std::string> summaryRanges(std::vector<int>& nums);
+};
+
+
 /*
 Implement the following operations of a queue using stacks.
 
@@ -820,24 +842,21 @@ public:
 
 
 /*
-Given a sorted integer array without duplicates, return the summary of its ranges.
+Given an array nums of n integers where n > 1,  return an array output such that output[i] is equal 
+to the product of all the elements of nums except nums[i].
 
-Example 1:
+Input:  [1,2,3,4]
+Output: [24,12,8,6]
+Note: Please solve it without division and in O(n).
 
-Input:  [0,1,2,4,5,7]
-Output: ["0->2","4->5","7"]
-Explanation: 0,1,2 form a continuous range; 4,5 form a continuous range.
-Example 2:
-
-Input:  [0,2,3,4,6,8,9]
-Output: ["0","2->4","6","8->9"]
-Explanation: 2,3,4 form a continuous range; 8,9 form a continuous range.
+Follow up:
+Could you solve it with constant space complexity? (The output array does not count as extra space 
+for the purpose of space complexity analysis.)
 */
-class _0228_SummaryRange {
+class _0238_ProductOfArrayExceptSelf {
 public:
-    std::vector<std::string> summaryRanges(std::vector<int>& nums);
+    std::vector<int> productExceptSelf(std::vector<int>& nums);
 };
-
 
 /*
 Given a list of words and two words word1 and word2, return the shortest distance between these two words in the list.
@@ -853,6 +872,27 @@ You may assume that word1 does not equal to word2, and word1 and word2 are both 
 class _0243_ShortestWordDistance {
 public:
     int shortestDistance(std::vector<std::string>& words, std::string word1, std::string word2);
+};
+
+
+/*
+Given a list of words and two words word1 and word2, return the shortest distance between these two words in the list.
+
+word1 and word2 may be the same and they represent two individual words in the list.
+
+Example:
+Assume that words = ["practice", "makes", "perfect", "coding", "makes"].
+
+Input: word1 = “makes”, word2 = “coding”
+Output: 1
+Input: word1 = "makes", word2 = "makes"
+Output: 3
+Note:
+You may assume word1 and word2 are both in the list.
+*/
+class _0245_ShortestWordDistanceIII {
+public:
+    int shortestWordDistance(std::vector<std::string>& words, std::string word1, std::string word2);
 };
 
 

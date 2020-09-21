@@ -12,22 +12,6 @@
 namespace LeetCode {
 
 
-/*
-Tag: bit operations
-TODO: n & (n-1) trick
-Given a range [m, n] where 0 <= m <= n <= 2147483647, return the bitwise AND of all numbers in this range, inclusive.
-
-Input: [5,7]
-Output: 4
-Example 2:
-
-Input: [0,1]
-Output: 0
-*/
-class _0201_BitwiseANDofNumbersRange {
-public:
-    int rangeBitwiseAnd(int m, int n);
-};
 
 
 
@@ -50,9 +34,6 @@ class _0214_ShortestPalindrome {
 public:
     std::string shortestPalindrome(std::string s);
 };
-
-
-
 
 
 /*
@@ -113,40 +94,6 @@ public:
 };
 
 
-
-
-
-/*
-Implement a basic calculator to evaluate a simple expression string.
-
-The expression string may contain open ( and closing parentheses ), the plus + or minus sign -, non-negative integers and empty spaces .
-
-Example 1:
-
-Input: "1 + 1"
-Output: 2
-Example 2:
-
-Input: " 2-1 + 2 "
-Output: 3
-Example 3:
-
-Input: "(1+(4+5+2)-3)+(6+8)"
-Output: 23
-Note:
-You may assume that the given expression is always valid.
-Do not use the eval built-in library function.
-*/
-class _0224_BasicCalculator {
-public:
-    int calculate(std::string s);
-private:
-    void pushNum(std::stack<double>& numStack, std::string& tmp);
-    void cal(std::stack<double>& numStack, char op);
-    int priority(char op);
-};
-
-
 /*
 Implement a basic calculator to evaluate a simple expression string.
 
@@ -200,90 +147,6 @@ public:
 };
 
 
-/*
-    Given a binary search tree (BST), find the lowest common 
-    ancestor (LCA) of two given nodes in the BST.
-    
-    According to the definition of LCA on Wikipedia: The lowest 
-    common ancestor is defined between two nodes p and q as the 
-    lowest node in T that has both p and q as descendants (where 
-    we allow a node to be a descendant of itself).
-    
-    Given binary search tree:  root = [6,2,8,0,4,7,9,null,null,3,5]
-         _______6______
-        /              \
-     ___2__          ___8__
-    /      \        /      \
-    0       4       7       9
-   /  \
-   3   5
-
-Example 1:
-    Input: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8
-    Output: 6
-    Explanation: The LCA of nodes 2 and 8 is 6.
-Example 2:
-    Input: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 4
-    Output: 2
-    Explanation: The LCA of nodes 2 and 4 is 2, since a node 
-    can be a descendant of itself according to the LCA definition.
-Note:
-    All of the nodes' values will be unique. p and q are different 
-    and both values will exist in the BST.
-Challenge: 
-    Think about the case that the tree is not a binary search tree?
-*/
-class _0235_LowestCommonAncestor{ 
-public:
-    TreeNode<int> *lowestCommonAncestorRecursive(TreeNode<int> *root, TreeNode<int> *p, TreeNode<int> *q);
-    TreeNode<int> *lowestCommonAncestorIterative(TreeNode<int> *root, TreeNode<int> *p, TreeNode<int> *q);
-};
-
-
-/*
-Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.
-According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined 
-between two nodes p and q as the lowest node in T that has both p and q as descendants 
-(where we allow a node to be a descendant of itself).”
-
-Given the following binary tree:  root = [3,5,1,6,2,0,8,null,null,7,4]
-
-Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1
-Output: 3
-Explanation: The LCA of nodes 5 and 1 is 3.
-
-Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 4
-Output: 5
-Explanation: The LCA of nodes 5 and 4 is 5, since a node can be a descendant of itself according to the LCA definition.
-
-Note:
-All of the nodes' values will be unique.
-p and q are different and both values will exist in the binary tree.
-*/
-class _0236_LowestCommonAncestorOfABinaryTree {
-public:
-    TreeNode<int>* lowestCommonAncestor(TreeNode<int>* root, TreeNode<int>* p, TreeNode<int>* q);
-};
-
-
-
-/*
-Given an array nums of n integers where n > 1,  return an array output such that output[i] is equal 
-to the product of all the elements of nums except nums[i].
-
-Input:  [1,2,3,4]
-Output: [24,12,8,6]
-Note: Please solve it without division and in O(n).
-
-Follow up:
-Could you solve it with constant space complexity? (The output array does not count as extra space 
-for the purpose of space complexity analysis.)
-*/
-class _0238_ProductOfArrayExceptSelf {
-public:
-    std::vector<int> productExceptSelf(std::vector<int>& nums);
-};
-
 
 /*
 Write an efficient algorithm that searches for a value 
@@ -311,54 +174,7 @@ public:
     bool searchMatrix(const std::vector<std::vector<int>> &matrix, int target);
 };
 
-/*
-Given a string of numbers and operators, return all possible results from computing 
-all the different possible ways to group numbers and operators. The valid operators 
-are +, - and *.
 
-Input: "2-1-1"
-Output: [0, 2]
-Explanation: 
-((2-1)-1) = 0 
-(2-(1-1)) = 2
-
-Input: "2*3-4*5"
-Output: [-34, -14, -10, -10, 10]
-Explanation: 
-(2*(3-(4*5))) = -34 
-((2*3)-(4*5)) = -14 
-((2*(3-4))*5) = -10 
-(2*((3-4)*5)) = -10 
-(((2*3)-4)*5) = 10
-*/
-class _0241_DifferentWaysToAddParentheses {
-private:
-    std::unordered_map<std::string, std::vector<int>> map;
-public:
-    std::vector<int> diffWaysToCompute(std::string input);
-    std::vector<int> diffWaysToComp(const std::string& input, int start, int end);
-};
-
-
-/*
-Given a list of words and two words word1 and word2, return the shortest distance between these two words in the list.
-
-word1 and word2 may be the same and they represent two individual words in the list.
-
-Example:
-Assume that words = ["practice", "makes", "perfect", "coding", "makes"].
-
-Input: word1 = “makes”, word2 = “coding”
-Output: 1
-Input: word1 = "makes", word2 = "makes"
-Output: 3
-Note:
-You may assume word1 and word2 are both in the list.
-*/
-class _0245_ShortestWordDistanceIII {
-public:
-    int shortestWordDistance(std::vector<std::string>& words, std::string word1, std::string word2);
-};
 
 
 /*
@@ -431,35 +247,6 @@ public:
     int minMeetingRooms(std::vector<std::vector<int>>& intervals);
 };
 
-
-/*
-Given an array of numbers, verify whether it is the correct preorder traversal sequence of a binary search tree.
-
-You may assume each number in the sequence is unique.
-
-Consider the following binary search tree: 
-
-     5
-    / \
-   2   6
-  / \
- 1   3
-Example 1:
-
-Input: [5,2,6,1,3]
-Output: false
-Example 2:
-
-Input: [5,2,1,3,6]
-Output: true
-Follow up:
-Could you do it using only constant space complexity?
-*/
-class _0255_VerifyPreorderSequenceInBinarySearchTree {
-public:
-    bool verifyPreorder(std::vector<int>& preorder);
-    bool isPreorder(std::vector<int>& preorder, int startIdx, int endIdx);
-};
 
 
 /*

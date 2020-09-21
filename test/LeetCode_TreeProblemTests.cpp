@@ -112,3 +112,48 @@ TEST(LC, _0116_PopulatingNextRightPointerInEachNode) {
 TEST(LC, _0428_SerializeAndDeserializeNAryTree) {
     EXPECT_TRUE(true);
 }
+
+TEST(LC, _0235_LowestCommonAncestorOfABinarySearchTree) {
+    LC::_0235_LowestCommonAncestor obj;
+    LC::TreeNode* r = new LC::TreeNode(6);
+    r->left = new LC::TreeNode(2);
+    r->right = new LC::TreeNode(8);
+    r->right->left = new LC::TreeNode(7);
+    r->right->right = new LC::TreeNode(9);
+    r->left->left = new LC::TreeNode(0);
+    r->left->right = new LC::TreeNode(4);
+    r->left->right->left = new LC::TreeNode(3);
+    r->left->right->right = new LC::TreeNode(5);
+
+    LC::TreeNode* p = r->left;
+    LC::TreeNode* q = r->right;
+    EXPECT_EQ(obj.lowestCommonAncestorIterative(r, p, q), r);
+    EXPECT_EQ(obj.lowestCommonAncestorRecursive(r, p, q), r);
+
+    LC::TreeNode* p1 = r->left->right->left;
+    LC::TreeNode* q1 = r->left->left;
+    EXPECT_EQ(obj.lowestCommonAncestorIterative(r, p1, q1), r->left);
+    EXPECT_EQ(obj.lowestCommonAncestorRecursive(r, p1, q1), r->left);
+
+}
+TEST(LC, _0236_LowestCommonAncestorBinaryTree) {
+    LC::_0236_LowestCommonAncestorBinaryTree obj;
+    LC::TreeNode* r = new LC::TreeNode(3);
+    r->left = new LC::TreeNode(5);
+    r->right = new LC::TreeNode(1);
+    r->left->left = new LC::TreeNode(6);
+    r->left->right = new LC::TreeNode(2);
+    r->left->right->left = new LC::TreeNode(7);
+    r->left->right->right = new LC::TreeNode(4);
+    r->right->left = new LC::TreeNode(0);
+    r->right->right = new LC::TreeNode(8);
+    LC::TreeNode* p = r->right->left;
+    LC::TreeNode* q = r->left->right->right;
+    EXPECT_EQ(obj.lowestCommonAncestor(r, p, q), r);
+}
+
+TEST(LC, _0255_VerifyPreorderSequenceInBinarySearchTree) {
+    LC::_0255_VerifyPreorderSequenceInBinarySearchTree obj;
+    std::vector<int> t{5,2,6,1,3};
+    EXPECT_FALSE(obj.verifyPreorder(t));
+}

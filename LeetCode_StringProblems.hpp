@@ -1,6 +1,7 @@
 #ifndef LEETCODE_STRINGPROBLEMS_HPP
 #define LEETCODE_STRINGPROBLEMS_HPP
 #include <vector>
+#include <stack>
 #include <string>
 #include <unordered_set>
 #include <unordered_map>
@@ -256,6 +257,47 @@ public:
     std::string reverseWords_O1(std::string s);
 };
 
+
+/*
+Tag: string,
+TODO: Too much details need to be considered
+
+Compare two version numbers version1 and version2.
+If version1 > version2 return 1; if version1 < version2 return -1;otherwise return 0.
+You may assume that the version strings are non-empty and contain only digits and the . character.
+The . character does not represent a decimal point and is used to separate number sequences.
+For instance, 2.5 is not "two and a half" or "half way to version three", it is the fifth 
+second-level revision of the second first-level revision.
+You may assume the default revision number for each level of a version number to be 0. 
+For example, version number 3.4 has a revision number of 3 and 4 for its first and second 
+level revision number. Its third and fourth level revision number are both 0.
+
+Input: version1 = "0.1", version2 = "1.1"             :          Output: -1
+Input: version1 = "1.0.1", version2 = "1"             :          Output: 1
+Input: version1 = "7.5.2.4", version2 = "7.5.3"       :          Output: -1
+Input: version1 = "1.01", version2 = "1.001"          :          Output: 0
+Explanation: Ignoring leading zeroes, both “01” and “001" represent the same number “1”
+
+Input: version1 = "1.0", version2 = "1.0.0"
+Output: 0
+Explanation: The first version number does not have a 
+third level revision number, which means its third level 
+revision number is default to "0"
+
+Note:
+
+Version strings are composed of numeric strings separated by dots . and this numeric strings may have leading zeroes.
+Version strings do not start or end with dots, and they will not be two consecutive dots.
+*/
+class _0165_CompareVersionNumbers {
+private:
+    int findDot(const std::string& v);
+    std::string removeHeadingZeros(const std::string& v);
+public:
+    int compareVersion(std::string version1, std::string version2);
+
+};
+
 /*
 Given a list of non negative integers, arrange them such that they 
 form the largest number.
@@ -408,6 +450,58 @@ private:
     TrieNode* root = new TrieNode();
     bool search(const char* word, TrieNode* node);
 };
+
+
+
+/* Implement a basic calculator to evaluate a simple expression string.
+The expression string may contain open ( and closing parentheses ), 
+the plus + or minus sign -, non-negative integers and empty spaces .
+
+Input: "1 + 1"                  :    Output: 2
+Input: " 2-1 + 2 "              :    Output: 3
+Input: "(1+(4+5+2)-3)+(6+8)"    :    Output: 23
+Note:
+You may assume that the given expression is always valid.
+Do not use the eval built-in library function.
+*/
+class _0224_BasicCalculator {
+public:
+    int calculate(std::string s);
+private:
+    void pushNum(std::stack<double>& numStack, std::string& tmp);
+    void cal(std::stack<double>& numStack, char op);
+    int priority(char op);
+};
+
+
+/*
+Given a string of numbers and operators, return all possible results from computing 
+all the different possible ways to group numbers and operators. The valid operators 
+are +, - and *.
+
+Input: "2-1-1"
+Output: [0, 2]
+Explanation: 
+((2-1)-1) = 0 
+(2-(1-1)) = 2
+
+Input: "2*3-4*5"
+Output: [-34, -14, -10, -10, 10]
+Explanation: 
+(2*(3-(4*5))) = -34 
+((2*3)-(4*5)) = -14 
+((2*(3-4))*5) = -10 
+(2*((3-4)*5)) = -10 
+(((2*3)-4)*5) = 10
+*/
+class _0241_DifferentWaysToAddParentheses {
+private:
+    std::unordered_map<std::string, std::vector<int>> map;
+public:
+    std::vector<int> diffWaysToCompute(std::string input);
+    std::vector<int> diffWaysToComp(const std::string& input, int start, int end);
+};
+
 
 
 /*

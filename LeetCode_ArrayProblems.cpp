@@ -1099,6 +1099,22 @@ bool LC::_0232_ImplementQueueUsingStacks::empty() {
     return (left.empty() && right.empty());
 }
 
+
+// Facebook
+std::vector<int> LC::_0238_ProductOfArrayExceptSelf::productExceptSelf(std::vector<int>& nums) {
+    std::vector<int> res(nums.size(), 1);
+    for(int i = 1; i < res.size(); ++i) {
+        res[i] = nums[i-1] * res[i - 1];
+    }
+
+    int t = 1;
+    for(int i = nums.size() - 2; i >= 0; --i) {
+        t *= nums[i+1];
+        res[i] *= t;
+    }
+    return res;
+}
+
 int LC::_0243_ShortestWordDistance::shortestDistance(std::vector<std::string>& words, std::string word1, std::string word2) {
     int iw1 = -1;
     int iw2 = -1;
@@ -1116,6 +1132,47 @@ int LC::_0243_ShortestWordDistance::shortestDistance(std::vector<std::string>& w
     return dis;
 }
 
+
+int LC::_0245_ShortestWordDistanceIII::shortestWordDistance(std::vector<std::string>& words, std::string word1, std::string word2) {
+    int p1 = -1;
+    int p2 = -1;
+    int dis = INT_MAX;
+
+    if(word1 != word2) {
+        for(int i = 0; i < words.size(); ++i) {
+            if(words[i] == word1) {
+                p1 = i;
+            }
+            if(words[i] == word2) {
+                p2 = i;
+            }
+            if(p1 != -1 && p2 != -1) {
+                dis = std::min(std::abs(p2-p1), dis);
+            }
+        }
+        return dis;
+    } else {
+        // Special case that two words are the same
+        for(int i = 0; i < words.size(); ++i) {
+            if(words[i] == word1) {
+                if(p1 == -1) {
+                    p1 = i;
+                } else {
+                    if(p2 == -1) {
+                        p2 = i;
+                    } else {
+                        p1 = p2;
+                        p2 = i;
+                    }
+                }
+                if(p1 != -1 && p2 != -1) {
+                    dis = std::min(std::abs(p2-p1), dis);
+                }
+            }
+        }
+        return dis;
+    }
+}
 
 LC::_0251_Flatten2DVector::_0251_Flatten2DVector(std::vector<std::vector<int>>& v) {
     i = v.begin();

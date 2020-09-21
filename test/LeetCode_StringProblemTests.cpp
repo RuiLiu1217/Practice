@@ -70,3 +70,20 @@ TEST(LC, _0179_LargestNumber) {
     std::vector<int> v{10, 2};
     EXPECT_EQ(obj.largestNumber(v), "210");
 }
+
+TEST(LC, _0224_BasicCalculator) {
+    LC::_0224_BasicCalculator obj;
+    std::string exp1{"1+2*2"};
+    EXPECT_EQ(obj.calculate(exp1), 5);
+
+    std::string exp2{"((1+1) * 3 - 2) / 2 + (((3*2-3/3)+(5) + 2) / 3)"};
+    EXPECT_EQ(obj.calculate(exp2), 6);
+}
+
+TEST(LC, _0241_DifferentWaysToAddParentheses) {
+    LC::_0241_DifferentWaysToAddParentheses obj;
+    std::vector<int> base{2, 0};
+    EXPECT_EQ(obj.diffWaysToCompute("2-1-1"), base);
+    std::vector<int> base2{-34, -10, -14, -10, 10};
+    EXPECT_EQ(obj.diffWaysToCompute("2*3-4*5"), base2);
+}
