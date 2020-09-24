@@ -15,6 +15,7 @@ add_subdirectory(googletest)
 set(Headers
     LintCode.hpp
     LeetCode_ArrayProblems.hpp
+    LeetCode_BinarySearchProblem.hpp
     LeetCode_GraphProblems.hpp
     LeetCode_LinkListProblems.hpp
     LeetCode_SlidingWindowProblems.hpp
@@ -35,6 +36,7 @@ set(Headers
 set(Sources
     LintCode.cpp
     LeetCode_ArrayProblems.cpp
+    LeetCode_BinarySearchProblem.cpp
     LeetCode_GraphProblems.cpp
     LeetCode_LinkListProblems.cpp
     LeetCode_SlidingWindowProblems.cpp

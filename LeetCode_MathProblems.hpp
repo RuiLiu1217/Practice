@@ -219,6 +219,20 @@ public:
 
 
 /*
+Given a non-negative integer num, repeatedly add all its digits until the 
+result has only one digit.
+
+Input: 38
+Output: 2 
+Explanation: The process is like: 3 + 8 = 11, 1 + 1 = 2. 
+    Since 2 has only one digit, return it.
+*/
+class _0258_AddDigits {
+public:
+    int addDigits(int num);
+};
+
+/*
 Write a program to check whether a given number is an ugly number.
 
 Ugly numbers are positive numbers whose prime factors only include 2, 3, 5.
@@ -247,6 +261,36 @@ class _0263_UglyNumber {
 public:
     bool isUgly(int num);
 };
+
+/*
+Given two sparse matrices A and B, return the result of AB.
+You may assume that A's column number is equal to B's row number.
+
+Input:
+
+A = [
+  [ 1, 0, 0],
+  [-1, 0, 3]
+]
+
+B = [
+  [ 7, 0, 0 ],
+  [ 0, 0, 0 ],
+  [ 0, 0, 1 ]
+]
+
+Output:
+
+     |  1 0 0 |   | 7 0 0 |   |  7 0 0 |
+AB = | -1 0 3 | x | 0 0 0 | = | -7 0 3 |
+                  | 0 0 1 |
+*/
+class _0311_SparseMatrixMultiplication {
+public:
+    std::vector<std::vector<int>> multiply(std::vector<std::vector<int>>& A, std::vector<std::vector<int>>& B);
+
+};
+
 
 
 /*

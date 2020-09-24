@@ -234,3 +234,39 @@ bool LC::_0403_FrogJump::canCross(std::vector<int>& stones) {
     }
     return false;
 }
+
+
+void LC::_0286_WallsAndGates::wallsAndGates(std::vector<std::vector<int>>& rooms) {
+    const int row = rooms.size();
+    if(0 == row) {
+        return;
+    }
+    const int col = rooms[0].size();
+    if(0 == col) {
+        return;
+    }
+    
+    std::queue<int> canSearch; 
+    int dirs[5] = {1, 0, -1, 0, 1};
+    for(int i = 0; i < row; ++i) {
+        for(int j = 0; j < col; ++j) {
+            if(rooms[i][j] == 0) {
+                canSearch.push(i * col + j);
+            }
+        }
+    }
+    while(!canSearch.empty()) {
+        int v = canSearch.front(); canSearch.pop();
+        int r = v / col;
+        int c = v % col;
+        for(int d = 0; d < 4; ++d) {
+            int x = r + dirs[d];
+            int y = c + dirs[d+1];
+            if(x < 0 || x >= row || y < 0 || y >= col || rooms[x][y] <= rooms[r][c] + 1) {
+                continue;
+            }
+            rooms[x][y] = rooms[r][c] + 1;
+            canSearch.push(x * col + y);
+        }
+    }
+}

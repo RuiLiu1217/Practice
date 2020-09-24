@@ -28,8 +28,21 @@ TEST(LC, _1447_SimplifiedFractions) {
     EXPECT_EQ(obj.simplifiedFractions(3), base);
 }
 
+TEST(LC, _0258_AddDigits) {
+    LC::_0258_AddDigits obj;
+    EXPECT_EQ(obj.addDigits(234623), 2);
+}
+
 TEST(LC, _0263_UglyNumber) {
     LC::_0263_UglyNumber obj;
     EXPECT_TRUE(obj.isUgly(2));
     EXPECT_FALSE(obj.isUgly(7));
+}
+
+TEST(LC, _0311_SparseMatrixMultiplication) {
+    LC::_0311_SparseMatrixMultiplication obj;
+    std::vector<std::vector<int>> A{{1, 0, 0}, {-1, 0, 3}};
+    std::vector<std::vector<int>> B{{7, 0, 0}, {0, 0, 0 }, {0, 0, 1}};
+    std::vector<std::vector<int>> res{{7,0,0},{-7,0,3}};
+    EXPECT_EQ(obj.multiply(A, B), res);
 }

@@ -7,6 +7,7 @@ set(Sources
     LintCodeTest.cpp
     LeetCode_GraphProblemsTest.cpp
     LeetCode_ArrayProblemTests.cpp
+    LeetCode_BinarySearchProblemTests.cpp
     LeetCode_LinkListProblemTests.cpp
     LeetCode_SlidingWindowProblemTests.cpp
     LeetCode_StringProblemTests.cpp

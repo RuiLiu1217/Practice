@@ -94,3 +94,11 @@ TEST(LC, LC__0267_Test) {
     std::vector<std::string> base2{};
     EXPECT_EQ(obj.generatePalindromes("abc"), base2);
 }
+
+TEST(LC, _0417_PacificAtlanticWaterFlow) {
+    LC::_0417_PacificAtlanticWaterFlow obj;
+    std::vector<std::vector<int>> matrix{{1,2,2,3,5}, {3,2,3,4,4},{2,4,5,3,1},{6,7,1,4,5},{5,1,1,2,4}};
+    std::vector<std::vector<int>> res{{0,4},{1,3},{1,4},{2,2},{3,0},{3,1},{4,0}};
+    EXPECT_EQ(obj.pacificAtlantic(matrix),res);
+}
+    

@@ -981,6 +981,132 @@ public:
     std::vector<std::string> binaryTreePaths(TreeNode* root);
 };
 
+
+/*
+Given a non-empty binary search tree and a target value, find the 
+value in the BST that is closest to the target.
+
+Note:
+
+Given target value is a floating point.
+You are guaranteed to have only one unique value in the BST that 
+is closest to the target.
+
+Input: root = [4,2,5,1,3], target = 3.714286
+
+    4
+   / \
+  2   5
+ / \
+1   3
+Output: 4
+*/
+class _0270_ClosetBinarySearchTreeValue {
+public:
+    int closestValue(TreeNode* root, double target); 
+};
+
+/*
+Given a binary search tree and a node in it, find the in-order successor of that node in the BST.
+The successor of a node p is the node with the smallest key greater than p.val.
+
+Input: root = [2,1,3], p = 1
+Output: 2
+Explanation: 1's in-order successor node is 2. Note that both p and the return value is of TreeNode type.
+
+Input: root = [5,3,6,2,4,null,null,1], p = 6
+Output: null
+Explanation: There is no in-order successor of the current node, so the answer is null.
+ 
+Note:
+
+If the given node has no in-order successor in the tree, return null.
+It's guaranteed that the values of the tree are unique.
+
+*/
+class _0285_InorderSuccessorInBST {
+private:
+    std::stack<TreeNode*> st;
+    TreeNode* getNext();
+public:
+    TreeNode* inorderSuccessor(TreeNode* root, TreeNode* p);
+};
+
+
+/*
+Given a binary tree, return the vertical order traversal of its nodes' values. (ie, from top to bottom, column by column).
+If two nodes are in the same row and column, the order should be from left to right.
+
+Input: [3,9,20,null,null,15,7]
+
+   3
+  /\
+ /  \
+ 9  20
+    /\
+   /  \
+  15   7 
+
+Output:
+
+[
+  [9],
+  [3,15],
+  [20],
+  [7]
+]
+Examples 2:
+
+Input: [3,9,8,4,0,1,7]
+
+     3
+    /\
+   /  \
+   9   8
+  /\  /\
+ /  \/  \
+ 4  01   7 
+
+Output:
+
+[
+  [4],
+  [9],
+  [3,0,1],
+  [8],
+  [7]
+]
+Examples 3:
+
+Input: [3,9,8,4,0,1,7,null,null,null,2,5] (0's right child is 2 and 1's left child is 5)
+
+     3
+    /\
+   /  \
+   9   8
+  /\  /\
+ /  \/  \
+ 4  01   7
+    /\
+   /  \
+   5   2
+
+Output:
+
+[
+  [4],
+  [9,5],
+  [3,0,1],
+  [8,2],
+  [7]
+]
+*/
+class _0314_BinaryTreeVertialOrderTraversal {
+public:
+    std::vector<std::vector<int>> verticalOrder(TreeNode* root);
+};
+
+
 /*
 Serialization is the process of converting a data structure or object into a sequence of bits 
 so that it can be stored in a file or memory buffer, or transmitted across a network connection 
@@ -1037,6 +1163,62 @@ private:
         }
         return node;
     }
+};
+
+/*
+Given a node in a binary search tree, find the in-order successor of that node in the BST.
+If that node has no in-order successor, return null.
+The successor of a node is the node with the smallest key greater than node.val.
+You will have direct access to the node but not to the root of the tree. Each node will 
+have a reference to its parent node. Below is the definition for Node:
+
+class Node {
+    public int val;
+    public Node left;
+    public Node right;
+    public Node parent;
+}
+ 
+
+Follow up:
+Could you solve it without looking up any of the node's values?
+
+
+Input: tree = [2,1,3], node = 1
+Output: 2
+Explanation: 1's in-order successor node is 2. Note that both the node and the return value is of Node type.
+
+Input: tree = [5,3,6,2,4,null,null,1], node = 6
+Output: null
+Explanation: There is no in-order successor of the current node, so the answer is null.
+
+Input: tree = [15,6,18,3,7,17,20,2,4,null,13,null,null,null,null,null,null,null,null,9], node = 15
+Output: 17
+
+Input: tree = [15,6,18,3,7,17,20,2,4,null,13,null,null,null,null,null,null,null,null,9], node = 13
+Output: 15
+
+Input: tree = [0], node = 0
+Output: null
+ 
+
+Constraints:
+
+-10^5 <= Node.val <= 10^5
+1 <= Number of Nodes <= 10^4
+All Nodes will have unique values.
+*/
+class _0510_InorderSuccessorInBSTII {
+public:
+    class Node {
+    public:
+        int val;
+        Node* left;
+        Node* right;
+        Node* parent;
+        Node(int v) : val(v), left(nullptr), right(nullptr), parent(nullptr) {}
+    };
+    Node* inorderSuccessor(Node* node);
 };
 
 }

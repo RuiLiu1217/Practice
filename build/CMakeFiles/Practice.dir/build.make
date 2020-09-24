@@ -102,9 +102,22 @@ CMakeFiles/Practice.dir/LeetCode_ArrayProblems.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Practice.dir/LeetCode_ArrayProblems.cpp.s"
 	C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_ArrayProblems.cpp -o CMakeFiles\Practice.dir\LeetCode_ArrayProblems.cpp.s
 
+CMakeFiles/Practice.dir/LeetCode_BinarySearchProblem.cpp.obj: CMakeFiles/Practice.dir/flags.make
+CMakeFiles/Practice.dir/LeetCode_BinarySearchProblem.cpp.obj: ../LeetCode_BinarySearchProblem.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Practice.dir/LeetCode_BinarySearchProblem.cpp.obj"
+	C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Practice.dir\LeetCode_BinarySearchProblem.cpp.obj -c C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_BinarySearchProblem.cpp
+
+CMakeFiles/Practice.dir/LeetCode_BinarySearchProblem.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Practice.dir/LeetCode_BinarySearchProblem.cpp.i"
+	C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_BinarySearchProblem.cpp > CMakeFiles\Practice.dir\LeetCode_BinarySearchProblem.cpp.i
+
+CMakeFiles/Practice.dir/LeetCode_BinarySearchProblem.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Practice.dir/LeetCode_BinarySearchProblem.cpp.s"
+	C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_BinarySearchProblem.cpp -o CMakeFiles\Practice.dir\LeetCode_BinarySearchProblem.cpp.s
+
 CMakeFiles/Practice.dir/LeetCode_GraphProblems.cpp.obj: CMakeFiles/Practice.dir/flags.make
 CMakeFiles/Practice.dir/LeetCode_GraphProblems.cpp.obj: ../LeetCode_GraphProblems.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Practice.dir/LeetCode_GraphProblems.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Practice.dir/LeetCode_GraphProblems.cpp.obj"
 	C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Practice.dir\LeetCode_GraphProblems.cpp.obj -c C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_GraphProblems.cpp
 
 CMakeFiles/Practice.dir/LeetCode_GraphProblems.cpp.i: cmake_force
@@ -117,7 +130,7 @@ CMakeFiles/Practice.dir/LeetCode_GraphProblems.cpp.s: cmake_force
 
 CMakeFiles/Practice.dir/LeetCode_LinkListProblems.cpp.obj: CMakeFiles/Practice.dir/flags.make
 CMakeFiles/Practice.dir/LeetCode_LinkListProblems.cpp.obj: ../LeetCode_LinkListProblems.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Practice.dir/LeetCode_LinkListProblems.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Practice.dir/LeetCode_LinkListProblems.cpp.obj"
 	C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Practice.dir\LeetCode_LinkListProblems.cpp.obj -c C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_LinkListProblems.cpp
 
 CMakeFiles/Practice.dir/LeetCode_LinkListProblems.cpp.i: cmake_force
@@ -130,7 +143,7 @@ CMakeFiles/Practice.dir/LeetCode_LinkListProblems.cpp.s: cmake_force
 
 CMakeFiles/Practice.dir/LeetCode_SlidingWindowProblems.cpp.obj: CMakeFiles/Practice.dir/flags.make
 CMakeFiles/Practice.dir/LeetCode_SlidingWindowProblems.cpp.obj: ../LeetCode_SlidingWindowProblems.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Practice.dir/LeetCode_SlidingWindowProblems.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Practice.dir/LeetCode_SlidingWindowProblems.cpp.obj"
 	C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Practice.dir\LeetCode_SlidingWindowProblems.cpp.obj -c C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_SlidingWindowProblems.cpp
 
 CMakeFiles/Practice.dir/LeetCode_SlidingWindowProblems.cpp.i: cmake_force
@@ -143,7 +156,7 @@ CMakeFiles/Practice.dir/LeetCode_SlidingWindowProblems.cpp.s: cmake_force
 
 CMakeFiles/Practice.dir/LeetCode_StringProblems.cpp.obj: CMakeFiles/Practice.dir/flags.make
 CMakeFiles/Practice.dir/LeetCode_StringProblems.cpp.obj: ../LeetCode_StringProblems.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Practice.dir/LeetCode_StringProblems.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Practice.dir/LeetCode_StringProblems.cpp.obj"
 	C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Practice.dir\LeetCode_StringProblems.cpp.obj -c C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_StringProblems.cpp
 
 CMakeFiles/Practice.dir/LeetCode_StringProblems.cpp.i: cmake_force
@@ -156,7 +169,7 @@ CMakeFiles/Practice.dir/LeetCode_StringProblems.cpp.s: cmake_force
 
 CMakeFiles/Practice.dir/LeetCode_MathProblems.cpp.obj: CMakeFiles/Practice.dir/flags.make
 CMakeFiles/Practice.dir/LeetCode_MathProblems.cpp.obj: ../LeetCode_MathProblems.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Practice.dir/LeetCode_MathProblems.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Practice.dir/LeetCode_MathProblems.cpp.obj"
 	C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Practice.dir\LeetCode_MathProblems.cpp.obj -c C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_MathProblems.cpp
 
 CMakeFiles/Practice.dir/LeetCode_MathProblems.cpp.i: cmake_force
@@ -169,7 +182,7 @@ CMakeFiles/Practice.dir/LeetCode_MathProblems.cpp.s: cmake_force
 
 CMakeFiles/Practice.dir/LeetCode_DynamicProgrammingProblems.cpp.obj: CMakeFiles/Practice.dir/flags.make
 CMakeFiles/Practice.dir/LeetCode_DynamicProgrammingProblems.cpp.obj: ../LeetCode_DynamicProgrammingProblems.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Practice.dir/LeetCode_DynamicProgrammingProblems.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Practice.dir/LeetCode_DynamicProgrammingProblems.cpp.obj"
 	C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Practice.dir\LeetCode_DynamicProgrammingProblems.cpp.obj -c C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_DynamicProgrammingProblems.cpp
 
 CMakeFiles/Practice.dir/LeetCode_DynamicProgrammingProblems.cpp.i: cmake_force
@@ -182,7 +195,7 @@ CMakeFiles/Practice.dir/LeetCode_DynamicProgrammingProblems.cpp.s: cmake_force
 
 CMakeFiles/Practice.dir/LeetCode_DesignDrivenProblems.cpp.obj: CMakeFiles/Practice.dir/flags.make
 CMakeFiles/Practice.dir/LeetCode_DesignDrivenProblems.cpp.obj: ../LeetCode_DesignDrivenProblems.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Practice.dir/LeetCode_DesignDrivenProblems.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Practice.dir/LeetCode_DesignDrivenProblems.cpp.obj"
 	C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Practice.dir\LeetCode_DesignDrivenProblems.cpp.obj -c C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_DesignDrivenProblems.cpp
 
 CMakeFiles/Practice.dir/LeetCode_DesignDrivenProblems.cpp.i: cmake_force
@@ -195,7 +208,7 @@ CMakeFiles/Practice.dir/LeetCode_DesignDrivenProblems.cpp.s: cmake_force
 
 CMakeFiles/Practice.dir/LeetCode_GreedyAlgorithmProblems.cpp.obj: CMakeFiles/Practice.dir/flags.make
 CMakeFiles/Practice.dir/LeetCode_GreedyAlgorithmProblems.cpp.obj: ../LeetCode_GreedyAlgorithmProblems.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Practice.dir/LeetCode_GreedyAlgorithmProblems.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Practice.dir/LeetCode_GreedyAlgorithmProblems.cpp.obj"
 	C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Practice.dir\LeetCode_GreedyAlgorithmProblems.cpp.obj -c C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_GreedyAlgorithmProblems.cpp
 
 CMakeFiles/Practice.dir/LeetCode_GreedyAlgorithmProblems.cpp.i: cmake_force
@@ -208,7 +221,7 @@ CMakeFiles/Practice.dir/LeetCode_GreedyAlgorithmProblems.cpp.s: cmake_force
 
 CMakeFiles/Practice.dir/LeetCode_BacktracingProblems.cpp.obj: CMakeFiles/Practice.dir/flags.make
 CMakeFiles/Practice.dir/LeetCode_BacktracingProblems.cpp.obj: ../LeetCode_BacktracingProblems.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Practice.dir/LeetCode_BacktracingProblems.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Practice.dir/LeetCode_BacktracingProblems.cpp.obj"
 	C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Practice.dir\LeetCode_BacktracingProblems.cpp.obj -c C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_BacktracingProblems.cpp
 
 CMakeFiles/Practice.dir/LeetCode_BacktracingProblems.cpp.i: cmake_force
@@ -221,7 +234,7 @@ CMakeFiles/Practice.dir/LeetCode_BacktracingProblems.cpp.s: cmake_force
 
 CMakeFiles/Practice.dir/LeetCode_BitOperationProblems.cpp.obj: CMakeFiles/Practice.dir/flags.make
 CMakeFiles/Practice.dir/LeetCode_BitOperationProblems.cpp.obj: ../LeetCode_BitOperationProblems.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Practice.dir/LeetCode_BitOperationProblems.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Practice.dir/LeetCode_BitOperationProblems.cpp.obj"
 	C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Practice.dir\LeetCode_BitOperationProblems.cpp.obj -c C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_BitOperationProblems.cpp
 
 CMakeFiles/Practice.dir/LeetCode_BitOperationProblems.cpp.i: cmake_force
@@ -234,7 +247,7 @@ CMakeFiles/Practice.dir/LeetCode_BitOperationProblems.cpp.s: cmake_force
 
 CMakeFiles/Practice.dir/LeetCode_TreeProblems.cpp.obj: CMakeFiles/Practice.dir/flags.make
 CMakeFiles/Practice.dir/LeetCode_TreeProblems.cpp.obj: ../LeetCode_TreeProblems.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Practice.dir/LeetCode_TreeProblems.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/Practice.dir/LeetCode_TreeProblems.cpp.obj"
 	C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Practice.dir\LeetCode_TreeProblems.cpp.obj -c C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_TreeProblems.cpp
 
 CMakeFiles/Practice.dir/LeetCode_TreeProblems.cpp.i: cmake_force
@@ -247,7 +260,7 @@ CMakeFiles/Practice.dir/LeetCode_TreeProblems.cpp.s: cmake_force
 
 CMakeFiles/Practice.dir/LeetCode_RecursiveProblems.cpp.obj: CMakeFiles/Practice.dir/flags.make
 CMakeFiles/Practice.dir/LeetCode_RecursiveProblems.cpp.obj: ../LeetCode_RecursiveProblems.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/Practice.dir/LeetCode_RecursiveProblems.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/Practice.dir/LeetCode_RecursiveProblems.cpp.obj"
 	C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Practice.dir\LeetCode_RecursiveProblems.cpp.obj -c C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_RecursiveProblems.cpp
 
 CMakeFiles/Practice.dir/LeetCode_RecursiveProblems.cpp.i: cmake_force
@@ -260,7 +273,7 @@ CMakeFiles/Practice.dir/LeetCode_RecursiveProblems.cpp.s: cmake_force
 
 CMakeFiles/Practice.dir/LeetCode_HashProblems.cpp.obj: CMakeFiles/Practice.dir/flags.make
 CMakeFiles/Practice.dir/LeetCode_HashProblems.cpp.obj: ../LeetCode_HashProblems.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/Practice.dir/LeetCode_HashProblems.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/Practice.dir/LeetCode_HashProblems.cpp.obj"
 	C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Practice.dir\LeetCode_HashProblems.cpp.obj -c C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_HashProblems.cpp
 
 CMakeFiles/Practice.dir/LeetCode_HashProblems.cpp.i: cmake_force
@@ -273,7 +286,7 @@ CMakeFiles/Practice.dir/LeetCode_HashProblems.cpp.s: cmake_force
 
 CMakeFiles/Practice.dir/LeetCode_BFS.cpp.obj: CMakeFiles/Practice.dir/flags.make
 CMakeFiles/Practice.dir/LeetCode_BFS.cpp.obj: ../LeetCode_BFS.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/Practice.dir/LeetCode_BFS.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/Practice.dir/LeetCode_BFS.cpp.obj"
 	C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Practice.dir\LeetCode_BFS.cpp.obj -c C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_BFS.cpp
 
 CMakeFiles/Practice.dir/LeetCode_BFS.cpp.i: cmake_force
@@ -286,7 +299,7 @@ CMakeFiles/Practice.dir/LeetCode_BFS.cpp.s: cmake_force
 
 CMakeFiles/Practice.dir/LeetCode_DFS.cpp.obj: CMakeFiles/Practice.dir/flags.make
 CMakeFiles/Practice.dir/LeetCode_DFS.cpp.obj: ../LeetCode_DFS.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/Practice.dir/LeetCode_DFS.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/Practice.dir/LeetCode_DFS.cpp.obj"
 	C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Practice.dir\LeetCode_DFS.cpp.obj -c C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_DFS.cpp
 
 CMakeFiles/Practice.dir/LeetCode_DFS.cpp.i: cmake_force
@@ -301,6 +314,7 @@ CMakeFiles/Practice.dir/LeetCode_DFS.cpp.s: cmake_force
 Practice_OBJECTS = \
 "CMakeFiles/Practice.dir/LintCode.cpp.obj" \
 "CMakeFiles/Practice.dir/LeetCode_ArrayProblems.cpp.obj" \
+"CMakeFiles/Practice.dir/LeetCode_BinarySearchProblem.cpp.obj" \
 "CMakeFiles/Practice.dir/LeetCode_GraphProblems.cpp.obj" \
 "CMakeFiles/Practice.dir/LeetCode_LinkListProblems.cpp.obj" \
 "CMakeFiles/Practice.dir/LeetCode_SlidingWindowProblems.cpp.obj" \
@@ -322,6 +336,7 @@ Practice_EXTERNAL_OBJECTS =
 
 libPractice.a: CMakeFiles/Practice.dir/LintCode.cpp.obj
 libPractice.a: CMakeFiles/Practice.dir/LeetCode_ArrayProblems.cpp.obj
+libPractice.a: CMakeFiles/Practice.dir/LeetCode_BinarySearchProblem.cpp.obj
 libPractice.a: CMakeFiles/Practice.dir/LeetCode_GraphProblems.cpp.obj
 libPractice.a: CMakeFiles/Practice.dir/LeetCode_LinkListProblems.cpp.obj
 libPractice.a: CMakeFiles/Practice.dir/LeetCode_SlidingWindowProblems.cpp.obj
@@ -339,7 +354,7 @@ libPractice.a: CMakeFiles/Practice.dir/LeetCode_BFS.cpp.obj
 libPractice.a: CMakeFiles/Practice.dir/LeetCode_DFS.cpp.obj
 libPractice.a: CMakeFiles/Practice.dir/build.make
 libPractice.a: CMakeFiles/Practice.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Linking CXX static library libPractice.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Linking CXX static library libPractice.a"
 	$(CMAKE_COMMAND) -P CMakeFiles\Practice.dir\cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Practice.dir\link.txt --verbose=$(VERBOSE)
 

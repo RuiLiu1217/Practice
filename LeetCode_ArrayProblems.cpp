@@ -1194,6 +1194,88 @@ bool LC::_0251_Flatten2DVector::hasNext() {
     return i != iEnd;
 }
 
+
+void LC::_0283_MoveZeros::moveZeroes(std::vector<int>& nums) {
+    int slow = 0;
+    for(int i = 0; i < nums.size(); ++i) {
+        if(nums[i] != 0) {
+            nums[slow++] = nums[i];
+        }
+    }
+    for(; slow < nums.size(); ++slow) {
+        nums[slow] = 0;
+    }
+}
+
+
+void LC::_0289_GameOfLife::gameOfLife(std::vector<std::vector<int>>& board) {
+    const int m = board.size();
+    const int n = m ? board[0].size() : 0;
+    for(int i = 0; i < m; ++i) {
+        for(int j = 0; j < n; ++j) {
+            int count = 0;
+            for(int I = std::max(i-1, 0); I < std::min(i+2, m); ++I) {
+                for(int J = std::max(j-1, 0); J < std::min(j+2, n); ++J) {
+                    count += board[I][J] & 1;
+                }
+            }
+            if(count == 3 || count - board[i][j] == 3) {
+                board[i][j] |= 2;
+            }
+        }
+    }
+
+    for(int i = 0; i < m; ++i) {
+        for(int j = 0; j < n; ++j) {
+            board[i][j] >>= 1;
+        }
+    }
+}
+
+// Prefix
+LC::_0303_RangeSumQuery_Immutable::_0303_RangeSumQuery_Immutable(std::vector<int>& nums) {
+    mSum.resize(nums.size() + 1, 0);
+    int n = nums.size();
+    if(n == 0) return;
+    mSum[0] = nums[0];
+    for(int i = 1; i < n; ++i) {
+        mSum[i] = nums[i] + mSum[i-1];
+    }
+}
+
+int LC::_0303_RangeSumQuery_Immutable::sumRange(int i, int j) {
+    if(i == 0) {
+        return mSum[j];
+    }
+    return mSum[j] - mSum[i-1];
+}
+
+// 2D Prefix
+LC::_0304_RangeSumQuery2D_Immutable::_0304_RangeSumQuery2D_Immutable(std::vector<std::vector<int>>& matrix) {
+    const int rowNum = matrix.size();
+    if(rowNum == 0) {
+        return;
+    }
+    const int colNum = matrix[0].size();
+    if(colNum == 0) {
+        return;
+    }
+    prefixSum.resize(rowNum+1);
+    for(int i = 0; i != prefixSum.size(); ++i) {
+        prefixSum[i].resize(colNum+1);
+    }
+    
+    for(int i = 0; i != rowNum; ++i) {
+        for(int j = 0; j != colNum; ++j) {
+            prefixSum[i+1][j+1] = prefixSum[i][j+1] + prefixSum[i+1][j] - prefixSum[i][j] + matrix[i][j];
+        }
+    }   
+}
+
+int LC::_0304_RangeSumQuery2D_Immutable::sumRegion(int row1, int col1, int row2, int col2) {
+     return prefixSum[row2 + 1][col2 + 1] - prefixSum[row1][col2 + 1] - prefixSum[row2 + 1][col1] + prefixSum[row1][col1];
+}
+
 // Copy from the solution
 std::vector<std::pair<int, int>> LC::_0406_QueueReconstructionByHeight::reconstructQueue(std::vector<std::pair<int, int>>& people) {
     int n = people.size();
@@ -1298,4 +1380,23 @@ int LC::_1144_DecreaseElementsToMakeArrayZigzag::movesToMakeZigzag(std::vector<i
         }
     }
     return std::min(count[0], count[1]);
+}
+
+
+int LC::_1283_FindTheSmallestDivisorGivenAThreshold::smallestDivisor(std::vector<int>& nums, int threshold) {
+     int sum = *std::max_element(nums.begin(), nums.end());        
+    int left = 1;
+    int right = sum;
+    while(left < right) {
+        int mid = left + (right - left) / 2;
+        int res = std::accumulate(nums.begin(), nums.end(), 0, [&](int a, int b){
+            return a + b / mid + ((b % mid) ? 1 : 0);
+        });
+        if(res > threshold) {
+            left = mid + 1;
+        } else {
+            right = mid;
+        }
+    }
+    return left;
 }

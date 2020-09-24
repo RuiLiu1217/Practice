@@ -70,6 +70,29 @@ test/CMakeFiles/PracticeTest.dir/LeetCode_BacktracingProblemTests.cpp.obj: ../go
 test/CMakeFiles/PracticeTest.dir/LeetCode_BacktracingProblemTests.cpp.obj: ../LeetCode_BacktracingProblems.hpp
 test/CMakeFiles/PracticeTest.dir/LeetCode_BacktracingProblemTests.cpp.obj: ../test/LeetCode_BacktracingProblemTests.cpp
 
+test/CMakeFiles/PracticeTest.dir/LeetCode_BinarySearchProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-death-test.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_BinarySearchProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-matchers.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_BinarySearchProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-message.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_BinarySearchProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-param-test.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_BinarySearchProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-printers.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_BinarySearchProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-test-part.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_BinarySearchProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-typed-test.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_BinarySearchProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_BinarySearchProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest_pred_impl.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_BinarySearchProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest_prod.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_BinarySearchProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/custom/gtest-port.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_BinarySearchProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/custom/gtest-printers.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_BinarySearchProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-death-test-internal.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_BinarySearchProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-filepath.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_BinarySearchProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-internal.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_BinarySearchProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-param-util.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_BinarySearchProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-port-arch.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_BinarySearchProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-port.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_BinarySearchProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-string.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_BinarySearchProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-type-util.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_BinarySearchProblemTests.cpp.obj: ../LeetCode_BinarySearchProblem.hpp
+test/CMakeFiles/PracticeTest.dir/LeetCode_BinarySearchProblemTests.cpp.obj: ../test/LeetCode_BinarySearchProblemTests.cpp
+
 test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-death-test.h
 test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-matchers.h
 test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-message.h
@@ -93,6 +116,28 @@ test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.obj: ../g
 test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.obj: ../LeetCode_BitOperationProblems.hpp
 test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.obj: ../test/LeetCode_BitOperationProblemTests.cpp
 
+test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-death-test.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-matchers.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-message.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-param-test.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-printers.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-test-part.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: ../googletest/googletest/include/gtest/gtest-typed-test.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: ../googletest/googletest/include/gtest/gtest.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: ../googletest/googletest/include/gtest/gtest_pred_impl.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: ../googletest/googletest/include/gtest/gtest_prod.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: ../googletest/googletest/include/gtest/internal/custom/gtest-port.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: ../googletest/googletest/include/gtest/internal/custom/gtest-printers.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-death-test-internal.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-filepath.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-internal.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-param-util.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-port-arch.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-port.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-string.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-type-util.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: ../LeetCode_DFS.hpp
+test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: ../LeetCode_TreeProblems.hpp
 test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: ../test/LeetCode_DFSTests.cpp
 
 test/CMakeFiles/PracticeTest.dir/LeetCode_DesignDrivenProblemsTests.cpp.obj: ../test/LeetCode_DesignDrivenProblemsTests.cpp

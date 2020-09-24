@@ -238,3 +238,50 @@ TEST(LC, _1144_DecreaseElementsToMakeArrayZigzag) {
     EXPECT_EQ(obj.movesToMakeZigzag(v1), 2);
     EXPECT_EQ(obj.movesToMakeZigzag(v2), 4);
 }
+
+TEST(LC, _1283_FindTheSmallestDivisorGivenAThreshold) {
+    LC::_1283_FindTheSmallestDivisorGivenAThreshold obj;
+    std::vector<int> nums1{1,2,5,9};
+    EXPECT_EQ(obj.smallestDivisor(nums1, 6), 5);
+
+    std::vector<int> nums2{2,3,5,7,11};
+    EXPECT_EQ(obj.smallestDivisor(nums2, 11), 3);
+
+    std::vector<int> nums3{19};
+    EXPECT_EQ(obj.smallestDivisor(nums3, 5), 4);
+    
+}
+
+TEST(LC, _0283_MoveZeros) {
+    LC::_0283_MoveZeros obj;
+    std::vector<int> t{1,3,0,2,4,6,0,7,8,5,0};
+    std::vector<int> b{1,3,2,4,6,7,8,5,0,0,0};
+    obj.moveZeroes(t);
+    EXPECT_EQ(t, b);
+}
+
+TEST(LC, _0289_GameOfLife) {
+    LC::_0289_GameOfLife obj;
+    std::vector<std::vector<int>> board{{0,1,0}, {0,0,1}, {1,1,1}, {0,0,0}};
+    std::vector<std::vector<int>> base{{0,0,0}, {1,0,1}, {0,1,1}, {0,1,0}};
+    obj.gameOfLife(board);
+    EXPECT_EQ(board, base);
+}
+
+TEST(LC, _303_RangeSumQueryImmutable) {
+    std::vector<int> num{-2, 0, 3, -5, 2, -1};
+    LC::_0303_RangeSumQuery_Immutable obj(num);
+    
+    EXPECT_EQ(obj.sumRange(0,2), 1);
+    EXPECT_EQ(obj.sumRange(2,5), -1);
+    EXPECT_EQ(obj.sumRange(0,5), -3);
+}
+
+TEST(LC, _0304_RangeSumQuery2DImmutable) {
+    std::vector<std::vector<int>> matrix{{3, 0, 1, 4, 2}, {5, 6, 3, 2, 1}, {1, 2, 0, 1, 5}, {4, 1, 0, 1, 7}, {1, 0, 3, 0, 5}};
+    LC::_0304_RangeSumQuery2D_Immutable obj(matrix);
+    EXPECT_EQ(obj.sumRegion(2,1,4,3), 8);
+    EXPECT_EQ(obj.sumRegion(1,1,2,2), 11);
+    EXPECT_EQ(obj.sumRegion(1,2,2,4), 12);
+}
+

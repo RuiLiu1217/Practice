@@ -619,3 +619,49 @@ void LC::_0267_PalindromePermutationII::backtracking2(
     }
 }
 
+
+std::vector<std::vector<int>> LC::_0417_PacificAtlanticWaterFlow::pacificAtlantic(std::vector<std::vector<int>>& matrix) {
+    if(matrix.empty() || matrix[0].empty()) {
+        return {};
+    }
+    
+    std::vector<std::vector<int>> res;
+    const int m = matrix.size();
+    const int n = matrix[0].size();
+    
+    std::vector<std::vector<bool>> pacific(m, std::vector<bool>(n, false));
+    std::vector<std::vector<bool>> atlantic(m, std::vector<bool>(n, false));
+    
+    for(int i = 0; i < m; ++i) {
+        dfs(matrix, pacific, INT_MIN, i, 0);
+        dfs(matrix, atlantic, INT_MIN, i, n-1);
+    }
+    for(int i = 0; i < n; ++i) {
+        dfs(matrix, pacific, INT_MIN, 0, i);
+        dfs(matrix, atlantic, INT_MIN, m-1, i);
+    }
+    
+    for (int i = 0; i < m; ++i) {
+        for (int j = 0; j < n; ++j) {
+            if (pacific[i][j] && atlantic[i][j]) {
+                res.push_back({i, j});
+            }
+        }
+    }
+    return res;
+}
+    
+void LC::_0417_PacificAtlanticWaterFlow::dfs(std::vector<std::vector<int>>& matrix, std::vector<std::vector<bool>>& visited, int pre, int i, int j) {
+    int m = matrix.size();
+    int n = matrix[0].size();
+    
+    if(i < 0 || i >= m || j < 0 || j >= n || visited[i][j] || matrix[i][j] < pre) {
+        return;
+    }
+    
+    visited[i][j] = true;
+    dfs(matrix, visited, matrix[i][j], i-1, j);
+    dfs(matrix, visited, matrix[i][j], i+1, j);
+    dfs(matrix, visited, matrix[i][j], i, j-1);
+    dfs(matrix, visited, matrix[i][j], i, j+1);
+}

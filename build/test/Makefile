@@ -282,6 +282,33 @@ LeetCode_BacktracingProblemTests.cpp.s:
 	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\PracticeTest.dir\build.make test/CMakeFiles/PracticeTest.dir/LeetCode_BacktracingProblemTests.cpp.s
 .PHONY : LeetCode_BacktracingProblemTests.cpp.s
 
+LeetCode_BinarySearchProblemTests.obj: LeetCode_BinarySearchProblemTests.cpp.obj
+
+.PHONY : LeetCode_BinarySearchProblemTests.obj
+
+# target to build an object file
+LeetCode_BinarySearchProblemTests.cpp.obj:
+	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\PracticeTest.dir\build.make test/CMakeFiles/PracticeTest.dir/LeetCode_BinarySearchProblemTests.cpp.obj
+.PHONY : LeetCode_BinarySearchProblemTests.cpp.obj
+
+LeetCode_BinarySearchProblemTests.i: LeetCode_BinarySearchProblemTests.cpp.i
+
+.PHONY : LeetCode_BinarySearchProblemTests.i
+
+# target to preprocess a source file
+LeetCode_BinarySearchProblemTests.cpp.i:
+	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\PracticeTest.dir\build.make test/CMakeFiles/PracticeTest.dir/LeetCode_BinarySearchProblemTests.cpp.i
+.PHONY : LeetCode_BinarySearchProblemTests.cpp.i
+
+LeetCode_BinarySearchProblemTests.s: LeetCode_BinarySearchProblemTests.cpp.s
+
+.PHONY : LeetCode_BinarySearchProblemTests.s
+
+# target to generate assembly for a file
+LeetCode_BinarySearchProblemTests.cpp.s:
+	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\PracticeTest.dir\build.make test/CMakeFiles/PracticeTest.dir/LeetCode_BinarySearchProblemTests.cpp.s
+.PHONY : LeetCode_BinarySearchProblemTests.cpp.s
+
 LeetCode_BitOperationProblemTests.obj: LeetCode_BitOperationProblemTests.cpp.obj
 
 .PHONY : LeetCode_BitOperationProblemTests.obj
@@ -683,6 +710,9 @@ help:
 	@echo ... LeetCode_BacktracingProblemTests.obj
 	@echo ... LeetCode_BacktracingProblemTests.i
 	@echo ... LeetCode_BacktracingProblemTests.s
+	@echo ... LeetCode_BinarySearchProblemTests.obj
+	@echo ... LeetCode_BinarySearchProblemTests.i
+	@echo ... LeetCode_BinarySearchProblemTests.s
 	@echo ... LeetCode_BitOperationProblemTests.obj
 	@echo ... LeetCode_BitOperationProblemTests.i
 	@echo ... LeetCode_BitOperationProblemTests.s

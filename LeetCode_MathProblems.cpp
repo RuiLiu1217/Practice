@@ -181,3 +181,63 @@ bool LC::_0263_UglyNumber::isUgly(int num) {
 
     return num == 1;
 }
+
+// 一个数各个位置的数相加得到一个新的数，
+// 如此往复一直加到个位数，快速计算这个个
+// 位数的办法有个公式，如果这个数是0，就
+// 直接返回0，否则将原先的数mod 9， 如果
+// 能被 9 整除，则返回9， 否则返回这个余数
+int LC::_0258_AddDigits::addDigits(int num) {
+    if(num == 0) {
+        return 0;
+    }
+    int v = (num % 9);
+    return v == 0 ? 9 : v;
+}
+
+
+// Facebook
+std::vector<std::vector<int>> LC::_0311_SparseMatrixMultiplication::multiply(std::vector<std::vector<int>>& A, std::vector<std::vector<int>>& B) {
+    const int MA = A.size();
+    if(MA == 0) {
+        return {};
+    }
+    const int NA = A[0].size();
+    if(NA == 0) {
+        return {};
+    }
+    const int MB = B.size();
+    if(MB == 0) {
+        return {};
+    }
+    const int NB = B[0].size();
+    if(NB == 0) {
+        return {};
+    }
+    
+    std::vector<std::unordered_set<int>> colA(MA);
+    for(int i = 0; i < MA; ++i) {
+        for(int j = 0; j < NA; ++j) {
+            if(A[i][j]) {
+                colA[i].insert(j);
+            }
+        }
+    }
+    
+    std::vector<std::vector<int>> res(MA, std::vector<int>(NB));
+    for(int i =0; i < MA; ++i) {
+        std::unordered_set<int>& idxA = colA[i];
+        for(int j = 0; j < NB; ++j) {
+            int sum = 0;    
+            for(int k = 0; k < MB; ++k) {
+                if(B[k][j] && idxA.count(k)) {
+                    sum += A[i][k] * B[k][j];
+                }
+            }
+        
+            res[i][j] = sum;
+        }
+    }
+    return res;
+}
+ 

@@ -250,22 +250,6 @@ public:
 
 
 /*
-Given a non-negative integer num, repeatedly add all its digits until the 
-result has only one digit.
-
-Input: 38
-Output: 2 
-Explanation: The process is like: 3 + 8 = 11, 1 + 1 = 2. 
-    Since 2 has only one digit, return it.
-*/
-class _0258_AddDigits {
-public:
-    int addDigits(int num);
-};
-
-
-
-/*
 Given an array containing n distinct numbers taken from 0, 1, 2, ..., n, find the one that is missing from the array.
 
 Input: [3,0,1]               :         Output: 2
@@ -316,29 +300,7 @@ private:
     std::vector<int> topologicalSort(std::vector<std::vector<int>>& adjList);
 };
 
-/*
-Given a non-empty binary search tree and a target value, find the 
-value in the BST that is closest to the target.
 
-Note:
-
-Given target value is a floating point.
-You are guaranteed to have only one unique value in the BST that 
-is closest to the target.
-
-Input: root = [4,2,5,1,3], target = 3.714286
-
-    4
-   / \
-  2   5
- / \
-1   3
-Output: 4
-*/
-class _0270_ClosetBinarySearchTreeValue {
-public:
-    int closestValue(TreeNode<int>* root, double target); 
-};
 
 /*
 Tag: serialization
@@ -477,35 +439,6 @@ public:
     int numWays(int n, int k);
 };
 
-/*
-Facebook
-
-You are a product manager and currently leading a team to develop a new product. 
-Unfortunately, the latest version of your product fails the quality check. Since 
-each version is developed based on the previous version, all the versions after 
-a bad version are also bad.
-
-Suppose you have n versions [1, 2, ..., n] and you want to find out the first bad 
-one, which causes all the following ones to be bad.
-
-You are given an API bool isBadVersion(version) which will return whether version 
-is bad. Implement a function to find the first bad version. You should minimize 
-the number of calls to the API.
-
-Example:
-
-Given n = 5, and version = 4 is the first bad version.
-
-call isBadVersion(3) -> false
-call isBadVersion(5) -> true
-call isBadVersion(4) -> true
-
-Then 4 is the first bad version. 
-*/
-class _0278_FirstBadVersion {
-public:
-    int firstBadVersion(int n);
-};
 
 /*
 Given a positive integer n, find the least number of perfect square numbers (for example, 1, 4, 9, 16, ...) which sum to n.
@@ -574,47 +507,7 @@ public:
     bool hasNext();
 };
 
-/*
-Given a string that contains only digits 0-9 and a target value, return all possibilities to 
-add binary operators (not unary) +, -, or * between the digits so they evaluate to the target 
-value.
 
-Input: num = "123", target = 6
-Output: ["1+2+3", "1*2*3"] 
-
-Input: num = "232", target = 8
-Output: ["2*3+2", "2+3*2"]
-
-Input: num = "105", target = 5
-Output: ["1*0+5","10-5"]
-
-Input: num = "00", target = 0
-Output: ["0+0", "0-0", "0*0"]
-
-Input: num = "3456237490", target = 9191
-Output: []
-*/
-class _0282_ExpressionAddOperators {
-public:
-    std::vector<std::string> addOperators(std::string num, int target);
-private:
-    void DFS(const std::string& num, const int target, int pos, std::string exp, long prev, long curr, std::vector<std::string>& ans);
-};
-
-/*
-Given an array nums, write a function to move all 0's to the end of it while maintaining the relative order of the non-zero elements.
-
-Input: [0,1,0,3,12]
-Output: [1,3,12,0,0]
-Note:
-
-You must do this in-place without making a copy of the array.
-Minimize the total number of operations.
-*/
-class _0283_MoveZeros {
-public:
-    void moveZeroes(std::vector<int>& nums);
-};
 
 
 /*
@@ -655,60 +548,6 @@ public:
     bool hasNext() const {
         return Iterator::hasNext();
     }
-};
-
-/*
-Given a binary search tree and a node in it, find the in-order successor of that node in the BST.
-The successor of a node p is the node with the smallest key greater than p.val.
-
-Input: root = [2,1,3], p = 1
-Output: 2
-Explanation: 1's in-order successor node is 2. Note that both p and the return value is of TreeNode type.
-
-Input: root = [5,3,6,2,4,null,null,1], p = 6
-Output: null
-Explanation: There is no in-order successor of the current node, so the answer is null.
- 
-Note:
-
-If the given node has no in-order successor in the tree, return null.
-It's guaranteed that the values of the tree are unique.
-
-*/
-class _0285_InorderSuccessorInBST {
-private:
-    std::stack<TreeNode<int>*> st;
-    TreeNode<int>* getNext();
-public:
-    TreeNode<int>* inorderSuccessor(TreeNode<int>* root, TreeNode<int>* p);
-};
-
-/*
-You are given a m x n 2D grid initialized with these three possible values.
-
--1 - A wall or an obstacle.
-0 - A gate.
-INF - Infinity means an empty room. We use the value 231 - 1 = 2147483647 to represent INF as you may assume that the distance to a gate is less than 2147483647.
-Fill each empty room with the distance to its nearest gate. If it is impossible to reach a gate, it should be filled with INF.
-
-Example: 
-
-Given the 2D grid:
-
-INF  -1  0  INF
-INF INF INF  -1
-INF  -1 INF  -1
-  0  -1 INF INF
-After running your function, the 2D grid should be:
-
-  3  -1   0   1
-  2   2   1  -1
-  1  -1   2  -1
-  0  -1   3   4
-*/
-class _0286_WallsAndGates {
-public:
-    void wallsAndGates(std::vector<std::vector<int>>& rooms);
 };
 
 /*
@@ -774,46 +613,6 @@ public:
     bool isUnique(std::string word);
 };
 
-/*
-According to the Wikipedia's article: "The Game of Life, also known simply as Life, 
-is a cellular automaton devised by the British mathematician John Horton Conway in 1970."
-Given a board with m by n cells, each cell has an initial state live (1) or dead (0). 
-Each cell interacts with its eight neighbors (horizontal, vertical, diagonal) using 
-the following four rules (taken from the above Wikipedia article):
-
-Any live cell with fewer than two live neighbors dies, as if caused by under-population.
-Any live cell with two or three live neighbors lives on to the next generation.
-Any live cell with more than three live neighbors dies, as if by over-population..
-Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
-Write a function to compute the next state (after one update) of the board given its current 
-state. The next state is created by applying the above rules simultaneously to every cell in
-the current state, where births and deaths occur simultaneously.
-
-Input: 
-[
-  [0,1,0],
-  [0,0,1],
-  [1,1,1],
-  [0,0,0]
-]
-Output: 
-[
-  [0,0,0],
-  [1,0,1],
-  [0,1,1],
-  [0,1,0]
-]
-Follow up:
-
-Could you solve it in-place? Remember that the board needs to be updated at the same time: 
-You cannot update some cells first and then use their updated values to update other cells.
-In this question, we represent the board using a 2D array. In principle, the board is infinite, 
-which would cause problems when the active area encroaches the border of the array. How would you address these problems?
-*/
-class _0289_GameOfLife {
-public:
-    void gameOfLife(std::vector<std::vector<int>>& board);
-};
 
 
 /*
@@ -865,26 +664,6 @@ public:
 };
 
 
-/*
-You are playing the following Flip Game with your friend: Given a string that contains 
-only these two characters: + and -, you and your friend take turns to flip two consecutive
-"++" into "--". The game ends when a person can no longer make a move and therefore the 
-other person will be the winner.
-Write a function to compute all possible states of the string after one valid move.
-
-Input: s = "++++"
-Output: 
-[
-  "--++",
-  "+--+",
-  "++--"
-]
-Note: If there is no valid move, return an empty list [].
-*/
-class _0293_FlipGame {
-public:
-    std::vector<std::string> generatePossibleNextMoves(std::string s);
-};
 
 /*
 Facebook

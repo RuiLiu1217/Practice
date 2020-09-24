@@ -33,61 +33,7 @@ private:
     void DFS(const std::string& s, int start, int l, int r, std::vector<std::string>& ans);
 };
 
-/*
-Given an integer array nums, find the sum of the elements 
-between indices i and j (i ≤ j), inclusive.
 
-Example:
-Given nums = [-2, 0, 3, -5, 2, -1]
-
-sumRange(0, 2) -> 1
-sumRange(2, 5) -> -1
-sumRange(0, 5) -> -3
-Note:
-You may assume that the array does not change. There are 
-many calls to sumRange function.
-*/
-class _0303_RangeSumQuery_Immutable {
-public:
-    _0303_RangeSumQuery_Immutable(std::vector<int>& nums);
-    int sumRange(int i, int j);
-private:
-    std::vector<int> mSum;
-};
-
-/*
-Given a 2D matrix matrix, find the sum of the elements inside 
-the rectangle defined by its upper left corner (row1, col1) 
-and lower right corner (row2, col2).
-
-Range Sum Query 2D
-The above rectangle (with the red border) is defined by (row1, 
-col1) = (2, 1) and (row2, col2) = (4, 3), which contains sum = 8.
-
-Example:
-Given matrix = [
-  [3, 0, 1, 4, 2],
-  [5, 6, 3, 2, 1],
-  [1, 2, 0, 1, 5],
-  [4, 1, 0, 1, 7],
-  [1, 0, 3, 0, 5]
-]
-
-sumRegion(2, 1, 4, 3) -> 8
-sumRegion(1, 1, 2, 2) -> 11
-sumRegion(1, 2, 2, 4) -> 12
-Note:
-You may assume that the matrix does not change.
-There are many calls to sumRegion function.
-You may assume that row1 ≤ row2 and col1 ≤ col2.
-*/
-class _0304_RangeSumQuery2D_Immutable {
-public:
-    _0304_RangeSumQuery2D_Immutable(std::vector<std::vector<int>>& matrix);    
-    int sumRegion(int row1, int col1, int row2, int col2);
-private:
-    std::vector<std::vector<int>> prefixSum;
-};
 
 /*
 Additive number is a string whose digits can form additive sequence.
@@ -190,34 +136,6 @@ public:
 };
 
 
-/*
-Given two sparse matrices A and B, return the result of AB.
-You may assume that A's column number is equal to B's row number.
-
-Input:
-
-A = [
-  [ 1, 0, 0],
-  [-1, 0, 3]
-]
-
-B = [
-  [ 7, 0, 0 ],
-  [ 0, 0, 0 ],
-  [ 0, 0, 1 ]
-]
-
-Output:
-
-     |  1 0 0 |   | 7 0 0 |   |  7 0 0 |
-AB = | -1 0 3 | x | 0 0 0 | = | -7 0 3 |
-                  | 0 0 1 |
-*/
-class _0311_SparseMatrixMultiplication {
-public:
-    std::vector<std::vector<int>> multiply(std::vector<std::vector<int>>& A, std::vector<std::vector<int>>& B);
-
-};
 
 
 /*
@@ -243,78 +161,6 @@ private:
     int _min(std::vector<int>& res, std::vector<int>& idx, std::vector<int>& primes);
 };
 
-/*
-Given a binary tree, return the vertical order traversal of its nodes' values. (ie, from top to bottom, column by column).
-If two nodes are in the same row and column, the order should be from left to right.
-
-Input: [3,9,20,null,null,15,7]
-
-   3
-  /\
- /  \
- 9  20
-    /\
-   /  \
-  15   7 
-
-Output:
-
-[
-  [9],
-  [3,15],
-  [20],
-  [7]
-]
-Examples 2:
-
-Input: [3,9,8,4,0,1,7]
-
-     3
-    /\
-   /  \
-   9   8
-  /\  /\
- /  \/  \
- 4  01   7 
-
-Output:
-
-[
-  [4],
-  [9],
-  [3,0,1],
-  [8],
-  [7]
-]
-Examples 3:
-
-Input: [3,9,8,4,0,1,7,null,null,null,2,5] (0's right child is 2 and 1's left child is 5)
-
-     3
-    /\
-   /  \
-   9   8
-  /\  /\
- /  \/  \
- 4  01   7
-    /\
-   /  \
-   5   2
-
-Output:
-
-[
-  [4],
-  [9,5],
-  [3,0,1],
-  [8,2],
-  [7]
-]
-*/
-class _0314_BinaryTreeVertialOrderTraversal {
-public:
-    std::vector<std::vector<int>> verticalOrder(TreeNode<int>* root);
-};
 
 
 /*

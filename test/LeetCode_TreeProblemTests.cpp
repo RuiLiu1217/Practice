@@ -157,3 +157,55 @@ TEST(LC, _0255_VerifyPreorderSequenceInBinarySearchTree) {
     std::vector<int> t{5,2,6,1,3};
     EXPECT_FALSE(obj.verifyPreorder(t));
 }
+
+TEST(LC, _0270_ClosetBinarySearchTreeValue) {
+    LC::_0270_ClosetBinarySearchTreeValue obj;
+    LC::TreeNode* root = new LC::TreeNode(4);
+    root->left = new LC::TreeNode(2);
+    root->right = new LC::TreeNode(5);
+    root->left->left = new LC::TreeNode(1);
+    root->left->right = new LC::TreeNode(3);
+
+    EXPECT_EQ(obj.closestValue(root, 3.714286), 4);
+}
+
+TEST(LC, _0285_InorderSuccessorInBST) {
+    LC::_0285_InorderSuccessorInBST obj;
+    LC::TreeNode* r = new LC::TreeNode(5);
+    r->left = new LC::TreeNode(3);
+    r->right = new LC::TreeNode(6);
+    r->left->left = new LC::TreeNode(2);
+    r->left->right = new LC::TreeNode(4);
+    r->left->left->left = new LC::TreeNode(1);
+    EXPECT_EQ(obj.inorderSuccessor(r, r->left->right), r);
+}
+
+TEST(LC, _0510_InorderSuccessorInBSTII) {
+    LC::_0510_InorderSuccessorInBSTII obj;
+    using Nod = LC::_0510_InorderSuccessorInBSTII::Node;
+    Nod* r1 = new Nod(5);
+    Nod* r2 = new Nod(3);
+    Nod* r3 = new Nod(6);
+    Nod* r4 = new Nod(2);
+    Nod* r5 = new Nod(4);
+    Nod* r6 = new Nod(1);
+    r1->left = r2;
+    r1->right = r3;
+    r2->parent = r1;
+    r3->parent = r1;
+
+    r2->left = r4;
+    r2->right = r5;
+    r4->parent = r2;
+    r5->parent = r2;
+
+    r4->left = r6;
+    r6->parent = r4;
+
+    EXPECT_EQ(obj.inorderSuccessor(r2)->val, r5->val);
+    
+}
+
+TEST(LC, _0314_BinarTreeVerticalOrderTraversal) {
+    EXPECT_TRUE(true);
+}

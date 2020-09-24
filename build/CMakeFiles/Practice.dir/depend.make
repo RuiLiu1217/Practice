@@ -10,6 +10,9 @@ CMakeFiles/Practice.dir/LeetCode_BFS.cpp.obj: ../LeetCode_BFS.hpp
 CMakeFiles/Practice.dir/LeetCode_BacktracingProblems.cpp.obj: ../LeetCode_BacktracingProblems.cpp
 CMakeFiles/Practice.dir/LeetCode_BacktracingProblems.cpp.obj: ../LeetCode_BacktracingProblems.hpp
 
+CMakeFiles/Practice.dir/LeetCode_BinarySearchProblem.cpp.obj: ../LeetCode_BinarySearchProblem.cpp
+CMakeFiles/Practice.dir/LeetCode_BinarySearchProblem.cpp.obj: ../LeetCode_BinarySearchProblem.hpp
+
 CMakeFiles/Practice.dir/LeetCode_BitOperationProblems.cpp.obj: ../LeetCode_BitOperationProblems.cpp
 CMakeFiles/Practice.dir/LeetCode_BitOperationProblems.cpp.obj: ../LeetCode_BitOperationProblems.hpp
 

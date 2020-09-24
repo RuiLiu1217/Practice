@@ -929,6 +929,121 @@ public:
 };
 
 /*
+Given an array nums, write a function to move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+
+Input: [0,1,0,3,12]
+Output: [1,3,12,0,0]
+Note:
+
+You must do this in-place without making a copy of the array.
+Minimize the total number of operations.
+*/
+class _0283_MoveZeros {
+public:
+    void moveZeroes(std::vector<int>& nums);
+};
+
+
+/*
+According to the Wikipedia's article: "The Game of Life, also known simply as Life, 
+is a cellular automaton devised by the British mathematician John Horton Conway in 1970."
+Given a board with m by n cells, each cell has an initial state live (1) or dead (0). 
+Each cell interacts with its eight neighbors (horizontal, vertical, diagonal) using 
+the following four rules (taken from the above Wikipedia article):
+
+Any live cell with fewer than two live neighbors dies, as if caused by under-population.
+Any live cell with two or three live neighbors lives on to the next generation.
+Any live cell with more than three live neighbors dies, as if by over-population..
+Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
+Write a function to compute the next state (after one update) of the board given its current 
+state. The next state is created by applying the above rules simultaneously to every cell in
+the current state, where births and deaths occur simultaneously.
+
+Input: 
+[
+  [0,1,0],
+  [0,0,1],
+  [1,1,1],
+  [0,0,0]
+]
+Output: 
+[
+  [0,0,0],
+  [1,0,1],
+  [0,1,1],
+  [0,1,0]
+]
+Follow up:
+1. Could you solve it in-place? Remember that the board needs to be updated at the same time: 
+You cannot update some cells first and then use their updated values to update other cells.
+2. In this question, we represent the board using a 2D array. In principle, the board is infinite, 
+which would cause problems when the active area encroaches the border of the array. 
+How would you address these problems?
+*/
+class _0289_GameOfLife {
+public:
+    void gameOfLife(std::vector<std::vector<int>>& board);
+};
+
+/*
+Given an integer array nums, find the sum of the elements 
+between indices i and j (i ≤ j), inclusive.
+
+Example:
+Given nums = [-2, 0, 3, -5, 2, -1]
+
+sumRange(0, 2) -> 1
+sumRange(2, 5) -> -1
+sumRange(0, 5) -> -3
+Note:
+You may assume that the array does not change. There are 
+many calls to sumRange function.
+*/
+class _0303_RangeSumQuery_Immutable {
+public:
+    _0303_RangeSumQuery_Immutable(std::vector<int>& nums);
+    int sumRange(int i, int j);
+private:
+    std::vector<int> mSum;
+};
+
+/*
+Given a 2D matrix matrix, find the sum of the elements inside 
+the rectangle defined by its upper left corner (row1, col1) 
+and lower right corner (row2, col2).
+
+Range Sum Query 2D
+The above rectangle (with the red border) is defined by (row1, 
+col1) = (2, 1) and (row2, col2) = (4, 3), which contains sum = 8.
+
+Example:
+Given matrix = [
+  [3, 0, 1, 4, 2],
+  [5, 6, 3, 2, 1],
+  [1, 2, 0, 1, 5],
+  [4, 1, 0, 1, 7],
+  [1, 0, 3, 0, 5]
+]
+
+sumRegion(2, 1, 4, 3) -> 8
+sumRegion(1, 1, 2, 2) -> 11
+sumRegion(1, 2, 2, 4) -> 12
+Note:
+You may assume that the matrix does not change.
+There are many calls to sumRegion function.
+You may assume that row1 ≤ row2 and col1 ≤ col2.
+*/
+class _0304_RangeSumQuery2D_Immutable {
+public:
+    _0304_RangeSumQuery2D_Immutable(std::vector<std::vector<int>>& matrix);    
+    int sumRegion(int row1, int col1, int row2, int col2);
+private:
+    std::vector<std::vector<int>> prefixSum;
+};
+
+
+
+/*
 Suppose you have a random list of people standing in a queue. Each person is described by a pair of integers (h, k), where h is the height of the person and k is the number of people in front of this person who have a height greater than or equal to h. Write an algorithm to reconstruct the queue.
 
 Note:
@@ -1015,6 +1130,38 @@ Constraints:
 class _1144_DecreaseElementsToMakeArrayZigzag {
 public:
     int movesToMakeZigzag(std::vector<int>& nums);
+};
+
+/*
+Given an array of integers nums and an integer threshold, we will choose a positive integer divisor 
+and divide all the array by it and sum the result of the division. Find the smallest divisor such 
+that the result mentioned above is less than or equal to threshold.
+
+Each result of division is rounded to the nearest integer greater than or equal to that element. 
+(For example: 7/3 = 3 and 10/2 = 5).
+It is guaranteed that there will be an answer.
+
+
+Input: nums = [1,2,5,9], threshold = 6
+Output: 5
+Explanation: We can get a sum to 17 (1+2+5+9) if the divisor is 1. 
+If the divisor is 4 we can get a sum to 7 (1+1+2+3) and if the divisor is 5 the sum will be 5 (1+1+1+2). 
+
+Input: nums = [2,3,5,7,11], threshold = 11
+Output: 3
+
+Input: nums = [19], threshold = 5
+Output: 4
+
+Constraints:
+
+1 <= nums.length <= 5 * 10^4
+1 <= nums[i] <= 10^6
+nums.length <= threshold <= 10^6
+*/
+class _1283_FindTheSmallestDivisorGivenAThreshold {
+public:
+    int smallestDivisor(std::vector<int>& nums, int threshold);
 };
 
 /*

@@ -683,6 +683,26 @@ bool LC::_0266_PalinndromePermutation::canPermutePalindrome(std::string s) {
     return true;
 }
 
+
+std::vector<std::string> LC::_0293_FlipGame::generatePossibleNextMoves(std::string s) {
+    std::vector<std::string> res;
+    if(s.empty()) {
+        return {};
+    }
+
+    for(int i = 0; i < s.size() - 1; ++i) {
+        if(s[i] == '+' && s[i+1] == '+') {
+            s[i] = '-';
+            s[i+1] = '-';
+            res.push_back(s);
+            s[i] = '+'; // recover
+            s[i+1] = '+';
+        }
+    }
+    return res;
+}
+
+
 std::string LC::_0544_OutputContestMatches::findContestMatch(int n) {
     std::vector<std::string> t;
     for(int i = 0; i < n; ++i) {

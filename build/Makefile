@@ -345,6 +345,33 @@ LeetCode_BacktracingProblems.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_BacktracingProblems.cpp.s
 .PHONY : LeetCode_BacktracingProblems.cpp.s
 
+LeetCode_BinarySearchProblem.obj: LeetCode_BinarySearchProblem.cpp.obj
+
+.PHONY : LeetCode_BinarySearchProblem.obj
+
+# target to build an object file
+LeetCode_BinarySearchProblem.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_BinarySearchProblem.cpp.obj
+.PHONY : LeetCode_BinarySearchProblem.cpp.obj
+
+LeetCode_BinarySearchProblem.i: LeetCode_BinarySearchProblem.cpp.i
+
+.PHONY : LeetCode_BinarySearchProblem.i
+
+# target to preprocess a source file
+LeetCode_BinarySearchProblem.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_BinarySearchProblem.cpp.i
+.PHONY : LeetCode_BinarySearchProblem.cpp.i
+
+LeetCode_BinarySearchProblem.s: LeetCode_BinarySearchProblem.cpp.s
+
+.PHONY : LeetCode_BinarySearchProblem.s
+
+# target to generate assembly for a file
+LeetCode_BinarySearchProblem.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_BinarySearchProblem.cpp.s
+.PHONY : LeetCode_BinarySearchProblem.cpp.s
+
 LeetCode_BitOperationProblems.obj: LeetCode_BitOperationProblems.cpp.obj
 
 .PHONY : LeetCode_BitOperationProblems.obj
@@ -751,6 +778,9 @@ help:
 	@echo ... LeetCode_BacktracingProblems.obj
 	@echo ... LeetCode_BacktracingProblems.i
 	@echo ... LeetCode_BacktracingProblems.s
+	@echo ... LeetCode_BinarySearchProblem.obj
+	@echo ... LeetCode_BinarySearchProblem.i
+	@echo ... LeetCode_BinarySearchProblem.s
 	@echo ... LeetCode_BitOperationProblems.obj
 	@echo ... LeetCode_BitOperationProblems.i
 	@echo ... LeetCode_BitOperationProblems.s
