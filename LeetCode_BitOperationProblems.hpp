@@ -2,6 +2,7 @@
 #define LEETCODE_BITOPERATIONPROBLEMS_HPP
 #include <cstdint>
 #include <vector>
+#include <string>
 namespace LC {
     /*
     Given a non-empty array of integers, every element appears twice except for one. 
@@ -104,8 +105,6 @@ namespace LC {
         int rangeBitwiseAnd(int m, int n);
     };
 
-
-
     /*
         Given an array of numbers nums, in which exactly two elements 
         appear only once and all the other elements appear exactly twice.
@@ -125,6 +124,78 @@ namespace LC {
         std::vector<int> singleNumber(const std::vector<int> &nums);
     };
 
+
+    /*
+    Calculate the sum of two integers a and b, but you 
+    are not allowed to use the operator + and -.
+
+    Example 1:
+        Input: a = 1, b = 2
+        Output: 3
+    Example 2:
+        Input: a = -2, b = 3
+        Output: 1
+    */
+    class _0371_SumOfTwoIntegers {
+    public:
+        int getSum(int a, int b);
+    };
+
+
+    /*
+    A binary watch has 4 LEDs on the top which represent the hours (0-11), 
+    and the 6 LEDs on the bottom represent the minutes (0-59).
+
+    Each LED represents a zero or one, with the least significant bit on the right.
+
+    For example, the above binary watch reads "3:25". Given a non-negative integer 
+    n which represents the number of LEDs that are currently on, return all possible 
+    times the watch could represent.
+
+    Example:
+        Input: n = 1
+        Return: ["1:00", "2:00", "4:00", "8:00", "0:01", 
+                "0:02", "0:04", "0:08", "0:16", "0:32"]
+
+    Note:
+        The order of output does not matter.
+        The hour must not contain a leading zero, for example "01:00"
+        is not valid, it should be "1:00". The minute must be consist 
+        of two digits and may contain a leading zero, for example 
+        "10:2" is not valid, it should be "10:02".
+
+    Solution: 
+        Thinking about it in the forward way is difficult, it is better 
+        to think about it in an inverse way:
+        There are total 12 * 60 combinations, why not enum them one by one 
+        and pick up all satisfied items:
+    */
+    class _0401_BinaryWatch {
+    public:
+        std::vector<std::string> readBinaryWatch(int num);
+        std::vector<std::string> readBinaryWatch_Solution2(int num);
+    };
+
+
+
+    /*
+    Given an integer, write an algorithm to convert it to hexadecimal. For 
+    negative integer, two’s complement method is used.
+    All letters in hexadecimal (a-f) must be in lowercase.
+    The hexadecimal string must not contain extra leading 0s. If the number is 
+    zero, it is represented by a single zero character '0'; otherwise, the first 
+    character in the hexadecimal string will not be the zero character.
+    The given number is guaranteed to fit within the range of a 32-bit signed 
+    integer.
+    You must not use any method provided by the library which converts/formats 
+    the number to hex directly.
+    Input:  26         Output:  "1a"
+    Input:  -1         Output:  "ffffffff"
+    */
+    class _0405_ConvertANumberToHexadecimal{
+    public:
+        std::string toHex(int num);
+    };
 
 
 }

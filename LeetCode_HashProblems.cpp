@@ -22,6 +22,40 @@ std::vector<std::vector<std::string>> LC::_0049_GroupAnagrams::groupAnagrams(std
     return res;
 }
 
+// Facebook
+std::vector<int> LC::_0349_IntersectionOfTwoArrays::intersection(std::vector<int>& nums1, std::vector<int>& nums2) {
+    std::unordered_set<int> set(begin(nums1),end(nums1));
+    std::vector<int> res;
+    for(int n : nums2) {
+        if(set.count(n)) {
+            res.push_back(n);
+            set.erase(n);
+        }
+    }
+    return res;
+}
+
+std::vector<int> LC::_0350_IntersectionOfTwoArraysII::intersect(std::vector<int>& nums1, std::vector<int>& nums2) {
+    if(nums2.size() > nums1.size()) {
+        return intersect(nums2, nums1);
+    }
+    
+    std::unordered_map<int, int> Map;
+    for(auto n : nums1) {
+        ++Map[n];
+    }
+    
+    std::vector<int> res;
+    for(auto n : nums2) {
+        if(Map.find(n) != Map.end() && Map[n] != 0) {
+            --Map[n];
+            res.push_back(n);
+        }
+    }
+    return res;
+}
+
+
 LC::_0519_RandomFlipMatrix::_0519_RandomFlipMatrix(int n_rows, int n_cols) : nRows(n_rows), nCols(n_cols) {
     remain = n_rows * n_cols;
 }

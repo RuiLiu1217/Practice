@@ -947,7 +947,73 @@ std::vector<std::vector<int>> LC::_0314_BinaryTreeVertialOrderTraversal::vertica
     return res;        
 }
 
+//! COPY FROM THE SOLUTION
+//! https://www.cnblogs.com/grandyang/p/5174738.html
+/* 
+我们通过举一些正确的例子，比如"9,3,4,#,#,1,#,#,2,#,6,#,#" 或者"9,3,4,#,#,1,#,#,2,#,6,#,#"等等，可以观察出如下两个规律：
+1. 数字的个数总是比#号少一个
+2. 最后一个一定是#号
+那么我们加入先不考虑最后一个#号，那么此时数字和#号的个数应该相同，如果我们初始化一个为0的计数器，遇到数字，计数器加1，遇到#号，
+计数器减1，那么到最后计数器应该还是0。下面我们再来看两个返回False的例子，"#,7,6,9,#,#,#"和"7,2,#,2,#,#,#,6,#"，那么通过这
+两个反例我们可以看出，如果根节点为空的话，后面不能再有节点，而且不能有三个连续的#号出现。所以我们再加减计数器的时候，如果遇到#
+号，且此时计数器已经为0了，再减就成负数了，就直接返回False了，因为正确的序列里，任何一个位置i，在[0, i]范围内的#号数都不大于
+数字的个数的。当循环完成后，我们检测计数器是否为0的同时还要看看最后一个字符是不是#号。
+*/
 
+bool LC::_0331_VerifyPreorderSerializationOfABinaryTree::isValidSerialization(std::string preorder) {
+    std::stack<std::pair<std::string, int>> Q;
+    if(preorder.size() == 1 && preorder[0] == '#') {
+        return true;
+    }
+    preorder += ',';
+    std::string curStr;
+    
+    for(int i = 0; i < preorder.size(); ++i) {
+        char c = preorder[i];
+        if(c == ',') {
+            if(!curStr.empty()) {
+                if(curStr == "#") {
+                    if(Q.empty()) {
+                        return false;
+                    } else {
+                        if(Q.top().second == 2) {
+                            auto& t = Q.top();
+                            t.second = 1;
+                        } else {
+                            while(!Q.empty() && Q.top().second == 1) {
+                                Q.pop();
+                            }
+                            if(!Q.empty()) {
+                                Q.top().second = 1;
+                            } else {
+                                return i == preorder.size() - 1;
+                            }   
+                        }
+                    }
+                } else {
+                    Q.push(std::make_pair(curStr, 2));
+                }
+                curStr.clear();
+            } else {
+                return false;
+            }
+        } else {
+            curStr += c;
+        }
+    }
+    return Q.empty();
+}
+
+int LC::_0404_SumOfLeftLeaves::sumOfLeftLeaves(TreeNode* root) {
+    if(!root) {
+        return 0;
+    }
+    int sum = 0;
+    if(root->left && root->left->left == nullptr && root->left->right == nullptr) {
+        sum = root->left->val;
+    }
+    return sum + sumOfLeftLeaves(root->left) + sumOfLeftLeaves(root->right);
+}
 
 LC::_0510_InorderSuccessorInBSTII::Node* LC::_0510_InorderSuccessorInBSTII::inorderSuccessor(Node* node) {
     if(!node) {

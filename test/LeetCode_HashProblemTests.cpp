@@ -19,5 +19,20 @@ TEST(LC, _1371_FindTheLongestSubstringContainingVowelsInEvenCounts) {
     std::string s2 = "leetcodeisgreat";
     EXPECT_EQ(obj.findTheLongestSubstring(s1), 13);
     EXPECT_EQ(obj.findTheLongestSubstring(s2), 5);
+}
 
+TEST(LC, _0349_IntersectionOfTwoArrays) {
+    LC::_0349_IntersectionOfTwoArrays obj;
+    std::vector<int> nums1{1,2,2,3,4,5};
+    std::vector<int> nums2{2,3,5,6,7};
+    std::vector<int> base{2,3,5};
+    EXPECT_EQ(obj.intersection(nums1, nums2), base);
+}
+
+TEST(LC, _0350_InterectionOfTwoArraysII) {
+    LC::_0350_IntersectionOfTwoArraysII obj;
+    std::vector<int> nums1{1,2,2,1};
+    std::vector<int> nums2{2,2};
+    std::vector<int> base{2,2};
+    EXPECT_EQ(obj.intersect(nums1, nums2), base);    
 }

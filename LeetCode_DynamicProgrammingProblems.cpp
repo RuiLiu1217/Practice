@@ -380,6 +380,72 @@ bool LC::_0139_WordBreak::wordBreak(std::string s, std::vector<std::string>& wor
     return DP.back();
 }
 
+int LC::_0322_CoinChange::coinChangeDP(std::vector<int>& coins, int amount) {
+    std::vector<int> DP(amount + 1, INT_MAX);
+    DP[0] = 0;
+    for(int c : coins) {
+        if(c <= amount) {
+            DP[c] = 1;
+        }
+    }
+    for(int m = 1; m <= amount; ++m) {
+        for(int c : coins) {
+            if(m >= c) {
+                DP[m] = std::min(DP[m], DP[m-c] == INT_MAX ? INT_MAX : DP[m-c] + 1);
+            }
+        }
+    }
+    return DP[amount] == INT_MAX ? -1 : DP[amount];
+}
+
+int LC::_0322_CoinChange::coinChange(std::vector<int>& coins, int amount) {
+    std::sort(coins.rbegin(), coins.rend());
+    int ans = INT_MAX;
+    coinChange(coins, 0, amount, 0,  ans);
+    return ans == INT_MAX ? -1 : ans;
+}
+void LC::_0322_CoinChange::coinChange(const std::vector<int>& coins, int s, int amount, int count, int& ans) {
+    const int coin = coins[s];
+    
+    if(s == coins.size() - 1) {
+        if(amount % coin == 0) {
+            ans = std::min(ans, count + amount / coin);
+        }
+    } else {
+        for(int k = amount / coin; k >= 0 && k + count < ans; --k) {
+            coinChange(coins, s+1, amount - k * coin, count + k, ans);
+        }
+    }
+}
+
+int LC::_0343_IntegerBreak::intergerBreak(int n) {
+    if(n == 1) {
+        return 0;
+    } 
+    if(n == 2) {
+        return 1;
+    }
+    std::vector<int> DP(n+1, 0);
+    
+    DP[0] = 0;
+    DP[1] = 0;
+    DP[2] = 1;
+    for(int i = 3; i <= n; ++i) {
+        int maxV = INT_MIN;
+        for(int j = 1; j < i; ++j) {
+            int v = std::max(DP[j], j) * std::max(DP[i-j], i-j);
+            if(v > maxV) {
+                maxV = v;
+            }
+        }
+        DP[i] = maxV;
+    }
+    return DP[n];
+}
+
+
+
+
 std::vector<std::string> LC::_0472_ConcatenatedWords::findAllConcatenatedWordsInADict(std::vector<std::string>& words) {
     if(words.size() < 2) {
         return {};

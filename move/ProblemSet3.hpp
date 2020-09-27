@@ -248,9 +248,7 @@ public:
 };
 
 /*
-Tag: 
-
-Google
+Tag: Google
    
 Write a function to generate the generalized abbreviations of a word. 
 Note: The order of the output does not matter.
@@ -260,12 +258,11 @@ Input: "word"
 Output:
 ["word", "1ord", "w1rd", "wo1d", "wor1", "2rd", "w2d", "wo2", 
 "1o1d", "1or1", "w1r1", "1o2", "2r1", "3d", "w3", "4"]
+! Copy from the solution. 
 */
 class _0320_GeneralizedAbbreviation {
 public:
     std::vector<std::string> generalizeAbbreviations(std::string word);
-
-    // Copy from the solution. 
     std::vector<std::string> generateAbbreviations(std::string word);
 private:
     std::vector<std::string> generateAbbreviations_v2(std::string word);
@@ -315,30 +312,6 @@ private:
     std::vector<int> maxNumber(const std::vector<int>& nums, int k);
 };
 
-/*
-Tag: dynamic programming
-You are given coins of different denominations and a total amount of 
-money amount. Write a function to compute the fewest number of coins 
-that you need to make up that amount. If that amount of money cannot 
-be made up by any combination of the coins, return -1.
-
-Example 1:
-
-Input: coins = [1, 2, 5], amount = 11
-Output: 3 
-Explanation: 11 = 5 + 5 + 1
-Example 2:
-
-Input: coins = [2], amount = 3
-Output: -1
-*/
-class _0322_CoinChange {
-public:
-    int coinChange(std::vector<int>& coins, int amount);
-private:
-    int coinChange_Help(const std::vector<int>& coins, int amout);
-    std::vector<int> DP;
-};
 
 /*
 Given an array nums and a target value k, find the maximum length of a subarray that sums to k. If there isn't one, return 0 instead.
@@ -364,58 +337,7 @@ public:
     int maxSubArrayLen(std::vector<int>& nums, int k);
 };
 
-/*
-Given an integer, write a function to determine if it is a power of three.
 
-Example 1:
-
-Input: 27
-Output: true
-Example 2:
-
-Input: 0
-Output: false
-Example 3:
-
-Input: 9
-Output: true
-Example 4:
-
-Input: 45
-Output: false
-Follow up:
-Could you do it without using any loop / recursion?
-*/
-class _0326_PowerOfThree{
-public:
-    bool isPowerOfThree(int n);
-};
-
-/*
-328. Odd Even Linked List
-
-Given a singly linked list, group all odd nodes together followed by 
-the even nodes. Please note here we are talking about the node number 
-and not the value in the nodes.
-
-You should try to do it in place. The program should run in O(1) space 
-complexity and O(nodes) time complexity.
-
-Input: 1->2->3->4->5->NULL
-Output: 1->3->5->2->4->NULL
-Example 2:
-
-Input: 2->1->3->5->6->4->7->NULL
-Output: 2->3->6->7->1->5->4->NULL
-Note:
-
-The relative order inside both the even and odd groups should remain as it was in the input.
-The first node is considered odd, the second node even and so on ...
-*/
-class _0328_OddEvenLinkedList {
-public:
-    ListNode<int>* oddEvenList(ListNode<int>* head);
-};
 
 /*
 Given an integer matrix, find the length of the longest increasing path.
@@ -479,39 +401,6 @@ public:
     int minPatches(std::vector<int>& nums, int n);
 };
 
-/*
-One way to serialize a binary tree is to use pre-order traversal. When we encounter a 
-non-null node, we record the node's value. If it is a null node, we record using a 
-sentinel value such as #.
-
-     _9_
-    /   \
-   3     2
-  / \   / \
- 4   1  #  6
-/ \ / \   / \
-# # # #   # #
-For example, the above binary tree can be serialized to the string "9,3,4,#,#,1,#,#,2,#,6,#,#", 
-where # represents a null node.
-Given a string of comma separated values, verify whether it is a correct preorder traversal 
-serialization of a binary tree. Find an algorithm without reconstructing the tree.
-Each comma separated value in the string must be either an integer or a character '#' representing null pointer.
-You may assume that the input format is always valid, for example it could never contain two 
-consecutive commas such as "1,,3".
-
-Input: "9,3,4,#,#,1,#,#,2,#,6,#,#"
-Output: true
-
-Input: "1,#"
-Output: false
-
-Input: "9,#,#,1"
-Output: false
-*/
-class _0331_VerifyPreorderSerializationOfABinaryTree {
-public:
-    bool isValidSerialization(std::string preorder);
-};
 
 /*
 The thief has found himself a new place for his thievery again. There is only one 
@@ -629,26 +518,6 @@ private:
     int depthSum(std::vector<NestedInteger>& nestedList, int depth);
 };
 
-/*
-Tag: Sliding Window
-
-Facebook
-
-Given a string, find the length of the longest substring T that contains at most k 
-distinct characters.
-
-Input: s = "eceba", k = 2
-Output: 3
-Explanation: T is "ece" which its length is 3.
-
-Input: s = "aa", k = 1
-Output: 2
-Explanation: T is "aa" which its length is 2.
-*/
-class _0340_LongestSubstringWithAtMostKDistintCharacters {
-public:
-    int lengthOfLongestSubstringKDistinct(std::string s, int k);
-};
 
 // TODO: COPY FROM A SOLUTION
 class _0341_FlattenNestedListIterator {
@@ -664,139 +533,6 @@ public:
     bool hasNext();
     bool hasContent(std::vector<NestedInteger> V);
     void increaseIndex();
-};
-
-/*
-    Given an integer (signed 32 bits), write a function 
-    to check whether it is a power of 4.
-    
-    Example 1:
-        Input: 16
-        Output: true
-    Example 2:
-        Input: 5
-        Output: false
-    Follow up: Could you solve it without loops/recursion?
-    */
-class _0342_PowerOfFour {
-public:
-    bool isPowerOfFour(int num);
-};
-
-/*
-Given a positive integer n, break it into the sum of at least two 
-positive integers and maximize the product of those integers. Return 
-the maximum product you can get.
-
-Input: 2      :       Output: 1
-Explanation: 2 = 1 + 1, 1 × 1 = 1.
-
-Input: 10     :       Output: 36
-Explanation: 10 = 3 + 3 + 4, 3 × 3 × 4 = 36.
-Note: You may assume that n is not less than 2 and not larger than 58.
-*/
-class _0343_IntegerBreak {
-public:
-    int intergerBreak(int n);
-};
-
-/*
-Write a function that reverses a string. The input string is given as 
-an array of characters char[].
-Do not allocate extra space for another array, you must do this by 
-modifying the input array in-place with O(1) extra memory.
-
-You may assume all the characters consist of printable ascii characters.
-
-Input: ["h","e","l","l","o"]
-Output: ["o","l","l","e","h"]
-
-Input: ["H","a","n","n","a","h"]
-Output: ["h","a","n","n","a","H"]
-*/
-class _0344_ReverseString {
-public:
-    void reverseString(std::vector<char>& s);
-};
-
-
-/*
-Write a function that takes a string as input and reverse only the vowels of a string.
-
-Input: "hello"
-Output: "holle"
-
-Input: "leetcode"
-Output: "leotcede"
-Note:
-The vowels does not include the letter "y".
-*/
-class _0345_ReverseVowelsOfAString {
-public:
-    std::string reverseVowels(std::string s);
-};
-
-
-/*
-Given a non-empty array of integers, return the k most frequent elements.
-
-Example 1:
-
-Input: nums = [1,1,1,2,2,3], k = 2
-Output: [1,2]
-Example 2:
-
-Input: nums = [1], k = 1
-Output: [1]
-Note:
-
-You may assume k is always valid, 1 ≤ k ≤ number of unique elements.
-Your algorithm's time complexity must be better than O(n log n), where n is the array's size.
-*/
-class _0347_TopKFrequentElements {
-public:
-    std::vector<int> topKFrequent(std::vector<int>& nums, int k);
-};
-
-/*
-
-Tag: hash
-
-Facebook
-
-Given two arrays, write a function to compute their intersection.
-
-Input: nums1 = [1,2,2,1], nums2 = [2,2]
-Output: [2]
-
-Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
-Output: [9,4]
-Note:
-Each element in the result must be unique.
-The result can be in any order.
-*/
-class _0349_IntersectionOfTwoArrays {
-public:
-    std::vector<int> intersection(std::vector<int>& nums1, std::vector<int>& nums2);
-};
-
-/*
-Given two arrays, write a function to compute their intersection.
-
-Input: nums1 = [1,2,2,1], nums2 = [2,2]           :          Output: [2,2]
-Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]       :          Output: [4,9]
-
-Note:
-Each element in the result should appear as many times as it shows in both arrays.
-The result can be in any order.
-Follow up:
-What if the given array is already sorted? How would you optimize your algorithm?
-What if nums1's size is small compared to nums2's size? Which algorithm is better?
-What if elements of nums2 are stored on disk, and the memory is limited such that you cannot load all elements into the memory at once?
-*/
-class _0350_IntersectionOfTwoArraysII {
-public:
-    std::vector<int> intersect(std::vector<int>& nums1, std::vector<int>& nums2);
 };
 
 /*
@@ -829,15 +565,15 @@ public:
 };
 
 /*
-        Given a non-negative integer n, count all numbers with unique 
-        digits, x, where 0 ≤ x < pow(10, n).
-        
-        Example:
-        Input: 2
-        Output: 91 
-        Explanation: The answer should be the total numbers in the range of 0 ≤ x < 100, 
-                     excluding 11,22,33,44,55,66,77,88,99
-    */
+Given a non-negative integer n, count all numbers with unique 
+digits, x, where 0 ≤ x < pow(10, n).
+
+Example:
+Input: 2
+Output: 91 
+Explanation: The answer should be the total numbers in the range of 0 ≤ x < 100, 
+                excluding 11,22,33,44,55,66,77,88,99
+*/
 class _0357_CountNumbersWithUniqueDigits
 {
 public:
@@ -888,48 +624,7 @@ public:
     bool shouldPrintMessage(int timeStamp, std::string message);
 };
 
-/*
-Given a sorted array of integers nums and integer values a, b and c. 
-Apply a quadratic function of the form f(x) = ax2 + bx + c to each 
-element x in the array.
 
-The returned array must be in sorted order.
-Expected time complexity: O(n)
-
-Input: nums = [-4,-2,2,4], a = 1, b = 3, c = 5
-Output: [3,9,15,33]
-
-Input: nums = [-4,-2,2,4], a = -1, b = 3, c = 5
-Output: [-23,-5,1,7]
-*/
-class _0360_SortTransformedArray {
-public:
-    std::vector<int> sortTransformedArray(std::vector<int>& nums, int a, int b, int c);
-};
-
-/*
-Given a 2D grid, each cell is either a wall 'W', an enemy 'E' or 
-empty '0' (the number zero), return the maximum enemies you can 
-kill using one bomb. The bomb kills all the enemies in the same 
-row and column from the planted point until it hits the wall since 
-the wall is too strong to be destroyed.
-Note: You can only put the bomb at an empty cell.
-
-
-Input: [["0","E","0","0"],["E","0","W","E"],["0","E","0","0"]]
-Output: 3 
-Explanation: For the given grid,
-
-0 E 0 0 
-E 0 W E 
-0 E 0 0
-
-Placing a bomb at (1,1) kills 3 enemies.
-*/
-class _0361_BombEnemy {
-public:
-    int maxkilledEnemies(std::vector<std::vector<char>>& grid);
-};
 
 /*
 Tag: Data Structure
@@ -1018,23 +713,6 @@ public:
     int depthSumInv(std::vector<NestedInteger>& nestedList, int level);;
 };
 
-/*
-Given a positive integer num, write a function which returns True if num is a 
-perfect square else False. Note: Do not use any built-in library function such 
-as sqrt.
-
-Input: 16
-Returns: True
-
-Input: 14
-Returns: False
-Credits:
-Special thanks to @elmirap for adding this problem and creating all test cases.
-*/
-class _0367_ValidPerfectSquare {
-public:
-    bool isPerfectSquare(int x);
-};
 
 /*
 Given a set of distinct positive integers, find the largest subset such that every pair 
@@ -1055,37 +733,6 @@ public:
     std::vector<int> largestDivisibleSubset(std::vector<int>& nums);
 };
 
-/*
-Calculate the sum of two integers a and b, but you 
-are not allowed to use the operator + and -.
-
-Example 1:
-    Input: a = 1, b = 2
-    Output: 3
-Example 2:
-    Input: a = -2, b = 3
-    Output: 1
-*/
-class _0371_SumOfTwoIntegers
-{
-public:
-    int getSum(int a, int b);
-};
-
-/*
-Your task is to calculate ab mod 1337 where a is a positive integer 
-and b is an extremely large positive integer given in the form of an array.
-
-Input: a = 2, b = [3]
-Output: 8
-
-Input: a = 2, b = [1,0]
-Output: 1024
-*/
-class _0372_SuperPow {
-public:
-    int superPow(int a, std::vector<int>& b);
-};
 
 /*
 A sequence of numbers is called a wiggle sequence if the differences between 
@@ -1277,22 +924,6 @@ public:
 };
 
 
-/*
-Given an arbitrary ransom note string and another string containing letters from all the magazines, write a function 
-that will return true if the ransom note can be constructed from the magazines ; otherwise, it will return false.
-Each letter in the magazine string can only be used once in your ransom note.
-
-Note:
-You may assume that both strings contain only lowercase letters.
-
-canConstruct("a", "b") -> false
-canConstruct("aa", "ab") -> false
-canConstruct("aa", "aab") -> true
-*/
-class _0383_RansomNote {
-public:
-    bool canConstruct(std::string ransomNote, std::string magazine);
-};
 
 /*
 Given a nested list of integers represented as a string, implement a parser to deserialize it.
@@ -1371,19 +1002,7 @@ public:
     std::vector<int> lexicalOrder(int n);
 };
 
-/*
-Given a string, find the first non-repeating character in it and return it's index. If it doesn't exist, return -1.
 
-s = "leetcode"
-return 0.
-
-s = "loveleetcode",
-return 2.
-*/
-class _0387_FirstUniqueCharacterInAString {
-public:
-    int firstUniqChar(std::string s);
-};
 
 /*
 Tag: Stack, string
@@ -1436,7 +1055,7 @@ public:
 
 
 /*
-_390_ Elimination Game
+Elimination Game
 There is a list of sorted integers from 1 to n. Starting from left to right,
 remove the first number and every other number afterward until you reach the
 end of the list.
@@ -1539,11 +1158,11 @@ space will not pass the judge.
 int[] nums = new int[] {1,2,3,3,3};
 Solution solution = new Solution(nums);
 
-// pick(3) should return either index 2, 3, or 4 randomly. Each index 
+pick(3) should return either index 2, 3, or 4 randomly. Each index 
 should have equal probability of returning.
 solution.pick(3);
 
-// pick(1) should return 0. Since in the array only nums[0] is equal to 1.
+pick(1) should return 0. Since in the array only nums[0] is equal to 1.
 solution.pick(1);
 */
 class _0398_RandomPickIndex {

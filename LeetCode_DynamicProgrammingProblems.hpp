@@ -323,6 +323,50 @@ public:
 };
 
 /*
+Tag: dynamic programming
+You are given coins of different denominations and a total amount of 
+money amount. Write a function to compute the fewest number of coins 
+that you need to make up that amount. If that amount of money cannot 
+be made up by any combination of the coins, return -1.
+
+Example 1:
+
+Input: coins = [1, 2, 5], amount = 11
+Output: 3 
+Explanation: 11 = 5 + 5 + 1
+Example 2:
+
+Input: coins = [2], amount = 3
+Output: -1
+*/
+class _0322_CoinChange {
+public:    
+    int coinChange(std::vector<int>& coins, int amount); //! This is hard to understand
+    int coinChangeDP(std::vector<int>& coins, int amount);
+private:
+    void coinChange(const std::vector<int>& coins, int s, int amount, int count, int& ans);
+};
+
+
+/*
+Given a positive integer n, break it into the sum of at least two 
+positive integers and maximize the product of those integers. Return 
+the maximum product you can get.
+
+Input: 2      :       Output: 1
+Explanation: 2 = 1 + 1, 1 × 1 = 1.
+
+Input: 10     :       Output: 36
+Explanation: 10 = 3 + 3 + 4, 3 × 3 × 4 = 36.
+Note: You may assume that n is not less than 2 and not larger than 58.
+*/
+class _0343_IntegerBreak {
+public:
+    int intergerBreak(int n);
+};
+
+
+/*
 We are playing the Guessing Game. The game will work as follows:
 
 I pick a number between 1 and n.
@@ -331,11 +375,6 @@ If you guess the right number, you win the game.
 If you guess the wrong number, then I will tell you whether the number I picked is higher or lower, and you will continue guessing.
 Every time you guess a wrong number x, you will pay x dollars. If you run out of money, you lose the game.
 Given a particular n, return the minimum amount of money you need to guarantee a win regardless of what number I pick.
-
- 
-
-Example 1:
-
 
 Input: n = 10
 Output: 16

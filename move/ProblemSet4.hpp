@@ -9,50 +9,7 @@
 #include "Tree.hpp"
 #include "LinkList.hpp"
 namespace LeetCode {
-    /*
-A binary watch has 4 LEDs on the top which represent
-the hours (0-11), and the 6 LEDs on the bottom represent
-the minutes (0-59).
-
-Each LED represents a zero or one, with the least significant
-bit on the right.
-
-For example, the above binary watch reads "3:25".
-Given a non-negative integer n which represents the number of
-LEDs that are currently on, return all possible times the watch
-could represent.
-
-Example:
-    Input: n = 1
-    Return: ["1:00", "2:00", "4:00", "8:00", "0:01", 
-            "0:02", "0:04", "0:08", "0:16", "0:32"]
-
-Note:
-    The order of output does not matter.
-    The hour must not contain a leading zero, for example "01:00"
-    is not valid, it should be "1:00". The minute must be consist 
-    of two digits and may contain a leading zero, for example 
-    "10:2" is not valid, it should be "10:02".
-
-Solution: 
-    Thinking about it in the forward way is difficult, it is better 
-    to think about it in an inverse way:
-    There are total 12 * 60 combinations, why not enum them one by one 
-    and pick up all satisfied items:
-*/
-class _0401_BinaryWatch
-{
-public:
-    std::vector<std::string> readBinaryWatch(int num);
-};
-
-class _0404_SumOfLeftLeaves
-{
-public:
-    int sumOfLeftLeaves(TreeNode<int> *root);
-};
-
-
+    
 /*
 Given a non-negative integer num represented as a string, remove k digits 
 from the number so that the new number is the smallest possible.
@@ -82,36 +39,6 @@ public:
 };
 
 
-/*
-Given an integer, write an algorithm to convert it to hexadecimal. For 
-negative integer, two’s complement method is used.
-All letters in hexadecimal (a-f) must be in lowercase.
-The hexadecimal string must not contain extra leading 0s. If the number is 
-zero, it is represented by a single zero character '0'; otherwise, the first 
-character in the hexadecimal string will not be the zero character.
-The given number is guaranteed to fit within the range of a 32-bit signed 
-integer.
-You must not use any method provided by the library which converts/formats 
-the number to hex directly.
-Input:  26         Output:  "1a"
-Input:  -1         Output:  "ffffffff"
-*/
-class _0405_ConvertANumberToHexadecimal{
-public:
-    std::string toHex(int num);
-};
-
-
-class _0409_LongestPalindrome {
-public:
-    int longestPalindrome(std::string s);
-};
-
-class _0412_FizzBuzz {
-public:
-    std::vector<std::string> fizzBuzz(int n);
-};
- 
 class _0413_ArighmeticSlices {
 public:
     int numberOfArithmeticSlices(std::vector<int>& A);
@@ -124,24 +51,6 @@ public:
     int thirdMax(std::vector<int>& nums);
 };
 
-/*
-Facebook
-
-Tag: string operation, math
-
-Given two non-negative integers num1 and num2 represented as string, return the sum of num1 and num2.
-
-Note:
-
-The length of both num1 and num2 is < 5100.
-Both num1 and num2 contains only digits 0-9.
-Both num1 and num2 does not contain any leading zero.
-You must not use any built-in BigInteger library or convert the inputs to integer directly.
-*/
-class _0415_AddStrings {
-public:
-    std::string addStrings(std::string num1, std::string num2);
-};
 
 /*
 Given a non-empty array containing only positive integers, find if the array 
@@ -199,40 +108,17 @@ public:
 // Your task is to use a quad tree to represent a given grid.
 
 // 这是一道比较简单的题目，主要注意点就是先判断一个矩阵中的值是否一致，在看分隔中是否一致
-class _0427_ConstructQuadTree
-{
+class _0427_ConstructQuadTree {
 public:
     QuadTreeNode *construct(std::vector<std::vector<int>> &grid);
     QuadTreeNode *construct(std::vector<std::vector<int>> &grid,
                             int rowStart, int rowEnd, int colStart, int colEnd);
-
 private:
     bool areConsistent(std::vector<std::vector<int>> &grid);
     bool areConsistent(std::vector<std::vector<int>> &grid,
                        int rowStart, int rowEnd, int colStart, int colEnd);
 
     std::vector<std::vector<std::vector<int>>> divideGrid(std::vector<std::vector<int>> &grid);
-};
-
-/*
-Given a non-empty string containing an out-of-order English representation of digits 0-9, output the digits in ascending order.
-
-Note:
-Input contains only lowercase English letters.
-Input is guaranteed to be valid and can be transformed to its original digits. That means invalid inputs such as "abc" or "zerone" are not permitted.
-Input length is less than 50,000.
-Example 1:
-Input: "owoztneoer"
-
-Output: "012"
-Example 2:
-Input: "fviefuro"
-
-Output: "45"
-*/
-class _0423_ReconstructOriginalDigitFromEnglish {
-public:
-    std::string originalDigits(std::string s);
 };
 
 /*

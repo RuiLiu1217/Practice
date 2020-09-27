@@ -46,3 +46,28 @@ TEST(LC, _0311_SparseMatrixMultiplication) {
     std::vector<std::vector<int>> res{{7,0,0},{-7,0,3}};
     EXPECT_EQ(obj.multiply(A, B), res);
 }
+
+TEST(LC, _0326_PowerOfThree) {
+    LC::_0326_PowerOfThree obj;
+    EXPECT_TRUE(obj.isPowerOfThree(27));
+    EXPECT_FALSE(obj.isPowerOfThree(0));
+    EXPECT_TRUE(obj.isPowerOfThree(1));
+    EXPECT_FALSE(obj.isPowerOfThree(2345341));
+}
+
+TEST(LC, _0342_PowerOfFour) {
+    LC::_0342_PowerOfFour obj;
+    EXPECT_TRUE(obj.isPowerOfFour(1));
+    EXPECT_TRUE(obj.isPowerOfFour(4));
+    EXPECT_TRUE(obj.isPowerOfFour(4 * 4 * 4 * 4 * 4));
+    EXPECT_FALSE(obj.isPowerOfFour(0));
+    EXPECT_FALSE(obj.isPowerOfFour(2));
+}
+
+TEST(LC, _0367_) {
+    LC::_0367_ValidPerfectSquare obj;
+    EXPECT_TRUE(obj.isPerfectSquare(16));
+    EXPECT_FALSE(obj.isPerfectSquare(32));
+    EXPECT_FALSE(obj.isPerfectSquare(14));
+    EXPECT_TRUE(obj.isPerfectSquare(9));
+}

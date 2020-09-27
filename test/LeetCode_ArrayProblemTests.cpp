@@ -285,3 +285,15 @@ TEST(LC, _0304_RangeSumQuery2DImmutable) {
     EXPECT_EQ(obj.sumRegion(1,2,2,4), 12);
 }
 
+TEST(LC, _0360_) {
+    LC::_0360_SortTransformedArray obj;
+    std::vector<int> in{-4, -2, 2, 4};
+    std::vector<int> base{3,9,15,33};
+    EXPECT_EQ(obj.sortTransformedArray(in, 1, 3, 5), base);
+}
+
+TEST(LC, _0361_) {
+    LC::_0361_BombEnemy obj;
+    std::vector<std::vector<char>> ch{{'0','E','0','0'},{'E','0','W','E'},{'0','E','0','0'}};
+    EXPECT_EQ(3, obj.maxkilledEnemies(ch));
+}

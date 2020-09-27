@@ -63,6 +63,19 @@ TEST(LC, _0264_nthUglyNumber) {
     EXPECT_EQ(obj.nthUglyNumber(10), 12);
 }
 
+TEST(LC, _0322_CoinChange) {
+    LC::_0322_CoinChange obj;
+    std::vector<int> coins1{1, 2, 5};
+    std::vector<int> coins2{2};
+    EXPECT_EQ(3, obj.coinChangeDP(coins1, 11));
+    EXPECT_EQ(-1, obj.coinChangeDP(coins2, 3));
+}
+
+TEST(LC, _0343_IntegerBreak) {
+    LC::_0343_IntegerBreak obj;
+    EXPECT_EQ(obj.intergerBreak(10), 36);
+}
+
 TEST(LC, _0472_ConcatenatedWords) {
     LC::_0472_ConcatenatedWords obj;
     std::vector<std::string> words{"cat","cats","catsdogcats","dog","dogcatsdog","hippopotamuses","rat","ratcatdogcat"};

@@ -67,6 +67,24 @@ private:
     std::vector<int> maxSlidingWindow_Monotic(std::vector<int>& nums, int k);
 };
 
+
+/*
+Facebook
+
+Given a string, find the length of the longest substring T that contains at most k 
+distinct characters.
+
+Input: s = "eceba", k = 2          :           Output: 3
+Explanation: T is "ece" which its length is 3.
+
+Input: s = "aa", k = 1             :           Output: 2
+Explanation: T is "aa" which its length is 2.
+*/
+class _0340_LongestSubstringWithAtMostKDistintCharacters {
+public:
+    int lengthOfLongestSubstringKDistinct(std::string s, int k);
+};
+
 /*
 Median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value. So the median is the mean of the two middle value.
 

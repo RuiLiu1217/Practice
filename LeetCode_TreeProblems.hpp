@@ -1108,6 +1108,95 @@ public:
 
 
 /*
+One way to serialize a binary tree is to use pre-order traversal. When we encounter a 
+non-null node, we record the node's value. If it is a null node, we record using a 
+sentinel value such as #.
+
+     _9_
+    /   \
+   3     2
+  / \   / \
+ 4   1  #  6
+/ \ / \   / \
+# # # #   # #
+For example, the above binary tree can be serialized to the string "9,3,4,#,#,1,#,#,2,#,6,#,#", 
+where # represents a null node.
+Given a string of comma separated values, verify whether it is a correct preorder traversal 
+serialization of a binary tree. Find an algorithm without reconstructing the tree.
+Each comma separated value in the string must be either an integer or a character '#' representing null pointer.
+You may assume that the input format is always valid, for example it could never contain two 
+consecutive commas such as "1,,3".
+
+Input: "9,3,4,#,#,1,#,#,2,#,6,#,#"
+Output: true
+
+Input: "1,#"
+Output: false
+
+Input: "9,#,#,1"
+Output: false
+*/
+class _0331_VerifyPreorderSerializationOfABinaryTree {
+public:
+    bool isValidSerialization(std::string preorder);
+private:
+    bool isValidSerialization1(std::string preorder) {
+        std::istringstream in(preorder);
+        std::vector<std::string> v;
+        std::string t = "";
+        int cnt = 0;
+        while (getline(in, t, ',')) v.push_back(t);
+        for (int i = 0; i < v.size() - 1; ++i) {
+            if (v[i] == "#") {
+                if (cnt == 0) return false;
+                --cnt;
+            } else ++cnt;
+        }
+        return cnt == 0 && v.back() == "#";
+    }
+    bool isValidSerialization2(std::string preorder) {
+        std::istringstream in(preorder);
+        std::string t = "";
+        int degree = 1;
+        bool degree_is_zero = false;;
+        while (getline(in, t, ',')) {
+            if (degree_is_zero) return false;
+            if (t == "#") {
+                if (--degree == 0) degree_is_zero = true;
+            } else ++degree;
+        }
+        return degree == 0;
+    }
+
+    bool isValidSerialization3(std::string preorder) {
+        int capacity = 1;
+        preorder += ",";
+        for (int i = 0; i < preorder.size(); ++i) {
+            if (preorder[i] != ',') continue;
+            if (--capacity < 0) return false;
+            if (preorder[i - 1] != '#') capacity += 2;
+        }
+        return capacity == 0;
+    }
+};
+
+/*
+Find the sum of all left leaves in a given binary tree.
+
+    3
+   / \
+  9  20
+    /  \
+   15   7
+
+There are two left leaves in the binary tree, with values 9 and 15 respectively. Return 24.
+*/
+class _0404_SumOfLeftLeaves {
+public:
+    int sumOfLeftLeaves(TreeNode *root);
+};
+
+/*
 Serialization is the process of converting a data structure or object into a sequence of bits 
 so that it can be stored in a file or memory buffer, or transmitted across a network connection 
 link to be reconstructed later in the same or another computer environment.
@@ -1220,6 +1309,8 @@ public:
     };
     Node* inorderSuccessor(Node* node);
 };
+
+
 
 }
 #endif

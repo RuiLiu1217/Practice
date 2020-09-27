@@ -600,6 +600,169 @@ public:
 
 
 /*
+Write a function that reverses a string. The input string is given as 
+an array of characters char[].
+Do not allocate extra space for another array, you must do this by 
+modifying the input array in-place with O(1) extra memory.
+
+You may assume all the characters consist of printable ascii characters.
+
+Input: ["h","e","l","l","o"]
+Output: ["o","l","l","e","h"]
+
+Input: ["H","a","n","n","a","h"]
+Output: ["h","a","n","n","a","H"]
+*/
+class _0344_ReverseString {
+public:
+    void reverseString(std::vector<char>& s);
+};
+
+
+/*
+Write a function that takes a string as input and reverse only the vowels of a string.
+
+Input: "hello"
+Output: "holle"
+
+Input: "leetcode"
+Output: "leotcede"
+Note:
+The vowels does not include the letter "y".
+*/
+class _0345_ReverseVowelsOfAString {
+public:
+    std::string reverseVowels(std::string s);
+private:
+    bool isVowel(char c) {
+        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' ||
+        c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U';
+    }
+};
+
+
+/*
+Given an arbitrary ransom note string and another string containing letters from all the magazines, write a function 
+that will return true if the ransom note can be constructed from the magazines ; otherwise, it will return false.
+Each letter in the magazine string can only be used once in your ransom note.
+
+Note:
+You may assume that both strings contain only lowercase letters.
+
+canConstruct("a", "b") -> false
+canConstruct("aa", "ab") -> false
+canConstruct("aa", "aab") -> true
+*/
+class _0383_RansomNote {
+public:
+    bool canConstruct(std::string ransomNote, std::string magazine);
+};
+
+/*
+Given a string, find the first non-repeating character in it and return it's index. If it doesn't exist, return -1.
+s = "leetcode"              :        return 0.
+s = "loveleetcode",         :        return 2.
+*/
+class _0387_FirstUniqueCharacterInAString {
+public:
+    int firstUniqChar(std::string s);
+};
+
+
+/*
+Given a string s which consists of lowercase or uppercase letters, return the length of the longest palindrome that can be built with those letters.
+
+Letters are case sensitive, for example, "Aa" is not considered a palindrome here.
+
+Input: s = "abccccdd"
+Output: 7
+Explanation:
+One longest palindrome that can be built is "dccaccd", whose length is 7.
+
+Input: s = "a"
+Output: 1
+
+Input: s = "bb"
+Output: 2
+
+Constraints:
+
+1 <= s.length <= 2000
+s consits of lower-case and/or upper-case English letters only.
+*/
+class _0409_LongestPalindrome {
+public:
+    int longestPalindrome(std::string s);
+};
+
+/*
+Write a program that outputs the string representation of numbers from 1 to n.
+But for multiples of three it should output “Fizz” instead of the number and for 
+the multiples of five output “Buzz”. For numbers which are multiples of both 
+three and five output “FizzBuzz”.
+
+n = 15,
+Return:
+[
+    "1",
+    "2",
+    "Fizz",
+    "4",
+    "Buzz",
+    "Fizz",
+    "7",
+    "8",
+    "Fizz",
+    "Buzz",
+    "11",
+    "Fizz",
+    "13",
+    "14",
+    "FizzBuzz"
+]
+*/
+class _0412_FizzBuzz {
+public:
+    std::vector<std::string> fizzBuzz(int n);
+};
+
+/*
+Facebook
+Tag: string operation, math
+Given two non-negative integers num1 and num2 represented as string, return the sum of num1 and num2.
+
+The length of both num1 and num2 is < 5100.
+Both num1 and num2 contains only digits 0-9.
+Both num1 and num2 does not contain any leading zero.
+You must not use any built-in BigInteger library or convert the inputs to integer directly.
+*/
+class _0415_AddStrings {
+public:
+    std::string addStrings(std::string num1, std::string num2);
+};
+
+
+/*
+Given a non-empty string containing an out-of-order English representation of digits 0-9, output the digits in ascending order.
+
+Note:
+Input contains only lowercase English letters.
+Input is guaranteed to be valid and can be transformed to its original digits. That means invalid inputs such as "abc" or "zerone" are not permitted.
+Input length is less than 50,000.
+
+Input: "owoztneoer"
+Output: "012"
+
+Input: "fviefuro"
+Output: "45"
+*/
+class _0423_ReconstructOriginalDigitFromEnglish {
+public:
+    std::string originalDigits(std::string s);
+};
+
+
+/*
 Consider the string s to be the infinite wraparound string of "abcdefghijklmnopqrstuvwxyz", 
 so s will look like this: "...zabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcd....".
 Now we have another string p. Your job is to find out how many unique non-empty substrings of 

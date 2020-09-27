@@ -209,3 +209,15 @@ TEST(LC, _0510_InorderSuccessorInBSTII) {
 TEST(LC, _0314_BinarTreeVerticalOrderTraversal) {
     EXPECT_TRUE(true);
 }
+
+TEST(LC, _0404) {
+    LC::_0404_SumOfLeftLeaves obj;
+    LC::TreeNode* r = new LC::TreeNode(3);
+    r->left = new LC::TreeNode(9);
+    r->right = new LC::TreeNode(20);
+    r->right->left = new LC::TreeNode(15);
+    r->right->right = new LC::TreeNode(7);
+
+    EXPECT_EQ(24, obj.sumOfLeftLeaves(r));
+}
+

@@ -1,6 +1,7 @@
 #include "LeetCode_BitOperationProblems.hpp"
 #include <bitset>
 #include <algorithm>
+#include <functional>
 int LC::_0136_SingleNumber::singleNumber(std::vector<int>& nums) {
     int v = nums[0];
     for(int i = 1; i != nums.size(); ++i)
@@ -183,5 +184,88 @@ std::vector<int> LC::_0260_SingleNumberII::singleNumber(const std::vector<int> &
     std::for_each(begin(nums), end(nums), [&](auto n){
         res[(lasDigit & n) == 0] ^= n;
     });
+    return res;
+}
+
+int LC::_0371_SumOfTwoIntegers::getSum(int a, int b) {
+    const int max_bits = 32;
+    auto carry = 0;
+    int _sum = 0;
+    for (int i = 0; i < max_bits; ++i)
+    {
+        auto a_bit = (a >> i) & 1;
+        auto b_bit = (b >> i) & 1;
+        auto tmp = (a_bit ^ b_bit ^ carry) << i;
+        _sum |= tmp;
+        carry = ((a_bit & b_bit) ||
+                    (a_bit & carry) ||
+                    (b_bit & carry))
+                    ? 1
+                    : 0;
+    }
+    return _sum;
+}
+
+
+
+
+std::vector<std::string> LC::_0401_BinaryWatch::readBinaryWatch(int num) {
+    std::vector<std::string> res;
+    for(int h = 0; h < 12; ++h) {
+        for(int m = 0; m < 60; ++m) {
+            if(std::bitset<10>(h << 6 | m).count() == num) { // Why not 11, <<7?
+                res.emplace_back(std::to_string(h) + ":" +
+                (m < 10? "0" : "") + std::to_string(m));
+            }
+        }
+    }
+    return res;
+}
+
+// easier understand solution
+std::vector<std::string> LC::_0401_BinaryWatch::readBinaryWatch_Solution2(int num) {
+    std::vector<std::string> res;
+    std::function<int(int)> numOf1 = [](int n) {
+        int c = 0;
+        while(n) {
+            n &= (n - 1);
+            ++c;
+        }
+        return c;
+    };
+
+    for(int h = 0; h < 23; ++h) {
+        int hn = numOf1(h);
+        if(hn > num) {
+            continue;
+        }
+        for(int m = 0; m < 60; ++m) {
+            int mn = numOf1(m);
+            if(mn + hn == num) {
+                if(m < 10) {
+                    res.push_back(std::to_string(h) + ":0" + std::to_string(m));
+                } else {
+                    res.push_back(std::to_string(h) + ":" + std::to_string(m));
+                }
+            }
+        }
+    }
+    return res;
+}
+
+
+std::string LC::_0405_ConvertANumberToHexadecimal::toHex(int num) {
+    std::string res;
+    int count = 0;
+    do {
+        char n = (num & 0x0000000f);
+        if(n < 10) {
+            res = (char)(n + '0') + res;
+        } else {
+            res = (char)(n - 10 + 'a') + res;
+        }
+        num >>= 4;
+        ++count;
+    } while (count < 8 && num);
     return res;
 }

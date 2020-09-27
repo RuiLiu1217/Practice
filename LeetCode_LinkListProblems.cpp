@@ -585,3 +585,29 @@ void LC::_0237_DeleteNodeInALinkedList::deleteNode(ListNode* node) {
         delete p;
     }
 }
+
+LC::ListNode* LC::_0328_OddEvenLinkedList::oddEvenList(ListNode* head) {
+    ListNode* p1 = head;
+    if(!p1) {
+        return p1;
+    }
+    if(!p1->next) {
+        return p1;
+    }
+    if(!p1->next->next) {
+        return p1;
+    }
+
+    ListNode* p2 = p1->next;
+    ListNode* m1 = p1;
+    ListNode* m2 = p2;
+    while(m2 && m2->next) {
+        m1->next = m2->next;
+        m2->next = m2->next->next;
+        m1 = m1->next;
+        m2 = m2->next;
+    }
+    m1->next = p2;
+    return p1;
+
+}

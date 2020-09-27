@@ -292,6 +292,68 @@ public:
 };
 
 
+/*
+Given an integer, write a function to determine if it is a power of three.
+
+Input: 27              :            Output: true
+Input: 0               :            Output: false
+Input: 9               :            Output: true
+Input: 45              :            Output: false
+Follow up: Could you do it without using any loop / recursion?
+*/
+class _0326_PowerOfThree {
+public:
+    bool isPowerOfThree(int n);
+};
+
+
+/*
+Given an integer (signed 32 bits), write a function to check whether it is a power of 4.
+
+Input: 16           :           Output: true
+Input: 5            :           Output: false
+Follow up: Could you solve it without loops/recursion?
+*/
+class _0342_PowerOfFour {
+public:
+    bool isPowerOfFour(int num);
+};
+
+/*
+Given a positive integer num, write a function which returns True if num is a 
+perfect square else False. Note: Do not use any built-in library function such 
+as sqrt.
+
+Input: 16
+Returns: True
+
+Input: 14
+Returns: False
+Credits:
+Special thanks to @elmirap for adding this problem and creating all test cases.
+*/
+class _0367_ValidPerfectSquare {
+public:
+    bool isPerfectSquare(int x);
+};
+
+
+/*
+Your task is to calculate ab mod 1337 where a is a positive integer 
+and b is an extremely large positive integer given in the form of an array.
+
+Input: a = 2, b = [3]
+Output: 8
+
+Input: a = 2, b = [1,0]
+Output: 1024
+*/
+class _0372_SuperPow {
+public:
+//! Copy from the solution
+    int superPow(int a, std::vector<int>& b);
+};
+
 
 /*
 Given an integer n, return a list of all simplified fractions between 0 and 1 (exclusive) 

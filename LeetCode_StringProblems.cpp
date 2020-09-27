@@ -702,6 +702,263 @@ std::vector<std::string> LC::_0293_FlipGame::generatePossibleNextMoves(std::stri
     return res;
 }
 
+void LC::_0344_ReverseString::reverseString(std::vector<char>& s) {
+    int i = 0;
+    int j = s.size() - 1;
+    while(i < j) {
+        std::swap(s[i++], s[j--]);
+    }
+}
+
+std::string LC::_0345_ReverseVowelsOfAString::reverseVowels(std::string s) {
+    int i = 0;
+    int j = s.size() - 1;
+    while(i < j) {
+        while(i < j && !isVowel(s[i])) {
+            ++i;
+        }
+        while(i < j && !isVowel(s[j])) {
+            --j;
+        }
+        if(i < j) {
+            std::swap(s[i], s[j]);
+            ++i;
+            --j;
+        }
+    }
+    return s;
+}
+
+bool LC::_0383_RansomNote::canConstruct(std::string ransomNote, std::string magazine) {
+    if(ransomNote.size() > magazine.size()) {
+        return false;
+    }
+    
+    std::unordered_map<char, int> magMap;
+    for(char c : magazine) {
+        ++magMap[c];
+    }
+    
+    for(char c : ransomNote) {
+        if(magMap[c] <= 0) {
+            return false;
+        } else {
+            --magMap[c];
+        }
+    }
+    return true;
+}
+
+int LC::_0387_FirstUniqueCharacterInAString::firstUniqChar(std::string s) {
+    std::vector<std::pair<int, int>> index(26);
+    for(int i = 0; i < s.size(); ++i) {
+        if(index[s[i] - 'a'].second == 0) {
+            index[s[i] - 'a'] = {i, 1};
+        } else {
+            ++index[s[i] - 'a'].second;
+        }
+    }
+    int idx = INT_MAX;
+    for(int i = 0; i < 26; ++i) {
+        if(index[i].second == 1) {
+            idx = std::min(idx, index[i].first);
+        }
+    }
+    return idx == INT_MAX ? -1 : idx;
+}
+
+int LC::_0409_LongestPalindrome::longestPalindrome(std::string s) {
+    std::unordered_map<char, int> M;
+    for(char c : s) {
+        ++M[c];
+    }
+    int length = 0;
+    for(auto& m : M) {
+        if(m.second % 2 == 0) {
+            length += m.second;
+            m.second = 0;
+        } else {
+            if(m.second >= 3) {
+                length += ((m.second / 2) * 2);
+                m.second = 1;                    
+            }
+        }
+    }
+    
+    for(auto& m : M) {
+        if(m.second == 1) {
+            length += 1;
+            break;
+        }
+    }
+    return length;
+}
+
+std::vector<std::string> LC::_0412_FizzBuzz::fizzBuzz(int n) {
+    std::vector<std::string> res;
+    for(int i = 1; i <= n; ++i) {
+        if(!(i%15)) {
+            res.push_back("FizzBuzz");
+            continue;
+        }
+        if(!(i%3)) {
+            res.push_back("Fizz");
+            continue;
+        }
+        if(!(i%5)) {
+            res.push_back("Buzz");
+            continue;
+        }
+        res.push_back(std::to_string(i));
+    }
+    return res;
+}
+
+// Facebook
+std::string LC::_0415_AddStrings::addStrings(std::string num1, std::string num2) {
+    std::reverse(begin(num1), end(num1));
+    std::reverse(begin(num2), end(num2));
+    const int minL = std::min(num1.size(), num2.size());
+    int carry = 0;
+    std::string res;
+    int i = 0;
+    for(i = 0; i < minL; ++i) {
+        int t = (num1[i] - '0' + num2[i] - '0' + carry);
+        if(t >= 10) {
+            carry = 1;
+            t -= 10;
+        } else {
+            carry = 0;
+        }
+        res += ('0' + t);
+    }
+    while(i < num1.size()) {
+        int t = (num1[i] - '0' + carry);
+        if(t >= 10) {
+            carry = 1;
+            t -= 10;
+        } else {
+            carry = 0;
+        }
+        res += ('0' + t);
+        ++i;
+    }
+    while(i < num2.size()) {
+        int t = (num2[i] - '0' + carry);
+        if(t >= 10) {
+            carry = 1;
+            t -= 10;
+        } else {
+            carry = 0;
+        }
+        res += ('0' + t);
+        ++i;
+    }
+    if(carry) {
+        res += '1';
+    }
+    std::reverse(begin(res), end(res));
+    return res;
+}
+
+std::string LC::_0423_ReconstructOriginalDigitFromEnglish::originalDigits(std::string s) {
+    std::unordered_map<char, int> Map;
+    std::vector<int> resCount(10, 0);
+    for(auto& c : s) {
+        ++Map[c];
+    }
+    if(Map.find('z') != Map.end() && Map['z'] > 0) {
+        int count = Map['z'];
+        resCount[0] += count;
+        Map['z'] = 0;
+        Map['e'] -= count;
+        Map['r'] -= count;
+        Map['o'] -= count;            
+    }
+    if(Map.find('w') != Map.end() && Map['w'] > 0) {
+        int count = Map['w'];
+        resCount[2] += count;
+        Map['w'] = 0;
+        Map['t'] -= count;
+        Map['o'] -= count;
+    }
+    if(Map.find('u') != Map.end() && Map['u'] > 0) {
+        int count = Map['u'];
+        resCount[4] += count;
+        Map['u'] = 0;
+        Map['f'] -= count;
+        Map['o'] -= count;
+        Map['r'] -= count;
+    }
+    if(Map.find('x') != Map.end() && Map['x'] > 0) {
+        int count = Map['x'];
+        resCount[6] += count;
+        Map['x'] = 0;
+        Map['s'] -= count;
+        Map['i'] -= count;
+    }
+    if(Map.find('g') != Map.end() && Map['g'] > 0) {
+        int count = Map['g'];
+        resCount[8] += count;
+        Map['g'] = 0;
+        Map['e'] -= count;
+        Map['i'] -= count;
+        Map['h'] -= count;
+        Map['t'] -= count;
+    }
+    if(Map.find('r') != Map.end() && Map['r'] > 0) {
+        int count = Map['r'];
+        resCount[3] += count;
+        Map['r']  = 0;
+        Map['t'] -= count;
+        Map['h'] -= count;
+        Map['e'] -= count;
+        Map['e'] -= count;
+    }
+    if(Map.find('s') != Map.end() && Map['s'] > 0) {
+        int count = Map['s'];
+        resCount[7] += count;
+        Map['s'] = 0;
+        Map['e'] -= count;
+        Map['v'] -= count;
+        Map['e'] -= count;
+        Map['n'] -= count;
+    }
+    if(Map.find('v') != Map.end() && Map['v'] > 0) {
+        int count = Map['v'];
+        resCount[5] += count;
+        Map['v'] = 0;
+        Map['f'] -= count;
+        Map['i'] -= count;
+        Map['e'] -= count;
+    }
+    if(Map.find('o') != Map.end() && Map['o'] > 0) {
+        int count = Map['o'];
+        resCount[1] += count;
+        Map['o'] = 0;
+        Map['n'] -= count;
+        Map['e'] -= count;
+    }
+    if(Map.find('i') != Map.end() && Map['i'] > 0) {
+        int count = Map['i'];
+        resCount[9] += count;
+        Map['i'] = 0;
+        Map['n'] -= count;
+        Map['n'] -= count;
+        Map['e'] -= count;
+    }
+    std::string res;
+    for(int i = 0; i < 10; ++i) {
+        if(resCount[i] > 0) {
+            for(int r = 0; r < resCount[i]; ++r) {
+                res += std::to_string(i);
+            }
+        }
+    }
+    return res;
+}
+
+
 
 std::string LC::_0544_OutputContestMatches::findContestMatch(int n) {
     std::vector<std::string> t;

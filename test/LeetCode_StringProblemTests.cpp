@@ -102,3 +102,49 @@ TEST(LC, _0293_FlipGame) {
     std::vector<std::string> res = obj.generatePossibleNextMoves(s);
     EXPECT_EQ(base, res);
 }
+
+TEST(LC, _0344_ReverseString) {
+    LC::_0344_ReverseString obj;
+    std::vector<char> a = {'a', 'b', 'c', 'd'};
+    std::vector<char> b = {'d', 'c', 'b', 'a'};
+    obj.reverseString(a);
+    EXPECT_EQ(a, b);
+}
+
+TEST(LC, _0345_ReverseVowelsOfAString) {
+    LC::_0345_ReverseVowelsOfAString obj;
+    EXPECT_EQ(obj.reverseVowels("hello"), "holle");
+}
+
+TEST(LC, _0383_RansomNote) {
+    LC::_0383_RansomNote obj;
+    EXPECT_TRUE(obj.canConstruct("ab", "aab"));
+    EXPECT_FALSE(obj.canConstruct("bab", "aab"));
+}
+
+TEST(LC, _0387_FirstUniqueCharacterInAString) {
+    LC::_0387_FirstUniqueCharacterInAString obj;
+    EXPECT_EQ(obj.firstUniqChar("leetcode"), 0);
+}
+
+TEST(LC, _0409_LongestPalindrome) {
+    LC::_0409_LongestPalindrome obj;
+    EXPECT_EQ(obj.longestPalindrome("abccccdd"), 7);
+}
+
+TEST(LC, _0412_FizzBuzz) {
+    LC::_0412_FizzBuzz obj;
+    std::vector<std::string> base {"1", "2", "Fizz", "4", "Buzz",
+    "Fizz", "7", "8", "Fizz", "Buzz", "11", "Fizz", "13", "14", "FizzBuzz"};
+    EXPECT_EQ(obj.fizzBuzz(15), base);
+}
+
+TEST(LC, _0415_AddStrings) {
+    LC::_0415_AddStrings obj;
+    EXPECT_EQ(obj.addStrings("111", "345"), "456");   
+}
+
+TEST(LC, _0423_ReconstructOriginalDigitFromEnglish) {
+    LC::_0423_ReconstructOriginalDigitFromEnglish obj;
+    EXPECT_EQ(obj.originalDigits("onetowthreefour"), "1234");
+}

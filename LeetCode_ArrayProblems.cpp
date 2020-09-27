@@ -12,6 +12,8 @@
 #include <unordered_set>
 #include <math.h>
 #include <utility>
+#include <set>
+
 std::vector<int> LC::_0001_TwoSum::twoSum(std::vector<int> &nums, int target) {
     std::unordered_map<int, int> map;
     for(int i = 0; i < nums.size(); ++i)
@@ -1293,6 +1295,121 @@ std::vector<std::pair<int, int>> LC::_0406_QueueReconstructionByHeight::reconstr
     }
     return res;
 }
+
+std::vector<int> LC::_0347_TopKFrequentElements::topKFrequent(std::vector<int>& nums, int k) {
+    std::unordered_map<int, int> freq;
+    for(int n : nums) {
+        ++freq[n];
+    }
+
+    auto Comp = [](std::pair<int, int> a, std::pair<int, int> b) {
+        return a.second < b.second;
+    };
+    std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int>>, decltype(Comp)> pq{Comp};
+    for(auto& f : freq) {
+        pq.push(f);
+    }
+
+    std::vector<int> res;
+
+    for(int i = 0; i < k && !pq.empty(); ++i) {
+        res.push_back(pq.top().first);
+        pq.pop();
+    }
+    return res;
+}
+
+
+std::vector<int> LC::_0360_SortTransformedArray::sortTransformedArray(std::vector<int>& nums, int a, int b, int c) {
+    std::vector<int> res;
+    std::function<int(int)> fun = [&](int x){ return a * x * x + b * x + c;};
+    std::function<bool(int, int)> select = [&](int fi, int fj) {
+        if(a > 0) {
+            return fi > fj;
+        } else {
+            return fi < fj;
+        }
+    };
+    int i = 0;
+    int j = nums.size() - 1;
+    while(i <= j) {
+        int fi = fun(nums[i]);
+        int fj = fun(nums[j]);
+        if(select(fi,fj)) {
+            res.push_back(fi);
+            ++i;
+        } else {
+            res.push_back(fj);
+            --j;
+        }
+    }
+    if(a > 0) {   
+        std::reverse(begin(res), end(res));
+    }
+    return res;
+}
+
+
+
+int LC::_0361_BombEnemy::maxkilledEnemies(std::vector<std::vector<char>>& grid) {
+    if(grid.size() == 0 || grid[0].size() == 0) {
+        return 0;
+    }
+    const int Row = grid.size();
+    const int Col = grid[0].size();
+
+    std::vector<std::vector<int>> DP(Row, std::vector<int>(Col, 0));
+    int cnt = 0;
+    std::function<void(int, int, int&)> update = [&](int r, int c, int& cnt){
+        if(grid[r][c] == '0') {
+            DP[r][c] += cnt;
+        } else if(grid[r][c] == 'E') {
+            ++cnt;
+        } else {
+            cnt = 0;
+        }
+    };
+
+    for(int r = 0; r < Row; ++r) {
+        cnt = 0;
+        for(int c = 0; c < Col; ++c) {
+            update(r,c,cnt);
+        }
+        
+        cnt = 0;
+        for(int c = Col - 1; c >= 0; --c) {
+            update(r,c,cnt);
+        }
+    }
+    
+    int max = 0;
+    for(int c = 0; c < Col; ++c) {
+        int cnt = 0;
+        for(int r = 0; r < Row; ++r) {
+            update(r,c,cnt);
+        }
+        
+        cnt = 0;
+        for(int r = Row - 1; r >= 0; --r) {
+            update(r,c,cnt);
+            max = std::max(max, DP[r][c]);
+        }
+    }
+    return max;
+}
+
+
+int LC::_0414_ThirdMaximumNumber::thirdMax(std::vector<int>& nums) {
+    std::set<int> top3;
+    for(int num : nums) {
+        top3.insert(num);
+        if(top3.size() > 3) {
+            top3.erase(top3.begin());
+        }
+    }
+    return top3.size() == 3 ? *(top3.begin()) : *(top3.rbegin());
+}
+
 
 
 // Copy from solution
