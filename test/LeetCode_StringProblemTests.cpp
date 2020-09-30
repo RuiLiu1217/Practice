@@ -148,3 +148,13 @@ TEST(LC, _0423_ReconstructOriginalDigitFromEnglish) {
     LC::_0423_ReconstructOriginalDigitFromEnglish obj;
     EXPECT_EQ(obj.originalDigits("onetowthreefour"), "1234");
 }
+
+TEST(LC, _0438_FindAllAnagramsInAString) {
+    LC::_0438_FindAllAnagramsInAString obj;
+    std::vector<int> base{0,6};
+    EXPECT_EQ(obj.findAnagrams("cbaebabacd", "abc"), base);
+}
+
+TEST(LC, _0482_) {
+    EXPECT_EQ(true, true);
+}

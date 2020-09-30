@@ -297,3 +297,22 @@ TEST(LC, _0361_) {
     std::vector<std::vector<char>> ch{{'0','E','0','0'},{'E','0','W','E'},{'0','E','0','0'}};
     EXPECT_EQ(3, obj.maxkilledEnemies(ch));
 }
+
+TEST(LC, _0414_) {
+    LC::_0414_ThirdMaximumNumber obj;
+    std::vector<int> base1{3, 2, 1};
+    EXPECT_EQ(obj.thirdMax(base1), 1);
+
+    std::vector<int> base2{2, 1};
+    EXPECT_EQ(obj.thirdMax(base2), 2);
+
+    std::vector<int> base3{2, 3, 2, 1};
+    EXPECT_EQ(obj.thirdMax(base3), 1);
+}
+
+TEST(LC, _0498_DiagonalTraverse) {
+    LC::_0498_DiagonalTraverse obj;
+    std::vector<std::vector<int>> matrix{{1,2,3},{4,5,6},{7,8,9}};
+    std::vector<int> base{1,2,4,7,5,3,6,8,9};
+    EXPECT_EQ(obj.findDiagonalOrder(matrix),base);
+}

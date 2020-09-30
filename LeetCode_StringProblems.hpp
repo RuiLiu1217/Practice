@@ -761,6 +761,31 @@ public:
     std::string originalDigits(std::string s);
 };
 
+/* Facebook
+
+Tag: hash, string
+
+Given a string s and a non-empty string p, find all the start indices of p's anagrams in s.
+Strings consists of lowercase English letters only and the length of both strings s and p 
+will not be larger than 20,100. The order of output does not matter.
+
+Input: s: "cbaebabacd" p: "abc"            :              Output: [0, 6]
+Explanation:
+The substring with start index = 0 is "cba", which is an anagram of "abc".
+The substring with start index = 6 is "bac", which is an anagram of "abc".
+
+
+Input: s: "abab" p: "ab"                   :              Output: [0, 1, 2]
+Explanation:
+The substring with start index = 0 is "ab", which is an anagram of "ab".
+The substring with start index = 1 is "ba", which is an anagram of "ab".
+The substring with start index = 2 is "ab", which is an anagram of "ab".
+*/
+class _0438_FindAllAnagramsInAString {
+public:
+    std::vector<int> findAnagrams(std::string s, std::string p);
+};
+
 
 /*
 Consider the string s to be the infinite wraparound string of "abcdefghijklmnopqrstuvwxyz", 
@@ -787,6 +812,36 @@ Explanation: There are six substrings "z", "a", "b", "za", "ab", "zab" of string
 class _0467_UniqueSubstringsInWraparoundString {
 public:
     int findSubstringInWraproundString(std::string p);
+};
+
+/*
+You are given a license key represented as a string S which consists only alphanumeric character and dashes. 
+The string is separated into N+1 groups by N dashes.
+Given a number K, we would want to reformat the strings such that each group contains exactly K characters, 
+except for the first group which could be shorter than K, but still must contain at least one character. 
+Furthermore, there must be a dash inserted between two groups and all lowercase letters should be converted to uppercase.
+
+Given a non-empty string S and a number K, format the string according to the rules described above.
+
+Example 1:
+Input: S = "5F3Z-2e-9-w", K = 4
+Output: "5F3Z-2E9W"
+
+Explanation: The string S has been split into two parts, each part has 4 characters.
+Note that the two extra dashes are not needed and can be removed.
+Example 2:
+Input: S = "2-5g-3-J", K = 2
+Output: "2-5G-3J"
+
+Explanation: The string S has been split into three parts, each part has 2 characters except the first part as it could be shorter as mentioned above.
+Note:
+The length of string S will not exceed 12,000, and K is a positive integer.
+String S consists only of alphanumerical characters (a-z and/or A-Z and/or 0-9) and dashes(-).
+String S is non-empty.
+*/
+class _0482_LicenseKeyFormatting {
+public:
+    std::string licenseKeyFormatting(std::string S, int K);
 };
 
 /*
@@ -824,6 +879,7 @@ class _0544_OutputContestMatches {
 public:
     std::string findContestMatch(int n);
 };
+
 
 /*
 We had some 2-dimensional coordinates, like "(1, 3)" or "(2, 0.5)".  Then, we removed all commas, decimal points, 

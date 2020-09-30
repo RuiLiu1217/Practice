@@ -93,101 +93,11 @@ This is an invalid board that you will not receive - as battleships will always 
 Follow up:
 Could you do it in one-pass, using only O(1) extra memory and without modifying the value of the board?
 */
-class _0419_BattleshipsInABoard{
+class _0419_BattleshipsInABoard {
 public:
     int countBattleships(std::vector<std::vector<char>>& board);
 };
 
-// We want to use quad trees to store an N x N boolean grid. Each cell in the
-// grid can only be true or false. The root node represents the whole grid. For
-// each node, it will be subdivided into four children nodes until the values in
-// the region it represents are all the same.
-// Each node has another two boolean attributes : isLeaf and val. isLeaf is true
-// if and only if the node is a leaf node. The valattribute for a leaf node contains
-// the value of the region it represents.
-// Your task is to use a quad tree to represent a given grid.
-
-// 这是一道比较简单的题目，主要注意点就是先判断一个矩阵中的值是否一致，在看分隔中是否一致
-class _0427_ConstructQuadTree {
-public:
-    QuadTreeNode *construct(std::vector<std::vector<int>> &grid);
-    QuadTreeNode *construct(std::vector<std::vector<int>> &grid,
-                            int rowStart, int rowEnd, int colStart, int colEnd);
-private:
-    bool areConsistent(std::vector<std::vector<int>> &grid);
-    bool areConsistent(std::vector<std::vector<int>> &grid,
-                       int rowStart, int rowEnd, int colStart, int colEnd);
-
-    std::vector<std::vector<std::vector<int>>> divideGrid(std::vector<std::vector<int>> &grid);
-};
-
-/*
-Convert a Binary Search Tree to a sorted Circular Doubly-Linked List in place.
-You can think of the left and right pointers as synonymous to the predecessor 
-and successor pointers in a doubly-linked list. For a circular doubly linked list, 
-the predecessor of the first element is the last element, and the successor of 
-the last element is the first element.
-We want to do the transformation in place. After the transformation, the left 
-pointer of the tree node should point to its predecessor, and the right pointer 
-should point to its successor. You should return the pointer to the smallest 
-element of the linked list.
-
-Input: root = [4,2,5,1,3]
-Output: [1,2,3,4,5]
-
-Explanation: The figure below shows the transformed BST. The solid line indicates 
-the successor relationship, while the dashed line means the predecessor relationship.
-
-Input: root = [2,1,3]
-Output: [1,2,3]
-
-Input: root = []
-Output: []
-Explanation: Input is an empty tree. Output is also an empty Linked List.
-
-Input: root = [1]
-Output: [1]
- 
-
-Constraints:
-
--1000 <= Node.val <= 1000
-Node.left.val < Node.val < Node.right.val
-All values of Node.val are unique.
-0 <= Number of Nodes <= 2000
-*/
-class _0426_ConvertBinarySearchTreeToSortedDoublyLinkedList {
-public:
-    struct Node {
-        int val;
-        Node* left;
-        Node* right;
-    };
-    Node* treeToDoublyList(Node* root);
-private:
-    std::pair<Node*, Node*> conn(Node* root);
-};
-
-/*
-Given an n-ary tree, return the level order traversal 
-of its nodes' values. (ie, from left to right, level by level).
-
-For example, given a 3-ary tree:
-    We should return its level order traversal:
-    [
-        [1],
-        [3,2,4],
-        [5,6]
-    ]
-Note:
-    The depth of the tree is at most 1000.
-    The total number of nodes is at most 5000.
-*/
-class _0429_NaryTreelevelOrderTraversal
-{
-public:
-    std::vector<std::vector<int>> levelOrder(NaryTreeNode<int> *root);
-};
 
 /*
 You are given a doubly linked list which in addition to the next and 
@@ -313,41 +223,6 @@ class _0437_PathSumIII {
     
 };
 
-/*
-
-Facebook
-
-Tag: hash, string
-
-Given a string s and a non-empty string p, find all the start indices of p's anagrams in s.
-Strings consists of lowercase English letters only and the length of both strings s and p 
-will not be larger than 20,100. The order of output does not matter.
-
-Input:
-s: "cbaebabacd" p: "abc"
-
-Output:
-[0, 6]
-
-Explanation:
-The substring with start index = 0 is "cba", which is an anagram of "abc".
-The substring with start index = 6 is "bac", which is an anagram of "abc".
-
-Input:
-s: "abab" p: "ab"
-
-Output:
-[0, 1, 2]
-
-Explanation:
-The substring with start index = 0 is "ab", which is an anagram of "ab".
-The substring with start index = 1 is "ba", which is an anagram of "ab".
-The substring with start index = 2 is "ab", which is an anagram of "ab".
-*/
-class _0438_FindAllAnagramsInAString {
-public:
-    std::vector<int> findAnagrams(std::string s, std::string p);
-};
 
 class _0441_ArrangingCoins {
 public:
@@ -502,8 +377,8 @@ Explanation:
 One way is to shoot one arrow for example at x = 6 (bursting the balloons [2,8] and [1,6]) and another arrow at x = 11 (bursting the other two balloons).
 */
 class _0452_MinimumNumberOfArrowsToBusrtBalloons {
-    public:
-        int findMinArrowShots(std::vector<std::vector<int>>& points);
+public:
+    int findMinArrowShots(std::vector<std::vector<int>>& points);
 };
 
 /*
@@ -560,27 +435,6 @@ times (by an unlimited number of pigs).
 class _0458_PoorPigs {
 public:
     int poorPigs(int buckets, int minutesToDie, int minutesToTest);
-};
-
-/*
-The Hamming distance between two integers is the number of positions at which the 
-corresponding bits are different.
-Given two integers x and y, calculate the Hamming distance.
-
-Note:
-0 ≤ x, y < 231.
-Example:
-Input: x = 1, y = 4
-Output: 2
-Explanation:
-1   (0 0 0 1)
-4   (0 1 0 0)
-       ↑   ↑
-The above arrows point to positions where the corresponding bits are different.
-*/
-class _0461_HammingDistance {
-public:
-    int hammingDistance(int x, int y);
 };
 
 /*
@@ -695,28 +549,6 @@ public:
 };
 
 /*
-The Hamming distance between two integers is the number of positions at which the corresponding bits are different.
-
-Now your job is to find the total Hamming distance between all pairs of the given numbers.
-
-Example:
-Input: 4, 14, 2
-
-Output: 6
-
-Explanation: In binary representation, the 4 is 0100, 14 is 1110, and 2 is 0010 (just
-showing the four bits relevant in this case). So the answer will be:
-HammingDistance(4, 14) + HammingDistance(4, 2) + HammingDistance(14, 2) = 2 + 2 + 2 = 6.
-Note:
-Elements of the given array are in the range of 0 to 10^9
-Length of the array will not exceed 10^4.
-*/
-class _0477_TotalHammingDistance {
-public:
-    int totalHammingDistance(std::vector<int>& nums);
-};
-
-/*
 A magical string S consists of only '1' and '2' and obeys the following rules:
 The string S is magical because concatenating the number of contiguous occurrences 
 of characters '1' and '2' generates the string S itself.
@@ -739,36 +571,6 @@ public:
     int magicalString(int n);
 };
 
-
-/*
-You are given a license key represented as a string S which consists only alphanumeric character and dashes. 
-The string is separated into N+1 groups by N dashes.
-Given a number K, we would want to reformat the strings such that each group contains exactly K characters, 
-except for the first group which could be shorter than K, but still must contain at least one character. 
-Furthermore, there must be a dash inserted between two groups and all lowercase letters should be converted to uppercase.
-
-Given a non-empty string S and a number K, format the string according to the rules described above.
-
-Example 1:
-Input: S = "5F3Z-2e-9-w", K = 4
-Output: "5F3Z-2E9W"
-
-Explanation: The string S has been split into two parts, each part has 4 characters.
-Note that the two extra dashes are not needed and can be removed.
-Example 2:
-Input: S = "2-5g-3-J", K = 2
-Output: "2-5G-3J"
-
-Explanation: The string S has been split into three parts, each part has 2 characters except the first part as it could be shorter as mentioned above.
-Note:
-The length of string S will not exceed 12,000, and K is a positive integer.
-String S consists only of alphanumerical characters (a-z and/or A-Z and/or 0-9) and dashes(-).
-String S is non-empty.
-*/
-class _0482_LicenseKeyFormatting {
-public:
-    std::string licenseKeyFormatting(std::string S, int K);
-};
 
 /*
 There is a ball in a maze with empty spaces and walls. The ball can go through empty spaces by rolling up,
@@ -870,24 +672,6 @@ public:
     std::vector<int> pick(); 
 };
 
-/*
-498. Diagonal Traverse
-Given a matrix of M x N elements (M rows, N columns), return all elements of the matrix in diagonal order as shown in the below image.
-
-Input:
-[
- [ 1, 2, 3 ],
- [ 4, 5, 6 ],
- [ 7, 8, 9 ]
-]
-
-Output:  [1,2,4,7,5,3,6,8,9]
-The total number of elements of the given matrix will not exceed 10,000.
-*/
-class _0498_DiagonalTraverse {
-    public:
-        std::vector<int> findDiagonalOrder(std::vector<std::vector<int>>& matrix);
-};
 
 
 }

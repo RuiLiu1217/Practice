@@ -1105,6 +1105,8 @@ public:
     int maxkilledEnemies(std::vector<std::vector<char>>& grid);
 };
 
+
+
 /*
 Suppose you have a random list of people standing in a queue. Each person is described by a pair of integers (h, k), where h is the height of the person and k is the number of people in front of this person who have a height greater than or equal to h. Write an algorithm to reconstruct the queue.
 
@@ -1126,8 +1128,45 @@ public:
 };
 
 
-/*
+/* Given a non-empty array of integers, return the third maximum number in this array. 
+If it does not exist, return the maximum number. The time complexity must be in O(n).
 
+Input: [3, 2, 1]              :              Output: 1
+Explanation: The third maximum is 1.
+
+Input: [1, 2]                 :              Output: 2
+Explanation: The third maximum does not exist, so the maximum (2) is returned instead.
+
+Input: [2, 2, 3, 1]           :              Output: 1
+Explanation: Note that the third maximum here means the third maximum distinct number.
+Both numbers with value 2 are both considered as second maximum.
+*/
+class _0414_ThirdMaximumNumber {
+public:
+    int thirdMax(std::vector<int>& nums);
+};
+
+/*
+498. Diagonal Traverse
+Given a matrix of M x N elements (M rows, N columns), return all elements of the matrix in diagonal order as shown in the below image.
+
+Input:
+[
+ [ 1, 2, 3 ],
+ [ 4, 5, 6 ],
+ [ 7, 8, 9 ]
+]
+
+Output:  [1,2,4,7,5,3,6,8,9]
+The total number of elements of the given matrix will not exceed 10,000.
+*/
+class _0498_DiagonalTraverse {
+    public:
+        std::vector<int> findDiagonalOrder(std::vector<std::vector<int>>& matrix);
+};
+
+
+/*
 Given a picture consisting of black and white pixels, and a positive integer N, find the number of black pixels located at some specific row R and column C that align with all the following rules:
 
 Row R and column C both contain exactly N black pixels.

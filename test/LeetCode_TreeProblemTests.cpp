@@ -221,3 +221,12 @@ TEST(LC, _0404) {
     EXPECT_EQ(24, obj.sumOfLeftLeaves(r));
 }
 
+TEST(LC, _0427_ConstructQuadTree) {
+    EXPECT_TRUE(true); // There is no easy way to test it. Just make it pass.
+}
+
+
+TEST(LC, _0426_ConstructQuadTree) {
+    EXPECT_TRUE(true); // There is no easy way to test it. Just make it pass.
+}
+

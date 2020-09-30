@@ -28,3 +28,8 @@ TEST(LC, _0405) {
     LC::_0405_ConvertANumberToHexadecimal obj;
     EXPECT_EQ(obj.toHex(16), "10");
 }
+
+TEST(LC, _0461_) {
+    LC::_0461_HammingDistance obj;
+    EXPECT_EQ(obj.hammingDistance(1, 4), 2);
+}

@@ -269,3 +269,34 @@ std::string LC::_0405_ConvertANumberToHexadecimal::toHex(int num) {
     } while (count < 8 && num);
     return res;
 }
+
+int LC::_0461_HammingDistance::hammingDistance(int x, int y) {
+    int val = x ^ y;
+    int dis = 0;
+    while(val) {
+        dis += (val & 1);
+        val >>= 1;
+    }
+    return dis;
+}
+
+// Copy from the solution
+int LC::_0477_TotalHammingDistance::totalHammingDistance(std::vector<int>& nums) {
+    int size = nums.size();
+    if (size < 2) return 0;
+    int ans = 0;
+    int *zeroOne = new int[2];
+    while (true) {
+        int zeroCount = 0;
+        zeroOne[0] = 0;
+        zeroOne[1] = 0;
+        for (int i = 0; i < nums.size(); i++)
+        {
+            if (nums[i] == 0) zeroCount++;
+            zeroOne[nums[i] % 2]++;
+            nums[i] = nums[i] >> 1;
+        }
+        ans += zeroOne[0] * zeroOne[1];
+        if (zeroCount == nums.size()) return ans;
+    }
+}

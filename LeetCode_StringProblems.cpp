@@ -959,6 +959,59 @@ std::string LC::_0423_ReconstructOriginalDigitFromEnglish::originalDigits(std::s
 }
 
 
+// Facebook 
+std::vector<int> LC::_0438_FindAllAnagramsInAString::findAnagrams(std::string s, std::string p) {
+    std::vector<int> sv(26, 0);
+    std::vector<int> pv(26, 0);
+    
+    std::vector<int> res;
+    if(s.size() < p.size())
+        return res;
+    
+    for(int i = 0; i < p.size(); ++i) {
+        ++sv[s[i] - 'a'];
+        ++pv[p[i] - 'a'];
+    }
+    if(pv == sv) {
+        res.push_back(0);
+    }
+    
+    for(size_t i = p.size(); i < s.size(); ++i) {
+        ++sv[s[i] - 'a'];
+        --sv[s[i-p.size()] - 'a'];
+        if(sv == pv) {
+            res.push_back(i-p.size()+1);
+        }
+    }
+    return res;        
+}
+
+std::string LC::_0482_LicenseKeyFormatting::licenseKeyFormatting(std::string S, int K) {
+    std::string res;
+    int count = 0;
+    for(int i = S.size() - 1; i >= 0; --i) {
+        if(S[i] == '-') {
+            continue;
+        } else {
+            if(S[i] <= 'z' && S[i] >= 'a') {
+                S[i] += ('A' - 'a');
+            }
+            res += S[i];
+            ++count;
+            if(count == K) {
+                res += '-';
+                count = 0;
+            }
+        }
+    }
+    std::reverse(begin(res), end(res));
+    int i = 0;
+    while(res[i] == '-') {
+        ++i;
+    }
+    return res.substr(i);
+}
+
 
 std::string LC::_0544_OutputContestMatches::findContestMatch(int n) {
     std::vector<std::string> t;

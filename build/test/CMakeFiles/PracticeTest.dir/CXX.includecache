@@ -326,17 +326,21 @@ cxxabi.h
 acxx_demangle.h
 -
 
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_BitOperationProblems.hpp
-cstdint
--
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_ArrayProblems.hpp
 vector
 -
 string
 -
+stack
+-
+queue
+-
 
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_BitOperationProblemTests.cpp
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_ArrayProblemTests.cpp
 gtest/gtest.h
 -
-../LeetCode_BitOperationProblems.hpp
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_BitOperationProblems.hpp
+../LeetCode_ArrayProblems.hpp
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_ArrayProblems.hpp
+vector
+-
 

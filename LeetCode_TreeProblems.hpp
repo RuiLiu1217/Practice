@@ -23,6 +23,39 @@ namespace LC {
         NAryNode(int v, std::vector<NAryNode*> c) : val(v), children(c) {}
     };
 
+    struct NaryTreeNode {
+    public:
+        int data;
+        std::vector<NaryTreeNode*> children;
+        NaryTreeNode() {}
+        NaryTreeNode(int _val, std::vector<NaryTreeNode*> _children) {
+            data = _val;
+            children = _children;
+        }
+    };
+
+
+    // Quad Tree
+    struct QuadTreeNode {
+    public:
+        int val;
+        bool isLeaf;
+        QuadTreeNode *topLeft;
+        QuadTreeNode *topRight;
+        QuadTreeNode *bottomLeft;
+        QuadTreeNode *bottomRight;
+        QuadTreeNode() {}
+        QuadTreeNode(int v, int isL, QuadTreeNode *tl, QuadTreeNode *tr, QuadTreeNode *bl, QuadTreeNode *br) {
+            val = v;
+            isLeaf = isL;
+            topLeft = tl;
+            topRight = tr;
+            bottomLeft = bl;
+            bottomRight = br;
+        }
+    };
+
+
 
     /*
 Given an integer n, generate all structurally unique BST's (binary search trees) that store values 1 ... n.
@@ -1197,6 +1230,79 @@ public:
 };
 
 /*
+Convert a Binary Search Tree to a sorted Circular Doubly-Linked List in place.
+You can think of the left and right pointers as synonymous to the predecessor 
+and successor pointers in a doubly-linked list. For a circular doubly linked list, 
+the predecessor of the first element is the last element, and the successor of 
+the last element is the first element.
+We want to do the transformation in place. After the transformation, the left 
+pointer of the tree node should point to its predecessor, and the right pointer 
+should point to its successor. You should return the pointer to the smallest 
+element of the linked list.
+
+Input: root = [4,2,5,1,3]
+Output: [1,2,3,4,5]
+
+Explanation: The figure below shows the transformed BST. The solid line indicates 
+the successor relationship, while the dashed line means the predecessor relationship.
+
+Input: root = [2,1,3]
+Output: [1,2,3]
+
+Input: root = []
+Output: []
+Explanation: Input is an empty tree. Output is also an empty Linked List.
+
+Input: root = [1]
+Output: [1]
+ 
+
+Constraints:
+
+-1000 <= Node.val <= 1000
+Node.left.val < Node.val < Node.right.val
+All values of Node.val are unique.
+0 <= Number of Nodes <= 2000
+*/
+class _0426_ConvertBinarySearchTreeToSortedDoublyLinkedList {
+public:
+    struct Node {
+        int val;
+        Node* left;
+        Node* right;
+    };
+    Node* treeToDoublyList(Node* root);
+private:
+    std::pair<Node*, Node*> conn(Node* root);
+};
+
+
+    // We want to use quad trees to store an N x N boolean grid. Each cell in the
+    // grid can only be true or false. The root node represents the whole grid. For
+    // each node, it will be subdivided into four children nodes until the values in
+    // the region it represents are all the same.
+    // Each node has another two boolean attributes : isLeaf and val. isLeaf is true
+    // if and only if the node is a leaf node. The valattribute for a leaf node contains
+    // the value of the region it represents.
+    // Your task is to use a quad tree to represent a given grid.
+
+    // 这是一道比较简单的题目，主要注意点就是先判断一个矩阵中的值是否一致，在看分隔中是否一致
+    class _0427_ConstructQuadTree {
+    public:
+        QuadTreeNode *construct(std::vector<std::vector<int>> &grid);
+        QuadTreeNode *construct(std::vector<std::vector<int>> &grid,
+                                int rowStart, int rowEnd, int colStart, int colEnd);
+    private:
+        bool areConsistent(std::vector<std::vector<int>> &grid);
+        bool areConsistent(std::vector<std::vector<int>> &grid,
+                        int rowStart, int rowEnd, int colStart, int colEnd);
+
+        std::vector<std::vector<std::vector<int>>> divideGrid(std::vector<std::vector<int>> &grid);
+    };
+
+    
+
+/*
 Serialization is the process of converting a data structure or object into a sequence of bits 
 so that it can be stored in a file or memory buffer, or transmitted across a network connection 
 link to be reconstructed later in the same or another computer environment.
@@ -1253,6 +1359,26 @@ private:
         return node;
     }
 };
+
+/* Given an n-ary tree, return the level order traversal of its nodes' values. 
+(ie, from left to right, level by level). For example, given a 3-ary tree:
+
+We should return its level order traversal:
+[
+    [1],
+    [3,2,4],
+    [5,6]
+]
+Note:
+    The depth of the tree is at most 1000.
+    The total number of nodes is at most 5000.
+*/
+class _0429_NaryTreelevelOrderTraversal {
+public:
+    std::vector<std::vector<int>> levelOrder(NaryTreeNode *root);
+};
+
+
 
 /*
 Given a node in a binary search tree, find the in-order successor of that node in the BST.
