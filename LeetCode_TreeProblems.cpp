@@ -7,6 +7,7 @@
 #include <sstream>
 #include <map>
 #include <unordered_map>
+#include <functional>
 
 // Facebook
 
@@ -1207,4 +1208,163 @@ LC::_0510_InorderSuccessorInBSTII::Node* LC::_0510_InorderSuccessorInBSTII::inor
         }
         return node->parent;
     }
+}
+
+int LC::_0559_MaximumDepthOfNaryTree::maxDepth(LC::NaryTreeNode* root) {
+    if(!root) {
+        return 0;
+    } else {
+        int height = 0;
+        for(int i = 0; i < root->children.size(); ++i) {
+            int curH = maxDepth(root->children[i]);
+            if(curH > height) {
+                height = curH;
+            }
+        }
+        return height + 1;
+    }
+}
+
+bool LC::_0572_SubtreeOfAnotherTree::isSubtree(TreeNode* s, TreeNode* t) {
+    TreeNode* p = s;
+    std::stack<TreeNode*> st;
+    while(p != nullptr || !st.empty()) {
+        if(p != nullptr) {
+            if(isSame(p, t)) {
+                return true;
+            }
+            st.push(p);
+            p = p->left;
+        } else {
+            TreeNode* q = st.top();
+            st.pop();
+            p = q->right;
+        }
+    }
+    return false;
+}
+
+bool LC::_0572_SubtreeOfAnotherTree::isSame(TreeNode* s, TreeNode* t) {
+    if(s == nullptr && t == nullptr) {
+        return true;
+    }
+    if(s == nullptr && t != nullptr) {
+        return false;
+    }
+    if(s != nullptr && t == nullptr) {
+        return false;
+    }
+    return (s->val == t->val) && isSame(s->left, t->left) && isSame(s->right, s->right);
+}
+
+
+std::vector<int> LC::_0589_NaryTreePreorderTraversal::preorder(NaryTreeNode* root) {
+    std::stack<NaryTreeNode*> st;
+    if(!root) {
+        return std::vector<int>();
+    } else {
+        NaryTreeNode* p = root;
+        st.push(p);
+        std::vector<int> res;
+        while(!st.empty()) {
+            NaryTreeNode* tp = st.top();
+            res.push_back(tp->data);
+            st.pop();
+            for(int i = tp->children.size()-1; i >= 0; --i) {
+                st.push(tp->children[i]);
+            }
+        }
+        return res;
+    }
+}
+
+std::vector<int> LC::_0590_NaryTreePostOrderTraversal::postorder(LC::NaryTreeNode* root) {
+    // Implementation of the post order recursively
+    std::function<void(LC::NaryTreeNode*, std::vector<int>&)> postOrderRecursive = [&](LC::NaryTreeNode* root, std::vector<int>& res){
+        if(root) {
+            for(auto child : root->children) {
+                postOrderRecursive(child, res);
+            }
+            res.push_back(root->data);
+        }
+    };
+
+    LC::NaryTreeNode* p = root;
+    std::stack<std::pair<LC::NaryTreeNode*, int>> stack;
+    if(p == nullptr) {
+        return {};
+    }
+    std::vector<int> res;
+    stack.push({p, 0});
+    while(!stack.empty()) { // Very important skills to write a post order traversal of a tree
+        if(stack.top().second == 0) {
+            p = stack.top().first;
+            stack.pop();
+            stack.push({p, 1});
+            for(int i = p->children.size() - 1; i >= 0; --i) { // reverse order to push children
+                if(p->children[i]) {
+                    stack.push({p->children[i], 0});
+                }
+            }
+        } else {
+            res.push_back(stack.top().first->data);
+            stack.pop();
+        }
+    }
+    return res;
+}
+
+LC::TreeNode* LC::_0617_MergeTwoBinaryTrees::mergeTrees(LC::TreeNode* t1, LC::TreeNode* t2) {
+    if(t1 == nullptr && t2 == nullptr) {
+        return nullptr;
+    } else if(t1 == nullptr && t2 != nullptr) {
+        return t2;
+    } else if(t1 != nullptr && t2 == nullptr) {
+        return t1;
+    }else {
+        TreeNode* root = new TreeNode(t1->val + t2->val);
+        root->left = mergeTrees(t1->left, t2->left);
+        root->right = mergeTrees(t1->right, t2->right);
+        return root;
+    }
+}
+
+
+std::vector<double> LC::_0637_AverageOfLevelsInBinaryTree::averageOfLevels(TreeNode* root) {
+    std::queue<TreeNode*> q;
+    q.push(root);
+    std::vector<double> res;
+    while(!q.empty()) {
+        const int N = q.size();
+        long sum = 0;
+        for(int i = 0; i < N; ++i) {
+            auto f = q.front();
+            sum += f->val;                
+            q.pop();
+            
+            if(f->left) {
+                q.push(f->left);
+            }
+            if(f->right) {
+                q.push(f->right);
+            }
+        }
+        res.push_back(sum / static_cast<double>(N));
+    }
+    return res;
+}
+
+
+LC::TreeNode* LC::_0654_MaximumBinaryTree::constructMaximumBinaryTree(std::vector<int>& nums) {
+    return constructMaximumBinaryTree_impl(nums.begin(), nums.end());
+}
+LC::TreeNode* LC::_0654_MaximumBinaryTree::constructMaximumBinaryTree_impl(std::vector<int>::iterator l, std::vector<int>::iterator r) {
+    if(l == r) {
+        return nullptr;
+    }
+    std::vector<int>::iterator it = std::max_element(l, r);
+    TreeNode* root = new TreeNode(*it);
+    root->left = constructMaximumBinaryTree_impl(l, it);
+    root->right =constructMaximumBinaryTree_impl(it + 1, r);
+    return root;
 }

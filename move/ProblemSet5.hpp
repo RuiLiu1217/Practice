@@ -641,28 +641,6 @@ public:
     Node* intersect(Node* quadTree1, Node* quadTree2);
 };
 
-/*
-Given a n-ary tree, find its maximum depth.
-The maximum depth is the number of nodes along the longest path from the root 
-node down to the farthest leaf node.
-Nary-Tree input serialization is represented in their level order traversal, 
-each group of children is separated by the null value (See examples).
-
-Input: root = [1,null,3,2,4,null,5,6]
-Output: 3
-
-Input: root = [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]
-Output: 5
-
-Constraints:
-
-The depth of the n-ary tree is less than or equal to 1000.
-The total number of nodes is between [0, 10^4].
-*/
-class _0559_MaximumDepthOfNaryTree {
-public:
-    int maxDepth(NaryTreeNode<int>* root);
-};
 
 /*
 Tag:
@@ -717,67 +695,6 @@ public:
     int longestLine(std::vector<std::vector<int>>& M);
 };
 
-/*
-Given two strings s1 and s2, write a function to return true if s2 
-contains the permutation of s1. In other words, one of the first 
-string's permutations is the substring of the second string.
-
-Input: s1 = "ab" s2 = "eidbaooo"
-Output: True
-Explanation: s2 contains one permutation of s1 ("ba").
-
-Input:s1= "ab" s2 = "eidboaoo"
-Output: False
-
-Note:
-The input strings only contain lower case letters.
-The length of both given strings is in range [1, 10,000].
-*/
-class _0567_PermutationInString {
-public:
-    bool checkInclusion(std::string s1, std::string s2);
-};
-
-/*
-Given two non-empty binary trees s and t, check whether tree t has exactly 
-the same structure and node values with a subtree of s. A subtree of s is 
-a tree consists of a node in s and all of this node's descendants. The tree 
-s could also be considered as a subtree of itself.
-Example 1:
-Given tree s:
-
-     3
-    / \
-   4   5
-  / \
- 1   2
-Given tree t:
-   4 
-  / \
- 1   2
-Return true, because t has the same structure and node values with a subtree 
-of s.
-Example 2:
-Given tree s:
-
-     3
-    / \
-   4   5
-  / \
- 1   2
-    /
-   0
-Given tree t:
-   4
-  / \
- 1   2
-*/
-class _0572_SubtreeOfAnotherTree {
-public:
-    bool isSubtree(TreeNode<int>* s, TreeNode<int>* t);
-private:
-    bool isSame(TreeNode<int>* s, TreeNode<int>* t);
-};
 
 /*
 Given an integer array with even length, where different numbers in this array represent 
@@ -830,101 +747,6 @@ public:
 };
 
 /*
-Given an n-ary tree, return the preorder traversal of its nodes' values.
-Nary-Tree input serialization is represented in their level order 
-traversal, each group of children is separated by the null value 
-(See examples). 
-
-Follow up:
-Recursive solution is trivial, could you do it iteratively?
-
-Input: root = [1,null,3,2,4,null,5,6]
-Output: [1,3,5,6,2,4]
-
-Input: root = [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]
-Output: [1,2,3,6,7,11,14,4,8,12,5,9,13,10]
-
-Constraints:
-
-The height of the n-ary tree is less than or equal to 1000
-The total number of nodes is between [0, 10^4]
-*/
-class _0589_NaryTreePreorderTraversal {
-public:
-    std::vector<int> preorder(NaryTreeNode<int>* root);
-};
-
-/*
-Given an n-ary tree, return the postorder traversal of its nodes' values.
-Nary-Tree input serialization is represented in their level order traversal, 
-each group of children is separated by the null value (See examples).
-
-Recursive solution is trivial, could you do it iteratively?
-Input: root = [1,null,3,2,4,null,5,6]
-Output: [5,6,3,2,4,1]
-
-Input: root = [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]
-Output: [2,6,14,11,7,3,12,8,4,13,9,10,5,1]
-*/
-class _0590_Node;
-class _0590_NaryTreePostOrderTraversal {
-public:
-    std::vector<int> postorder(_0590_Node* root);
-};
-
-/*
-Given a string representing an expression of fraction addition and subtraction, 
-you need to return the calculation result in string format. The final result should 
-be irreducible fraction. If your final result is an integer, say 2, you need to change 
-it to the format of fraction that has denominator 1. So in this case, 2 should be 
-converted to 2/1.
-
-Input:"-1/2+1/2"
-Output: "0/1"
-
-Input:"-1/2+1/2+1/3"
-Output: "1/3"
-
-Input:"1/3-1/2"
-Output: "-1/6"
-
-Input:"5/3+1/3"
-Output: "2/1"
-Note:
-The input string only contains '0' to '9', '/', '+' and '-'. So does the output.
-Each fraction (input and output) has format ±numerator/denominator. If the first input 
-fraction or the output is positive, then '+' will be omitted. The input only contains valid 
-irreducible fractions, where the numerator and denominator of each fraction will always 
-be in the range [1,10]. If the denominator is 1, it means this fraction is actually an 
-integer in a fraction format defined above.
-The number of given fractions will be in the range [1,10].
-The numerator and denominator of the final result are guaranteed to be valid and in the 
-range of 32-bit int.
-*/
-class _0592_FractionAdditionAndSubtraction {
-public:
-    std::string fractionAddition(std::string expression);
-};
-
-/*
-Given the coordinates of four points in 2D space, return whether the four points could construct a square.
-The coordinate (x,y) of a point is represented by an integer array with two integers.
-
-Input: p1 = [0,0], p2 = [1,1], p3 = [1,0], p4 = [0,1]
-Output: True
-
-Note:
-All the input integers are in the range [-10000, 10000].
-A valid square has four equal sides with positive length and four equal angles (90-degree angles).
-Input points have no order.
-*/
-class _0593_ValidSquare {
-public:
-    bool validSquare(std::vector<int>& p1, std::vector<int>& p2, std::vector<int>& p3,
-    std::vector<int>& p4);
-};
-
-/*
 Given an m * n matrix M initialized with all 0's and several update operations.
 Operations are represented by a 2D array, and each operation is represented by 
 an array with two positive integers a and b, which means M[i][j] should be added 
@@ -964,34 +786,6 @@ public:
     int maxCount(int m, int n, std::vector<std::vector<int>>& ops);
 };
 
-/*
-Suppose Andy and Doris want to choose a restaurant for dinner, and they both have a 
-list of favorite restaurants represented by strings.
-You need to help them find out their common interest with the least list index sum. 
-If there is a choice tie between answers, output all of them with no order requirement. 
-You could assume there always exists an answer.
-
-Input:
-["Shogun", "Tapioca Express", "Burger King", "KFC"]
-["Piatti", "The Grill at Torrey Pines", "Hungry Hunter Steakhouse", "Shogun"]
-Output: ["Shogun"]
-Explanation: The only restaurant they both like is "Shogun".
-
-Input:
-["Shogun", "Tapioca Express", "Burger King", "KFC"]
-["KFC", "Shogun", "Burger King"]
-Output: ["Shogun"]
-Explanation: The restaurant they both like and have the least index sum is "Shogun" with index sum 1 (0+1).
-Note:
-The length of both lists will be in the range of [1, 1000].
-The length of strings in both lists will be in the range of [1, 30].
-The index is starting from 0 to the list length minus 1.
-No duplicates in both lists.
-*/
-class _0599_MinimumIndexSumOfTwoLists {
-public:
-    std::vector<std::string> findRestaruant(std::vector<std::string>& list1, std::vector<std::string>& list2);
-};
 
 }
 

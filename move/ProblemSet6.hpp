@@ -102,163 +102,13 @@ private:
     std::vector<std::pair<std::string, std::string>> getOneFoldersFiles(const std::string& path);
 };
 
-/*
-
-*/
-class _0611_ValidTriangleNumber {
-public:
-    int triangleNumber(std::vector<int>& nums);
-};
-
-/*
-Given a string s and a list of strings dict, you need to add a closed pair of bold tag <b> and </b> to wrap the substrings 
-in s that exist in dict. If two such substrings overlap, you need to wrap them together by only one pair of closed bold tag. 
-Also, if two substrings wrapped by bold tags are consecutive, you need to combine them.
-Example 1:
-
-Input: 
-s = "abcxyz123"
-dict = ["abc","123"]
-Output:
-"<b>abc</b>xyz<b>123</b>"
- 
-
-Example 2:
-
-Input: 
-s = "aaabbcc"
-dict = ["aaa","aab","bc"]
-Output:
-"<b>aaabbc</b>c"
- 
-
-Constraints:
-
-The given dict won't contain duplicates, and its length won't exceed 100.
-All the strings in input have length in range [1, 1000].
-*/
-class _0616_AddBoldTagInString {
-public:
-    std::string addBoldTag(std::string s, std::vector<std::string>& dict);
-};
-
-/*
-Given two binary trees and imagine that when you put one of them to 
-cover the other, some nodes of the two trees are overlapped while 
-the others are not.
-You need to merge them into a new binary tree. The merge rule is 
-that if two nodes overlap, then sum node values up as the new 
-value of the merged node. Otherwise, the NOT null node will be 
-used as the node of new tree.
-
-Input: 
-	Tree 1                     Tree 2                  
-          1                         2                             
-         / \                       / \                            
-        3   2                     1   3                        
-       /                           \   \                      
-      5                             4   7                  
-Output: 
-Merged tree:
-	     3
-	    / \
-	   4   5
-	  / \   \ 
-	 5   4   7
- Note: The merging process must start from the root nodes of both trees.
-*/
-class _0617_MergeTwoBinaryTrees {
-public:
-    TreeNode<int>* mergeTrees(TreeNode<int>* t1, TreeNode<int>* t2);
-};
 
 class _0621_TaskScheduler {
 public:
     int leastInterval(std::vector<char>& tasks, int n);
 };
 
-/*
-622. Design Circular Queue
-Design your implementation of the circular queue. The circular queue is a 
-linear data structure in which the operations are performed based on FIFO 
-(First In First Out) principle and the last position is connected back to 
-the first position to make a circle. It is also called "Ring Buffer".
 
-One of the benefits of the circular queue is that we can make use of the 
-spaces in front of the queue. In a normal queue, once the queue becomes full, 
-we cannot insert the next element even if there is a space in front of the 
-queue. But using the circular queue, we can use the space to store new values.
-
-Your implementation should support following operations:
-
-MyCircularQueue(k): Constructor, set the size of the queue to be k.
-Front: Get the front item from the queue. If the queue is empty, return -1.
-Rear: Get the last item from the queue. If the queue is empty, return -1.
-enQueue(value): Insert an element into the circular queue. Return true if the operation is successful.
-deQueue(): Delete an element from the circular queue. Return true if the operation is successful.
-isEmpty(): Checks whether the circular queue is empty or not.
-isFull(): Checks whether the circular queue is full or not.
- 
-
-Example:
-
-MyCircularQueue circularQueue = new MyCircularQueue(3); // set the size to be 3
-circularQueue.enQueue(1);  // return true
-circularQueue.enQueue(2);  // return true
-circularQueue.enQueue(3);  // return true
-circularQueue.enQueue(4);  // return false, the queue is full
-circularQueue.Rear();  // return 3
-circularQueue.isFull();  // return true
-circularQueue.deQueue();  // return true
-circularQueue.enQueue(4);  // return true
-circularQueue.Rear();  // return 4
-*/
-class _0622_DesignCircularQueue {
-    std::vector<int> q;
-    int head, tail, N;
-    bool empty;
-public:
-    /** Initialize your data structure here. Set the size of the queue to be k. */
-    _0622_DesignCircularQueue(int k);
-    
-    /** Insert an element into the circular queue. Return true if the operation is successful. */
-    bool enQueue(int value);
-    
-    /** Delete an element from the circular queue. Return true if the operation is successful. */
-    bool deQueue();
-    
-    /** Get the front item from the queue. */
-    int Front();
-    
-    /** Get the last item from the queue. */
-    int Rear();
-    
-    /** Checks whether the circular queue is empty or not. */
-    bool isEmpty();
-    
-    /** Checks whether the circular queue is full or not. */
-    bool isFull();
-};
-
-/*
-Given a non-negative integer c, your task is to decide whether there're two integers a and b such that a2 + b2 = c.
-
-Example 1:
-
-Input: 5
-Output: True
-Explanation: 1 * 1 + 2 * 2 = 5
- 
-
-Example 2:
-
-Input: 3
-Output: False
-*/
-class _0633_SumOfSquareNumbers {
-public:
-    bool judgeSquareSum(int c);
-};
 
 /*
 On a single threaded CPU, we execute some functions.  Each function has a unique id between 0 and N-1.
@@ -280,10 +130,8 @@ Function 0 starts at the beginning of time 0, then it executes 2 units of time a
 Now function 1 starts at the beginning of time 2, executes 4 units of time and ends at time 5.
 Function 0 is running again at the beginning of time 6, and also ends at the end of time 6, thus executing for 1 unit of time. 
 So function 0 spends 2 + 1 = 3 units of total time executing, and function 1 spends 4 units of total time executing.
- 
 
 Note:
-
 1 <= n <= 100
 Two functions won't start or end at the same time.
 Functions will always log when they exit.
@@ -294,116 +142,6 @@ public:
     std::vector<int> exclusiveTime(int n, std::vector<std::string>& logs);
 };
 
-/*
-Given a non-empty binary tree, return the average value of the nodes on each level in the form of an array.
-Input:
-    3
-   / \
-  9  20
-    /  \
-   15   7
-Output: [3, 14.5, 11]
-Explanation:
-The average value of nodes on level 0 is 3,  on level 1 is 14.5, and on level 2 is 11. Hence return [3, 14.5, 11].
-Note:
-The range of node's value is in the range of 32-bit signed integer.
-*/
-class _0637_AverageOfLevelsInBinaryTree {
-public:
-    std::vector<double> averageOfLevels(TreeNode<int>* root);
-};
-
-
-
-/*
-Design your implementation of the circular double-ended queue (deque).
-
-Your implementation should support following operations:
-
-MyCircularDeque(k): Constructor, set the size of the deque to be k.
-insertFront(): Adds an item at the front of Deque. Return true if the operation is successful.
-insertLast(): Adds an item at the rear of Deque. Return true if the operation is successful.
-deleteFront(): Deletes an item from the front of Deque. Return true if the operation is successful.
-deleteLast(): Deletes an item from the rear of Deque. Return true if the operation is successful.
-getFront(): Gets the front item from the Deque. If the deque is empty, return -1.
-getRear(): Gets the last item from Deque. If the deque is empty, return -1.
-isEmpty(): Checks whether Deque is empty or not. 
-isFull(): Checks whether Deque is full or not.
- 
-
-Example:
-
-MyCircularDeque circularDeque = new MycircularDeque(3); // set the size to be 3
-circularDeque.insertLast(1);			// return true
-circularDeque.insertLast(2);			// return true
-circularDeque.insertFront(3);			// return true
-circularDeque.insertFront(4);			// return false, the queue is full
-circularDeque.getRear();  			// return 2
-circularDeque.isFull();				// return true
-circularDeque.deleteLast();			// return true
-circularDeque.insertFront(4);			// return true
-circularDeque.getFront();			// return 4
- 
-
-Note:
-
-All values will be in the range of [0, 1000].
-The number of operations will be in the range of [1, 1000].
-Please do not use the built-in Deque library.
-*/
-class _0641_DesignCircularDeque{
-private:
-    std::vector<int> q;
-    int start;
-    int end;
-    int K;
-public:
-    /** Initialize your data structure here. Set the size of the deque to be k. */
-    _0641_DesignCircularDeque(int k);
-    
-    /** Adds an item at the front of Deque. Return true if the operation is successful. */
-    bool insertFront(int value);
-
-    /** Adds an item at the rear of Deque. Return true if the operation is successful. */
-    bool insertLast(int value);
-    
-    /** Deletes an item from the front of Deque. Return true if the operation is successful. */
-    bool deleteFront();
-    
-    /** Deletes an item from the rear of Deque. Return true if the operation is successful. */
-    bool deleteLast();
-    
-    /** Get the front item from the deque. */
-    int getFront();
-    
-    /** Get the last item from the deque. */
-    int getRear();
-
-    /** Checks whether the circular deque is empty or not. */
-    bool isEmpty();
-    
-    /** Checks whether the circular deque is full or not. */
-    bool isFull();
-};
-
-/*
-You are given n pairs of numbers. In every pair, the first number is always 
-smaller than the second number.
-Now, we define a pair (c, d) can follow another pair (a, b) if and only if 
-b < c. Chain of pairs can be formed in this fashion.
-Given a set of pairs, find the length longest chain which can be formed. You 
-needn't use up all the given pairs. You can select pairs in any order.
-
-Input: [[1,2], [2,3], [3,4]]
-Output: 2
-Explanation: The longest chain is [1,2] -> [3,4]
-Note:
-The number of given pairs will be in the range [1, 1000].
-*/
-class _0646_MaximumLengthOfPairChain {
-public:
-    int findLongestChain(std::vector<std::vector<int>>& pairs);
-};
 
 /*
 Given a string, your task is to count how many palindromic substrings in this string.
@@ -421,38 +159,6 @@ public:
     int countSubstrings(std::string s);
 private:
     int sub(const std::string& s, int k);
-};
-
-/*
-Given an integer array with no duplicates. A maximum tree 
-building on this array is defined as follow:
-
-The root is the maximum number in the array.
-The left subtree is the maximum tree constructed from left 
-part subarray divided by the maximum number.
-The right subtree is the maximum tree constructed from right 
-part subarray divided by the maximum number.
-Construct the maximum tree by the given array and output 
-the root node of this tree.
-
-Input: [3,2,1,6,0,5]
-Output: return the tree root node representing the following tree:
-
-      6
-    /   \
-   3     5
-    \    / 
-     2  0   
-       \
-        1
-Note:
-The size of the given array will be in the range [1,1000].
-*/
-class _0654_MaximumBinaryTree {
-public:
-    TreeNode<int>* constructMaximumBinaryTree(std::vector<int>& nums);
-private:
-    TreeNode<int>* constructMaximumBinaryTree_impl(std::vector<int>& nums, int l, int r);
 };
 
 /*
@@ -516,36 +222,6 @@ public:
 private:
     int getHeight(TreeNode<int>* root);
     void fill(TreeNode<int>* root, std::vector<std::vector<std::string>>& res, int h, int l, int r);
-};
-
-/*
-There is a robot starting at position (0, 0), the origin, on a 2D plane. 
-Given a sequence of its moves, judge if this robot ends up at (0, 0) after 
-it completes its moves.
-The move sequence is represented by a string, and the character moves[i] 
-represents its ith move. Valid moves are R (right), L (left), U (up), 
-and D (down). If the robot returns to the origin after it finishes all of 
-its moves, return true. Otherwise, return false.
-Note: The way that the robot is "facing" is irrelevant. "R" will always 
-make the robot move to the right once, "L" will always make it move left, 
-etc. Also, assume that the magnitude of the robot's movement is the same 
-for each move.
-
-Input: "UD"
-Output: true 
-Explanation: The robot moves up once, and then down once. All moves have 
-the same magnitude, so it ended up at the origin where it started. 
-Therefore, we return true.
-
-Input: "LL"
-Output: false
-Explanation: The robot moves left twice. It ends up two "moves" to the 
-left of the origin. We return false because it is not at the origin at 
-the end of its moves.
-*/
-class _0657_RobotReturnToOrigin {
-public:
-    bool judgeCircle(std::string moves);
 };
 
 /*
@@ -853,22 +529,6 @@ private:
     bool valid(double a, double b); 
 };
 
-/*
-Given a non-empty string s, you may delete at most one character. Judge whether you can make it a palindrome.
-
-Input: "aba"
-Output: True
-
-Input: "abca"
-Output: True
-Explanation: You could delete the character 'c'.
-Note:
-The string will only contain lowercase characters a-z. The maximum length of the string is 50000.
-*/
-class _0680_ValidPalindromeII {
-public:
-    bool validPalindrome(std::string s);
-};
 
 /*
 Given a time represented in the format "HH:MM", form the next 
@@ -983,69 +643,7 @@ private:
     int univaluePath(TreeNode<int>* root, int* ans);
 };
 
-/*
-Given a non-empty list of words, return the k most frequent elements.
-Your answer should be sorted by frequency from highest to lowest. If 
-two words have the same frequency, then the word with the lower 
-alphabetical order comes first.
 
-Example 1:
-Input: ["i", "love", "leetcode", "i", "love", "coding"], k = 2
-Output: ["i", "love"]
-Explanation: "i" and "love" are the two most frequent words.
-    Note that "i" comes before "love" due to a lower alphabetical order.
-Example 2:
-Input: ["the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is"], k = 4
-Output: ["the", "is", "sunny", "day"]
-Explanation: "the", "is", "sunny" and "day" are the four most frequent words,
-    with the number of occurrence being 4, 3, 2 and 1 respectively.
-Note:
-You may assume k is always valid, 1 ≤ k ≤ number of unique elements.
-Input words contain only lowercase letters.
-Follow up:
-Try to solve it in O(n log k) time and O(n) extra space.
-*/
-class _0692_TopKFrequentWords {
-public:
-    std::vector<std::string> topKFrequent(std::vector<std::string>& words, int k);
-};
-
-/*
-Given a non-empty 2D array grid of 0's and 1's, an island is a group of 1's (representing land) 
-connected 4-directionally (horizontal or vertical.) You may assume all four edges of the grid are surrounded by water.
-Count the number of distinct islands. An island is considered to be the same as another if and only if one island 
-can be translated (and not rotated or reflected) to equal the other.
-
-Example 1:
-11000
-11000
-00011
-00011
-Given the above grid map, return 1.
-Example 2:
-11011
-10000
-00001
-11011
-Given the above grid map, return 3.
-
-Notice that:
-11
-1
-and
- 1
-11
-are considered different island shapes, because we do not consider reflection / rotation.
-Note: The length of each dimension in the given grid does not exceed 50.
-*/
-class _0694_NumberOfDistinceIslands {
-private:
-int M;
-int N;
-void DFS(std::vector<std::vector<int>>& grid, std::string& path, int i, int j, const int I, const int J);
-public:
-    int numDistinctIslands(std::vector<std::vector<int>>& grid);
-};
 
 /*
 Given the root node of a binary search tree (BST) and a value. 

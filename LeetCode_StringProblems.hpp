@@ -5,6 +5,7 @@
 #include <string>
 #include <unordered_set>
 #include <unordered_map>
+#include <algorithm>
 namespace LC {
 /*
     Tag: string, palindromic
@@ -878,6 +879,135 @@ We ensure that the input n can be converted into the form 2k, where k is a posit
 class _0544_OutputContestMatches {
 public:
     std::string findContestMatch(int n);
+};
+
+
+/*
+Given two strings s1 and s2, write a function to return true if s2 
+contains the permutation of s1. In other words, one of the first 
+string's permutations is the substring of the second string.
+
+Input: s1 = "ab" s2 = "eidbaooo"
+Output: True
+Explanation: s2 contains one permutation of s1 ("ba").
+
+Input:s1= "ab" s2 = "eidboaoo"
+Output: False
+
+Note:
+The input strings only contain lower case letters.
+The length of both given strings is in range [1, 10,000].
+*/
+class _0567_PermutationInString {
+public:
+    bool checkInclusion(std::string s1, std::string s2);
+};
+
+/*
+Given a string representing an expression of fraction addition and subtraction, 
+you need to return the calculation result in string format. The final result should 
+be irreducible fraction. If your final result is an integer, say 2, you need to change 
+it to the format of fraction that has denominator 1. So in this case, 2 should be 
+converted to 2/1.
+
+Input:"-1/2+1/2"
+Output: "0/1"
+
+Input:"-1/2+1/2+1/3"
+Output: "1/3"
+
+Input:"1/3-1/2"
+Output: "-1/6"
+
+Input:"5/3+1/3"
+Output: "2/1"
+Note:
+The input string only contains '0' to '9', '/', '+' and '-'. So does the output.
+Each fraction (input and output) has format ±numerator/denominator. If the first input 
+fraction or the output is positive, then '+' will be omitted. The input only contains valid 
+irreducible fractions, where the numerator and denominator of each fraction will always 
+be in the range [1,10]. If the denominator is 1, it means this fraction is actually an 
+integer in a fraction format defined above.
+The number of given fractions will be in the range [1,10].
+The numerator and denominator of the final result are guaranteed to be valid and in the 
+range of 32-bit int.
+*/
+class _0592_FractionAdditionAndSubtraction {
+public:
+    std::string fractionAddition(std::string expression);
+};
+
+/*
+    Given a string s and a list of strings dict, you need to add a closed pair of bold tag <b> and </b> to wrap the substrings 
+    in s that exist in dict. If two such substrings overlap, you need to wrap them together by only one pair of closed bold tag. 
+    Also, if two substrings wrapped by bold tags are consecutive, you need to combine them.
+
+    Input: 
+    s = "abcxyz123"
+    dict = ["abc","123"]
+    Output:
+    "<b>abc</b>xyz<b>123</b>"
+
+    Input: 
+    s = "aaabbcc"
+    dict = ["aaa","aab","bc"]
+    Output:
+    "<b>aaabbc</b>c"
+    
+    Constraints:
+    The given dict won't contain duplicates, and its length won't exceed 100.
+    All the strings in input have length in range [1, 1000].
+*/
+class _0616_AddBoldTagInString {
+public:
+    std::string addBoldTag(std::string s, std::vector<std::string>& dict);
+private:
+    std::vector<std::vector<int>> mergeIntervals(std::vector<std::vector<int>>& intervals) {
+        std::sort(begin(intervals), end(intervals), [](std::vector<int> a, std::vector<int> b){
+            return (a[0] < b[0]) || (a[0] == b[0]) && (a[1] < b[1]);
+        });
+
+        std::vector<std::vector<int>> res;
+        if(intervals.size() > 0) {
+            res.push_back(intervals.front());
+        }
+
+        for(int i = 1; i < intervals.size(); ++i) {
+            if(intervals[i][0] <= res.back()[1]) { // "=" means  [1, 2] [2, 3] will be merged to [1, 3] to avoid <b>a</b><b>c</b> case happens
+                res.back()[1] = std::max(res.back()[1], intervals[i][1]);
+            } else {
+                res.push_back(intervals[i]);
+            }
+        }
+        return res;
+    }
+
+    std::vector<std::vector<int>> generateIntervals(const std::string& s, const std::vector<std::string>& dict) {
+        std::vector<std::vector<int>> intervals;
+        for(const std::string& word : dict) {
+            for(int i = 0; (i = s.find(word, i)) != std::string::npos; ++i) {
+                intervals.push_back({i, i + static_cast<int>(word.size())});
+            }
+        }
+        return intervals;
+    }
+};
+
+/*
+Given a non-empty string s, you may delete at most one character. Judge whether you can make it a palindrome.
+
+Input: "aba"
+Output: True
+
+Input: "abca"
+Output: True
+Explanation: You could delete the character 'c'.
+Note:
+The string will only contain lowercase characters a-z. The maximum length of the string is 50000.
+*/
+class _0680_ValidPalindromeII {
+public:
+    bool validPalindrome(std::string s);
 };
 
 

@@ -1437,6 +1437,196 @@ public:
 };
 
 
+/*
+Given a n-ary tree, find its maximum depth.
+The maximum depth is the number of nodes along the longest path from the root 
+node down to the farthest leaf node.
+Nary-Tree input serialization is represented in their level order traversal, 
+each group of children is separated by the null value (See examples).
+
+Input: root = [1,null,3,2,4,null,5,6]
+Output: 3
+
+Input: root = [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]
+Output: 5
+
+Constraints:
+
+The depth of the n-ary tree is less than or equal to 1000.
+The total number of nodes is between [0, 10^4].
+*/
+class _0559_MaximumDepthOfNaryTree {
+public:
+    int maxDepth(NaryTreeNode* root);
+};
+
+/*
+Given two non-empty binary trees s and t, check whether tree t has exactly 
+the same structure and node values with a subtree of s. A subtree of s is 
+a tree consists of a node in s and all of this node's descendants. The tree 
+s could also be considered as a subtree of itself.
+Example 1:
+Given tree s:
+
+     3
+    / \
+   4   5
+  / \
+ 1   2
+Given tree t:
+   4 
+  / \
+ 1   2
+Return true, because t has the same structure and node values with a subtree 
+of s.
+Example 2:
+Given tree s:
+
+     3
+    / \
+   4   5
+  / \
+ 1   2
+    /
+   0
+Given tree t:
+   4
+  / \
+ 1   2
+*/
+class _0572_SubtreeOfAnotherTree {
+public:
+    bool isSubtree(TreeNode* s, TreeNode* t);
+private:
+    bool isSame(TreeNode* s, TreeNode* t);
+};
+
+/*
+Given an n-ary tree, return the preorder traversal of its nodes' values.
+Nary-Tree input serialization is represented in their level order 
+traversal, each group of children is separated by the null value 
+(See examples). 
+
+Follow up:
+Recursive solution is trivial, could you do it iteratively?
+
+Input: root = [1,null,3,2,4,null,5,6]
+Output: [1,3,5,6,2,4]
+
+Input: root = [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]
+Output: [1,2,3,6,7,11,14,4,8,12,5,9,13,10]
+
+Constraints:
+
+The height of the n-ary tree is less than or equal to 1000
+The total number of nodes is between [0, 10^4]
+*/
+class _0589_NaryTreePreorderTraversal {
+public:
+    std::vector<int> preorder(NaryTreeNode* root);
+};
+
+/*
+Given an n-ary tree, return the postorder traversal of its nodes' values.
+Nary-Tree input serialization is represented in their level order traversal, 
+each group of children is separated by the null value (See examples).
+
+Recursive solution is trivial, could you do it iteratively?
+Input: root = [1,null,3,2,4,null,5,6]
+Output: [5,6,3,2,4,1]
+
+Input: root = [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]
+Output: [2,6,14,11,7,3,12,8,4,13,9,10,5,1]
+*/
+class _0590_NaryTreePostOrderTraversal {
+public:
+    std::vector<int> postorder(NaryTreeNode* root);
+};
+
+
+
+/*
+Given two binary trees and imagine that when you put one of them to 
+cover the other, some nodes of the two trees are overlapped while 
+the others are not.
+You need to merge them into a new binary tree. The merge rule is 
+that if two nodes overlap, then sum node values up as the new 
+value of the merged node. Otherwise, the NOT null node will be 
+used as the node of new tree.
+
+Input: 
+	Tree 1                     Tree 2                  
+          1                         2                             
+         / \                       / \                            
+        3   2                     1   3                        
+       /                           \   \                      
+      5                             4   7                  
+Output: 
+Merged tree:
+	     3
+	    / \
+	   4   5
+	  / \   \ 
+	 5   4   7
+ Note: The merging process must start from the root nodes of both trees.
+*/
+class _0617_MergeTwoBinaryTrees {
+public:
+    TreeNode* mergeTrees(TreeNode* t1, TreeNode* t2);
+};
+
+/*
+Given a non-empty binary tree, return the average value of the nodes on each level in the form of an array.
+Input:
+    3
+   / \
+  9  20
+    /  \
+   15   7
+Output: [3, 14.5, 11]
+Explanation:
+The average value of nodes on level 0 is 3,  on level 1 is 14.5, and on level 2 is 11. Hence return [3, 14.5, 11].
+Note:
+The range of node's value is in the range of 32-bit signed integer.
+*/
+class _0637_AverageOfLevelsInBinaryTree {
+public:
+    std::vector<double> averageOfLevels(TreeNode* root);
+};
+
+
+/*
+Given an integer array with no duplicates. A maximum tree 
+building on this array is defined as follow:
+
+The root is the maximum number in the array.
+The left subtree is the maximum tree constructed from left 
+part subarray divided by the maximum number.
+The right subtree is the maximum tree constructed from right 
+part subarray divided by the maximum number.
+Construct the maximum tree by the given array and output 
+the root node of this tree.
+
+Input: [3,2,1,6,0,5]
+Output: return the tree root node representing the following tree:
+
+      6
+    /   \
+   3     5
+    \    / 
+     2  0   
+       \
+        1
+Note:
+The size of the given array will be in the range [1,1000].
+*/
+class _0654_MaximumBinaryTree {
+public:
+    TreeNode* constructMaximumBinaryTree(std::vector<int>& nums);
+private:
+    TreeNode* constructMaximumBinaryTree_impl(std::vector<int>::iterator l, std::vector<int>::iterator r);
+};
+
 
 }
 #endif

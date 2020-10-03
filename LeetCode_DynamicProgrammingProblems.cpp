@@ -444,8 +444,6 @@ int LC::_0343_IntegerBreak::intergerBreak(int n) {
 }
 
 
-
-
 std::vector<std::string> LC::_0472_ConcatenatedWords::findAllConcatenatedWordsInADict(std::vector<std::string>& words) {
     if(words.size() < 2) {
         return {};
@@ -476,6 +474,22 @@ std::vector<std::string> LC::_0472_ConcatenatedWords::findAllConcatenatedWordsIn
         dict.insert(word);
     }
     return res;
+}
+
+int LC::_0646_MaximumLengthOfPairChain::findLongestChain(std::vector<std::vector<int>>& pairs) {
+    std::sort(begin(pairs), end(pairs), [](std::vector<int> a, std::vector<int> b) {
+        return (a[0] < b[0]) || (a[0] == b[0] && a[1] < b[1]);
+    });
+    
+    std::vector<int> DP(pairs.size(), 1);
+    for(int i = 1; i < DP.size(); ++i) {
+        for(int k = i-1; k >= 0; --k) {
+            if(pairs[i][0] > pairs[k][1]) {
+                DP[i] = std::max(DP[i], DP[k] + 1);
+            }
+        }
+    }
+    return *std::max_element(begin(DP), end(DP));
 }
 
 

@@ -71,3 +71,17 @@ TEST(LC, _0367_) {
     EXPECT_FALSE(obj.isPerfectSquare(14));
     EXPECT_TRUE(obj.isPerfectSquare(9));
 }
+
+TEST(LC, _0633_SumOfSquareNumbers) {
+    LC::_0633_SumOfSquareNumbers obj;
+    EXPECT_TRUE(obj.judgeSquareSum(5));
+    EXPECT_FALSE(obj.judgeSquareSum(3));
+    EXPECT_TRUE(obj.judgeSquareSum(4));
+    EXPECT_TRUE(obj.judgeSquareSum(2));
+}
+
+TEST(LC, _0657) {
+    LC::_0657_RobotReturnToOrigin obj;
+    EXPECT_TRUE(obj.judgeCircle("LR"));
+    EXPECT_FALSE(obj.judgeCircle("LL"));
+}

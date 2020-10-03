@@ -11,6 +11,7 @@
 #include <sstream>
 #include <functional>
 #include <string>
+#include <math.h>
 
 std::string LC::_0005_LongestPalindromicSubstring::longestPalidrome(std::string s) {
     if(s.size() == 0) {
@@ -1334,4 +1335,81 @@ int LC::_0467_UniqueSubstringsInWraparoundString::findSubstringInWraproundString
         cnt[p[i] - 'a'] = std::max(cnt[p[i] - 'a'], len);
     }
     return std::accumulate(cnt.begin(), cnt.end(), 0);
+}
+
+bool LC::_0567_PermutationInString::checkInclusion(std::string s1, std::string s2) {
+    std::vector<int> patS1(26, 0);
+    for(int i = 0; i < s1.size(); ++i) {
+        ++patS1[s1[i] - 'a'];
+    }
+    if(s2.size() < s1.size()) {
+        return false;
+    }
+    std::vector<int> patS2(26, 0);
+    for(int i = 0; i < s1.size(); ++i) {
+        ++patS2[s2[i] - 'a'];
+    }
+    
+    for(int i = s1.size(); i < s2.size(); ++i) {
+        if(patS1 == patS2) {
+            return true;
+        }
+        ++patS2[s2[i] - 'a'];
+        --patS2[s2[i-s1.size()] - 'a'];
+    }
+    return patS1 == patS2;
+}
+
+// Use stringstream to simplify the problem.
+std::string LC::_0592_FractionAdditionAndSubtraction::fractionAddition(std::string expression) {
+    std::stringstream iss(expression);
+    int A = 0;
+    int B = 1;
+    int a = 0;
+    int b = 0;
+    char slash;
+    while(iss>>a>>slash>>b) {
+        A = A * b + B * a;
+        B = B * b;
+        int g = std::gcd(std::abs(A), std::abs(B));
+        A /= g;
+        B /= g;
+    }
+    return std::to_string(A) + "/" + std::to_string(B);
+}
+
+
+// use mask to help solve problems we can also use the interval 
+// merge technique to solve it.
+std::string LC::_0616_AddBoldTagInString::addBoldTag(std::string s, std::vector<std::string>& dict) {
+    std::vector<std::vector<int>> intervals = generateIntervals(s, dict);
+    intervals = mergeIntervals(intervals);
+
+    std::string res = s;
+    for(auto it = intervals.crbegin(); it != intervals.crend(); ++it) { // add the tag in a reverse order
+        res.insert((*it)[1], "</b>");
+        res.insert((*it)[0], "<b>");
+    }
+    return res;
+}
+
+// ! Can be extend to multiple char delete solution
+// ! inspired by the solution
+bool LC::_0680_ValidPalindromeII::validPalindrome(std::string s) {
+    std::function<bool(int, int, int)> isvalid = [&](int i, int j, int d) {
+        if(i >= j) {
+            return true;
+        }
+        if(s[i] == s[j]) {
+            return isvalid(i + 1, j - 1, d);
+        } else {
+            if(d == 0) {
+                return false;
+            } else {
+                return isvalid(i + 1, j, d-1) || isvalid(i, j-1, d-1);
+            }
+        }
+    };
+
+    return isvalid(0, s.size() - 1, 1);
 }

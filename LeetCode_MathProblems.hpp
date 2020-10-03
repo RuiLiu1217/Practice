@@ -354,6 +354,90 @@ public:
     int superPow(int a, std::vector<int>& b);
 };
 
+/*
+Given the coordinates of four points in 2D space, return whether the four points could construct a square.
+The coordinate (x,y) of a point is represented by an integer array with two integers.
+
+Input: p1 = [0,0], p2 = [1,1], p3 = [1,0], p4 = [0,1]
+Output: True
+
+Note:
+All the input integers are in the range [-10000, 10000].
+A valid square has four equal sides with positive length and four equal angles (90-degree angles).
+Input points have no order.
+*/
+class _0593_ValidSquare {
+public:
+    bool validSquare(std::vector<int>& p1, std::vector<int>& p2, std::vector<int>& p3,
+    std::vector<int>& p4);
+};
+
+
+/*
+Given an array consists of non-negative integers, your task is to count the number of triplets 
+chosen from the array that can make triangles if we take them as side lengths of a triangle.
+Example 1:
+Input: [2,2,3,4]
+Output: 3
+Explanation:
+Valid combinations are: 
+2,3,4 (using the first 2)
+2,3,4 (using the second 2)
+2,2,3
+Note:
+The length of the given array won't exceed 1000.
+The integers in the given array are in the range of [0, 1000].
+*/
+// ! Copy from the solution. I have no idea how to solve it.
+class _0611_ValidTriangleNumber {
+public:
+    int triangleNumber(std::vector<int>& nums);
+};
+
+/*
+Given a non-negative integer c, your task is to decide whether there're two integers a and b such that a2 + b2 = c.
+
+Input: 5
+Output: True
+Explanation: 1 * 1 + 2 * 2 = 5
+
+Input: 3
+Output: False
+*/
+class _0633_SumOfSquareNumbers {
+public:
+    bool judgeSquareSum(int c);
+};
+
+/*
+There is a robot starting at position (0, 0), the origin, on a 2D plane. 
+Given a sequence of its moves, judge if this robot ends up at (0, 0) after 
+it completes its moves.
+The move sequence is represented by a string, and the character moves[i] 
+represents its ith move. Valid moves are R (right), L (left), U (up), 
+and D (down). If the robot returns to the origin after it finishes all of 
+its moves, return true. Otherwise, return false.
+Note: The way that the robot is "facing" is irrelevant. "R" will always 
+make the robot move to the right once, "L" will always make it move left, 
+etc. Also, assume that the magnitude of the robot's movement is the same 
+for each move.
+
+Input: "UD"
+Output: true 
+Explanation: The robot moves up once, and then down once. All moves have 
+the same magnitude, so it ended up at the origin where it started. 
+Therefore, we return true.
+
+Input: "LL"
+Output: false
+Explanation: The robot moves left twice. It ends up two "moves" to the 
+left of the origin. We return false because it is not at the origin at 
+the end of its moves.
+*/
+class _0657_RobotReturnToOrigin {
+public:
+    bool judgeCircle(std::string moves);
+};
 
 /*
 Given an integer n, return a list of all simplified fractions between 0 and 1 (exclusive) 

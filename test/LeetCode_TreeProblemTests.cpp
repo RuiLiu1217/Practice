@@ -230,3 +230,26 @@ TEST(LC, _0426_ConstructQuadTree) {
     EXPECT_TRUE(true); // There is no easy way to test it. Just make it pass.
 }
 
+TEST(LC, _0559_) {
+    EXPECT_TRUE(true);  // There is no easy way to test it. Just make it pass.
+}
+
+TEST(LC, _0589_) {
+    EXPECT_TRUE(true);  // There is no easy way to test it. Just make it pass.
+}
+
+TEST(LC, _0572_SubtreeOfAnotherTree) {
+    EXPECT_TRUE(true);
+}
+
+TEST(LC, _0590_) {
+    EXPECT_TRUE(true);  // There is no easy way to test it. Just make it pass.
+}
+
+TEST(LC, _0637_AverageOfLevelsInBinaryTree) {
+    EXPECT_TRUE(true);
+}
+
+TEST(LC, _0654_) {
+    EXPECT_TRUE(true);
+}

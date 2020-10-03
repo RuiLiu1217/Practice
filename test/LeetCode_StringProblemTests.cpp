@@ -158,3 +158,22 @@ TEST(LC, _0438_FindAllAnagramsInAString) {
 TEST(LC, _0482_) {
     EXPECT_EQ(true, true);
 }
+
+TEST(LC, _0567_PermutationInString) {
+    LC::_0567_PermutationInString obj;
+    std::string s1 = "abc";
+    std::string s2 = "aklcnsljkdhqwehlxckjvcbaskljdcgaioh";
+
+    EXPECT_TRUE(obj.checkInclusion(s1, s2));
+}
+
+TEST(LC, _0592_FractionAdditionAndSubtraction) {
+    LC::_0592_FractionAdditionAndSubtraction obj;
+    EXPECT_EQ(obj.fractionAddition("1/2+3/4"), "5/4");
+}
+
+TEST(LC, _0680) {
+    LC::_0680_ValidPalindromeII obj;
+    EXPECT_TRUE(obj.validPalindrome("aba"));
+    EXPECT_TRUE(obj.validPalindrome("abca"));
+}

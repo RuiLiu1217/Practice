@@ -97,3 +97,10 @@ TEST(LC, _0375_GuessNumberHigherOrLowerII) {
     EXPECT_EQ(obj.getMoneyAmount(2), 1);
     EXPECT_EQ(obj.getMoneyAmount(1), 0);
 }
+
+TEST(LC, _0646_MaximumLengthOfPairChain) {
+    LC::_0646_MaximumLengthOfPairChain obj;
+    std::vector<std::vector<int>> test{{1,2}, {2,3}, {3,4}, {5,6}, {2,7}, {1,7}, {4,9}, {8,9}};
+    EXPECT_EQ(obj.findLongestChain(test), 4);
+
+}

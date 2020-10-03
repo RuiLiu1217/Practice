@@ -2,6 +2,8 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <algorithm>
+#include <unordered_map>
+
 std::vector<std::vector<std::string>> LC::_0049_GroupAnagrams::groupAnagrams(std::vector<std::string>& strs) {
     std::unordered_map<std::string, int> mySet;
     std::vector<std::vector<std::string>> res;
@@ -71,6 +73,29 @@ void LC::_0519_RandomFlipMatrix::reset() {
     occupied.clear();
     remain = nRows * nCols;
 }
+
+std::vector<std::string> LC::_0599_MinimumIndexSumOfTwoLists::findRestaruant(std::vector<std::string>& list1, std::vector<std::string>& list2) {
+    std::unordered_map<std::string, int> l1;
+    for(int i = 0; i < list1.size(); ++i) {
+        l1[list1[i]] = i;
+    }
+    
+    std::vector<std::string> res;
+    int minV = INT_MAX;
+    for(int i = 0; i < list2.size(); ++i) {
+        if(l1.count(list2[i])) {
+            if(l1[list2[i]] + i < minV) {
+                res.clear();
+                minV = l1[list2[i]] + i;
+                res.push_back(list2[i]);
+            } else if(l1[list2[i]] + i == minV) {
+                res.push_back(list2[i]);
+            }
+        }
+    }
+    return res;
+}
+
 
 LC::_0710_RandomPickWithBlacklist::_0710_RandomPickWithBlacklist(int N, std::vector<int>& blacklist) {
     n = N;

@@ -1,6 +1,7 @@
 #include "LeetCode_GreedyAlgorithmProblems.hpp"
 #include <functional>
-
+#include <numeric>
+#include <algorithm>
 // Google
 int LC::_0011_ContainerWithMostWater::maxArea(std::vector<int>& height) {
     int i = 0;
@@ -85,4 +86,17 @@ int LC::_0013_RomanToInteger::romainToInt(std::string s) {
         pre = cur;
     }
     return sum;
+}
+
+
+int LC::_0624_MaximumDistanceInArrays::maxDistance(std::vector<std::vector<int>>& arrays) {
+    int res = 0;
+    int start = arrays[0][0];
+    int end =arrays[0].back();
+    for(int i = 1; i < arrays.size(); ++i) {
+        res = std::max(res, std::max(std::abs(arrays[i].back() - start), std::abs(end-arrays[i][0])));
+        start = std::min(arrays[i][0], start);
+        end = std::max(arrays[i].back(), end);
+    }
+    return res;
 }

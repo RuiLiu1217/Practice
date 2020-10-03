@@ -7,6 +7,7 @@
 #include <unordered_set>
 #include <vector>
 #include <numeric>
+#include <functional>
 /*
 Google
 */
@@ -294,4 +295,118 @@ int LC::_0372_SuperPow::superPow(int a, std::vector<int>& b) {
         res = myPow(res, 10) * myPow(a, b[i]) % 1337;
     }
     return res;
+}
+
+
+bool LC::_0593_ValidSquare::validSquare(std::vector<int>& p1, std::vector<int>& p2, std::vector<int>& p3,
+    std::vector<int>& p4) {
+
+    std::function<std::vector<int>(const std::vector<int>& a, const std::vector<int>& b)> minus = [](const std::vector<int>& a,const std::vector<int>& b) {
+        std::vector<int> res(2, 0);
+        res[0] = a[0] - b[0];
+        res[1] = a[1] - b[1];
+        return res;        
+    };
+
+    std::function<int(const std::vector<int>&,const std::vector<int>&)> multiply = [](const std::vector<int>& a,const std::vector<int>& b) {
+        return a[0] * b[0] + a[1] * b[1];
+    };
+
+    std::function<int(const std::vector<int>&)> lenSqu = [](const std::vector<int>& a) {
+        return a[0] * a[0] + a[1] * a[1];
+    };
+
+    std::function<bool(const std::vector<int>&, const std::vector<int>&)> equal = [](const std::vector<int>& a,const std::vector<int>& b) {
+        return (a[0] == b[0] && a[1] == b[1]);
+    };
+
+    if(p1 == p2 || p1 == p3 || p1 == p4 || p2 == p3 || p2 == p4 || p3 == p4) {
+        return false;
+    }
+    std::vector<int> v1 = minus(p2, p1);
+    std::vector<int> v2 = minus(p3, p1);
+    std::vector<int> v3 = minus(p4, p1);
+
+    if(multiply(v1, v2) == 0) {
+        if(lenSqu(v1) != lenSqu(v2)) {
+            return false;
+        }
+        std::vector<int> w1 = minus(p4, p2);
+        std::vector<int> w2 = minus(p4, p3);
+        if(multiply(w1, w2) != 0) {
+            return false;
+        }
+        return true;
+    } else if(multiply(v1, v3) == 0) {
+        if(lenSqu(v1) != lenSqu(v3)) {
+            return false;
+        }
+        std::vector<int> w1 = minus(p3, p2);
+        std::vector<int> w2 = minus(p3, p4);
+        if(multiply(w1, w2) != 0) {
+            return false;
+        }
+        return true;
+    } else if(multiply(v2, v3) == 0) {
+        if(lenSqu(v3) != lenSqu(v2)) {
+            return false;
+        }
+        std::vector<int> w1 = minus(p3, p2);
+        std::vector<int> w2 = minus(p2, p4);
+        if(multiply(w1, w2) != 0) {
+            return false;
+        }
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// !copy from the solution, I have no idea why
+int LC::_0611_ValidTriangleNumber::triangleNumber(std::vector<int>& nums) {
+    int count = 0;
+    std::sort(nums.begin(), nums.end());
+    if(nums.size() < 3) {
+        return 0;
+    }
+    for(int i = 0; i < nums.size() - 2; ++i) { 
+        int k = i + 2;
+        for(int j = i + 1; j < nums.size() - 1 && nums[i] != 0; ++j) {
+            while(k < nums.size() && nums[i] + nums[j] > nums[k]) {
+                ++k;
+            }
+            count += k - j - 1;
+        }
+    }
+    return count;
+    
+}
+
+bool LC::_0633_SumOfSquareNumbers::judgeSquareSum(int c) {
+    int hc = c / 2;
+    for(int i = 0; i * i <= hc; ++i) {
+        int res = c - i * i;
+        int f = std::floor(std::sqrt(res)); // Usually the most general method is highly effective.
+        if (f * f == res) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool LC::_0657_RobotReturnToOrigin::judgeCircle(std::string moves) {
+    int x = 0;
+    int y = 0;
+    for(char c : moves) {
+        if(c == 'L') {
+            --x;
+        } else if(c == 'R') {
+            ++x;
+        } else if(c == 'U') {
+            ++y;
+        } else if(c == 'D') {
+            --y;
+        }
+    }
+    return x == 0 && y == 0;
 }

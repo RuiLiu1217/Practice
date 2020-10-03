@@ -36,3 +36,11 @@ TEST(LC, _0350_InterectionOfTwoArraysII) {
     std::vector<int> base{2,2};
     EXPECT_EQ(obj.intersect(nums1, nums2), base);    
 }
+
+TEST(LC, _0599_MinimumIndexSumOfTwoLists) {
+    LC::_0599_MinimumIndexSumOfTwoLists obj;
+    std::vector<std::string> list1 = {"Shogun","Tapioca Express","Burger King","KFC"};
+    std::vector<std::string> list2 = {"Piatti","The Grill at Torrey Pines","Hungry Hunter Steakhouse","Shogun"};
+    std::vector<std::string> res = {"Shogun"};
+    EXPECT_EQ(obj.findRestaruant(list1, list2), res);
+}
