@@ -1456,7 +1456,26 @@ std::vector<int> LC::_0498_DiagonalTraverse::findDiagonalOrder(std::vector<std::
     return res;
 }
 
+int LC::_0532_KdiffPairsInAnArray::findPairs(std::vector<int>& nums, int k) {
+    if (k < 0) {
+        return 0;
+    }
+    int res = 0;
+    std::unordered_map<int, int> mp;
+    for (int n : nums) {
+        mp[n]++;
+    }
 
+    for (auto a : mp) {
+        if (k == 0 && a.second > 1) {
+            res++;
+        }
+        if (k > 0 && mp.count(a.first + k) > 0) {
+            res++;
+        }
+    }
+    return res;
+}
 
 // Copy from solution
 int LC::_0533_LonelyPixelII::findBlackPixel(std::vector<std::vector<char>>& picture, int N) {
@@ -1497,6 +1516,44 @@ int LC::_0533_LonelyPixelII::findBlackPixel(std::vector<std::vector<char>>& pict
     return res;
 }
 
+// ! Copy from the solution
+/* Derived from StefanPochmann's idea in "game of life": 
+the board has ints in [0, 255], hence only 8-bit is used, 
+we can use the middle 8-bit to store the new state 
+(average value), replace the old state with the new state by shifting all values 8 bits to the right. */ 
+std::vector<std::vector<int>> LC::_0661_ImageSmoother::imageSmoother(std::vector<std::vector<int>>& M) {
+    const int m = M.size();
+    const int n = M[0].size();
+    
+    std::vector<std::vector<int>> dirs = {
+        {0, 1},{0, -1},{1, 0},{-1, 0},
+        {-1,-1},{1,1},{-1,1},{1,-1}};
+    
+    for(int i = 0; i < m; ++i) {
+        for (int j = 0; j < n; j++) {
+            int sum = M[i][j];
+            int cnt = 1;
+            for(int k = 0; k < dirs.size(); ++k) {
+                int x = i + dirs[k][0];
+                int y = j + dirs[k][1];
+                if(x < 0 || x > m - 1 || y < 0 || y > n - 1) {
+                    continue;
+                }
+                
+                sum += (M[x][y] & 0xFF);
+                ++cnt;
+            }
+            M[i][j] |= ((sum / cnt) << 8);
+        }
+    }
+    
+    for(int i = 0; i < m; ++i) {
+        for(int j = 0; j < n; ++j) {
+            M[i][j] >>= 8;
+        }
+    }
+    return M;
+}
 
 std::vector<std::string> LC::_0692_TopKFrequentWords::topKFrequent(std::vector<std::string>& words, int k) {
     std::unordered_map<std::string, int> freq;
@@ -1520,6 +1577,17 @@ std::vector<std::string> LC::_0692_TopKFrequentWords::topKFrequent(std::vector<s
     return res;
 }
 
+
+LC::_0933_NumberOfRecentCalls::_0933_NumberOfRecentCalls() {
+}
+
+int LC::_0933_NumberOfRecentCalls::ping(int t) {
+    while(!q.empty() && t - q.front() > 3000) {
+        q.pop();
+    }
+    q.push(t);
+    return q.size();
+}
 
 int LC::_1582_SpecialPositionsInABinaryMatrix::numSpecial(std::vector<std::vector<int>>& mat) {
     if(mat.empty() || mat[0].empty()) {

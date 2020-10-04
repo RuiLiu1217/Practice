@@ -342,33 +342,6 @@ public:
 
 
 /*
-Write a class RecentCounter to count recent requests.
-It has only one method: ping(int t), where t represents some 
-time in milliseconds.
-Return the number of pings that have been made from 3000 
-milliseconds ago until now.
-Any ping with time in [t - 3000, t] will count, including 
-the current ping.
-It is guaranteed that every call to ping uses a strictly larger 
-value of t than before.
-
-Input: inputs = ["RecentCounter","ping","ping","ping","ping"], 
-inputs = [[],[1],[100],[3001],[3002]]
-Output: [null,1,2,3,3]
-
-Each test case will have at most 10000 calls to ping.
-Each test case will call ping with strictly increasing values of t.
-Each call to ping will have 1 <= t <= 10^9.
-*/
-class _0933_NumberOfRecentCalls {
-private:
-    std::queue<int> q;
-public:
-    _0933_NumberOfRecentCalls();
-    int ping(int t);
-};
-
-/*
 In a given 2D binary array A, there are two islands.  
 (An island is a 4-directionally connected group of 1s not connected to any other 1s.)
 Now, we may change 0s to 1s so as to connect the two islands together to form 1 island.

@@ -1165,6 +1165,39 @@ class _0498_DiagonalTraverse {
         std::vector<int> findDiagonalOrder(std::vector<std::vector<int>>& matrix);
 };
 
+/*
+Given an array of integers and an integer k, you need to find the number of unique 
+k - diff pairs in the array.Here a k - diff pair is defined as an integer pair(i, j), 
+where i and j are both numbers in the array and their absolute difference is k.
+
+Example 1:
+Input: [3, 1, 4, 1, 5], k = 2
+Output : 2
+Explanation : There are two 2 - diff pairs in the array, (1, 3) and (3, 5).
+Although we have two 1s in the input, we should only return the number of unique pairs.
+Example 2 :
+Input : [1, 2, 3, 4, 5], k = 1
+Output : 4
+Explanation : There are four 1 - diff pairs in the array, (1, 2), (2, 3), (3, 4) and (4, 5).
+Example 3 :
+Input : [1, 3, 1, 5, 4], k = 0
+Output : 1
+Explanation : There is one 0 - diff pair in the array, (1, 1).
+Note :
+The pairs(i, j) and (j, i) count as the same pair.
+The length of the array won't exceed 10,000.
+All the integers in the given input belong to the range : [-1e7, 1e7].
+这道题给了我们一个含有重复数字的无序数组，还有一个整数k，让我们找出有多少对不重复的数对(i, j)
+使得i和j的差刚好为k。由于k有可能为0，而只有含有至少两个相同的数字才能形成数对，那么就是说我们
+需要统计数组中每个数字的个数。我们可以建立每个数字和其出现次数之间的映射，然后遍历哈希表中的数
+字，如果k为0且该数字出现的次数大于1，则结果res自增1；如果k不为0，且用当前数字加上k后得到的新
+数字也在数组中存在，则结果res自增1，参见代码如下：
+*/
+class _0532_KdiffPairsInAnArray {
+public:
+    int findPairs(std::vector<int>& nums, int k);
+};
+
 
 /*
 Given a picture consisting of black and white pixels, and a positive integer N, find the number of black pixels located at some specific row R and column C that align with all the following rules:
@@ -1208,6 +1241,36 @@ public:
 };
 
 /*
+Given a 2D integer matrix M representing the gray scale of an image, 
+you need to design a smoother to make the gray scale of each cell 
+becomes the average gray scale (rounding down) of all the 8 surrounding 
+cells and itself. If a cell has less than 8 surrounding cells, then 
+use as many as you can.
+
+Example 1:
+Input:
+[[1,1,1],
+ [1,0,1],
+ [1,1,1]]
+Output:
+[[0, 0, 0],
+ [0, 0, 0],
+ [0, 0, 0]]
+Explanation:
+For the point (0,0), (0,2), (2,0), (2,2): floor(3/4) = floor(0.75) = 0
+For the point (0,1), (1,0), (1,2), (2,1): floor(5/6) = floor(0.83333333) = 0
+For the point (1,1): floor(8/9) = floor(0.88888889) = 0
+Note:
+The value in the given matrix is in the range of [0, 255].
+The length and width of the given matrix are in the range of [1, 150].
+*/
+class _0661_ImageSmoother {
+public:
+    std::vector<std::vector<int>> imageSmoother(std::vector<std::vector<int>>& M);
+};
+
+
+/*
 Given a non-empty list of words, return the k most frequent elements.
 Your answer should be sorted by frequency from highest to lowest. If 
 two words have the same frequency, then the word with the lower 
@@ -1234,6 +1297,33 @@ public:
     std::vector<std::string> topKFrequent(std::vector<std::string>& words, int k);
 };
 
+
+/*
+Write a class RecentCounter to count recent requests.
+It has only one method: ping(int t), where t represents some 
+time in milliseconds.
+Return the number of pings that have been made from 3000 
+milliseconds ago until now.
+Any ping with time in [t - 3000, t] will count, including 
+the current ping.
+It is guaranteed that every call to ping uses a strictly larger 
+value of t than before.
+
+Input: inputs = ["RecentCounter","ping","ping","ping","ping"], 
+inputs = [[],[1],[100],[3001],[3002]]
+Output: [null,1,2,3,3]
+
+Each test case will have at most 10000 calls to ping.
+Each test case will call ping with strictly increasing values of t.
+Each call to ping will have 1 <= t <= 10^9.
+*/
+class _0933_NumberOfRecentCalls {
+private:
+    std::queue<int> q;
+public:
+    _0933_NumberOfRecentCalls();
+    int ping(int t);
+};
 
 /*
 Given an array nums of integers, a move consists of choosing any element and decreasing it by 1.

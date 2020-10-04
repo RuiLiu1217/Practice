@@ -1368,3 +1368,33 @@ LC::TreeNode* LC::_0654_MaximumBinaryTree::constructMaximumBinaryTree_impl(std::
     root->right =constructMaximumBinaryTree_impl(it + 1, r);
     return root;
 }
+
+bool LC::_0663_EqualTreePartition::checkEqualTree(TreeNode* root) {
+    int totalSum = treeSum(root);
+    if(totalSum % 2) {
+        return false;
+    }
+    bool dividable = false;
+    int res = foo(root, totalSum / 2, dividable);
+    return dividable;
+}
+
+int LC::_0663_EqualTreePartition::treeSum(TreeNode* root) {
+    if(!root) {
+        return 0;
+    }
+    return treeSum(root->left) + treeSum(root->right) + root->val;
+}
+
+int LC::_0663_EqualTreePartition::foo(TreeNode* root, int target, bool& dividable) {
+    if(!root) {
+        return 0;
+    }
+    
+    int left = foo(root->left, target, dividable);
+    int right = foo(root->right, target, dividable);
+    if((root->left && left == target) || (root->right && right == target)) { // ! I forgot why need to judge root->left or root->right is not nullptr
+        dividable = true;
+    }
+    return left + right + root->val;        
+}

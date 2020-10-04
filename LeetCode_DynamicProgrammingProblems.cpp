@@ -493,6 +493,38 @@ int LC::_0646_MaximumLengthOfPairChain::findLongestChain(std::vector<std::vector
 }
 
 
+// Tag: dynamic programming
+// dp[r][c][steps] at step "steps", the probability of knight is at r,c after 'steps'.
+double LC::_0688_KnightProbabilityInChessboard::knightProbability(int N, int K, int sr, int sc) {
+    std::vector<std::vector<double>> dp(N, std::vector<double>(N, 0));
+    std::vector<int> dr = {2, 1, -2, -1, 2, -1, -2, 1, 2};
+    dp[sr][sc] = 1;
+    while(K--) {
+        std::vector<std::vector<double>> dp2(N, std::vector<double>(N, 0));
+        for(int r = 0; r < N; ++r) {
+            for(int c = 0; c < N; ++c) {
+                for(int k = 0; k < 8; ++k) {
+                    int nr = r + dr[k];
+                    int nc = c + dr[k+1];
+                    if(nr >= 0 && nr < N && nc >= 0 && nc < N) {
+                        dp2[nr][nc] += (dp[r][c] / 8.0);
+                    }
+                }
+            }
+        }
+        dp = dp2;
+    }
+
+    double ans = 0.0;
+    for(auto row : dp) {
+        for(auto x : row) {
+            ans += x;
+        }
+    }
+    return ans;
+}
+
+
 // 完全抄答案的，Huahua的解法
 // NOTE: This is a NP problem, any polynomial-time algorithm is incorrect otherwise P = NP.
 // dp[m] := whether state m is reachable, where m is the bitmask of courses studied.

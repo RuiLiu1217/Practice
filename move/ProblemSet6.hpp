@@ -279,79 +279,6 @@ public:
     bool isPossible(std::vector<int>& nums);
 };
 
-/*
-Given a 2D integer matrix M representing the gray scale of an image, 
-you need to design a smoother to make the gray scale of each cell 
-becomes the average gray scale (rounding down) of all the 8 surrounding 
-cells and itself. If a cell has less than 8 surrounding cells, then 
-use as many as you can.
-
-Example 1:
-Input:
-[[1,1,1],
- [1,0,1],
- [1,1,1]]
-Output:
-[[0, 0, 0],
- [0, 0, 0],
- [0, 0, 0]]
-Explanation:
-For the point (0,0), (0,2), (2,0), (2,2): floor(3/4) = floor(0.75) = 0
-For the point (0,1), (1,0), (1,2), (2,1): floor(5/6) = floor(0.83333333) = 0
-For the point (1,1): floor(8/9) = floor(0.88888889) = 0
-Note:
-The value in the given matrix is in the range of [0, 255].
-The length and width of the given matrix are in the range of [1, 150].
-*/
-class _0661_ImageSmoother {
-public:
-    std::vector<std::vector<int>> imageSmoother(std::vector<std::vector<int>>& M);
-};
-
-/*
-Given a binary tree with n nodes, your task is to check if it's possible to partition the tree to two trees which have the equal sum of values after removing exactly one edge on the original tree.
-
-Example 1:
-Input:     
-    5
-   / \
-  10 10
-    /  \
-   2   3
-
-Output: True
-Explanation: 
-    5
-   / 
-  10
-      
-Sum: 15
-
-   10
-  /  \
- 2    3
-
-Sum: 15
-Example 2:
-Input:     
-    1
-   / \
-  2  10
-    /  \
-   2   20
-
-Output: False
-Explanation: You can't split the tree into two trees with equal sum after removing exactly one edge on the tree.
-Note:
-The range of tree node value is in the range of [-100000, 100000].
-1 <= n <= 10000
-*/
-class _0663_EqualTreePartition {
-public:
-    bool checkEqualTree(TreeNode<int>* root);
-    int treeSum(TreeNode<int>* root);
-    int foo(TreeNode<int>* root, int target, bool& divisible);
-};
 
 /*
 There is a strange printer with the following two special requirements:
@@ -400,38 +327,6 @@ public:
 
 
 
-/*
-On an NxN chessboard, a knight starts at the r-th row and c-th 
-column and attempts to make exactly K moves. The rows and columns 
-are 0 indexed, so the top-left square is (0, 0), and the 
-bottom-right square is (N-1, N-1).
-A chess knight has 8 possible moves it can make, as illustrated 
-below. Each move is two squares in a cardinal direction, then one 
-square in an orthogonal direction.
-
-Each time the knight is to move, it chooses one of eight possible 
-moves uniformly at random (even if the piece would go off the 
-chessboard) and moves there.
-The knight continues moving until it has made exactly K moves or 
-has moved off the chessboard. Return the probability that the knight 
-remains on the board after it has stopped moving.
-
-Input: 3, 2, 0, 0
-Output: 0.0625
-Explanation: There are two moves (to (1,2), (2,1)) that will keep 
-the knight on the board. From each of those positions, there are also 
-two moves that will keep the knight on the board. The total probability 
-the knight stays on the board is 0.0625.
-
-Note:
-N will be between 1 and 25.
-K will be between 0 and 100.
-The knight always initially starts on the board.
-*/
-class _0668_KnightProbabilityInChessboard {
-public:
-    double knightProbability(int N, int K, int r, int c);
-};
 
 /*
 Given a non-empty special binary tree consisting of nodes with the non-negative 

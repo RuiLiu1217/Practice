@@ -24,7 +24,7 @@ int LeetCode::_0663_EqualTreePartition::foo(TreeNode<int>* root, int target, boo
     
     int left = foo(root->left, target, dividable);
     int right = foo(root->right, target, dividable);
-    if((root->left && left == target) || (root->right && right == target)) {
+    if((root->left && left == target) || (root->right && right == target)) { // ! I forgot why need to judge root->left or root->right is not nullptr
         dividable = true;
     }
     return left + right + root->val;        
