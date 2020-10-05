@@ -10,213 +10,6 @@
 #include "LinkList.hpp"
 
 namespace LeetCode {
-    /*
-701. Insert into a Binary Search Tree
-Given the root node of a binary search tree (BST) and a value to 
-be inserted into the tree, insert the value into the BST. Return 
-the root node of the BST after the insertion. It is guaranteed 
-that the new value does not exist in the original BST.
-
-Note that there may exist multiple valid ways for the insertion, 
-as long as the tree remains a BST after insertion. You can 
-return any of them.
-
-For example, 
-
-Given the tree:
-        4
-       / \
-      2   7
-     / \
-    1   3
-And the value to insert: 5
-You can return this binary search tree:
-
-         4
-       /   \
-      2     7
-     / \   /
-    1   3 5
-This tree is also valid:
-
-         5
-       /   \
-      2     7
-     / \   
-    1   3
-         \
-          4
-*/
-class _0701_InsertIntoABinarySearchTree {
-public:
-    TreeNode<int>* insertIntoBST(TreeNode<int>* root, int val);
-};
-
-/*
-709. To Lower Case
-Implement function ToLowerCase() that has a string parameter 
-str, and returns the same string in lowercase.
-
-Input: "Hello"
-Output: "hello"
-
-Input: "here"
-Output: "here"
-
-Input: "LOVELY"
-Output: "lovely"
-*/
-class _0709_ToLowerCase {
-public:
-    std::string toLowerCase(std::string str);
-};
-
-/*
-Your are given an array of positive integers nums.
-Count and print the number of (contiguous) subarrays where the product 
-of all the elements in the subarray is less than k.
-
-Input: nums = [10, 5, 2, 6], k = 100
-Output: 8
-Explanation: The 8 subarrays that have product less than 100 are: [10], [5], [2], [6], [10, 5], [5, 2], [2, 6], [5, 2, 6].
-Note that [10, 5, 2] is not included as the product of 100 is not strictly less than k.
-Note:
-
-0 < nums.length <= 50000.
-0 < nums[i] < 1000.
-0 <= k < 10^6.
-*/
-class _0713_SubarrayProductLessThanK {
-public:
-    int numSubarrayProductLessThanK(std::vector<int>& nums, int K);
-};
-
-/*
-Design a max stack that supports push, pop, top, peekMax and popMax.
-
-push(x) -- Push element x onto stack.
-pop() -- Remove the element on top of the stack and return it.
-top() -- Get the element on the top.
-peekMax() -- Retrieve the maximum element in the stack.
-popMax() -- Retrieve the maximum element in the stack, and remove it. 
-If you find more than one maximum elements, only remove the top-most one.
-
-MaxStack stack = new MaxStack();
-stack.push(5); 
-stack.push(1);
-stack.push(5);
-stack.top(); -> 5
-stack.popMax(); -> 5
-stack.top(); -> 1
-stack.peekMax(); -> 5
-stack.pop(); -> 1
-stack.top(); -> 5
-Note:
--1e7 <= x <= 1e7
-Number of operations won't exceed 10000.
-The last four operations won't be called when stack is empty.
-*/
-class _0716_MaxStack {
-private:
-    std::stack<int> normal;
-    std::stack<int> maximu;
-public:
-    _0716_MaxStack() {}
-    void push(int x);
-    int pop();
-    int top();
-    int peekMax();
-    int popMax();
-};
-
-/*
-We have two special characters. The first character can be represented by 
-one bit 0. The second character can be represented by two bits (10 or 11).
-Now given a string represented by several bits. Return whether the last 
-character must be a one-bit character or not. The given string will always 
-end with a zero.
-
-
-Input:  bits = [1, 0, 0]        :        Output: True
-Explanation: 
-The only way to decode it is two-bit character and one-bit character. So the last character is one-bit character.
-
-Input:  bits = [1, 1, 1, 0]     :        Output: False
-Explanation: 
-The only way to decode it is two-bit character and two-bit character. So the last character is NOT one-bit character.
-*/
-class _0717_OneBitAndTwoBitsCharacters{
-public:
-    bool isOneBitCharacter(std::vector<int>& bits);
-private:
-    bool isOneBitCharacter(std::vector<int>& bits, int start, int end);
-};
-
-/*
-Given two integer arrays A and B, return the maximum length of an subarray that appears in both arrays.
-
-Example 1:
-
-Input:
-A: [1,2,3,2,1]
-B: [3,2,1,4,7]
-Output: 3
-Explanation: 
-The repeated subarray with maximum length is [3, 2, 1].
- 
-
-Note:
-
-1 <= len(A), len(B) <= 1000
-0 <= A[i], B[i] < 100
-*/
-class _0718_MaximumLengthOfRepeatedSubarray {
-public:
-    int findLength(std::vector<int>& A, std::vector<int>& B);
-};
-
-/*
-Given a (singly) linked list with head node root, write a 
-function to split the linked list into k consecutive linked 
-list "parts".
-The length of each part should be as equal as possible: no 
-two parts should have a size differing by more than 1. This 
-may lead to some parts being null.
-The parts should be in order of occurrence in the input list, 
-and parts occurring earlier should always have a size greater 
-than or equal parts occurring later.
-Return a List of ListNode's representing the linked list parts 
-that are formed.
-
-Examples 1->2->3->4, k = 5 // 5 equal parts [ [1], [2], [3], [4], null ]
-Example 1:
-Input:
-root = [1, 2, 3], k = 5
-Output: [[1],[2],[3],[],[]]
-Explanation:
-The input and each element of the output are ListNodes, not arrays.
-For example, the input root has root.val = 1, root.next.val = 2, 
-root.next.next.val = 3, and root.next.next.next = null.
-The first element output[0] has output[0].val = 1, output[0].next = null.
-The last element output[4] is null, but it's string representation
- as a ListNode is [].
-Example 2:
-Input: 
-root = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], k = 3
-Output: [[1, 2, 3, 4], [5, 6, 7], [8, 9, 10]]
-Explanation:
-The input has been split into consecutive parts with size difference
- at most 1, and earlier parts are a larger size than the later parts.
-Note:
-
-The length of root will be in the range [0, 1000].
-Each value of a node in the input will be an integer in the range [0, 999].
-k will be an integer in the range [1, 50].
-*/
-class _0725_SplitLinkedListInParts {
-public:
-    std::vector<ListNode<int>*> splitListToParts(ListNode<int>* root, int k);
-};
 
 /*
 A self-dividing number is a number that is divisible by every digit 
@@ -251,36 +44,6 @@ private:
     // Time complexity: O(nlogn)   Space complexity: O(n)
 };
 
-/*
-An image is represented by a 2-D array of integers, each integer representing the pixel value of the image (from 0 to 65535).
-Given a coordinate (sr, sc) representing the starting pixel (row and column) of the flood fill, and a pixel value newColor, 
-"flood fill" the image.
-To perform a "flood fill", consider the starting pixel, plus any pixels connected 4-directionally to the starting pixel of 
-the same color as the starting pixel, plus any pixels connected 4-directionally to those pixels (also with the same color 
-as the starting pixel), and so on. Replace the color of all of the aforementioned pixels with the newColor.
-
-At the end, return the modified image.
-
-Example 1:
-Input: 
-image = [[1,1,1],[1,1,0],[1,0,1]]
-sr = 1, sc = 1, newColor = 2
-Output: [[2,2,2],[2,2,0],[2,0,1]]
-Explanation: 
-From the center of the image (with position (sr, sc) = (1, 1)), all pixels connected 
-by a path of the same color as the starting pixel are colored with the new color.
-Note the bottom corner is not colored 2, because it is not 4-directionally connected
-to the starting pixel.
-Note:
-
-The length of image and image[0] will be in the range [1, 50].
-The given starting pixel will satisfy 0 <= sr < image.length and 0 <= sc < image[0].length.
-The value of each color in image[i][j] and newColor will be an integer in [0, 65535].
-*/
-class _0733_FloodFill {
-public:
-    std::vector<std::vector<int>> floodFill(std::vector<std::vector<int>>& image, int sr, int sc, int newColor);
-};
 
 /*
 Given two sentences words1, words2 (each represented as an array of strings), and a list of 
@@ -359,28 +122,6 @@ public:
     int monotoneIncreasingDigits(int N);
 };
 
-/*
-Given an array nums of integers, you can perform operations on the array.
-In each operation, you pick any nums[i] and delete it to earn nums[i] points. 
-After, you must delete every element equal to nums[i] - 1 or nums[i] + 1.
-You start with 0 points. Return the maximum number of points you can earn by 
-applying such operations.
-
-Input: nums = [3, 4, 2]
-Output: 6
-Delete 4 to earn 4 points, consequently 3 is also deleted.
-Then, delete 2 to earn 2 points. 6 total points are earned.
-
-Input: nums = [2, 2, 3, 3, 3, 4]
-Output: 9
-Delete 3 to earn 3 points, deleting both 2's and the 4.
-Then, delete 3 again to earn 3 points, and 3 again to earn 3 points.
-9 total points are earned.
-*/
-class _0740_DeleteAndEarn {
-public:
-    int deleteAndEarn(std::vector<int>& nums);
-};
 
 /*
 Tag: dynamic programming
@@ -481,28 +222,7 @@ public:
     void createGrapph(TreeNode<int>* root, int k);
 };
 
-/*
-Tag: dynamic programming
-On a staircase, the i-th step has some non-negative cost cost[i] assigned 
-(0 indexed). Once you pay the cost, you can either climb one or two steps. 
-You need to find minimum cost to reach the top of the floor, and you can 
-either start from the step with index 0, or the step with index 1.
 
-Input: cost = [10, 15, 20]
-Output: 15
-Explanation: Cheapest is start on cost[1], pay that cost and go to the top.
-
-Input: cost = [1, 100, 1, 1, 1, 100, 1, 1, 100, 1]
-Output: 6
-Explanation: Cheapest is start on cost[0], and only step on 1s, skipping cost[3].
-Note:
-cost will have a length in the range [2, 1000].
-Every cost[i] will be an integer in the range [0, 999].
-*/
-class _0746_MinCostClimbingStairs {
-public:
-    int minCostClimbingStairs(std::vector<int>& cost);
-};
 
 /*
 You have a lock in front of you with 4 circular wheels. Each wheel has 10 slots: 
@@ -586,26 +306,7 @@ private:
     bool pyramidTransition(std::string bottom, int start, std::string res, std::unordered_map<std::string, std::unordered_set<char>>& Map);
 };
 
-/*
-Given a set of keywords words and a string S, make all appearances of all keywords in S bold. 
-Any letters between <b> and </b> tags become bold.
-The returned string should use the least number of tags possible, and of course the tags should 
-form a valid combination.
-For example, given that words = ["ab", "bc"] and S = "aabcd", we should return "a<b>abc</b>d". 
-Note that returning "a<b>a<b>b</b>c</b>d" would use more tags, so it is incorrect.
 
-Constraints:
-
-words has length in range [0, 50].
-words[i] has length in range [1, 10].
-S has length in range [0, 500].
-All characters in words[i] and S are lowercase letters.
-*/
-class _0758_BoldWordsInString {
-public:
-    std::string boldWords(std::vector<std::string>& words, std::string S);
-    void setBold(std::vector<bool>& isBold, int i, int wl);
-};
 
 /*
 Special binary strings are binary strings with the following two properties:
@@ -786,118 +487,24 @@ public:
 };
 
 /*
-Given a string S, we can transform every letter individually to be 
-lowercase or uppercase to create another string. Return a list of all 
-possible strings we could create.
+    We are given an array A of positive integers, and two positive integers L and R (L <= R).
+    Return the number of (contiguous, non-empty) subarrays such that the value of the maximum 
+    array element in that subarray is at least L and at most R.
 
-Examples:
-Input: S = "a1b2"
-Output: ["a1b2", "a1B2", "A1b2", "A1B2"]
+    Input: 
+    A = [2, 1, 4, 3]
+    L = 2
+    R = 3
+    Output: 3
+    Explanation: There are three subarrays that meet the requirements: [2], [2, 1], [3].
+    Note:
 
-Input: S = "3z4"
-Output: ["3z4", "3Z4"]
-
-Input: S = "12345"
-Output: ["12345"]
-Note:
-
-S will be a string with length between 1 and 12.
-S will consist only of letters or digits.
-*/
-class _0784_LetterCasePermutation {
-public:
-    std::vector<std::string> letterCasePermutation(std::string S);
-};
-
-
-/*
-Given an undirected graph, return true if and only if it is bipartite.
-Recall that a graph is bipartite if we can split it's set of nodes into 
-two independent subsets A and B such that every edge in the graph has 
-one node in A and another node in B.
-
-The graph is given in the following form: graph[i] is a list of indexes j
-for which the edge between nodes i and j exists.  Each node is an integer 
-between 0 and graph.length - 1.  There are no self edges or parallel edges: 
-graph[i] does not contain i, and it doesn't contain any element twice.
-
-Input: [[1,3], [0,2], [1,3], [0,2]]
-Output: true
-Explanation: 
-The graph looks like this:
-0----1
-|    |
-|    |
-3----2
-We can divide the vertices into two groups: {0, 2} and {1, 3}.
-
-Input: [[1,2,3], [0,2], [0,1,3], [0,2]]
-Output: false
-Explanation: 
-The graph looks like this:
-0----1
-| \  |
-|  \ |
-3----2
-We cannot find a way to divide the set of nodes into two independent subsets.
-
-graph will have length in range [1, 100].
-graph[i] will contain integers in range [0, graph.length - 1].
-graph[i] will not contain i or duplicate values.
-The graph is undirected: if any element j is in graph[i], then i will be in graph[j].
-*/
-class _0785_IsGraphBipartitle {
-private:
-    std::vector<int> colored;
-public:
-    bool isBipartitle(std::vector<std::vector<int>>& graph);
-    bool Color(const std::vector<std::vector<int>>& graph, int I, int color);
-};
-
-/*
-We are given an array A of positive integers, and two positive integers L and R (L <= R).
-Return the number of (contiguous, non-empty) subarrays such that the value of the maximum 
-array element in that subarray is at least L and at most R.
-
-Input: 
-A = [2, 1, 4, 3]
-L = 2
-R = 3
-Output: 3
-Explanation: There are three subarrays that meet the requirements: [2], [2, 1], [3].
-Note:
-
-L, R  and A[i] will be an integer in the range [0, 10^9].
-The length of A will be in the range of [1, 50000].
+    L, R  and A[i] will be an integer in the range [0, 10^9].
+    The length of A will be in the range of [1, 50000].
 */
 class _0795_NumberofSubarraysWithBoundedMaximum {
 public:
     int numSubarrayBoundedMax(std::vector<int>& A, int L, int R);
-};
-
-/*
-Given a directed, acyclic graph of N nodes.  Find all possible paths 
-from node 0 to node N-1, and return them in any order.
-
-The graph is given as follows:  the nodes are 0, 1, ..., graph.length - 1.  
-graph[i] is a list of all nodes j for which the edge (i, j) exists.
-
-Example:
-Input: [[1,2], [3], [3], []] 
-Output: [[0,1,3],[0,2,3]] 
-Explanation: The graph looks like this:
-0--->1
-|    |
-v    v
-2--->3
-There are two paths: 0 -> 1 -> 3 and 0 -> 2 -> 3.
-Note:
-The number of nodes in the graph will be in the range [2, 15].
-You can print different paths in any order, but you should keep the order of nodes inside one path.
-*/
-class _0797_AllPathsFromSourceToTarget {
-public:
-    std::vector<std::vector<int>> allPathsSourceTarget(std::vector<std::vector<int>>& graph);
 };
 
 /*

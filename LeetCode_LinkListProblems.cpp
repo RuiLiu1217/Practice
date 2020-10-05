@@ -611,3 +611,23 @@ LC::ListNode* LC::_0328_OddEvenLinkedList::oddEvenList(ListNode* head) {
     return p1;
 
 }
+
+
+std::vector<LC::ListNode*> LC::_0725_SplitLinkedListInParts::splitListToParts(ListNode* root, int k) {
+    const int listlength = getListLength(root);
+    const int avgLen = listlength / k;
+    int remain = listlength % k;
+    std::vector<int> pieceLength(k, avgLen);
+    for(int i = 0; i < pieceLength.size() && remain > 0; ++i) {
+        ++pieceLength[i];
+        --remain;
+    }
+    std::vector<ListNode*> res(k, nullptr);
+    for(int i = 0; i < pieceLength.size(); ++i) {
+        auto [head, newHead] = getFirstNNodes(root, pieceLength[i]);
+        res[i] = head;
+        root = newHead;
+    }
+    return res;
+}
+

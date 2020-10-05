@@ -1,7 +1,8 @@
 #include "LeetCode_GraphProblems.hpp"
 #include <set>
+#include <algorithm>
 #include <queue>
-
+#include <functional>
 // 802 BFS solution
 // 这道题给了我们一个有向图，然后定义了一种最终安全状态的结点，就是说该结点要在自然数K步内停止，
 // 所谓停止的意思，就是再没有向外的边，即没有出度，像上面例子中的结点5和6就是出度为0，因为
@@ -252,4 +253,66 @@ int LC::_1135_ConnectingCitiesWithMinimumCost::minimumCost(int N, std::vector<st
         mst.pop();
     }
     return cost;
+}
+
+
+bool LC::_0785_IsGraphBipartitle::isBipartite(std::vector<std::vector<int>>& graph) {
+    const int N = graph.size();
+    std::vector<int> visited(N, 0);
+    bool canColor = true;
+    for(int n = 0; n < N; ++n) {
+        if(!visited[n]) {
+            canColor &= DFS(graph, visited, n, 1);
+        }            
+        if(canColor == false) {
+            return false;
+        }
+    }
+    return true;
+}
+bool LC::_0785_IsGraphBipartitle::DFS(std::vector<std::vector<int>>& graph, std::vector<int>& visited, int nodeIdx, int color) {
+    if(visited[nodeIdx]) {
+        if(color == -visited[nodeIdx]) {
+            return false;
+        } else {
+            return true;
+        }
+    } else {
+        visited[nodeIdx] = color;
+        std::vector<int> neighborNode = graph[nodeIdx];
+        bool canVisit = true;
+        for(int n : neighborNode) {
+            canVisit &= DFS(graph, visited, n, -color);
+            if(!canVisit) {
+                return false;
+            }
+        }            
+        return true;
+    }
+}
+
+
+// 一道经典的DFS 题目，如何保留经过的路径……，需要再看几遍好记住
+std::vector<std::vector<int>> LC::_0797_AllPathsFromSourceToTarget::allPathsSourceTarget(std::vector<std::vector<int>>& graph) {
+    std::function<std::vector<std::vector<int>>(int, int)> DFS = [&](int sv, int ev) {
+        if(sv == ev) {
+            return std::vector<std::vector<int>>({{sv}});
+        }
+        
+        std::vector<std::vector<int>> res;
+        for(auto v : graph[sv]) {
+            std::vector<std::vector<int>> tmp = DFS(v, ev);
+            for(auto t : tmp) {
+                t.push_back(sv);
+                res.push_back(t);
+            }
+        }
+        return res;
+    };
+
+    std::vector<std::vector<int>> res = DFS(0, graph.size() - 1);
+    for(auto & V : res) {
+        std::reverse(V.begin(), V.end());
+    }
+    return res;
 }

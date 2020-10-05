@@ -498,6 +498,95 @@ public:
 };
 
 /*
+We have two special characters. The first character can be represented by 
+one bit 0. The second character can be represented by two bits (10 or 11).
+Now given a string represented by several bits. Return whether the last 
+character must be a one-bit character or not. The given string will always 
+end with a zero.
+
+
+Input:  bits = [1, 0, 0]        :        Output: True
+Explanation: 
+The only way to decode it is two-bit character and one-bit character. So the last character is one-bit character.
+
+Input:  bits = [1, 1, 1, 0]     :        Output: False
+Explanation: 
+The only way to decode it is two-bit character and two-bit character. So the last character is NOT one-bit character.
+*/
+class _0717_OneBitAndTwoBitsCharacters{
+public:
+    bool isOneBitCharacter(std::vector<int>& bits);
+private:
+    bool isOneBitCharacter(std::vector<int>& bits, int start, int end);
+};
+
+/*
+Given two integer arrays A and B, return the maximum length of an subarray that appears in both arrays.
+
+Input:
+A: [1,2,3,2,1]
+B: [3,2,1,4,7]
+Output: 3
+Explanation: The repeated subarray with maximum length is [3, 2, 1].
+
+Note:
+
+1 <= len(A), len(B) <= 1000
+0 <= A[i], B[i] < 100
+*/
+class _0718_MaximumLengthOfRepeatedSubarray {
+public:
+    int findLength(std::vector<int>& A, std::vector<int>& B);
+};
+
+/*
+Given an array nums of integers, you can perform operations on the array.
+In each operation, you pick any nums[i] and delete it to earn nums[i] points. 
+After, you must delete every element equal to nums[i] - 1 or nums[i] + 1.
+You start with 0 points. Return the maximum number of points you can earn by 
+applying such operations.
+
+Input: nums = [3, 4, 2]
+Output: 6
+Delete 4 to earn 4 points, consequently 3 is also deleted.
+Then, delete 2 to earn 2 points. 6 total points are earned.
+
+Input: nums = [2, 2, 3, 3, 3, 4]
+Output: 9
+Delete 3 to earn 3 points, deleting both 2's and the 4.
+Then, delete 3 again to earn 3 points, and 3 again to earn 3 points.
+9 total points are earned.
+*/
+class _0740_DeleteAndEarn {
+public:
+    int deleteAndEarn(std::vector<int>& nums);
+};
+
+
+/*
+Tag: dynamic programming
+On a staircase, the i-th step has some non-negative cost cost[i] assigned 
+(0 indexed). Once you pay the cost, you can either climb one or two steps. 
+You need to find minimum cost to reach the top of the floor, and you can 
+either start from the step with index 0, or the step with index 1.
+
+Input: cost = [10, 15, 20]
+Output: 15
+Explanation: Cheapest is start on cost[1], pay that cost and go to the top.
+
+Input: cost = [1, 100, 1, 1, 1, 100, 1, 1, 100, 1]
+Output: 6
+Explanation: Cheapest is start on cost[0], and only step on 1s, skipping cost[3].
+Note:
+cost will have a length in the range [2, 1000].
+Every cost[i] will be an integer in the range [0, 999].
+*/
+class _0746_MinCostClimbingStairs {
+public:
+    int minCostClimbingStairs(std::vector<int>& cost);
+};
+
+/*
 Given the integer n representing the number of courses at some university labeled from 1 to n, 
 and the array dependencies where dependencies[i] = [xi, yi]  represents a prerequisite relationship, 
 that is, the course xi must be taken before the course yi.  Also, you are given the integer k.

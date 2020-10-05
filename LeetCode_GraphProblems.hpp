@@ -150,6 +150,74 @@ private:
 
 
 /*
+Given an undirected graph, return true if and only if it is bipartite.
+Recall that a graph is bipartite if we can split it's set of nodes into 
+two independent subsets A and B such that every edge in the graph has 
+one node in A and another node in B.
+
+The graph is given in the following form: graph[i] is a list of indexes j
+for which the edge between nodes i and j exists.  Each node is an integer 
+between 0 and graph.length - 1.  There are no self edges or parallel edges: 
+graph[i] does not contain i, and it doesn't contain any element twice.
+
+Input: [[1,3], [0,2], [1,3], [0,2]]
+Output: true
+Explanation: 
+The graph looks like this:
+0----1
+|    |
+|    |
+3----2
+We can divide the vertices into two groups: {0, 2} and {1, 3}.
+
+Input: [[1,2,3], [0,2], [0,1,3], [0,2]]
+Output: false
+Explanation: 
+The graph looks like this:
+0----1
+| \  |
+|  \ |
+3----2
+We cannot find a way to divide the set of nodes into two independent subsets.
+
+graph will have length in range [1, 100].
+graph[i] will contain integers in range [0, graph.length - 1].
+graph[i] will not contain i or duplicate values.
+The graph is undirected: if any element j is in graph[i], then i will be in graph[j].
+*/
+class _0785_IsGraphBipartitle {
+    public:
+        bool isBipartite(std::vector<std::vector<int>>& graph);
+        bool DFS(std::vector<std::vector<int>>& graph, std::vector<int>& visited, int nodeIdx, int color);
+};
+
+
+/*
+Given a directed, acyclic graph of N nodes.  Find all possible paths 
+from node 0 to node N-1, and return them in any order.
+
+The graph is given as follows:  the nodes are 0, 1, ..., graph.length - 1.  
+graph[i] is a list of all nodes j for which the edge (i, j) exists.
+
+Example:
+Input: [[1,2], [3], [3], []] 
+Output: [[0,1,3],[0,2,3]] 
+Explanation: The graph looks like this:
+0--->1
+|    |
+v    v
+2--->3
+There are two paths: 0 -> 1 -> 3 and 0 -> 2 -> 3.
+Note:
+The number of nodes in the graph will be in the range [2, 15].
+You can print different paths in any order, but you should keep the order of nodes inside one path.
+*/
+class _0797_AllPathsFromSourceToTarget {
+public:
+    std::vector<std::vector<int>> allPathsSourceTarget(std::vector<std::vector<int>>& graph);
+};
+
+/*
 There are N cities numbered from 1 to N.
 You are given connections, where each connections[i] = [city1, city2, cost] represents the cost to connect 
 city1 and city2 together. (A connection is bidirectional: connecting city1 and city2 is the same as 

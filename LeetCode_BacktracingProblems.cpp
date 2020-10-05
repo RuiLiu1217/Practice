@@ -665,3 +665,95 @@ void LC::_0417_PacificAtlanticWaterFlow::dfs(std::vector<std::vector<int>>& matr
     dfs(matrix, visited, matrix[i][j], i, j-1);
     dfs(matrix, visited, matrix[i][j], i, j+1);
 }
+
+
+bool LC::_0679_24Games::judgePoint24(std::vector<int>& nums) {
+    std::sort(nums.begin(), nums.end());
+    do {
+        if (valid(nums)) return true;
+    } while(next_permutation(nums.begin(), nums.end()));
+    return false;
+}
+
+bool LC::_0679_24Games::valid(std::vector<int>& nums) {
+    double a = nums[0], b = nums[1], c = nums[2], d = nums[3];
+    if (valid(a+b, c, d) || valid(a-b, c, d) || valid(a*b, c, d) || valid(a/b, c, d)) return true;
+    if (valid(a, b+c, d) || valid(a, b-c, d) || valid(a, b*c, d) || valid(a, b/c, d)) return true;
+    if (valid(a, b, c+d) || valid(a, b, c-d) || valid(a, b, c*d) || valid(a, b, c/d)) return true;
+    return false;
+}
+bool LC::_0679_24Games::valid(double a, double b, double c) {
+    if(valid(a+b, c) || valid(a-b, c) || valid(a*b, c) || (b && valid(a/b, c))) {
+        return true;
+    }
+    if(valid(a, b+c) || valid(a, b-c) || valid(a, b*c) || (c && valid(a, b/c))) {
+        return true;
+    }
+    return false;
+}
+bool LC::_0679_24Games::valid(double a, double b) {
+    if( std::abs(a+b-24.0) < 0.0001 ||
+        std::abs(a-b-24.0) < 0.0001 ||
+        std::abs(a*b-24.0) < 0.0001 ||
+        (b && std::abs(a/b-24.0) < 0.0001)) {
+            return true;
+        }
+    return false;
+}
+
+std::vector<std::vector<int>> LC::_0733_FloodFill::floodFill(std::vector<std::vector<int>>& image, int sr, int sc, int newColor) {
+    int M = image.size();
+    if(M == 0) {
+        return {};
+    }
+    int N = image[0].size();
+    if(N == 0) {
+        return {};
+    }
+    const int orgV = image[sr][sc];
+
+    std::function<void(int sr, int sc)> dfs = [&](int sr, int sc) {
+        if(sr < 0 || sr >= M || sc < 0 || sc >= N || image[sr][sc] == newColor) {
+            return;
+        }
+        if(image[sr][sc] == orgV) {
+            image[sr][sc] = newColor;
+            dfs(sr + 1, sc);
+            dfs(sr - 1, sc);
+            dfs(sr, sc + 1);
+            dfs(sr, sc - 1);
+        }        
+    };
+
+    dfs(sr, sc);
+    return image;
+}
+
+
+std::vector<std::string> LC::_0784_LetterCasePermutation::letterCasePermutation(std::string S) {
+    std::string tmp;
+    std::vector<std::string> res;
+    backTracking(S, 0, tmp, res);
+    return res;
+}
+
+void LC::_0784_LetterCasePermutation::backTracking(const std::string& S, int startIdx, std::string& tmp, std::vector<std::string>& res) {
+    if(startIdx == S.size()) {
+        res.push_back(tmp);
+        return;
+    }
+    
+    char c = S[startIdx];
+    if(std::isalpha(c)) {
+        tmp += std::tolower(c);
+        backTracking(S, startIdx + 1, tmp, res);
+        tmp.pop_back();
+        tmp += std::toupper(c);
+        backTracking(S, startIdx + 1, tmp, res);
+        tmp.pop_back();
+    } else {
+        tmp += c;
+        backTracking(S, startIdx + 1, tmp, res);
+        tmp.pop_back();
+    }
+}

@@ -1010,6 +1010,87 @@ public:
     bool validPalindrome(std::string s);
 };
 
+/*
+709. To Lower Case
+Implement function ToLowerCase() that has a string parameter 
+str, and returns the same string in lowercase.
+
+Input: "Hello"
+Output: "hello"
+
+Input: "here"
+Output: "here"
+
+Input: "LOVELY"
+Output: "lovely"
+*/
+class _0709_ToLowerCase {
+public:
+    std::string toLowerCase(std::string str);
+};
+
+/*
+Given a set of keywords words and a string S, make all appearances of all keywords in S bold. 
+Any letters between <b> and </b> tags become bold.
+The returned string should use the least number of tags possible, and of course the tags should 
+form a valid combination.
+For example, given that words = ["ab", "bc"] and S = "aabcd", we should return "a<b>abc</b>d". 
+Note that returning "a<b>a<b>b</b>c</b>d" would use more tags, so it is incorrect.
+
+Constraints:
+
+words has length in range [0, 50].
+words[i] has length in range [1, 10].
+S has length in range [0, 500].
+All characters in words[i] and S are lowercase letters.
+*/
+class _0758_BoldWordsInString {
+public:
+    std::string boldWords(std::vector<std::string>& words, std::string S);
+    void setBold(std::vector<bool>& isBold, int i, int wl);
+};
+
+    /*
+International Morse Code defines a standard encoding where each letter is 
+mapped to a series of dots and dashes, as follows: "a" maps to ".-", "b" 
+maps to "-...", "c" maps to "-.-.", and so on.
+
+For convenience, the full table for the 26 letters of the English alphabet 
+is given below:
+
+[".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..",
+"--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-",
+"-.--","--.."]
+
+Now, given a list of words, each word can be written as a concatenation of 
+the Morse code of each letter. For example, "cba" can be written as "-.-..--...", 
+(which is the concatenation "-.-." + "-..." + ".-"). We'll call such a 
+concatenation, the transformation of a word.
+
+Return the number of different transformations among all words we have.
+
+Example:
+Input: words = ["gin", "zen", "gig", "msg"]
+Output: 2
+Explanation: 
+The transformation of each word is:
+"gin" -> "--...-."
+"zen" -> "--...-."
+"gig" -> "--...--."
+"msg" -> "--...--."
+
+There are 2 different transformations, "--...-." and "--...--.".
+Note:
+
+The length of words will be at most 100.
+Each words[i] will have length in range [1, 12].
+words[i] will only consist of lowercase letters.
+*/
+class _0804_UniqueMorseCodeWords {
+public:
+    int uniqueMorseRepresentations(std::vector<std::string>& words);
+};
+
 
 /*
 We had some 2-dimensional coordinates, like "(1, 3)" or "(2, 0.5)".  Then, we removed all commas, decimal points, 

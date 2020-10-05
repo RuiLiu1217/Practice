@@ -430,6 +430,93 @@ private:
     void dfs(std::vector<std::vector<int>>& matrix, std::vector<std::vector<bool>>& visited, int pre, int i, int j);
 };
 
+
+/*
+You have 4 cards each containing a number from 1 to 9. You need to judge whether they could operated 
+through *, /, +, -, (, ) to get the value of 24.
+
+Example 1:
+Input: [4, 1, 8, 7]
+Output: True
+Explanation: (8-4) * (7-1) = 24
+Example 2:
+Input: [1, 2, 1, 2]
+Output: False
+Note:
+The division operator / represents real division, not integer division. For example, 4 / (1 - 2/3) = 12.
+Every operation done is between two numbers. In particular, we cannot use - as a unary operator. For example, with [1, 1, 1, 1] as input, the expression -1 - 1 - 1 - 1 is not allowed.
+You cannot concatenate numbers together. For example, if the input is [1, 2, 1, 2], we cannot write this as 12 + 12.
+*/
+// ! The solution uses the permutation and DFS, layer by layer solve the problem.
+class _0679_24Games {
+public:
+    bool judgePoint24(std::vector<int>& nums);
+private:
+    bool valid(std::vector<int>& nums);
+    bool valid(double a, double b, double c);
+    bool valid(double a, double b); 
+};
+
+
+/*
+An image is represented by a 2-D array of integers, each integer representing the pixel value of the image (from 0 to 65535).
+Given a coordinate (sr, sc) representing the starting pixel (row and column) of the flood fill, and a pixel value newColor, 
+"flood fill" the image.
+To perform a "flood fill", consider the starting pixel, plus any pixels connected 4-directionally to the starting pixel of 
+the same color as the starting pixel, plus any pixels connected 4-directionally to those pixels (also with the same color 
+as the starting pixel), and so on. Replace the color of all of the aforementioned pixels with the newColor.
+
+At the end, return the modified image.
+
+Example 1:
+Input: 
+image = [[1,1,1],[1,1,0],[1,0,1]]
+sr = 1, sc = 1, newColor = 2
+Output: [[2,2,2],[2,2,0],[2,0,1]]
+Explanation: 
+From the center of the image (with position (sr, sc) = (1, 1)), all pixels connected 
+by a path of the same color as the starting pixel are colored with the new color.
+Note the bottom corner is not colored 2, because it is not 4-directionally connected
+to the starting pixel.
+Note:
+
+The length of image and image[0] will be in the range [1, 50].
+The given starting pixel will satisfy 0 <= sr < image.length and 0 <= sc < image[0].length.
+The value of each color in image[i][j] and newColor will be an integer in [0, 65535].
+*/
+class _0733_FloodFill {
+public:
+    std::vector<std::vector<int>> floodFill(std::vector<std::vector<int>>& image, int sr, int sc, int newColor);
+};
+
+
+/*
+Given a string S, we can transform every letter individually to be 
+lowercase or uppercase to create another string. Return a list of all 
+possible strings we could create.
+
+Examples:
+Input: S = "a1b2"
+Output: ["a1b2", "a1B2", "A1b2", "A1B2"]
+
+Input: S = "3z4"
+Output: ["3z4", "3Z4"]
+
+Input: S = "12345"
+Output: ["12345"]
+Note:
+
+S will be a string with length between 1 and 12.
+S will consist only of letters or digits.
+*/
+class _0784_LetterCasePermutation {
+public:
+    std::vector<std::string> letterCasePermutation(std::string S);
+private:
+    void backTracking(const std::string& S, int startIdx, std::string& tmp, std::vector<std::string>& res);
+};
+
+
 }
 
 

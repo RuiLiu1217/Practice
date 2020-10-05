@@ -13,6 +13,7 @@
 #include <string>
 #include <math.h>
 
+
 std::string LC::_0005_LongestPalindromicSubstring::longestPalidrome(std::string s) {
     if(s.size() == 0) {
         return "";
@@ -1412,4 +1413,88 @@ bool LC::_0680_ValidPalindromeII::validPalindrome(std::string s) {
     };
 
     return isvalid(0, s.size() - 1, 1);
+}
+
+std::string LC::_0709_ToLowerCase::toLowerCase(std::string str) {
+    for(char& c : str) {
+        if(c >= 'A' && c <= 'Z') {
+            c += ('a' - 'A');
+        } 
+    }
+    return str;
+}
+
+std::string LC::_0758_BoldWordsInString::boldWords(std::vector<std::string>& words, std::string S) {
+    std::vector<bool> isBold(S.length(), false);
+    for(int i = 0; i < S.length(); ++i) {
+        for(std::string& w : words) {
+            int wl = w.length();
+            if(S.substr(i, wl) == w) {
+                setBold(isBold, i, wl);
+            }
+        }
+    }
+    
+    std::string res;
+    for(int i = 0; i < S.size(); ++i) {
+        if(!isBold[i]) {
+            res += S[i];
+            continue;
+        }
+        int endP = i;
+        while(endP < S.length() && isBold[endP]) {
+            ++endP;
+        }
+        res += "<b>" + S.substr(i, endP - i) + "</b>";
+        i = endP - 1;
+    }
+    return res;
+}
+
+void LC::_0758_BoldWordsInString::setBold(std::vector<bool>& isBold, int i, int wl) {
+    for(int t = 0; t < wl; ++t) {
+        if(t + i < isBold.size()) {
+            isBold[t + i] = true;
+        }
+    }
+}
+
+int LC::_0804_UniqueMorseCodeWords::uniqueMorseRepresentations(std::vector<std::string>& words) {
+    std::unordered_map<char, std::string> mmap;
+    mmap['a'] = ".-";
+    mmap['b'] = "-..."; 
+    mmap['c'] = "-.-.";
+    mmap['d'] = "-..";
+    mmap['e'] = ".";
+    mmap['f'] = "..-.";
+    mmap['g'] = "--.";
+    mmap['h'] = "....";
+    mmap['i'] = "..";
+    mmap['j'] = ".---";
+    mmap['k'] = "-.-";
+    mmap['l'] = ".-..";
+    mmap['m'] = "--";
+    mmap['n'] = "-.";
+    mmap['o'] = "---";
+    mmap['p'] = ".--.";
+    mmap['q'] = "--.-";
+    mmap['r'] = ".-.";
+    mmap['s'] = "...";
+    mmap['t'] = "-";
+    mmap['u'] = "..-";
+    mmap['v'] = "...-";
+    mmap['w'] = ".--";
+    mmap['x'] = "-..-";
+    mmap['y'] = "-.--";
+    mmap['z'] = "--..";
+    int totalCount = 0;
+    std::unordered_set<std::string> resString;
+    for(std::string& word : words) {
+        std::string res = "";
+        for(char c : word) {
+            res += mmap[c];
+        }
+        resString.insert(res);
+    }
+    return resString.size();
 }

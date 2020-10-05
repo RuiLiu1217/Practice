@@ -1398,3 +1398,27 @@ int LC::_0663_EqualTreePartition::foo(TreeNode* root, int target, bool& dividabl
     }
     return left + right + root->val;        
 }
+
+
+// TreeNode* insertIntoBST(TreeNode* root, int val) {
+//     if(!root) {
+//         return nullptr;
+//     }
+//     TreeNode* p = root;
+//     TreeNode* q;
+//     while(p) {
+//         q = p;
+//         if(p->val < val) {
+//             p = p->right;
+//         } else {            
+//             p = p->left;
+//         }
+//     }
+//     TreeNode* v = new TreeNode<int>(val);
+//     if(q->val < val) {
+//         q->right = v;
+//     } else {
+//         q->left = v;
+//     }
+//     return root;
+// }

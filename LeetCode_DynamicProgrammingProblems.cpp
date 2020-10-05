@@ -1,6 +1,7 @@
 #include "LeetCode_DynamicProgrammingProblems.hpp"
 #include <unordered_map>
 #include <unordered_set>
+#include <functional>
 #include <cmath>
 #include <climits>
 #include <algorithm>
@@ -522,6 +523,86 @@ double LC::_0688_KnightProbabilityInChessboard::knightProbability(int N, int K, 
         }
     }
     return ans;
+}
+
+
+bool LC::_0717_OneBitAndTwoBitsCharacters::isOneBitCharacter(std::vector<int>& bits) {
+    return isOneBitCharacter(bits, 0, bits.size());
+}
+
+bool LC::_0717_OneBitAndTwoBitsCharacters::isOneBitCharacter(std::vector<int>& bits, int start, int end) {
+    if (start >= end) {
+        return false;
+    }
+    if(start + 1 == end) {
+        return bits[start] == 0;
+    }
+    return isOneBitCharacter(bits, start + 1 + (bits[start] == 0), end);
+}
+
+
+int LC::_0718_MaximumLengthOfRepeatedSubarray::findLength(std::vector<int>& A, std::vector<int>& B) {
+    std::vector<std::vector<int>> DP(A.size(), std::vector<int>(B.size(), 0));
+    for(int j = 0; j < DP[0].size(); ++j) {
+        if(B[j] == A[0]) {
+            DP[0][j] = 1;
+        }
+    }
+    for(int i = 0; i < DP.size(); ++i) {
+        if(A[i] == B[0]) {
+            DP[i][0] = 1;
+        }
+    }
+    int maxV = 0;
+    for(int i = 1; i < DP.size(); ++i) {
+        for(int j = 1; j < DP[i].size(); ++j) {
+            if(A[i] == B[j]) {
+                DP[i][j] = DP[i-1][j-1] + 1;
+                maxV = std::max(DP[i][j], maxV);
+            }
+        }
+    }
+    return maxV;
+}
+
+
+// Note:
+// The length of nums is at most 20000.
+// Each element nums[i] is an integer in the range [1, 10000].
+// This problem is almost the same as the house robber one.
+// ! Reduce to House robber problem
+int LC::_0740_DeleteAndEarn::deleteAndEarn(std::vector<int>& nums) {
+    if(nums.empty()) {
+        return 0;
+    }
+    const int r = *std::max_element(begin(nums), end(nums));
+    std::vector<int> points(r + 1, 0);
+    for(const int n : nums) {
+        points[n] += n;
+    }
+
+    std::function<int()> rob = [&](){
+        int dp2 = 0;
+        int dp1 = 0;
+        for(int n : nums) {
+            int dp = std::max(dp2 + n, dp1);
+            dp2 = dp1;
+            dp1 = dp;
+        }
+        return dp1;
+    };
+    return rob();
+}
+
+
+int LC::_0746_MinCostClimbingStairs::minCostClimbingStairs(std::vector<int>& cost) {
+    std::vector<int> DP(cost.size() + 1, 0);
+    DP[0] = 0;
+    DP[1] = 0;
+    for(int i = 2; i <= cost.size(); ++i) {
+        DP[i] = std::min(DP[i-1] + cost[i-1], DP[i-2] + cost[i-2]);
+    }
+    return DP[cost.size()];
 }
 
 
