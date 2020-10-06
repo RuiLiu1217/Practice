@@ -31,6 +31,7 @@ set(Headers
     LeetCode_HashProblems.hpp
     LeetCode_BFS.hpp
     LeetCode_DFS.hpp
+    LeetCode_UnionFindProblems.hpp
 )
 
 set(Sources
@@ -52,6 +53,7 @@ set(Sources
     LeetCode_HashProblems.cpp
     LeetCode_BFS.cpp
     LeetCode_DFS.cpp
+    LeetCode_UnionFindProblems.cpp
 )
 
 add_library(${This} STATIC ${Sources} ${Headers})

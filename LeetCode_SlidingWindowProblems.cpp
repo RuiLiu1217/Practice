@@ -7,6 +7,9 @@
 #include <set>
 #include <unordered_set>
 #include <unordered_map>
+#include <functional>
+#define ALPHALEN 256
+
 // Google
 // HashTable + Sliding Window:
 // Using a hashtable to remember the last index of every char, And keep tracking the starting
@@ -25,6 +28,43 @@ int LC::_0003_LongestSubstringWithoutRepeatingCharacters::lengthOfLongestSubstri
     }
     return res;
 }
+
+
+// Facebook
+std::string LC::_0076_MinimumWindowSubstring::minWindow(std::string s, std::string t) {
+    std::function<bool(const std::vector<int>&, std::vector<int>& )> isLargerOrEqual = [](const std::vector<int>& tMap, std::vector<int>& cur){
+        for(int i = 0; i < 256; ++i) {
+            if(tMap[i] > cur[i]) {
+                return false;
+            }
+        }
+        return true;
+    };
+    
+    std::vector<int> tMap(256, 0);
+    for(char c : t) {
+        ++tMap[static_cast<int>(c)];
+    }
+    
+    std::vector<int> curMap(256, 0);
+    int tail = 0;
+    int length = INT_MAX;
+    std::string res;
+    for(int i = 0; i < s.size(); ++i) {
+        ++curMap[s[i]];
+        while(isLargerOrEqual(tMap, curMap)) {
+            if(i - tail + 1 < length) { // edge cases
+                length = std::min(length, i - tail + 1);
+                res = s.substr(tail, i - tail + 1);
+            }
+            
+            --curMap[s[tail]];
+            ++tail;
+        }
+    }
+    return res;
+}
+
 
 // Facebook
 int LC::_0340_LongestSubstringWithAtMostKDistintCharacters::lengthOfLongestSubstringKDistinct(std::string s, int k) {

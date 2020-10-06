@@ -372,6 +372,9 @@ test/CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.obj: ../googletes
 test/CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.obj: ../LeetCode_TreeProblems.hpp
 test/CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.obj: ../test/LeetCode_TreeProblemTests.cpp
 
+test/CMakeFiles/PracticeTest.dir/LeetCode_UnionFindProblemTests.cpp.obj: ../LeetCode_UnionFindProblems.hpp
+test/CMakeFiles/PracticeTest.dir/LeetCode_UnionFindProblemTests.cpp.obj: ../test/LeetCode_UnionFindProblemTests.cpp
+
 test/CMakeFiles/PracticeTest.dir/LintCodeTest.cpp.obj: ../googletest/googletest/include/gtest/gtest-death-test.h
 test/CMakeFiles/PracticeTest.dir/LintCodeTest.cpp.obj: ../googletest/googletest/include/gtest/gtest-matchers.h
 test/CMakeFiles/PracticeTest.dir/LintCodeTest.cpp.obj: ../googletest/googletest/include/gtest/gtest-message.h

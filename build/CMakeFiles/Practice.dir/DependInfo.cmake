@@ -21,6 +21,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_SlidingWindowProblems.cpp" "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/CMakeFiles/Practice.dir/LeetCode_SlidingWindowProblems.cpp.obj"
   "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_StringProblems.cpp" "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/CMakeFiles/Practice.dir/LeetCode_StringProblems.cpp.obj"
   "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_TreeProblems.cpp" "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/CMakeFiles/Practice.dir/LeetCode_TreeProblems.cpp.obj"
+  "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_UnionFindProblems.cpp" "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/CMakeFiles/Practice.dir/LeetCode_UnionFindProblems.cpp.obj"
   "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LintCode.cpp" "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/CMakeFiles/Practice.dir/LintCode.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

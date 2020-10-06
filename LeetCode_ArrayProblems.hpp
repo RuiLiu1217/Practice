@@ -1368,6 +1368,226 @@ public:
     }
 };
 
+/*
+In a string S of lowercase letters, these letters form consecutive groups of the same character.
+For example, a string like S = "abbxxxxzyy" has the groups "a", "bb", "xxxx", "z" and "yy".
+Call a group large if it has 3 or more characters.  We would like the starting and ending positions of every large group.
+The final answer should be in lexicographic order.
+
+Input: "abbxxxxzzy"
+Output: [[3,6]]
+Explanation: "xxxx" is the single large group with starting  3 and ending positions 6.
+Example 2:
+
+Input: "abc"
+Output: []
+Explanation: We have "a","b" and "c" but no large group.
+Example 3:
+
+Input: "abcdddeeeeaabbbcd"
+Output: [[3,5],[6,9],[12,14]]
+*/
+class _0830_PositionsOfLargeGroups {
+public:
+    std::vector<std::vector<int>> largeGroupPositions(std::string S);
+};
+
+/*
+Given a binary matrix A, we want to flip the image horizontally, 
+then invert it, and return the resulting image.
+To flip an image horizontally means that each row of the image is 
+reversed. For example, flipping [1, 1, 0] horizontally results in 
+[0, 1, 1].
+To invert an image means that each 0 is replaced by 1, and each 1 
+is replaced by 0. For example, inverting [0, 1, 1] results in 
+[1, 0, 0].
+
+Input: [[1,1,0],[1,0,1],[0,0,0]]
+Output: [[1,0,0],[0,1,0],[1,1,1]]
+Explanation: First reverse each row: [[0,1,1],[1,0,1],[0,0,0]].
+Then, invert the image: [[1,0,0],[0,1,0],[1,1,1]]
+Example 2:
+
+Input: [[1,1,0,0],[1,0,0,1],[0,1,1,1],[1,0,1,0]]
+Output: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]
+Explanation: First reverse each row: [[0,0,1,1],[1,0,0,1],[1,1,1,0],[0,1,0,1]].
+Then invert the image: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]
+Notes:
+
+1 <= A.length = A[0].length <= 20
+0 <= A[i][j] <= 1
+*/
+class _0832_FlippingAnImage {
+public:
+    std::vector<std::vector<int>> flipAndInvertImage(std::vector<std::vector<int>>& A);
+};
+
+
+
+/*
+ 838 Push Dominoes
+There are N dominoes in a line, and we place each domino vertically upright.
+In the beginning, we simultaneously push some of the dominoes either to the 
+left or to the right. After each second, each domino that is falling to the 
+left pushes the adjacent domino on the left. Similarly, the dominoes falling 
+to the right push their adjacent dominoes standing on the right.
+When a vertical domino has dominoes falling on it from both sides, it stays 
+still due to the balance of the forces. For the purposes of this question, 
+we will consider that a falling domino expends no additional force to a 
+falling or already fallen domino.
+Given a string "S" representing the initial state. S[i] = 'L', if the i-th 
+domino has been pushed to the left; S[i] = 'R', if the i-th domino has been 
+pushed to the right; S[i] = '.', if the i-th domino has not been pushed.
+
+Return a string representing the final state. 
+
+Input: ".L.R...LR..L.."
+Output: "LL.RR.LLRRLL.."
+
+Input: "RR.L"
+Output: "RR.L"
+Explanation: The first domino expends no additional force on the second domino.
+
+Note:
+    0 <= N <= 10^5
+    String dominoes contains only 'L', 'R' and '.'
+*/
+class _0838_PushDominoes {
+  public:
+    std::string pushDominoes(std::string dominoes);
+};
+
+
+/*
+Let's call an array A a mountain if the following properties hold:
+
+A.length >= 3
+There exists some 0 < i < A.length - 1 such that 
+A[0] < A[1] < ... A[i-1] < A[i] > A[i+1] > ... > A[A.length - 1]
+Given an array that is definitely a mountain, return any i such that 
+A[0] < A[1] < ... A[i-1] < A[i] > A[i+1] > ... > A[A.length - 1].
+
+Input: [0,1,0]
+Output: 1
+
+Input: [0,2,1,0]
+Output: 1
+Note:
+
+3 <= A.length <= 10000
+0 <= A[i] <= 10^6
+A is a mountain, as defined above.
+*/
+class _0852_PeakIndexInAMountainArray {
+public:
+    int peakIndexInMountainArray(std::vector<int>& A);
+};
+
+
+/*
+We have a two dimensional matrix A where each value is 0 or 1.
+A move consists of choosing any row or column, and toggling each 
+value in that row or column: changing all 0s to 1s, and all 1s to 0s.
+After making any number of moves, every row of this matrix is 
+interpreted as a binary number, and the score of the matrix is the 
+sum of these numbers.
+Return the highest possible score.
+
+Input: [[0,0,1,1],[1,0,1,0],[1,1,0,0]]
+Output: 39
+Explanation:
+Toggled to [[1,1,1,1],[1,0,0,1],[1,1,1,1]].
+0b1111 + 0b1001 + 0b1111 = 15 + 9 + 15 = 39
+
+Note:
+1 <= A.length <= 20
+1 <= A[0].length <= 20
+A[i][j] is 0 or 1.
+*/
+class _0861_ScoreAfterFlippingMatrix {
+public:
+    int matrixScore(std::vector<std::vector<int>>& A);
+};
+
+/*
+A robot on an infinite grid starts at point (0, 0) and faces 
+north. The robot can receive one of three possible types of 
+commands:
+
+-2: turn left 90 degrees
+-1: turn right 90 degrees
+1 <= x <= 9: move forward x units
+Some of the grid squares are obstacles. 
+
+The i-th obstacle is at grid point (obstacles[i][0], obstacles[i][1])
+If the robot would try to move onto them, the robot stays on the 
+previous grid square instead (but still continues following the 
+rest of the route.)
+Return the square of the maximum Euclidean distance that the robot 
+will be from the origin.
+
+Input: commands = [4,-1,3], obstacles = []    :    Output: 25
+Explanation: robot will go to (3, 4)
+
+Input: commands = [4,-1,4,-2,4], obstacles = [[2,4]]    :   Output: 65
+Explanation: robot will be stuck at (1, 4) before turning left and going to (1, 8)
+*/
+class _0874_WalkingRobotSimulation {
+public:
+    int robotSim(std::vector<int>& commands, std::vector<std::vector<int>>& obstacles);
+};
+
+/*
+The i-th person has weight people[i], and each boat can carry a 
+maximum weight of limit. Each boat carries at most 2 people at the 
+same time, provided the sum of the weight of those people is at 
+most limit.
+Return the minimum number of boats to carry every given person. 
+(It is guaranteed each person can be carried by a boat.)
+
+Input: people = [1,2], limit = 3
+Output: 1
+Explanation: 1 boat (1, 2)
+
+Input: people = [3,2,2,1], limit = 3
+Output: 3
+Explanation: 3 boats (1, 2), (2) and (3)
+
+Input: people = [3,5,3,4], limit = 5
+Output: 4
+Explanation: 4 boats (3), (3), (4), (5)
+Note:
+
+1 <= people.length <= 50000
+1 <= people[i] <= limit <= 30000
+*/
+class _0881_BoatsToSavePeople {
+public:
+    int numResculeBoats(std::vector<int>& people, int limit);
+};
+
+/*
+On a N * N grid, we place some 1 * 1 * 1 cubes that are axis-aligned with the 
+x, y, and z axes. Each value v = grid[i][j] represents a tower of v cubes 
+placed on top of grid cell (i, j). Now we view the projection of these 
+cubes onto the xy, yz, and zx planes. 
+A projection is like a shadow, that maps our 3 dimensional figure to a 2 
+dimensional plane. Here, we are viewing the "shadow" when looking at the 
+cubes from the top, the front, and the side.
+Return the total area of all three projections.
+
+Input: [[2]]
+Output: 5
+
+Input: [[1,2],[3,4]]
+Output: 17
+Explanation: 
+Here are the three projections ("shadows") of the shape made with each axis-aligned plane.
+*/
+class _0883_ProjectionAreaOf3DShapes {
+public:
+    int projectionArea(std::vector<std::vector<int>>& grid);
+};
 
 /*
 Write a class RecentCounter to count recent requests.

@@ -90,6 +90,11 @@
   "file": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_DFS.cpp"
 },
 {
+  "directory": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build",
+  "command": "C:\\mingw64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe    -g   -std=gnu++17 -o CMakeFiles\\Practice.dir\\LeetCode_UnionFindProblems.cpp.obj -c C:\\Users\\liuru\\OneDrive\\Documents\\GitHub\\Practice\\LeetCode_UnionFindProblems.cpp",
+  "file": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_UnionFindProblems.cpp"
+},
+{
   "directory": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/googletest/googlemock",
   "command": "C:\\mingw64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe   @CMakeFiles/gmock_main.dir/includes_CXX.rsp -g   -Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++17 -o CMakeFiles\\gmock_main.dir\\src\\gmock_main.cc.obj -c C:\\Users\\liuru\\OneDrive\\Documents\\GitHub\\Practice\\googletest\\googlemock\\src\\gmock_main.cc",
   "file": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/googletest/googlemock/src/gmock_main.cc"
@@ -198,5 +203,10 @@
   "directory": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test",
   "command": "C:\\mingw64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe   @CMakeFiles/PracticeTest.dir/includes_CXX.rsp -g   -std=gnu++17 -o CMakeFiles\\PracticeTest.dir\\LeetCode_DFSTests.cpp.obj -c C:\\Users\\liuru\\OneDrive\\Documents\\GitHub\\Practice\\test\\LeetCode_DFSTests.cpp",
   "file": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_DFSTests.cpp"
+},
+{
+  "directory": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test",
+  "command": "C:\\mingw64\\mingw64\\bin\\x86_64-w64-mingw32-g++.exe   @CMakeFiles/PracticeTest.dir/includes_CXX.rsp -g   -std=gnu++17 -o CMakeFiles\\PracticeTest.dir\\LeetCode_UnionFindProblemTests.cpp.obj -c C:\\Users\\liuru\\OneDrive\\Documents\\GitHub\\Practice\\test\\LeetCode_UnionFindProblemTests.cpp",
+  "file": "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_UnionFindProblemTests.cpp"
 }
 ]

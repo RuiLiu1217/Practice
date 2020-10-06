@@ -22,6 +22,7 @@ set(Sources
     LeetCode_HashProblemTests.cpp
     LeetCode_BFSTests.cpp
     LeetCode_DFSTests.cpp
+    LeetCode_UnionFindProblemTests.cpp
 )
 
 add_executable(${This} ${Sources})

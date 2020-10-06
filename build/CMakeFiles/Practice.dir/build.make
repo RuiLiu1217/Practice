@@ -310,6 +310,19 @@ CMakeFiles/Practice.dir/LeetCode_DFS.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Practice.dir/LeetCode_DFS.cpp.s"
 	C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_DFS.cpp -o CMakeFiles\Practice.dir\LeetCode_DFS.cpp.s
 
+CMakeFiles/Practice.dir/LeetCode_UnionFindProblems.cpp.obj: CMakeFiles/Practice.dir/flags.make
+CMakeFiles/Practice.dir/LeetCode_UnionFindProblems.cpp.obj: ../LeetCode_UnionFindProblems.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/Practice.dir/LeetCode_UnionFindProblems.cpp.obj"
+	C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Practice.dir\LeetCode_UnionFindProblems.cpp.obj -c C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_UnionFindProblems.cpp
+
+CMakeFiles/Practice.dir/LeetCode_UnionFindProblems.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Practice.dir/LeetCode_UnionFindProblems.cpp.i"
+	C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_UnionFindProblems.cpp > CMakeFiles\Practice.dir\LeetCode_UnionFindProblems.cpp.i
+
+CMakeFiles/Practice.dir/LeetCode_UnionFindProblems.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Practice.dir/LeetCode_UnionFindProblems.cpp.s"
+	C:\mingw64\mingw64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_UnionFindProblems.cpp -o CMakeFiles\Practice.dir\LeetCode_UnionFindProblems.cpp.s
+
 # Object files for target Practice
 Practice_OBJECTS = \
 "CMakeFiles/Practice.dir/LintCode.cpp.obj" \
@@ -329,7 +342,8 @@ Practice_OBJECTS = \
 "CMakeFiles/Practice.dir/LeetCode_RecursiveProblems.cpp.obj" \
 "CMakeFiles/Practice.dir/LeetCode_HashProblems.cpp.obj" \
 "CMakeFiles/Practice.dir/LeetCode_BFS.cpp.obj" \
-"CMakeFiles/Practice.dir/LeetCode_DFS.cpp.obj"
+"CMakeFiles/Practice.dir/LeetCode_DFS.cpp.obj" \
+"CMakeFiles/Practice.dir/LeetCode_UnionFindProblems.cpp.obj"
 
 # External object files for target Practice
 Practice_EXTERNAL_OBJECTS =
@@ -352,9 +366,10 @@ libPractice.a: CMakeFiles/Practice.dir/LeetCode_RecursiveProblems.cpp.obj
 libPractice.a: CMakeFiles/Practice.dir/LeetCode_HashProblems.cpp.obj
 libPractice.a: CMakeFiles/Practice.dir/LeetCode_BFS.cpp.obj
 libPractice.a: CMakeFiles/Practice.dir/LeetCode_DFS.cpp.obj
+libPractice.a: CMakeFiles/Practice.dir/LeetCode_UnionFindProblems.cpp.obj
 libPractice.a: CMakeFiles/Practice.dir/build.make
 libPractice.a: CMakeFiles/Practice.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Linking CXX static library libPractice.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Linking CXX static library libPractice.a"
 	$(CMAKE_COMMAND) -P CMakeFiles\Practice.dir\cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Practice.dir\link.txt --verbose=$(VERBOSE)
 

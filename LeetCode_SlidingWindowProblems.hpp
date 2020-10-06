@@ -21,6 +21,27 @@ public:
 };
 
 /*
+Tag: Sliding Windows
+Google, Facebook
+TODO: ending edge cases, which is not easy to debug
+
+Given a string S and a string T, find the minimum window in S which will 
+contain all the characters in T in complexity O(n).
+
+Input: S = "ADOBECODEBANC", T = "ABC"
+Output: "BANC"
+Note:
+
+If there is no such window in S that covers all characters in T, return the empty string "".
+If there is such window, you are guaranteed that there will always be only one unique minimum window in S.
+*/
+class _0076_MinimumWindowSubstring {
+public:
+    std::string minWindow(std::string s, std::string t);
+};
+
+
+/*
 You are given an array of integers nums, there is a sliding window of size k which is 
 moving from the very left of the array to the very right. You can only see the k numbers 
 in the window. Each time the sliding window moves right by one position.

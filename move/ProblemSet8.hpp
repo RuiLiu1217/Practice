@@ -178,115 +178,26 @@ public:
 };
 
 /*
-Given an array of unique integers, each integer is strictly greater than 1.
-We make a binary tree using these integers and each number may be used for 
-any number of times. Each non-leaf node's value should be equal to the 
-product of the values of it's children.
+    Given an array of unique integers, each integer is strictly greater than 1.
+    We make a binary tree using these integers and each number may be used for 
+    any number of times. Each non-leaf node's value should be equal to the 
+    product of the values of it's children.
+    How many binary trees can we make? Return the answer modulo 10 ** 9 + 7.
 
-How many binary trees can we make?  Return the answer modulo 10 ** 9 + 7.
+    Input: A = [2, 4]             :              Output: 3
+    We can make these trees: [2], [4], [4, 2, 2]
 
-Input: A = [2, 4]
-Output: 3
-We can make these trees: [2], [4], [4, 2, 2]
+    Input: A = [2, 4, 5, 10]      :              Output: 7
+    We can make these trees: [2], [4], [5], [10], [4, 2, 2], [10, 2, 5], [10, 5, 2].
 
-Input: A = [2, 4, 5, 10]
-Output: 7
-We can make these trees: [2], [4], [5], [10], [4, 2, 2], [10, 2, 5], [10, 5, 2].
-
-Note:
-
-1 <= A.length <= 1000.
-2 <= A[i] <= 10 ^ 9.
+    1 <= A.length <= 1000.
+    2 <= A[i] <= 10 ^ 9.
 */
 class _0823_BinaryTreeWithFactors {
 public:
     int numFactoredBinaryTrees(std::vector<int>& A);
 };
 
-/*
-A sentence S is given, composed of words separated by spaces. 
-Each word consists of lowercase and uppercase letters only.
-
-We would like to convert the sentence to "Goat Latin" (a made-up language similar to Pig Latin.)
-The rules of Goat Latin are as follows:
-If a word begins with a vowel (a, e, i, o, or u), append "ma" to the end of the word.
-For example, the word 'apple' becomes 'applema'.
-If a word begins with a consonant (i.e. not a vowel), remove the first letter and append it to the end, then add "ma".
-For example, the word "goat" becomes "oatgma".
-Add one letter 'a' to the end of each word per its word index in the sentence, starting with 1.
-For example, the first word gets "a" added to the end, the second word gets "aa" added to the end and so on.
-Return the final sentence representing the conversion from S to Goat Latin. 
-
-Input: "I speak Goat Latin"
-Output: "Imaa peaksmaaa oatGmaaaa atinLmaaaaa"
-
-Input: "The quick brown fox jumped over the lazy dog"
-Output: "heTmaa uickqmaaa rownbmaaaa oxfmaaaaa umpedjmaaaaaa overmaaaaaaa hetmaaaaaaaa azylmaaaaaaaaa ogdmaaaaaaaaaa"
- 
-
-Notes:
-
-S contains only uppercase, lowercase and spaces. Exactly one space between each word.
-1 <= S.length <= 150.
-*/
-class _0824_GoatLatin {
-public:
-    std::string toGoatLatin(std::string S);
-};
-
-/*
-In a string S of lowercase letters, these letters form consecutive groups of the same character.
-For example, a string like S = "abbxxxxzyy" has the groups "a", "bb", "xxxx", "z" and "yy".
-Call a group large if it has 3 or more characters.  We would like the starting and ending positions of every large group.
-The final answer should be in lexicographic order.
-
-Input: "abbxxxxzzy"
-Output: [[3,6]]
-Explanation: "xxxx" is the single large group with starting  3 and ending positions 6.
-Example 2:
-
-Input: "abc"
-Output: []
-Explanation: We have "a","b" and "c" but no large group.
-Example 3:
-
-Input: "abcdddeeeeaabbbcd"
-Output: [[3,5],[6,9],[12,14]]
-*/
-class _0830_PositionsOfLargeGroups {
-public:
-    std::vector<std::vector<int>> largetGroupPositions(std::string S);
-};
-
-/*
-Given a binary matrix A, we want to flip the image horizontally, 
-then invert it, and return the resulting image.
-To flip an image horizontally means that each row of the image is 
-reversed. For example, flipping [1, 1, 0] horizontally results in 
-[0, 1, 1].
-To invert an image means that each 0 is replaced by 1, and each 1 
-is replaced by 0. For example, inverting [0, 1, 1] results in 
-[1, 0, 0].
-
-Input: [[1,1,0],[1,0,1],[0,0,0]]
-Output: [[1,0,0],[0,1,0],[1,1,1]]
-Explanation: First reverse each row: [[0,1,1],[1,0,1],[0,0,0]].
-Then, invert the image: [[1,0,0],[0,1,0],[1,1,1]]
-Example 2:
-
-Input: [[1,1,0,0],[1,0,0,1],[0,1,1,1],[1,0,1,0]]
-Output: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]
-Explanation: First reverse each row: [[0,0,1,1],[1,0,0,1],[1,1,1,0],[0,1,0,1]].
-Then invert the image: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]
-Notes:
-
-1 <= A.length = A[0].length <= 20
-0 <= A[i][j] <= 1
-*/
-class _0832_FlippingAnImage {
-public:
-    std::vector<std::vector<int>> flipAndInvertImage(std::vector<std::vector<int>>& A);
-};
 
 /*
 To some string S, we will perform some replacement operations that replace groups of 
@@ -331,68 +242,6 @@ public:
 };
 
 
-/*
- 838 Push Dominoes
-There are N dominoes in a line, and we place each domino vertically upright.
-In the beginning, we simultaneously push some of the dominoes either to the 
-left or to the right. After each second, each domino that is falling to the 
-left pushes the adjacent domino on the left. Similarly, the dominoes falling 
-to the right push their adjacent dominoes standing on the right.
-When a vertical domino has dominoes falling on it from both sides, it stays 
-still due to the balance of the forces. For the purposes of this question, 
-we will consider that a falling domino expends no additional force to a 
-falling or already fallen domino.
-Given a string "S" representing the initial state. S[i] = 'L', if the i-th 
-domino has been pushed to the left; S[i] = 'R', if the i-th domino has been 
-pushed to the right; S[i] = '.', if the i-th domino has not been pushed.
-
-Return a string representing the final state. 
-
-Input: ".L.R...LR..L.."
-Output: "LL.RR.LLRRLL.."
-
-Input: "RR.L"
-Output: "RR.L"
-Explanation: The first domino expends no additional force on the second domino.
-
-Note:
-    0 <= N <= 10^5
-    String dominoes contains only 'L', 'R' and '.'
-*/
-class _0838_PushDominoes {
-  public:
-    std::string pushDominoes(std::string dominoes);
-};
-
-
-/*
-Two strings X and Y are similar if we can swap two letters (in different positions) of X, so that it equals Y.
-For example, "tars" and "rats" are similar (swapping at positions 0 and 2), and "rats" and "arts" are similar, 
-but "star" is not similar to "tars", "rats", or "arts".
-Together, these form two connected groups by similarity: {"tars", "rats", "arts"} and {"star"}.  Notice that 
-"tars" and "arts" are in the same group even though they are not similar. Formally, each group is such that a 
-word is in the group if and only if it is similar to at least one other word in the group.
-
-We are given a list A of strings.  Every string in A is an anagram of every other string in A. 
-How many groups are there?
-
-Input: A = ["tars","rats","arts","star"]
-Output: 2
-
-Constraints:
-1 <= A.length <= 2000
-1 <= A[i].length <= 1000
-A.length * A[i].length <= 20000
-All words in A consist of lowercase letters only.
-All words in A have the same length and are anagrams of each other.
-The judging time limit has been increased for this question.
-*/
-class _0839_SimilarStringGroups {
-public:
-    int numSimilarGroups(std::vector<std::string>& A);
-private:
-    bool areSimilar(const std::string& a, const std::string& b);
-};
 
 /*
 There are N rooms and you start in room 0. Each room has a distinct number in 0, 
@@ -532,56 +381,6 @@ public:
 };
 
 /*
-Let's call an array A a mountain if the following properties hold:
-
-A.length >= 3
-There exists some 0 < i < A.length - 1 such that 
-A[0] < A[1] < ... A[i-1] < A[i] > A[i+1] > ... > A[A.length - 1]
-Given an array that is definitely a mountain, return any i such that 
-A[0] < A[1] < ... A[i-1] < A[i] > A[i+1] > ... > A[A.length - 1].
-
-Input: [0,1,0]
-Output: 1
-
-Input: [0,2,1,0]
-Output: 1
-Note:
-
-3 <= A.length <= 10000
-0 <= A[i] <= 10^6
-A is a mountain, as defined above.
-*/
-class _0852_PeakIndexInAMountainArray {
-public:
-    int peakIndexInMountainArray(std::vector<int>& A);
-};
-
-/*
-We have a two dimensional matrix A where each value is 0 or 1.
-A move consists of choosing any row or column, and toggling each 
-value in that row or column: changing all 0s to 1s, and all 1s to 0s.
-After making any number of moves, every row of this matrix is 
-interpreted as a binary number, and the score of the matrix is the 
-sum of these numbers.
-Return the highest possible score.
-
-Input: [[0,0,1,1],[1,0,1,0],[1,1,0,0]]
-Output: 39
-Explanation:
-Toggled to [[1,1,1,1],[1,0,0,1],[1,1,1,1]].
-0b1111 + 0b1001 + 0b1111 = 15 + 9 + 15 = 39
-
-Note:
-1 <= A.length <= 20
-1 <= A[0].length <= 20
-A[i][j] is 0 or 1.
-*/
-class _0861_ScoreAfterFlippingMatrix {
-public:
-    int matrixScore(std::vector<std::vector<int>>& A);
-};
-
-/*
 Return the length of the shortest, non-empty, contiguous subarray of A 
 with sum at least K.
 If there is no non-empty subarray with sum at least K, return -1.
@@ -690,33 +489,6 @@ public:
     int lenLongestFibSubseq(std::vector<int>& A);
 };
 
-/*
-A robot on an infinite grid starts at point (0, 0) and faces 
-north. The robot can receive one of three possible types of 
-commands:
-
--2: turn left 90 degrees
--1: turn right 90 degrees
-1 <= x <= 9: move forward x units
-Some of the grid squares are obstacles. 
-
-The i-th obstacle is at grid point (obstacles[i][0], obstacles[i][1])
-If the robot would try to move onto them, the robot stays on the 
-previous grid square instead (but still continues following the 
-rest of the route.)
-Return the square of the maximum Euclidean distance that the robot 
-will be from the origin.
-
-Input: commands = [4,-1,3], obstacles = []    :    Output: 25
-Explanation: robot will go to (3, 4)
-
-Input: commands = [4,-1,4,-2,4], obstacles = [[2,4]]    :   Output: 65
-Explanation: robot will be stuck at (1, 4) before turning left and going to (1, 8)
-*/
-class _0874_WalkingRobotSimulation {
-public:
-    int robotSim(std::vector<int>& commands, std::vector<std::vector<int>>& obstacles);
-};
 
 /*
 Koko loves to eat bananas. There are N piles of bananas, the i-th pile has piles[i] bananas. 
@@ -747,25 +519,6 @@ piles.length <= H <= 10^9
 class _0875_KokoEatingBananas {
 public:
     int minEatingSpeed(std::vector<int>& piles, int H);
-};
-
-/*
-Given a non-empty, singly linked list with head node head, return a middle node of 
-linked list. If there are two middle nodes, return the second middle node.
-
-Input: [1,2,3,4,5]
-Output: Node 3 from this list (Serialization: [3,4,5])
-The returned node has value 3.  (The judge's serialization of this node is [3,4,5]).
-Note that we returned a ListNode object ans, such that:
-ans.val = 3, ans.next.val = 4, ans.next.next.val = 5, and ans.next.next.next = NULL.
-
-Input: [1,2,3,4,5,6]
-Output: Node 4 from this list (Serialization: [4,5,6])
-Since the list has two middle nodes with values 3 and 4, we return the second one.
-*/
-class _0876_MiddleOfTheLinkedList {
-public:
-    ListNode<int>* middleNode(ListNode<int>* head);
 };
 
 
@@ -801,58 +554,7 @@ public:
     int LeeMax(std::vector<int>& piles, int start, int end);
 };
 
-/*
-The i-th person has weight people[i], and each boat can carry a 
-maximum weight of limit. Each boat carries at most 2 people at the 
-same time, provided the sum of the weight of those people is at 
-most limit.
-Return the minimum number of boats to carry every given person. 
-(It is guaranteed each person can be carried by a boat.)
 
-Input: people = [1,2], limit = 3
-Output: 1
-Explanation: 1 boat (1, 2)
-
-Input: people = [3,2,2,1], limit = 3
-Output: 3
-Explanation: 3 boats (1, 2), (2) and (3)
-
-Input: people = [3,5,3,4], limit = 5
-Output: 4
-Explanation: 4 boats (3), (3), (4), (5)
-Note:
-
-1 <= people.length <= 50000
-1 <= people[i] <= limit <= 30000
-*/
-class _0881_BoatsToSavePeople {
-public:
-    int numResculeBoats(std::vector<int>& people, int limit);
-};
-
-
-/*
-On a N * N grid, we place some 1 * 1 * 1 cubes that are axis-aligned with the 
-x, y, and z axes. Each value v = grid[i][j] represents a tower of v cubes 
-placed on top of grid cell (i, j). Now we view the projection of these 
-cubes onto the xy, yz, and zx planes. 
-A projection is like a shadow, that maps our 3 dimensional figure to a 2 
-dimensional plane. Here, we are viewing the "shadow" when looking at the 
-cubes from the top, the front, and the side.
-Return the total area of all three projections.
-
-Input: [[2]]
-Output: 5
-
-Input: [[1,2],[3,4]]
-Output: 17
-Explanation: 
-Here are the three projections ("shadows") of the shape made with each axis-aligned plane.
-*/
-class _0883_ProjectionAreaOf3DShapes {
-public:
-    int projectionArea(std::vector<std::vector<int>>& grid);
-};
 /*
 On a 2 dimensional grid with R rows and C columns, we start at (r0, c0) facing east.
 Here, the north-west corner of the grid is at the first row and column, and the south-east
@@ -978,50 +680,7 @@ public:
     int pop();
 };
 
-/*
-Given a binary search tree, rearrange the tree in in-order so that the leftmost node in the tree is now the root of the tree, and every node has no left child and only 1 right child.
 
-Example 1:
-Input: [5,3,6,2,4,null,8,1,null,null,null,7,9]
-
-       5
-      / \
-    3    6
-   / \    \
-  2   4    8
- /        / \ 
-1        7   9
-
-Output: [1,null,2,null,3,null,4,null,5,null,6,null,7,null,8,null,9]
-
- 1
-  \
-   2
-    \
-     3
-      \
-       4
-        \
-         5
-          \
-           6
-            \
-             7
-              \
-               8
-                \
-                 9  
- 
-
-Constraints:
-
-The number of nodes in the given tree will be between 1 and 100.
-Each node will have a unique integer value from 0 to 1000.
-*/
-class _0897_IncreasingOrderSearchTree {
-public:
-    TreeNode<int>* increasingBST(TreeNode<int>* root);
-};
 /*
 A string S of lowercase letters is given.  Then, we may make any number of moves.
 In each move, we choose one of the first K letters (starting from the left), remove it, and place it at the end of the string.

@@ -631,3 +631,12 @@ std::vector<LC::ListNode*> LC::_0725_SplitLinkedListInParts::splitListToParts(Li
     return res;
 }
 
+LC::ListNode* LC::_0876_MiddleOfTheLinkedList::middleNode(LC::ListNode* head) {
+    LC::ListNode* slow = head;
+    LC::ListNode* fast = head;
+    while(fast && fast->next) {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    return slow;
+}

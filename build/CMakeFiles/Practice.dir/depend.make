@@ -53,6 +53,9 @@ CMakeFiles/Practice.dir/LeetCode_StringProblems.cpp.obj: ../LeetCode_StringProbl
 CMakeFiles/Practice.dir/LeetCode_TreeProblems.cpp.obj: ../LeetCode_TreeProblems.cpp
 CMakeFiles/Practice.dir/LeetCode_TreeProblems.cpp.obj: ../LeetCode_TreeProblems.hpp
 
+CMakeFiles/Practice.dir/LeetCode_UnionFindProblems.cpp.obj: ../LeetCode_UnionFindProblems.cpp
+CMakeFiles/Practice.dir/LeetCode_UnionFindProblems.cpp.obj: ../LeetCode_UnionFindProblems.hpp
+
 CMakeFiles/Practice.dir/LintCode.cpp.obj: ../LintCode.cpp
 CMakeFiles/Practice.dir/LintCode.cpp.obj: ../LintCode.hpp
 CMakeFiles/Practice.dir/LintCode.cpp.obj: ../Tree.hpp

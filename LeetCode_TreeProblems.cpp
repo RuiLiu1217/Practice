@@ -1422,3 +1422,28 @@ int LC::_0663_EqualTreePartition::foo(TreeNode* root, int target, bool& dividabl
 //     }
 //     return root;
 // }
+
+
+LC::TreeNode* LC::_0897_IncreasingOrderSearchTree::increasingBST(TreeNode* root) {
+    TreeNode* head = new TreeNode(-1);
+    head->right = root;
+    TreeNode* t = head;
+    TreeNode* p = root;
+
+    std::stack<TreeNode*> st;
+    while(p != nullptr || !st.empty()) {
+        if(p != nullptr) {
+            st.push(p);
+            p = p->left;
+        } else {
+            TreeNode* q= st.top();
+            st.pop();
+
+            t->right = q;
+            t = q;
+            q->left = nullptr;
+            p = q->right;
+        }
+    }
+    return head->right;
+}

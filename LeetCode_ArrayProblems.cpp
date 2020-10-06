@@ -13,6 +13,7 @@
 #include <math.h>
 #include <utility>
 #include <set>
+#include <vector>
 
 std::vector<int> LC::_0001_TwoSum::twoSum(std::vector<int> &nums, int target) {
     std::unordered_map<int, int> map;
@@ -1577,6 +1578,199 @@ std::vector<std::string> LC::_0692_TopKFrequentWords::topKFrequent(std::vector<s
     return res;
 }
 
+std::vector<std::vector<int>> LC::_0832_FlippingAnImage::flipAndInvertImage(std::vector<std::vector<int>>& A) {
+    for (auto & row : A) std::reverse(row.begin(), row.end());
+    for (auto & row : A) {
+        for (int & i : row) {
+            i ^= 1;
+        }
+    }
+    return A;
+}
+
+
+void scanningKer(std::string dominoes, int i, char sig, std::vector<int>& steps, std::stack<int>& cache) {
+    if(dominoes[i] == '.') {
+        cache.push(i);
+    } else if(dominoes[i] == sig) {
+        while(!cache.empty()) {
+            steps[cache.top()] = std::abs(i - cache.top());
+            cache.pop();
+        }
+        steps[i] = 0;
+    } else {
+        while(!cache.empty()) {
+            steps[cache.top()] = INT_MAX;
+            cache.pop();
+        }
+        steps[i] = INT_MAX;
+    }
+}
+
+// ! Copy from the solution
+std::string LC::_0838_PushDominoes::pushDominoes(std::string dominoes) {
+    std::string res = "";
+    dominoes = "L" + dominoes + "R";
+    for(int i = 0, j = 1; j < dominoes.size(); ++j) {
+        if(dominoes[j] == '.') {
+            continue;
+        }
+        int mid = j - i - 1;
+        if(i > 0) {
+            res += dominoes[i];
+        }
+        if(dominoes[i] == dominoes[j]) {
+            res += std::string(mid, dominoes[i]);
+        } else if(dominoes[i] == 'L' && dominoes[j] == 'R') {
+            res += std::string(mid, '.');
+        } else {
+            res += std::string(mid / 2, 'R') + std::string(mid % 2, '.') + std::string(mid / 2, 'L');
+        }
+        i = j;
+    }
+    return res;
+}
+
+
+std::vector<std::vector<int>> LC::_0830_PositionsOfLargeGroups::largeGroupPositions(std::string s) {
+    int startIdx = 0;
+    int count = 0;
+    std::vector<std::vector<int>> res;
+    for(int i = 0; i < s.size(); ++i) {
+        if(s[i] == s[startIdx]) {
+            ++count;
+        } else {
+            if(count >= 3) {
+                res.push_back({startIdx, i-1});
+            }
+            startIdx = i;
+            count = 1;
+        }
+    }
+    if(count >= 3) {
+        res.push_back({startIdx, static_cast<int>(s.size()) - 1});
+    }
+    return res;
+}
+
+
+int LC::_0852_PeakIndexInAMountainArray::peakIndexInMountainArray(std::vector<int>& A) {
+    int i = -1;
+    for(i = 0; i < A.size() - 2; ++i) {
+        if(A[i+1] < A[i] && A[i] > A[i-1]) {
+            return i;
+        }
+    }
+    return i;
+}
+
+
+int LC::_0861_ScoreAfterFlippingMatrix::matrixScore(std::vector<std::vector<int>>& A) {
+    int powIdx = A[0].size();
+    int totRowNum = A.size();
+    std::function<void()> flipRow = [&]() {
+        for(int i = 0; i < A.size(); ++i) {
+            if(A[i][0] == 0) {
+                for(int j = 0; j < A[i].size(); ++j) {
+                    A[i][j] = A[i][j] ^ 1;
+                }
+            }
+        }
+    };
+
+    flipRow();
+    int sum = std::pow(2, powIdx) * totRowNum;
+    for(int j = 1; j < A[0].size(); ++j) {
+        --powIdx;
+        int num0 = 0;
+        int num1 = 0;
+        for(int i = 0; i < A.size(); ++i) {
+            if(A[i][j] == 0) {
+                ++num0;
+            } else {
+                ++num1;
+            }
+        }
+        if(num0 > num1) {
+            sum += pow(2, powIdx) * num0;
+        } else {
+            sum += pow(2, powIdx) * num1;
+        }
+    }
+    return sum>>1;
+}
+
+int LC::_0874_WalkingRobotSimulation::robotSim(std::vector<int>& commands,std::vector<std::vector<int>>& obstacles) {
+    int dx[4] = {0, 1, 0, -1};
+    int dy[4] = {1, 0, -1, 0};
+    int x = 0, y = 0, di = 0;
+
+    std::set<std::pair<int, int>> obstacleSet;
+    for (std::vector<int> obstacle: obstacles) {
+        obstacleSet.insert(std::make_pair(obstacle[0], obstacle[1]));
+    }
+
+    int ans = 0;
+    for (int cmd: commands) {
+        if (cmd == -2)
+            di = (di + 3) % 4;
+        else if (cmd == -1)
+            di = (di + 1) % 4;
+        else {
+            for (int k = 0; k < cmd; ++k) {
+                int nx = x + dx[di];
+                int ny = y + dy[di];
+                if (obstacleSet.find(std::make_pair(nx, ny)) == obstacleSet.end()) {
+                    x = nx;
+                    y = ny;
+                    ans = std::max(ans, x*x + y*y);
+                }
+            }
+        }
+    }
+    return ans;
+}
+
+int LC::_0881_BoatsToSavePeople::numResculeBoats(std::vector<int>& people, int limit) {
+    std::sort(begin(people), end(people));
+    int l = 0;
+    int r = people.size() - 1;
+    int count = 0;
+    while(l < r) {
+        if(people[l] + people[r] <= limit) {
+            ++l;
+        }
+        ++count;
+        --r;
+    }
+    if(l == r) {
+        ++count;
+    }
+    return count;
+}
+
+int LC::_0883_ProjectionAreaOf3DShapes::projectionArea(std::vector<std::vector<int>>& grid) {
+    std::vector<int> rowHeight(grid.size(), 0);
+    std::vector<int> colHeight(grid[0].size(), 0);
+    int count = 0;
+    for(int r = 0; r < grid.size(); ++r) {
+        for(int c = 0; c < grid[r].size(); ++c) {
+            if(grid[r][c] != 0) {
+                ++count;
+            }
+            if (grid[r][c] > rowHeight[r]) {
+                rowHeight[r] = grid[r][c];
+            }
+            if (grid[r][c] > colHeight[c]) {
+                colHeight[c] = grid[r][c];
+            }
+        }
+    }
+    return std::accumulate(begin(rowHeight), end(rowHeight), 0) + 
+        std::accumulate(begin(colHeight), end(colHeight), 0)  + count;
+    
+}
+    
 
 LC::_0933_NumberOfRecentCalls::_0933_NumberOfRecentCalls() {
 }

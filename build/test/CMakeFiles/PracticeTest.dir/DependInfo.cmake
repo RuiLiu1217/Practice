@@ -21,6 +21,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_SlidingWindowProblemTests.cpp" "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test/CMakeFiles/PracticeTest.dir/LeetCode_SlidingWindowProblemTests.cpp.obj"
   "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_StringProblemTests.cpp" "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test/CMakeFiles/PracticeTest.dir/LeetCode_StringProblemTests.cpp.obj"
   "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_TreeProblemTests.cpp" "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test/CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.obj"
+  "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_UnionFindProblemTests.cpp" "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test/CMakeFiles/PracticeTest.dir/LeetCode_UnionFindProblemTests.cpp.obj"
   "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LintCodeTest.cpp" "C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/test/CMakeFiles/PracticeTest.dir/LintCodeTest.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

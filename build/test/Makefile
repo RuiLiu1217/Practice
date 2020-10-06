@@ -660,6 +660,33 @@ LeetCode_TreeProblemTests.cpp.s:
 	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\PracticeTest.dir\build.make test/CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.s
 .PHONY : LeetCode_TreeProblemTests.cpp.s
 
+LeetCode_UnionFindProblemTests.obj: LeetCode_UnionFindProblemTests.cpp.obj
+
+.PHONY : LeetCode_UnionFindProblemTests.obj
+
+# target to build an object file
+LeetCode_UnionFindProblemTests.cpp.obj:
+	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\PracticeTest.dir\build.make test/CMakeFiles/PracticeTest.dir/LeetCode_UnionFindProblemTests.cpp.obj
+.PHONY : LeetCode_UnionFindProblemTests.cpp.obj
+
+LeetCode_UnionFindProblemTests.i: LeetCode_UnionFindProblemTests.cpp.i
+
+.PHONY : LeetCode_UnionFindProblemTests.i
+
+# target to preprocess a source file
+LeetCode_UnionFindProblemTests.cpp.i:
+	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\PracticeTest.dir\build.make test/CMakeFiles/PracticeTest.dir/LeetCode_UnionFindProblemTests.cpp.i
+.PHONY : LeetCode_UnionFindProblemTests.cpp.i
+
+LeetCode_UnionFindProblemTests.s: LeetCode_UnionFindProblemTests.cpp.s
+
+.PHONY : LeetCode_UnionFindProblemTests.s
+
+# target to generate assembly for a file
+LeetCode_UnionFindProblemTests.cpp.s:
+	cd /d C:\Users\liuru\OneDrive\Documents\GitHub\Practice\build && $(MAKE) $(MAKESILENT) -f test\CMakeFiles\PracticeTest.dir\build.make test/CMakeFiles/PracticeTest.dir/LeetCode_UnionFindProblemTests.cpp.s
+.PHONY : LeetCode_UnionFindProblemTests.cpp.s
+
 LintCodeTest.obj: LintCodeTest.cpp.obj
 
 .PHONY : LintCodeTest.obj
@@ -752,6 +779,9 @@ help:
 	@echo ... LeetCode_TreeProblemTests.obj
 	@echo ... LeetCode_TreeProblemTests.i
 	@echo ... LeetCode_TreeProblemTests.s
+	@echo ... LeetCode_UnionFindProblemTests.obj
+	@echo ... LeetCode_UnionFindProblemTests.i
+	@echo ... LeetCode_UnionFindProblemTests.s
 	@echo ... LintCodeTest.obj
 	@echo ... LintCodeTest.i
 	@echo ... LintCodeTest.s

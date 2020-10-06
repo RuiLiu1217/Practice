@@ -12,7 +12,8 @@
 #include <functional>
 #include <string>
 #include <math.h>
-
+#include <iostream>
+#include <iterator>
 
 std::string LC::_0005_LongestPalindromicSubstring::longestPalidrome(std::string s) {
     if(s.size() == 0) {
@@ -1497,4 +1498,60 @@ int LC::_0804_UniqueMorseCodeWords::uniqueMorseRepresentations(std::vector<std::
         resString.insert(res);
     }
     return resString.size();
+}
+
+
+// Facebook
+std::string LC::_0824_GoatLatin::toGoatLatin(std::string S) {
+    std::function<bool(char)> isVowel = [](char c){
+        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || 
+            c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U';
+    };
+    std::istringstream iss(S);
+    std::vector<std::string> results((std::istream_iterator<std::string>(iss)),
+                                        std::istream_iterator<std::string>());
+
+    std::string a = "a";
+    std::string res;
+    for(int i = 0; i < results.size(); ++i) {
+        if(isVowel(results[i][0])) {
+            results[i] = results[i] + "ma" + a;
+            res = res + results[i] + " ";
+        } else {
+            char F = results[i][0];
+            std::string tmp(results[i].begin() + 1, results[i].end());
+            tmp = tmp + F + "ma" + a;
+            res = res + tmp + " ";
+        }
+        a = a + "a";
+    }
+    std::string RES(res.begin(), res.end()-1);
+    return RES;
+}
+
+
+int LC::_0929_UniqueEmailAddress::numUniqueEmails(std::vector<std::string>& emails) {
+    std::unordered_set<std::string> dict;
+    for(auto& em : emails) {
+        std::string firstPart = "";
+        int i = 0;
+        for(i = 0; i < em.size(); ++i) {
+            if(em[i] == '@' || em[i] == '+') {
+                break;
+            } else if (em[i] == '.') {
+                continue;
+            } else {
+                firstPart = firstPart + em[i];
+            }
+        }
+        while(em[i] != '@') {
+            ++i;
+        }
+        std::string second(em.begin()+i, em.end());
+        std::string email = firstPart+second;
+        if(dict.find(email) == dict.end()) {
+            dict.insert(email);
+        }
+    }
+    return dict.size();
 }

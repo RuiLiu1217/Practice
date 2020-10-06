@@ -723,6 +723,33 @@ LeetCode_TreeProblems.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_TreeProblems.cpp.s
 .PHONY : LeetCode_TreeProblems.cpp.s
 
+LeetCode_UnionFindProblems.obj: LeetCode_UnionFindProblems.cpp.obj
+
+.PHONY : LeetCode_UnionFindProblems.obj
+
+# target to build an object file
+LeetCode_UnionFindProblems.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_UnionFindProblems.cpp.obj
+.PHONY : LeetCode_UnionFindProblems.cpp.obj
+
+LeetCode_UnionFindProblems.i: LeetCode_UnionFindProblems.cpp.i
+
+.PHONY : LeetCode_UnionFindProblems.i
+
+# target to preprocess a source file
+LeetCode_UnionFindProblems.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_UnionFindProblems.cpp.i
+.PHONY : LeetCode_UnionFindProblems.cpp.i
+
+LeetCode_UnionFindProblems.s: LeetCode_UnionFindProblems.cpp.s
+
+.PHONY : LeetCode_UnionFindProblems.s
+
+# target to generate assembly for a file
+LeetCode_UnionFindProblems.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practice.dir\build.make CMakeFiles/Practice.dir/LeetCode_UnionFindProblems.cpp.s
+.PHONY : LeetCode_UnionFindProblems.cpp.s
+
 LintCode.obj: LintCode.cpp.obj
 
 .PHONY : LintCode.obj
@@ -820,6 +847,9 @@ help:
 	@echo ... LeetCode_TreeProblems.obj
 	@echo ... LeetCode_TreeProblems.i
 	@echo ... LeetCode_TreeProblems.s
+	@echo ... LeetCode_UnionFindProblems.obj
+	@echo ... LeetCode_UnionFindProblems.i
+	@echo ... LeetCode_UnionFindProblems.s
 	@echo ... LintCode.obj
 	@echo ... LintCode.i
 	@echo ... LintCode.s

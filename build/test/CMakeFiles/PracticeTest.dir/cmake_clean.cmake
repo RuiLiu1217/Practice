@@ -16,6 +16,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/PracticeTest.dir/LeetCode_SlidingWindowProblemTests.cpp.obj"
   "CMakeFiles/PracticeTest.dir/LeetCode_StringProblemTests.cpp.obj"
   "CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.obj"
+  "CMakeFiles/PracticeTest.dir/LeetCode_UnionFindProblemTests.cpp.obj"
   "CMakeFiles/PracticeTest.dir/LintCodeTest.cpp.obj"
   "PracticeTest.exe"
   "PracticeTest.exe.manifest"

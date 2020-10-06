@@ -594,7 +594,6 @@ int LC::_0740_DeleteAndEarn::deleteAndEarn(std::vector<int>& nums) {
     return rob();
 }
 
-
 int LC::_0746_MinCostClimbingStairs::minCostClimbingStairs(std::vector<int>& cost) {
     std::vector<int> DP(cost.size() + 1, 0);
     DP[0] = 0;
@@ -603,6 +602,28 @@ int LC::_0746_MinCostClimbingStairs::minCostClimbingStairs(std::vector<int>& cos
         DP[i] = std::min(DP[i-1] + cost[i-1], DP[i-2] + cost[i-2]);
     }
     return DP[cost.size()];
+}
+
+int LC::_0931_MinimumFallingPathSum::minFallingPathSum(std::vector<std::vector<int>>& A) {
+    std::vector<std::vector<int>> DP(A.size(), std::vector<int>(A[0].size(), 0));
+    for(int i = 0; i < A.size(); ++i) {
+        for(int c = 0; c < A[i].size(); ++c) {
+            if(i == 0) {
+                DP[i][c] = A[i][c];
+            } else {
+                int t;
+                if(c == 0) {
+                    t = std::min(DP[i-1][c], DP[i-1][c+1]);
+                } else if(c == A[i].size() - 1) {
+                    t = std::min(DP[i-1][c], DP[i-1][c-1]);
+                } else {
+                    t = std::min(std::min(DP[i-1][c], DP[i-1][c-1]), DP[i-1][c+1]);
+                }
+                DP[i][c] = t + A[i][c];
+            }
+        }
+    }
+    return *std::min_element(DP.back().begin(), DP.back().end());
 }
 
 
