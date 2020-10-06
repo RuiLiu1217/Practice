@@ -1783,6 +1783,22 @@ int LC::_0933_NumberOfRecentCalls::ping(int t) {
     return q.size();
 }
 
+
+bool LC::_0946_ValidateStackSequences::_0946_ValidateStackSequences::validateStackSequences(std::vector<int>& pushed, std::vector<int>& popped) {
+    const int N = popped.size();
+    std::stack<int> st;
+    int j = 0;
+    for(int x : pushed) { // PUSH ELEMENTS IN
+        st.push(x);
+        while(!st.empty() && j < N && st.top() == popped[j]) { // If the top and the popped are the same, pop it.
+            st.pop();
+            ++j;
+        }
+    }
+    return j == N; // Finally the popped and the total elment number are the same.
+}
+
+
 int LC::_1582_SpecialPositionsInABinaryMatrix::numSpecial(std::vector<std::vector<int>>& mat) {
     if(mat.empty() || mat[0].empty()) {
         return 0;
