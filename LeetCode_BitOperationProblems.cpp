@@ -300,3 +300,18 @@ int LC::_0477_TotalHammingDistance::totalHammingDistance(std::vector<int>& nums)
         if (zeroCount == nums.size()) return ans;
     }
 }
+
+
+int LC::_1009_CompletementOfBase10Integer::bitwiseComplement(int N) {
+    if(N == 0) { // Special case;
+        return 1;
+    }
+    int res = 0;
+    int i = 0;
+    while(N) {
+        res |= ((N & 1) ^ 1) << i;
+        ++i;
+        N >>= 1;
+    }
+    return res;
+}

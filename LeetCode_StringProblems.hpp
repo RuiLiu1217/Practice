@@ -1190,5 +1190,51 @@ class _0929_UniqueEmailAddress {
 public:
     int numUniqueEmails(std::vector<std::string>& emails);
 };
+
+/*
+Given an array A of strings made only from lowercase letters, return a list 
+of all characters that show up in all strings within the list (including 
+duplicates). For example, if a character occurs 3 times in all strings but 
+not 4 times, you need to include that character three times in the final 
+answer.
+You may return the answer in any order.
+
+Input: ["bella","label","roller"]
+Output: ["e","l","l"]
+
+Input: ["cool","lock","cook"]
+Output: ["c","o"]
+Note:
+
+1 <= A.length <= 100
+1 <= A[i].length <= 100
+A[i][j] is a lowercase letter
+*/
+class _1002_FindCommonCharacters {
+public:
+    std::vector<std::string> commonChars(std::vector<std::string>& A);
+};
+
+/*
+Given a binary string S (a string consisting only of '0' and '1's) and a positive integer N, 
+return true if and only if for every integer X from 1 to N, the binary representation of X 
+is a substring of S.
+
+Input: S = "0110", N = 3
+Output: true
+
+Input: S = "0110", N = 4
+Output: false
+
+Note:
+
+1 <= S.length <= 1000
+1 <= N <= 10^9
+*/
+class _1016_BinaryStringWithSubstringsRepresenting1ToN {
+public:
+    bool queryString(std::string S, int N);
+};
+
 }
 #endif

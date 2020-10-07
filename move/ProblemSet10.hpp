@@ -9,29 +9,6 @@
 #include "Tree.hpp"
 #include "LinkList.hpp"
 namespace LeetCode {
-    /*
-Given an array A of strings made only from lowercase letters, return a list 
-of all characters that show up in all strings within the list (including 
-duplicates). For example, if a character occurs 3 times in all strings but 
-not 4 times, you need to include that character three times in the final 
-answer.
-You may return the answer in any order.
-
-Input: ["bella","label","roller"]
-Output: ["e","l","l"]
-
-Input: ["cool","lock","cook"]
-Output: ["c","o"]
-Note:
-
-1 <= A.length <= 100
-1 <= A[i].length <= 100
-A[i][j] is a lowercase letter
-*/
-class _1002_FindCommonCharacters {
-public:
-    std::vector<std::string> commonChars(std::vector<std::string>& A);
-};
 
 /*
 We are given that the string "abc" is valid.
@@ -131,66 +108,6 @@ public:
     int minDominoRotations(std::vector<int>& A, std::vector<int>& B);
 };
 
-/*
-Return the root node of a binary search tree that matches 
-the given preorder traversal.
-(Recall that a binary search tree is a binary tree where 
-for every node, any descendant of node.left has a value < 
-node.val, and any descendant of node.right has a value > 
-node.val.  Also recall that a preorder traversal displays 
-the value of the node first, then traverses node.left, then 
-traverses node.right.)
-
-Input: [8,5,1,7,10,12]
-Output: [8,5,10,1,7,null,12]
-
-Note: 
-1 <= preorder.length <= 100
-The values of preorder are distinct.
-*/
-class _1008_ConstructBinarySearchTreeFromPreorderTraversal {
-private:
-    int i = 0;
-public:
-    TreeNode<int>* bstFromPreorder(std::vector<int>& preorder);
-    TreeNode<int>* bstFromPreorderImpl(std::vector<int>& preorder, int bound);
-};
-
-/*
-Every non-negative integer N has a binary representation.  For example, 
-5 can be represented as "101" in binary, 11 as "1011" in binary, and so 
-on. Note that except for N = 0, there are no leading zeroes in any binary 
-representation.
-The complement of a binary representation is the number in binary you get 
-when changing every 1 to a 0 and 0 to a 1. For example, the complement of 
-"101" in binary is "010" in binary.
-
-For a given number N in base-10, return the complement of it's binary 
-representation as a base-10 integer.
-
-Input: 5
-Output: 2
-Explanation: 5 is "101" in binary, with complement "010" in binary, which 
-is 2 in base-10.
-
-Input: 7
-Output: 0
-Explanation: 7 is "111" in binary, with complement "000" in binary, which 
-is 0 in base-10.
-
-Input: 10
-Output: 5
-Explanation: 10 is "1010" in binary, with complement "0101" in binary, which 
-is 5 in base-10.
-
-Note:
-0 <= N < 10^9
-This question is the same as 476: https://leetcode.com/problems/number-complement/
-*/
-class _1009_CompletementOfBase10Integer {
-public:
-    int bitwiseComplement(int N);
-};
 
 /*
 Tag: Binary Search
@@ -260,53 +177,6 @@ public:
 };
 
 /*
-Given a positive integer K, you need find the smallest positive 
-integer N such that N is divisible by K, and N only contains the 
-digit 1.
-Return the length of N.  If there is no such N, return -1.
-
-Input: 1
-Output: 1
-Explanation: The smallest answer is N = 1, which has length 1.
-
-Input: 2
-Output: -1
-Explanation: There is no such positive integer N divisible by 2.
-
-Input: 3
-Output: 3
-Explanation: The smallest answer is N = 111, which has length 3.
-
-Note:
-1 <= K <= 10^5
-*/
-class _1015_SmallestIntegerDivisibleByK {
-public:
-    int smallestRepunitDivByK(int K);
-};
-
-/*
-Given a binary string S (a string consisting only of '0' and '1's) and a positive integer N, 
-return true if and only if for every integer X from 1 to N, the binary representation of X 
-is a substring of S.
-
-Input: S = "0110", N = 3
-Output: true
-
-Input: S = "0110", N = 4
-Output: false
-
-Note:
-
-1 <= S.length <= 1000
-1 <= N <= 10^9
-*/
-class _1016_BinaryStringWithSubstringsRepresenting1ToN {
-public:
-    bool queryString(std::string S, int N);
-};
-
-/*
 Given a number N, return a string consisting of "0"s and 
 "1"s that represents its value in base -2 (negative two).
 The returned string must have no leading zeroes, unless 
@@ -362,42 +232,6 @@ A[i] is 0 or 1
 class _1018_BinaryPrefixDivisibleBy5 {
 public:
     std::vector<bool> prefixesDivBy5(std::vector<int>& A);
-};
-
-/*
-Given a 2D array A, each cell is 0 (representing sea) or 1 (representing 
-land) A move consists of walking from one land square 4-directionally to 
-another land square, or off the boundary of the grid. Return the number of 
-land squares in the grid for which we cannot walk off the boundary of the 
-grid in any number of moves. 
-
-Example 1:
-
-Input: [[0,0,0,0],[1,0,1,0],[0,1,1,0],[0,0,0,0]]
-Output: 3
-Explanation: 
-There are three 1s that are enclosed by 0s, and one 1 that isn't enclosed 
-because its on the boundary.
-Example 2:
-
-Input: [[0,1,1,0],[0,0,1,0],[0,0,1,0],[0,0,0,0]]
-Output: 0
-Explanation: 
-All 1s are either on the boundary or can reach the boundary.
-
-Note:
-
-1 <= A.length <= 500
-1 <= A[i].length <= 500
-0 <= A[i][j] <= 1
-All rows have the same size.
-*/
-class _1020_NumberOfEnclaves {
-public:
-    int numEnclaves(std::vector<std::vector<int>>& A);
-
-private:
-    void DFS(std::vector<std::vector<int>>& A, std::vector<std::vector<int>>& visited, int i, int j);
 };
 
 
@@ -511,8 +345,7 @@ Explanation: Alice chooses 1, Bob chooses 1, and Alice has no more moves.
 Note:
     1 <= N <= 1000
 */
-class _1025_DivisorGame
-{
+class _1025_DivisorGame {
 public:
     bool divisorGame(int N);
 };
@@ -1082,28 +915,6 @@ public:
     int largestValsFromLabels(std::vector<int>& values, std::vector<int>& labels, int num_wanted, int use_limit);
 };
 
-
-/*
-In an N by N square grid, each cell is either empty (0) or blocked (1).
-A clear path from top-left to bottom-right has length k if and only if 
-it is composed of cells C_1, C_2, ..., C_k such that:
-Adjacent cells C_i and C_{i+1} are connected 8-directionally (ie., they 
-are different and share an edge or corner)
-
-C_1 is at location (0, 0) (ie. has value grid[0][0])
-C_k is at location (N-1, N-1) (ie. has value grid[N-1][N-1])
-If C_i is located at (r, c), then grid[r][c] is empty (ie. grid[r][c] == 0).
-Return the length of the shortest such clear path from top-left to 
-bottom-right. If such a path does not exist, return -1.
-
-Note:
-1 <= grid.length == grid[0].length <= 100
-grid[r][c] is 0 or 1
-*/
-class _1091_ShortestPathInBinaryMatrix {
-public:
-    int shortestPathBinaryMatrix(std::vector<std::vector<int>>& grid);
-};
 
 /*
 You are driving a vehicle that has capacity empty seats initially available 

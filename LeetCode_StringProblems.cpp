@@ -1555,3 +1555,53 @@ int LC::_0929_UniqueEmailAddress::numUniqueEmails(std::vector<std::string>& emai
     }
     return dict.size();
 }
+
+std::vector<std::string> LC::_1002_FindCommonCharacters::commonChars(std::vector<std::string>& A) {
+    std::vector<int> minMap(26, INT_MAX);
+
+    std::function<std::vector<int>(std::string&)> getFreqMap = [](std::string& A) {
+        std::vector<int> map(26, 0);
+        for(char a : A) {
+            ++map[a - 'a'];
+        }
+        return map;
+    };
+
+    for(std::string& a : A) {
+        std::vector<int> freqMap = getFreqMap(a);
+        for(int i = 0; i < 26; ++i) {
+            minMap[i] = std::min(minMap[i], freqMap[i]);
+        }
+    }
+    std::vector<std::string> ret;
+    for(int i = 0; i < 26; ++i) {
+        for(int k = 0; k < minMap[i]; ++k) {
+            ret.push_back(std::string(1, 'a' + i));
+        }
+    }
+    return ret;
+}
+
+
+bool LC::_1016_BinaryStringWithSubstringsRepresenting1ToN::queryString(std::string S, int N) {
+    std::function<std::string(int)> toString = [](int n){
+        std::string res;
+        while(n) {
+            if (n % 2) {
+                res = "1" + res;
+            } else {
+                res = "0" + res;
+            }
+            n >>= 1;
+        }
+        return res;
+    };
+
+    for(int i = N; i > 0; --i) {
+        std::string n = toString(i);
+        if(S.find(n) == std::string::npos) {
+            return false;
+        }
+    }
+    return true;
+}
