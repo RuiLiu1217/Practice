@@ -433,3 +433,61 @@ int LC::_1015_SmallestIntegerDivisibleByK::smallestRepunitDivByK(int K) {
     }
     return -1;
 }
+
+
+//这道题完全是数学题，考的是概率，结论是令人有点难以理解的0.5.具体的分析：
+// 通过条件概率，构造递推公式，假设 n 个人的答案为 f(n). 已知 f(1)=1.
+// 假设现在有 n 个人，如果第一个人选了 1 号座位，则第 n 个人必定会坐到自己的座位上。这个事件发生的概率为 1/n.
+// 如果第一个人选了 n 号座位，则第 n 个人永远不会坐到自己的座位上。这个事件发生的概率也为 1/n.
+// 接下来，不妨假设第一个人选了 j 号座位，其中 2<=j<=n−1，则第二个到第 j−1 个人都会坐到自己的座位上，第 j 个人
+// 到第 n 个人的座位有可能被打乱。此时，如果第 j 个人选择了第一个人的座位，则第 n 个人必定会坐到自己的座位上。
+// 如果第 j 个人选了 n 号座位，则第 n 个人永远不会坐到自己的座位上，所以规模变成了 n−j+1 个人的问题。
+// 综上，当 n>=2 时，递推公式可以为 
+//           $f(n) = \frac{1}{n}\dot 1 + \frac{1}{n}\dot 0 + \frac{1}{n}\sum_{j=2}^{n-1}f(n-j+1) 
+//                 = \frac{1}{n}\sum_{j=1}^{n-1}f(j)
+
+// 对于 n>=2 时，又有 (n+2)⋅f(n+1)=∑j=2n+1f(j)，通过等式相减，可以得到 (n+1)⋅f(n+1)=(n+1)⋅f(n) 。已知 
+// f(n)≠0，所以 f(n)=f(n+1) 对 n≥2n≥2 成立。
+// f(2)=0.5，所以当 n≥2 时，f(n)=0.5
+double LC::_1227_AirplaneSeatAssignmentProbability::nthPersionGetsNthSeat(int n) {
+    return n==1?1:0.5;
+}
+
+int LC::_1228_MissingNumberInArithmeticProgression::missingNumber(std::vector<int>& arr) {
+    int first = arr[0], last = arr[0], sum = 0, n = arr.size();
+    for (int a : arr) {
+        first = std::min(first, a);
+        last = std::max(last, a);
+        sum += a;
+    }
+    return (first + last) * (n + 1) / 2 - sum; // the problem mentioned that the removed value is not the first or the last value
+}
+
+
+bool LC::_1232_CheckIfItIsAStraightLine::checkStraightLine(std::vector<std::vector<int>>& coordinates) {
+    if(coordinates.size() <= 2) {
+        return true;
+    }
+    
+    const int difx = coordinates[1][0] - coordinates[0][0];
+    const int dify = coordinates[1][1] - coordinates[0][1];
+    for(int i = 2; i < coordinates.size(); ++i) {
+        const int dx = coordinates[i][0] - coordinates[i-1][0];
+        const int dy = coordinates[i][1] - coordinates[i-1][1];
+        
+        if(difx == 0) {
+            if(dx != 0) {
+                return false;
+            }
+        }
+        if(dify == 0) {
+            if(dy != 0) {
+                return false;
+            }
+        }
+        if (dify * dx != dy * difx) {
+            return false;
+        }
+    }
+    return true;
+}

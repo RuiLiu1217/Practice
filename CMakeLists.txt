@@ -13,6 +13,7 @@ enable_testing()
 add_subdirectory(googletest)
 
 set(Headers
+    HeaderFiles.hpp
     LintCode.hpp
     LeetCode_ArrayProblems.hpp
     LeetCode_BinarySearchProblem.hpp

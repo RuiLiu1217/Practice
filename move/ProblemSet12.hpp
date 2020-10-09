@@ -11,7 +11,8 @@
 #include "Tree.hpp"
 #include "LinkList.hpp"
 namespace LeetCode {
-    /*
+    /* 
+    ! It is a confusing problem.
 Write a program to find the n-th ugly number.
 Ugly numbers are positive integers which are divisible by a or b or c.
 
@@ -51,65 +52,7 @@ private:
     int count(long long num, long long a, long long b, long long c);
 };
 
-/*
-You are given a string s, and an array of pairs of indices in the string pairs where pairs[i] = 
-[a, b] indicates 2 indices(0-indexed) of the string. You can swap the characters at any pair of 
-indices in the given pairs any number of times.
-Return the lexicographically smallest string that s can be changed to after using the swaps.
 
-Input: s = "dcab", pairs = [[0,3],[1,2]]
-Output: "bacd"
-Explaination: 
-Swap s[0] and s[3], s = "bcad"
-Swap s[1] and s[2], s = "bacd"
-
-Input: s = "dcab", pairs = [[0,3],[1,2],[0,2]]
-Output: "abcd"
-Explaination: 
-Swap s[0] and s[3], s = "bcad"
-Swap s[0] and s[2], s = "acbd"
-Swap s[1] and s[2], s = "abcd"
-
-Input: s = "cba", pairs = [[0,1],[1,2]]
-Output: "abc"
-Explaination: 
-Swap s[0] and s[1], s = "bca"
-Swap s[1] and s[2], s = "bac"
-Swap s[0] and s[1], s = "abc"
- 
-
-1 <= s.length <= 10^5
-0 <= pairs.length <= 10^5
-0 <= pairs[i][0], pairs[i][1] < s.length
-s only contains lower case English letters.
-*/
-class _1202_SmallestStringWithSwaps {
-public:
-    std::string smallestStringWithSwaps(std::string s, std::vector<std::vector<int>>& pairs);
-};
-
-/*
-Given an array of integers arr, write a function that returns true if and only if the 
-number of occurrences of each value in the array is unique.
-
-Input: arr = [1,2,2,1,1,3]
-Output: true
-Explanation: The value 1 has 3 occurrences, 2 has 2 and 3 has 1. No two values have the 
-same number of occurrences.
-
-Example 2:
-
-Input: arr = [1,2]
-Output: false
-Example 3:
-
-Input: arr = [-3,0,1,-3,1,1,1,-3,10,0]
-Output: true
-*/
-class _1207_UniqueNumberOfOccurances {
-public:
-    bool uniqueOccurrences(std::vector<int>& arr);
-};
 
 
 /*
@@ -152,6 +95,8 @@ Constraints:
 
 Each tree has at most 5000 nodes.
 -10^9 <= target, node.val <= 10^9
+! Recursive method will time limit exceeded
+! Hint: use BST iterator, forward iterator and backward iterator
 */
 class _1214_TwoSumBSTs{
 public:
@@ -172,71 +117,8 @@ Constraints:
 */
 class _1215_SteppingNumbers {
 public:
-    std::vector<int> countSteppingNumbers(ing low, int high);
+    std::vector<int> countSteppingNumbers(int low, int high);
 };
-
-
-/*
-Given an integer array arr and an integer difference, return the length of the 
-longest subsequence in arr which is an arithmetic sequence such that the 
-difference between adjacent elements in the subsequence equals difference.
-
-Example 1:
-Input: arr = [1,2,3,4], difference = 1
-Output: 4
-Explanation: The longest arithmetic subsequence is [1,2,3,4].
-
-Example 2:
-Input: arr = [1,3,5,7], difference = 1
-Output: 1
-Explanation: The longest arithmetic subsequence is any single element.
-
-Example 3:
-Input: arr = [1,5,7,8,5,3,4,2,1], difference = -2
-Output: 4
-Explanation: The longest arithmetic subsequence is [7,5,3,1].
- 
-Constraints:
-
-1 <= arr.length <= 10^5
--10^4 <= arr[i], difference <= 10^4
-*/
-class _1218_LongestArithmeticSubsequenceOfGivenDifference {
-public:
-    int longestSubsequence(std::vector<int>& arr, int difference);
-};
-
-/*
-Split a String in Balanced Strings
-Balanced strings are those who have equal quantity of 'L' and 'R' characters.
-Given a balanced string s split it in the maximum amount of balanced strings.
-Return the maximum amount of splitted balanced strings.
-
-Input: s = "RLRRLLRLRL"
-Output: 4
-Explanation: s can be split into "RL", "RRLL", "RL", "RL", each substring contains same number of 'L' and 'R'.
-
-Input: s = "RLLLLRRRLR"
-Output: 3
-Explanation: s can be split into "RL", "LLLRRR", "LR", each substring contains same number of 'L' and 'R'.
-
-Input: s = "LLLLRRRR"
-Output: 1
-Explanation: s can be split into "LLLLRRRR".
-
-Input: s = "RLRRRLLRLL"
-Output: 2
-Explanation: s can be split into "RL", "RRRLLRLL", since each substring contains an equal number of 'L' and 'R'
-
-Constraints:
-1 <= s.length <= 1000
-s[i] = 'L' or 'R'
-*/
-class _1221_SplitAStringInBalancedStrings {
-public:
-    int balancedStringSplit(std::string s);
-};
-
 
 /*
 On an 8x8 chessboard, there can be multiple Black Queens and one White King.
@@ -279,61 +161,6 @@ public:
     std::vector<std::vector<int>> queensAttackTheKing(std::vector<std::vector<int>>& queens, std::vector<int>& king);
 };
 
-/*
-n passengers board an airplane with exactly n seats. The first passenger has 
-lost the ticket and picks a seat randomly. But after that, the rest of 
-passengers will:
-
-Take their own seat if it is still available, 
-Pick other seats randomly when they find their seat occupied 
-What is the probability that the n-th person can get his own seat?
-
-Input: n = 1                   :             Output: 1.00000
-Input: n = 2                   ：            Output: 0.50000
-Explanation: The second person has a probability of 0.5 to get the second 
-seat (when first person gets the first seat).
-*/
-class _1227_AirplaneSeatAssignmentProbability {
-public:
-    double nthPersionGetsNthSeat(int n);
-};
-
-/*
-In some array arr, the values were in arithmetic progression: the values arr[i+1] - arr[i] are all equal for every 0 <= i < arr.length - 1.
-Then, a value from arr was removed that was not the first or last value in the array.
-Return the removed value.
-
-Input: arr = [5,7,11,13]
-Output: 9
-Explanation: The previous array was [5,7,9,11,13].
-
-Input: arr = [15,13,12]
-Output: 14
-Explanation: The previous array was [15,14,13,12].
-*/
-class _1228_MissingNumberInArithmeticProgression {
-public:
-    int missingNumber(std::vector<int>& arr);
-};
-
-/*
-You are given an array coordinates, coordinates[i] = [x, y], 
-where [x, y] represents the coordinate of a point. Check if 
-these points make a straight line in the XY plane.
-
-Input: coordinates = [[1,1],[2,2],[3,4],[4,5],[5,6],[7,7]]
-Output: false
-
-Constraints:
-2 <= coordinates.length <= 1000
-coordinates[i].length == 2
--10^4 <= coordinates[i][0], coordinates[i][1] <= 10^4
-coordinates contains no duplicate point.
-*/
-class _1232_CheckIfItIsAStraightLine {
-public:
-    bool checkStraightLine(std::vector<std::vector<int>>& coordinates);
-};
 
 /*
 Given a function  f(x, y) and a value z, return all positive integer pairs x and y where f(x,y) == z.
@@ -1131,32 +958,6 @@ public:
     int getDecimalValue(ListNode<int>* head);
 };
 
-/*
-Given an array nums of integers, return how many of them contain an even number of digits.
-
-Input: nums = [12,345,2,6,7896]
-Output: 2
-Explanation: 
-12 contains 2 digits (even number of digits). 
-345 contains 3 digits (odd number of digits). 
-2 contains 1 digit (odd number of digits). 
-6 contains 1 digit (odd number of digits). 
-7896 contains 4 digits (even number of digits). 
-Therefore only 12 and 7896 contain an even number of digits.
-
-Input: nums = [555,901,482,1771]
-Output: 1 
-Explanation: 
-Only 1771 contains an even number of digits.
-
-Constraints:
-1 <= nums.length <= 500
-1 <= nums[i] <= 10^5
-*/
-class _1295_FindNumbersWithEvenNumberOfDigits {
-public:
-    int findNumber(std::vector<int>& nums);
-};
 
 /*
 Given n boxes, each box is given in the format [status, candies, keys, containedBoxes] where:
@@ -1219,24 +1020,6 @@ public:
     std::vector<std::vector<int>>& containedBoxes, std::vector<int>& initialBoxes);
 };
 
-/*
-Given an array arr, replace every element in that array with the 
-greatest element among the elements to its right, and replace the 
-last element with -1.
-
-After doing so, return the array.
-
-Input: arr = [17,18,5,4,6,1]
-Output: [18,6,6,6,1,-1]
-
-Constraints:
-1 <= arr.length <= 10^4
-1 <= arr[i] <= 10^5
-*/
-class _1299_ReplaceElementsWithGreatestElementOnRightSide {
-public:
-    std::vector<int> replaceElements(std::vector<int>& arr);
-};
 }
 
 #endif

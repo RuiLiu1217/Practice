@@ -316,3 +316,17 @@ std::vector<std::vector<int>> LC::_0797_AllPathsFromSourceToTarget::allPathsSour
     }
     return res;
 }
+
+std::vector<int> LC::_1557_MinimumNumberOfVerticesToReachAllNodes::findSmallestSetOfVertices(int n, std::vector<std::vector<int>>& edges) {
+    std::vector<int> inDegrees(n, 0);
+    for(auto& edge : edges) {
+        ++inDegrees[edge[1]];
+    }
+    std::vector<int> nodes;
+    for(int i = 0; i < inDegrees.size(); ++i) {
+        if(inDegrees[i] == 0) {
+            nodes.push_back(i);
+        }
+    }
+    return nodes;
+}

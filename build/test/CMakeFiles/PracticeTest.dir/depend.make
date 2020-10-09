@@ -21,6 +21,7 @@ test/CMakeFiles/PracticeTest.dir/LeetCode_ArrayProblemTests.cpp.obj: ../googlete
 test/CMakeFiles/PracticeTest.dir/LeetCode_ArrayProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-port.h
 test/CMakeFiles/PracticeTest.dir/LeetCode_ArrayProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-string.h
 test/CMakeFiles/PracticeTest.dir/LeetCode_ArrayProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-type-util.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_ArrayProblemTests.cpp.obj: ../HeaderFiles.hpp
 test/CMakeFiles/PracticeTest.dir/LeetCode_ArrayProblemTests.cpp.obj: ../LeetCode_ArrayProblems.hpp
 test/CMakeFiles/PracticeTest.dir/LeetCode_ArrayProblemTests.cpp.obj: ../test/LeetCode_ArrayProblemTests.cpp
 
@@ -231,6 +232,7 @@ test/CMakeFiles/PracticeTest.dir/LeetCode_HashProblemTests.cpp.obj: ../googletes
 test/CMakeFiles/PracticeTest.dir/LeetCode_HashProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-port.h
 test/CMakeFiles/PracticeTest.dir/LeetCode_HashProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-string.h
 test/CMakeFiles/PracticeTest.dir/LeetCode_HashProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-type-util.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_HashProblemTests.cpp.obj: ../HeaderFiles.hpp
 test/CMakeFiles/PracticeTest.dir/LeetCode_HashProblemTests.cpp.obj: ../LeetCode_HashProblems.hpp
 test/CMakeFiles/PracticeTest.dir/LeetCode_HashProblemTests.cpp.obj: ../test/LeetCode_HashProblemTests.cpp
 
@@ -372,6 +374,7 @@ test/CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.obj: ../googletes
 test/CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.obj: ../LeetCode_TreeProblems.hpp
 test/CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.obj: ../test/LeetCode_TreeProblemTests.cpp
 
+test/CMakeFiles/PracticeTest.dir/LeetCode_UnionFindProblemTests.cpp.obj: ../HeaderFiles.hpp
 test/CMakeFiles/PracticeTest.dir/LeetCode_UnionFindProblemTests.cpp.obj: ../LeetCode_UnionFindProblems.hpp
 test/CMakeFiles/PracticeTest.dir/LeetCode_UnionFindProblemTests.cpp.obj: ../test/LeetCode_UnionFindProblemTests.cpp
 

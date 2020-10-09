@@ -1,9 +1,7 @@
 #ifndef LEETCODE_ARRAYPROBLEMS_HPP
 #define LEETCODE_ARRAYPROBLEMS_HPP
-#include <vector>
-#include <string>
-#include <stack>
-#include <queue>
+#include "HeaderFiles.hpp"
+
 namespace LC {
 /*  Tag: array, Hash
     Given an array of integers, return indices of the two 
@@ -1697,6 +1695,92 @@ public:
 };
 
 /*
+Given an array nums of integers, return how many of them contain an even number of digits.
+
+Input: nums = [12,345,2,6,7896]
+Output: 2
+Explanation: 
+12 contains 2 digits (even number of digits). 
+345 contains 3 digits (odd number of digits). 
+2 contains 1 digit (odd number of digits). 
+6 contains 1 digit (odd number of digits). 
+7896 contains 4 digits (even number of digits). 
+Therefore only 12 and 7896 contain an even number of digits.
+
+Input: nums = [555,901,482,1771]
+Output: 1 
+Explanation: 
+Only 1771 contains an even number of digits.
+
+Constraints:
+1 <= nums.length <= 500
+1 <= nums[i] <= 10^5
+*/
+class _1295_FindNumbersWithEvenNumberOfDigits {
+public:
+    int findNumber(std::vector<int>& nums);
+};
+
+
+/*
+Given an array arr, replace every element in that array with the 
+greatest element among the elements to its right, and replace the 
+last element with -1.
+
+After doing so, return the array.
+
+Input: arr = [17,18,5,4,6,1]
+Output: [18,6,6,6,1,-1]
+
+Constraints:
+1 <= arr.length <= 10^4
+1 <= arr[i] <= 10^5
+*/
+class _1299_ReplaceElementsWithGreatestElementOnRightSide {
+public:
+    std::vector<int> replaceElements(std::vector<int>& arr);
+};
+
+/*
+    Given an array of integers arr of even length n and an integer k.
+    We want to divide the array into exactly n / 2 pairs such that the 
+    sum of each pair is divisible by k.
+    Return True If you can find a way to do that or False otherwise.
+
+    Input: arr = [1,2,3,4,5,10,6,7,8,9], k = 5
+    Output: true
+    Explanation: Pairs are (1,9),(2,8),(3,7),(4,6) and (5,10).
+
+    Input: arr = [1,2,3,4,5,6], k = 7
+    Output: true
+    Explanation: Pairs are (1,6),(2,5) and(3,4).
+
+    Input: arr = [1,2,3,4,5,6], k = 10
+    Output: false
+    Explanation: You can try all possible pairs to see that there is no 
+    way to divide arr into 3 pairs each with sum divisible by 10.
+
+    Input: arr = [-10,10], k = 2
+    Output: true
+
+    Input: arr = [-1,1,-2,2,-3,3,-4,4], k = 3
+    Output: true
+    
+
+    Constraints:
+
+    arr.length == n
+    1 <= n <= 10^5
+    n is even.
+    -10^9 <= arr[i] <= 10^9
+    1 <= k <= 10^5
+    */
+    class _1497_CheckIfArraypairsAreDivisibleByK {
+    public:
+        bool canArrange(std::vector<int>& arr, int k);
+    };
+
+/*
 Given a rows x cols matrix mat, where mat[i][j] is either 0 or 1, return the number of special positions in mat.
 A position (i,j) is called special if mat[i][j] == 1 and all other elements in row i and column j are 0 (rows and 
 columns are 0-indexed).
@@ -1737,6 +1821,7 @@ class _1582_SpecialPositionsInABinaryMatrix {
 public:
     int numSpecial(std::vector<std::vector<int>>& mat);
 };
+
 
 }
 #endif

@@ -1,20 +1,5 @@
 #include "LeetCode_ArrayProblems.hpp"
-#include <stack>
-#include <algorithm>
-#include <unordered_map>
-#include <climits>
-#include <functional>
-#include <cmath>
-#include <cstdlib>
-#include <random>
-#include <ctime>
-#include <queue>
-#include <unordered_set>
-#include <math.h>
-#include <utility>
-#include <set>
-#include <vector>
-
+#include "HeaderFiles.hpp"
 std::vector<int> LC::_0001_TwoSum::twoSum(std::vector<int> &nums, int target) {
     std::unordered_map<int, int> map;
     for(int i = 0; i < nums.size(); ++i)
@@ -1864,4 +1849,48 @@ int LC::_1283_FindTheSmallestDivisorGivenAThreshold::smallestDivisor(std::vector
         }
     }
     return left;
+}
+
+int LC::_1295_FindNumbersWithEvenNumberOfDigits::findNumber(std::vector<int>& nums) {
+    std::function<bool(int)>  isEvenNumberOfDigits = [](int num) {
+        int count = 0;
+        while(num) {
+            ++count;
+            num /= 10;
+        }
+        return count % 2 == 0;
+    };
+
+    int count = 0;
+    for(auto n : nums) {
+        if(isEvenNumberOfDigits(n)) {
+            ++count;
+        }
+    }
+    return count;
+}
+
+std::vector<int> LC::_1299_ReplaceElementsWithGreatestElementOnRightSide::replaceElements(std::vector<int>& arr) {
+    std::vector<int> res(arr.size(), -1);
+    int maxV = arr.back();
+    for(int i = res.size() - 2; i >= 0; --i) {
+        res[i] = maxV;
+        if(arr[i] > maxV) {
+            maxV = arr[i];
+        }
+    }
+    return res;
+}
+
+bool LC::_1497_CheckIfArraypairsAreDivisibleByK::canArrange(std::vector<int>& arr, int k) {
+    std::vector<int> mods(k, 0);
+    for(int x : arr) {
+        ++mods[(x % k + k) % k];
+    }
+    for(int i = 1; i < k; ++i) {
+        if(mods[i] != mods[k - i]) {
+            return false;
+        }
+    }
+    return mods[0] % 2 == 0;
 }

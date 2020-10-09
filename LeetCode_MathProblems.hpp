@@ -465,6 +465,64 @@ public:
     int smallestRepunitDivByK(int K);
 };
 
+/*
+n passengers board an airplane with exactly n seats. The first passenger has 
+lost the ticket and picks a seat randomly. But after that, the rest of 
+passengers will:
+
+Take their own seat if it is still available, 
+Pick other seats randomly when they find their seat occupied 
+What is the probability that the n-th person can get his own seat?
+
+Input: n = 1                   :             Output: 1.00000
+Input: n = 2                   ：            Output: 0.50000
+Explanation: The second person has a probability of 0.5 to get the second 
+seat (when first person gets the first seat).
+*/
+class _1227_AirplaneSeatAssignmentProbability {
+public:
+    double nthPersionGetsNthSeat(int n);
+};
+
+/*
+In some array arr, the values were in arithmetic progression: the values arr[i+1] - arr[i] are all equal for every 0 <= i < arr.length - 1.
+Then, a value from arr was removed that was not the first or last value in the array.
+Return the removed value.
+
+Input: arr = [5,7,11,13]
+Output: 9
+Explanation: The previous array was [5,7,9,11,13].
+
+Input: arr = [15,13,12]
+Output: 14
+Explanation: The previous array was [15,14,13,12].
+*/
+class _1228_MissingNumberInArithmeticProgression {
+public:
+    int missingNumber(std::vector<int>& arr);
+};
+
+
+/*
+You are given an array coordinates, coordinates[i] = [x, y], 
+where [x, y] represents the coordinate of a point. Check if 
+these points make a straight line in the XY plane.
+
+Input: coordinates = [[1,1],[2,2],[3,4],[4,5],[5,6],[7,7]]
+Output: false
+
+Constraints:
+2 <= coordinates.length <= 1000
+coordinates[i].length == 2
+-10^4 <= coordinates[i][0], coordinates[i][1] <= 10^4
+coordinates contains no duplicate point.
+*/
+class _1232_CheckIfItIsAStraightLine {
+public:
+    bool checkStraightLine(std::vector<std::vector<int>>& coordinates);
+};
+
+
 
 /*
 Given an integer n, return a list of all simplified fractions between 0 and 1 (exclusive) 

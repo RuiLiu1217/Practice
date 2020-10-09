@@ -1,19 +1,5 @@
 #include "LeetCode_StringProblems.hpp"
-#include <functional>
-#include <climits>
-#include <numeric>
-#include <algorithm>
-#include <cctype>
-#include <stack>
-#include <unordered_map>
-#include <unordered_set>
-#include <map>
-#include <sstream>
-#include <functional>
-#include <string>
-#include <math.h>
-#include <iostream>
-#include <iterator>
+#include "HeaderFiles.hpp"
 
 std::string LC::_0005_LongestPalindromicSubstring::longestPalidrome(std::string s) {
     if(s.size() == 0) {
@@ -1604,4 +1590,68 @@ bool LC::_1016_BinaryStringWithSubstringsRepresenting1ToN::queryString(std::stri
         }
     }
     return true;
+}
+
+int LC::_1221_SplitAStringInBalancedStrings::balancedStringSplit(std::string s) {
+    int cnt = 0;
+    int i = 0; 
+    char pre = s[0]; // No matter it is 'L' or 'R', the first char is the base.
+    int bal = 0;
+    while(i < s.size()) {
+        if(s[i] == pre) {
+            ++bal;
+        } else {
+            --bal;
+        }
+        if(bal == 0) {
+            ++cnt;
+        }
+        if(bal < 0) {
+            pre = s[i];
+            bal = 1;
+        }
+        ++i;
+    }
+    return cnt;
+}
+
+bool LC::_1461_CheckIfAStringContainsAllBinaryCodesofSizeK::hasAllCodes(std::string s, int k) {
+    long long binaries = std::pow(2, k);
+    if(s.size() - k < binaries - 1) {
+        return false;
+    }
+    std::unordered_set<std::string> set;
+    for(int i = 0; i < s.size() - k + 1; ++i) {
+        set.insert(s.substr(i, k));
+    }
+    return set.size() == binaries;
+}
+
+// ! Find better solution, consider using the map + priority_queue method
+std::string LC::_1451_RearrangeWordsInASentence::arrangeWords(std::string text) {
+    std::istringstream iss(text);
+    std::string token;
+    std::vector<std::pair<std::string, int>> tokens;
+    
+    int i = 0; // index of the string
+    while(getline(iss, token, ' ')) {
+        token[0] = std::tolower(token[0]);
+        tokens.push_back({token, i++});
+    }
+    std::sort(begin(tokens), end(tokens), [](auto pa, auto pb){
+        return pa.first.size() < pb.first.size() || (pa.first.size() == pb.first.size() && pa.second < pb.second);
+    });
+    
+    std::string res;
+    for(int i = 0; i < tokens.size(); ++i) {
+        if(!res.empty()) {
+            res += " ";
+        }
+        if(i == 0) {
+            tokens[i].first[0] = std::toupper(tokens[i].first[0]);
+        }
+        res += tokens[i].first;
+        
+    }
+    return res;
 }

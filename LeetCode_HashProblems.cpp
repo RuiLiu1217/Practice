@@ -1,8 +1,5 @@
 #include "LeetCode_HashProblems.hpp"
-#include <unordered_map>
-#include <unordered_set>
-#include <algorithm>
-#include <unordered_map>
+#include "HeaderFiles.hpp"
 
 std::vector<std::vector<std::string>> LC::_0049_GroupAnagrams::groupAnagrams(std::vector<std::string>& strs) {
     std::unordered_map<std::string, int> mySet;
@@ -152,4 +149,49 @@ int LC::_1371_FindTheLongestSubstringContainingVowelsInEvenCounts::findTheLonges
         ++k;
     }
     return len;
+}
+
+bool LC::_1207_UniqueNumberOfOccurances::uniqueOccurrences(std::vector<int>& arr) {
+    std::unordered_map<int, int> valueFreq;
+    std::unordered_set<int> freqPool;
+    for(int& a : arr) {
+        ++valueFreq[a];
+    }
+    for(auto& f : valueFreq) {
+        if(freqPool.count(f.second)) {
+            return false;
+        }
+        freqPool.insert(f.second);
+    }
+    return true;
+}
+
+int LC::_1218_LongestArithmeticSubsequenceOfGivenDifference::longestSubsequence(std::vector<int>& arr, int difference) {
+    std::unordered_map<int, int> currentLen;
+    for(int a : arr) {
+        if(currentLen.count(a - difference)) {
+            currentLen[a] = currentLen[a - difference] + 1;
+        } else {
+            currentLen[a] = 1;
+        }
+    }
+    int maxL = 0;
+    for(auto& c : currentLen) {
+        maxL = std::max(maxL, c.second);
+    }
+    return maxL;
+}
+
+
+int LC::_1512_NumberOfGoodPairs::numIdenticalPairs(std::vector<int>& nums) {
+    std::unordered_map<int, std::unordered_set<int>> map;
+    for(int i = 0; i < nums.size(); ++i) {
+        map[nums[i]].insert(i);
+    }
+    int res = 0;
+    for(auto& m : map) {
+        const int setSize = m.second.size();
+        res += setSize * (setSize - 1) / 2;
+    }
+    return res;
 }

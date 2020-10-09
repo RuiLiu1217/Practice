@@ -1,11 +1,7 @@
 #ifndef LEETCODE_HASHPROBLEMS_HPP
 #define LEETCODE_HASHPROBLEMS_HPP
 
-#include <string>
-#include <vector>
-#include <unordered_map>
-#include <random>
-
+#include "HeaderFiles.hpp"
 namespace LC {
 /*
 Group Anagrams :  Given an array of strings, group anagrams together.
@@ -195,6 +191,60 @@ public:
 };
 
 /*
+Given an array of integers arr, write a function that returns true if and only if the 
+number of occurrences of each value in the array is unique.
+
+Input: arr = [1,2,2,1,1,3]
+Output: true
+Explanation: The value 1 has 3 occurrences, 2 has 2 and 3 has 1. No two values have the 
+same number of occurrences.
+
+Example 2:
+
+Input: arr = [1,2]
+Output: false
+Example 3:
+
+Input: arr = [-3,0,1,-3,1,1,1,-3,10,0]
+Output: true
+*/
+class _1207_UniqueNumberOfOccurances {
+public:
+    bool uniqueOccurrences(std::vector<int>& arr);
+};
+
+/*
+Given an integer array arr and an integer difference, return the length of the 
+longest subsequence in arr which is an arithmetic sequence such that the 
+difference between adjacent elements in the subsequence equals difference.
+
+Example 1:
+Input: arr = [1,2,3,4], difference = 1
+Output: 4
+Explanation: The longest arithmetic subsequence is [1,2,3,4].
+
+Example 2:
+Input: arr = [1,3,5,7], difference = 1
+Output: 1
+Explanation: The longest arithmetic subsequence is any single element.
+
+Example 3:
+Input: arr = [1,5,7,8,5,3,4,2,1], difference = -2
+Output: 4
+Explanation: The longest arithmetic subsequence is [7,5,3,1].
+ 
+Constraints:
+
+1 <= arr.length <= 10^5
+-10^4 <= arr[i], difference <= 10^4
+*/
+class _1218_LongestArithmeticSubsequenceOfGivenDifference {
+public:
+    int longestSubsequence(std::vector<int>& arr, int difference);
+};
+
+
+/*
 Given the string s, return the size of the longest substring containing each vowel an even number 
 of times. That is, 'a', 'e', 'i', 'o', and 'u' must appear an even number of times. 
 
@@ -222,5 +272,29 @@ public:
   int findTheLongestSubstring(std::string s);
 };
 
+/*
+  Given an array of integers nums.
+  A pair (i,j) is called good if nums[i] == nums[j] and i < j.
+  Return the number of good pairs.
+  
+  Input: nums = [1,2,3,1,1,3]
+  Output: 4
+  Explanation: There are 4 good pairs (0,3), (0,4), (3,4), (2,5) 0-indexed.
+  
+  Input: nums = [1,1,1,1]
+  Output: 6
+  Explanation: Each pair in the array are good.
+  
+  Input: nums = [1,2,3]
+  Output: 0
+  
+  Constraints:
+      1 <= nums.length <= 100
+      1 <= nums[i] <= 100
+  */
+  class _1512_NumberOfGoodPairs {
+  public:
+      int numIdenticalPairs(std::vector<int>& nums);
+  };
 }
 #endif
