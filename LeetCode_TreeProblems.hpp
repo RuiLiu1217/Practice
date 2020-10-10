@@ -1801,6 +1801,77 @@ public:
 };
 
 /*
+Given a binary tree, return the sum of values of its deepest leaves.
+
+Input: root = [1,2,3,4,5,null,6,7,null,null,null,null,8]          :        Output: 15
+Constraints:
+
+The number of nodes in the tree is between 1 and 10^4.
+The value of nodes is between 1 and 100.
+*/
+class _1302_DeepestLeavesSum {
+private:
+    int maxDepth = 0;
+    int val = 0;
+public:
+    int deepestLeavesSum(TreeNode* root) {
+        deepestLeavesSum(root, 0);
+        return val;
+    }
+    
+    void deepestLeavesSum(TreeNode* root, int depth) {
+        if(!root) {
+            return;
+        }
+        if(root->left == nullptr && root->right == nullptr) {
+            if(depth > maxDepth) {
+                val = root->val;
+                maxDepth = depth;
+            } else if(depth == maxDepth) {
+                val += root->val;
+            }
+        }
+        deepestLeavesSum(root->left, depth + 1);
+        deepestLeavesSum(root->right, depth + 1);
+    }
+};
+
+/*
+Given a binary tree, return the sum of values of nodes with even-valued grandparent. 
+(A grandparent of a node is the parent of its parent, if it exists.)
+If there are no nodes with an even-valued grandparent, return 0.
+
+Input: root = [6,7,8,2,7,1,3,9,null,1,4,null,null,null,5]
+Output: 18
+Explanation: The red nodes are the nodes with even-value grandparent while the blue 
+nodes are the even-value grandparents. 
+
+Constraints:
+
+The number of nodes in the tree is between 1 and 10^4.
+The value of nodes is between 1 and 100.
+*/
+class _1315_SumOfNodesWithEvenvaluedGrandparent {
+public:
+    int sumEvenGrandparent(TreeNode* root) {
+        res = 0;
+        sumGrand(root, -1, -1);
+    }
+private:
+    int res = 0;
+    void sumGrand(TreeNode* root, int parent, int grand) {
+        if(!root) {return;}
+
+        if(grand % 2 == 0) {
+            res += root->val;
+        }
+        sumGrand(root->left, root->val, parent);
+        sumGrand(root->right, root->val, parent);
+    }
+};
+
+
+/*
 Given two binary trees original and cloned and given a reference to a node 
 target in the original tree.
 The cloned tree is a copy of the original tree. Return a reference to the 
@@ -1861,6 +1932,43 @@ private:
     TreeNode* createBST(const std::vector<int>& arr, int start, int end);
     std::vector<int> inOrderTraverse(TreeNode* root);
 };
+
+/*
+Given a root of an N-ary tree, return a deep copy (clone) of the tree.
+Each node in the n-ary tree contains a val (int) and a list (List[Node]) of its children.
+
+class Node {
+    public int val;
+    public List<Node> children;
+}
+Nary-Tree input serialization is represented in their level order traversal, each group of children is separated by the null value (See examples).
+
+Follow up: Can your solution work for the graph problem?
+
+Input: root = [1,null,3,2,4,null,5,6]
+Output: [1,null,3,2,4,null,5,6]
+
+Input: root = [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]
+Output: [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]
+ 
+Constraints:
+
+The depth of the n-ary tree is less than or equal to 1000.
+The total number of nodes is between [0, 10^4].
+*/
+class _1490_CloneNaryTree {
+public:
+    NaryTreeNode* cloneTree(NaryTreeNode* root) {
+        if(!root) {
+            return nullptr;
+        }
+        NaryTreeNode* newRoot = new NaryTreeNode(root->val, root->children); 
+        for(int i = 0; i < root->children.size(); ++i) {
+            newRoot->children[i] = cloneTree(root->children[i]);
+        }
+        return newRoot;
+    }
+}
 
 }
 #endif

@@ -279,6 +279,7 @@ test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.obj: ../googletes
 test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-port.h
 test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-string.h
 test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-type-util.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.obj: ../HeaderFiles.hpp
 test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.obj: ../LeetCode_MathProblems.hpp
 test/CMakeFiles/PracticeTest.dir/LeetCode_MathProblemTests.cpp.obj: ../test/LeetCode_MathProblemTests.cpp
 

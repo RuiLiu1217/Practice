@@ -1296,6 +1296,37 @@ public:
 };
 
 /*
+You're given strings J representing the types of stones that are jewels, and S representing the stones you have. 
+Each character in S is a type of stone you have.  You want to know how many of the stones you have are also jewels.
+The letters in J are guaranteed distinct, and all characters in J and S are letters. Letters are case sensitive, 
+so "a" is considered a different type of stone from "A".
+
+Input: J = "aA", S = "aAAbbbb"
+Output: 3
+
+Input: J = "z", S = "ZZ"
+Output: 0
+Note:
+
+S and J will consist of letters and have length at most 50.
+The characters in J are distinct.
+*/
+class _0771_JewelsAndStones {
+public:
+    int numJewelsInStones(std::string J, std::string S) {
+        std::vector<bool> isJewel(256, false);
+        std::for_each(begin(J), end(J), [&](char j){
+            isJewel[j] = true;
+        });
+        int tot = 0;
+        std::for_each(begin(S), end(S), [&](char s){
+            tot += isJewel[s];
+        });
+        return tot;
+    }
+};
+
+/*
 In a 2 dimensional array grid, each value grid[i][j] represents the height of a building 
 located there. We are allowed to increase the height of any number of buildings, by any 
 amount (the amounts can be different for different buildings). Height 0 is considered to 
@@ -1662,6 +1693,36 @@ public:
     int movesToMakeZigzag(std::vector<int>& nums);
 };
 
+
+
+/*
+There are n people whose IDs go from 0 to n - 1 and each person belongs exactly 
+to one group. Given the array groupSizes of length n telling the group size each 
+person belongs to, return the groups there are and the people's IDs each group 
+includes.
+You can return any solution in any order and the same applies for IDs. Also, it 
+is guaranteed that there exists at least one solution. 
+
+Input: groupSizes = [3,3,3,3,3,1,3]
+Output: [[5],[0,1,2],[3,4,6]]
+Explanation: 
+Other possible solutions are [[2,1,6],[5],[0,4,3]] and [[5],[0,6,2],[4,3,1]].
+
+Input: groupSizes = [2,1,3,3,3,2]
+Output: [[1],[0,5],[2,3,4]]
+
+Constraints:
+
+groupSizes.length == n
+1 <= n <= 500
+1 <= groupSizes[i] <= n
+*/
+class _1282_GroupThePeopleGivenTheGroupSizeTheyBelongTo {
+public:
+    std::vector<std::vector<int>> groupThePeople(std::vector<int>& groupSizes);
+};
+
+
 /*
 Given an array of integers nums and an integer threshold, we will choose a positive integer divisor 
 and divide all the array by it and sum the result of the division. Find the smallest divisor such 
@@ -1742,6 +1803,127 @@ public:
 };
 
 
+/*
+We are given a list nums of integers representing a list compressed with run-length 
+encoding. Consider each adjacent pair of elements [a, b] = [nums[2*i], nums[2*i+1]] 
+(with i >= 0). For each such pair, there are a elements with value b in the 
+decompressed list.
+Return the decompressed list.
+
+Input: nums = [1,2,3,4]
+Output: [2,4,4,4]
+Explanation: The first pair [1,2] means we have freq = 1 and val = 2 so we generate the array [2].
+The second pair [3,4] means we have freq = 3 and val = 4 so we generate [4,4,4].
+At the end the concatenation [2] + [4,4,4,4] is [2,4,4,4].
+
+Constraints:
+
+2 <= nums.length <= 100
+nums.length % 2 == 0
+1 <= nums[i] <= 100
+*/
+class _1313_DecompressRunLengthEncodedList { 
+public:
+    std::vector<int> decompressRLElist(std::vector<int>& nums);
+};
+
+/*
+Given two arrays of integers nums and index. Your task is to create target array under the following rules:
+
+Initially target array is empty.
+From left to right read nums[i] and index[i], insert at index index[i] the value nums[i] in target array.
+Repeat the previous step until there are no elements to read in nums and index.
+Return the target array.
+
+It is guaranteed that the insertion operations will be valid.
+
+Input: nums = [0,1,2,3,4], index = [0,1,2,2,1]
+Output: [0,4,1,3,2]
+Explanation:
+nums       index     target
+0            0        [0]
+1            1        [0,1]
+2            2        [0,1,2]
+3            2        [0,1,3,2]
+4            1        [0,4,1,3,2]
+Example 2:
+
+Input: nums = [1,2,3,4,0], index = [0,1,2,3,0]
+Output: [0,1,2,3,4]
+Explanation:
+nums       index     target
+1            0        [1]
+2            1        [1,2]
+3            2        [1,2,3]
+4            3        [1,2,3,4]
+0            0        [0,1,2,3,4]
+Example 3:
+
+Input: nums = [1], index = [0]
+Output: [1]
+ 
+
+Constraints:
+
+1 <= nums.length, index.length <= 100
+nums.length == index.length
+0 <= nums[i] <= 100
+0 <= index[i] <= i
+*/
+class _1389_CreateTargetArrayInTheGivenOrder {
+public:
+    std::vector<int> createTargetArray(std::vector<int>& nums, std::vector<int>& index) {
+        std::vector<int> res;
+        for(int i = 0; i < nums.size(); ++i) {
+            res.insert(res.begin() + index[i], nums[i]);
+        }
+        return res;
+    }
+};
+
+/*
+Given the array candies and the integer extraCandies, where candies[i] represents the number of candies that the ith kid has.
+
+For each kid check if there is a way to distribute extraCandies among the kids such that he or she can have the greatest number of candies among them. Notice that multiple kids can have the greatest number of candies.
+
+Input: candies = [2,3,5,1,3], extraCandies = 3
+Output: [true,true,true,false,true] 
+Explanation: 
+Kid 1 has 2 candies and if he or she receives all extra candies (3) will have 5 candies --- the greatest number of candies among the kids. 
+Kid 2 has 3 candies and if he or she receives at least 2 extra candies will have the greatest number of candies among the kids. 
+Kid 3 has 5 candies and this is already the greatest number of candies among the kids. 
+Kid 4 has 1 candy and even if he or she receives all extra candies will only have 4 candies. 
+Kid 5 has 3 candies and if he or she receives at least 2 extra candies will have the greatest number of candies among the kids. 
+Example 2:
+
+Input: candies = [4,2,1,1,2], extraCandies = 1
+Output: [true,false,false,false,false] 
+Explanation: There is only 1 extra candy, therefore only kid 1 will have the greatest number of candies among the kids regardless of who takes the extra candy.
+Example 3:
+
+Input: candies = [12,1,12], extraCandies = 10
+Output: [true,false,true]
+ 
+
+Constraints:
+
+2 <= candies.length <= 100
+1 <= candies[i] <= 100
+1 <= extraCandies <= 50
+*/
+class _1431_KidsWithTheGreatestNumberOfCandies {
+public:
+    std::vector<bool> kidsWithCandies(std::vector<int>& candies, int extraCandies) {
+        int maxC = *std::max_element(begin(candies), end(candies));
+        std::vector<bool> res(candies.size(), false);
+        std::transform(begin(candies), end(candies), begin(res), [&](int v){
+            return v + extraCandies >= maxC;
+        });
+        return res;
+    }
+};
+
+
     /*
     Given an array nums of 0s and 1s and an integer k, return True if all 1's are at least k places away from each other, otherwise return False.
     Input: nums = [1,0,0,0,1,0,0,1], k = 2
@@ -1766,6 +1948,142 @@ public:
     class _1437_CheckIf1sAreAtLeastLengthKPlacesAway {
         public:
             bool kLengthApart(std::vector<int>& nums, int k);
+    };
+
+    /*
+        Given the array nums consisting of 2n elements in the form [x1,x2,...,xn,y1,y2,...,yn].
+        Return the array in the form [x1,y1,x2,y2,...,xn,yn].
+
+        Input: nums = [2,5,1,3,4,7], n = 3
+        Output: [2,3,5,4,1,7] 
+        Explanation: Since x1=2, x2=5, x3=1, y1=3, y2=4, y3=7 then the answer is [2,3,5,4,1,7].
+
+        Input: nums = [1,2,3,4,4,3,2,1], n = 4
+        Output: [1,4,2,3,3,2,4,1]
+
+        Input: nums = [1,1,2,2], n = 2
+        Output: [1,2,1,2]
+
+        Constraints:
+
+        1 <= n <= 500
+        nums.length == 2n
+        1 <= nums[i] <= 10^3
+    */
+    class _1470_ShuffleTheArray {
+    public:
+        std::vector<int> shuffle(std::vector<int>& nums, int n) {
+            int i = 0;
+            int j = i + n;
+            std::vector<int> res;
+            for(; i < n; ++i, ++j) {
+                res.push_back(nums[i]);
+                res.push_back(nums[j]);
+            }
+            return res;
+        }
+    };
+
+    /*
+    Implement the class SubrectangleQueries which receives a rows x cols rectangle as a matrix of integers in the constructor and supports two methods:
+
+    1. updateSubrectangle(int row1, int col1, int row2, int col2, int newValue)
+
+    Updates all values with newValue in the subrectangle whose upper left coordinate is (row1,col1) and bottom right coordinate is (row2,col2).
+    2. getValue(int row, int col)
+
+    Returns the current value of the coordinate (row,col) from the rectangle.
+    
+
+    Example 1:
+
+    Input
+    ["SubrectangleQueries","getValue","updateSubrectangle","getValue","getValue","updateSubrectangle","getValue","getValue"]
+    [[[[1,2,1],[4,3,4],[3,2,1],[1,1,1]]],[0,2],[0,0,3,2,5],[0,2],[3,1],[3,0,3,2,10],[3,1],[0,2]]
+    Output
+    [null,1,null,5,5,null,10,5]
+    Explanation
+    SubrectangleQueries subrectangleQueries = new SubrectangleQueries([[1,2,1],[4,3,4],[3,2,1],[1,1,1]]);  
+    The initial rectangle (4x3) looks like:
+    1 2 1
+    4 3 4
+    3 2 1
+    1 1 1
+    subrectangleQueries.getValue(0, 2); // return 1
+    subrectangleQueries.updateSubrectangle(0, 0, 3, 2, 5);
+    After this update the rectangle looks like:
+    5 5 5
+    5 5 5
+    5 5 5
+    5 5 5 
+    subrectangleQueries.getValue(0, 2); // return 5
+    subrectangleQueries.getValue(3, 1); // return 5
+    subrectangleQueries.updateSubrectangle(3, 0, 3, 2, 10);
+    After this update the rectangle looks like:
+    5   5   5
+    5   5   5
+    5   5   5
+    10  10  10 
+    subrectangleQueries.getValue(3, 1); // return 10
+    subrectangleQueries.getValue(0, 2); // return 5
+    Example 2:
+
+    Input
+    ["SubrectangleQueries","getValue","updateSubrectangle","getValue","getValue","updateSubrectangle","getValue"]
+    [[[[1,1,1],[2,2,2],[3,3,3]]],[0,0],[0,0,2,2,100],[0,0],[2,2],[1,1,2,2,20],[2,2]]
+    Output
+    [null,1,null,100,100,null,20]
+    Explanation
+    SubrectangleQueries subrectangleQueries = new SubrectangleQueries([[1,1,1],[2,2,2],[3,3,3]]);
+    subrectangleQueries.getValue(0, 0); // return 1
+    subrectangleQueries.updateSubrectangle(0, 0, 2, 2, 100);
+    subrectangleQueries.getValue(0, 0); // return 100
+    subrectangleQueries.getValue(2, 2); // return 100
+    subrectangleQueries.updateSubrectangle(1, 1, 2, 2, 20);
+    subrectangleQueries.getValue(2, 2); // return 20
+    
+
+    Constraints:
+
+    There will be at most 500 operations considering both methods: updateSubrectangle and getValue.
+    1 <= rows, cols <= 100
+    rows == rectangle.length
+    cols == rectangle[i].length
+    0 <= row1 <= row2 < rows
+    0 <= col1 <= col2 < cols
+    1 <= newValue, rectangle[i][j] <= 10^9
+    0 <= row < rows
+    0 <= col < cols
+    */
+    class _1476_SubrectangleQueries {
+    private:
+        std::vector<std::vector<int>> rectangleData;
+        std::vector<std::tuple<int, int, int, int, int>> updateQueue;
+        bool isInRange(std::tuple<int, int, int, int, int>& pos, int row, int col) {
+            int rowL = std::get<0>(pos);
+            int colL = std::get<1>(pos);
+            int rowH = std::get<2>(pos);
+            int colH = std::get<3>(pos);
+            return rowL <= row && row <= rowH && colL <= col && col <= colH;
+        }
+    public:
+        _1476_SubrectangleQueries(std::vector<std::vector<int>>& rectangle): rectangleData(rectangle) {
+            
+        }
+        
+        void updateSubrectangle(int row1, int col1, int row2, int col2, int newValue) {
+            updateQueue.push_back({row1, col1, row2, col2, newValue});
+        }
+        
+        int getValue(int row, int col) {
+            int color = rectangleData[row][col];
+            std::for_each(begin(updateQueue), end(updateQueue), [&](auto& q){
+                if(isInRange(q, row, col)) {
+                    color = std::get<4>(q);
+                }
+            });
+            return color;
+        }
     };
 
 /*
@@ -1806,6 +2124,42 @@ public:
     public:
         bool canArrange(std::vector<int>& arr, int k);
     };
+
+    /*
+        Given an array of integers nums. A pair (i,j) is called good if nums[i] == nums[j] and i < j.
+        Return the number of good pairs.
+
+        Input: nums = [1,2,3,1,1,3]
+        Output: 4
+        Explanation: There are 4 good pairs (0,3), (0,4), (3,4), (2,5) 0-indexed.
+
+        Input: nums = [1,1,1,1]
+        Output: 6
+        Explanation: Each pair in the array are good.
+
+        Input: nums = [1,2,3]
+        Output: 0
+
+        Constraints:
+        1 <= nums.length <= 100
+        1 <= nums[i] <= 100
+    */
+    class _1512_NumberOfGoodPairs {
+    public:
+        int numIdenticalPairs(std::vector<int>& nums) {
+            std::unordered_map<int, std::unordered_set<int>> map;
+            for(int i = 0; i < nums.size(); ++i) {
+                map[nums[i]].insert(i);
+            }
+            int res = 0;
+            std::for_each(begin(map), end(map), [&](auto& m){
+                const int setSize = m.second.size();
+                res += setSize * (setSize - 1) / 2;
+            });
+            return res;
+        } 
+    };
+
 
 /*
 Given a rows x cols matrix mat, where mat[i][j] is either 0 or 1, return the number of special positions in mat.

@@ -157,29 +157,7 @@ public:
     std::vector<int> xorQueries(std::vector<int>& arr, std::vector<std::vector<int>>& queries);
 };
  
-/*
-We are given a list nums of integers representing a list compressed with run-length 
-encoding. Consider each adjacent pair of elements [a, b] = [nums[2*i], nums[2*i+1]] 
-(with i >= 0). For each such pair, there are a elements with value b in the 
-decompressed list.
-Return the decompressed list.
 
-Input: nums = [1,2,3,4]
-Output: [2,4,4,4]
-Explanation: The first pair [1,2] means we have freq = 1 and val = 2 so we generate the array [2].
-The second pair [3,4] means we have freq = 3 and val = 4 so we generate [4,4,4].
-At the end the concatenation [2] + [4,4,4,4] is [2,4,4,4].
-
-Constraints:
-
-2 <= nums.length <= 100
-nums.length % 2 == 0
-1 <= nums[i] <= 100
-*/
-class _1313_DecompressRunLengthEncodedList { 
-public:
-    std::vector<int> decompressRLElist(std::vector<int>& nums);
-};
 
 /*
 Given a m * n matrix mat and an integer K, return a matrix answer where each answer[i][j] is the sum of all elements mat[r][c] for i - K <= r <= i + K, j - K <= c <= j + K, and (r, c) is a valid position in the matrix.
@@ -203,25 +181,6 @@ public:
     std::vector<std::vector<int>> matrixBlockSum(std::vector<std::vector<int>>& mat, int K);
 };
 
-/*
-Given a binary tree, return the sum of values of nodes with even-valued grandparent. 
-(A grandparent of a node is the parent of its parent, if it exists.)
-If there are no nodes with an even-valued grandparent, return 0.
-
-Input: root = [6,7,8,2,7,1,3,9,null,1,4,null,null,null,5]
-Output: 18
-Explanation: The red nodes are the nodes with even-value grandparent while the blue 
-nodes are the even-value grandparents. 
-
-Constraints:
-
-The number of nodes in the tree is between 1 and 10^4.
-The value of nodes is between 1 and 100.
-*/
-class _1315_SumOfNodesWithEvenvaluedGrandparent {
-public:
-    int sumEvenGrandparent(TreeNode<int>* root);
-};
 
 /*
 Given an integer n. No-Zero integer is a positive integer 

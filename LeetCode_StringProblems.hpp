@@ -1237,6 +1237,81 @@ public:
 };
 
 /*
+Given a string S, remove the vowels 'a', 'e', 'i', 'o', and 'u' from it, and return the new string.
+
+Input: "leetcodeisacommunityforcoders"
+Output: "ltcdscmmntyfrcdrs"
+
+Input: "aeiou"
+Output: ""
+
+Note:
+
+S consists of lowercase English letters only.
+1 <= S.length <= 1000
+*/
+class _1119_RemoveVowelsFromAString {
+private:
+    bool isVowels(char c) {
+        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || 
+            c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U';
+    }
+public:
+    std::string removeVowels(std::string S) {
+        int slow = 0;
+        std::for_each(begin(S), end(S), [&](char c) {
+            if(!isVowels(c)) {
+                S[slow++] = c;
+            }
+        });        
+        S.resize(slow);
+        return S;
+    }
+};
+
+/*
+There is a special keyboard with all keys in a single row.
+
+Given a string keyboard of length 26 indicating the layout of the keyboard (indexed from 0 to 25), initially your finger is at index 0. To type a character, you have to move your finger to the index of the desired character. The time taken to move your finger from index i to index j is |i - j|.
+
+You want to type a string word. Write a function to calculate how much time it takes to type it with one finger.
+
+ 
+
+Example 1:
+
+Input: keyboard = "abcdefghijklmnopqrstuvwxyz", word = "cba"
+Output: 4
+Explanation: The index moves from 0 to 2 to write 'c' then to 1 to write 'b' then to 0 again to write 'a'.
+Total time = 2 + 1 + 1 = 4. 
+Example 2:
+
+Input: keyboard = "pqrstuvwxyzabcdefghijklmno", word = "leetcode"
+Output: 73
+ 
+
+Constraints:
+
+keyboard.length == 26
+keyboard contains each English lowercase letter exactly once in some order.
+1 <= word.length <= 10^4
+word[i] is an English lowercase letter.
+*/
+class _1165_SingleRowKeyboard {
+public:
+    int calculateTime(std::string keyboard, std::string word) {
+        auto iter = begin(keyboard);
+        int dis = 0;
+        for(int i = 0; i < word.size(); ++i) {
+            auto newIter = std::find(begin(keyboard), end(keyboard), word[i]);
+            dis += std::abs(std::distance(newIter, iter));
+            iter = newIter;
+        }
+        return dis;
+    }
+};
+
+/*
 Split a String in Balanced Strings
 Balanced strings are those who have equal quantity of 'L' and 'R' characters.
 Given a balanced string s split it in the maximum amount of balanced strings.
@@ -1418,6 +1493,51 @@ s consists of 0's and 1's only.
 class _1461_CheckIfAStringContainsAllBinaryCodesofSizeK {
     public:
         bool hasAllCodes(std::string s, int k);
+};
+
+
+/*
+Given a string s and an integer array indices of the same length.
+
+The string s will be shuffled such that the character at the ith position moves to indices[i] in the shuffled string.
+
+Return the shuffled string.
+
+Input: s = "codeleet", indices = [4,5,6,7,0,2,1,3]
+Output: "leetcode"
+Explanation: As shown, "codeleet" becomes "leetcode" after shuffling.
+
+Input: s = "abc", indices = [0,1,2]
+Output: "abc"
+Explanation: After shuffling, each character remains in its position.
+
+Input: s = "aiohn", indices = [3,1,4,2,0]
+Output: "nihao"
+
+Input: s = "aaiougrt", indices = [4,0,2,6,7,3,1,5]
+Output: "arigatou"
+
+Input: s = "art", indices = [1,0,2]
+Output: "rat"
+ 
+
+Constraints:
+
+s.length == indices.length == n
+1 <= n <= 100
+s contains only lower-case English letters.
+0 <= indices[i] < n
+All values of indices are unique (i.e. indices is a permutation of the integers from 0 to n - 1).
+*/
+class _1528_ShuffleString {
+public:
+    std::string restoreString(std::string s, std::vector<int>& indices) {
+        std::string res = s;
+        for(int i = 0; i < indices.size(); ++i) {
+            res[indices[i]] = s[i];
+        }
+        return res;
+    }
 };
 
 }

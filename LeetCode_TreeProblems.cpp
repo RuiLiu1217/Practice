@@ -1,13 +1,5 @@
 #include "LeetCode_TreeProblems.hpp"
-#include <queue>
-#include <algorithm>
-#include <numeric>
-#include <cmath>
-#include <stack>
-#include <sstream>
-#include <map>
-#include <unordered_map>
-#include <functional>
+#include "HeaderFiles.hpp"
 
 // Facebook
 

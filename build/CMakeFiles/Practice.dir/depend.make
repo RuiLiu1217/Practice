@@ -40,6 +40,7 @@ CMakeFiles/Practice.dir/LeetCode_HashProblems.cpp.obj: ../LeetCode_HashProblems.
 CMakeFiles/Practice.dir/LeetCode_LinkListProblems.cpp.obj: ../LeetCode_LinkListProblems.cpp
 CMakeFiles/Practice.dir/LeetCode_LinkListProblems.cpp.obj: ../LeetCode_LinkListProblems.hpp
 
+CMakeFiles/Practice.dir/LeetCode_MathProblems.cpp.obj: ../HeaderFiles.hpp
 CMakeFiles/Practice.dir/LeetCode_MathProblems.cpp.obj: ../LeetCode_MathProblems.cpp
 CMakeFiles/Practice.dir/LeetCode_MathProblems.cpp.obj: ../LeetCode_MathProblems.hpp
 
@@ -53,6 +54,7 @@ CMakeFiles/Practice.dir/LeetCode_StringProblems.cpp.obj: ../HeaderFiles.hpp
 CMakeFiles/Practice.dir/LeetCode_StringProblems.cpp.obj: ../LeetCode_StringProblems.cpp
 CMakeFiles/Practice.dir/LeetCode_StringProblems.cpp.obj: ../LeetCode_StringProblems.hpp
 
+CMakeFiles/Practice.dir/LeetCode_TreeProblems.cpp.obj: ../HeaderFiles.hpp
 CMakeFiles/Practice.dir/LeetCode_TreeProblems.cpp.obj: ../LeetCode_TreeProblems.cpp
 CMakeFiles/Practice.dir/LeetCode_TreeProblems.cpp.obj: ../LeetCode_TreeProblems.hpp
 

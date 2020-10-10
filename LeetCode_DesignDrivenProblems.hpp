@@ -337,5 +337,27 @@ public:
 };
 
 
+class _1603_DesignParkingSystem {
+private:
+    int parking[3];
+    bool updateParkingLot(int carType) {
+        if (parking[carType-1] == 0) {
+            return false;
+        } else {
+            --parking[carType-1];
+            return true;
+        }
+    }
+public:
+    _1603_DesignParkingSystem(int big, int medium, int small) {
+        parking[0] = big;
+        parking[1] = medium;
+        parking[2] = small;
+    }
+    bool addCar(int carType) {
+        return updateParkingLot(carType);
+    }
+};
+
 }
 #endif

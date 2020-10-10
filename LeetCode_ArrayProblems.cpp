@@ -1563,6 +1563,7 @@ std::vector<std::string> LC::_0692_TopKFrequentWords::topKFrequent(std::vector<s
     return res;
 }
 
+
 std::vector<std::vector<int>> LC::_0832_FlippingAnImage::flipAndInvertImage(std::vector<std::vector<int>>& A) {
     for (auto & row : A) std::reverse(row.begin(), row.end());
     for (auto & row : A) {
@@ -1832,6 +1833,28 @@ int LC::_1144_DecreaseElementsToMakeArrayZigzag::movesToMakeZigzag(std::vector<i
     return std::min(count[0], count[1]);
 }
 
+std::vector<std::vector<int>> LC::_1282_GroupThePeopleGivenTheGroupSizeTheyBelongTo::groupThePeople(std::vector<int>& groupSizes) {
+    std::unordered_map<int, std::unordered_set<int>> map; // map from size to index;
+    for(int i = 0; i < groupSizes.size(); ++i) {
+        map[groupSizes[i]].insert(i);
+    }
+    std::vector<std::vector<int>> res;
+    std::vector<int> group;
+    for(auto& g : map) {
+        int groupSize = g.first;
+        int count = 0;
+        for(auto idx : g.second) {
+            group.push_back(idx);
+            ++count;
+            if(count == groupSize) {
+                res.push_back(group);
+                group.clear();
+                count = 0;
+            }
+        }
+    }
+    return res;    
+}
 
 int LC::_1283_FindTheSmallestDivisorGivenAThreshold::smallestDivisor(std::vector<int>& nums, int threshold) {
      int sum = *std::max_element(nums.begin(), nums.end());        
@@ -1881,6 +1904,20 @@ std::vector<int> LC::_1299_ReplaceElementsWithGreatestElementOnRightSide::replac
     }
     return res;
 }
+
+std::vector<int> LC::_1313_DecompressRunLengthEncodedList::decompressRLElist(std::vector<int>& nums) {
+	std::vector<int> res;
+	res.reserve(std::accumulate(nums.begin(), nums.end(), 0));
+	for(int i = 0; i < nums.size(); i += 2) {
+		int count = nums[i];
+		int v = nums[i+1];
+		for(int j = 0; j < count; ++j) {
+			res.push_back(v);
+		}
+	}
+	return res;
+}
+
 
 bool LC::_1437_CheckIf1sAreAtLeastLengthKPlacesAway::kLengthApart(std::vector<int>& nums, int k) {
     int curIdx = 0;

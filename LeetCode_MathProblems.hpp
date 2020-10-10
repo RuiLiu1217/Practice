@@ -1,7 +1,6 @@
 #ifndef LEETCODE_MATHPROBLEMS_HPP
 #define LEETCODE_MATHPROBLEMS_HPP
-#include <string>
-#include <vector>
+#include "HeaderFiles.hpp"
 namespace LC {
 /*
 Tag: stack, numeric
@@ -522,7 +521,83 @@ public:
     bool checkStraightLine(std::vector<std::vector<int>>& coordinates);
 };
 
+/*
+Given an integer number n, return the difference between the product of its digits and the sum of its digits.
 
+Input: n = 234
+Output: 15 
+Explanation: 
+Product of digits = 2 * 3 * 4 = 24 
+Sum of digits = 2 + 3 + 4 = 9 
+Result = 24 - 9 = 15
+Example 2:
+
+Input: n = 4421
+Output: 21
+Explanation: 
+Product of digits = 4 * 4 * 2 * 1 = 32 
+Sum of digits = 4 + 4 + 2 + 1 = 11 
+Result = 32 - 11 = 21
+Constraints:
+
+1 <= n <= 10^5
+*/
+class _1281_SubstractTheProductAndSumOfDigitsOfAnInteger {
+public:
+    int subtractProductAndSum(int n) {
+        int sum = 0;
+        int prd = 1;
+        while(n) {
+            int d = n % 10;
+            n /= 10;
+            sum += d;
+            prd *= d;
+        }
+        return prd - sum;
+    }
+};
+
+/*
+Given a non-negative integer num, return the number of steps to reduce it to zero. 
+If the current number is even, you have to divide it by 2, otherwise, you have to subtract 1 from it.
+
+Input: num = 14
+Output: 6
+Explanation: 
+Step 1) 14 is even; divide by 2 and obtain 7. 
+Step 2) 7 is odd; subtract 1 and obtain 6.
+Step 3) 6 is even; divide by 2 and obtain 3. 
+Step 4) 3 is odd; subtract 1 and obtain 2. 
+Step 5) 2 is even; divide by 2 and obtain 1. 
+Step 6) 1 is odd; subtract 1 and obtain 0.
+Example 2:
+
+Input: num = 8
+Output: 4
+Explanation: 
+Step 1) 8 is even; divide by 2 and obtain 4. 
+Step 2) 4 is even; divide by 2 and obtain 2. 
+Step 3) 2 is even; divide by 2 and obtain 1. 
+Step 4) 1 is odd; subtract 1 and obtain 0.
+Example 3:
+
+Input: num = 123
+Output: 12
+
+Constraints:
+0 <= num <= 10^6
+*/
+class _1342_NumberOfStepsToReduceANumberToZero {
+public:
+    int numberOfSteps (int num) {
+        if(num == 0) { return 0; }
+        if(num % 2) {
+            return numberOfSteps(num-1) + 1;
+        } else {
+            return numberOfSteps(num / 2) + 1;
+        }
+    }
+};
 
 /*
 Given an integer n, return a list of all simplified fractions between 0 and 1 (exclusive) 
@@ -549,6 +624,71 @@ Constraints:
 class _1447_SimplifiedFractions {
 public:
     std::vector<std::string> simplifiedFractions(int n);
+};
+
+
+/*
+Given two sparse vectors, compute their dot product.
+
+Implement class SparseVector:
+
+SparseVector(nums) Initializes the object with the vector nums
+dotProduct(vec) Compute the dot product between the instance of SparseVector and vec
+A sparse vector is a vector that has mostly zero values, you should store the sparse vector efficiently and compute the dot product between two SparseVector.
+
+Follow up: What if only one of the vectors is sparse?
+
+ 
+
+Example 1:
+
+Input: nums1 = [1,0,0,2,3], nums2 = [0,3,0,4,0]
+Output: 8
+Explanation: v1 = SparseVector(nums1) , v2 = SparseVector(nums2)
+v1.dotProduct(v2) = 1*0 + 0*3 + 0*0 + 2*4 + 3*0 = 8
+Example 2:
+
+Input: nums1 = [0,1,0,0,0], nums2 = [0,0,0,0,2]
+Output: 0
+Explanation: v1 = SparseVector(nums1) , v2 = SparseVector(nums2)
+v1.dotProduct(v2) = 0*0 + 1*0 + 0*0 + 0*0 + 0*2 = 0
+Example 3:
+
+Input: nums1 = [0,1,0,0,2,0,0], nums2 = [1,0,0,0,3,0,4]
+Output: 6
+ 
+
+Constraints:
+
+n == nums1.length == nums2.length
+1 <= n <= 10^5
+0 <= nums1[i], nums2[i] <= 100
+*/
+class _1570_DotProductOfTwoSparseVectors {
+private:
+    std::unordered_map<int, int> nonZeroValues;
+public:
+    const std::unordered_map<int, int> getValues() const {
+        return nonZeroValues;
+    }
+    _1570_DotProductOfTwoSparseVectors(std::vector<int> &nums) {
+        for(int i = 0; i < nums.size(); ++i) {
+            if(nums[i] != 0) {
+                nonZeroValues[i] = nums[i];
+            }            
+        }        
+    }
+    
+    // Return the dotProduct of two sparse vectors
+    int dotProduct(_1570_DotProductOfTwoSparseVectors& vec) {
+        int res = 0;
+        for(const auto& v : vec.getValues()) {
+            if(nonZeroValues.find(v.first) != nonZeroValues.end()) {
+                res += nonZeroValues[v.first] * v.second;
+            }
+        }
+        return res;
+    }
 };
 
 }
