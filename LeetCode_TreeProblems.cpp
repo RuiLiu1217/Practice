@@ -1447,3 +1447,66 @@ LC::TreeNode* LC::_0897_IncreasingOrderSearchTree::increasingBST(TreeNode* root)
     }
     return head->right;
 }
+
+
+
+LC::TreeNode* LC::_1379_FindACorrespondingNodeOfABinaryTreeInACloneOfThatTree::getTargetCopy(TreeNode* original, TreeNode* cloned, TreeNode* target) {
+    TreeNode* p1 = original;
+    TreeNode* p2 = cloned;
+    std::stack<TreeNode*> st1;
+    std::stack<TreeNode*> st2;
+    while(p1 != nullptr || !st1.empty()) {
+        if(p1 != nullptr) {
+            if(p1->val == target->val) {
+                return p2;
+            }
+            st1.push(p1);
+            st2.push(p2);
+            p1 = p1->left;
+            p2 = p2->left;
+        } else {
+            TreeNode* q1 = st1.top();
+            st1.pop();
+            TreeNode* q2 = st2.top();
+            st2.pop();
+            p1 = q1->right;
+            p2 = q2->right;
+        }
+    }
+    return nullptr;
+}
+
+
+LC::TreeNode* LC::_1382_BalanceABinarySearchTree::balanceBST(TreeNode* root) {
+    const auto arr = inOrderTraverse(root);
+    return createBST(arr, 0, arr.size());
+}
+
+LC::TreeNode* LC::_1382_BalanceABinarySearchTree::createBST(const std::vector<int>& arr, int start, int end) {
+    if(start >= end) {
+        return nullptr;
+    }
+    int mid = start + (end - start) / 2;
+    TreeNode* root = new TreeNode(arr[mid]);
+    root->left = createBST(arr, start, mid);
+    root->right = createBST(arr, mid+1, end);
+    return root;
+}
+
+std::vector<int> LC::_1382_BalanceABinarySearchTree::inOrderTraverse(TreeNode* root) {
+    TreeNode* p = root;
+    std::vector<int> res;
+    std::stack<TreeNode*> st;
+    while(p != nullptr || !st.empty()) {
+        if(p != nullptr) {
+            st.push(p);
+            p = p->left;
+        } else {
+            TreeNode* q = st.top();
+            st.pop();
+            res.push_back(q->val);
+            p = q->right;
+        }
+    }
+    return res;
+}

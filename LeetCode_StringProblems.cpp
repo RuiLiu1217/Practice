@@ -1615,6 +1615,54 @@ int LC::_1221_SplitAStringInBalancedStrings::balancedStringSplit(std::string s) 
     return cnt;
 }
 
+std::string LC::_1370_IncreasingDecreasingString::sortString(std::string s) {
+    std::vector<int> charMap(26, 0);
+    int totChars = s.size();
+    for(char c : s) {
+        ++charMap[c - 'a'];
+    }
+    std::string res;
+    int idx = 0;
+    int incIdx = 1;
+    while(totChars) {
+        if(charMap[idx] > 0) {
+            res += idx + 'a';
+            --charMap[idx];
+            --totChars;
+        }
+        idx += incIdx;
+        if(idx == 26) {
+            idx = 25;
+            incIdx = -incIdx;
+        } else if (idx == -1) {
+            idx = 0;
+            incIdx = -incIdx;
+        }
+    }
+    return res;
+}
+
+int LC::_1422_MaximumScoreAfterSplittingAString::maxScore(std::string s) {
+    int left = (s[0] == '0');
+    int right = 0;
+
+    for(int i = 1; i <s.size(); ++i) {
+        if(s[i] == '1') {
+            ++right;
+        }
+    }
+    int max = left + right;
+    for(int i = 1; i < s.size() - 1; ++i) {
+        if(s[i] == '0') {
+            ++left;
+        } else {
+            --right;
+        }
+        max = std::max(max, left + right);
+    }
+    return max;
+}
+
 bool LC::_1461_CheckIfAStringContainsAllBinaryCodesofSizeK::hasAllCodes(std::string s, int k) {
     long long binaries = std::pow(2, k);
     if(s.size() - k < binaries - 1) {

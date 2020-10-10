@@ -1267,6 +1267,89 @@ public:
     int balancedStringSplit(std::string s);
 };
 
+
+/*
+Given a string s. You should re-order the string using the following algorithm:
+
+Pick the smallest character from s and append it to the result.
+Pick the smallest character from s which is greater than the last appended character to the result and append it.
+Repeat step 2 until you cannot pick more characters.
+Pick the largest character from s and append it to the result.
+Pick the largest character from s which is smaller than the last appended character to the result and append it.
+Repeat step 5 until you cannot pick more characters.
+Repeat the steps from 1 to 6 until you pick all characters from s.
+In each step, If the smallest or the largest character appears more than once you can choose any occurrence and append it to the result.
+
+Return the result string after sorting s with this algorithm.
+
+Input: s = "aaaabbbbcccc"
+Output: "abccbaabccba"
+Explanation: After steps 1, 2 and 3 of the first iteration, result = "abc"
+After steps 4, 5 and 6 of the first iteration, result = "abccba"
+First iteration is done. Now s = "aabbcc" and we go back to step 1
+After steps 1, 2 and 3 of the second iteration, result = "abccbaabc"
+After steps 4, 5 and 6 of the second iteration, result = "abccbaabccba"
+Example 2:
+
+Input: s = "rat"
+Output: "art"
+Explanation: The word "rat" becomes "art" after re-ordering it with the mentioned algorithm.
+
+Input: s = "leetcode"
+Output: "cdelotee"
+
+Input: s = "ggggggg"
+Output: "ggggggg"
+
+Input: s = "spo"
+Output: "ops"
+ 
+
+Constraints:
+
+1 <= s.length <= 500
+s contains only lower-case English letters.
+*/
+class _1370_IncreasingDecreasingString {
+public:
+    std::string sortString(std::string s);
+};
+
+
+    /*
+    Given a string s of zeros and ones, return the maximum score after splitting the string into two 
+    non-empty substrings (i.e. left substring and right substring).
+    The score after splitting a string is the number of zeros in the left substring plus the number 
+    of ones in the right substring.
+    
+    Input: s = "011101"
+    Output: 5 
+    Explanation: 
+    
+    All possible ways of splitting s into two non-empty substrings are:
+    left = "0" and right = "11101", score = 1 + 4 = 5 
+    left = "01" and right = "1101", score = 1 + 3 = 4 
+    left = "011" and right = "101", score = 1 + 2 = 3 
+    left = "0111" and right = "01", score = 1 + 1 = 2 
+    left = "01110" and right = "1", score = 2 + 1 = 3
+    
+    Example 2:
+    Input: s = "00111"
+    Output: 5
+    Explanation: When left = "00" and right = "111", we get the maximum score = 2 + 3 = 5
+    
+    Input: s = "1111"
+    Output: 3
+    
+    Constraints:
+        2 <= s.length <= 500
+        The string s consists of characters '0' and '1' only.
+    */
+    class _1422_MaximumScoreAfterSplittingAString {
+        public:
+            int maxScore(std::string s);
+    };
+
 /*
     Given a sentence text (A sentence is a string of space-separated words) in the following format:
 

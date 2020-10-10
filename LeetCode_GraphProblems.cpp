@@ -317,6 +317,22 @@ std::vector<std::vector<int>> LC::_0797_AllPathsFromSourceToTarget::allPathsSour
     return res;
 }
 
+std::string LC::_1436_DestinationCity::destCity(std::vector<std::vector<std::string>>& paths) {
+    std::unordered_map<std::string, int> outDegree;
+    for(auto& p : paths) {
+        ++outDegree[p[0]];
+        if(outDegree.find(p[1]) == outDegree.end()) {
+            outDegree[p[1]] = 0;
+        }            
+    }
+    for(auto& d : outDegree) { //! Find the outdegree == 0 one
+        if(d.second == 0) {
+            return d.first;
+        }
+    }
+    return "";
+}
+
 std::vector<int> LC::_1557_MinimumNumberOfVerticesToReachAllNodes::findSmallestSetOfVertices(int n, std::vector<std::vector<int>>& edges) {
     std::vector<int> inDegrees(n, 0);
     for(auto& edge : edges) {

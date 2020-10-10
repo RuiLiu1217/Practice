@@ -1882,6 +1882,25 @@ std::vector<int> LC::_1299_ReplaceElementsWithGreatestElementOnRightSide::replac
     return res;
 }
 
+bool LC::_1437_CheckIf1sAreAtLeastLengthKPlacesAway::kLengthApart(std::vector<int>& nums, int k) {
+    int curIdx = 0;
+    int distance = k + 1; // how to start at the beginning is the key of this code
+    while(curIdx < nums.size()) {
+        if(nums[curIdx] == 1) {
+            if(distance < k) {
+                return false;
+            } else {
+                distance = 0;
+            }
+        } else {
+            ++distance;
+        }
+        ++curIdx;
+    }
+    return true;
+}
+
+
 bool LC::_1497_CheckIfArraypairsAreDivisibleByK::canArrange(std::vector<int>& arr, int k) {
     std::vector<int> mods(k, 0);
     for(int x : arr) {
