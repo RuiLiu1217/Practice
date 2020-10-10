@@ -1856,7 +1856,9 @@ public:
     int sumEvenGrandparent(TreeNode* root) {
         res = 0;
         sumGrand(root, -1, -1);
+        return res;
     }
+
 private:
     int res = 0;
     void sumGrand(TreeNode* root, int parent, int grand) {
@@ -1962,13 +1964,13 @@ public:
         if(!root) {
             return nullptr;
         }
-        NaryTreeNode* newRoot = new NaryTreeNode(root->val, root->children); 
+        NaryTreeNode* newRoot = new NaryTreeNode(root->data, root->children); 
         for(int i = 0; i < root->children.size(); ++i) {
             newRoot->children[i] = cloneTree(root->children[i]);
         }
         return newRoot;
     }
-}
+};
 
 }
 #endif
