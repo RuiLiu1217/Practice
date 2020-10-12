@@ -491,3 +491,23 @@ bool LC::_1232_CheckIfItIsAStraightLine::checkStraightLine(std::vector<std::vect
     }
     return true;
 }
+
+
+int LC::_1323_Maximum69Number::maximum69Number(int num) {
+    std::string a = std::to_string(num);
+    size_t i = a.find('6');
+    if(i < a.size()) {
+        a[i] = '9';
+    }
+    return std::stoi(a);
+}
+
+double LC::_1344_AngleBetweenHandsOfAClock::angleClock(int hour, int minutes) {
+    double hpos = hour * 30 + 0.5 * minutes;
+    double mpos = 6.0 * minutes;
+    double posDiff = std::abs(mpos - hpos);
+    if (posDiff > 180.0) {
+        posDiff = 360.0 - posDiff;
+    }
+    return posDiff;
+}

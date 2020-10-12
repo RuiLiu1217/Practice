@@ -627,6 +627,30 @@ int LC::_0931_MinimumFallingPathSum::minFallingPathSum(std::vector<std::vector<i
 }
 
 
+
+int LC::_1277_CountSquareSubmatricesWithAllOnes::countSquares(std::vector<std::vector<int>>& matrix) {
+    const int M = matrix.size();
+    if(M == 0) { return 0; }
+    const int N = matrix[0].size();
+    if(N == 0) { return 0; }
+
+    std::vector<std::vector<int>> DP = matrix; 
+    for(int i = 1; i < M ; ++i) {
+        for(int j = 1; j < N; ++j) {
+            if(matrix[i][j] == 1) {
+                DP[i][j] = std::min(std::min(DP[i-1][j], DP[i][j-1]), DP[i-1][j-1]) + 1;
+            }
+        }
+    }
+
+    
+    return std::accumulate(begin(DP),end(DP), 0, [] (int a, std::vector<int> b) {
+        return std::accumulate(begin(b), end(b), a);
+    });
+};
+
+
+
 // 完全抄答案的，Huahua的解法
 // NOTE: This is a NP problem, any polynomial-time algorithm is incorrect otherwise P = NP.
 // dp[m] := whether state m is reachable, where m is the bitmask of courses studied.

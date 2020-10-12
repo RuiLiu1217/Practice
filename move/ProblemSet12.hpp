@@ -359,45 +359,6 @@ public:
 
 
 /*
-1254 Number of closed islands
-     Given a 2D grid consists of 0s (land) and 1s (water).  An island is a maximal 4-directionally 
-connected group of 0s and a closed island is an island totally (all left, top, right, bottom) 
-surrounded by 1s.
-
-Return the number of closed islands.
-
-Input: grid = [[1,1,1,1,1,1,1,0],[1,0,0,0,0,1,1,0],[1,0,1,0,1,1,1,0],[1,0,0,0,0,1,0,1],[1,1,1,1,1,1,1,0]]
-Output: 2
-Explanation: 
-Islands in gray are closed because they are completely surrounded by water (group of 1s).
-
-Input: grid = [[0,0,1,0,0],[0,1,0,1,0],[0,1,1,1,0]]
-Output: 1
-
-Input: grid = [[1,1,1,1,1,1,1],
-               [1,0,0,0,0,0,1],
-               [1,0,1,1,1,0,1],
-               [1,0,1,0,1,0,1],
-               [1,0,1,1,1,0,1],
-               [1,0,0,0,0,0,1],
-               [1,1,1,1,1,1,1]]
-Output: 2
-
-Constraints:
-
-    1 <= grid.length, grid[0].length <= 100
-    0 <= grid[i][j] <=1
-*/
-class _1254_NumberOfClosedIslands {
-    int M;
-    int N;
-    int count;
-  public:
-    int closedIsland(std::vector<std::vector<int>>& grid);
-    void DFS(std::vector<std::vector<int>>& grid, int I, int J, bool& touchEdge);
-};
-
-/*
 Given a list of words, list of  single letters (might be repeating) and score of every 
 character. Return the maximum score of any valid set of words formed by using the given 
 letters (words[i] cannot be used two or more times).
@@ -603,31 +564,6 @@ public:
 
 
 /*
-You are given a map of a server center, represented as a m * n integer matrix grid, 
-where 1 means that on that cell there is a server and 0 means that it is no server. 
-Two servers are said to communicate if they are on the same row or on the same column.
-Return the number of servers that communicate with any other server.
-
-Input: grid = [[1,0],[0,1]]
-Output: 0
-Explanation: No servers can communicate with others.
-
-Input: grid = [[1,0],[1,1]]
-Output: 3
-Explanation: All three servers can communicate with at least one other server.
-
-Input: grid = [[1,1,0,0],[0,0,1,0],[0,0,1,0],[0,0,0,1]]
-Output: 4
-Explanation: The two servers in the first row can communicate with each other. 
-The two servers in the third column can communicate with each other. The server 
-at right bottom corner can't communicate with any other server.
-*/
-class _1267_CountServersThatCommunicate {
-public:
-    int countServers(std::vector<std::vector<int>>& grid);
-};
-
-/*
 You have a pointer at index 0 in an array of size arrLen. 
 At each step, you can move 1 position to the left, 1 position 
 to the right in the array or stay in the same place  
@@ -665,34 +601,6 @@ private:
     void updateDP(std::vector<long long>& cur, std::vector<long long>& nex, const int N);
 public:
     int numWays(int steps, int arrLen);
-};
-
-/*
-A decimal number can be converted to its Hexspeak representation by first converting it to 
-an uppercase hexadecimal string, then replacing all occurrences of the digit 0 with the letter 
-O, and the digit 1 with the letter I.  Such a representation is valid if and only if it 
-consists only of the letters in the set {"A", "B", "C", "D", "E", "F", "I", "O"}.
-
-Given a string num representing a decimal integer N, return the Hexspeak representation of N 
-if it is valid, otherwise return "ERROR".
-
-Input: num = "257"
-Output: "IOI"
-Explanation:  257 is 101 in hexadecimal.
-
-Input: num = "3"
-Output: "ERROR"
- 
-
-Constraints:
-
-1 <= N <= 10^12
-There are no leading zeros in the given string.
-All answers must be in uppercase letters.
-*/
-class _1271_Hexspeak {
-public:
-    std::string toHexspeak(std::string num);
 };
 
 /*
@@ -755,42 +663,6 @@ public:
     std::vector<int> numOfBurgers(int tomatoSlices, int cheeseSlices);
 };
 
-/*
-Given a m * n matrix of ones and zeros, return how many square submatrices have all ones.
-
-Input: matrix =
-[
-  [0,1,1,1],
-  [1,1,1,1],
-  [0,1,1,1]
-]
-Output: 15
-There are 10 squares of side 1.
-There are 4 squares of side 2.
-There is  1 square of side 3.
-Total number of squares = 10 + 4 + 1 = 15.
-
-Input: matrix = 
-[
-  [1,0,1],
-  [1,1,0],
-  [1,1,0]
-]
-Output: 7
-Explanation: 
-There are 6 squares of side 1.  
-There is 1 square of side 2. 
-Total number of squares = 6 + 1 = 7.
-
-Constraints:
-1 <= arr.length <= 300
-1 <= arr[0].length <= 300
-0 <= arr[i][j] <= 1
-*/
-class _1277_CountSquareSubmatricesWithAllOnes {
-public:
-    int countSquares(std::vector<std::vector<int>>& matrix);
-};
 
 
 /*
@@ -889,42 +761,6 @@ Constraints:
 class _1287_ElementAppearingMoreThan25PercentInSortedArray {
 public:
     int findSpecialInteger(std::vector<int>& arr);
-};
-
-/*
-Given head which is a reference node to a singly-linked list. The value of each node in the linked list is either 0 or 1. The linked list holds the binary representation of a number.
-Return the decimal value of the number in the linked list.
-
-Input: head = [1,0,1]
-Output: 5
-Explanation: (101) in base 2 = (5) in base 10
-Example 2:
-
-Input: head = [0]
-Output: 0
-Example 3:
-
-Input: head = [1]
-Output: 1
-Example 4:
-
-Input: head = [1,0,0,1,0,0,1,1,1,0,0,0,0,0,0]
-Output: 18880
-Example 5:
-
-Input: head = [0,0]
-Output: 0
- 
-
-Constraints:
-
-The Linked List is not empty.
-Number of nodes will not exceed 30.
-Each node's value is either 0 or 1.
-*/
-class _1290_ConvertBinaryNumberInALinkedListToInteger {
-public:
-    int getDecimalValue(ListNode<int>* head);
 };
 
 

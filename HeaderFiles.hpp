@@ -21,7 +21,8 @@
 #include <cctype>
 #include <iostream>
 #include <iterator>
+#include <bitset>
 
-
+#include <cstdint>
 
 #endif

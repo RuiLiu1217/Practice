@@ -1,11 +1,6 @@
 #ifndef LEETCODE_STRINGPROBLEMS_HPP
 #define LEETCODE_STRINGPROBLEMS_HPP
-#include <vector>
-#include <stack>
-#include <string>
-#include <unordered_set>
-#include <unordered_map>
-#include <algorithm>
+#include "HeaderFiles.hpp"
 namespace LC {
 /*
     Tag: string, palindromic
@@ -1342,6 +1337,110 @@ public:
     int balancedStringSplit(std::string s);
 };
 
+/*
+Given a string s formed by digits ('0' - '9') and '#' . We want to map s to English 
+lowercase characters as follows:
+
+Characters ('a' to 'i') are represented by ('1' to '9') respectively.
+Characters ('j' to 'z') are represented by ('10#' to '26#') respectively. 
+Return the string formed after mapping.
+It's guaranteed that a unique mapping will always exist.
+
+Input: s = "10#11#12"
+Output: "jkab"
+Explanation: "j" -> "10#" , "k" -> "11#" , "a" -> "1" , "b" -> "2".
+
+Input: s = "1326#"
+Output: "acz"
+
+Input: s = "25#"
+Output: "y"
+
+Input: s = "12345678910#11#12#13#14#15#16#17#18#19#20#21#22#23#24#25#26#"
+Output: "abcdefghijklmnopqrstuvwxyz"
+
+Constraints:
+1 <= s.length <= 1000
+s[i] only contains digits letters ('0'-'9') and '#' letter.
+s will be valid string such that mapping is always possible.
+*/
+class _1309_DecryptStringFromAlphabetToIngeterMapping {
+public:
+    std::string freqAlphabets(std::string s) {
+        std::string res;
+        for(int i = 0; i < s.size(); ++i) {
+            if(i < s.size() - 2 && s[i+2] == '#') {
+                res += 'j' + (s[i] - '1') * 10 + (s[i+1] - '0');
+                i += 2;
+                continue;
+            } else {
+                res += 'a' + (s[i] - '1');
+            }
+        }
+        return res;
+    }
+};
+
+
+/*
+Given a string s. Return all the words vertically in the same order in which they appear in s.
+Words are returned as a list of strings, complete with spaces when is necessary. (Trailing spaces are not allowed).
+Each word would be put on only one column and that in one column there will be only one word.
+
+Input: s = "HOW ARE YOU"
+Output: ["HAY","ORO","WEU"]
+Explanation: Each word is printed vertically. 
+ "HAY"
+ "ORO"
+ "WEU"
+
+Input: s = "TO BE OR NOT TO BE"
+Output: ["TBONTB","OEROOE","   T"]
+Explanation: Trailing spaces is not allowed. 
+"TBONTB"
+"OEROOE"
+"   T"
+
+Input: s = "CONTEST IS COMING"
+Output: ["CIC","OSO","N M","T I","E N","S G","T"]
+
+Constraints:
+
+1 <= s.length <= 200
+s contains only upper case English letters.
+It's guaranteed that there is only one space between 2 words.
+*/
+class _1324_PrintWordsVertically {
+public:
+    std::vector<std::string> printVertically(std::string s) {
+        std::istringstream iss(s);
+        std::string token;
+        std::vector<std::string> tokens;
+        int maxLen = 0;
+        while(getline(iss, token, ' ')) {
+            if(!token.empty()) {
+                if(token.size() > maxLen) {
+                    maxLen = token.size();
+                }
+                tokens.push_back(token);
+            }            
+        }
+        std::vector<std::string> res(maxLen, std::string(tokens.size(), ' '));
+        for(int i = 0; i < tokens.size(); ++i) {
+            for(int j = 0; j < tokens[i].size(); ++j) {
+                res[j][i] = tokens[i][j];
+            }
+        }
+        for(auto& r : res) {
+            int j = r.size()-1;
+            while(j >= 0 && r[j] == ' ') {
+                --j;
+            }
+            r = r.substr(0, j+1);
+        }
+        return res;
+    }
+};
 
 /*
 Given a string s. You should re-order the string using the following algorithm:

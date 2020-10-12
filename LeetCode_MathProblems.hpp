@@ -522,6 +522,47 @@ public:
 };
 
 /*
+On a plane there are n points with integer coordinates points[i] = [xi, yi]. Your task is to find the minimum time in seconds to visit all points.
+
+You can move according to the next rules:
+
+In one second always you can either move vertically, horizontally by one unit or diagonally (it means to move one unit vertically and one unit horizontally in one second).
+You have to visit the points in the same order as they appear in the array.
+Input: points = [[1,1],[3,4],[-1,0]]
+Output: 7
+Explanation: One optimal path is [1,1] -> [2,2] -> [3,3] -> [3,4] -> [2,3] -> [1,2] -> [0,1] -> [-1,0]   
+Time from [1,1] to [3,4] = 3 seconds 
+Time from [3,4] to [-1,0] = 4 seconds
+Total time = 7 seconds
+Example 2:
+
+Input: points = [[3,2],[-2,2]]
+Output: 5
+ 
+
+Constraints:
+
+points.length == n
+1 <= n <= 100
+points[i].length == 2
+-1000 <= points[i][0], points[i][1] <= 1000
+*/
+class _1266_MinimumTimeVisitingAllPoints {
+public:
+    int minTimeToVisitAllPoints(std::vector<std::vector<int>>& points) {
+        int res = 0;
+        std::function<int(std::vector<int>&, std::vector<int>&)> minTimeBetweenTwoPoints = [](std::vector<int>& Pa, std::vector<int>& Pb){
+            return std::max(std::abs(Pa[0] - Pb[0]), std::abs(Pa[1] - Pb[1]));
+        };
+        for(int i = 1; i < points.size(); ++i) {
+            res += minTimeBetweenTwoPoints(points[i], points[i-1]);
+        }
+        return res;
+    }
+};
+
+
+/*
 Given an integer number n, return the difference between the product of its digits and the sum of its digits.
 
 Input: n = 234
@@ -555,6 +596,71 @@ public:
         }
         return prd - sum;
     }
+};
+
+
+/*
+Given an integer n, return any array containing n unique integers such that they add up to 0.
+
+Input: n = 5
+Output: [-7,-1,1,3,4]
+Explanation: These arrays also are accepted [-5,-1,1,2,3] , [-3,-1,2,-2,4].
+
+Input: n = 3
+Output: [-1,0,1]
+
+Input: n = 1
+Output: [0]
+
+Constraints:
+1 <= n <= 1000
+*/
+class _1304_FindNUniqueIntegersSumupToZero {
+public:
+    std::vector<int> sumZero(int n) {
+        if(n == 1) {
+            return {0};
+        } else if(n == 2) {
+            return {-1, 1};
+        } else {
+            std::vector<int> cur = sumZero(n - 2);
+            cur.push_back(n);
+            cur.push_back(-n);
+            return cur;
+        }
+    }
+};
+
+
+/*
+Given a positive integer num consisting only of digits 6 and 9.
+Return the maximum number you can get by changing at most one digit (6 becomes 9, and 9 becomes 6).
+
+Input: num = 9669
+Output: 9969
+Explanation: 
+Changing the first digit results in 6669.
+Changing the second digit results in 9969.
+Changing the third digit results in 9699.
+Changing the fourth digit results in 9666. 
+The maximum number is 9969.
+
+Input: num = 9996
+Output: 9999
+Explanation: Changing the last digit 6 to 9 results in the maximum number.
+
+Input: num = 9999
+Output: 9999
+Explanation: It is better not to apply any change. 
+
+Constraints:
+
+1 <= num <= 10^4
+num's digits are 6 or 9.
+*/
+class _1323_Maximum69Number {
+public:
+    int maximum69Number(int num);
 };
 
 /*
@@ -597,6 +703,35 @@ public:
             return numberOfSteps(num / 2) + 1;
         }
     }
+};
+
+/*
+Given two numbers, hour and minutes. Return the smaller angle 
+(in sexagesimal units) formed between the hour and the minute 
+hand.
+Input: hour = 12, minutes = 30
+Output: 165
+
+Input: hour = 3, minutes = 30
+Output: 75
+
+Input: hour = 3, minutes = 15
+Output: 7.5
+
+Input: hour = 4, minutes = 50
+Output: 155
+
+Input: hour = 12, minutes = 0
+Output: 0
+
+Constraints:
+1 <= hour <= 12
+0 <= minutes <= 59
+Answers within 10^-5 of the actual value will be accepted as correct.
+*/
+class _1344_AngleBetweenHandsOfAClock {
+public:
+    double angleClock(int hour, int minute);
 };
 
 /*

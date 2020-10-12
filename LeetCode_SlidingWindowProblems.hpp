@@ -162,8 +162,41 @@ public:
     int numSubarrayProductLessThanK(std::vector<int>& nums, int K);
 };
 
+/*
+Given a string s consisting only of characters a, b and c.
+Return the number of substrings containing at least one 
+occurrence of all these characters a, b and c.
+
+Input: s = "abcabc"
+Output: 10
+Explanation: The substrings containing at least one 
+occurrence of the characters a, b and c are "abc", "abca", 
+"abcab", "abcabc", "bca", "bcab", "bcabc", "cab", "cabc" 
+and "abc" (again). 
+
+Input: s = "aaacb"
+Output: 3
+Explanation: The substrings containing at least one 
+occurrence of the characters a, b and c are "aaacb", "aacb" and "acb". 
+
+Input: s = "abc"
+Output: 1
+
+Constraints:
+
+3 <= s.length <= 5 x 10^4
+s only consists of a, b or c characters.
+*/
+class _1358_NumberOfSubstringsContainingAllThreeCharacters {
+private:
+    int count[3];
+    bool contains3() {
+        return count[0] >= 1 && count[1] >= 1 && count[2] >= 1;
+    }
+public:
+    int numberOfSubstrings(std::string s);
+};
+
+
 }
-
-
-
 #endif

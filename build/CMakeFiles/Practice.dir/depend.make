@@ -14,6 +14,7 @@ CMakeFiles/Practice.dir/LeetCode_BacktracingProblems.cpp.obj: ../LeetCode_Backtr
 CMakeFiles/Practice.dir/LeetCode_BinarySearchProblem.cpp.obj: ../LeetCode_BinarySearchProblem.cpp
 CMakeFiles/Practice.dir/LeetCode_BinarySearchProblem.cpp.obj: ../LeetCode_BinarySearchProblem.hpp
 
+CMakeFiles/Practice.dir/LeetCode_BitOperationProblems.cpp.obj: ../HeaderFiles.hpp
 CMakeFiles/Practice.dir/LeetCode_BitOperationProblems.cpp.obj: ../LeetCode_BitOperationProblems.cpp
 CMakeFiles/Practice.dir/LeetCode_BitOperationProblems.cpp.obj: ../LeetCode_BitOperationProblems.hpp
 

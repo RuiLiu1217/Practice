@@ -1837,6 +1837,85 @@ public:
 };
 
 /*
+Given two binary search trees root1 and root2.
+Return a list containing all the integers from both trees sorted in ascending order.
+
+Input: root1 = [2,1,4], root2 = [1,0,3]
+Output: [0,1,1,2,3,4]
+
+Input: root1 = [0,-10,10], root2 = [5,1,7,0,2]
+Output: [-10,0,0,1,2,5,7,10]
+
+Input: root1 = [], root2 = [5,1,7,0,2]
+Output: [0,1,2,5,7]
+
+Input: root1 = [0,-10,10], root2 = []
+Output: [-10,0,10]
+
+Input: root1 = [1,null,8], root2 = [8,1]
+Output: [1,1,8,8]
+
+Constraints:
+Each tree has at most 5000 nodes.
+Each node's value is between [-10^5, 10^5].
+*/
+class _1305_AllElementsInTwoBinarySearchTrees {
+public:
+    std::vector<int> getAllElements(TreeNode* root1, TreeNode* root2) {
+        class BSTIterator {
+        public:
+            std::stack<TreeNode*> st;
+            BSTIterator(TreeNode* p) {
+                while(p) {
+                    st.push(p);
+                    p = p->left;
+                }
+            }
+            bool hasNext() {
+                return !st.empty();
+            }
+            TreeNode* getNext() {
+                return st.top();
+            }
+            void update() {
+                TreeNode* res = st.top(); 
+                st.pop();
+
+                res = res->right;
+                while(res) {
+                    st.push(res);
+                    res = res->left;
+                }
+            }
+        };
+
+        BSTIterator r1(root1);
+        BSTIterator r2(root2);
+        std::vector<int> res;
+        while(r1.hasNext() && r2.hasNext()) {
+            int t1 = r1.getNext()->val;
+            int t2 = r2.getNext()->val;
+            if(t1 < t2) {
+                res.push_back(t1);
+                r1.update();
+            } else {
+                res.push_back(t2);
+                r2.update();
+            }
+        }
+        while(r1.hasNext()) {
+            res.push_back(r1.getNext()->val);
+            r1.update();
+        }
+        while(r2.hasNext()) {
+            res.push_back(r2.getNext()->val);
+            r2.update();
+        }
+        return res;
+    }
+};
+
+/*
 Given a binary tree, return the sum of values of nodes with even-valued grandparent. 
 (A grandparent of a node is the parent of its parent, if it exists.)
 If there are no nodes with an even-valued grandparent, return 0.
@@ -1953,7 +2032,7 @@ Output: [1,null,3,2,4,null,5,6]
 Input: root = [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]
 Output: [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]
  
-Constraints:
+Constraints: 
 
 The depth of the n-ary tree is less than or equal to 1000.
 The total number of nodes is between [0, 10^4].

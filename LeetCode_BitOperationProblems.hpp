@@ -1,8 +1,6 @@
 #ifndef LEETCODE_BITOPERATIONPROBLEMS_HPP
 #define LEETCODE_BITOPERATIONPROBLEMS_HPP
-#include <cstdint>
-#include <vector>
-#include <string>
+#include "HeaderFiles.hpp"
 namespace LC {
     /*
     Given a non-empty array of integers, every element appears twice except for one. 
@@ -272,6 +270,107 @@ namespace LC {
     public:
         int bitwiseComplement(int N);
     };
+
+/*
+A decimal number can be converted to its Hexspeak representation by first converting it to 
+an uppercase hexadecimal string, then replacing all occurrences of the digit 0 with the letter 
+O, and the digit 1 with the letter I.  Such a representation is valid if and only if it 
+consists only of the letters in the set {"A", "B", "C", "D", "E", "F", "I", "O"}.
+
+Given a string num representing a decimal integer N, return the Hexspeak representation of N 
+if it is valid, otherwise return "ERROR".
+
+Input: num = "257"
+Output: "IOI"
+Explanation:  257 is 101 in hexadecimal.
+
+Input: num = "3"
+Output: "ERROR"
+ 
+
+Constraints:
+
+1 <= N <= 10^12
+There are no leading zeros in the given string.
+All answers must be in uppercase letters.
+*/
+class _1271_Hexspeak {
+public:
+    std::string toHexspeak(std::string num) {
+        long n = std::stol(num);
+        std::string res;
+        while(n) {
+            int r = n % 16;
+            if(r == 2 || r == 3 || r == 4 || r == 5 || 
+                r == 6 || r == 7 || r == 8 || r == 9) {
+                return "ERROR";
+            } else {
+                if(r == 0) {
+                    res += "O";
+                } else if(r == 1) {
+                    res += "I";
+                } else {
+                    res += (r - 10 + 'A');
+                }
+            }
+            n /= 16;
+        }
+        std::reverse(begin(res), end(res));
+        int i = 0;
+        while(i < res.size() && res[i] == 'O') {
+            ++i;
+        }
+        
+        return res.substr(i);
+    }
+};
+
+
+
+/*
+Given an integer array arr. You have to sort the integers in the array
+in ascending order by the number of 1's in their binary representation
+and in case of two or more integers have the same number of 1's you 
+have to sort them in ascending order.
+
+Return the sorted array.
+
+Example 1:
+Input: arr = [0,1,2,3,4,5,6,7,8]
+Output: [0,1,2,4,8,3,5,6,7]
+Explantion: [0] is the only integer with 0 bits.
+[1,2,4,8] all have 1 bit.
+[3,5,6] have 2 bits.
+[7] has 3 bits.
+The sorted array by bits is [0,1,2,4,8,3,5,6,7]
+
+Example 2:
+Input: arr = [1024,512,256,128,64,32,16,8,4,2,1]
+Output: [1,2,4,8,16,32,64,128,256,512,1024]
+Explantion: All integers have 1 bit in the binary representation, 
+you should just sort them in ascending order.
+
+Example 3:
+Input: arr = [10000,10000]
+Output: [10000,10000]
+
+Example 4:
+Input: arr = [2,3,5,7,11,13,17,19]
+Output: [2,3,5,17,7,11,13,19]
+
+Example 5:
+Input: arr = [10,100,1000,10000]
+Output: [10,100,10000,1000]
+ 
+Constraints:
+
+1 <= arr.length <= 500
+0 <= arr[i] <= 10^4
+*/
+class _1356_SortIntegersByTheNumberOf1Bits {
+public: 
+    std::vector<int> sortByBits(std::vector<int>& arr);
+};
 
     /*
         Given an integer n and an integer start.

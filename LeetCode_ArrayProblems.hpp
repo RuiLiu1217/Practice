@@ -1693,6 +1693,56 @@ public:
     int movesToMakeZigzag(std::vector<int>& nums);
 };
 
+/*
+You are given a map of a server center, represented as a m * n integer matrix grid, 
+where 1 means that on that cell there is a server and 0 means that it is no server. 
+Two servers are said to communicate if they are on the same row or on the same column.
+Return the number of servers that communicate with any other server.
+
+Input: grid = [[1,0],[0,1]]
+Output: 0
+Explanation: No servers can communicate with others.
+
+Input: grid = [[1,0],[1,1]]
+Output: 3
+Explanation: All three servers can communicate with at least one other server.
+
+Input: grid = [[1,1,0,0],[0,0,1,0],[0,0,1,0],[0,0,0,1]]
+Output: 4
+Explanation: The two servers in the first row can communicate with each other. 
+The two servers in the third column can communicate with each other. The server 
+at right bottom corner can't communicate with any other server.
+*/
+class _1267_CountServersThatCommunicate {
+public:
+    int countServers(std::vector<std::vector<int>>& grid) {
+        std::unordered_map<int, int> rowCount;
+        std::unordered_map<int, int> colCount;
+        int totCom = 0;
+        for(int i = 0; i < grid.size(); ++i) {
+            for(int j = 0; j < grid[i].size(); ++j) {
+                if(grid[i][j]) {
+                    ++rowCount[i];
+                    ++colCount[j];
+                    ++totCom;
+                }
+            }
+        }
+        
+        int lonely = 0;
+        for(int i = 0; i < grid.size(); ++i) {
+            for(int j = 0; j < grid[i].size(); ++j) {
+                if(grid[i][j]) {
+                    if(rowCount[i] == 1 && colCount[j] == 1) {
+                        ++lonely;
+                    }
+                }
+            }
+        }
+        
+        return totCom - lonely;
+    }
+};
 
 
 /*
@@ -1825,6 +1875,51 @@ nums.length % 2 == 0
 class _1313_DecompressRunLengthEncodedList { 
 public:
     std::vector<int> decompressRLElist(std::vector<int>& nums);
+};
+
+/*
+Given a m * n matrix mat and an integer K, return a matrix answer where each answer[i][j] is the sum of all elements mat[r][c] for i - K <= r <= i + K, j - K <= c <= j + K, and (r, c) is a valid position in the matrix.
+
+Example 1:
+Input: mat = [[1,2,3],[4,5,6],[7,8,9]], K = 1
+Output: [[12,21,16],[27,45,33],[24,39,28]]
+
+Example 2:
+Input: mat = [[1,2,3],[4,5,6],[7,8,9]], K = 2
+Output: [[45,45,45],[45,45,45],[45,45,45]]
+
+Constraints:
+m == mat.length
+n == mat[i].length
+1 <= m, n, K <= 100
+1 <= mat[i][j] <= 100
+*/
+class _1314_MatrixBlockSum {
+public:
+    std::vector<std::vector<int>> matrixBlockSum(std::vector<std::vector<int>>& mat, int K) {
+        const int M = mat.size();
+        const int N = mat[0].size();
+        std::vector<std::vector<int>> rangeSum(M+1, std::vector<int>(N+1));
+        for(int i = 0; i < M; ++i) {
+            for(int j = 0; j < N; ++j) {
+                rangeSum[i+1][j+1] = 
+                rangeSum[i+1][j] + rangeSum[i][j+1] - rangeSum[i][j] 
+                + mat[i][j];
+            }
+        }
+
+        std::vector<std::vector<int>> ans(M, std::vector<int>(N));
+        for(int i = 0; i < M; ++i) {
+            for(int j = 0; j < N; ++j) {
+                int r1 = std::max(0, i - K);
+                int c1 = std::max(0, j - K);
+                int r2 = std::min(M, i + K + 1);
+                int c2 = std::min(N, j + K + 1);
+                ans[i][j] = rangeSum[r2][c2] - rangeSum[r1][c2] - rangeSum[r2][c1] + rangeSum[r1][c1];
+            }
+        }
+        return ans;
+    }
 };
 
 /*

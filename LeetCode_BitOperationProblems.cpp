@@ -1,7 +1,6 @@
 #include "LeetCode_BitOperationProblems.hpp"
-#include <bitset>
-#include <algorithm>
-#include <functional>
+#include "HeaderFiles.hpp"
+
 int LC::_0136_SingleNumber::singleNumber(std::vector<int>& nums) {
     int v = nums[0];
     for(int i = 1; i != nums.size(); ++i)
@@ -314,4 +313,28 @@ int LC::_1009_CompletementOfBase10Integer::bitwiseComplement(int N) {
         N >>= 1;
     }
     return res;
+}
+
+
+std::vector<int> LC::_1356_SortIntegersByTheNumberOf1Bits::sortByBits(std::vector<int>& arr) {
+    std::function<int(int)> numOfBits = [](int a) {
+        int c = 0;
+        while(a) {
+            a = a & (a - 1);
+            ++c;
+        }
+        return c;
+    };
+    
+    std::map<int, std::multiset<int>> mappedArr;
+    for(int & a : arr) {
+        mappedArr[numOfBits(a)].insert(a);
+    }
+    std::vector<int> res;
+    for(auto& m : mappedArr) {
+        for(int r : m.second) {
+            res.push_back(r);
+        }
+    }
+    return arr;
 }

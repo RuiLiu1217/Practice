@@ -114,6 +114,7 @@ test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.obj: ../g
 test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-port.h
 test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-string.h
 test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-type-util.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.obj: ../HeaderFiles.hpp
 test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.obj: ../LeetCode_BitOperationProblems.hpp
 test/CMakeFiles/PracticeTest.dir/LeetCode_BitOperationProblemTests.cpp.obj: ../test/LeetCode_BitOperationProblemTests.cpp
 
@@ -349,6 +350,7 @@ test/CMakeFiles/PracticeTest.dir/LeetCode_StringProblemTests.cpp.obj: ../googlet
 test/CMakeFiles/PracticeTest.dir/LeetCode_StringProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-port.h
 test/CMakeFiles/PracticeTest.dir/LeetCode_StringProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-string.h
 test/CMakeFiles/PracticeTest.dir/LeetCode_StringProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-type-util.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_StringProblemTests.cpp.obj: ../HeaderFiles.hpp
 test/CMakeFiles/PracticeTest.dir/LeetCode_StringProblemTests.cpp.obj: ../LeetCode_StringProblems.hpp
 test/CMakeFiles/PracticeTest.dir/LeetCode_StringProblemTests.cpp.obj: ../test/LeetCode_StringProblemTests.cpp
 
