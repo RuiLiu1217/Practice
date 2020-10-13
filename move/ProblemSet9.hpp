@@ -45,6 +45,7 @@ Calls to StockSpanner.next(int price) will have 1 <= price <= 10^5.
 There will be at most 10000 calls to StockSpanner.next per test case.
 There will be at most 150000 calls to StockSpanner.next across all test cases.
 The total time limit for this problem has been reduced by 75% for C++, and 50% for all other languages.
+! Copy from the solution https://zxi.mytechroad.com/blog/dynamic-programming/leetcode-901-online-stock-span/
 */
 class _0901_OnlineStockSpan {
 private:
@@ -52,67 +53,15 @@ private:
 public:
     _0901_OnlineStockSpan() {}
 
-    int next(int price);
-};
-
-
-/*
-In a row of trees, the i-th tree produces fruit with type tree[i].
-You start at any tree of your choice, then repeatedly perform the following steps:
-
-1. Add one piece of fruit from this tree to your baskets.  If you cannot, stop.
-2. Move to the next tree to the right of the current tree.  If there is no tree to the right, stop.
-
-Note that you do not have any choice after the initial choice of starting tree: you must 
-perform step 1, then step 2, then back to step 1, then step 2, and so on until you stop.
-You have two baskets, and each basket can carry any quantity of fruit, but you want each 
-basket to only carry one type of fruit each.
-
-What is the total amount of fruit you can collect with this procedure?
-
-Input: [1,2,1]
-Output: 3
-Explanation: We can collect [1,2,1].
-
-Input: [0,1,2,2]
-Output: 3
-Explanation: We can collect [1,2,2].
-If we started at the first tree, we would only collect [0, 1].
-
-Input: [1,2,3,2,2]
-Output: 4
-Explanation: We can collect [2,3,2,2].
-If we started at the first tree, we would only collect [1, 2].
-
-Input: [3,3,3,1,2,1,1,2,3,3,4]
-Output: 5
-Explanation: We can collect [1,2,1,1,2].
-If we started at the first tree or the eighth tree, we would only collect 4 fruits.
-
-1 <= tree.length <= 40000
-0 <= tree[i] < tree.length
-*/
-class _0904_FruitInoBackets {
-public:
-    int totalFruit(std::vector<int>& tree);
-};
-
-/*
-Given an array A of non-negative integers, return an array 
-consisting of all the even elements of A, followed by all 
-the odd elements of A.
-You may return any answer array that satisfies this condition.
-
-Input: [3,1,2,4]
-Output: [2,4,3,1]
-The outputs [4,2,3,1], [2,4,1,3], and [4,2,1,3] would also be accepted.
-
-1 <= A.length <= 5000
-0 <= A[i] <= 5000
-*/
-class _0905_SortArrayByParity {
-public:
-    std::vector<int> sortArrayByParity(std::vector<int>& A);
+    int next(int price) {
+        int span = 1;
+        while(!st.empty() && price >= st.top().first) {
+            span += st.top().second;
+            st.pop();
+        }
+        st.push({price, span});
+        return span;
+    }
 };
 
 /*
@@ -427,66 +376,6 @@ Note:
 class _0944_DeleteColumnsToMakeSorted {
 public:
     int minDeletionSize(std::vector<std::string>& A);
-};
-
-
-/*
-Tag: Tree
-Interview : Google
-For a binary tree T, we can define a flip operation as follows: 
-choose any node, and swap the left and right child subtrees.
-A binary tree X is flip equivalent to a binary tree Y if and only 
-if we can make X equal to Y after some number of flip operations.
-Write a function that determines whether two binary trees are flip 
-equivalent.  The trees are given by root nodes root1 and root2.
-
-Input: 
-root1 = [1,2,3,4,5,6,null,null,null,7,8], 
-root2 = [1,3,2,null,6,4,5,null,null,null,null,8,7]
-Output: true
-Explanation: We flipped at nodes with values 1, 3, and 5.
-
-Note:
-
-Each tree will have at most 100 nodes.
-Each value in each tree will be a unique integer in the range [0, 99].
-*/
-class _0951_FlipEquivalentBinaryTrees {
-public:
-    bool flipEquiv(TreeNode<int>* root1, TreeNode<int>* root2);
-};
-
-/*
-In an alien language, surprisingly they also use english lowercase 
-letters, but possibly in a different order. The order of the alphabet 
-is some permutation of lowercase letters. Given a sequence of words 
-written in the alien language, and the order of the alphabet, return 
-true if and only if the given words are sorted lexicographicaly in 
-this alien language.
-
-Input: words = ["hello","leetcode"], order = "hlabcdefgijkmnopqrstuvwxyz"
-Output: true
-Explanation: As 'h' comes before 'l' in this language, then the sequence is sorted.
-
-Input: words = ["word","world","row"], order = "worldabcefghijkmnpqstuvxyz"
-Output: false
-Explanation: As 'd' comes after 'l' in this language, then words[0] > words[1], hence the sequence is unsorted.
-
-Input: words = ["apple","app"], order = "abcdefghijklmnopqrstuvwxyz"
-Output: false
-Explanation: The first three characters "app" match, and the second string is shorter (in size.) According to lexicographical rules "apple" > "app", because 'l' > '∅', where '∅' is defined as the blank character which is less than any other character (More info).
- 
-
-Constraints:
-
-1 <= words.length <= 100
-1 <= words[i].length <= 20
-order.length == 26
-All characters in words[i] and order are English lowercase letters.
-*/
-class _0953_VerifyingAnAlienDictionary {
-public:
-    bool isAlienSorted(std::vector<std::string>& words, std::string order);
 };
 
 /*

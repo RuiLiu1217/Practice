@@ -586,6 +586,84 @@ public:
     int minCostClimbingStairs(std::vector<int>& cost);
 };
 
+/*
+! 巨难的一道动态规划题目
+这道题给了我们一个长度为n的字符串S，里面只有两个字母D和I，分别表示下降 Decrease 和上升 Increase，
+意思是对于 [0, n] 内所有数字的排序，必须满足S的模式，比如题目中给的例子 S="DID"，就表示序列需要先
+降，再升，再降，于是就有那5种情况。题目中提示了结果可能会是一个超大数，让我们对 1e9+7 取余。
+这道题正确的动态规划解法其实是比较难想出来的，因为存在着关键的隐藏信息 Hidden Information，若不能
+正确的挖掘出来，是不太容易解出来的。首先来定义我们的 DP 数组吧，这里大家的第一直觉可能是想着就用一个
+一维数组 dp，其中 dp[i] 表示范围在 [0, i] 内的字符串S的子串能有的不同序列的个数。这样定义的话，就
+无法写出状态转移方程，像之前说的，我们忽略了很关键的隐藏信息。先来想，序列是升是降到底跟什么关系最大，
+答案是最后一个数字，比如我们现在有一个数字3，当前的模式是D，说明需要下降，所以可能的数字就是 0，1，2，
+但如果当前的数字是1，那么还要下降的话，那么貌似就只能加0了？其实也不一定，因为这道题说了只需要保证升
+降模式正确就行了，数字之间的顺序关系其实并不重要，举个例子来说吧，假如我们现在已经有了一个 "DID" 模式
+的序列 1032，假如我们还想加一个D，变成 "DIDD"，该怎么加数字呢？多了一个模式符，就多了一个数字4，显然
+直接加4是不行的，实际是可以在末尾加2的，但是要先把原序列中大于等于2的数字都先加1，即 1032 -> 1043，然
+后再加2，变成 10432，就是 "DIDD" 了。虽然我们改变了序列的数字顺序，但是升降模式还是保持不变的。同理，
+也是可以加1的，1032 -> 2043 -> 20431，也是可以加0的，1032 -> 2143 -> 21430。但是无法加3和4，因为 
+1032 最后一个数字2很很重要，所有小于等于2的数字，都可以加在后面，从而形成降序。那么反过来也是一样，若
+要加个升序，比如变成 "DIDI"，猜也猜的出来，后面要加大于2的数字，然后把所有大于等于这个数字的地方都减1，
+比如加上3，1032 -> 1042 -> 10423，再比如加上4，1032 -> 1032 -> 10324。
+通过上面的分析，我们知道了最后一个位置的数字的大小非常的重要，不管是要新加升序还是降序，最后的数字的大
+小直接决定了能形成多少个不同的序列，这个就是本题的隐藏信息，所以我们在定义 dp 数组的时候必须要把最后一
+个数字考虑进去，这样就需要一个二维的 dp 数组，其中 dp[i][j] 表示由范围 [0, i] 内的数字组成且最后一个
+数字为j的不同序列的个数。就拿题目中的例子来说吧，由数字 [0, 1, 2, 3] 组成 "DID" 模式的序列，首先 
+dp[0][0] 是要初始化为1，如下所示(括号里是实际的序列):
+
+We are given S, a length n string of characters from the set {'D', 'I'}. (These letters stand for "decreasing" and "increasing".)
+
+A valid permutation is a permutation P[0], P[1], ..., P[n] of integers {0, 1, ..., n}, such that for all i:
+
+If S[i] == 'D', then P[i] > P[i+1], and;
+If S[i] == 'I', then P[i] < P[i+1].
+How many valid permutations are there?  Since the answer may be large, return your answer modulo 10^9 + 7.
+
+Example 1:
+
+Input: "DID"
+Output: 5
+Explanation: 
+The 5 valid permutations of (0, 1, 2, 3) are:
+(1, 0, 3, 2)
+(2, 0, 3, 1)
+(2, 1, 3, 0)
+(3, 0, 2, 1)
+(3, 1, 2, 0)
+ 
+
+Note:
+1 <= S.length <= 200
+S consists only of characters from the set {'D', 'I'}.
+*/
+class _0903_ValidPermutationsForDISequence {
+public:
+    int numPermsDISequence(std::string S) {
+        int res = 0;
+        const int n = S.size();
+        const int M = 1e9+7;
+        std::vector<std::vector<int>> DP(n + 1, std::vector<int>(n + 1));
+        DP[0][0] = 1;
+        for(int i = 1; i <= n; ++i) {
+            for(int j = 0; j <= i; ++j) {
+                if(S[i-1] == 'D') {
+                    for(int k = j; k <= i - 1; ++k) {
+                        DP[i][j] = (DP[i][j] + DP[i-1][k]) % M;
+                    }
+                } else {
+                    for(int k = 0; k <= j - 1; ++k) {
+                        DP[i][j] = (DP[i][j] + DP[i-1][k]) % M;
+                    }
+                }
+            }
+        }
+
+        for(int i = 0; i <= n; ++i) {
+            res = (res + DP[n][i]) % M;
+        }
+        return res;
+    }
+};
 
 /*
 Given a square array of integers A, we want the minimum sum of a 

@@ -1,13 +1,5 @@
 #include "LeetCode_SlidingWindowProblems.hpp"
-#include <vector>
-#include <climits>
-#include <algorithm>
-#include <deque>
-#include <string>
-#include <set>
-#include <unordered_set>
-#include <unordered_map>
-#include <functional>
+#include "HeaderFiles.hpp"
 #define ALPHALEN 256
 
 // Google
@@ -249,4 +241,24 @@ int LC::_1358_NumberOfSubstringsContainingAllThreeCharacters::numberOfSubstrings
         }
     }
     return res;
+}
+
+//! The problem description is not clear, actually it is just a sliding window problem that what is the longest substring that only contains at most
+//! two distinct characters.
+int LC::_0904_FruitInoBackets::totalFruit(std::vector<int>& tree) {
+    std::unordered_map<int, int> map;
+    int slow = 0;
+    int maxLen = INT_MIN;
+    for(int i = 0; i < tree.size(); ++i) {
+        ++map[tree[i]];
+        while(map.size() > 2) {
+            --map[tree[slow]];
+            if(map[tree[slow]] == 0) {
+                map.erase(tree[slow]);
+            }
+            ++slow;
+        }
+        maxLen = std::max(maxLen, i - slow + 1);
+    }
+    return maxLen;
 }

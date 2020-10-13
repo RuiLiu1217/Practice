@@ -6,19 +6,29 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_BacktracingProblems.cpp
-LeetCode_BacktracingProblems.hpp
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_BacktracingProblems.hpp
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_DynamicProgrammingProblems.cpp
+LeetCode_DynamicProgrammingProblems.hpp
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_DynamicProgrammingProblems.hpp
+unordered_map
+-
+unordered_set
+-
 functional
+-
+cmath
+-
+climits
 -
 algorithm
 -
+numeric
+-
+vector
+-
 
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_BacktracingProblems.hpp
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_DynamicProgrammingProblems.hpp
 vector
 -
 string
--
-unordered_set
 -
 

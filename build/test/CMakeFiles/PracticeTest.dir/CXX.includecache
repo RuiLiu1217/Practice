@@ -378,37 +378,21 @@ C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_ArrayProblems.hpp
 HeaderFiles.hpp
 C:/Users/liuru/OneDrive/Documents/GitHub/Practice/HeaderFiles.hpp
 
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_BacktracingProblems.hpp
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_DynamicProgrammingProblems.hpp
 vector
 -
 string
 -
-unordered_set
--
-
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_BitOperationProblems.hpp
-HeaderFiles.hpp
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/HeaderFiles.hpp
-
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_HashProblems.hpp
-HeaderFiles.hpp
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/HeaderFiles.hpp
 
 C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_MathProblems.hpp
 HeaderFiles.hpp
 C:/Users/liuru/OneDrive/Documents/GitHub/Practice/HeaderFiles.hpp
 
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_StringProblems.hpp
-HeaderFiles.hpp
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/HeaderFiles.hpp
-
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_UnionFindProblems.hpp
-vector
--
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_SlidingWindowProblems.hpp
 string
 -
-HeaderFiles.hpp
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/HeaderFiles.hpp
+vector
+-
 
 C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_ArrayProblemTests.cpp
 gtest/gtest.h
@@ -418,25 +402,11 @@ C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_ArrayProblems.hpp
 vector
 -
 
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_BacktracingProblemTests.cpp
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_DynamicProgrammingProblemTests.cpp
 gtest/gtest.h
 -
-iostream
--
-../LeetCode_BacktracingProblems.hpp
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_BacktracingProblems.hpp
-
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_BitOperationProblemTests.cpp
-gtest/gtest.h
--
-../LeetCode_BitOperationProblems.hpp
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_BitOperationProblems.hpp
-
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_HashProblemTests.cpp
-gtest/gtest.h
--
-../LeetCode_HashProblems.hpp
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_HashProblems.hpp
+../LeetCode_DynamicProgrammingProblems.hpp
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_DynamicProgrammingProblems.hpp
 
 C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_MathProblemTests.cpp
 gtest/gtest.h
@@ -444,13 +414,9 @@ gtest/gtest.h
 ../LeetCode_MathProblems.hpp
 C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_MathProblems.hpp
 
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_StringProblemTests.cpp
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_SlidingWindowProblemTests.cpp
 gtest/gtest.h
 -
-../LeetCode_StringProblems.hpp
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_StringProblems.hpp
-
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_UnionFindProblemTests.cpp
-../LeetCode_UnionFindProblems.hpp
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_UnionFindProblems.hpp
+../LeetCode_SlidingWindowProblems.hpp
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_SlidingWindowProblems.hpp
 

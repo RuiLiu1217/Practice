@@ -1187,6 +1187,50 @@ public:
 };
 
 /*
+In an alien language, surprisingly they also use english lowercase 
+letters, but possibly in a different order. The order of the alphabet 
+is some permutation of lowercase letters. Given a sequence of words 
+written in the alien language, and the order of the alphabet, return 
+true if and only if the given words are sorted lexicographicaly in 
+this alien language.
+
+Input: words = ["hello","leetcode"], order = "hlabcdefgijkmnopqrstuvwxyz"
+Output: true
+Explanation: As 'h' comes before 'l' in this language, then the sequence is sorted.
+
+Input: words = ["word","world","row"], order = "worldabcefghijkmnpqstuvxyz"
+Output: false
+Explanation: As 'd' comes after 'l' in this language, then words[0] > words[1], hence the sequence is unsorted.
+
+Input: words = ["apple","app"], order = "abcdefghijklmnopqrstuvwxyz"
+Output: false
+Explanation: The first three characters "app" match, and the second string is shorter (in size.) According to lexicographical rules "apple" > "app", because 'l' > '∅', where '∅' is defined as the blank character which is less than any other character (More info).
+ 
+
+Constraints:
+
+1 <= words.length <= 100
+1 <= words[i].length <= 20
+order.length == 26
+All characters in words[i] and order are English lowercase letters.
+*/
+class _0953_VerifyingAnAlienDictionary {
+public:
+    bool isAlienSorted(std::vector<std::string>& words, std::string order) {
+        int mapping[26];
+        for(int i = 0 ; i < 26; ++i) {
+            mapping[order[i] - 'a'] = i; // map "cab" --> "abc" which is the correct order
+        }
+        for(std::string& w : words) {
+            for(char& c : w) {
+                c = mapping[c - 'a']; // map the normal word to mapped character word with mapping
+            }
+        }
+        return std::is_sorted(begin(words), end(words)); //! The function that I didn't know that can judge whether an array is sorted.
+    }
+};
+
+/*
 Given an array A of strings made only from lowercase letters, return a list 
 of all characters that show up in all strings within the list (including 
 duplicates). For example, if a character occurs 3 times in all strings but 

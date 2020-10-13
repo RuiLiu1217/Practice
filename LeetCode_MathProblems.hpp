@@ -439,6 +439,142 @@ public:
 };
 
 /*
+Given an array of digits, you can write numbers using each digits[i] as many times as we want.  For example, if digits = ['1','3','5'], we may write numbers such as '13', '551', and '1351315'.
+
+Return the number of positive integers that can be generated that are less than or equal to a given integer n.
+
+ 
+
+Example 1:
+
+Input: digits = ["1","3","5","7"], n = 100
+Output: 20
+Explanation: 
+The 20 numbers that can be written are:
+1, 3, 5, 7, 11, 13, 15, 17, 31, 33, 35, 37, 51, 53, 55, 57, 71, 73, 75, 77.
+Example 2:
+
+Input: digits = ["1","4","9"], n = 1000000000
+Output: 29523
+Explanation: 
+We can write 3 one digit numbers, 9 two digit numbers, 27 three digit numbers,
+81 four digit numbers, 243 five digit numbers, 729 six digit numbers,
+2187 seven digit numbers, 6561 eight digit numbers, and 19683 nine digit numbers.
+In total, this is 29523 integers that can be written using the digits array.
+Example 3:
+
+Input: digits = ["7"], n = 8
+Output: 1
+ 
+
+Constraints:
+
+1 <= digits.length <= 9
+digits[i].length == 1
+digits[i] is a digit from '1' to '9'.
+All the values in digits are unique.
+1 <= n <= 109
+! 乍一看以为是一个DFS的题目，可是根据数据规模和题目描述，这是一道数学题，这道题有一定的难度 需要好好分析
+! https://www.youtube.com/watch?v=d2O_jwPxroc&ab_channel=HuaHua
+*/
+class _902_NumbersAtMostNGivenDigitSet {
+public:
+    int atMostNGivenDigitSet(std::vector<std::string>& D, int N) {
+        const std::string s = std::to_string(N);
+        const int n = s.length(); // number of digits an integer
+        int ans = 0;
+        for(int i = 1; i < n; ++i) {
+            ans += std::pow(D.size(), i); // 少于位数的数字一定比N小
+        }
+        
+        for(int i = 0; i < n; ++i) {
+            bool prefix = false;
+            for(const std::string& d : D) {
+                if(d[0] < s[i]) {
+                    ans += std::pow(D.size(), n - i - 1); // value in form : ??dXXX
+                } else if(d[0] == s[i]) {
+                    prefix = true; // find the digit d is the same as the current digit, we cannot decide, need to judge the next digit
+                    break;
+                }
+            }
+            if(!prefix) return ans;
+        }
+        
+        // plus one for solution N itself, all the digits are in D
+        return ans + 1;
+    }
+};
+
+/*
+Let's say a positive integer is a superpalindrome if it is a palindrome, and it is also the square of a palindrome.
+
+Now, given two positive integers L and R (represented as strings), return the number of superpalindromes in the inclusive range [L, R].
+
+Input: L = "4", R = "1000"
+Output: 4
+Explanation: 4, 9, 121, and 484 are superpalindromes.
+Note that 676 is not a superpalindrome: 26 * 26 = 676, but 26 is not a palindrome.
+
+Note:
+
+1 <= len(L) <= 18
+1 <= len(R) <= 18
+L and R are strings representing integers in the range [1, 10^18).
+int(L) <= int(R)
+*/
+class _0906_SuperPalindromes {
+public:
+    int superpalindromesInRange(std::string sL, std::string sR) {
+        long L = std::stol(sL);
+        long R = std::stol(sR);
+        
+        const int MAGIC = 100000;
+        int ans = 0;
+        // count odd length
+        for(int k = 1; k < MAGIC; ++k) {
+            std::string sb = std::to_string(k);
+            for(int i = sb.size() - 2; i >= 0; --i) {
+                sb += sb[i];
+            }
+            long v = std::stol(sb);
+            v = v * v;
+            if(v > R) break;
+            if(v >= L && isParlindrome(v)) {
+                ++ans;
+            }
+        }
+        
+        // count even length
+        for(int k = 1; k < MAGIC; ++k) {
+            std::string sb = std::to_string(k);
+            for(int i = sb.size() - 1; i >= 0; --i) {
+                sb += sb[i];
+            }
+            long v = std::stol(sb);
+            v = v * v;
+            if(v > R) break;
+            if(v >= L && isParlindrome(v)) {
+                ++ans;
+            }
+        }
+        return ans;
+    }
+private:
+    int ans = 0;
+    long reverse(long x) {
+        long ans = 0;
+        while(x > 0) {
+            ans = 10 * ans + x % 10;
+            x /= 10;
+        }
+        return ans;
+    }
+    bool isParlindrome(long x) {
+        return x == reverse(x);
+    }
+};
+
+/*
 Given a positive integer K, you need find the smallest positive 
 integer N such that N is divisible by K, and N only contains the 
 digit 1.
