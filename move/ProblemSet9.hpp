@@ -95,54 +95,8 @@ private:
     std::map<int, int> Map;
 };
 
-/*
-Given an array of integers nums, sort the array in ascending order.
-*/
-class _0912_SortAnArray {
-public:
-    std::vector<int> sortArray(std::vector<int>& nums);
-private:
-    void sortArray(std::vector<int>& nums, int start, int end);
-    void merge(std::vector<int>& nums, int start, int end, int mid);
-};
 
 
-/*
-Given a circular array C of integers represented by A, find the maximum possible sum of a non-empty subarray of C.
-Here, a circular array means the end of the array connects to the beginning of the array.  
-(Formally, C[i] = A[i] when 0 <= i < A.length, and C[i+A.length] = C[i] when i >= 0.)
-Also, a subarray may only include each element of the fixed buffer A at most once.  
-(Formally, for a subarray C[i], C[i+1], ..., C[j], there does not exist i <= k1, k2 <= j with k1 % A.length = k2 % A.length.)
-
-Input: [1,-2,3,-2]
-Output: 3
-Explanation: Subarray [3] has maximum sum 3
-
-Input: [5,-3,5]
-Output: 10
-Explanation: Subarray [5,5] has maximum sum 5 + 5 = 10
-
-Input: [3,-1,2,-1]
-Output: 4
-Explanation: Subarray [2,-1,3] has maximum sum 2 + (-1) + 3 = 4
-
-Input: [3,-2,2,-3]
-Output: 3
-Explanation: Subarray [3] and [3,-2,2] both have maximum sum 3
-
-Input: [-2,-3,-1]
-Output: -1
-Explanation: Subarray [-1] has maximum sum -1
-
-Note:
-
--30000 <= A[i] <= 30000
-1 <= A.length <= 30000
-*/
-class _0918_MaximumSumCircularSubarray {
-public:
-    int maxSubarraySumCircular(std::vector<int>& A);
-};
 
 /*
 Given a string S of '(' and ')' parentheses, we add the minimum number of 
@@ -171,25 +125,6 @@ public:
     int minAddToMakeValid(std::string s);
 };
 
-/*
-Given an array A of non-negative integers, half of the integers in A are odd, 
-and half of the integers are even. Sort the array so that whenever A[i] is odd, 
-i is odd; and whenever A[i] is even, i is even. You may return any answer array 
-that satisfies this condition.
-
-Input: [4,2,5,7]
-Output: [4,5,2,7]
-Explanation: [4,7,2,5], [2,5,4,7], [2,7,4,5] would also have been accepted.
-Note:
-
-2 <= A.length <= 20000
-A.length % 2 == 0
-0 <= A[i] <= 1000
-*/
-class _0922_SortArrayByParityII {
-public:
-    std::vector<int> sortArrayByParityII(std::vector<int>& A);
-};
 
 /*
 Given an integer array A, and an integer target, return the 
@@ -315,33 +250,6 @@ public:
     int rangeSumBST(TreeNode<int>* root, int L, int R);
 };
 
-
-/*
-Given a string S that only contains "I" (increase) or "D" (decrease), 
-let N = S.length.
-Return any permutation A of [0, 1, ..., N] such that for all 
-i = 0, ..., N-1:
-If S[i] == "I", then A[i] < A[i+1]
-If S[i] == "D", then A[i] > A[i+1]
-
-Input: "IDID"
-Output: [0,4,1,3,2]
-
-Input: "III"
-Output: [0,1,2,3]
-
-Input: "DDI"
-Output: [3,2,0,1]
-
-Note:
-1 <= S.length <= 10000
-S only contains characters "I" or "D".
-*/
-class _0942_DIStringMatch {
-public:
-    std::vector<int> disStringMatch(std::string S);
-};
-
 /*
 We are given an array A of N lowercase letter strings, all of the same 
 length. Now, we may choose any set of deletion indices, and for each string, 
@@ -434,10 +342,6 @@ Given an array A of integers, a ramp is a tuple (i, j) for which i < j and A[i] 
 
 Find the maximum width of a ramp in A.  If one doesn't exist, return 0.
 
- 
-
-Example 1:
-
 Input: [6,0,8,2,1,5]
 Output: 4
 Explanation: 
@@ -448,7 +352,6 @@ Input: [9,8,1,0,1,9,4,0,4,1]
 Output: 7
 Explanation: 
 The maximum width ramp is achieved at (i, j) = (2, 9): A[2] = 1 and A[9] = 1.
- 
 
 Note:
 

@@ -1276,6 +1276,71 @@ public:
 };
 
 /*
+A string S represents a list of words.
+Each letter in the word has 1 or more options.  If there is 
+one option, the letter is represented as is.  If there is 
+more than one option, then curly braces delimit the options. 
+For example, "{a,b,c}" represents options ["a", "b", "c"].
+
+For example, "{a,b,c}d{e,f}" represents the list 
+["ade", "adf", "bde", "bdf", "cde", "cdf"].
+
+Return all words that can be formed in this manner, 
+in lexicographical order.
+
+Input: "{a,b}c{d,e}f"
+Output: ["acdf","acef","bcdf","bcef"]
+
+Input: "abcd"
+Output: ["abcd"]
+
+Note:
+
+1 <= S.length <= 50
+There are no nested curly brackets.
+All characters inside a pair of consecutive opening and ending curly brackets are different.
+*/
+class _1087_BraceExpansion {
+public:
+    std::vector<std::string> expand(std::string S) {
+        return expandHelp(S);
+    }
+    std::vector<std::string> expandHelp(std::string S) {
+        std::string prefix;
+        int i = 0;
+        while(i < S.size() && S[i] != '{') {
+            prefix += S[i++];
+        }
+        if(i < S.size()) {
+            int j = i + 1;
+            while(j < S.size() && S[j] != '}') {
+                ++j;
+            }
+            std::string toSplit = S.substr(i+1, j-i-1);
+            std::stringstream iss(toSplit);
+            std::vector<std::string> tokens;
+            std::string token;
+            while(getline(iss, token, ',')) {
+                tokens.push_back(token);
+            }
+            std::sort(begin(tokens), end(tokens));
+            std::vector<std::string> suffix = expandHelp(S.substr(j+1));
+            std::vector<std::string> res;
+            for(auto& tok : tokens) {
+                for(auto& suf: suffix) {
+                    res.push_back(prefix + tok + suf);
+                }
+            }
+            return res;            
+        } else {
+            return {prefix};
+        }
+    }
+};
+
+
+
+/*
 Given a string S, remove the vowels 'a', 'e', 'i', 'o', and 'u' from it, and return the new string.
 
 Input: "leetcodeisacommunityforcoders"

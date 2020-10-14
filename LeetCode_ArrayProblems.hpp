@@ -272,6 +272,72 @@ public:
     void rotate(std::vector<std::vector<int>> &matrix);
 };
 
+/*
+Tag: dynamic programming or conqor and merge
+TODO: Classical problem
+
+Maximum Subarray
+Given an integer array nums, find the contiguous subarray (containing at least one number) 
+which has the largest sum and return its sum.
+
+Input: [-2,1,-3,4,-1,2,1,-5,4],        :           Output: 6
+Explanation: [4,-1,2,1] has the largest sum = 6.
+Follow up:
+If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
+*/
+class _0053_MaximumSubarray {
+public:
+    int maxSubArray(std::vector<int>& nums);
+private:
+    int maxSubArrayDP(std::vector<int>& nums) {
+        std::vector<int> DP(nums.size(), 0);
+        DP[0] = nums[0];
+        for(int i = 1; i < nums.size(); ++i) {
+            DP[i] = DP[i-1] > 0 ? nums[i] + DP[i - 1] : nums[i]; // 意思就是不要拖后腿， 如果当前的值已经比0小了，不如另起炉灶
+        }
+        return *std::max_element(begin(DP), end(DP));
+    }
+    int maxSubArrayHelp(std::vector<int>& nums, int start, int end) { // Divide and conqor method
+        if(end - start < 1) {
+            return nums[start];
+        } else {
+            int mid = start + (end - start) / 2;
+            int incMid = includeMid(nums, start, end, mid);
+            int lftSub = maxSubArrayHelp(nums, start, mid - 1);
+            int rghSub = maxSubArrayHelp(nums, mid+1, end);
+            int v = std::max(std::max(incMid, lftSub), rghSub);
+            return v;
+        }
+    }
+    int includeMid(std::vector<int>& nums, int start, int end, int mid) {
+        int sum = nums[mid];
+        int lft = mid - 1;
+        int rgh = mid + 1;
+
+        int lftSum = 0;
+        int rghSum = 0;
+
+        int curMaxLft = 0;
+        int curMaxRgh = 0;
+
+        while(lft >= start) {
+            lftSum += nums[lft];
+            if(curMaxLft < lftSum) {
+                curMaxLft = lftSum;
+            }
+            --lft;
+        }
+        while(rgh <= end) {
+            rghSum += nums[rgh];
+            if(curMaxRgh < rghSum) {
+                curMaxRgh = rghSum;
+            }
+            ++rgh;
+        }
+        return (curMaxLft + curMaxRgh + sum);
+    }
+};
+
 
 /*
 Todo: interval 
@@ -287,6 +353,7 @@ class _0056_MergeIntervals {
 public:
     std::vector<std::vector<int>> merge(std::vector<std::vector<int>>& intervals);
 };
+
 
 /* Tag: matrix operation
 Given a positive integer n, generate a square matrix filled with elements from 1 to n^2 in spiral order.
@@ -1652,6 +1719,116 @@ public:
         return A;
     }
 };
+/*
+    Given an array of integers nums, sort the array in ascending order.
+*/
+class _0912_SortAnArray {
+public:
+    std::vector<int> sortArray(std::vector<int>& nums) {
+        if(nums.size() <= 1) {
+            return nums;
+        }
+        int midIdx = nums.size() / 2;
+        std::vector<int> arr1(nums.begin(), nums.begin() + midIdx);
+        std::vector<int> arr2(nums.begin() + midIdx, nums.end());
+        arr1 = sortArray(arr1);
+        arr2 = sortArray(arr2);
+        return merge(arr1, arr2);
+    }
+    std::vector<int> merge(std::vector<int>& arr1, std::vector<int>& arr2) {
+        arr1.push_back(INT_MAX);
+        arr2.push_back(INT_MAX);
+        
+        std::vector<int> res;
+        int i = 0;
+        int j = 0;
+        while(i < arr1.size() && j < arr2.size()) {
+            if(arr1[i] < arr2[j]) {
+                res.push_back(arr1[i]);
+                ++i;
+            } else {
+                res.push_back(arr2[j]);
+                ++j;
+            }
+        }
+        res.resize(res.size()-1);
+        return res;
+    }
+};
+
+/*
+Given a circular array C of integers represented by A, find the maximum possible sum of a non-empty subarray of C.
+Here, a circular array means the end of the array connects to the beginning of the array.  
+(Formally, C[i] = A[i] when 0 <= i < A.length, and C[i+A.length] = C[i] when i >= 0.)
+Also, a subarray may only include each element of the fixed buffer A at most once.  
+(Formally, for a subarray C[i], C[i+1], ..., C[j], there does not exist i <= k1, k2 <= j with k1 % A.length = k2 % A.length.)
+
+Input: [1,-2,3,-2]
+Output: 3
+Explanation: Subarray [3] has maximum sum 3
+
+Input: [5,-3,5]
+Output: 10
+Explanation: Subarray [5,5] has maximum sum 5 + 5 = 10
+
+Input: [3,-1,2,-1]
+Output: 4
+Explanation: Subarray [2,-1,3] has maximum sum 2 + (-1) + 3 = 4
+
+Input: [3,-2,2,-3]
+Output: 3
+Explanation: Subarray [3] and [3,-2,2] both have maximum sum 3
+
+Input: [-2,-3,-1]
+Output: -1
+Explanation: Subarray [-1] has maximum sum -1
+
+Note:
+
+-30000 <= A[i] <= 30000
+1 <= A.length <= 30000
+*/
+class _0918_MaximumSumCircularSubarray {
+public:
+    int maxSubarraySumCircular(std::vector<int>& A);
+};
+
+/*
+Given an array A of non-negative integers, half of the integers in A are odd, 
+and half of the integers are even. Sort the array so that whenever A[i] is odd, 
+i is odd; and whenever A[i] is even, i is even. You may return any answer array 
+that satisfies this condition.
+
+Input: [4,2,5,7]
+Output: [4,5,2,7]
+Explanation: [4,7,2,5], [2,5,4,7], [2,7,4,5] would also have been accepted.
+Note:
+
+2 <= A.length <= 20000
+A.length % 2 == 0
+0 <= A[i] <= 1000
+*/
+class _0922_SortArrayByParityII {
+public:
+    std::vector<int> sortArrayByParityII(std::vector<int>& A) {
+        int idxEven = 0;
+        int idxOdd = 1;
+        while(idxOdd < A.size() && idxEven < A.size()) {
+            while(idxOdd < A.size() && !(std::abs(idxOdd - A[idxOdd]) % 2)) {
+                idxOdd += 2;
+            }
+            while(idxEven < A.size() && !(std::abs(idxEven - A[idxEven]) % 2)) {
+                idxEven += 2;
+            }
+            if(idxOdd < A.size() && idxEven < A.size()) {
+                std::swap(A[idxOdd], A[idxEven]);
+            }            
+            idxOdd += 2;
+            idxEven += 2;
+        }
+        return A;
+    }
+};
 
 
 /*
@@ -1679,6 +1856,59 @@ private:
 public:
     _0933_NumberOfRecentCalls();
     int ping(int t);
+};
+
+
+/*
+Given a string S that only contains "I" (increase) or "D" (decrease), 
+let N = S.length.
+Return any permutation A of [0, 1, ..., N] such that for all 
+i = 0, ..., N-1:
+If S[i] == "I", then A[i] < A[i+1]
+If S[i] == "D", then A[i] > A[i+1]
+
+Input: "IDID"
+Output: [0,4,1,3,2]
+
+Input: "III"
+Output: [0,1,2,3]
+
+Input: "DDI"
+Output: [3,2,0,1]
+
+Note:
+1 <= S.length <= 10000
+S only contains characters "I" or "D".
+! copy from the solution
+*/
+class _0942_DIStringMatch {
+public:
+    // 这道题反而懵了
+    std::vector<int> disStringMatch(std::string S) {
+        // For example -> IIDDIDI, left = 3; right = 3;
+        int left = std::count(S.begin(), S.end(), 'D'), right = left;
+        std::vector<int> res = {left}; // [3]
+
+        // NOTE: How the for loop works in this case
+        // [3] 
+        // I
+        // [3, 4] 
+        // I
+        // [3, 4, 5]
+        // D
+        // [3, 4, 5, 2]
+        // D
+        // [3, 4, 5, 2, 1]
+        // I
+        // [3, 4, 5, 2, 1, 6]
+        // D
+        // [3, 4, 5, 2, 1, 6, 0]
+        // I
+        // [3, 4, 5, 2, 1, 6, 0, 7]
+        for (char c : S)
+            res.push_back(c == 'I' ? ++right : --left); 
+        return res;
+    }
 };
 
 /*

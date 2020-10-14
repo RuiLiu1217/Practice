@@ -46,6 +46,96 @@ public:
     int sumNumbers(TreeNode* root);
 };
 
+/*
+Tag: palindrome, string, Dynamic programming, DFS
+TODO:
+Given a string s, partition s such that every substring of the partition is a palindrome.
+Return all possible palindrome partitioning of s.
+
+Input: "aab"
+Output:
+[
+  ["aa","b"],
+  ["a","a","b"]
+]
+*/
+class _0131_PalindromePartitioning {
+public:
+    std::vector<std::vector<std::string>> partition(std::string s) {
+        std::vector<std::string> tmp;
+        std::vector<std::vector<std::string>> res;
+        partition(s, 0, s.size(), tmp, res);
+        return res;
+    }
+private:
+    void partition(std::string& s, int start, int end,std::vector<std::string>& tmp, std::vector<std::vector<std::string>>& res) {
+        if(start == end) {
+            res.push_back(tmp);
+            return;
+        }
+        
+        for(int len = 1; len <= end - start; ++len) {
+            std::string subS = s.substr(start, len);
+            if(isPalindrome(s, start, start + len - 1)) {
+                tmp.push_back(s.substr(start, len));
+                partition(s, start + len, end, tmp, res);
+                tmp.pop_back();
+            }
+        }
+    }
+    bool isPalindrome(std::string& s, int start, int end) {
+        while(start < end) {
+            if(s[start] != s[end]) {
+                return false;
+            }
+            ++start;
+            --end;
+        }
+        return true;
+    }
+};
+
+/*
+Tag: string, palindrome, dynamic programming
+TODO:
+
+Given a string s, partition s such that every substring of the partition is a palindrome.
+Return the minimum cuts needed for a palindrome partitioning of s.
+
+Example:
+
+Input: "aab"
+Output: 1
+Explanation: The palindrome partitioning ["aa","b"] could be produced using 1 cut.
+*/
+class _0132_PalindromePartitioningII {
+public:
+    int minCut(std::string s) {
+        const int n = s.length(); 
+        std::vector<std::vector<int>> isPalindrome(n, std::vector<int>(n, 1)); // isPalindrome[i][j]  s[i~j] is a palindrome
+        for(int l = 2; l <= n; ++l) { // substring length
+            for(int i = 0, j = i + l - 1; j < n; ++i, ++j) {
+                isPalindrome[i][j] = s[i] == s[j] && isPalindrome[i+1][j-1];
+            }
+        }
+
+        std::vector<int> DP(n, n); // DP[i] the minimum cuts from s[0] to s[i]
+
+        for(int i = 0; i < n; ++i) {
+            if(isPalindrome[0][i]) {
+                DP[i] = 0; // no need to cut
+                continue;
+            }
+
+            for(int j = 0; j < i; ++j) {
+                if(isPalindrome[j+1][i]) { // cut from j which is between 0 to i
+                    DP[i] = std::min(DP[i], DP[j] + 1);
+                }
+            }
+        }
+        return DP[n - 1];
+    }
+};
 
 /*
 Numbers can be regarded as product of its factors. For example,
@@ -182,7 +272,81 @@ public:
     int numDistinctIslands(std::vector<std::vector<int>>& grid);
 };
 
+/*
+Tag: DFS,
+Google
 
+We can rotate digits by 180 degrees to form new digits. 
+When 0, 1, 6, 8, 9 are rotated 180 degrees, they become 
+0, 1, 9, 8, 6 respectively. When 2, 3, 4, 5 and 7 are 
+rotated 180 degrees, they become invalid.
+A confusing number is a number that when rotated 180 degrees 
+becomes a different number with each digit valid.(Note that 
+the rotated number can be greater than the original number.)
+
+Given a positive integer N, return the number of confusing 
+numbers between 1 and N inclusive.
+
+Input: 20
+Output: 6
+Explanation: 
+The confusing numbers are [6,9,10,16,18,19].
+6 converts to 9.
+9 converts to 6.
+10 converts to 01 which is just 1.
+16 converts to 91.
+18 converts to 81.
+19 converts to 61.
+
+Input: 100
+Output: 19
+Explanation: 
+! Notice that 100, 80 are both confused, the problem defines "rotate digits by 180 degrees", not "rotate the whole number by 180 degrees"
+The confusing numbers are [6,9,10,16,18,19,60,61,66,68,80,81,86,89,90,91,98,99,100]. 
+ 
+Note:
+1 <= N <= 10^9
+! Copy from the Solution
+*/
+class _1088_ConfusingNumberII {
+private:
+    int count = 0;
+    const std::vector<int> mp = {0, 1, 2, 3, 4, 5, 9, 7, 8, 6};
+public:
+    int confusingNumberII(int N) {
+        count = 0;
+        for(int x : {1, 6, 8, 9}) { // ! 0 cannot be the start of the number.
+            DFS(x, N);
+        }
+        return count;
+    }
+
+    void DFS(long long n, int N) {
+        if(n > N) {
+            return;
+        }
+        if(isConfusing(n)) {
+            ++count;
+        }
+        for(int x : {0, 1, 6, 8, 9}) {
+            DFS(n * 10 + x, N); //! DFS based on number = number * 10 + last digit, this is also the way to generate all numbers given the digit set.
+        }
+    }
+    bool isConfusing(int x) {
+        int arr[10];
+        int i = 0;
+        while(x) {
+            arr[i++] = x % 10;
+            x /= 10;
+        }
+        for(int l = 0, r = i - 1; l <= r; ++l, --r) {
+            if(arr[l] != mp[arr[r]]) {
+                return true;
+            }
+        }
+        return false;
+    }
+};
 
 }
 #endif

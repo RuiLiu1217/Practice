@@ -73,48 +73,6 @@ public:
 };
 
 
-
-/*
-Tag: palindrome, string, Dynamic programming, DFS
-TODO:
-Given a string s, partition s such that every substring of the partition is a palindrome.
-Return all possible palindrome partitioning of s.
-
-Input: "aab"
-Output:
-[
-  ["aa","b"],
-  ["a","a","b"]
-]
-*/
-class _0131_PalindromePartitioning {
-public:
-    std::vector<std::vector<std::string>> partition(std::string s);
-private:
-    void partition(std::string& s, int start, int end,std::vector<std::string>& tmp, std::vector<std::vector<std::string>>& res);
-    bool isPalindrome(std::string& s, int start, int end); 
-};
-
-/*
-Tag: string, palindrome, dynamic programming
-TODO:
-
-Given a string s, partition s such that every substring of the partition is a palindrome.
-Return the minimum cuts needed for a palindrome partitioning of s.
-
-Example:
-
-Input: "aab"
-Output: 1
-Explanation: The palindrome partitioning ["aa","b"] could be produced using 1 cut.
-*/
-class _0132_PalindromePartitioningII {
-public:
-    std::vector<std::vector<std::string>> partition(std::string s);
-};
-
-
-
 /*
 Tag: array, 
 TODO: Hard to think of
@@ -196,25 +154,6 @@ class _0135_Candy {
 public:
     int candy(std::vector<int>& ratings);
 };
-
-
-
-
-
-/*
-Given a singly linked list L: L0→L1→…→Ln-1→Ln,
-reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…
-
-You may not modify the values in the list's nodes, only nodes itself may be changed.
-
-Given 1->2->3->4, reorder it to 1->4->2->3.
-Given 1->2->3->4->5, reorder it to 1->5->2->4->3.
-*/
-class _0143_ReorderList {
-public:
-    void reorderList(ListNode<int>* head);
-};
-
 
 
 

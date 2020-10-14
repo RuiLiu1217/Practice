@@ -298,6 +298,56 @@ public:
     ListNode* detectCycle(ListNode* head);
 };
 
+/*
+Given a singly linked list L: L0→L1→…→Ln-1→Ln,
+reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…
+
+You may not modify the values in the list's nodes, only nodes itself may be changed.
+
+Given 1->2->3->4, reorder it to 1->4->2->3.
+Given 1->2->3->4->5, reorder it to 1->5->2->4->3.
+! Do NOT use the reverse method, it will cost too much time. TLE issue.
+*/
+class _0143_ReorderList {
+public:
+
+    void reorderList(ListNode* head) {
+        std::vector<ListNode*> vec;
+        ListNode* p = head;
+        while(p) {
+            vec.push_back(p);
+            p = p->next;
+        }
+
+        int i = 0;
+        int j = vec.size() - 1;
+        int count = 1;
+        ListNode* nh = new ListNode(-1);
+        ListNode* q = nh;
+        while(i < j) {
+            if(count % 2) {
+                q->next = vec[i];
+                ++i;
+            } else {
+                q->next = vec[j];
+                --j;
+            }
+            q = q->next;
+            ++count;
+        }
+        if(i == j) {
+            q->next = vec[i];
+            q = q->next;
+        }
+        q->next = nullptr;
+        head = nh->next;
+        delete nh;
+        nh = nullptr;
+    }
+
+
+};
+
 
 /*
 Sort a linked list using insertion sort.
