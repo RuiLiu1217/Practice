@@ -10,12 +10,6 @@
 #include "LinkList.hpp"
 #include "Trie.hpp"
 namespace LeetCode {
-
-
-
-
-
-
 /*
 Tag: palindrome, KMP
 TODO: Familar with KMP algorithm, especially how to calculate the next[] array
@@ -65,7 +59,7 @@ There must be no consecutive horizontal lines of equal height in the output skyl
 [11 5], [12 7]...] is not acceptable; the three lines of height 5 should be merged into one in the final output as such: 
 [...[2 3], [4 5], [12 7], ...]
 */
-//https://youtu.be/8Kd-Tn_Rz7s
+// https://youtu.be/8Kd-Tn_Rz7s
 class _0218_TheSkylineProblem {
     public:
         std::vector<std::vector<int>> getSkyline(std::vector<std::vector<int>>& buildings);
@@ -84,7 +78,7 @@ Output: true
 
 Input: nums = [1,0,1,1], k = 1, t = 2
 Output: true
-
+ 
 Input: nums = [1,5,9,1,5,9], k = 2, t = 3
 Output: false
 */
@@ -178,29 +172,6 @@ public:
 
 
 /*
-Given a string, we can "shift" each of its letter to its successive letter, for example: "abc" -> "bcd". We can keep "shifting" which forms the sequence:
-
-"abc" -> "bcd" -> ... -> "xyz"
-Given a list of strings which contains only lowercase alphabets, group all strings that belong to the same shifting sequence.
-
-Example:
-
-Input: ["abc", "bcd", "acef", "xyz", "az", "ba", "a", "z"],
-Output: 
-[
-  ["abc","bcd","xyz"],
-  ["az","ba"],
-  ["acef"],
-  ["a","z"]
-]
-*/
-class _0249_GroupShiftedStrings {
-public:
-    std::vector<std::vector<std::string>> groupStrings(std::vector<std::string>& strings);
-    std::string transback(std::string& s);
-};
-
-/*
 Given a binary tree, count the number of uni-value subtrees.
 A Uni-value subtree means all nodes of the subtree have the same value.
 
@@ -247,61 +218,6 @@ public:
     int minMeetingRooms(std::vector<std::vector<int>>& intervals);
 };
 
-
-
-/*
-Given an array containing n distinct numbers taken from 0, 1, 2, ..., n, find the one that is missing from the array.
-
-Input: [3,0,1]               :         Output: 2
-Input: [9,6,4,2,3,5,7,0,1]   :         Output: 8
-Note:
-Your algorithm should run in linear runtime complexity. Could you implement it using only constant extra space complexity?
-*/
-class _0268_MissingNumber {
-public:
-    // How to deal with overflow?
-    int missingNumber(std::vector<int>& nums);
-};
-
-/*
-
-Facebook
-
-There is a new alien language which uses the latin alphabet. However, 
-the order among letters are unknown to you. You receive a list of 
-non-empty words from the dictionary, where words are sorted lexicographically 
-by the rules of this new language. Derive the order of letters in 
-this language.
-
-Input:
-["wrt", "wrf", "er", "ett", "rftt"]
-Output: "wertf"
-
-Input:
-["z", "x"]
-Output: "zx"
-
-Input:
-["z", "x", "z"] 
-Output: "" 
-
-Explanation: The order is invalid, so return "".
-Note:
-
-You may assume all letters are in lowercase.
-You may assume that if a is a prefix of b, then a must appear before b 
-in the given dictionary. If the order is invalid, return an empty string.
-There may be multiple valid order of letters, return any one of them is fine.
-*/
-class _0269_AlienDictionary {
-public:
-    std::string alienOrder(std::vector<std::string>& words);
-private:
-    std::vector<int> topologicalSort(std::vector<std::vector<int>>& adjList);
-};
-
-
-
 /*
 Tag: serialization
 
@@ -340,7 +256,7 @@ Do not rely on any library method such as eval or serialize methods. You should
 implement your own encode/decode algorithm.
 */
 class _0271_EncodeAndDecodeStrings {
-/////////////////////////////////////////
+
 };
 
 /*
@@ -409,36 +325,6 @@ public:
     int hIndex(std::vector<int>& citations);
 };
 
-/*
-There is a fence with n posts, each post can be painted with one of the k colors.
-
-You have to paint all the posts such that no more than two adjacent fence posts have the same color.
-
-Return the total number of ways you can paint the fence.
-
-Note:
-n and k are non-negative integers.
-
-Example:
-
-Input: n = 3, k = 2
-Output: 6
-Explanation: Take c1 as color 1, c2 as color 2. All possible ways are:
-
-            post1  post2  post3      
- -----      -----  -----  -----       
-   1         c1     c1     c2 
-   2         c1     c2     c1 
-   3         c1     c2     c2 
-   4         c2     c1     c1  
-   5         c2     c1     c2
-   6         c2     c2     c1
-*/
-class _0276_PaintFence {
-public:
-    int numWays(int n, int k);
-};
-
 
 /*
 Given a positive integer n, find the least number of perfect square numbers (for example, 1, 4, 9, 16, ...) which sum to n.
@@ -458,57 +344,6 @@ class _0279_PerfectSquares {
 public:
     int numSquares(int n);
 };
-
-/*
-Given an unsorted array nums, reorder it in-place such that nums[0] <= nums[1] >= nums[2] <= nums[3]....
-
-Input: nums = [3,5,2,1,6,4]
-Output: One possible answer is [3,5,1,6,2,4]
-*/
-class _0280_WiggleSort {
-public:
-    void wiggleSort(std::vector<int>& nums);
-};
-
-/*
-Given two 1d vectors, implement an iterator to return their elements alternately.
-
-Input:
-v1 = [1,2]
-v2 = [3,4,5,6] 
-Output: [1,3,2,4,5,6]
-Explanation: By calling next repeatedly until hasNext returns false, the order of 
-elements returned by next should be: [1,3,2,4,5,6].
- 
-Follow up:
-
-What if you are given k 1d vectors? How well can your code be extended to such cases?
-
-Clarification for the follow up question:
-The "Zigzag" order is not clearly defined and is ambiguous for k > 2 cases. 
-If "Zigzag" does not look right to you, replace "Zigzag" with "Cyclic". For example:
-
-Input:
-[1,2,3]
-[4,5,6,7]
-[8,9]
-
-Output: [1,4,8,2,5,9,3,6,7].
-*/
-class _0281_ZigzagIterator {
-private:
-    std::vector<std::vector<int>::iterator> it;
-    std::vector<std::vector<int>::iterator> endIt;
-    int N; 
-    int i;
-public:
-    _0281_ZigzagIterator(std::vector<int>&v1, std::vector<int>& v2);
-    int next();
-    bool hasNext();
-};
-
-
-
 
 /*
 Given an Iterator class interface with methods: next() and hasNext(), design and implement a PeekingIterator that support the peek() 
@@ -554,7 +389,6 @@ public:
 Given an array nums containing n + 1 integers where each integer is between 1 and n (inclusive), 
 prove that at least one duplicate number must exist. Assume that there is only one duplicate number, find the duplicate one.
 
-
 Input: [1,3,4,2,2]
 Output: 2
 
@@ -566,6 +400,7 @@ You must not modify the array (assume the array is read only).
 You must use only constant, O(1) extra space.
 Your runtime complexity should be less than O(n2).
 There is only one duplicate number in the array, but it could be repeated more than once.
+! Find the duplicate number
 */
 class _0287_FindTheDuplicateNumber {
 public:
@@ -613,37 +448,6 @@ public:
     bool isUnique(std::string word);
 };
 
-
-
-/*
-        Given a pattern and a string str, find if str follows the same pattern.
-        Here follow means a full match, such that there is a bijection between a 
-        letter in pattern and a non - empty word in str.
-        
-        Example 1:
-            Input: pattern = "abba", str = "dog cat cat dog"
-            Output : true
-        Example 2 :
-            Input : pattern = "abba", str = "dog cat cat fish"
-            Output : false
-        Example 3 :
-            Input : pattern = "aaaa", str = "dog cat cat dog"
-            Output : false
-        Example 4 :
-            Input : pattern = "abba", str = "dog dog dog dog"
-            Output : false
-        Notes :
-            You may assume pattern contains only lowercase letters, and str 
-            contains lowercase letters separated by a single space.
-    */
-class _0290_WordPattern
-{
-public:
-    bool wordPattern(std::string pattern, std::string str);
-private:
-    std::unordered_map<char, std::string> map;
-    std::unordered_map<std::string, char> map2;
-};
 
 /*
 You are playing the following Nim Game with your friend: There is a heap of stones 

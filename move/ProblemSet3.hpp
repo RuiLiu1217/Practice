@@ -199,31 +199,6 @@ public:
 };
 
 /*
-Given a string array words, find the maximum value of 
-length(word[i]) * length(word[j]) where the two words do not share common letters. 
-You may assume that each word will contain only lower case letters. 
-If no such two words exist, return 0.
-
-Input: ["abcw","baz","foo","bar","xtfn","abcdef"]
-Output: 16 
-Explanation: The two words can be "abcw", "xtfn".
-Example 2:
-
-Input: ["a","ab","abc","d","cd","bcd","abcd"]
-Output: 4 
-Explanation: The two words can be "ab", "cd".
-Example 3:
-
-Input: ["a","aa","aaa","aaaa"]
-Output: 0 
-Explanation: No such pair of words.
-*/
-class _0318_MaximumProductOfWordLengths {
-public:
-    int maxProduct(std::vector<std::string>& words);
-};
-
-/*
 There are n bulbs that are initially off. You first turn on all the bulbs. Then, you 
 turn off every second bulb. On the third round, you toggle every third bulb (turning 
 on if it's off or turning off if it's on). For the i-th round, you toggle every i bulb. 
@@ -483,8 +458,7 @@ public:
 
 // This is the interface that allows for creating nested lists.
 // You should not implement it, or speculate about its implementation
-class NestedInteger
-{
+class NestedInteger {
 public:
     // Return true if this NestedInteger holds a single integer, rather than a nested list.
     bool isInteger() const;
@@ -574,8 +548,7 @@ Output: 91
 Explanation: The answer should be the total numbers in the range of 0 ≤ x < 100, 
                 excluding 11,22,33,44,55,66,77,88,99
 */
-class _0357_CountNumbersWithUniqueDigits
-{
+class _0357_CountNumbersWithUniqueDigits {
 public:
     int countNumbersWithUniqueDigits(int n);
 private:
@@ -820,11 +793,9 @@ public:
     
     return 13.
 */
-class _0378_KthSmallestElementInASortedMatrix
-{
+class _0378_KthSmallestElementInASortedMatrix {
 public:
     int kthSmallest(std::vector<std::vector<int>> &matrix, int k);
-
 private:
     int search_less_equal(std::vector<std::vector<int>> &matrix, int target);
 };
@@ -1140,37 +1111,6 @@ For example, there won't be input like 3a or 2[4].
 class _0394_DecodeString {
 public:
     std::string decodeString(std::string s);
-};
-
-/*
-Tag: hash
-
-Facebook
-
-Given an array of integers with possible duplicates, randomly output 
-the index of a given target number. You can assume that the given 
-target number must exist in the array.
-
-Note:
-The array size can be very large. Solution that uses too much extra 
-space will not pass the judge.
-
-int[] nums = new int[] {1,2,3,3,3};
-Solution solution = new Solution(nums);
-
-pick(3) should return either index 2, 3, or 4 randomly. Each index 
-should have equal probability of returning.
-solution.pick(3);
-
-pick(1) should return 0. Since in the array only nums[0] is equal to 1.
-solution.pick(1);
-*/
-class _0398_RandomPickIndex {
-private:
-    std::unordered_map<int, std::vector<int>> map;
-public:
-    _0398_RandomPickIndex(std::vector<int>& nums);
-    int pick(int target);
 };
 
 

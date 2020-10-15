@@ -11,6 +11,7 @@ CMakeFiles/Practice.dir/LeetCode_BFS.cpp.obj: ../LeetCode_BFS.hpp
 CMakeFiles/Practice.dir/LeetCode_BacktracingProblems.cpp.obj: ../LeetCode_BacktracingProblems.cpp
 CMakeFiles/Practice.dir/LeetCode_BacktracingProblems.cpp.obj: ../LeetCode_BacktracingProblems.hpp
 
+CMakeFiles/Practice.dir/LeetCode_BinarySearchProblem.cpp.obj: ../HeaderFiles.hpp
 CMakeFiles/Practice.dir/LeetCode_BinarySearchProblem.cpp.obj: ../LeetCode_BinarySearchProblem.cpp
 CMakeFiles/Practice.dir/LeetCode_BinarySearchProblem.cpp.obj: ../LeetCode_BinarySearchProblem.hpp
 
@@ -28,6 +29,7 @@ CMakeFiles/Practice.dir/LeetCode_DesignDrivenProblems.cpp.obj: ../LeetCode_Desig
 CMakeFiles/Practice.dir/LeetCode_DynamicProgrammingProblems.cpp.obj: ../LeetCode_DynamicProgrammingProblems.cpp
 CMakeFiles/Practice.dir/LeetCode_DynamicProgrammingProblems.cpp.obj: ../LeetCode_DynamicProgrammingProblems.hpp
 
+CMakeFiles/Practice.dir/LeetCode_GraphProblems.cpp.obj: ../HeaderFiles.hpp
 CMakeFiles/Practice.dir/LeetCode_GraphProblems.cpp.obj: ../LeetCode_GraphProblems.cpp
 CMakeFiles/Practice.dir/LeetCode_GraphProblems.cpp.obj: ../LeetCode_GraphProblems.hpp
 

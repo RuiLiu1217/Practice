@@ -18,6 +18,64 @@ public:
     std::vector<std::vector<std::string>> groupAnagrams(std::vector<std::string>& strs);
 };
 
+/*
+    Given a pattern and a string str, find if str follows the same pattern.
+    Here follow means a full match, such that there is a bijection between a 
+    letter in pattern and a non - empty word in str.
+    
+    Example 1:
+        Input: pattern = "abba", str = "dog cat cat dog"
+        Output : true
+    Example 2 :
+        Input : pattern = "abba", str = "dog cat cat fish"
+        Output : false
+    Example 3 :
+        Input : pattern = "aaaa", str = "dog cat cat dog"
+        Output : false
+    Example 4 :
+        Input : pattern = "abba", str = "dog dog dog dog"
+        Output : false
+    Notes :
+        You may assume pattern contains only lowercase letters, and str 
+        contains lowercase letters separated by a single space.
+*/
+class _0290_WordPattern {
+public:
+    bool wordPattern(std::string pattern, std::string str) {
+      std::istringstream iss(str);
+
+      // Split a string into a string vector 
+      std::vector<std::string> strVec(std::istream_iterator<std::string>{iss}, 
+                                      std::istream_iterator<std::string>());  // Learn how to make the space-separated string to string vector
+
+      if (pattern.size() != strVec.size()) {
+          return false;
+      }
+
+      for (int i = 0; i < pattern.size(); ++i) {
+          if (map.find(pattern[i]) == map.end()) {
+              map[pattern[i]] = strVec[i];
+          } else {
+              if (map[pattern[i]] != strVec[i]) {
+                  return false;
+              }
+          }
+
+          if (map2.find(strVec[i]) == map2.end()) {
+              map2[strVec[i]] = pattern[i];
+          } else {
+              if (map2[strVec[i]] != pattern[i]) {
+                  return false;
+              }
+          }
+      }
+      return true;
+    }
+private:
+    std::unordered_map<char, std::string> map;
+    std::unordered_map<std::string, char> map2;
+};
+
 
 /*
 Tag: hash
@@ -58,6 +116,46 @@ class _0350_IntersectionOfTwoArraysII {
 public:
     std::vector<int> intersect(std::vector<int>& nums1, std::vector<int>& nums2);
 };
+
+/*
+Tag: hash
+
+Facebook
+
+Given an array of integers with possible duplicates, randomly output 
+the index of a given target number. You can assume that the given 
+target number must exist in the array.
+
+Note:
+The array size can be very large. Solution that uses too much extra 
+space will not pass the judge.
+
+int[] nums = new int[] {1,2,3,3,3};
+Solution solution = new Solution(nums);
+
+pick(3) should return either index 2, 3, or 4 randomly. Each index 
+should have equal probability of returning.
+solution.pick(3);
+
+pick(1) should return 0. Since in the array only nums[0] is equal to 1.
+solution.pick(1);
+*/
+class _0398_RandomPickIndex {
+private:
+    std::unordered_map<int, std::vector<int>> map;
+public:
+    _0398_RandomPickIndex(std::vector<int>& nums) {
+        for(int i = 0; i < nums.size(); ++i) {
+          map[nums[i]].push_back(i);
+      }
+    }
+    int pick(int target) {
+      std::vector<int>& range = map[target];
+      int r = std::rand() % range.size();
+      return range[r];
+    }
+};
+
 
 /*
 You are given the number of rows n_rows and number of columns n_cols of 

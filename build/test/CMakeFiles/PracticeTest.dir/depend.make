@@ -91,6 +91,7 @@ test/CMakeFiles/PracticeTest.dir/LeetCode_BinarySearchProblemTests.cpp.obj: ../g
 test/CMakeFiles/PracticeTest.dir/LeetCode_BinarySearchProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-port.h
 test/CMakeFiles/PracticeTest.dir/LeetCode_BinarySearchProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-string.h
 test/CMakeFiles/PracticeTest.dir/LeetCode_BinarySearchProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-type-util.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_BinarySearchProblemTests.cpp.obj: ../HeaderFiles.hpp
 test/CMakeFiles/PracticeTest.dir/LeetCode_BinarySearchProblemTests.cpp.obj: ../LeetCode_BinarySearchProblem.hpp
 test/CMakeFiles/PracticeTest.dir/LeetCode_BinarySearchProblemTests.cpp.obj: ../test/LeetCode_BinarySearchProblemTests.cpp
 
@@ -187,6 +188,7 @@ test/CMakeFiles/PracticeTest.dir/LeetCode_GraphProblemsTest.cpp.obj: ../googlete
 test/CMakeFiles/PracticeTest.dir/LeetCode_GraphProblemsTest.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-port.h
 test/CMakeFiles/PracticeTest.dir/LeetCode_GraphProblemsTest.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-string.h
 test/CMakeFiles/PracticeTest.dir/LeetCode_GraphProblemsTest.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-type-util.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_GraphProblemsTest.cpp.obj: ../HeaderFiles.hpp
 test/CMakeFiles/PracticeTest.dir/LeetCode_GraphProblemsTest.cpp.obj: ../LeetCode_GraphProblems.hpp
 test/CMakeFiles/PracticeTest.dir/LeetCode_GraphProblemsTest.cpp.obj: ../test/LeetCode_GraphProblemsTest.cpp
 

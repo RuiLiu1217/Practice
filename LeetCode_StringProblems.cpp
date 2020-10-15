@@ -691,6 +691,32 @@ std::vector<std::string> LC::_0293_FlipGame::generatePossibleNextMoves(std::stri
     return res;
 }
 
+
+int LC::_0318_MaximumProductOfWordLengths::maxProduct(std::vector<std::string>& words) {
+    if(words.size() == 0) {
+        return 0;
+    }
+    const int len = words.size();
+    std::vector<int> myMap(len, 0);
+    std::vector<int> wordLen(len, 0);
+    for(int i = 0; i < len; ++i) {
+        for(char c : words[i]) {
+            myMap[i] |= (1 << (c - 'a')); // convert a string to a number;
+        }
+        wordLen[i] = words[i].length();
+    }
+
+    int maxProduct = 0;
+    for(int i = 0; i < len; ++i) {
+        for(int j = i + 1; j < len; ++j) {
+            if(int(myMap[i] & myMap[j]) == 0) {
+                maxProduct = std::max(maxProduct, wordLen[i] * wordLen[j]);
+            }
+        }
+    }
+    return maxProduct;
+}
+
 void LC::_0344_ReverseString::reverseString(std::vector<char>& s) {
     int i = 0;
     int j = s.size() - 1;

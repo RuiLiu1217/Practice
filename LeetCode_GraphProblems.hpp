@@ -1,9 +1,117 @@
 #ifndef LEETCODE_GRAPHPROBLEM_HPP
 #define LEETCODE_GRAPHPROBLEM_HPP
-#include <queue>
-#include <vector>
-#include <unordered_map>
+#include "HeaderFiles.hpp"
+
 namespace LC {
+/*
+Facebook
+There is a new alien language which uses the latin alphabet. However, 
+the order among letters are unknown to you. You receive a list of 
+non-empty words from the dictionary, where words are sorted lexicographically 
+by the rules of this new language. Derive the order of letters in 
+this language.
+
+Input:
+["wrt", "wrf", "er", "ett", "rftt"]
+Output: "wertf"
+
+Input:
+["z", "x"]
+Output: "zx"
+
+Input:
+["z", "x", "z"] 
+Output: "" 
+
+Explanation: The order is invalid, so return "".
+Note:
+
+You may assume all letters are in lowercase.
+You may assume that if a is a prefix of b, then a must appear before b 
+in the given dictionary. If the order is invalid, return an empty string.
+There may be multiple valid order of letters, return any one of them is fine.
+*/
+class _0269_AlienDictionary {
+public:
+    // ! There are several weird edge cases
+    std::string alienOrder(std::vector<std::string>& words) {
+        if(words.size() == 0) {
+            return "";
+        }
+        if(words.size() == 1) {
+            std::sort(begin(words[0]), end(words[0]));
+            return words[0]; // This is weird
+        }
+        std::unordered_map<char, std::unordered_set<char>> adjList;
+        std::unordered_set<char> charSet;
+        for(int i = 0; i < words.size() - 1; ++i) {
+            std::string sWord = words[i];
+            std::string bWord = words[i+1];
+            int idx = 0;
+            while(idx < std::min(sWord.size(), bWord.size()) &&
+                 sWord[idx] == bWord[idx]) {
+                ++idx;
+            }
+            if(idx < std::min(sWord.size(), bWord.size())) {
+                adjList[sWord[idx]].insert(bWord[idx]);
+            }
+            if(idx == bWord.size() && idx < sWord.size()) {
+                return "";
+            }
+            for(int t = 0; t < sWord.size(); ++t) {
+                charSet.insert(sWord[t]);
+            }
+            for(int t = 0; t < bWord.size(); ++t) {
+                charSet.insert(bWord[t]);
+            }
+        }
+        
+        std::unordered_map<char, bool> visited;
+        std::unordered_map<char, int> inDegree;
+        for(char c : charSet) {
+            visited[c] = false;
+            if (inDegree.find(c) == inDegree.end()) {
+                inDegree[c] = 0;
+            }            
+            auto toNode = adjList[c];
+            for(auto t : toNode) {
+                ++inDegree[t];
+            }
+        }
+        std::queue<char> q;
+        for(auto& ind : inDegree) {
+            if(ind.second == 0) {
+                q.push(ind.first);
+            }
+        }
+        
+        std::string res;
+        while(!q.empty()) {
+            const int N = q.size();
+            for(int i = 0; i < N; ++i) {
+                char node = q.front();
+                q.pop();
+                visited[node] = true;
+                res += node;
+                
+                auto adjNodes = adjList[node];
+                for(auto& adjN : adjNodes) {
+                    --inDegree[adjN];
+                    if(!visited[adjN] && inDegree[adjN] == 0) {
+                        q.push(adjN);
+                    }
+                }
+            }
+        }
+        int remain = 0;
+        for(auto& ind : inDegree) {
+            remain += ind.second;
+        }
+        return remain == 0 ? res : "";
+    }
+
+};
+
 
     // BFS, DFS
     // In a directed graph, we start at some node and every turn, walk along a directed edge of the graph.

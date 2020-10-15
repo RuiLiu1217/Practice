@@ -255,6 +255,56 @@ public:
 
 
 /*
+Given two strings s and t, determine if they are both one edit distance apart.
+
+There are 3 possiblities to satisify one edit distance apart:
+
+Insert a character into s to get t
+Delete a character from s to get t
+Replace a character of s to get t
+
+Input: s = "ab", t = "acb"
+Output: true
+Explanation: We can insert 'c' into s to get t.
+
+Input: s = "cab", t = "ad"
+Output: false
+Explanation: We cannot get t from s by only one step.
+
+Input: s = "1203", t = "1213"
+Output: true
+Explanation: We can replace '0' with '1' to get t.
+
+*/
+class _0161_OneEditDistance {
+public:
+    bool isOneEditDistance(std::string s, std::string t) {
+        const int ns = s.length();
+        const int nt = t.length();
+        
+        if(ns > nt) { // ! 总是计算s较小的情况比较容易。
+            return isOneEditDistance(t, s);
+        }
+        
+        if(nt - ns > 1) {
+            return false;
+        }
+        
+        for(int i = 0; i < ns; ++i) {
+            if(s[i] != t[i]) {
+                if(ns == nt) {
+                    return s.substr(i+1) == t.substr(i+1);
+                } else {
+                    return s.substr(i) == t.substr(i+1);
+                }
+            } 
+        }
+        return (ns + 1 == nt);
+    }
+};
+
+
+/*
 Tag: string,
 TODO: Too much details need to be considered
 
@@ -560,6 +610,47 @@ private:
     void DFS(std::unordered_set<char> set, int curLen, int n, std::string tmp, std::vector<std::string>& res);
 };
 
+/*
+Given a string, we can "shift" each of its letter to its successive letter, for example: "abc" -> "bcd". We can keep "shifting" which forms the sequence:
+
+"abc" -> "bcd" -> ... -> "xyz"
+Given a list of strings which contains only lowercase alphabets, group all strings that belong to the same shifting sequence.
+
+Example:
+
+Input: ["abc", "bcd", "acef", "xyz", "az", "ba", "a", "z"],
+Output: 
+[
+  ["abc","bcd","xyz"],
+  ["az","ba"],
+  ["acef"],
+  ["a","z"]
+]
+*/
+class _0249_GroupShiftedStrings {
+public:
+    std::vector<std::vector<std::string>> groupStrings(std::vector<std::string>& strings) {
+        std::unordered_map<std::string, std::vector<std::string>> map;
+        for(std::string& s : strings) {
+            std::string ts = transback(s); // Create a virtual base that all strings transback to the base, this base is used as a key
+            map[ts].push_back(s);
+        }
+        std::vector<std::vector<std::string>> res;
+        for(auto& m : map) {
+            res.push_back(m.second);
+        }
+        return res;
+    }
+    std::string transback(std::string& s) {
+        int l = s[0] - 'a';
+        std::string res;
+        for(auto& c : s) {
+            res += static_cast<char>((c - l + 26) % 26);
+        }
+        return res;
+    }
+};
+
 
 /*
 Given a string, determine if a permutation of the string could form a palindrome.
@@ -594,6 +685,30 @@ public:
     std::vector<std::string> generatePossibleNextMoves(std::string s);
 };
 
+/*
+Given a string array words, find the maximum value of 
+length(word[i]) * length(word[j]) where the two words do not share common letters. 
+You may assume that each word will contain only lower case letters. 
+If no such two words exist, return 0.
+
+Input: ["abcw","baz","foo","bar","xtfn","abcdef"]
+Output: 16 
+Explanation: The two words can be "abcw", "xtfn".
+Example 2:
+
+Input: ["a","ab","abc","d","cd","bcd","abcd"]
+Output: 4 
+Explanation: The two words can be "ab", "cd".
+Example 3:
+
+Input: ["a","aa","aaa","aaaa"]
+Output: 0 
+Explanation: No such pair of words.
+*/
+class _0318_MaximumProductOfWordLengths {
+public:
+    int maxProduct(std::vector<std::string>& words);
+};
 
 /*
 Write a function that reverses a string. The input string is given as 

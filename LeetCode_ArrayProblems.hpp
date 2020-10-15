@@ -994,6 +994,118 @@ public:
 };
 
 /*
+Given an array containing n distinct numbers taken from 0, 1, 2, ..., n, find the one that is missing from the array.
+
+Input: [3,0,1]               :         Output: 2
+Input: [9,6,4,2,3,5,7,0,1]   :         Output: 8
+Note:
+Your algorithm should run in linear runtime complexity. Could you implement it using only constant extra space complexity?
+*/
+class _0268_MissingNumber {
+public:
+    // How to deal with overflow?
+    int missingNumber(std::vector<int>& nums) {
+        const int N = nums.size();
+        long res = std::accumulate(begin(nums), end(nums), 0);
+        long tot = N * (N + 1) / 2;
+        return tot - res;
+    }
+};
+
+/*
+Given an unsorted array nums, reorder it in-place such that nums[0] <= nums[1] >= nums[2] <= nums[3]....
+
+Input: nums = [3,5,2,1,6,4]
+Output: One possible answer is [3,5,1,6,2,4]
+! Important Problem, must master
+*/
+class _0280_WiggleSort {
+public:
+    void wiggleSort(std::vector<int>& nums) {
+        if(nums.size() <= 1) {
+            return;
+        }
+        
+        bool shouldIncreasing = true;
+        for(int i = 1; i < nums.size(); ++i) {
+            if (shouldIncreasing && nums[i] < nums[i-1]) {
+                std::swap(nums[i], nums[i-1]);                
+            } else if(!shouldIncreasing && nums[i] > nums[i-1]) {
+                std::swap(nums[i], nums[i-1]);
+            }
+            shouldIncreasing = !shouldIncreasing;
+        }
+    }
+};
+
+
+/*
+Given two 1d vectors, implement an iterator to return their elements alternately.
+
+Input:
+v1 = [1,2]
+v2 = [3,4,5,6] 
+Output: [1,3,2,4,5,6]
+Explanation: By calling next repeatedly until hasNext returns false, the order of 
+elements returned by next should be: [1,3,2,4,5,6].
+ 
+Follow up:
+
+What if you are given k 1d vectors? How well can your code be extended to such cases?
+
+Clarification for the follow up question:
+The "Zigzag" order is not clearly defined and is ambiguous for k > 2 cases. 
+If "Zigzag" does not look right to you, replace "Zigzag" with "Cyclic". For example:
+
+Input:
+[1,2,3]
+[4,5,6,7]
+[8,9]
+
+Output: [1,4,8,2,5,9,3,6,7].
+*/
+class _0281_ZigzagIterator {
+private:
+    std::vector<std::vector<int>::iterator> it;
+    std::vector<std::vector<int>::iterator> endIt;
+    int N; 
+    int i;
+public:
+    _0281_ZigzagIterator(std::vector<int>&v1, std::vector<int>& v2) {
+        N = 2;
+        it.resize(N);
+        it[0] = v1.begin();
+        it[1] = v2.begin();
+        endIt.resize(N);
+        endIt[0] = v1.end();
+        endIt[1] = v2.end();
+        i = 0;
+    }
+    int next() {
+        if (hasNext()) {
+            while(it[i] == endIt[i]) {
+                i = (i + 1) % N;
+            }
+            int res = *it[i];
+            ++it[i];
+            i = (i + 1) % N;
+            return res;
+        }
+        return -1;
+    }
+
+    bool hasNext() {
+        for(int i = 0; i < it.size(); ++i) {
+            if(it[i] != endIt[i]) {
+                return true;
+            }
+        }
+        return false;
+    }
+};
+
+
+/*
 Given an array nums, write a function to move all 0's to the end of it while maintaining the relative order of the non-zero elements.
 
 Input: [0,1,0,3,12]
