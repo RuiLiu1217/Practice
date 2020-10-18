@@ -1436,6 +1436,45 @@ public:
     Node* inorderSuccessor(Node* node);
 };
 
+/*
+Given a Binary Search Tree (BST), convert it to a Greater Tree such that 
+every key of the original BST is changed to the original key plus sum of 
+all keys greater than the original key in BST.
+
+Input: The root of a Binary Search Tree like this:
+              5
+            /   \
+           2     13
+
+Output: The root of a Greater Tree like this:
+             18
+            /   \
+          20     13
+*/
+class _0538_ConvertBSTToGreaterTree {
+public:
+    TreeNode* convertBST(TreeNode* root) {
+        TreeNode* p = root;
+        std::stack<TreeNode*> st;
+        int lasNum = 0;
+        while(p != nullptr || !st.empty()) {
+            if(p != nullptr) {
+                st.push(p);
+                p = p->right;
+            } else {
+                TreeNode* q = st.top();
+                st.pop();
+                
+                lasNum += q->val;
+                q->val = lasNum;
+                
+                p = q->left;
+            }
+        }
+        return root;
+    }
+};
+
 
 /*
 Given a n-ary tree, find its maximum depth.

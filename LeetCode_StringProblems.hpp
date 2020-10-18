@@ -956,6 +956,80 @@ public:
 };
 
 /*
+Given two strings representing two complex numbers.
+You need to return a string representing their multiplication. Note i2 = -1 according to the definition.
+
+Example 1:
+Input: "1+1i", "1+1i"
+Output: "0+2i"
+Explanation: (1 + i) * (1 + i) = 1 + i2 + 2 * i = 2i, and you need convert it to the form of 0+2i.
+Example 2:
+Input: "1+-1i", "1+-1i"
+Output: "0+-2i"
+Explanation: (1 - i) * (1 - i) = 1 + i2 - 2 * i = -2i, and you need convert it to the form of 0+-2i.
+Note:
+
+The input strings will not have extra blank.
+The input strings will be given in the form of a+bi, where the integer a and b will both belong to the range of [-100, 100]. And the output should be also in this form.
+*/
+class _0537_ComplexNumberMultiplication {
+public:
+    std::string complexNumberMultiply(std::string a, std::string b) {
+        int ra, ia, rb, ib;
+        char buff;
+        std::stringstream aa(a), bb(b), ans; // Use of string stream
+        aa >> ra >> buff >> ia >> buff;
+        bb >> rb >> buff >> ib >> buff;
+        ans << ra*rb - ia*ib << "+" << ra*ib + rb*ia << "i";
+        return ans.str();
+    }
+};
+
+/*
+Given a string and an integer k, you need to reverse the first k 
+characters for every 2k characters counting from the start of the string. 
+If there are less than k characters left, reverse all of them. If there 
+are less than 2k but greater than or equal to k characters, then reverse 
+the first k characters and left the other as original.
+
+Input: s = "abcdefg", k = 2
+Output: "bacdfeg"
+Restrictions:
+The string consists of lower English letters only.
+Length of the given string and k will in the range [1, 10000]
+*/
+class _0541_ReverseStringII {
+public:
+    std::string reverseStr(std::string s, int k) {
+        std::vector<std::string> svec;
+        split(s, k, svec);
+        int cnt = 0;
+        std::string res;
+        for(int i = 0; i < svec.size(); ++i) {
+            if(cnt % 2 == 0) {
+                std::reverse(svec[i].begin(), svec[i].end());
+            }
+            cnt++;
+            res += svec[i];
+        }
+        return res;
+    }
+private:
+    void split(std::string s, int k, std::vector<std::string>& res) {
+        if(s.empty()) {
+            return;
+        }
+        if(s.size() <= k) {
+            res.push_back(s);
+            return;
+        }
+        std::string head = s.substr(0, k);
+        res.push_back(head);
+        split(s.substr(k), k, res);
+    }
+};
+
+/*
 During the NBA playoffs, we always arrange the rather strong team to play with the rather weak team, like make the rank 1 team play with the rank nth team, which is a good strategy to make the contest more interesting. Now, you're given n teams, you need to output their final contest matches in the form of a string.
 
 The n teams are given in the form of positive integers from 1 to n, which represents their initial rank. (Rank 1 is the strongest team and Rank n is the weakest team.) We'll use parentheses('(', ')') and commas(',') to represent the contest team pairing - parentheses('(' , ')') for pairing and commas(',') for partition. During the pairing process in each round, you always need to follow the strategy of making the rather strong one pair with the rather weak one.
@@ -991,6 +1065,39 @@ public:
     std::string findContestMatch(int n);
 };
 
+/*
+Given a string, you need to reverse the order of characters in each word 
+within a sentence while still preserving whitespace and initial word order.
+
+Input: "Let's take LeetCode contest"
+Output: "s'teL ekat edoCteeL tsetnoc"
+Note: In the string, each word is separated by single space and there will 
+not be any extra space in the string.
+*/
+class _0557_ReverseWordsInAStringIII {
+public:
+    std::string reverseWords(std::string s) {
+        int left = 0;
+        int right = 0;
+        s += ' ';
+        while(right < s.size()) {
+            if(s[right] == ' ') {
+                int i = left;
+                int j = right - 1;
+                while(i < j) {
+                    std::swap(s[i], s[j]);
+                    ++i;
+                    --j;
+                }
+                left = right + 1;
+                right = left;
+            } else {
+                ++right;
+            }
+        }
+        return s.substr(0, s.size() - 1);
+    }
+};
 
 /*
 Given two strings s1 and s2, write a function to return true if s2 

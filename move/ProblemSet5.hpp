@@ -216,41 +216,6 @@ public:
 };
 
 /*
-Given an array w of positive integers, where w[i] describes the weight of 
-index i, write a function pickIndex which randomly picks an index in 
-proportion to its weight.
-
-Note:
-1 <= w.length <= 10000
-1 <= w[i] <= 10^5
-pickIndex will be called at most 10000 times.
-
-Input: 
-["Solution","pickIndex"]
-[[[1]],[]]
-Output: [null,0]
-
-Input: 
-["Solution","pickIndex","pickIndex","pickIndex","pickIndex","pickIndex"]
-[[[1,3]],[],[],[],[],[]]
-Output: [null,0,1,1,1,0]
-Explanation of Input Syntax:
-
-The input is two lists: the subroutines called and their arguments. 
-Solution's constructor has one argument, the array w. pickIndex has no 
-arguments. Arguments are always wrapped with a list, even if there aren't any.
-*/
-class _0528_RandomPickWithWeight {
-private:
-    std::vector<int> accumulated;
-    std::vector<int> W;
-    int maxV;
-public:
-    _0528_RandomPickWithWeight(std::vector<int>& w);
-    int pickIndex();
-};
-
-/*
 Given a picture consisting of black and white pixels, and a positive integer N, find the 
 number of black pixels located at some specific row R and column C that align with all the following rules:
 
@@ -306,99 +271,6 @@ public:
 
 
 /*
-Given two strings representing two complex numbers.
-You need to return a string representing their multiplication. Note i2 = -1 according to the definition.
-
-Example 1:
-Input: "1+1i", "1+1i"
-Output: "0+2i"
-Explanation: (1 + i) * (1 + i) = 1 + i2 + 2 * i = 2i, and you need convert it to the form of 0+2i.
-Example 2:
-Input: "1+-1i", "1+-1i"
-Output: "0+-2i"
-Explanation: (1 - i) * (1 - i) = 1 + i2 - 2 * i = -2i, and you need convert it to the form of 0+-2i.
-Note:
-
-The input strings will not have extra blank.
-The input strings will be given in the form of a+bi, where the integer a and b will both belong to the range of [-100, 100]. And the output should be also in this form.
-*/
-class _0537_ComplexNumberMultiplication {
-public:
-    std::string complexNumberMultiply(std::string a, std::string b);
-};
-
-/*
-Given a Binary Search Tree (BST), convert it to a Greater Tree such that 
-every key of the original BST is changed to the original key plus sum of 
-all keys greater than the original key in BST.
-
-Input: The root of a Binary Search Tree like this:
-              5
-            /   \
-           2     13
-
-Output: The root of a Greater Tree like this:
-             18
-            /   \
-          20     13
-*/
-class _0538_ConvertBSTToGreaterTree {
-public:
-    TreeNode<int>* convertBST(TreeNode<int>* root);
-    void inOrder(TreeNode<int>* root);
-};
-
-/*
-Given a list of 24-hour clock time points in "Hour:Minutes" format, find the minimum minutes difference between any two time points in the list.
-Example 1:
-Input: ["23:59","00:00"]
-Output: 1
-Note:
-The number of time points in the given list is at least 2 and won't exceed 20000.
-The input time is legal and ranges from 00:00 to 23:59.
-*/
-class _0539_MinimumTimeDifference {
-public:
-    int findMinDifference(std::vector<std::string>& timePoints);
-};
-
-/*
-You are given a sorted array consisting of only integers where every 
-element appears exactly twice, except for one element which appears 
-exactly once. Find this single element that appears only once.
-
-Input: [1,1,2,3,3,4,4,8,8]
-Output: 2
-
-Input: [3,3,7,7,10,11,11]
-Output: 10
-*/
-class _0540_SingleElementInASortedArray {
-public:
-    int singleNonDuplicate(std::vector<int>& nums);
-private:
-    int singleNoDuplicate(std::vector<int>& nums, int bet, int end);
-};
-
-/*
-Given a string and an integer k, you need to reverse the first k 
-characters for every 2k characters counting from the start of the string. 
-If there are less than k characters left, reverse all of them. If there 
-are less than 2k but greater than or equal to k characters, then reverse 
-the first k characters and left the other as original.
-
-Input: s = "abcdefg", k = 2
-Output: "bacdfeg"
-Restrictions:
-The string consists of lower English letters only.
-Length of the given string and k will in the range [1, 10000]
-*/
-class _0541_ReverseStringII {
-public:
-    std::string reverseStr(std::string s, int k);
-};
-
-/*
 Tag: Tree
 !!! Edge case and initial condtion is very easy to have errors !!!
 Facebook 
@@ -427,39 +299,6 @@ public:
 
 };
 
-/*
-553. Optimal Division
-Given a list of positive integers, the adjacent integers will 
-perform the float division. For example, [2,3,4] -> 2 / 3 / 4.
-
-However, you can add any number of parenthesis at any position 
-to change the priority of operations. You should find out how 
-to add parenthesis to get the maximum result, and return the 
-corresponding expression in string format. Your expression should NOT contain redundant parenthesis.
-
-Example:
-Input: [1000,100,10,2]
-Output: "1000/(100/10/2)"
-Explanation:
-1000/(100/10/2) = 1000/((100/10)/2) = 200
-However, the bold parenthesis in "1000/((100/10)/2)" are redundant, 
-since they don't influence the operation priority. So you should return "1000/(100/10/2)". 
-
-Other cases:
-1000/(100/10)/2 = 50
-1000/(100/(10/2)) = 50
-1000/100/10/2 = 0.5
-1000/100/(10/2) = 2
-Note:
-
-The length of the input array is [1, 10].
-Elements in the given array will be in range [2, 1000].
-There is only one optimal division for each test case.
-*/
-class _0553_OptimalDivision {
-public:
-    std::string optimalDivision(std::vector<int>& nums);
-};
 
 /*
 There is a brick wall in front of you. The wall is rectangular and has 
@@ -493,20 +332,6 @@ public:
     int leastBricks(std::vector<std::vector<int>>& wall);
 };
 
-
-/*
-Given a string, you need to reverse the order of characters in each word 
-within a sentence while still preserving whitespace and initial word order.
-
-Input: "Let's take LeetCode contest"
-Output: "s'teL ekat edoCteeL tsetnoc"
-Note: In the string, each word is separated by single space and there will 
-not be any extra space in the string.
-*/
-class _0557_ReverseWordsInAStringIII {
-public:
-    std::string reverseWords(std::string s);
-};
 
 /*
 A Binary Matrix is a matrix in which all the elements are either 0 or 1.
@@ -627,24 +452,6 @@ Note:
 class _0560_SubarraySumEqualsK {
     public:
     int subarraySum(std::vector<int>& nums, int k);
-};
-
-
-/*
-Given an array of 2n integers, your task is to group these integers 
-into n pairs of integer, say (a1, b1), (a2, b2), ..., (an, bn) which 
-makes sum of min(ai, bi) for all i from 1 to n as large as possible.
-
-Input: [1,4,3,2]
-Output: 4
-Explanation: n is 2, and the maximum sum of pairs is 4 = min(1, 2) + min(3, 4).
-Note:
-n is a positive integer, which is in the range of [1, 10000].
-All the integers in the array will be in the range of [-10000, 10000].
-*/
-class _0561_ArrayPartitionI {
-public:
-    int arrayPairSum(std::vector<int>& nums);
 };
 
 /*

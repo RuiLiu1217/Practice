@@ -354,6 +354,124 @@ public:
 };
 
 /*
+    Given an array w of positive integers, where w[i] describes the weight of 
+    index i, write a function pickIndex which randomly picks an index in 
+    proportion to its weight.
+
+    Note:
+    1 <= w.length <= 10000
+    1 <= w[i] <= 10^5
+    pickIndex will be called at most 10000 times.
+
+    Input: 
+    ["Solution","pickIndex"]
+    [[[1]],[]]
+    Output: [null,0]
+
+    Input: 
+    ["Solution","pickIndex","pickIndex","pickIndex","pickIndex","pickIndex"]
+    [[[1,3]],[],[],[],[],[]]
+    Output: [null,0,1,1,1,0]
+    Explanation of Input Syntax:
+
+    The input is two lists: the subroutines called and their arguments. 
+    Solution's constructor has one argument, the array w. pickIndex has no 
+    arguments. Arguments are always wrapped with a list, even if there aren't any.
+*/
+class _0528_RandomPickWithWeight {
+private:
+    std::vector<int> accumulated;
+    std::vector<int> W;
+    int maxV;
+public:
+    _0528_RandomPickWithWeight(std::vector<int>& w);
+    int pickIndex();
+};
+
+/*
+Given a list of 24-hour clock time points in "Hour:Minutes" format, find the minimum minutes difference between any two time points in the list.
+Example 1:
+Input: ["23:59","00:00"]
+Output: 1
+Note:
+The number of time points in the given list is at least 2 and won't exceed 20000.
+The input time is legal and ranges from 00:00 to 23:59.
+*/
+class _0539_MinimumTimeDifference {
+public:
+    int findMinDifference(std::vector<std::string>& timePoints) {
+        std::vector<int> time;
+        for(std::string& timePoint : timePoints) {
+            std::istringstream iss(timePoint);
+            int min = 0;
+            std::string token;
+            while(getline(iss, token, ':')) {
+                min = min * 60 + std::stoi(token);
+            }
+            time.push_back(min);
+        }
+        std::sort(begin(time), end(time));
+        int minT = INT_MAX;
+        for(int i = 1; i < time.size(); ++i) {
+            minT = std::min(minT, time[i] - time[i-1]);
+        }
+        minT = std::min(minT, time.front() + 24 * 60 - time.back()); // add one day : 24 * 60
+        return minT;
+    }
+};
+
+/*
+553. Optimal Division
+Given a list of positive integers, the adjacent integers will 
+perform the float division. For example, [2,3,4] -> 2 / 3 / 4.
+
+However, you can add any number of parenthesis at any position 
+to change the priority of operations. You should find out how 
+to add parenthesis to get the maximum result, and return the 
+corresponding expression in string format. Your expression should NOT contain redundant parenthesis.
+
+Example:
+Input: [1000,100,10,2]
+Output: "1000/(100/10/2)"
+Explanation:
+1000/(100/10/2) = 1000/((100/10)/2) = 200
+However, the bold parenthesis in "1000/((100/10)/2)" are redundant, 
+since they don't influence the operation priority. So you should return "1000/(100/10/2)". 
+
+Other cases:
+1000/(100/10)/2 = 50
+1000/(100/(10/2)) = 50
+1000/100/10/2 = 0.5
+1000/100/(10/2) = 2
+Note:
+
+The length of the input array is [1, 10].
+Elements in the given array will be in range [2, 1000].
+There is only one optimal division for each test case.
+*/
+class _0553_OptimalDivision {
+public:
+    std::string optimalDivision(std::vector<int>& nums) {
+        if(nums.size() == 0) {
+            return "";
+        }
+        if(nums.size() == 1) {
+            return std::to_string(nums[0]);
+        }
+        if(nums.size() == 2) {
+            return std::to_string(nums[0]) + "/" + std::to_string(nums[1]);
+        }
+        std::string toReturn = std::to_string(nums[0]) + "/(";
+        for(int i = 1; i < nums.size() - 1; ++i) {
+            toReturn += (std::to_string(nums[i]) + "/");
+        }
+        toReturn += std::to_string(nums[nums.size() - 1]) + ")";
+        return toReturn;
+    }
+};
+
+
+/*
 Given the coordinates of four points in 2D space, return whether the four points could construct a square.
 The coordinate (x,y) of a point is represented by an integer array with two integers.
 

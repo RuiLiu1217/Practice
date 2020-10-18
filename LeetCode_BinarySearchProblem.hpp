@@ -117,5 +117,50 @@ public:
     int firstBadVersion(int n);
 };
 
+/*
+You are given a sorted array consisting of only integers where every 
+element appears exactly twice, except for one element which appears 
+exactly once. Find this single element that appears only once.
+
+Input: [1,1,2,3,3,4,4,8,8]
+Output: 2
+
+Input: [3,3,7,7,10,11,11]
+Output: 10
+*/
+class _0540_SingleElementInASortedArray {
+public:
+    int singleNonDuplicate(std::vector<int>& nums) {
+        return singleNonDuplicate(nums, 0, nums.size()); 
+    }
+    int singleNonDuplicate(std::vector<int>& nums, int start, int end) {
+        if(start + 1 == end) {
+            return nums[start];
+        }
+        if(start + 3 == end) {
+            int num = nums[start];
+            num ^= nums[start + 1];
+            num ^= nums[start + 2];
+            return num;
+        }
+        int mid = start + (end - start) / 2;
+        if(nums[mid] == nums[mid-1]) {
+            if((mid - start) % 2 == 0) {
+                return singleNonDuplicate(nums, start, mid + 1);
+            } else {
+                return singleNonDuplicate(nums, mid + 1, end);
+            }
+        } else if(nums[mid] == nums[mid+1]) {
+            if((end - mid) % 2) {
+                return singleNonDuplicate(nums, mid, end);
+            } else {
+                return singleNonDuplicate(nums, start, mid);
+            }            
+        } else {
+            return nums[mid];
+        }
+    }
+};
+
 }
 #endif
