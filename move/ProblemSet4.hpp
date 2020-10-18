@@ -46,11 +46,6 @@ private:
     int numberOfSubArith(int N);
 };
  
-class _0414_ThirdMaximumNumber{
-public:
-    int thirdMax(std::vector<int>& nums);
-};
-
 
 /*
 Given a non-empty array containing only positive integers, find if the array 
