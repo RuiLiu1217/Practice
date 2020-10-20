@@ -557,6 +557,51 @@ public:
 };
 
 /*
+You have a list of points in the plane. Return the area of the largest triangle that can be formed by any 3 of the points.
+
+Example:
+Input: points = [[0,0],[0,1],[1,0],[0,2],[2,0]]
+Output: 2
+Explanation: 
+The five points are show in the figure below. The red triangle is the largest.
+
+Notes:
+
+3 <= points.length <= 50.
+No points will be duplicated.
+ -50 <= points[i][j] <= 50.
+Answers within 10^-6 of the true value will be accepted as correct.
+! 海伦公式 !
+*/
+class _0812_LargestTriangleArea {
+public:
+    double largestTriangleArea(std::vector<std::vector<int>>& points) {
+        double area = 0;
+        for(int i = 0; i < points.size(); ++i) {
+            const int Ax = points[i][0];
+            const int Ay = points[i][1];
+            for(int j = i+1; j < points.size(); ++j) {
+                const int Bx = points[j][0];
+                const int By = points[j][1];
+                const int AxBy = Ax * By;
+                const int BxAy = Bx * Ay;
+                const int Ay_By = Ay - By;
+                const int Ax_Bx = Ax - Bx;
+                for(int k = j+1; k < points.size(); ++k) {
+                    const int Cx = points[k][0];
+                    const int Cy = points[k][1];
+                    const double t = std::abs(AxBy - BxAy - Ax_Bx * Cy + Cx * Ay_By) * 0.5; // 海伦公式 S=sqrt(p*(p-a)*(p-b)*(p-c))  || p = (a + b + c) / 2
+                    if(area < t) {
+                        area = t;
+                    }
+                }
+            }
+        }
+        return area;
+    }
+};
+
+/*
 Given an array of digits, you can write numbers using each digits[i] as many times as we want.  For example, if digits = ['1','3','5'], we may write numbers such as '13', '551', and '1351315'.
 
 Return the number of positive integers that can be generated that are less than or equal to a given integer n.

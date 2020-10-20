@@ -1,7 +1,7 @@
 #ifndef LEETCODE_DYNAMICPROGRAMMINGPROBLEMS_HPP
 #define LEETCODE_DYNAMICPROGRAMMINGPROBLEMS_HPP
-#include <vector>
-#include <string>
+#include "HeaderFiles.hpp"
+
 namespace LC {
 /* 
 TODO: Copy from the answer
@@ -490,6 +490,86 @@ public:
     std::vector<std::string> findAllConcatenatedWordsInADict(std::vector<std::string>& words);
 };
 
+/*
+Given a 01 matrix M, find the longest line of consecutive one in the matrix. The line could be horizontal, vertical, diagonal or anti-diagonal.
+Example:
+Input:
+[[0,1,1,0],
+ [0,1,1,0],
+ [0,0,0,1]]
+Output: 3
+Hint: The number of elements in the given matrix will not exceed 10,000.
+*/
+class _0562_LongestLineOfConsecutiveOneInMatrix {
+public:
+    int longestLine(std::vector<std::vector<int>>& M) {
+        const int n = M.size();
+        int max = 0;
+        if (n == 0) return max;
+        int m = M[0].size();
+        
+        std::vector<std::vector<std::vector<int>>> 
+            dp(n, std::vector<std::vector<int>>(m, std::vector<int>(4, 0)));
+        for (int i=0;i<n;i++) {
+            for (int j=0;j<m;j++) {
+                if (M[i][j] == 0) continue;
+                for (int k = 0; k < 4; k++) {
+                    dp[i][j][k] = 1;
+                }
+                if (j > 0) dp[i][j][0] += dp[i][j-1][0]; // horizontal line
+                if (j > 0 && i > 0) dp[i][j][1] += dp[i-1][j-1][1]; // anti-diagonal line
+                if (i > 0) dp[i][j][2] += dp[i-1][j][2]; // vertical line
+                if (j < m-1 && i > 0) dp[i][j][3] += dp[i-1][j+1][3]; // diagonal line
+                max = std::max({max, dp[i][j][0], dp[i][j][1], dp[i][j][2], dp[i][j][3]});
+            }
+        }
+        return max;
+    }
+};
+
+/*
+Given two words word1 and word2, find the minimum number of steps 
+required to make word1 and word2 the same, where in each step you 
+can delete one character in either string.
+
+Input: "sea", "eat"
+Output: 2
+Explanation: You need one step to make "sea" to "ea" and another step to make "eat" to "ea".
+Note:
+The length of given words won't exceed 500.
+Characters in given words can only be lower-case letters.
+!LCS longest common subsequences is an important algorithm that we need to know!
+*/
+class _0583_DeleteOperationForTwoStrings {
+private:
+    std::vector<std::vector<int>> DP;
+    int minDistance_DP_nonLCS_based(std::string word1, std::string word2);
+    int minDistance_LCS_DP_based(std::string word1, std::string word2);
+    int minDistance_LCS_based(std::string word1, std::string word2);
+    int lcs(std::string& s1, std::string& s2, int m, int n);
+public:
+    int minDistance(std::string word1, std::string word2) {
+        std::vector<std::vector<int>> DP(word1.size() + 1, std::vector<int>(word2.size() + 1, 0));
+        for(int i = 0; i <= word2.size(); ++i) {
+            DP[0][i] = i;
+        }
+        for(int j = 0; j <= word1.size(); ++j) {
+            DP[j][0] = j;
+        }
+        
+        for(int i = 1; i <= word1.size(); ++i) {
+            for(int j = 1; j <= word2.size(); ++j) {
+                if(word1[i-1] == word2[j-1]) {
+                    DP[i][j] = DP[i-1][j-1];
+                } else {
+                    DP[i][j] = std::min(DP[i-1][j], DP[i][j-1]) + 1;
+                }
+            }
+        }
+        
+        return DP.back().back();
+    }
+};
 
 /*
 You are given n pairs of numbers. In every pair, the first number is always 
@@ -631,6 +711,57 @@ Every cost[i] will be an integer in the range [0, 999].
 class _0746_MinCostClimbingStairs {
 public:
     int minCostClimbingStairs(std::vector<int>& cost);
+};
+
+/*
+Alex and Lee play a game with piles of stones. There are an even number 
+of piles arranged in a row, and each pile has a positive integer number
+of stones piles[i]. The objective of the game is to end with the most 
+stones.  The total number of stones is odd, so there are no ties. Alex 
+and Lee take turns, with Alex starting first.  Each turn, a player takes 
+the entire pile of stones from either the beginning or the end of the row.  
+This continues until there are no more piles left, at which point the 
+person with the most stones wins.
+
+Assuming Alex and Lee play optimally, return True if and only if Alex 
+wins the game.
+
+Input: [5,3,4,5]           :           Output: true
+Explanation: 
+Alex starts first, and can only take the first 5 or the last 5.
+Say he takes the first 5, so that the row becomes [3, 4, 5].
+If Lee takes 3, then the board is [4, 5], and Alex takes 5 to win with 10 points.
+If Lee takes the last 5, then the board is [3, 4], and Alex takes 4 to win with 9 points.
+This demonstrated that taking the first 5 was a winning move for Alex, so we return true.
+*/
+class _0877_StoneGame {
+private:
+    std::vector<std::vector<int>> DP;
+public:
+    bool stoneGame(std::vector<int>& piles) {
+        const int n = piles.size();
+        DP = std::vector<std::vector<int>>(n, std::vector<int>(n, INT_MIN));
+        for(int i = 0; i < n; ++i) {
+            DP[i][i] = piles[i];
+        }
+        
+        for(int l = 2; l <= n; ++l) { // ! A hint: loop based on the length of piles to be optimized (真正DP 方法)
+            for(int i = 0; i < n - l + 1; ++i) {
+                int j = i + l - 1;
+                DP[i][j] = std::max(piles[i] - DP[i+1][j], piles[j] - DP[i][j-1]);
+            }
+        }
+        return DP[0][n-1] > 0;
+    }
+    int score(const std::vector<int>& piles, int l, int r) { // 记忆化递归;
+        if(l == r) {
+            return piles[l];
+        }
+        if(DP[l][r] == INT_MIN) {
+            DP[l][r] = std::max(piles[l] - score(pile, l+1, r), piles[r] - score(pile, l, r-1));
+        }
+        return DP[l][r];
+    }
 };
 
 /*

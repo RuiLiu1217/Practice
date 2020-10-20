@@ -45,65 +45,6 @@ private:
     bool check(std::string S, std::string W);
 };
 
-/*
-A website domain like "discuss.leetcode.com" consists of various subdomains. At the top level, we have 
-"com", at the next level, we have "leetcode.com", and at the lowest level, "discuss.leetcode.com". When 
-we visit a domain like "discuss.leetcode.com", we will also visit the parent domains "leetcode.com" and 
-"com" implicitly.
-Now, call a "count-paired domain" to be a count (representing the number of visits this domain received), 
-followed by a space, followed by the address. An example of a count-paired domain might be "9001 discuss.leetcode.com".
-We are given a list cpdomains of count-paired domains. We would like a list of count-paired domains, 
-(in the same format as the input, and in any order), that explicitly counts the number of visits to each subdomain.
-
-Example 1:
-Input: 
-["9001 discuss.leetcode.com"]
-Output: 
-["9001 discuss.leetcode.com", "9001 leetcode.com", "9001 com"]
-Explanation: 
-We only have one website domain: "discuss.leetcode.com". As discussed above, the subdomain "leetcode.com" and 
-"com" will also be visited. So they will all be visited 9001 times.
-
-Input: 
-["900 google.mail.com", "50 yahoo.com", "1 intel.mail.com", "5 wiki.org"]
-Output: 
-["901 mail.com","50 yahoo.com","900 google.mail.com","5 wiki.org","5 org","1 intel.mail.com","951 com"]
-Explanation: 
-We will visit "google.mail.com" 900 times, "yahoo.com" 50 times, "intel.mail.com" once and "wiki.org" 5 times. 
-For the subdomains, we will visit "mail.com" 900 + 1 = 901 times, "com" 900 + 50 + 1 = 951 times, and "org" 5 times.
-
-Notes:
-The length of cpdomains will not exceed 100. 
-The length of each domain name will not exceed 100.
-Each address will have either 1 or 2 "." characters.
-The input count in any count-paired domain will not exceed 10000.
-The answer output can be returned in any order.
-*/
-class _0811_SubdomainVisitCount {
-public:
-    std::vector<std::string> subdomainVisits(std::vector<std::string>& cpdomains);
-};
-
-/*
-You have a list of points in the plane. Return the area of the largest triangle that can be formed by any 3 of the points.
-
-Example:
-Input: points = [[0,0],[0,1],[1,0],[0,2],[2,0]]
-Output: 2
-Explanation: 
-The five points are show in the figure below. The red triangle is the largest.
-
-Notes:
-
-3 <= points.length <= 50.
-No points will be duplicated.
- -50 <= points[i][j] <= 50.
-Answers within 10^-6 of the true value will be accepted as correct.
-*/
-class _0812_LargestTriangleArea {
-public:
-    double largestTriangleArea(std::vector<std::vector<int>>& points);
-};
 
 /*
 We are given the head node root of a binary tree, where additionally every
@@ -134,47 +75,6 @@ The value of each node will only be 0 or 1.
 class _0814_BinaryTreePruning {
 public:
     TreeNode<int>* pruneTree(TreeNode<int>* root);
-};
-
-/*
-We had some 2-dimensional coordinates, like "(1, 3)" or "(2, 0.5)". 
-Then, we removed all commas, decimal points, and spaces, and ended 
-up with the string S. Return a list of strings representing all 
-possibilities for what our original coordinates could have been.
-
-Our original representation never had extraneous zeroes, so we never 
-started with numbers like "00", "0.0", "0.00", "1.0", "001", "00.01", 
-or any other number that can be represented with less digits. Also, a 
-decimal point within a number never occurs without at least one digit 
-occuring before it, so we never started with numbers like ".1".
-
-The final answer list can be returned in any order.  Also note that 
-all coordinates in the final answer have exactly one space between 
-them (occurring after the comma.)
-
-Input: "(123)"
-Output: ["(1, 23)", "(12, 3)", "(1.2, 3)", "(1, 2.3)"]
-
-Input: "(00011)"
-Output:  ["(0.001, 1)", "(0, 0.011)"]
-Explanation: 
-0.0, 00, 0001 or 00.01 are not allowed.
-
-Input: "(0123)"
-Output: ["(0, 123)", "(0, 12.3)", "(0, 1.23)", "(0.1, 23)", "(0.1, 2.3)", "(0.12, 3)"]
-
-Input: "(100)"
-Output: [(10, 0)]
-Explanation: 
-1.0 is not allowed.
-
-Note:
-4 <= S.length <= 12.
-S[0] = "(", S[S.length - 1] = ")", and the other elements in S are digits.
-*/
-class _0816_AmbiguousCoordinates {
-public:
-    std::vector<std::string> ambiguousCoordinates(std::string S);
 };
 
 /*
@@ -241,39 +141,6 @@ public:
     std::vector<std::string>& targets);
 };
 
-
-
-/*
-There are N rooms and you start in room 0. Each room has a distinct number in 0, 
-1, 2, ..., N-1, and each room may have some keys to access the next room. 
-Formally, each room i has a list of keys rooms[i], and each key rooms[i][j] is an 
-integer in [0, 1, ..., N-1] where N = rooms.length. A key rooms[i][j] = v opens 
-the room with number v.
-Initially, all the rooms start locked (except for room 0). You can walk back and 
-forth between rooms freely.
-Return true if and only if you can enter every room.
-
-Input: [[1],[2],[3],[]]
-Output: true
-Explanation:  
-We start in room 0, and pick up key 1.
-We then go to room 1, and pick up key 2.
-We then go to room 2, and pick up key 3.
-We then go to room 3.  Since we were able to go to every room, we return true.
-
-Input: [[1,3],[3,0,1],[2],[0]]
-Output: false
-Explanation: We can't enter the room with number 2.
-Note:
-
-1 <= rooms.length <= 1000
-0 <= rooms[i].length <= 1000
-The number of keys in all rooms combined is at most 3000.
-*/
-class _0841_KeysAndRooms {
-public:
-     bool canVisitAllRooms(std::vector<std::vector<int>>& rooms);
-};
 
 
 /*
@@ -405,32 +272,6 @@ public:
 };
 
 /*
-Given a binary tree rooted at root, the depth of each node is the shortest distance to the root.
-A node is deepest if it has the largest depth possible among any node in the entire tree.
-The subtree of a node is that node, plus the set of all descendants of that node.
-Return the node with the largest depth such that it contains all the deepest nodes in its subtree.
-
-Input: [3,5,1,6,2,0,8,null,null,7,4]
-Output: [2,7,4]
-
-We return the node with value 2, colored in yellow in the diagram.
-The nodes colored in blue are the deepest nodes of the tree.
-The input "[3, 5, 1, 6, 2, 0, 8, null, null, 7, 4]" is a serialization of the given tree.
-The output "[2, 7, 4]" is a serialization of the subtree rooted at the node with value 2.
-Both the input and output have TreeNode type.
-
-Note:
-
-The number of nodes in the tree will be between 1 and 500.
-The values of each node are unique.
-*/
-class _0865_SmallestSubtreeWithAllTheDeepestNodes {
-public:
-    TreeNode<int>* subtreeWithAllDeepest(TreeNode<int>* root);
-    std::pair<int, TreeNode<int>*> depth(TreeNode<int>* root);
-};
-
-/*
 Given two arrays A and B of equal size, the advantage of A with respect to B is the number of indices i for which A[i] > B[i].
 Return any permutation of A that maximizes its advantage with respect to B.
 
@@ -487,71 +328,6 @@ Note:
 class _0873_LengthOfLongestFibonacciSubsequence {
 public:
     int lenLongestFibSubseq(std::vector<int>& A);
-};
-
-
-/*
-Koko loves to eat bananas. There are N piles of bananas, the i-th pile has piles[i] bananas. 
-The guards have gone and will come back in H hours.
-
-Koko can decide her bananas-per-hour eating speed of K. Each hour, she chooses some pile of 
-bananas, and eats K bananas from that pile. If the pile has less than K bananas, she eats all 
-of them instead, and won't eat any more bananas during this hour.
-
-Koko likes to eat slowly, but still wants to finish eating all the bananas before the guards come back.
-Return the minimum integer K such that she can eat all the bananas within H hours.
-
-Input: piles = [3,6,7,11], H = 8
-Output: 4
-
-Input: piles = [30,11,23,4,20], H = 5
-Output: 30
-
-Input: piles = [30,11,23,4,20], H = 6
-Output: 23
- 
-Note:
-
-1 <= piles.length <= 10^4
-piles.length <= H <= 10^9
-1 <= piles[i] <= 10^9
-*/
-class _0875_KokoEatingBananas {
-public:
-    int minEatingSpeed(std::vector<int>& piles, int H);
-};
-
-
-/*
-Alex and Lee play a game with piles of stones. There are an even number 
-of piles arranged in a row, and each pile has a positive integer number
-of stones piles[i]. The objective of the game is to end with the most 
-stones.  The total number of stones is odd, so there are no ties. Alex 
-and Lee take turns, with Alex starting first.  Each turn, a player takes 
-the entire pile of stones from either the beginning or the end of the row.  
-This continues until there are no more piles left, at which point the 
-person with the most stones wins.
-
-Assuming Alex and Lee play optimally, return True if and only if Alex 
-wins the game.
-
-Input: [5,3,4,5]           :           Output: true
-Explanation: 
-Alex starts first, and can only take the first 5 or the last 5.
-Say he takes the first 5, so that the row becomes [3, 4, 5].
-If Lee takes 3, then the board is [4, 5], and Alex takes 5 to win with 10 points.
-If Lee takes the last 5, then the board is [3, 4], and Alex takes 4 to win with 9 points.
-This demonstrated that taking the first 5 was a winning move for Alex, so we return true.
-*/
-class _0877_StoneGame {
-private:
-    std::vector<int> totStone;
-    std::vector<std::vector<int>> alexMap;
-    std::vector<std::vector<int>> leeMap;
-public:
-    bool stoneGame(std::vector<int>& piles);
-    int AlexMax(std::vector<int>& piles, int start, int end);
-    int LeeMax(std::vector<int>& piles, int start, int end);
 };
 
 

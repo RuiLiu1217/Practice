@@ -1392,6 +1392,20 @@ int LC::_0663_EqualTreePartition::foo(TreeNode* root, int target, bool& dividabl
 }
 
 
+LC::TreeNode* LC::_0865_SmallestSubtreeWithAllTheDeepestNodes::subtreeWithAllDeepest(TreeNode* root) {
+    std::pair<int, LC::TreeNode*> res = depth(root);
+    return res.second;
+}
+
+std::pair<int, LC::TreeNode*> LC::_0865_SmallestSubtreeWithAllTheDeepestNodes::depth(TreeNode* root) {
+    if(!root) {
+        return {0, nullptr};
+    }
+    auto [ldepth, lnode] = depth(root->left);
+    auto [rdepth, rnode] = depth(root->right);
+    return std::pair<int, LC::TreeNode*>({std::max(ldepth, rdepth) + 1, ldepth == rdepth ? root : (ldepth > rdepth) ? lnode : rnode});
+}
+
 // TreeNode* insertIntoBST(TreeNode* root, int val) {
 //     if(!root) {
 //         return nullptr;

@@ -5,6 +5,7 @@ CMakeFiles/Practice.dir/LeetCode_ArrayProblems.cpp.obj: ../HeaderFiles.hpp
 CMakeFiles/Practice.dir/LeetCode_ArrayProblems.cpp.obj: ../LeetCode_ArrayProblems.cpp
 CMakeFiles/Practice.dir/LeetCode_ArrayProblems.cpp.obj: ../LeetCode_ArrayProblems.hpp
 
+CMakeFiles/Practice.dir/LeetCode_BFS.cpp.obj: ../HeaderFiles.hpp
 CMakeFiles/Practice.dir/LeetCode_BFS.cpp.obj: ../LeetCode_BFS.cpp
 CMakeFiles/Practice.dir/LeetCode_BFS.cpp.obj: ../LeetCode_BFS.hpp
 
@@ -26,6 +27,7 @@ CMakeFiles/Practice.dir/LeetCode_DFS.cpp.obj: ../LeetCode_TreeProblems.hpp
 CMakeFiles/Practice.dir/LeetCode_DesignDrivenProblems.cpp.obj: ../LeetCode_DesignDrivenProblems.cpp
 CMakeFiles/Practice.dir/LeetCode_DesignDrivenProblems.cpp.obj: ../LeetCode_DesignDrivenProblems.hpp
 
+CMakeFiles/Practice.dir/LeetCode_DynamicProgrammingProblems.cpp.obj: ../HeaderFiles.hpp
 CMakeFiles/Practice.dir/LeetCode_DynamicProgrammingProblems.cpp.obj: ../LeetCode_DynamicProgrammingProblems.cpp
 CMakeFiles/Practice.dir/LeetCode_DynamicProgrammingProblems.cpp.obj: ../LeetCode_DynamicProgrammingProblems.hpp
 

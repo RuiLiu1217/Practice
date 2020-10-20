@@ -1,7 +1,5 @@
 #include "LeetCode_BFS.hpp"
-#include <unordered_set>
-#include <queue>
-#include <functional>
+#include "HeaderFiles.hpp"
 // Graph based implementation 
 
 int LC::_0127_Wordladder::ladderLength(std::string beginWord, std::string endWord, std::vector<std::string>& wordList) {
@@ -270,6 +268,34 @@ void LC::_0286_WallsAndGates::wallsAndGates(std::vector<std::vector<int>>& rooms
         }
     }
 }
+
+
+bool LC::_0841_KeysAndRooms::canVisitAllRooms(std::vector<std::vector<int>>& rooms) {
+    std::vector<int> visited(rooms.size(), 0);
+    std::queue<int> roomQ;
+    for(int key : rooms[0]) {
+        roomQ.push(key);
+    }
+    visited[0] = 1; // room 0 is visited
+
+    while(!roomQ.empty()) {
+        int rmIdx = roomQ.front(); // room rmIdx is visitable
+        roomQ.pop();
+
+        if (!visited[rmIdx]) {
+            visited[rmIdx] = 1; // visit room rmIdx
+            for(int keyIdx : rooms[rmIdx]) {
+                if(visited[keyIdx] == false) {
+                    roomQ.push(keyIdx);
+                }
+            }
+        }
+        
+    }
+
+    return std::accumulate(visited.begin(), visited.end(), 0) == visited.size();
+}
+
 
 
 int LC::_1091_ShortestPathInBinaryMatrix::shortestPathBinaryMatrix(std::vector<std::vector<int>>& grid) {

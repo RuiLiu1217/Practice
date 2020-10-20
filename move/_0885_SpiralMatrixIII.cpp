@@ -17,7 +17,6 @@ std::vector<std::vector<int>> LeetCode::_0885_SpiralMatrixIII::spiralMatrixIII(i
             if(totSteps == 0) {
                 return res;
             }
-            
         }
         switch (moveDirection) {
             case 0:
