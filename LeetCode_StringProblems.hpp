@@ -1228,6 +1228,31 @@ public:
 };
 
 /*
+Given two strings A and B, find the minimum number of times A has to be 
+repeated such that B is a substring of it. If no such solution, return -1.
+
+For example, with A = "abcd" and B = "cdabcdab".
+Return 3, because by repeating A three times (“abcdabcdabcd”), B is a substring 
+of it; and B is not a substring of A repeated two times ("abcdabcd").
+
+Note:
+The length of A and B will be between 1 and 10000.
+!不要把问题想复杂
+*/
+class _0686_RepeatedStringMatch {
+public:
+    int repeatedStringMatch(std::string A, std::string B) {
+        std::string res = A;
+        for(int rep = 1; rep <= B.length() / A.length() + 2; rep++, res += A) {
+            if(res.find(B) != std::string::npos) {
+                return rep;
+            }
+        }
+        return -1;
+    }
+};
+
+/*
 709. To Lower Case
 Implement function ToLowerCase() that has a string parameter 
 str, and returns the same string in lowercase.
@@ -1245,6 +1270,55 @@ class _0709_ToLowerCase {
 public:
     std::string toLowerCase(std::string str);
 };
+
+/*
+Given two sentences words1, words2 (each represented as an array of strings), and a list of 
+similar word pairs pairs, determine if two sentences are similar. For example, 
+      "great acting skills" 
+and 
+      "fine drama talent" 
+are similar, if the similar word pairs are 
+pairs = [["great", "fine"], ["acting","drama"], ["skills","talent"]].
+Note that the similarity relation is not transitive. For example, if "great" and "fine" are 
+similar, and "fine" and "good" are similar, "great" and "good" are not necessarily similar.
+However, similarity is symmetric. For example, "great" and "fine" being similar is the same 
+as "fine" and "great" being similar. Also, a word is always similar with itself. For example, 
+the sentences words1 = ["great"], words2 = ["great"], pairs = [] are similar, even though 
+there are no specified similar word pairs.
+Finally, sentences can only be similar if they have the same number of words. So a sentence 
+like words1 = ["great"] can never be similar to words2 = ["doubleplus","good"].
+Note:
+
+The length of words1 and words2 will not exceed 1000.
+The length of pairs will not exceed 2000.
+The length of each pairs[i] will be 2.
+The length of each words[i] and pairs[i][j] will be in the range [1, 20].
+*/
+class _0734_SentenceSimilarity {
+public:
+    bool areSentencesSimilar(std::vector<std::string>& words1, std::vector<std::string>& words2,
+    std::vector<std::vector<std::string>>& pairs) {
+        if(words1.size() != words2.size()) {
+            return false;
+        }
+        std::unordered_set<std::string> pairSet;
+        for(auto& pair : pairs) {
+            pairSet.insert(pair[0] + "_" + pair[1]);
+            pairSet.insert(pair[1] + "_" + pair[0]);
+        }
+        const int N = words1.size();
+        for(int i = 0; i < N; ++i) {
+            if(words1[i] != words2[i]) {
+                if (pairSet.count(words1[i] + "_" + words2[i]) == 0 &&
+                    pairSet.count(words2[i] + "_" + words1[i]) == 0) {
+                        return false;
+                }
+            }
+        }
+        return true;
+    }
+};
+
 
 /*
 Given a set of keywords words and a string S, make all appearances of all keywords in S bold. 

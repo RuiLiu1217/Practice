@@ -256,6 +256,81 @@ private:
      void BFS(const std::vector<std::vector<int>>& graph, std::vector<int>& inDegree, std::vector<int>& res);
 };
 
+/*
+In this problem, a tree is an undirected graph that is connected and has no cycles.
+The given input is a graph that started as a tree with N nodes (with distinct values 
+1, 2, ..., N), with one additional edge added. The added edge has two different 
+vertices chosen from 1 to N, and was not an edge that already existed.
+
+The resulting graph is given as a 2D-array of edges. Each element of edges is a pair 
+[u, v] with u < v, that represents an undirected edge connecting nodes u and v.
+
+Return an edge that can be removed so that the resulting graph is a tree of N nodes. 
+If there are multiple answers, return the answer that occurs last in the given 2D-array. 
+The answer edge [u, v] should be in the same format, with u < v.
+
+Example 1:
+Input: [[1,2], [1,3], [2,3]]
+Output: [2,3]
+Explanation: The given undirected graph will be like this:
+  1
+ / \
+2 - 3
+Example 2:
+Input: [[1,2], [2,3], [3,4], [1,4], [1,5]]
+Output: [1,4]
+Explanation: The given undirected graph will be like this:
+5 - 1 - 2
+    |   |
+    4 - 3
+Note:
+The size of the input 2D-array will be between 3 and 1000.
+Every integer represented in the 2D-array will be between 1 and N, where N is the size of the input array.
+
+Update (2017-09-26):
+We have overhauled the problem description + test cases and specified clearly the graph is 
+an undirected graph. For the directed graph follow up please see Redundant Connection II). 
+We apologize for any inconvenience caused.
+! 非常重要且经典的图论题目
+! Just use the DFS to find out, if DFS can connect source and target with the given edge before this edge is added 
+! to the graph, there must be circle.
+*/
+class _0684_RedundantConnection {
+public:
+    std::vector<int> findRedundantConnection(std::vector<std::vector<int>>& edges) {
+        std::vector<std::unordered_set<int>> graph;
+        int nodeNum = 0;
+        for(int i = 0; i < edges.size(); ++i) {
+            nodeNum = std::max(nodeNum, edges[i][0]);
+            nodeNum = std::max(nodeNum, edges[i][1]);
+        }
+        graph.resize(nodeNum);
+
+        for(auto e : edges) {
+            std::vector<int> visited(nodeNum, 0); 
+            if(!graph[e[0]].empty() && !graph[e[1]].empty() && dfs(graph, visited, e[0], e[1])) { 
+                return e;
+            }
+            graph[e[0]].insert(e[1]); // 一边 DFS， 一边 建立这个图，这样可以节省一部分时间，一旦有环，直接会被下一次 DFS 测出来。没有必要在建立整个图之后再开始检测。
+            graph[e[1]].insert(e[0]);
+        }
+        return {};
+    }
+    bool dfs(std::vector<std::unordered_set<int>>& graph, std::vector<int>& visited, int source, int target) {
+        if(!visited[source]) {
+            visited[source] = 1;
+            if(source == target) {
+                return true; // contains circle
+            }
+            for(int adj : graph[source]) {
+                if(dfs(graph, visited, adj, target)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+};
 
 /*
 Given an undirected graph, return true if and only if it is bipartite.

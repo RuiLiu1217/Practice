@@ -557,6 +557,62 @@ public:
 };
 
 /*
+A self-dividing number is a number that is divisible by every digit 
+it contains.
+For example, 128 is a self-dividing number 
+because 128 % 1 == 0, 128 % 2 == 0, and 128 % 8 == 0.
+Also, a self-dividing number is not allowed to contain the digit zero.
+Given a lower and upper number bound, output a list of every possible self dividing number, including the bounds if possible.
+
+Input: 
+left = 1, right = 22
+Output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]
+Note:
+
+The boundaries of each input argument are 1 <= left <= right <= 10000.
+!我们能够想到的只有Brute Force 方法
+*/
+class _0728_SelfDividingNumbers {
+private:
+    std::vector<int> getAllDividers(int num) {
+        std::vector<int> div;
+        int t = num;
+        bool canuse = true;
+        while(t) {
+            if(t % 10 == 0) {
+                canuse = false;
+                break;
+            }
+            div.push_back(t % 10);
+            t /= 10;
+        }
+        return canuse ? div : std::vector<int>();
+    }
+public:
+    std::vector<int> selfDividingNumbers(int left, int right) {
+        std::vector<int> res;
+        for(int num = left; num <= right; ++num) {
+        
+            std::vector<int> div = getAllDividers(num);
+
+            bool isDiv = true;
+            for(auto& nd : div) {
+                if(num % nd) {
+                    isDiv = false;
+                }
+            }
+
+            if(isDiv) {
+                res.push_back(num);
+            }
+        }
+        return res;
+    }
+};
+
+
+
+/*
 You have a list of points in the plane. Return the area of the largest triangle that can be formed by any 3 of the points.
 
 Example:

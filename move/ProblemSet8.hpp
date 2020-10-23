@@ -67,8 +67,6 @@ Output: [1,null,1,null,1]
 Input: [1,1,0,1,1,0,1,0]
 Output: [1,1,0,1,1,null,1]
 
-Note:
-
 The binary tree will have at most 100 nodes.
 The value of each node will only be 0 or 1.
 */

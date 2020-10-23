@@ -1487,6 +1487,115 @@ public:
     }
 };
 
+/*
+Given a characters array tasks, representing the tasks a CPU needs to do, where each letter 
+represents a different task. Tasks could be done in any order. Each task is done in one unit 
+of time. For each unit of time, the CPU could complete either one task or just be idle.
+
+However, there is a non-negative integer n that represents the cooldown period between two 
+same tasks (the same letter in the array), that is that there must be at least n units of 
+time between any two same tasks.
+
+Return the least number of units of times that the CPU will take to finish all the given tasks.
+
+Input: tasks = ["A","A","A","B","B","B"], n = 2
+Output: 8
+Explanation: 
+A -> B -> idle -> A -> B -> idle -> A -> B
+There is at least 2 units of time between any two same tasks.
+
+Input: tasks = ["A","A","A","B","B","B"], n = 0
+Output: 6
+Explanation: On this case any permutation of size 6 would work since n = 0.
+["A","A","A","B","B","B"]
+["A","B","A","B","A","B"]
+["B","B","B","A","A","A"]
+...
+And so on.
+
+Input: tasks = ["A","A","A","A","A","A","B","C","D","E","F","G"], n = 2
+Output: 16
+Explanation: 
+One possible solution is
+A -> B -> C -> A -> D -> E -> A -> F -> G -> A -> idle -> idle -> A -> idle -> idle -> A
+
+Constraints:
+
+1 <= task.length <= 104
+tasks[i] is upper-case English letter.
+The integer n is in the range [0, 100].
+!一道重要的题目
+*/
+class _0621_TaskScheduler {
+public:
+    int leastInterval(std::vector<char>& tasks, int n) {
+        std::vector<int> count(26,0);
+        for(const char task : tasks) {
+            ++count[task - 'A'];
+        }
+        int maxCount = *std::max_element(begin(count), end(count));
+        size_t ans = (maxCount - 1) * (n + 1); // 参考huahua的视频讲义。
+        ans += std::count_if(begin(count), end(count), [maxCount](int c){
+            return c == maxCount;
+        });
+        return std::max(ans, tasks.size()); // 一种情况就是任何槽都不用要插入就可以完成任务。
+    }
+};
+
+
+/*
+Tag: Priority Queue
+
+Google
+Given a sorted array, two integers k and x, find the k closest elements 
+to x in the array. The result should also be sorted in ascending order. 
+If there is a tie, the smaller elements are always preferred.
+
+Input: [1,2,3,4,5], k=4, x=3
+Output: [1,2,3,4]
+
+Input: [1,2,3,4,5], k=4, x=-1
+Output: [1,2,3,4]
+Note:
+The value k is positive and will always be smaller than the length of 
+the sorted array.
+Length of the given array is positive and will not exceed 104
+Absolute value of elements in the array and x will not exceed 104
+! 看一下官方solution，想法与我的做法完全不同.
+*/
+class _0658_FindKClosetElements {
+public:
+    std::vector<int> findClosetElements(std::vector<int>&arr, int k, int n) {
+        // 这道题的难点是如何想到用priority-queue，以及如何设计compare 函数
+        class Compare {
+        public:
+            int x;
+        public:
+            Compare(const int v) : x(v) {}
+            bool operator()(const std::pair<int, int>& a, const std::pair<int, int>& b) {
+                return std::abs(a.first - x) > std::abs(b.first - x) ||  
+                    (std::abs(a.first - x) == std::abs(b.first - x) && a.second > b.second); // 如果绝对值差相同，那么index小的放前面
+            }
+        };
+
+        std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int>>, Compare> q{Compare(k)};
+        for(int i = 0; i < arr.size(); ++i) {
+            q.push({arr[i], i}); // 数值与index compare，
+        }
+
+        std::vector<int> res;
+        for(int i = 0; i < k; ++i) { // 前k个
+            if(!q.empty()) {
+                res.push_back(q.top().first);
+                q.pop();
+            }
+        }
+        //std::sort(begin(res), end(res));
+        return res;
+    }
+};
+
+
 
 /*
 Given a 2D integer matrix M representing the gray scale of an image, 

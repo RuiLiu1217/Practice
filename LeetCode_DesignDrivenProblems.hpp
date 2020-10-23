@@ -206,6 +206,89 @@ private:
         std::string readContentFromFile(std::string filePath);
     };
 
+    /*
+    Tag: Data Structure
+
+    Google
+
+    Design and implement a data structure for a compressed string iterator. 
+    It should support the following operations: next and hasNext.
+
+    The given compressed string will be in the form of each letter followed 
+    by a positive integer representing the number of this letter existing 
+    in the original uncompressed string.
+
+    next() - if the original string still has uncompressed characters, 
+    return the next letter; Otherwise return a white space.
+
+    hasNext() - Judge whether there is any letter needs to be uncompressed.
+
+    Note:
+    Please remember to RESET your class variables declared in StringIterator, 
+    as static/class variables are persisted across multiple test cases. 
+    Please see here for more details.
+
+    StringIterator iterator = new StringIterator("L1e2t1C1o1d1e1");
+
+    iterator.next(); // return 'L'
+    iterator.next(); // return 'e'
+    iterator.next(); // return 'e'
+    iterator.next(); // return 't'
+    iterator.next(); // return 'C'
+    iterator.next(); // return 'o'
+    iterator.next(); // return 'd'
+    iterator.hasNext(); // return true
+    iterator.next(); // return 'e'
+    iterator.hasNext(); // return false
+    iterator.next(); // return ' '
+    */
+    class _0604_DesignCompressedStringIterator {
+    private:
+        std::vector<std::pair<std::string, int>> Q;
+        std::vector<std::pair<std::string, int>>::iterator QIter;
+        std::vector<std::pair<std::string, int>>::iterator QTerm;
+    public:
+        _0604_DesignCompressedStringIterator(std::string compressedString) {
+            std::string curChar;
+            std::string repNum;
+            for(char c : compressedString) {
+                if(c >= '0' && c <= '9') {
+                    repNum += c;
+                } else {
+                    if(!curChar.empty()) {
+                        Q.push_back({curChar, std::stoi(repNum)});
+                        curChar.clear();
+                        repNum.clear();
+                    }
+                    curChar += c;
+                }
+            }
+            if(!repNum.empty()) {
+                Q.push_back({curChar, std::stoi(repNum)});
+                curChar.clear();
+                repNum.clear();
+            }
+            QIter = Q.begin();
+            QTerm = Q.end();
+        }
+        char next() {
+            if(hasNext()) {
+                char ret = (*QIter).first[0];
+                if((*QIter).second == 1) {
+                    ++QIter;
+                } else {
+                    --(*QIter).second;
+                }
+                return ret;
+            } else {
+                return ' ';
+            }
+        }
+        bool hasNext() {
+            return QIter == QTerm;
+        }
+    };
+
 
     // ! copy from the soltuion
     /*

@@ -139,6 +139,7 @@ test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: ../googletest/google
 test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-port.h
 test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-string.h
 test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-type-util.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: ../HeaderFiles.hpp
 test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: ../LeetCode_DFS.hpp
 test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: ../LeetCode_TreeProblems.hpp
 test/CMakeFiles/PracticeTest.dir/LeetCode_DFSTests.cpp.obj: ../test/LeetCode_DFSTests.cpp
@@ -377,6 +378,7 @@ test/CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.obj: ../googletes
 test/CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-port.h
 test/CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-string.h
 test/CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-type-util.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.obj: ../HeaderFiles.hpp
 test/CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.obj: ../LeetCode_TreeProblems.hpp
 test/CMakeFiles/PracticeTest.dir/LeetCode_TreeProblemTests.cpp.obj: ../test/LeetCode_TreeProblemTests.cpp
 

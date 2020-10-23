@@ -11,50 +11,7 @@
 
 namespace LeetCode {
 
-/*
-Tag: Data Structure
 
-Google
-
-Design and implement a data structure for a compressed string iterator. 
-It should support the following operations: next and hasNext.
-
-The given compressed string will be in the form of each letter followed 
-by a positive integer representing the number of this letter existing 
-in the original uncompressed string.
-
-next() - if the original string still has uncompressed characters, 
-return the next letter; Otherwise return a white space.
-
-hasNext() - Judge whether there is any letter needs to be uncompressed.
-
-Note:
-Please remember to RESET your class variables declared in StringIterator, 
-as static/class variables are persisted across multiple test cases. 
-Please see here for more details.
-
-StringIterator iterator = new StringIterator("L1e2t1C1o1d1e1");
-
-iterator.next(); // return 'L'
-iterator.next(); // return 'e'
-iterator.next(); // return 'e'
-iterator.next(); // return 't'
-iterator.next(); // return 'C'
-iterator.next(); // return 'o'
-iterator.next(); // return 'd'
-iterator.hasNext(); // return true
-iterator.next(); // return 'e'
-iterator.hasNext(); // return false
-iterator.next(); // return ' '
-*/
-class _0604_DesignCompressedStringIterator {
-private:
-    std::queue<std::pair<std::string, int>> q;
-public:
-    _0604_DesignCompressedStringIterator(std::string compressedString);
-    char next();
-    bool hasNext();
-};
 
 /*
 Given a list of directory info including directory path, and all the files with contents in this 
@@ -100,12 +57,6 @@ public:
 private:
     std::pair<std::string, std::string> separateFileNameAndContent(const std::string& pf);
     std::vector<std::pair<std::string, std::string>> getOneFoldersFiles(const std::string& path);
-};
-
-
-class _0621_TaskScheduler {
-public:
-    int leastInterval(std::vector<char>& tasks, int n);
 };
 
 
@@ -161,118 +112,27 @@ private:
     int sub(const std::string& s, int k);
 };
 
-/*
-Print a binary tree in an m*n 2D string array following these rules:
-
-The row number m should be equal to the height of the given binary tree.
-The column number n should always be an odd number.
-The root node's value (in string format) should be put in the exactly middle of 
-the first row it can be put. The column and the row where the root node belongs 
-will separate the rest space into two parts (left-bottom part and right-bottom 
-part). You should print the left subtree in the left-bottom part and print the 
-right subtree in the right-bottom part. The left-bottom part and the right-bottom 
-part should have the same size. Even if one subtree is none while the other is 
-not, you don't need to print anything for the none subtree but still need to 
-leave the space as large as that for the other subtree. However, if two subtrees 
-are none, then you don't need to leave space for both of them.
-Each unused space should contain an empty string "".
-Print the subtrees following the same rules.
-Example 1:
-Input:
-     1
-    /
-   2
-Output:
-[["", "1", ""],
- ["2", "", ""]]
-Example 2:
-Input:
-     1
-    / \
-   2   3
-    \
-     4
-Output:
-[["", "", "", "1", "", "", ""],
- ["", "2", "", "", "", "3", ""],
- ["", "", "4", "", "", "", ""]]
-Example 3:
-Input:
-      1
-     / \
-    2   5
-   / 
-  3 
- / 
-4 
-Output:
-
-[["",  "",  "", "",  "", "", "", "1", "",  "",  "",  "",  "", "", ""]
- ["",  "",  "", "2", "", "", "", "",  "",  "",  "",  "5", "", "", ""]
- ["",  "3", "", "",  "", "", "", "",  "",  "",  "",  "",  "", "", ""]
- ["4", "",  "", "",  "", "", "", "",  "",  "",  "",  "",  "", "", ""]]
-Note: The height of binary tree is in the range of [1, 10].
-这道题一下子蒙住了，实际上这道题很简单，还是一个递归调用，首先要建立起整个矩阵，用空字符串填满
-这里就需要计算好本身这棵树有多高，那么有多宽就可以算出来，
-每层都是在正中间填充数字，递归调用把左右两边的范围分别变成 [l mid-1]， [mid + 1, r] 就可以了
-*/
-class _0655_PrintBinaryTree {
-public:
-    std::vector<std::vector<std::string>> printTree(TreeNode<int>* root);
-private:
-    int getHeight(TreeNode<int>* root);
-    void fill(TreeNode<int>* root, std::vector<std::vector<std::string>>& res, int h, int l, int r);
-};
 
 /*
-Tag: Priority Queue
+    You are given an integer array sorted in ascending order (may contain 
+    duplicates), you need to split them into several subsequences, where 
+    each subsequences consist of at least 3 consecutive integers. Return 
+    whether you can make such a split.
 
-Google
-Given a sorted array, two integers k and x, find the k closest elements 
-to x in the array. The result should also be sorted in ascending order. 
-If there is a tie, the smaller elements are always preferred.
+    Input: [1,2,3,3,4,5] :  Output: True
+    You can split them into two consecutive subsequences : 
+    1, 2, 3
+    3, 4, 5
 
-Input: [1,2,3,4,5], k=4, x=3
-Output: [1,2,3,4]
+    Input: [1,2,3,3,4,4,5,5] : Output: True
+    You can split them into two consecutive subsequences : 
+    1, 2, 3, 4, 5
+    3, 4, 5
+    
+    Input: [1,2,3,4,4,5]  :  Output: False
 
-Input: [1,2,3,4,5], k=4, x=-1
-Output: [1,2,3,4]
-Note:
-The value k is positive and will always be smaller than the length of 
-the sorted array.
-Length of the given array is positive and will not exceed 104
-Absolute value of elements in the array and x will not exceed 104
-*/
-class _0658_FindKClosetElements {
-public:
-    std::vector<int> findClosetElements(std::vector<int>&arr, int k, int n);
-};
-
-/*
-You are given an integer array sorted in ascending order (may contain 
-duplicates), you need to split them into several subsequences, where 
-each subsequences consist of at least 3 consecutive integers. Return 
-whether you can make such a split.
-
-Example 1:
-
-Input: [1,2,3,3,4,5] :  Output: True
-You can split them into two consecutive subsequences : 
-1, 2, 3
-3, 4, 5
-
-Example 2:
-Input: [1,2,3,3,4,4,5,5] : Output: True
-You can split them into two consecutive subsequences : 
-1, 2, 3, 4, 5
-3, 4, 5
- 
-
-Example 3:
-Input: [1,2,3,4,4,5]  :  Output: False
-
-Note:
-The length of the input is in range of [1, 10000]
+    Note:
+    The length of the input is in range of [1, 10000]
 */
 class _0659_SplitArrayIntoConsecutiveSubsequences {
 public:
@@ -425,63 +285,6 @@ public:
 };
 
 /*
-In this problem, a tree is an undirected graph that is connected and has no cycles.
-The given input is a graph that started as a tree with N nodes (with distinct values 
-1, 2, ..., N), with one additional edge added. The added edge has two different 
-vertices chosen from 1 to N, and was not an edge that already existed.
-
-The resulting graph is given as a 2D-array of edges. Each element of edges is a pair 
-[u, v] with u < v, that represents an undirected edge connecting nodes u and v.
-
-Return an edge that can be removed so that the resulting graph is a tree of N nodes. 
-If there are multiple answers, return the answer that occurs last in the given 2D-array. 
-The answer edge [u, v] should be in the same format, with u < v.
-
-Example 1:
-Input: [[1,2], [1,3], [2,3]]
-Output: [2,3]
-Explanation: The given undirected graph will be like this:
-  1
- / \
-2 - 3
-Example 2:
-Input: [[1,2], [2,3], [3,4], [1,4], [1,5]]
-Output: [1,4]
-Explanation: The given undirected graph will be like this:
-5 - 1 - 2
-    |   |
-    4 - 3
-Note:
-The size of the input 2D-array will be between 3 and 1000.
-Every integer represented in the 2D-array will be between 1 and N, where N is the size of the input array.
-
-Update (2017-09-26):
-We have overhauled the problem description + test cases and specified clearly the graph is 
-an undirected graph. For the directed graph follow up please see Redundant Connection II). 
-We apologize for any inconvenience caused.
-*/
-class _0684_RedundantConnection {
-public:
-    std::vector<int> findRedundantConnection(std::vector<std::vector<int>>& edges);
-};
-
-/*
-Given two strings A and B, find the minimum number of times A has to be 
-repeated such that B is a substring of it. If no such solution, return -1.
-
-For example, with A = "abcd" and B = "cdabcdab".
-Return 3, because by repeating A three times (“abcdabcdabcd”), B is a substring 
-of it; and B is not a substring of A repeated two times ("abcdabcd").
-
-Note:
-The length of A and B will be between 1 and 10000.
-*/
-class _0686_RepeatedStringMatch {
-public:
-    int repeatedStringMatch(std::string A, std::string B);
-};
-
-/*
 Given a binary tree, find the length of the longest path where each 
 node in the path has the same value. This path may or may not pass 
 through the root.
@@ -512,36 +315,6 @@ private:
 };
 
 
-
-/*
-Given the root node of a binary search tree (BST) and a value. 
-You need to find the node in the BST that the node's value equals 
-the given value. Return the subtree rooted with that node. 
-If such node doesn't exist, you should return NULL.
-
-Given the tree:
-        4
-       / \
-      2   7
-     / \
-    1   3
-
-And the value to search: 2
-You should return this subtree:
-
-      2     
-     / \   
-    1   3
-In the example above, if we want to search the value 5, since 
-there is no node with value 5, we should return NULL.
-Note that an empty tree is represented by NULL, therefore you 
-would see the expected output (serialized tree format) as [], 
-not null.
-*/
-class _0700_SearchInABinarySearchTree {
-public:
-    TreeNode<int>* searchBST(TreeNode<int>* root, int val);
-};
 }
 
 #endif

@@ -758,7 +758,7 @@ public:
             return piles[l];
         }
         if(DP[l][r] == INT_MIN) {
-            DP[l][r] = std::max(piles[l] - score(pile, l+1, r), piles[r] - score(pile, l, r-1));
+            DP[l][r] = std::max(piles[l] - score(piles, l+1, r), piles[r] - score(piles, l, r-1));
         }
         return DP[l][r];
     }

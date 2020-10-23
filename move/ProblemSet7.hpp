@@ -10,28 +10,6 @@
 #include "LinkList.hpp"
 
 namespace LeetCode {
-
-/*
-A self-dividing number is a number that is divisible by every digit 
-it contains.
-For example, 128 is a self-dividing number 
-because 128 % 1 == 0, 128 % 2 == 0, and 128 % 8 == 0.
-Also, a self-dividing number is not allowed to contain the digit zero.
-Given a lower and upper number bound, output a list of every possible self dividing number, including the bounds if possible.
-
-Input: 
-left = 1, right = 22
-Output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]
-Note:
-
-The boundaries of each input argument are 1 <= left <= right <= 10000.
-*/
-class _0728_SelfDividingNumbers {
-public:
-    std::vector<int> selfDividingNumbers(int left, int right);
-};
-
-
 class _0729_MyCalendarI {
 public:
     _0729_MyCalendarI();
@@ -42,36 +20,6 @@ private:
     // floor:    largest entry whose key <= query key         |       [(12)   18]         |  [12    (18)]
     // ceiling:  smallest entry whose key > query key         |    floor.end > q.start    |     ceiling.start < q.end
     // Time complexity: O(nlogn)   Space complexity: O(n)
-};
-
-
-/*
-Given two sentences words1, words2 (each represented as an array of strings), and a list of 
-similar word pairs pairs, determine if two sentences are similar. For example, 
-      "great acting skills" 
-and 
-      "fine drama talent" 
-are similar, if the similar word pairs are 
-pairs = [["great", "fine"], ["acting","drama"], ["skills","talent"]].
-Note that the similarity relation is not transitive. For example, if "great" and "fine" are 
-similar, and "fine" and "good" are similar, "great" and "good" are not necessarily similar.
-However, similarity is symmetric. For example, "great" and "fine" being similar is the same 
-as "fine" and "great" being similar. Also, a word is always similar with itself. For example, 
-the sentences words1 = ["great"], words2 = ["great"], pairs = [] are similar, even though 
-there are no specified similar word pairs.
-Finally, sentences can only be similar if they have the same number of words. So a sentence 
-like words1 = ["great"] can never be similar to words2 = ["doubleplus","good"].
-Note:
-
-The length of words1 and words2 will not exceed 1000.
-The length of pairs will not exceed 2000.
-The length of each pairs[i] will be 2.
-The length of each words[i] and pairs[i][j] will be in the range [1, 20].
-*/
-class _0734_SentenceSimilarity {
-public:
-    bool areSentencesSimilar(std::vector<std::string>& words1, std::vector<std::string>& words2,
-    std::vector<std::vector<std::string>>& pairs);
 };
 
 /*
@@ -156,9 +104,6 @@ The player started at (0, 0) and went down, down, right right to reach (2, 2).
 4 cherries were picked up during this single trip, and the matrix becomes [[0,1,-1],[0,0,-1],[0,0,0]].
 Then, the player went left, up, up, left to return home, picking up one more cherry.
 The total number of cherries picked up is 5, and this is the maximum possible.
- 
-
-Note:
 
 grid is an N by N 2D array, with 1 <= N <= 50.
 Each grid[i][j] is an integer in the set {-1, 0, 1}.
@@ -313,7 +258,10 @@ Special binary strings are binary strings with the following two properties:
 
 The number of 0's is equal to the number of 1's.
 Every prefix of the binary string has at least as many 1's as 0's.
-Given a special string S, a move consists of choosing two consecutive, non-empty, special substrings of S, and swapping them. (Two strings are consecutive if the last character of the first string is exactly one index before the first character of the second string.)
+Given a special string S, a move consists of choosing two consecutive, non-empty, 
+special substrings of S, and swapping them. (Two strings are consecutive if the 
+last character of the first string is exactly one index before the first 
+character of the second string.)
 
 At the end of any number of moves, what is the lexicographically largest resulting string possible?
 
@@ -403,27 +351,6 @@ public:
     int maxChunksToSorted(std::vector<int>& arr);
 };
 
-/*
-You're given strings J representing the types of stones that are jewels, 
-and S representing the stones you have. Each character in S is a type of 
-stone you have. You want to know how many of the stones you have are also 
-jewels.
-The letters in J are guaranteed distinct, and all characters in J and S 
-are letters. Letters are case sensitive, so "a" is considered a different 
-type of stone from "A".
-
-Input: J = "aA", S = "aAAbbbb"
-Output: 3
-
-Input: J = "z", S = "ZZ"
-Output: 0
-Note: S and J will consist of letters and have length at most 50.
-The characters in J are distinct.
-*/
-class _0771_JewelsAndStones {
-public:
-    int numJewelsInStones(std::string J, std::string S);
-};
 
 /*
 Tag: math, permutation

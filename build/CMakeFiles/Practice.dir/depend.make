@@ -20,6 +20,7 @@ CMakeFiles/Practice.dir/LeetCode_BitOperationProblems.cpp.obj: ../HeaderFiles.hp
 CMakeFiles/Practice.dir/LeetCode_BitOperationProblems.cpp.obj: ../LeetCode_BitOperationProblems.cpp
 CMakeFiles/Practice.dir/LeetCode_BitOperationProblems.cpp.obj: ../LeetCode_BitOperationProblems.hpp
 
+CMakeFiles/Practice.dir/LeetCode_DFS.cpp.obj: ../HeaderFiles.hpp
 CMakeFiles/Practice.dir/LeetCode_DFS.cpp.obj: ../LeetCode_DFS.cpp
 CMakeFiles/Practice.dir/LeetCode_DFS.cpp.obj: ../LeetCode_DFS.hpp
 CMakeFiles/Practice.dir/LeetCode_DFS.cpp.obj: ../LeetCode_TreeProblems.hpp
