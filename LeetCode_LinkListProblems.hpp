@@ -375,12 +375,59 @@ public:
 
 
 // Sort a linked list in O(NlogN) time using constant space complexity.
+// ! 边界条件容易做错的题目
 class _0148_SortList {
 public:
-    ListNode *sortList(ListNode *head);
-private:
-    ListNode *merge(ListNode *head1, ListNode *head2);
-    void splitList(ListNode* &head, ListNode* &left, ListNode* &right);
+     ListNode* sortList(ListNode* head) {
+        if(!head || !head->next) {
+            return head;
+        }
+        auto [left, right] = split(head);
+        left = sortList(left);
+        right = sortList(right);
+        return merge(left,right);
+    }
+    
+    std::pair<ListNode*, ListNode*> split(ListNode* head) {
+        ListNode* slow = head;
+        ListNode* fast = head;
+        ListNode* prev = head;
+        while(fast && fast->next) {
+            prev = slow;
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        prev->next =nullptr;
+        return {head, slow};
+    }
+    
+    ListNode* merge(ListNode* a, ListNode* b) {
+        ListNode* h = new ListNode(INT_MIN);
+        ListNode* p = h;
+        while(a && b) {
+            if(a->val < b->val) {
+                p->next = a;
+                a = a->next;
+            } else {
+                p->next = b;
+                b = b->next;
+            }
+            p = p->next;
+        }
+        
+        if(a) {
+            p->next = a;
+        }
+        if(b) {
+            p->next = b;
+        }
+        
+        ListNode* head = h->next;
+        h->next = nullptr;
+        delete h;
+        h = nullptr;
+        return head;
+    }
 };
 
 

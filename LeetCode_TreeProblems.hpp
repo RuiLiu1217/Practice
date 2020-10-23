@@ -1374,6 +1374,62 @@ public:
     std::vector<std::vector<int>> levelOrder(NaryTreeNode *root);
 };
 
+    /*
+    Serialization is converting a data structure or object into a sequence of bits so that it can be stored 
+    in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in 
+    the same or another computer environment.
+    Design an algorithm to serialize and deserialize a binary search tree. There is no restriction on how 
+    your serialization/deserialization algorithm should work. You need to ensure that a binary search tree 
+    can be serialized to a string, and this string can be deserialized to the original tree structure.
+
+    The encoded string should be as compact as possible.
+
+    Input: root = [2,1,3]
+    Output: [2,1,3]
+
+    Input: root = []
+    Output: []
+    Constraints:
+
+    The number of nodes in the tree is in the range [0, 104].
+    0 <= Node.val <= 104
+    The input tree is guaranteed to be a binary search tree.
+    ! 很重要的一道题目
+    */
+    class _0449_SerializeAndDeserializeBST {
+    public:
+        std::string serialize(TreeNode* root) {
+            std::string s;
+            serialize(root, s);
+            return s;
+        }
+        TreeNode* deserialize(std::string data) {
+            int pos = 0;
+            return deserialize(data, pos, INT_MIN, INT_MAX);
+        }
+    private:
+        void serialize(TreeNode* root, std::string& s) {
+            if(!root) {return;}
+            s.append(reinterpret_cast<const char*>(&root->val), sizeof(root->val));
+            serialize(root->left, s);
+            serialize(root->left, s);
+        }
+        TreeNode* deserialize(const std::string& data, int& pos, int curMin, int curMax) {
+            if(pos >= data.size()) {
+                return nullptr;
+            }
+            int val = *reinterpret_cast<const int*>(data.data() + pos);
+            if(val > curMax || val < curMin) {
+                return nullptr;
+            }
+            pos += sizeof(val);
+
+            TreeNode* root = new TreeNode(val);
+            root->left = deserialize(data, pos, curMin, val);
+            root->right = deserialize(data, pos, val, curMax);
+            return root;
+        }
+    };
 
 
 /*

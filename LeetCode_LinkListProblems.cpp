@@ -405,67 +405,6 @@ LC::ListNode* LC::_0147_InsertionSortList::insertionSortList(LC::ListNode* head)
     return head;
 }
 
-
-LC::ListNode* LC::_0148_SortList::sortList(LC::ListNode* head) {
-    if(!head) {
-        return nullptr;
-    }
-    if(head->next == nullptr) {
-        return head;
-    }
-    LC::ListNode* left = head;
-    LC::ListNode* right = head;
-    
-    splitList(head, left, right);
-    left = sortList(left);
-    right = sortList(right);
-    head = merge(left, right);
-    return head;        
-}
-
-
-void LC::_0148_SortList::splitList(LC::ListNode*& head, LC::ListNode*& left, LC::ListNode*& right) {
-    LC::ListNode* slow = head;
-    LC::ListNode* sprev = head;
-    LC::ListNode* fast = head;
-    while(fast && fast->next) {
-        sprev = slow;
-        slow = slow->next;
-        fast = fast->next->next;
-    }
-    sprev->next = nullptr;
-    left = head;
-    right = slow;        
-}
-
-LC::ListNode* LC::_0148_SortList::merge(LC::ListNode* a, LC::ListNode* b) {
-    LC::ListNode* h = new LC::ListNode(-1);
-    LC::ListNode* p = h;
-    while(a && b) {
-        if(a->val < b->val) {
-            p->next = a;
-            a = a->next;
-        } else {
-            p->next = b;
-            b = b->next;                
-        }
-        p = p->next;
-    }
-    if(a) {
-        p->next = a;
-    }
-    if(b) {
-        p->next = b;
-    }
-    LC::ListNode* head = h->next;
-    h->next = nullptr;
-    delete h;
-    h = nullptr;
-    return head;
-}
-
-
-
 LC::ListNode* LC::_0160_IntersectionOfTwoLinkedLists::getIntersectionNode(LC::ListNode* headA, LC::ListNode* headB) {
     int lengthOfA = length(headA);
     int lengthOfB = length(headB);

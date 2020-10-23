@@ -1218,6 +1218,8 @@ private:
     std::vector<std::vector<int>> prefixSum;
 };
 
+
+
 /*
 Given a non-empty array of integers, return the k most frequent elements.
 
@@ -1322,6 +1324,47 @@ class _0414_ThirdMaximumNumber {
 public:
     int thirdMax(std::vector<int>& nums);
 };
+
+/*
+There are a number of spherical balloons spread in two-dimensional space. 
+For each balloon, provided input is the start and end coordinates of the 
+horizontal diameter. Since it's horizontal, y-coordinates don't matter 
+and hence the x-coordinates of start and end of the diameter suffice. Start 
+is always smaller than end. There will be at most 104 balloons.
+An arrow can be shot up exactly vertically from different points along the 
+x-axis. A balloon with xstart and xend bursts by an arrow shot at x if 
+xstart ≤ x ≤ xend. There is no limit to the number of arrows that can be 
+shot. An arrow once shot keeps travelling up infinitely. The problem is to 
+find the minimum number of arrows that must be shot to burst all balloons.
+
+Example:
+
+Input: [[10,16], [2,8], [1,6], [7,12]] :   Output:  2
+
+Explanation:
+One way is to shoot one arrow for example at x = 6 (bursting the balloons [2,8] 
+and [1,6]) and another arrow at x = 11 (bursting the other two balloons).
+*/
+class _0452_MinimumNumberOfArrowsToBusrtBalloons {
+public:
+    int findMinArrowShots(std::vector<std::vector<int>>& points) {
+        if(points.empty()) {return 0;}
+        std::sort(begin(points), end(points), [](std::vector<int>& a, std::vector<int>& b) {
+            return a[1] < b[1];
+        });
+
+        int curArrow = points.front()[1];
+        int count = 1;
+        for(auto& point : points) {
+            if(curArrow < point[0]) {
+                curArrow = point[1];
+                ++count;
+            }
+        }
+        return count;
+    }
+};
+
 
 /*
 498. Diagonal Traverse
@@ -2224,6 +2267,45 @@ public:
     bool validateStackSequences(std::vector<int>& pushed, std::vector<int>& popped);
 };
 
+/*
+Return the lexicographically smallest subsequence of s that contains all the distinct characters of s exactly once.
+
+Note: This question is the same as 316: https://leetcode.com/problems/remove-duplicate-letters/
+
+Input: s = "bcabc"
+Output: "abc"
+
+Input: s = "cbacdcbc"
+Output: "acdb"
+
+Constraints:
+
+1 <= s.length <= 1000
+s consists of lowercase English letters.
+*/
+class _1081_Smallest_Subsequence_of_Distinct_Characters {
+public:
+    std::string smallestSubsequence(std::string s) {
+        std::vector<int> freq(256, 0);
+        std::vector<bool> used(256, false);
+        for(char c : s) {
+            ++freq[c];
+        }
+        std::string res = "0"; // since 0 is smaller than all chars.
+        for(char c : s) {
+            --freq[c];
+            if(used[c]) continue; // 这个字母已经用过了，不要再添加
+            while(c < res.back() && freq[res.back()]) {
+                used[res.back()] = false;
+                res.pop_back();                
+            }
+            res += c;
+            used[c] = true;
+        }
+
+        return res.substr(1);
+    }
+};
 
 /*
 Given an array nums of integers, a move consists of choosing any element and decreasing it by 1.

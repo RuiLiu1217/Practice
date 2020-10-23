@@ -251,63 +251,6 @@ public:
     int numberOfBoomerangs(std::vector<std::vector<int>>& points);
 };
 
-/*
-Serialization is the process of converting a data structure or object 
-into a sequence of bits so that it can be stored in a file or memory 
-buffer, or transmitted across a network connection link to be 
-reconstructed later in the same or another computer environment.
-
-Design an algorithm to serialize and deserialize a binary search tree. 
-There is no restriction on how your serialization/deserialization 
-algorithm should work. You just need to ensure that a binary search 
-tree can be serialized to a string and this string can be deserialized 
-to the original tree structure.
-
-The encoded string should be as compact as possible.
-
-Note: Do not use class member/global/static variables to store states. 
-Your serialize and deserialize algorithms should be stateless.
-*/
-class _0449_SerializeAndDeserializeBST {
-public:
-    // Encodes a tree to a single string.
-    std::string serialize(TreeNode<int>* root) {
-        std::string s;
-        serialize(root, s);
-        return s;
-    }
-
-    // Decodes your encoded data to tree.
-    TreeNode<int>* deserialize(std::string data) {
-        int pos = 0;
-        return deserialize(data, pos, INT_MIN, INT_MAX);
-    }
-
-private:
-    void serialize(TreeNode<int>* root, std::string& s) {
-        if(!root) {
-            return;
-        }
-        s.append(reinterpret_cast<const char*>(&root->val), sizeof(root->val));
-        serialize(root->left, s);
-        serialize(root->right, s);
-    }
-    
-    TreeNode<int>* deserialize(const std::string& s, int& pos, int curMin, int curMax) {
-        if(pos >= s.size()) {
-            return nullptr;
-        }
-        int val = *reinterpret_cast<const int*>(s.data() + pos);
-        if(val < curMin || val > curMax) {
-            return nullptr;
-        }
-        pos += sizeof(val);
-        TreeNode<int>* root = new TreeNode<int>(val);
-        root->left = deserialize(s, pos, curMin, val);
-        root->right = deserialize(s, pos, val, curMax);
-        return root;
-    }
-};
 
 /*
 Given a string, sort it in decreasing order based on the frequency of characters.
@@ -349,31 +292,6 @@ Note that 'A' and 'a' are treated as two different characters.
 class _0451_SortCharactersByFrequency {
 public:
     std::string frequencySort(std::string s);
-};
-
-
-/*
-There are a number of spherical balloons spread in two-dimensional space. 
-For each balloon, provided input is the start and end coordinates of the 
-horizontal diameter. Since it's horizontal, y-coordinates don't matter 
-and hence the x-coordinates of start and end of the diameter suffice. Start 
-is always smaller than end. There will be at most 104 balloons.
-An arrow can be shot up exactly vertically from different points along the 
-x-axis. A balloon with xstart and xend bursts by an arrow shot at x if 
-xstart ≤ x ≤ xend. There is no limit to the number of arrows that can be 
-shot. An arrow once shot keeps travelling up infinitely. The problem is to 
-find the minimum number of arrows that must be shot to burst all balloons.
-
-Example:
-
-Input: [[10,16], [2,8], [1,6], [7,12]] :   Output:  2
-
-Explanation:
-One way is to shoot one arrow for example at x = 6 (bursting the balloons [2,8] and [1,6]) and another arrow at x = 11 (bursting the other two balloons).
-*/
-class _0452_MinimumNumberOfArrowsToBusrtBalloons {
-public:
-    int findMinArrowShots(std::vector<std::vector<int>>& points);
 };
 
 /*
