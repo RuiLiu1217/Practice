@@ -1090,6 +1090,51 @@ public:
 };
 
 /*
+Given n orders, each order consist in pickup and delivery services. 
+Count all valid pickup/delivery possible sequences such that 
+delivery(i) is always after of pickup(i). 
+
+Since the answer may be too large, return it modulo 10^9 + 7.
+
+Input: n = 1
+Output: 1
+Explanation: Unique order (P1, D1), Delivery 1 always is after of Pickup 1.
+
+Input: n = 2
+Output: 6
+Explanation: All possible orders: 
+(P1,P2,D1,D2), (P1,P2,D2,D1), (P1,D1,P2,D2), (P2,P1,D1,D2), (P2,P1,D2,D1) and (P2,D2,P1,D1).
+This is an invalid order (P1,D2,P2,D1) because Pickup 2 is after of Delivery 2.
+Example 3:
+
+Input: n = 3
+Output: 90
+
+1 <= n <= 500
+Explanation:
+! For i-1 nodes, the sequence length is 2(i-1).
+! For the i-th nodes,
+! If we put Pi at index = 0, then we can put Di at 1, 2, …, 2i – 2 => 2i-1 options.
+! If we put Pi at index = 1, then we can put Di at 2,3,…, 2i – 2 => 2i – 2 options.
+!
+! If we put Pi at index = 2i-1, then we can put Di at 2i – 1=> 1 option.
+! There are total (2i – 1 + 1) / 2 * (2i – 1) = i * (2*i – 1) options
+! dp[i] = dp[i – 1] * i * (2*i – 1)
+*/
+class _1359_CountAllValidPickupAndDeliveryOptions {
+public:
+    int countOrders(int n) {
+        constexpr int MOD = 1e9+7;
+        long ans = 1;
+        for(int i = 2; i <= n; ++i) {
+            ans = ans * i * (2 * i - 1) % MOD;
+        }
+        return ans;
+    }
+};
+
+
+/*
 Given an integer n, return a list of all simplified fractions between 0 and 1 (exclusive) 
 such that the denominator is less-than-or-equal-to n. The fractions can be in any order.
 

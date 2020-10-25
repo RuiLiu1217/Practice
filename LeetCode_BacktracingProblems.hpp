@@ -1,8 +1,7 @@
 #ifndef LEETCODE_BACKTRACINGPROBLEMS_HPP
 #define LEETCODE_BACKTRACINGPROBLEMS_HPP
-#include <vector>
-#include <string>
-#include <unordered_set>
+#include "HeaderFiles.hpp"
+
 namespace LC {
     /*
         Tag: backtracing
@@ -85,6 +84,72 @@ public:
     std::vector<std::vector<int>> combinationSum(std::vector<int> &candidates, int target);
 private:
     void combinationSum(std::vector<int> &candidates, int target, std::vector<int> &tmp, std::vector<std::vector<int>> &res);
+};
+
+/*
+Tag: backtracking
+Given a collection of candidate numbers (candidates) and a target number (target), 
+find all unique combinations in candidates where the candidate numbers sums to target.
+
+Each number in candidates may only be used once in the combination.
+
+Note:
+
+All numbers (including target) will be positive integers.
+The solution set must not contain duplicate combinations.
+Example 1:
+
+Input: candidates = [10,1,2,7,6,1,5], target = 8,
+A solution set is:
+[
+[1, 7],
+[1, 2, 5],
+[2, 6],
+[1, 1, 6]
+]
+Example 2:
+
+Input: candidates = [2,5,2,1,2], target = 5,
+A solution set is:
+[
+[1,2,2],
+[5]
+]
+*/
+class _0040_CombinationSumII {
+public:
+    std::vector<std::vector<int>> combinationSum2(std::vector<int>& candidates, int target) {
+        std::unordered_map<int,int> mp;
+        for(int i = 0; i < candidates.size(); ++i) {
+            ++mp[candidates[i]];
+        }
+        std::vector<int> tmp;
+        std::vector<std::vector<int>> res;
+        combinationSum2(mp, target, tmp, res);
+        return res;
+        
+    }
+private:
+    void combinationSum2(std::unordered_map<int, int>& candidates, int target, std::vector<int>& tmp, std::vector<std::vector<int>>& res) {
+        if(target < 0) {
+            return;
+        }
+        if(target == 0) {
+            res.push_back(tmp);
+        }
+        
+        for(auto& c : candidates) {
+            if(c.second > 0) {
+                if(tmp.empty() || (!tmp.empty() && tmp.back() <= c.first)) {
+                    --c.second;
+                    tmp.push_back(c.first);
+                    combinationSum2(candidates, target - c.first, tmp, res);
+                    tmp.pop_back();
+                    ++c.second;
+                }
+            }
+        }
+    }
 };
 
 /*

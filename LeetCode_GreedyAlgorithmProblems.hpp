@@ -109,6 +109,103 @@ public:
     int romainToInt(std::string s);
 };
 
+  /*
+TODO
+Tag: BFS
+Note: be careful of boundary conditions
+
+Given an array of non-negative integers, you are initially positioned at the first index of the array.
+Each element in the array represents your maximum jump length at that position.
+Your goal is to reach the last index in the minimum number of jumps.
+
+Input: [2,3,1,1,4]
+Output: 2
+The minimum number of jumps to reach the last index is 2. Jump 1 step from index 0 to 1, then 
+3 steps to the last index.
+
+You can assume that you can always reach the last index.
+! 难题，需要再一次好好理解
+! 这道题必须掌握.
+*/
+class _0045_JumpGameII {
+public:
+    int jump(std::vector<int>& nums) {
+        int n = nums.size();
+        if (n < 2) return 0;
+
+        // max position one could reach 
+        // starting from index <= i 
+        int maxPos = nums[0];
+        // max number of steps one could do
+        // inside this jump
+        int maxSteps = nums[0];
+        
+        int jumps = 1;
+        for (int i = 1; i < n; ++i) {
+            // if to reach this point 
+            // one needs one more jump
+            if (maxSteps < i) {
+                ++jumps;
+                maxSteps = maxPos;
+            }
+            maxPos = std::max(maxPos, nums[i] + i);
+        }
+        return jumps;
+    }
+    /*    
+    This problem has a nice BFS structure. Let's illustrate it 
+    using the example nums = [2, 3, 1, 1, 4] in the problem statement. 
+    We are initially at position 0. Then we can move at most nums[0] 
+    steps from it. So, after one move, we may reach nums[1] = 3 or 
+    nums[2] = 1. So these nodes are reachable in 1 move. From these 
+    nodes, we can further move to nums[3] = 1 and nums[4] = 4. 
+    Now you can see that the target nums[4] = 4 is reachable in 2 moves.
+    Putting these into codes, we keep two pointers start and end that 
+    record the current range of the starting nodes. Each time after we 
+    make a move, update start to be end + 1 and end to be the farthest 
+    index that can be reached in 1 move from the current [start, end].
+    To get an accepted solution, it is important to handle all the edge 
+    cases. And the following codes handle all of them in a unified way 
+    without using the unclean if statements.
+    */
+    int jump_solution2(std::vector<int>& nums) {
+        int n = nums.size(), step = 0, start = 0, end = 0;
+        while(end < n - 1) {
+            step++; // update jump steps
+            int maxend = end + 1; // 最远可以到达的index
+            for(int i = start; i <= end; ++i) {
+                if(i + nums[i] >= n - 1) { // 如果当前位置再往前走 nums[i]步会出去，就直接返回步数
+                    return step;
+                }
+                maxend = std::max(maxend, i + nums[i]); //更新最远能到达的index
+            }
+            start = end + 1;
+            end = maxend;
+        }
+        return step;
+    }
+
+    int jump_solution(std::vector<int>& nums) {
+        int res = 0;
+        const int n = nums.size();
+        int i = 0;
+        int cur = 0; // 
+        while(cur < n - 1) {
+            ++res;
+            int pre = cur; // 最远能走到的位置
+            for(; i <= pre; ++i) { // 从当前位置开始走，一直到最远，看最远能走多远
+                cur = std::max(cur, i + nums[i]); // 下一步
+            }
+
+            if(pre == cur) {
+                return -1; 
+            }
+        }
+        return res;
+    }
+};
+
+
 /*
 Given m arrays, and each array is sorted in ascending order. Now you can pick up two integers 
 from two different arrays (each array picks one) and calculate the distance. We define the 

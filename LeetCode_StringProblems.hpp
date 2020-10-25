@@ -1782,6 +1782,65 @@ public:
 };
 
 /*
+Given a string s of '(' , ')' and lowercase English characters. 
+Your task is to remove the minimum number of parentheses ( '(' or ')', in any positions ) 
+so that the resulting parentheses string is valid and return any valid string.
+
+Formally, a parentheses string is valid if and only if:
+It is the empty string, contains only lowercase characters, or
+It can be written as AB (A concatenated with B), where A and B are valid strings, or
+It can be written as (A), where A is a valid string.
+
+Input: s = "lee(t(c)o)de)"
+Output: "lee(t(c)o)de"
+Explanation: "lee(t(co)de)" , "lee(t(c)ode)" would also be accepted.
+
+Input: s = "a)b(c)d"
+Output: "ab(c)d"
+
+Input: s = "))(("
+Output: ""
+Explanation: An empty string is also valid.
+
+Input: s = "(a(b(c)d)"
+Output: "a(b(c)d)"
+
+Constraints:
+1 <= s.length <= 10^5
+s[i] is one of  '(' , ')' and lowercase English letters.
+!非常重要的一道题目
+*/
+class _1249_MinimumRemoveToMakeValidParentheses {
+public:
+    std::string minRemoveToMakeValid(std::string s) {
+        std::stack<int> leftP;
+        std::unordered_set<int> toBeRemoved; // 用两个变量避免出现 先有)后有(, 可最后都没被销毁的情况.
+        for(int i = 0; i < s.size(); ++i) { 
+            if(s[i] == '(') {
+                leftP.push(i);
+            } else if (s[i] == ')') {
+                if(leftP.empty()) {
+                    toBeRemoved.insert(i); // 在出现"("之前出现")",这个符号一定不合法.
+                } else {
+                    leftP.pop();
+                }
+            }
+        }
+        while(!leftP.empty()) {
+            toBeRemoved.insert(leftP.top());
+            leftP.pop();
+        }
+        std::string res;
+        for(int i = 0; i < s.size(); ++i) {
+            if(toBeRemoved.find(i) == toBeRemoved.end()) {
+                res += s[i];
+            }
+        }
+        return res;
+    }
+};
+
+/*
 Given a string s formed by digits ('0' - '9') and '#' . We want to map s to English 
 lowercase characters as follows:
 
@@ -1813,18 +1872,60 @@ public:
     std::string freqAlphabets(std::string s) {
         std::string res;
         for(int i = 0; i < s.size(); ++i) {
-            if(i < s.size() - 2 && s[i+2] == '#') {
+            if(i < s.size() - 2 && s[i+2] == '#') { // 向后看两个位置，如果看到一个'#', 就说明当前这个数字开头为一个j-z的字母
                 res += 'j' + (s[i] - '1') * 10 + (s[i+1] - '0');
                 i += 2;
                 continue;
             } else {
-                res += 'a' + (s[i] - '1');
+                res += 'a' + (s[i] - '1');//否则是一个从a-i的字母
             }
         }
         return res;
     }
 };
 
+
+/*
+Given an integer n. No-Zero integer is a positive integer 
+which doesn't contain any 0 in its decimal representation.
+Return a list of two integers [A, B] where:
+
+A and B are No-Zero integers.
+A + B = n
+It's guarateed that there is at least one valid solution. 
+If there are many valid solutions you can return any of them.
+
+Input: n = 2            Output: [1,1]
+Explanation: A = 1, B = 1. A + B = n and both A and B don't 
+contain any 0 in their decimal representation.
+
+Input: n = 11           Output: [2,9]
+Input: n = 10000        Output: [1,9999]
+Input: n = 69           Output: [1,68]
+Input: n = 1010         Output: [11,999]
+
+Constraints:
+
+2 <= n <= 10^4
+! 这道题就是硬试出来
+*/
+class _1317_ConvertIntegerToTheSumOfTwoNonZeroIntegers {
+public:
+    std::vector<int> getNoZeroIntegers(int n) {
+        int a = 1;
+        int b = n - a;
+        while(true) {
+            b = n - a;
+            auto sa = std::to_string(a);
+            auto sb = std::to_string(b);
+            if((sa.find("0") == std::string::npos) && (sb.find("0") == std::string::npos)) {
+                return {a,b};
+            }
+            ++a;
+        }
+        return {};
+    }
+};
 
 /*
 Given a string s. Return all the words vertically in the same order in which they appear in s.

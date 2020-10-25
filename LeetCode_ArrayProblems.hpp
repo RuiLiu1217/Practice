@@ -2333,6 +2333,94 @@ public:
     int movesToMakeZigzag(std::vector<int>& nums);
 };
 
+
+/*
+On an 8x8 chessboard, there can be multiple Black Queens and one White King.
+Given an array of integer coordinates queens that represents the positions of the 
+Black Queens, and a pair of coordinates king that represent the position of the 
+White King, return the coordinates of all the queens (in any order) that can 
+attack the King.
+
+
+Input: queens = [[0,1],[1,0],[4,0],[0,4],[3,3],[2,4]], king = [0,0]
+Output: [[0,1],[1,0],[3,3]]
+Explanation:  
+The queen at [0,1] can attack the king cause they're in the same row. 
+The queen at [1,0] can attack the king cause they're in the same column. 
+The queen at [3,3] can attack the king cause they're in the same diagnal. 
+The queen at [0,4] can't attack the king cause it's blocked by the queen at [0,1]. 
+The queen at [4,0] can't attack the king cause it's blocked by the queen at [1,0]. 
+The queen at [2,4] can't attack the king cause it's not in the same row/column/diagnal as the king.
+
+Input: queens = [[0,0],[1,1],[2,2],[3,4],[3,5],[4,4],[4,5]], king = [3,3]
+Output: [[2,2],[3,4],[4,4]]
+
+Input: queens = [[5,6],[7,7],[2,1],[0,7],[1,6],[5,1],[3,7],[0,3],[4,0],[1,2],[6,3],[5,0],
+[0,4],[2,2],[1,1],[6,4],[5,4],[0,0],[2,6],[4,5],[5,2],[1,4],[7,5],[2,3],[0,5],[4,2],[1,0],
+[2,7],[0,1],[4,6],[6,1],[0,6],[4,3],[1,7]], king = [3,4]
+Output: [[2,3],[1,4],[1,6],[3,7],[4,3],[5,4],[4,5]]
+ 
+
+Constraints:
+
+1 <= queens.length <= 63
+queens[0].length == 2
+0 <= queens[i][j] < 8
+king.length == 2
+0 <= king[0], king[1] < 8
+At most one piece is allowed in a cell.
+*/
+class _1222_QueensThatCanAttackTheKing {
+public:
+    std::vector<std::vector<int>> queensAttackTheKing(std::vector<std::vector<int>>& queens, std::vector<int>& king);
+};
+
+/*
+1238. Circular Permutation in Binary Representation 
+Given 2 integers n and start. Your task is return any permutation p of (0,1,2.....,2^n -1) such that :
+    p[0] = start
+    p[i] and p[i+1] differ by only one bit in their binary representation.
+    p[0] and p[2^n -1] must also differ by only one bit in their binary representation.
+
+Input: n = 2, start = 3
+Output: [3,2,0,1]
+Explanation: The binary representation of the permutation is (11,10,00,01). 
+All the adjacent element differ by one bit. Another valid permutation is [3,1,0,2]
+
+Input: n = 3, start = 2
+Output: [2,6,7,5,4,0,1,3]
+Explanation: The binary representation of the permutation is (010,110,111,101,100,000,001,011).
+
+Constraints:
+
+    1 <= n <= 16
+    0 <= start < 2 ^ n
+*/
+class _1238_CicularPermutationInBinaryRepresentation {
+  public:
+    std::vector<int> circularPermutation(int n, int start) {
+        std::vector<int> initial = grayCode(n);
+        auto iter = std::find(begin(initial), end(initial), start);
+        std::vector<int> res(iter, initial.end());
+        res.insert(res.end(), initial.begin(), iter);
+        return res;
+    }
+  private:
+    std::vector<int> grayCode(int n) {
+        if(n == 1) {
+            return {0, 1};
+        }
+        std::vector<int> pre = grayCode(n-1);
+        std::vector<int> res(pre.size() * 2, 0);
+        std::copy(pre.begin(),pre.end(), res.begin());
+        const int offset = (1 << (n-1));
+        std::transform(pre.crbegin(), pre.crend(), res.begin() + pre.size(), [&](int v) {
+            return v + offset;
+        });
+        return res;
+    }
+};
+
 /*
 You are given a map of a server center, represented as a m * n integer matrix grid, 
 where 1 means that on that cell there is a server and 0 means that it is no server. 
@@ -2561,6 +2649,159 @@ public:
         return ans;
     }
 };
+
+
+
+/*
+1337. The K Weakest Rows in a Matrix
+User Accepted:3626
+User Tried:3781
+Total Accepted:3727
+Total Submissions:5595
+Difficulty:Easy
+Given a m * n matrix mat of ones (representing soldiers) and zeros (representing civilians), return the indexes of the k weakest rows in the matrix ordered from the weakest to the strongest.
+
+A row i is weaker than row j, if the number of soldiers in row i is less than the number of soldiers in row j, or they have the same number of soldiers but i is less than j. Soldiers are always stand in the frontier of a row, that is, always ones may appear first and then zeros.
+
+ 
+
+Example 1:
+
+Input: mat = 
+[[1,1,0,0,0],
+ [1,1,1,1,0],
+ [1,0,0,0,0],
+ [1,1,0,0,0],
+ [1,1,1,1,1]], 
+k = 3
+Output: [2,0,3]
+Explanation: 
+The number of soldiers for each row is: 
+row 0 -> 2 
+row 1 -> 4 
+row 2 -> 1 
+row 3 -> 2 
+row 4 -> 5 
+Rows ordered from the weakest to the strongest are [2,0,3,1,4]
+Example 2:
+
+Input: mat = 
+[[1,0,0,0],
+ [1,1,1,1],
+ [1,0,0,0],
+ [1,0,0,0]], 
+k = 2
+Output: [0,2]
+Explanation: 
+The number of soldiers for each row is: 
+row 0 -> 1 
+row 1 -> 4 
+row 2 -> 1 
+row 3 -> 1 
+Rows ordered from the weakest to the strongest are [0,2,3,1]
+ 
+
+Constraints:
+
+m == mat.length
+n == mat[i].length
+2 <= n, m <= 100
+1 <= k <= m
+matrix[i][j] is either 0 or 1.
+*/
+class _1337_TheKWeakestRowsInAMatrix {
+public:
+    std::vector<int> kWeakestRows(std::vector<std::vector<int>>& mat, int k) {
+        auto comp = [](std::pair<int, int> const & p1, std::pair<int, int> const & p2) {
+            return p1.first > p2.first || (p1.first == p2.first && p1.second > p2.second);
+        };
+
+        std::priority_queue<std::pair<int, int>, std::vector<std::pair<int,int>>, decltype(comp)> pq{comp};
+        std::for_each(begin(mat), end(mat), [i=0,&pq](std::vector<int>& m) mutable {
+            pq.push({std::accumulate(begin(m), end(m), 0), i++});
+        });
+        
+        std::vector<int> res;
+        res.reserve(k);
+        int t = 0;
+        while (t < k) {
+            res.push_back(pq.top().second);
+            pq.pop();
+            ++t;
+        }
+        return res;
+    }
+};
+
+
+/*
+1338. Reduce Array Size to The Half
+Difficulty:Medium
+Given an array arr.  You can choose a set of integers and remove all the occurrences of these integers in the array.
+
+Return the minimum size of the set so that at least half of the integers of the array are removed. 
+
+Example 1:
+
+Input: arr = [3,3,3,3,5,5,5,2,2,7]
+Output: 2
+Explanation: Choosing {3,7} will make the new array [5,5,5,2,2] which has size 5 (i.e equal to half of the size of the old array).
+Possible sets of size 2 are {3,5},{3,2},{5,2}.
+Choosing set {2,7} is not possible as it will make the new array [3,3,3,3,5,5,5] which has size greater than half of the size of the old array.
+Example 2:
+
+Input: arr = [7,7,7,7,7,7]
+Output: 1
+Explanation: The only possible set you can choose is {7}. This will make the new array empty.
+Example 3:
+
+Input: arr = [1,9]
+Output: 1
+Example 4:
+
+Input: arr = [1000,1000,3,7]
+Output: 1
+Example 5:
+
+Input: arr = [1,2,3,4,5,6,7,8,9,10]
+Output: 5
+ 
+
+Constraints:
+
+1 <= arr.length <= 10^5
+arr.length is even.
+1 <= arr[i] <= 10^5
+*/
+class Solution {
+public:
+    int minSetSize(std::vector<int>& arr) {
+        const int N = arr.size();
+        std::unordered_map<int, int> map;
+        for(int i = 0; i < arr.size(); ++i) {
+            ++map[arr[i]];
+        }
+        std::vector<std::pair<int,int>> statistic;
+        for(auto& m : map) {
+            statistic.push_back(m);
+        }
+        std::sort(begin(statistic), end(statistic), [](auto& a, auto& b){
+            return (a.second > b.second);
+        });
+        int removeNum = 0;
+        int accumuNum = 0;
+        for(int i = 0; i < statistic.size(); ++i) {
+            ++removeNum;
+            accumuNum += statistic[i].second;
+            if(accumuNum >= N / 2) {
+                break;
+            }
+        }
+        return removeNum;
+    }
+};
+
+
 
 /*
 Given two arrays of integers nums and index. Your task is to create target array under the following rules:

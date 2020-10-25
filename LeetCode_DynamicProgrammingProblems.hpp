@@ -909,6 +909,103 @@ public:
 };
 
 /*
+You are given a square board of characters. You can move on the board starting 
+at the bottom right square marked with the character 'S'.
+You need to reach the top left square marked with the character 'E'. The rest 
+of the squares are labeled either with a numeric character 1, 2, ..., 9 or with 
+an obstacle 'X'. In one move you can go up, left or up-left (diagonally) only if 
+there is no obstacle there.
+Return a list of two integers: the first integer is the maximum sum of numeric 
+characters you can collect, and the second is the number of such paths that you
+ can take to get that maximum sum, taken modulo 10^9 + 7.
+In case there is no path, return [0, 0].
+
+Input: board = ["E23","2X2","12S"]
+Output: [7,1]
+
+Input: board = ["E12","1X1","21S"]
+Output: [4,2]
+
+Input: board = ["E11","XXX","11S"]
+Output: [0,0]
+ 
+Constraints:
+
+2 <= board.length == board[i].length <= 100
+!这道题特别容易做错
+*/
+class _1301_NumberOfPathsWithMaxScore {
+public:
+    std::vector<int> pathsWithMaxScore(std::vector<std::string>& board) {  
+        const int M = board.size();
+        const int N = board[0].size();
+        const int MOD = 1000000000 + 7;
+        std::vector<std::vector<std::pair<int,int>>> DP(M, std::vector<std::pair<int, int>>(N, {0,0}));
+        DP[M-1][N-1] = {0, 1}; // 起点是通的
+        bool hasX = false;
+        for(int j = N - 2; j >= 0; --j) {
+            if(!hasX) {
+                if(board[M-1][j] == 'X') {
+                    DP[M-1][j] = {0, 0};
+                    hasX = true;
+                } else {
+                    DP[M-1][j] = {(board[M-1][j] - '0' + DP[M-1][j+1].first) % MOD, 1};
+                }
+            } else {
+                DP[M-1][j] = {0, 0}; // 最后一行，从后向前扫描，一旦遇到X，后面的一定不通
+            }
+        }
+        hasX = false;
+        for(int i = M-2; i >= 0; --i) {
+            if(!hasX) {
+                if(board[i][N-1] == 'X') {
+                    DP[i][N-1] = {0, 0};
+                    hasX = true;
+                } else {
+                    DP[i][N-1] = {(board[i][N-1] - '0' + DP[i+1][N-1].first) % MOD, 1};
+                }
+            } else {
+                DP[i][N-1] = {0, 0}; // 最后一列，从下向上扫描，一旦遇到X，上面也同理不通
+            }
+        }
+        DP[0][0] = {0, 0};
+        board[0][0] = '0';
+
+        for(int i = M-2; i >= 0; --i) {
+            for(int j = N-2; j >= 0; --j) {
+                int sc = 0;
+                if(board[i][j] >= '0' && board[i][j] <= '9') {
+                    sc = board[i][j] - '0';
+                }
+                if(!(DP[i+1][j].first == 0 && DP[i+1][j].second == 0)) { // 三个判断，每次判断都是要确保这个点本身是能走通的.
+                    DP[i][j] = std::make_pair((DP[i+1][j].first + sc) % MOD,DP[i+1][j].second);
+                }
+
+                if(!(DP[i][j+1].first == 0 && DP[i][j+1].second == 0)) {
+                    if(DP[i][j+1].first + sc > DP[i][j].first) {
+                        DP[i][j].first = (DP[i][j+1].first + sc) % MOD;
+                        DP[i][j].second = DP[i][j+1].second;
+                    } else if(DP[i][j+1].first + sc == DP[i][j].first) {
+                        DP[i][j].second = (DP[i][j].second + DP[i][j+1].second) % MOD;
+                    }
+                }
+
+                if(!(DP[i+1][j+1].first == 0 && DP[i+1][j+1].second == 0)) {
+                    if(DP[i+1][j+1].first + sc > DP[i][j].first) {
+                        DP[i][j].first = (DP[i+1][j+1].first + sc) % MOD;
+                        DP[i][j].second = DP[i+1][j+1].second;
+                    } else if (DP[i+1][j+1].first + sc == DP[i][j].first) {
+                        DP[i][j].second = (DP[i][j].second + DP[i+1][j+1].second) % MOD;
+                    }
+                }
+            }
+        }
+        return {DP[0][0].first, DP[0][0].second};
+    }
+};
+
+
+/*
 Given the integer n representing the number of courses at some university labeled from 1 to n, 
 and the array dependencies where dependencies[i] = [xi, yi]  represents a prerequisite relationship, 
 that is, the course xi must be taken before the course yi.  Also, you are given the integer k.
