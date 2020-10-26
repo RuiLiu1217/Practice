@@ -261,6 +261,46 @@ public:
 };
 
 
+/*
+TODO
+Tag: array, I don't know how to categorize.
+Given an unsorted integer array, find the smallest missing positive integer.
+Example 1:
+    Input: [1,2,0]         :         Output: 3
+    Input: [3,4,-1,1]      :         Output: 2
+    Input: [7,8,9,11,12]   :         Output: 1
+
+Your algorithm should run in O(n) time and uses constant extra space.
+Solution: Copy from solution
+Hint:
+扫描数组中每个数：
+1. 如果A[i]<1或者A[i]>n。说明A[i]一定不是first missing positive。跳过
+2. 如果A[i] = i+1，说明A[i]已经在正确的位置，跳过
+3. 如果A[i]!=i+1，且0<A[i]<=n，应当将A[i]放到A[A[i]-1]的位置，所以可以交换两数。
+ 这里注意，当A[i] = A[A[i]-1]时会陷入死循环。这种情况下直接跳过。
+
+*/
+class _0041_FirstMissingPositive{
+public:
+    int firstMissingPositive(std::vector<int>& nums) {
+        const int N = nums.size();
+
+        for(int i = 0; i < N; ++i) {
+            while(nums[i] > 0 && nums[i] <= N && nums[nums[i] - 1] != nums[i]) {
+                std::swap(nums[i], nums[nums[i] - 1]);
+            }
+        }
+
+        for(int i = 0; i < N; ++i) {
+            if(nums[i] != i + 1) {
+                return i + 1;
+            }
+        }
+        return N + 1;
+    }
+};
+
+
 /* 
 Tag: matrix operation
 You are given an n x n 2D matrix representing an image. Rotate the image by 90 degrees (clockwise).
@@ -338,6 +378,78 @@ private:
     }
 };
 
+/*
+Tag: matrix operations
+Note: edge condition
+Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order.
+Input:
+[
+ [ 1, 2, 3 ],
+ [ 4, 5, 6 ],
+ [ 7, 8, 9 ]
+]
+Output: [1,2,3,6,9,8,7,4,5]
+
+Input:
+[
+  [1, 2, 3, 4],
+  [5, 6, 7, 8],
+  [9,10,11,12]
+]
+Output: [1,2,3,4,8,12,11,10,9,5,6,7]
+! an absolute index operating based problem
+*/
+class _0054_SpiralMatrix{
+public:
+    std::vector<int> spiralOrder(std::vector<std::vector<int>>& matrix) {
+        int i = 0;
+        int j = 0;
+        const int M = matrix.size();
+        if(M == 0) {
+            return {};
+        }
+        const int N = matrix[0].size();
+        const int totNum = M * N;
+        std::vector<int> res;
+        int rowCount = M - 1;
+        int colCount = N;
+        int rowPowIdx = 0;
+        int colPowIdx = 0;
+        bool isCountingRow = false;
+        int count = 0;
+
+        for(int idx = 0; i < totNum; ++idx) {
+            res.push_back(matrix[i][j]);
+            if(isCountingRow) {
+                i += std::pow(-1, rowPowIdx);
+                ++count;
+                if(count == rowCount) {
+                    isCountingRow = false;
+                    ++rowPowIdx;
+                    rowCount -= 1;
+                    i += std::pow(-1, rowPowIdx);
+                    j += std::pow(-1, colPowIdx);
+                    count = 0;
+                }
+            } else {
+                j += std::pow(-1, colPowIdx);
+                ++count;
+                if(count == colCount) {
+                    isCountingRow = true;
+                    ++colPowIdx;
+                    colCount -= 1;
+                    i += std::pow(-1, rowPowIdx);
+                    j += std::pow(-1, colPowIdx);
+                    count = 0;
+                }
+            }
+        }
+        return res;
+    }
+};
+
+
+
 
 /*
 Todo: interval 
@@ -368,6 +480,61 @@ Output:
 class _0059_SpiralMatrixII {
 public:
     std::vector<std::vector<int>> generateMatrix(int n);
+};
+
+
+/*
+Tag: Permutation, Priority Queue, String
+TODO
+Note: The same, how to generate next permuation
+
+The set [1,2,3,...,n] contains a total of n! unique 
+permutations.
+By listing and labeling all of the permutations in 
+order, we get the following sequence for n = 3:
+
+"123" "132" "213" "231" "312" "321"
+Given n and k, return the kth permutation sequence.
+
+Note:
+Given n will be between 1 and 9 inclusive.
+Given k will be between 1 and n! inclusive.
+
+Input: n = 3, k = 3
+Output: "213"
+
+Input: n = 4, k = 9
+Output: "2314"
+*/
+class _0060_PermutationSequence {
+public:
+    std::string getPermutation(int n, int k) {
+        int t = 1;
+        std::string S;
+        for(int i = 1; i <= n; ++i) {
+            S += ('0' + i);
+        }
+        while(t < k) {
+            getNext(S);
+            ++t;
+        }
+        return S;
+    }
+    void getNext(std::string& S) {
+        int i = S.size() - 1;
+        for(; i > 0; --i) {
+            if(S[i-1] < S[i]) {
+                break;
+            }
+        }
+        int I = i-1;
+        int j = S.size() - 1;
+        while(S[j] < S[I]) {
+            --j;
+        }
+        std::swap(S[I], S[j]);
+        std::reverse(S.begin() + i, S.end());
+    }
 };
 
 
@@ -461,6 +628,52 @@ public:
     void sortColors(std::vector<int>& nums);
 };
 
+/*
+Tag: array
+TODO
+80. Remove Duplicates from Sorted Array II
+Given a sorted array nums, remove the duplicates in-place such that 
+duplicates appeared at most twice and return the new length.
+Do not allocate extra space for another array, you must do this by
+modifying the input array in-place with O(1) extra memory.
+
+Given nums = [1,1,1,2,2,3],
+Your function should return length = 5, with the first five elements
+of nums being 1, 1, 2, 2 and 3 respectively. It doesn't matter what 
+you leave beyond the returned length.
+
+Given nums = [0,0,1,1,1,1,2,3,3],
+Your function should return length = 7, with the first seven elements
+of nums being modified to 0, 0, 1, 1, 2, 3 and 3 respectively.
+It doesn't matter what values are set beyond the returned length.
+
+Clarification:
+Confused why the returned value is an integer but your answer is an array?
+Note that the input array is passed in by reference, which means 
+modification to the input array will be known to the caller as well.
+
+Internally you can think of this:
+ nums is passed in by reference. (i.e., without making a copy)
+int len = removeDuplicates(nums);
+
+!这道题其实不难，不过就是容易懵.
+*/
+class _0080_RemoveDuplicatesFromSortedArrayII {
+public:
+    int removeDuplicates(std::vector<int>& nums) {
+        return removeDuplicate(nums, 2);
+    }
+
+    int removeDuplicate(std::vector<int>& nums, int k) { // k means allowed duplicate time, it is more generic, that we can deal with case 1, 2,...
+        int slowIdx = 0;
+        for(int num : nums) {
+            if(slowIdx < k || num > nums[slowIdx - k]) {
+                nums[slowIdx++] = num;
+            }
+        }
+        return slowIdx;
+    }
+};
 
 /*
 Facebook 

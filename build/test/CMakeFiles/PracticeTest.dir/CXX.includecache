@@ -378,21 +378,17 @@ C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_ArrayProblems.hpp
 HeaderFiles.hpp
 C:/Users/liuru/OneDrive/Documents/GitHub/Practice/HeaderFiles.hpp
 
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_BFS.hpp
-string
--
-vector
--
-
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_BacktracingProblems.hpp
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_BinarySearchProblem.hpp
 HeaderFiles.hpp
 C:/Users/liuru/OneDrive/Documents/GitHub/Practice/HeaderFiles.hpp
 
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_GreedyAlgorithmProblems.hpp
-vector
--
-string
--
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_DynamicProgrammingProblems.hpp
+HeaderFiles.hpp
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/HeaderFiles.hpp
+
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_StringProblems.hpp
+HeaderFiles.hpp
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/HeaderFiles.hpp
 
 C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_ArrayProblemTests.cpp
 gtest/gtest.h
@@ -402,25 +398,21 @@ C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_ArrayProblems.hpp
 vector
 -
 
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_BFSTests.cpp
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_BinarySearchProblemTests.cpp
 gtest/gtest.h
--
-../LeetCode_BFS.hpp
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_BFS.hpp
-vector
--
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/gtest/gtest.h
+../LeetCode_BinarySearchProblem.hpp
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_BinarySearchProblem.hpp
 
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_BacktracingProblemTests.cpp
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_DynamicProgrammingProblemTests.cpp
 gtest/gtest.h
 -
-iostream
--
-../LeetCode_BacktracingProblems.hpp
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_BacktracingProblems.hpp
+../LeetCode_DynamicProgrammingProblems.hpp
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_DynamicProgrammingProblems.hpp
 
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_GreedyAlgorithmProblemTests.cpp
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_StringProblemTests.cpp
 gtest/gtest.h
 -
-../LeetCode_GreedyAlgorithmProblems.hpp
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_GreedyAlgorithmProblems.hpp
+../LeetCode_StringProblems.hpp
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_StringProblems.hpp
 

@@ -3,6 +3,94 @@
 #include "HeaderFiles.hpp"
 
 namespace LC {
+
+    /*
+Given a string containing just the characters '(' and ')', find the length of the 
+longest valid (well-formed) parentheses substring.
+
+Input: "(()"
+Output: 2
+Explanation: The longest valid parentheses substring is "()"
+
+Input: ")()())"
+Output: 4
+Explanation: The longest valid parentheses substring is "()()"
+! 这道题的动态规划解法超级难想。需要多看几次
+! 这道题必须掌握
+*/
+class _0032_LongestValidParentheses {
+public:
+    int longestValidParentheses(std::string s) {
+        std::vector<int> dp(s.size(), 0);
+        int maxLen = 0;
+        for(int i = 1; i < s.size(); ++i) {
+            if(s[i] == ')') {
+                if(s[i-1] == '(') {
+                    dp[i] = (i >= 2 ? dp[i-2] : 0) + 2;
+                }
+            } else if(i - dp[i-1] > 0 && s[i - dp[i-1] - 1] == '(') {
+                dp[i] = dp[i-1] + (i - dp[i-1] >= 2 ? dp[i - dp[i-1] - 2] : 0) + 2;
+            }
+            maxLen = std::max(maxLen, dp[i]);
+        }
+        return maxLen;
+    }
+    /*
+        这里借助栈来求解，需要定义个 start 变量来记录合法括号串的起始位置，遍历字符串，
+        如果遇到左括号，则将当前下标压入栈，如果遇到右括号，如果当前栈为空，则将下一个坐
+        标位置记录到 start，如果栈不为空，则将栈顶元素取出，此时若栈为空，则更新结果和 
+        i - start + 1 中的较大值，否则更新结果和 i - st.top() 中的较大值
+    */
+    int longestValidParentheses_StackBased(std::string s) {
+        int res = 0;
+        int start = 0;
+        const int n = s.size();
+        std::stack<int> st;
+        for(int i = 0; i < n; ++i) {
+            if(s[i] == '(') {
+                st.push(i);
+            } else if(s[i] == ')') {
+                if(st.empty()) {
+                    start = i + 1;
+                } else {
+                    st.pop();
+                    res = st.empty() ? std::max(res, i - start + 1) : std::max(res, i - st.top());
+                }
+            }
+        }
+        return res;
+    }
+
+    /*
+    不用额外空间的解法：使用了两个变量 left 和 right，分别用来记录到当前位置时左括号和右括号的出现次数，
+    当遇到左括号时，left 自增1，右括号时 right 自增1。对于最长有效的括号的子串，一定是左括号等于右括号
+    的情况，此时就可以更新结果 res 了，一旦右括号数量超过左括号数量了，说明当前位置不能组成合法括号子串，
+    left 和 right 重置为0。但是对于这种情况 "(()" 时，在遍历结束时左右子括号数都不相等，此时没法更新结
+    果 res，但其实正确答案是2，怎么处理这种情况呢？答案是再反向遍历一遍，采取类似的机制，稍有不同的是此时
+    若 left 大于 right 了，则重置0，这样就可以 cover 所有的情况了，参见代码如下：
+    */
+    int longestValidParentheses_TwoPointers(std::string s) {
+        int res = 0;
+        int left = 0;
+        int right = 0;
+        const int n = s.size();
+
+        for(int i = 0; i < n; ++i) {
+            (s[i] == '(') ? ++left : ++right;
+            if (left == right) res = std::max(res, 2 * right);
+            else if (right > left) left = right = 0;
+        }
+        left = right = 0;
+        for(int i = n - 1; i >= 0; --i) {
+            (s[i] == '(') ? ++left : ++right;
+            if (left == right) res = std::max(res, 2 * left);
+            else if (left > right) left = right = 0;
+        }
+        return res;
+    }
+};
+
+
 /* 
 TODO: Copy from the answer
 Tag: dynamic programming, string matching
@@ -136,6 +224,55 @@ public:
     int climbStairs(int n);
 };
 
+/*
+Tag: Dynamic Programming
+Given two words word1 and word2, find the minimum number 
+of operations required to convert word1 to word2.
+You have the following 3 operations permitted on a word:
+
+Insert a character
+Delete a character
+Replace a character
+
+Input: word1 = "horse", word2 = "ros"
+Output: 3
+Explanation: 
+horse -> rorse (replace 'h' with 'r')
+rorse -> rose (remove 'r')
+rose -> ros (remove 'e')
+
+Input: word1 = "intention", word2 = "execution"
+Output: 5
+Explanation: 
+intention -> inention (remove 't')
+inention -> enention (replace 'i' with 'e')
+enention -> exention (replace 'n' with 'x')
+exention -> exection (replace 'n' with 'c')
+exection -> execution (insert 'u')
+*/
+class _0072_EditDistance{
+public:
+    int minDistance(std::string word1, std::string word2) {
+        int m = word1.size(), n = word2.size();
+        std::vector<std::vector<int>> dp(m + 1, std::vector<int>(n + 1, 0));
+        for (int i = 1; i <= m; i++) {
+            dp[i][0] = i;
+        }
+        for (int j = 1; j <= n; j++) {
+            dp[0][j] = j;
+        }
+        for (int i = 1; i <= m; i++) {
+            for (int j = 1; j <= n; j++) {
+                if (word1[i - 1] == word2[j - 1]) { // 位置 i 上的跟位置j上的字母相同，则不需要做新的调整
+                    dp[i][j] = dp[i - 1][j - 1];
+                } else {
+                    dp[i][j] = std::min({dp[i - 1][j - 1], dp[i][j - 1], dp[i - 1][j]}) + 1; // 删除一个字母和增加一个字母是对偶的，从A删除一个跟从B删除一个，是对偶的。
+                }
+            }
+        }
+        return dp[m][n];
+    }
+};
 
 /*
 Tag: dynamic programming, string

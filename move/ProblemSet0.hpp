@@ -104,24 +104,6 @@ public:
     std::vector<int> findSubstring(std::string s, std::vector<std::string>& words);
 };
 
-/*
-Given a string containing just the characters '(' and ')', find the length of the 
-longest valid (well-formed) parentheses substring.
-
-Input: "(()"
-Output: 2
-Explanation: The longest valid parentheses substring is "()"
-
-Input: ")()())"
-Output: 4
-Explanation: The longest valid parentheses substring is "()()"
-*/
-class _0032_LongestValidParentheses {
-public:
-    int longestValidParentheses(std::string s);
-};
-
-
 
 
 /*
@@ -150,22 +132,6 @@ public:
     std::vector<int> searchRange(std::vector<int> &nums, int target);
 };
 
-
-/*
-TODO
-Tag: array, I don't know how to categorize.
-Given an unsorted integer array, find the smallest missing positive integer.
-Example 1:
-    Input: [1,2,0]         :         Output: 3
-    Input: [3,4,-1,1]      :         Output: 2
-    Input: [7,8,9,11,12]   :         Output: 1
-
-Your algorithm should run in O(n) time and uses constant extra space.
-*/
-class _0041_FirstMissingPositive{
-public:
-    int firstMissingPositive(std::vector<int>& nums);
-};
 
 /*
 Tag: dynamic programming, two pointers
@@ -198,6 +164,7 @@ Output:
   [1,2,1],
   [2,1,1]
 ]
+!这道题一直没有搞明白到底是用引用还是copy by value, 而且在递归调用完后，是否要swap回原先的结果.
 */
 class _0047_PermutationsII {
 public:
@@ -212,31 +179,6 @@ public:
         std::vector<std::vector<int>>& res);
 };
 
-
-/*
-Tag: matrix operations
-Note: edge condition
-Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order.
-Input:
-[
- [ 1, 2, 3 ],
- [ 4, 5, 6 ],
- [ 7, 8, 9 ]
-]
-Output: [1,2,3,6,9,8,7,4,5]
-
-Input:
-[
-  [1, 2, 3, 4],
-  [5, 6, 7, 8],
-  [9,10,11,12]
-]
-Output: [1,2,3,4,8,12,11,10,9,5,6,7]
-*/
-class _0054_SpiralMatrix{
-public:
-    std::vector<int> spiralOrder(std::vector<std::vector<int>>& matrix);
-};
 
 
 /*
@@ -280,36 +222,6 @@ public:
 };
 
 
-
-
-/*
-Tag: Permutation, Priority Queue, String
-TODO
-Note: The same, how to generate next permuation
-
-The set [1,2,3,...,n] contains a total of n! unique 
-permutations.
-By listing and labeling all of the permutations in 
-order, we get the following sequence for n = 3:
-
-"123" "132" "213" "231" "312" "321"
-Given n and k, return the kth permutation sequence.
-
-Note:
-Given n will be between 1 and 9 inclusive.
-Given k will be between 1 and n! inclusive.
-
-Input: n = 3, k = 3
-Output: "213"
-
-Input: n = 4, k = 9
-Output: "2314"
-*/
-class _0060_PermutationSequence {
-public:
-    std::string getPermutation(int n, int k);
-    std::string getNext(std::string S);
-};
 
 
 
@@ -419,91 +331,7 @@ public:
     std::vector<std::string> fullJustify(std::vector<std::string>& words, int L);
 };
 
-/*
-Tag: Binary search.
-Implement int sqrt(int x).
-Compute and return the square root of x, where x is guaranteed to be a non-negative integer.
-Since the return type is an integer, the decimal digits are truncated and only the integer 
-part of the result is returned.
 
-Input: 4           :          Output: 2
-Input: 8           :          Output: 2
-
-Explanation: The square root of 8 is 2.82842..., and since
-the decimal part is truncated, 2 is returned.
-*/
-class _0069_SqrtX {
-public:
-    int mySqrt(int x);
-};
-
-
-/*
-Tag: string, stringstream operation
-Todo: familar with stringstream
-Given an absolute path for a file (Unix-style), simplify it. Or in other words, 
-convert it to the canonical path. In a UNIX-style file system, a period . refers to 
-the current directory. Furthermore, a double period .. moves the directory up a 
-level. For more information, see: Absolute path vs relative path in Linux/Unix
-
-Note that the returned canonical path must always begin with a slash /, and there 
-must be only a single slash / between two directory names. The last directory name 
-(if it exists) must not end with a trailing /. Also, the canonical path must be 
-the shortest string representing the absolute path. 
-
-Input: "/home/"                :           Output: "/home"
-Explanation: Note that there is no trailing slash after the last directory name.
-
-Input: "/../"                  :           Output: "/"
-Explanation: Going one level up from the root directory is a no-op, as the 
-root level is the highest level you can go.
-
-Input: "/home//foo/"           :           Output: "/home/foo"
-Explanation: In the canonical path, multiple consecutive slashes are replaced 
-by a single one.
-
-Input: "/a/./b/../../c/"       :           Output: "/c"
-
-Input: "/a/../../b/../c//.//"  :           Output: "/c"
-
-Input: "/a//b////c/d//././/.."
-Output: "/a/b/c"
-*/
-class _0071_SimplifyPath{
-public:
-    std::string simplifyPath(std::string path);
-};
-
-/*
-Tag: Dynamic Programming
-Given two words word1 and word2, find the minimum number 
-of operations required to convert word1 to word2.
-You have the following 3 operations permitted on a word:
-
-Insert a character
-Delete a character
-Replace a character
-
-Input: word1 = "horse", word2 = "ros"
-Output: 3
-Explanation: 
-horse -> rorse (replace 'h' with 'r')
-rorse -> rose (remove 'r')
-rose -> ros (remove 'e')
-
-Input: word1 = "intention", word2 = "execution"
-Output: 5
-Explanation: 
-intention -> inention (remove 't')
-inention -> enention (replace 'i' with 'e')
-enention -> exention (replace 'n' with 'x')
-exention -> exection (replace 'n' with 'c')
-exection -> execution (insert 'u')
-*/
-class _0072_EditDistance{
-public:
-    int minDistance(std::string word1, std::string word2);
-};
 
 /*
 Tag: Matrix operation, tricks
@@ -549,40 +377,6 @@ public:
 };
 
 
-
-/*
-Tag: array
-TODO
-80. Remove Duplicates from Sorted Array II
-Given a sorted array nums, remove the duplicates in-place such that 
-duplicates appeared at most twice and return the new length.
-Do not allocate extra space for another array, you must do this by
-modifying the input array in-place with O(1) extra memory.
-
-Given nums = [1,1,1,2,2,3],
-Your function should return length = 5, with the first five elements
-of nums being 1, 1, 2, 2 and 3 respectively. It doesn't matter what 
-you leave beyond the returned length.
-
-Given nums = [0,0,1,1,1,1,2,3,3],
-Your function should return length = 7, with the first seven elements
-of nums being modified to 0, 0, 1, 1, 2, 3 and 3 respectively.
-It doesn't matter what values are set beyond the returned length.
-
-Clarification:
-Confused why the returned value is an integer but your answer is an array?
-Note that the input array is passed in by reference, which means 
-modification to the input array will be known to the caller as well.
-
-Internally you can think of this:
-// nums is passed in by reference. (i.e., without making a copy)
-int len = removeDuplicates(nums);
-*/
-class _0080_RemoveDuplicatesFromSortedArrayII {
-public:
-    int removeDuplicates(std::vector<int>& nums);
-};
-
 /*
 Tag: Binary Search
 Suppose an array sorted in ascending order is rotated at some pivot 
@@ -623,7 +417,7 @@ public:
 Tag: dynamic programming
 TODO
 Given a 2D binary matrix filled with 0's and 1's, find the largest rectangle containing only 1's and return its area.
-
+---
 Input:
 [
   ["1","0","1","0","0"],
