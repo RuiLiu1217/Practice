@@ -24,6 +24,7 @@ There are two sorted arrays nums1 and nums2 of size m and n respectively.
 Find the median of the two sorted arrays. 
 The overall run time complexity should be O(log (m+n)).
 You may assume nums1 and nums2 cannot be both empty.
+! 这道题非常变态，是一道二分查找的变形.
 */
 class _0004_MedianOfTwoSortedArrays {
 public:
@@ -77,7 +78,6 @@ public:
     bool isValid(std::string &s);
 };
 
-
 /*
 Tag: array, slow-fast pointer
 Given a sorted array nums, remove the duplicates in-place such that each element 
@@ -104,11 +104,11 @@ the input array will be known to the caller as well.
 
 Internally you can think of this:
 
-// nums is passed in by reference. (i.e., without making a copy)
+nums is passed in by reference. (i.e., without making a copy)
 int len = removeDuplicates(nums);
 
-// any modification to nums in your function would be known by the caller.
-// using the length returned by your function, it prints the first len elements.
+any modification to nums in your function would be known by the caller.
+using the length returned by your function, it prints the first len elements.
 for (int i = 0; i < len; i++) {
     print(nums[i]);
 }
@@ -217,9 +217,7 @@ public:
 };
 
 
-/* 
-Tag: Binary Search
-
+/* Tag: Binary Search
 Given a sorted array and a target value, return the index if the target 
 is found. If not, return the index where it would be if it were inserted 
 in order.
@@ -448,11 +446,7 @@ public:
     }
 };
 
-
-
-
 /*
-Todo: interval 
 Given a collection of intervals, merge all overlapping intervals.
 
 Input: [[1,3],[2,6],[8,10],[15,18]]            :           Output: [[1,6],[8,10],[15,18]]
@@ -466,28 +460,23 @@ public:
     std::vector<std::vector<int>> merge(std::vector<std::vector<int>>& intervals);
 };
 
-
-/* Tag: matrix operation
+/* 
+Tag: matrix operation
 Given a positive integer n, generate a square matrix filled with elements from 1 to n^2 in spiral order.
 Input: 3
 Output:
-[
- [ 1, 2, 3 ],
- [ 8, 9, 4 ],
- [ 7, 6, 5 ]
-]
+    [[ 1, 2, 3 ],
+     [ 8, 9, 4 ],
+     [ 7, 6, 5 ]]
 */
 class _0059_SpiralMatrixII {
 public:
     std::vector<std::vector<int>> generateMatrix(int n);
 };
 
-
-/*
-Tag: Permutation, Priority Queue, String
+/* Tag: Permutation, Priority Queue, String
 TODO
 Note: The same, how to generate next permuation
-
 The set [1,2,3,...,n] contains a total of n! unique 
 permutations.
 By listing and labeling all of the permutations in 
@@ -537,18 +526,17 @@ public:
     }
 };
 
-
 /*
-Given a non-empty array of digits representing a non-negative integer, 
-plus one to the integer. The digits are stored such that the most significant 
-digit is at the head of the list, and each element in the array contain 
-a single digit.
-You may assume the integer does not contain any leading zero, except 
-the number 0 itself.
+    Given a non-empty array of digits representing a non-negative integer, 
+    plus one to the integer. The digits are stored such that the most significant 
+    digit is at the head of the list, and each element in the array contain 
+    a single digit.
+    You may assume the integer does not contain any leading zero, except 
+    the number 0 itself.
 
-Input: [1,2,3]             :     Output: [1,2,4]
-Input: [4,3,2,1]           :     Output: [4,3,2,2]
-Explanation: The array represents the integer 4321.
+    Input: [1,2,3]             :     Output: [1,2,4]
+    Input: [4,3,2,1]           :     Output: [4,3,2,2]
+    Explanation: The array represents the integer 4321.
 */
 class _0066_PlusOne {
 public:
@@ -558,12 +546,12 @@ public:
 
 
 /*
-Facebook
-Given two binary strings, return their sum (also a binary string).
-The input strings are both non-empty and contains only characters 1 or 0.
+    Facebook
+    Given two binary strings, return their sum (also a binary string).
+    The input strings are both non-empty and contains only characters 1 or 0.
 
-Input: a = "11", b = "1"           :        Output: "100"
-Input: a = "1010", b = "1011"      :        Output: "10101"
+    Input: a = "11", b = "1"           :        Output: "100"
+    Input: a = "1010", b = "1011"      :        Output: "10101"
 */
 class _0067_AddBinary {
 public:
@@ -572,38 +560,34 @@ public:
 
 
 /*
-Tag: binary search
-Write an efficient algorithm that searches for a value in an m x n matrix. 
-This matrix has the following properties:
-Integers in each row are sorted from left to right. The first integer of 
-each row is greater than the last integer of the previous row.
+    Tag: binary search
+    Write an efficient algorithm that searches for a value in an m x n matrix. 
+    This matrix has the following properties:
+    Integers in each row are sorted from left to right. The first integer of 
+    each row is greater than the last integer of the previous row.
 
-Example 1:
+    Input:
+    matrix = [[1,   3,  5,  7],
+            [10, 11, 16, 20],
+            [23, 30, 34, 50]
+        ]
+    target = 3
+    Output: true
 
-Input:
-matrix = [
-  [1,   3,  5,  7],
-  [10, 11, 16, 20],
-  [23, 30, 34, 50]
-]
-target = 3
-Output: true
-Example 2:
+    Input:
+    matrix = [
+        [1,   3,  5,  7],
+        [10, 11, 16, 20],
+        [23, 30, 34, 50]
+    ]
 
-Input:
-matrix = [
-  [1,   3,  5,  7],
-  [10, 11, 16, 20],
-  [23, 30, 34, 50]
-]
-target = 13
-Output: false
+    target = 13
+    Output: false
 */
 class _0074_SearchA2DMatrix {
 public:
     bool searchMatrix(std::vector<std::vector<int>>& matrix, int target);
 };
-
 
 /*
 Tag: array
@@ -617,7 +601,6 @@ Example:
 Input: [2,0,2,1,1,0]
 Output: [0,0,1,1,2,2]
 Follow up:
-
 A rather straight forward solution is a two-pass algorithm using counting sort.
 First, iterate the array counting number of 0's, 1's, and 2's, then overwrite 
 array with total number of 0's, then 1's and followed by 2's.
@@ -653,7 +636,7 @@ Note that the input array is passed in by reference, which means
 modification to the input array will be known to the caller as well.
 
 Internally you can think of this:
- nums is passed in by reference. (i.e., without making a copy)
+nums is passed in by reference. (i.e., without making a copy)
 int len = removeDuplicates(nums);
 
 !这道题其实不难，不过就是容易懵.
@@ -674,6 +657,221 @@ public:
         return slowIdx;
     }
 };
+
+
+/*
+Tag: 
+TODO: Hint increasing stack
+Given n non-negative integers representing the histogram's bar height where 
+the width of each bar is 1, find the area of largest rectangle in the histogram.
+Above is a histogram where width of each bar is 1, given height = [2,1,5,6,2,3].
+The largest rectangle is shown in the shaded area, which has area = 10 unit.
+
+Input: [2,1,5,6,2,3]
+Output: 10
+! (1) 在heights尾部添加一个0，也就是一个高度为0的立柱。作用是在最后也能凑成上面提的那种“波峰图”。
+! (2) 定义了一个stack，然后遍历heights，如果heights[i] 大于等于stack.top()，进栈。
+! 如果heights[i]小于stack.top()，出栈，直到heights[i] 大于等于stack.top()，然后进栈。
+! 由于出栈的这些元素高度都是递增的，我们可以求出这些立柱中所围成的最大矩形。更妙的是，
+! 由于这些被弹出的立柱处于“波峰”之上(比如弹出i 到 i+k，那么所有这些立柱的高度都高于 i-1 和 i+k+1的高度)，
+! 因此，如果我们使用之前所提的“左右延伸找立柱”的思路解，以这些立柱的高度作为整个矩形的高度时，
+! 左右延伸出的矩形所包含的立柱不会超出这段“波峰”，因为波峰外的立柱高度都比他们低。“波峰图”其实就是求解
+! 最大矩形的“孤岛”，它不会干扰到外部。
+! (3)由于比heights[i]大的元素都出完了，heights[i]又大于等于栈顶元素了，因此再次进栈。如此往复，
+! 直到遍历到最后那个高度为0的柱，触发最后的弹出以及最后一次面积的计算。。。。
+! (4)返回面积最大值。
+TODO: https://blog.csdn.net/sxingming/article/details/53546081
+TODO: https://www.cnblogs.com/felixfang/p/3676193.html
+*/
+class _0084_LargestRectangleInHistogram {
+public:
+    int largestRectangleArea(std::vector<int>& heights) {
+        if(heights.empty()) {return 0;}
+        std::stack<int> st;
+        int maxArea = 0;
+        heights.push_back(0);
+        int leftArea = 0;
+        int rightArea = 0;
+        for(int i = 0; i < heights.size(); ++i) {
+            while(!st.empty() && heights[st.top()] > heights[i]) {
+                int tmp = st.top();
+                st.pop();
+
+                // 以tmp为高度，tmp所在以及想做延伸出来的矩形面积;
+                leftArea = (st.empty() ? tmp + 1 : tmp - st.top()) * heights[tmp];
+                // 以tmp为高度，向右边延伸出来的矩形面积
+                rightArea = (i - tmp - 1) * heights[tmp];
+
+                maxArea = std::max(maxArea, leftArea + rightArea);
+            }
+            st.push(i);
+        }
+        return maxArea;
+    }
+};
+
+/*
+Tag: dynamic programming
+TODO: need to master it and 84.
+Given a 2D binary matrix filled with 0's and 1's, find the largest rectangle containing only 1's and return its area.
+---
+Input:
+[
+  ["1","0","1","0","0"],
+  ["1","0","1","1","1"],
+  ["1","1","1","1","1"],
+  ["1","0","0","1","0"]
+]
+Output: 6
+!需要反复练习并说出缘由的一道题。 一道典型的DP题目，不过有点懵住了。看答案得到的结果
+*/
+class _0085_MaximalRectangle {
+public:
+    int maximalRectangle(std::vector<std::vector<char>>& matrix) {
+        return maximalRectangle_84based(matrix);
+    }
+private:
+    int maximalRectangle_84based(std::vector<std::vector<char>>& matrix) {
+        if(matrix.empty() || matrix[0].empty()) {return 0;}
+        int maxArea = 0;
+        std::vector<std::vector<int>> histgram = createHistogram(matrix);
+
+        for(int i = 0; i < matrix.size(); ++i) {
+            maxArea = std::max(maxArea, largestRectangleArea(histgram[i]));
+        }
+        return maxArea;
+    }
+    std::vector<std::vector<int>> createHistogram(std::vector<std::vector<char>>& matrix) {
+        std::vector<std::vector<int>> hist(matrix.size(), std::vector<int>(matrix[0].size(), 0));
+        for(int j = 0; j < matrix[0].size(); ++j) {
+            hist[0][j] = matrix[0][j] == '1' ? 1 : 0;
+        }
+        for(int i = 1; i < matrix.size(); ++i) {
+            for(int j = 0; j < matrix[i].size(); ++j) {
+                hist[i][j] = matrix[i][j] == '1' ? hist[i-1][j] + 1 : 0;
+            }
+        }
+        return hist;
+    }
+    int largestRectangleArea(std::vector<int>& heights) {
+        if(heights.empty()) {
+            return 0;
+        }
+        std::stack<int> st;
+        heights.push_back(0);
+        int maxArea = 0;
+        int leftArea = 0;
+        int rightArea = 0;
+        for(int i = 0; i < heights.size(); ++i) {
+            while(!st.empty() && heights[st.top()] > heights[i]) {
+                int tmp = st.top();
+                st.pop();
+
+                leftArea = (st.empty() ? tmp + 1 : (tmp - st.top())) * heights[tmp];
+                rightArea = (i - tmp - 1) * heights[tmp];
+                maxArea = std::max(maxArea, leftArea + rightArea);
+            }
+            st.push(i);
+        }
+        heights.pop_back();
+        return maxArea;
+
+    }
+    
+private:
+
+    /* The DP solution proceeds row by row, starting from the first row. 
+    Let the maximal rectangle area at row i and column j be computed by 
+        [right(i,j) - left(i,j)] * height(i,j).
+
+    All the 3 variables left, right, and height can be determined by the 
+    information from previous row, and also information from the current 
+    row. So it can be regarded as a DP solution. The transition equations are:
+    
+    left(i,j) = max(left(i-1,j), cur_left), cur_left can be determined from the current row
+    right(i,j) = min(right(i-1,j), cur_right), cur_right can be determined from the current row
+    
+    height(i,j) = height(i-1,j) + 1, if matrix[i][j]=='1';
+    height(i,j) = 0, if matrix[i][j]=='0'
+    
+    The code is as below. The loops can be combined for speed but I separate them for more clarity of the algorithm.
+
+    If you think this algorithm is not easy to understand, you can try this example:
+            0 0 0 1 0 0 0 
+            0 0 1 1 1 0 0 
+            0 1 1 1 1 1 0 
+    The vector "left" and "right" from row 0 to row 2 are as follows
+    row 0:
+         l: 0 0 0 3 0 0 0
+         r: 7 7 7 4 7 7 7
+    row 1:
+         l: 0 0 2 3 2 0 0
+         r: 7 7 5 4 5 7 7 
+    row 2:
+         l: 0 1 2 3 2 1 0
+         r: 7 6 5 4 5 6 7
+    The vector "left" is computing the left boundary. Take (i,j)=(1,3) for example. 
+    On current row 1, the left boundary is at j=2. However, because matrix[1][3] is 
+    1, you need to consider the left boundary on previous row as well, which is 3. 
+    So the real left boundary at (1,3) is 3.
+    */
+    int maximalRectangle_DP(std::vector<std::vector<char>>& matrix) {
+        if(matrix.empty() || matrix[0].empty()) { return 0;}
+        const int M = matrix.size();
+        const int N = matrix[0].size();
+
+        std::vector<int> left(N, 0);
+        std::vector<int> right(N, N);
+        std::vector<int> height(N, 0);
+
+        int maxA = 0;
+        for(int i = 0; i < M; ++i) {
+            updateHeightAccumulate(matrix[i], height);
+            calculateLeft(matrix[i], left, 0);
+            calcualteRight(matrix[i], right, N);
+            
+            // Compute the area of rectangle (can do this from either side)
+            for(int j = 0; j < N; ++j) {
+                maxA = std::max(maxA, (right[j] - left[j]) * height[j]);
+            }
+        }
+        return maxA;
+    }
+private:
+    void updateHeightAccumulate(const std::vector<char>& bottom, std::vector<int>& height) {
+        for(int j = 0; j < bottom.size(); ++j) {
+            if(bottom[j] == '1') {
+                ++height[j];
+            } else {
+                height[j] = 0;
+            }
+        }
+    }
+
+    void calculateLeft(std::vector<char>& bottom, std::vector<int>& left, int curLeft) {
+        const int N = bottom.size();
+        for(int j = 0; j < bottom.size(); ++j) {
+            if(bottom[j] == '1') {
+                left[j] = std::max(left[j], curLeft);
+            } else {
+                left[j] = 0;
+                curLeft = j + 1;
+            }
+        }
+    }
+    void calcualteRight(std::vector<char>& bottom, std::vector<int>& right, int curRight) {
+        const int N = bottom.size();    
+        for(int j = N - 1; j >= 0; --j) {
+            if(bottom[j] == '1') {
+                right[j] = std::min(right[j], curRight);
+            } else {
+                right[j] = N;
+                curRight = j;
+            }
+        }
+    }
+};
+
 
 /*
 Facebook 

@@ -1,11 +1,9 @@
 #include "headers.hpp"
 #include <algorithm>
 
-/*
-Google
-
-Type : Array
-
+/* 
+    Google 
+    Type : Array
 */
 
 std::vector<std::vector<int>> LeetCode::_0018_4Sum::fourSum(std::vector<int>& nums, int target) {

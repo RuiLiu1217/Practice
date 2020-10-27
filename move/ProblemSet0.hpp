@@ -221,10 +221,6 @@ public:
     bool intersect(const std::vector<int>& a,const std::vector<int>& b);
 };
 
-
-
-
-
 /*
 Facebook
         !!! Copy from Solution !!!
@@ -395,41 +391,6 @@ Would this affect the run-time complexity? How and why?
 class _0081_SearchInRotatedSortedArrayII {
 public:
     bool search(std::vector<int>& nums, int target);
-};
-
-/*
-Tag: increasing stack
-TODO:
-Given n non-negative integers representing the histogram's bar height where 
-the width of each bar is 1, find the area of largest rectangle in the histogram.
-Above is a histogram where width of each bar is 1, given height = [2,1,5,6,2,3].
-The largest rectangle is shown in the shaded area, which has area = 10 unit.
-
-Input: [2,1,5,6,2,3]
-Output: 10
-*/
-class _0084_LargestRectangleInHistogram {
-public:
-    int largestRectangleArea(std::vector<int>& heights);
-};
-
-/*
-Tag: dynamic programming
-TODO
-Given a 2D binary matrix filled with 0's and 1's, find the largest rectangle containing only 1's and return its area.
----
-Input:
-[
-  ["1","0","1","0","0"],
-  ["1","0","1","1","1"],
-  ["1","1","1","1","1"],
-  ["1","0","0","1","0"]
-]
-Output: 6
-*/
-class _0085_MaximalRectangle {
-public:
-    int maximalRectangle(std::vector<std::vector<char>>& matrix);
 };
 
 
