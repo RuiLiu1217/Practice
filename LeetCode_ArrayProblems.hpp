@@ -460,6 +460,69 @@ public:
     std::vector<std::vector<int>> merge(std::vector<std::vector<int>>& intervals);
 };
 
+
+/*
+Tag: Intervals
+Given a set of non-overlapping intervals, insert a new interval into the 
+intervals (merge if necessary).
+You may assume that the intervals were initially sorted according to their
+start times.
+
+Input: intervals = [[1,3],[6,9]], newInterval = [2,5]
+Output: [[1,5],[6,9]]
+
+Input: intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]], newInterval = [4,8]
+Output: [[1,2],[3,10],[12,16]]
+Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
+*/
+class _0057_InsertInterval {
+public:
+    std::vector<std::vector<int>> insert(std::vector<std::vector<int>>& intervals, std::vector<int>& newInterval) {
+        int i = 0;
+        std::vector<std::vector<int>> res;
+        bool inserted = false;
+        while(i < intervals.size()) {
+            if(!inserted) {
+                if(intersect(intervals[i], newInterval)) {
+                    newInterval[0] = std::min(intervals[i][0], newInterval[0]);
+                    newInterval[1] = std::max(intervals[i][1], newInterval[1]);
+                } else {
+                    if(newIntervalSmaller(newInterval, intervals[i])) {
+                        res.push_back(newInterval);
+                        inserted = true;
+                    }
+                    res.push_back(intervals[i]);
+                }
+            } else {
+                res.push_back(intervals[i]);
+            }
+            ++i;            
+        }
+        if(!inserted) {
+            res.push_back(newInterval);
+        }
+        return res;
+    }
+    bool newIntervalSmaller(const std::vector<int>& a, const std::vector<int>& b) {
+        return a[0] < b[0];
+    }
+    bool intersect(const std::vector<int>& a,const std::vector<int>& b) {
+        if (b[0] <= a[1] && b[0] >= a[0]) {
+            return true;
+        }
+        if (b[1] >= a[0] && b[1] <= a[1]) {
+            return true;
+        }
+        if(b[0] <= a[0] && b[1] >= a[1]) {
+            return true;
+        }
+        if(a[0] <= b[0] && a[1] >= b[1]) {
+            return true;
+        }
+        return false;
+    }
+};
+
 /* 
 Tag: matrix operation
 Given a positive integer n, generate a square matrix filled with elements from 1 to n^2 in spiral order.
@@ -526,6 +589,7 @@ public:
     }
 };
 
+
 /*
     Given a non-empty array of digits representing a non-negative integer, 
     plus one to the integer. The digits are stored such that the most significant 
@@ -556,6 +620,95 @@ public:
 class _0067_AddBinary {
 public:
     std::string addBinary(std::string a, std::string b);
+};
+
+/*
+Tag: Matrix operation, tricks
+Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in-place.
+
+Input: 
+[
+  [1,1,1],
+  [1,0,1],
+  [1,1,1]
+]
+Output: 
+[
+  [1,0,1],
+  [0,0,0],
+  [1,0,1]
+]
+
+Input: 
+[
+  [0,1,2,0],
+  [3,4,5,2],
+  [1,3,1,5]
+]
+Output: 
+[
+  [0,0,0,0],
+  [0,4,5,0],
+  [0,3,1,0]
+]
+Follow up:
+
+A straight forward solution using O(mn) space is probably a bad idea.
+A simple improvement uses O(m + n) space, but still not the best solution.
+Could you devise a constant space solution?
+*/
+class _0073_SetMatrixZeros {
+public:
+    void setZeroes(std::vector<std::vector<int>>& matrix) {
+        const int M = matrix.size();
+        if(M == 0) {return;}
+        
+        const int N = matrix[0].size();
+        if(N == 0) {return;}
+        
+        bool firstRowHasZero = false;
+        bool firstColHasZero = false;
+        
+        for(int j = 0; j < N; ++j) {
+            if(matrix[0][j] == 0) {
+                firstRowHasZero = true;
+                break;
+            }
+        }
+        for(int i = 0; i < M; ++i) {
+            if(matrix[i][0] == 0) {
+                firstColHasZero = true;
+                break;
+            }
+        }
+        
+        for(int i = 1; i < M; ++i) {
+            for(int j = 1; j < N; ++j) {
+                if(matrix[i][j] == 0) {
+                    matrix[i][0] = 0;
+                    matrix[0][j] = 0;
+                }
+            }
+        }
+        
+        for(int i = 1; i < M; ++i) {
+            for(int j = 1; j < N; ++j) {
+                if(matrix[i][0] == 0 || matrix[0][j] == 0) {
+                    matrix[i][j] = 0;
+                }
+            }
+        }
+        if(firstRowHasZero) {
+            for(int j = 0; j < N; ++j) {
+                matrix[0][j] = 0;
+            }
+        }
+        if(firstColHasZero) {
+            for(int i = 0; i < M; ++i) {
+                matrix[i][0] = 0;
+            }
+        }
+    }
 };
 
 
@@ -1773,6 +1926,70 @@ public:
             }
         }
         return count;
+    }
+};
+
+/*
+Given an array of n integers nums, a 132 pattern is a subsequence of three integers 
+nums[i], nums[j] and nums[k] such that i < j < k and nums[i] < nums[k] < nums[j].
+Return true if there is a 132 pattern in nums, otherwise, return false.
+Follow up: The O(n^2) is trivial, could you come up with the O(n logn) or the O(n) 
+solution? 
+
+Input: nums = [1,2,3,4]
+Output: false
+Explanation: There is no 132 pattern in the sequence.
+
+Input: nums = [3,1,4,2]
+Output: true
+Explanation: There is a 132 pattern in the sequence: [1, 4, 2].
+
+Input: nums = [-1,3,2,0]
+Output: true
+Explanation: There are three 132 patterns in the sequence: [-1, 3, 2], [-1, 3, 0] and [-1, 2, 0].
+
+Constraints:
+n == nums.length
+1 <= n <= 104
+-109 <= nums[i] <= 109
+*/
+class _0456_132Pattern {
+public:
+//! Copy from the solution. using the monotonic stack
+    // 思路是我们维护一个栈和一个变量 third，其中 third 就是第三个数字，
+    // 也是 pattern 132 中的2，初始化为整型最小值，栈里面按顺序放所有大
+    // 于 third 的数字，也是 pattern 132 中的3，那么我们在遍历的时候，
+    // 如果当前数字小于 third，即 pattern 132 中的1找到了，我们直接返回 
+    // true 即可，因为已经找到了，注意我们应该从后往前遍历数组。如果当前
+    // 数字大于栈顶元素，那么我们将栈顶数字取出，赋值给 third，然后将该数
+    // 字压入栈，这样保证了栈里的元素仍然都是大于 third 的，我们想要的顺序
+    // 依旧存在，进一步来说，栈里存放的都是可以维持坐标 second > third 的 
+    // second 值，其中的任何一个值都是大于当前的 third 值，如果有更大的值
+    // 进来，那就等于形成了一个更优的 second > third 的这样一个组合，并且
+    // 这时弹出的 third 值比以前的 third 值更大，为什么要保证 third 值更大
+    // 因为这样才可以更容易的满足当前的值 first 比 third 值小这个条件，举个
+    // 例子来说吧，比如 [2, 4, 2, 3, 5]，由于是从后往前遍历，所以后三个数都
+    // 不会进入 while 循环，那么栈中的数字为 5, 3, 2（其中2为栈顶元素），
+    // 此时 third 还是整型最小，那么当遍历到4的时候，终于4大于栈顶元素2了，
+    // 那么 third 赋值为2，且2出栈。此时继续 while 循环，因为4还是大于新栈顶
+    // 元素3，此时 third 赋值为3，且3出栈。现在栈顶元素是5，那么 while 循环
+    // 结束，将4压入栈。下一个数字2，小于 third，则找到符合要求的序列 [2, 4, 3]，
+    // 参见代码如下：
+    bool find132pattern(std::vector<int>& nums) {
+        int third = INT_MIN;
+        std::stack<int> st;
+        for(int i = nums.size() - 1; i >= 0; --i) { // 从后向前扫描
+            if(nums[i] < third) {
+                return true;
+            }
+            
+            while(!st.empty() && nums[i] > st.top()) {
+                third = st.top();
+                st.pop();
+            }
+            st.push(nums[i]); // monotonic decreasing stack
+        }
+        return false;
     }
 };
 

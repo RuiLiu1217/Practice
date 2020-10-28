@@ -367,7 +367,7 @@ LC::ListNode* LC::_0142_LinkedListCycleII::detectCycle(ListNode* head) {
     ListNode* slow = head;
     ListNode* fast = head;
     ListNode* entry = head;
-    while(fast->next && fast->next->next) {
+    while(fast && fast->next) {
         slow = slow->next;
         fast = fast->next->next;
         if(fast == slow) {

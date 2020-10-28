@@ -199,27 +199,6 @@ public:
 };
 
 
-/*
-Tag: Intervals
-Given a set of non-overlapping intervals, insert a new interval into the 
-intervals (merge if necessary).
-You may assume that the intervals were initially sorted according to their
-start times.
-
-Input: intervals = [[1,3],[6,9]], newInterval = [2,5]
-Output: [[1,5],[6,9]]
-
-Input: intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]], newInterval = [4,8]
-Output: [[1,2],[3,10],[12,16]]
-Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
-*/
-class _0057_InsertInterval {
-public:
-    std::vector<std::vector<int>> insert(std::vector<std::vector<int>>& intervals,
-    std::vector<int>& newInterval);
-    bool newIntervalSmaller(const std::vector<int>& a, const std::vector<int>& b);
-    bool intersect(const std::vector<int>& a,const std::vector<int>& b);
-};
 
 /*
 Facebook
@@ -325,51 +304,6 @@ Output:
 class _0068_TextJustification {
 public:
     std::vector<std::string> fullJustify(std::vector<std::string>& words, int L);
-};
-
-
-
-/*
-Tag: Matrix operation, tricks
-Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in-place.
-
-Example 1:
-
-Input: 
-[
-  [1,1,1],
-  [1,0,1],
-  [1,1,1]
-]
-Output: 
-[
-  [1,0,1],
-  [0,0,0],
-  [1,0,1]
-]
-Example 2:
-
-Input: 
-[
-  [0,1,2,0],
-  [3,4,5,2],
-  [1,3,1,5]
-]
-Output: 
-[
-  [0,0,0,0],
-  [0,4,5,0],
-  [0,3,1,0]
-]
-Follow up:
-
-A straight forward solution using O(mn) space is probably a bad idea.
-A simple improvement uses O(m + n) space, but still not the best solution.
-Could you devise a constant space solution?
-*/
-class _0073_SetMatrixZeros {
-public:
-    void setZeroes(std::vector<std::vector<int>>& matrix);
 };
 
 
