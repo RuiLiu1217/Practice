@@ -331,6 +331,55 @@ public:
 
 
 /*
+Tag: backtracking
+93. Restore IP Addresses
+Given a string containing only digits, restore it by returning all possible valid IP address combinations.
+
+Example:
+Input: "25525511135"
+Output: ["255.255.11.135", "255.255.111.35"]
+*/
+class _0093_RestoreIPAddress{
+public:
+    std::vector<std::string> restoreIPAddress(std::string s) {
+        std::string out;
+        std::vector<std::string> res;
+        restoreIpAddress(s, 4, out, res);
+        return res;
+    }
+private:
+    void restoreIpAddress(std::string s, int level, std::string out, std::vector<std::string>& res) {
+        if(s.size() > 12) {
+            return;
+        }
+
+        if(level == 0 && s.empty()) {
+            res.push_back(out);
+            return;
+        }
+
+        for(int i = 1; i <= 3; ++i) {
+            if(s.size() >= i && isValid(s.substr(0, i))) {
+                if(level == 1) {
+                    restoreIpAddress(s.substr(i), level-1, out + s.substr(0, i), res);
+                } else {
+                    restoreIpAddress(s.substr(i), level-1, out + "." + s.substr(0, i), res);
+                }
+            }
+        }
+    }
+    bool isValid(std::string s) {
+        if(s.empty() || s.size() > 3 || (s.size() > 1 && s[0] == '0')) {
+            return false;
+        }
+        int v = std::stoi(s);
+        return v >= 0 && v <= 255;
+    }
+};
+
+
+
+/*
 Surrounded Regions
 Given a 2D board containing 'X' and 'O' (the letter O), capture all regions surrounded by 'X'.
 A region is captured by flipping all 'O's into 'X's in that surrounded region.

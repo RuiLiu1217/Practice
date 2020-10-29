@@ -1012,45 +1012,20 @@ bool LC::_0225_ImplementStackUsingQueues::empty() {
 }
 
 std::vector<std::string> LC::_0228_SummaryRange::summaryRanges(std::vector<int>& nums) {
-    if (nums.size() == 0) {
-        return {};
-    }
-    int startNum = nums[0];
-    int length = 1;
     std::vector<std::string> res;
-    for(int i = 1; i < nums.size(); ++i) {
-        if(nums[i-1] + 1 == nums[i]) {
-            ++length;
-        } else {
-            if (length == 1) {
-                res.push_back(std::to_string(startNum));
-            } else {
-                std::string rightSide;
-                if(startNum == INT_MIN) {
-                    rightSide = std::to_string(startNum+length-1);
-                } else if (startNum == INT_MAX) {
-                    rightSide = std::to_string(startNum-1+length);
-                } else {
-                    rightSide = std::to_string(startNum-1+length);
-                }
-                res.push_back(std::to_string(startNum) + "->" + rightSide); 
-            }
-            startNum = nums[i];
-            length = 1;
+    int i = 0;
+    while(i < nums.size()) {
+        int endIdx = i;
+        while(endIdx < nums.size() && nums[endIdx] == nums[i] + (endIdx - i)) {
+            ++endIdx;
         }
-    }
-    if (length == 1) {
-        res.push_back(std::to_string(startNum));
-    } else {
-        std::string rightSide;
-        if(startNum == INT_MIN) {
-            rightSide = std::to_string(startNum+length-1);
-        } else if (startNum == INT_MAX) {
-            rightSide = std::to_string(startNum-1+length);
+        if(endIdx - i == 1) {
+            res.push_back(std::to_string(nums[i]));
+            ++i;
         } else {
-            rightSide = std::to_string(startNum-1+length);
+            res.push_back(std::to_string(nums[i]) + "->" + std::to_string(nums[endIdx-1]));
+            i = endIdx;
         }
-        res.push_back(std::to_string(startNum) + "->" + rightSide); 
     }
     return res;
 }

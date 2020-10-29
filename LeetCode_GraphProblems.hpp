@@ -401,6 +401,61 @@ public:
 };
 
 /*
+You have an initial power of P, an initial score of 0, and a bag of tokens where tokens[i] is the value of the ith token (0-indexed).
+
+Your goal is to maximize your total score by potentially playing each token in one of two ways:
+If your current power is at least tokens[i], you may play the ith token face up, losing tokens[i] power and gaining 1 score.
+If your current score is at least 1, you may play the ith token face down, gaining tokens[i] power and losing 1 score.
+Each token may be played at most once and in any order. You do not have to play all the tokens.
+
+Return the largest possible score you can achieve after playing any number of tokens.
+
+Input: tokens = [100], P = 50
+Output: 0
+Explanation: Playing the only token in the bag is impossible because you either have too little power or too little score.
+
+Input: tokens = [100,200], P = 150
+Output: 1
+Explanation: Play the 0th token (100) face up, your power becomes 50 and score becomes 1.
+There is no need to play the 1st token since you cannot play it face up to add to your score.
+
+Input: tokens = [100,200,300,400], P = 200
+Output: 2
+Explanation: Play the tokens in this order to get a score of 2:
+1. Play the 0th token (100) face up, your power becomes 100 and score becomes 1.
+2. Play the 3rd token (400) face down, your power becomes 500 and score becomes 0.
+3. Play the 1st token (200) face up, your power becomes 300 and score becomes 1.
+4. Play the 2nd token (300) face up, your power becomes 0 and score becomes 2.
+
+Constraints:
+
+0 <= tokens.length <= 1000
+0 <= tokens[i], P < 104
+*/
+class _0948_BagOfTokens {
+public:
+    int bagOfTokensScore(std::vector<int>& tokens, int P) {
+        std::sort(begin(tokens), end(tokens));
+        int score = 0; // temporary 可以达到的分数.
+        int i = 0;
+        int j = tokens.size() - 1;
+        int res = 0;
+        while(i <= j) {
+            if(P >= tokens[i]) {
+                P -= tokens[i++];
+                res = std::max(res, ++score); // !如果当前已经是最大值了，没必要再往下减了。每次都算一下保留最大值. 这也是为什么 score 与 res 分别是两个变量.
+            } else if(score > 0){
+                P += tokens[j--];
+                --score;
+            } else {
+                break;
+            }
+        }
+        return res;
+    }
+};
+
+/*
 There are N cities numbered from 1 to N.
 You are given connections, where each connections[i] = [city1, city2, cost] represents the cost to connect 
 city1 and city2 together. (A connection is bidirectional: connecting city1 and city2 is the same as 

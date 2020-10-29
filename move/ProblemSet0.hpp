@@ -352,23 +352,6 @@ public:
 
 
 /*
-Tag: backtracking
-93. Restore IP Addresses
-Given a string containing only digits, restore it by returning all possible valid IP address combinations.
-
-Example:
-Input: "25525511135"
-Output: ["255.255.11.135", "255.255.111.35"]
-*/
-class _0093_RestoreIPAddress{
-public:
-    std::vector<std::string> restoreIPAddress(std::string s);
-private:
-    void restoreIpAddress(std::string s, int level, std::string out, std::vector<std::string>& res);
-    bool isValid(std::string s);
-};
-
-/*
 Tag: Morris Traversal, Tree
 
 Two elements of a binary search tree (BST) are swapped by mistake.
