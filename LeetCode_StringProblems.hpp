@@ -934,6 +934,50 @@ public:
     std::string originalDigits(std::string s);
 };
 
+/*
+You are given a string s, return the number of segments in the string. 
+
+A segment is defined to be a contiguous sequence of non-space characters.
+
+Input: s = "Hello, my name is John"
+Output: 5
+Explanation: The five segments are ["Hello,", "my", "name", "is", "John"]
+
+Input: s = "Hello"
+Output: 1
+
+Input: s = "love live! mu'sic forever"
+Output: 4
+
+Input: s = ""
+Output: 0
+Constraints:
+
+0 <= s.length <= 300
+s consists of lower-case and upper-case English letters, digits or one of the following characters "!@#$%^&*()_+-=',.:".
+The only space character in s is ' '.
+*/
+class _0434_NumberOfSegmentsInAString {
+public:
+    int countSegments(std::string s) {
+        int segments = 0;
+        bool canset = true;
+        for(auto& c : s) {
+            if(c != ' ') {
+                if(canset == true) {
+                    ++segments;
+                }
+                canset = false; // 当前这个字符不是空格，直到遇到下一个空格前，我们都认为是一个单词
+                continue;
+            } else {
+                canset = true;
+                continue;
+            }
+        }
+        return segments;
+    }
+};
+
 /* Facebook
 
 Tag: hash, string
@@ -957,6 +1001,59 @@ The substring with start index = 2 is "ab", which is an anagram of "ab".
 class _0438_FindAllAnagramsInAString {
 public:
     std::vector<int> findAnagrams(std::string s, std::string p);
+};
+
+
+/*
+Given a string, sort it in decreasing order based on the frequency of characters.
+
+Input:
+"tree"
+
+Output:
+"eert"
+
+Explanation:
+'e' appears twice while 'r' and 't' both appear once.
+So 'e' must appear before both 'r' and 't'. Therefore "eetr" is also a valid answer.
+
+Input:
+"cccaaa"
+
+Output:
+"cccaaa"
+
+Explanation:
+Both 'c' and 'a' appear three times, so "aaaccc" is also a valid answer.
+Note that "cacaca" is incorrect, as the same characters must be together.
+
+Input:
+"Aabb"
+
+Output:
+"bbAa"
+
+Explanation:
+"bbaA" is also a valid answer, but "Aabb" is incorrect.
+Note that 'A' and 'a' are treated as two different characters.
+*/
+class _0451_SortCharactersByFrequency {
+public:
+    std::string frequencySort(std::string s) {
+        std::unordered_map<char, int> f;
+        for(char c : s) {
+            ++f[c];
+        }
+        std::vector<std::pair<char,int>> st(begin(f), end(f));
+
+        std::sort(st.begin(), st.end(), [&](auto& v1, auto& v2){return v1.second > v2.second;});
+
+        std::string res;
+        for(auto& s : st) {
+            res += std::string(s.second, s.first);
+        }
+        return res;
+    }
 };
 
 
