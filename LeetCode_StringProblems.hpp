@@ -1617,6 +1617,73 @@ public:
     std::vector<std::string> ambiguousCoordinates(std::string S);
 };
 
+
+/*
+Given a paragraph and a list of banned words, return the most frequent word that is not in the list of banned words.  It is guaranteed there is at least one word that isn't banned, and that the answer is unique.
+
+Words in the list of banned words are given in lowercase, and free of punctuation.  Words in the paragraph are not case sensitive.  The answer is in lowercase.
+
+ 
+
+Example:
+
+Input: 
+paragraph = "Bob hit a ball, the hit BALL flew far after it was hit."
+banned = ["hit"]
+Output: "ball"
+Explanation: 
+"hit" occurs 3 times, but it is a banned word.
+"ball" occurs twice (and no other word does), so it is the most frequent non-banned word in the paragraph. 
+Note that words in the paragraph are not case sensitive,
+that punctuation is ignored (even if adjacent to words, such as "ball,"), 
+and that "hit" isn't the answer even though it occurs more because it is banned.
+ 
+
+Note:
+
+1 <= paragraph.length <= 1000.
+0 <= banned.length <= 100.
+1 <= banned[i].length <= 10.
+The answer is unique, and written in lowercase (even if its occurrences in paragraph may have uppercase symbols, and even if it is a proper noun.)
+paragraph only consists of letters, spaces, or the punctuation symbols !?',;.
+There are no hyphens or hyphenated words.
+Words only consist of letters, never apostrophes or other punctuation symbols.
+*/
+class _0819_MostCommonWord {
+public:
+    std::string  mostCommonWord(std::string paragraph, std::vector<std::string>& banned) {
+        std::string tmp;
+        std::unordered_set<std::string> bannedSet(begin(banned), end(banned));
+        std::unordered_map<std::string, int> freq;
+        paragraph += ' ';
+        for(int i = 0; i < paragraph.size(); ++i) {
+            if(paragraph[i] >= 'a' && paragraph[i] <= 'z') {
+                tmp += paragraph[i];
+            } else if(paragraph[i] >= 'A' && paragraph[i] <= 'Z') {
+                tmp += (paragraph[i] - 'A') + 'a';
+            } else {
+                if(!tmp.empty()) {
+                    if(bannedSet.count(tmp)) {
+                        freq[tmp] = INT_MIN;
+                    } else {
+                        ++freq[tmp];
+                    }
+                    tmp = "";
+                }
+            }
+        }
+        
+        auto comp = [](std::pair<std::string, int> a, std::pair<std::string, int> b) {
+            return a.second < b.second;
+        };
+        std::priority_queue<std::pair<std::string, int>, std::vector<std::pair<std::string, int>>, decltype(comp)> pq{comp};
+        for(auto& f : freq) {
+            pq.push(f);
+        }
+        return pq.top().first;
+    }
+};
+
 /*
 A sentence S is given, composed of words separated by spaces. 
 Each word consists of lowercase and uppercase letters only.
