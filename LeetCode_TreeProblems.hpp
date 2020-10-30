@@ -19,6 +19,15 @@ namespace LC {
         NAryNode(int v, std::vector<NAryNode*> c) : val(v), children(c) {}
     };
 
+    struct Node {
+        int val;
+        std::vector<Node*> children;
+
+        Node(){}
+        Node(int v) : val(v) {}
+        Node(int v, std::vector<Node*> c) : val(v), children(c) {}
+    };
+
     struct NaryTreeNode {
     public:
         int data;
