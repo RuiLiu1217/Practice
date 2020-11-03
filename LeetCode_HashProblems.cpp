@@ -43,10 +43,9 @@ std::vector<int> LC::_0350_IntersectionOfTwoArraysII::intersect(std::vector<int>
     for(auto n : nums1) {
         ++Map[n];
     }
-    
     std::vector<int> res;
     for(auto n : nums2) {
-        if(Map.find(n) != Map.end() && Map[n] != 0) {
+        if(Map[n] > 0) {
             --Map[n];
             res.push_back(n);
         }

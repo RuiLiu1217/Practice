@@ -1558,6 +1558,32 @@ public:
 };
 
 /*
+Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si < ei), determine if a person could attend all meetings.
+
+Input: [[0,30],[5,10],[15,20]]
+Output: false
+
+Input: [[7,10],[2,4]]
+Output: true
+NOTE: input types have been changed on April 15, 2019. Please reset to default code definition to get new method signature.
+*/
+class _0252_MeetingRooms {
+public:
+    bool canAttendMeetings(std::vector<std::vector<int>>& intervals) {
+        std::sort(begin(intervals),end(intervals),[](std::vector<int>& a, std::vector<int>& b){
+            return (a[0] < b[0]) || (a[0] == b[0] && a[1] < b[1]);
+        });
+        for(int i = 1; i < intervals.size(); ++i) {
+            if(intervals[i][0] < intervals[i-1][1]) {
+                return false;
+            }
+        }
+        return true;
+    }
+};
+
+
+/*
 Given an array containing n distinct numbers taken from 0, 1, 2, ..., n, find the one that is missing from the array.
 
 Input: [3,0,1]               :         Output: 2
@@ -1848,7 +1874,60 @@ public:
     int maxkilledEnemies(std::vector<std::vector<char>>& grid);
 };
 
+/*
+Given an integer array nums, design an algorithm to randomly shuffle the array.
 
+Implement the Solution class:
+
+Solution(int[] nums) Initializes the object with the integer array nums.
+int[] reset() Resets the array to its original configuration and returns it.
+int[] shuffle() Returns a random shuffling of the array.
+ 
+
+Example 1:
+
+Input
+["Solution", "shuffle", "reset", "shuffle"]
+[[[1, 2, 3]], [], [], []]
+Output
+[null, [3, 1, 2], [1, 2, 3], [1, 3, 2]]
+
+Explanation
+Solution solution = new Solution([1, 2, 3]);
+solution.shuffle();    // Shuffle the array [1,2,3] and return its result. Any permutation of [1,2,3] must be equally likely to be returned. Example: return [3, 1, 2]
+solution.reset();      // Resets the array back to its original configuration [1,2,3]. Return [1, 2, 3]
+solution.shuffle();    // Returns the random shuffling of array [1,2,3]. Example: return [1, 3, 2]
+
+ 
+
+Constraints:
+
+1 <= nums.length <= 200
+-106 <= nums[i] <= 106
+All the elements of nums are unique.
+At most 5 * 104 calls will be made to reset and shuffle.
+*/
+class _0384_ShuffleAnArray {
+private:
+    std::vector<int> nums;
+    std::vector<int> shuffled;
+public:
+    _0384_ShuffleAnArray(std::vector<int>& n) : nums(n) {
+        shuffled = nums;
+    }
+
+    std::vector<int> reset() {
+        return nums;
+    }
+
+    std::vector<int> shuffle() {
+        for(int j = shuffled.size() - 1; j >= 0; --j) {
+            int idx = rand() % (j + 1);
+            std::swap(shuffled[idx], shuffled[j]);
+        }
+        return shuffled;
+    }
+};
 
 /*
 Suppose you have a random list of people standing in a queue. Each person is described by a pair of integers (h, k), where h is the height of the person and k is the number of people in front of this person who have a height greater than or equal to h. Write an algorithm to reconstruct the queue.

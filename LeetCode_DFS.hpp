@@ -234,6 +234,83 @@ private:
     void DFS(const std::string& num, const int target, int pos, std::string exp, long prev, long curr, std::vector<std::string>& ans);
 };
 
+    
+/*
+Remove the minimum number of invalid parentheses in order to make the input string valid. 
+Return all possible results. Note: The input string may contain letters other than the 
+parentheses ( and ).
+
+Input: "()())()"
+Output: ["()()()", "(())()"]
+
+Input: "(a)())()"
+Output: ["(a)()()", "(a())()"]
+
+Input: ")("
+Output: [""]
+*/
+class _0301_RemoveInvalidParentheses {
+public:
+    std::vector<std::string> removeInvalidParentheses(const std::string& parentheses) {
+        auto [l, r] = numOfParenthesesToBeRemoved(parentheses);
+        std::vector<std::string> res;
+        DFS(parentheses, 0, l, r, res);
+        return res;
+    }
+private:
+    std::pair<int, int> numOfParenthesesToBeRemoved(const std::string& s) {
+        int l = 0;
+        int r = 0;
+        for(char c : s) {
+            if(c == '(') {
+                ++l;
+            } else if(c == ')') {
+                if(l == 0) {
+                    ++r;
+                } else {
+                    --l;
+                }
+            }
+        }
+        return std::pair<int, int>(l, r);
+    }
+    bool isValid(const std::string& s) {
+        int count = 0;
+        for(char c : s) {
+            if(c == '(') {
+                ++count;
+            } else if(c == ')') {
+                --count;
+            }
+            if(count < 0) {
+                return false;
+            }
+        }
+        return count == 0;
+    }
+    void DFS(std::string s, int start, int l, int r, std::vector<std::string>& ans) {
+        if(l < 0 || r < 0) {return;}
+        if(l == 0 && r == 0 && isValid(s)) {
+            ans.push_back(s);
+            return;
+        }
+
+        for(int i = start; i < s.size(); ++i) {
+            if(i != start && s[i-1] == s[i]) {
+                continue;
+            }
+            if(s[i] == '(' || s[i] == ')') {
+                std::string curr = s;
+                curr.erase(i, 1);
+                if(s[i] == '(') {
+                    DFS(curr, i, l-1, r, ans);
+                } else {
+                    DFS(curr, i, l, r-1, ans);
+                }
+            }
+        }
+    }
+};
 
 /*
 Given a non-empty 2D array grid of 0's and 1's, an island is a group of 1's (representing land) 

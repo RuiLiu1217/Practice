@@ -123,6 +123,86 @@ public:
         bool isValidBST(TreeNode *root);
     };
 
+/*
+!ag: Inorder Morris Traversal, Tree
+
+Two elements of a binary search tree (BST) are swapped by mistake.
+Recover the tree without changing its structure.
+
+Input: [1,3,null,null,2]
+
+   1
+  /
+ 3
+  \
+   2
+
+Output: [3,1,null,null,2]
+
+   3
+  /
+ 1
+  \
+   2
+Example 2:
+
+Input: [3,1,4,null,null,2]
+
+  3
+ / \
+1   4
+   /
+  2
+
+Output: [2,1,4,null,null,3]
+
+  2
+ / \
+1   4
+   /
+  3
+Follow up:
+
+A solution using O(n) space is pretty straight forward.
+Could you devise a constant space solution?
+*/
+class _0099_RecoverBinarySearchTree {
+public:
+    void recoverTree(TreeNode* root) {
+        TreeNode* first = nullptr;
+        TreeNode* second = nullptr;
+        TreeNode* cur = root;
+        TreeNode* pre = nullptr;
+        while(cur) {
+            if(cur->left) {
+                TreeNode* p = cur->left;
+                while(p->right && p->right != cur) {
+                    p = p->right;
+                }
+                if(!p->right) {
+                    p->right = cur;
+                    cur = cur->left;
+                    continue;
+                } else {
+                    p->right = nullptr;
+                }
+            }
+
+            if(pre && cur->val < pre->val) {
+                if(!first) {
+                    first = pre;
+                }
+                second = cur;
+            }
+
+            pre = cur;
+            cur = cur->right;
+        }
+
+        std::swap(first->val, second->val);
+    }
+};
+
 
     /*
     Tag: Tree

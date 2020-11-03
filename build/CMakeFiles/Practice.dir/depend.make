@@ -71,6 +71,4 @@ CMakeFiles/Practice.dir/LeetCode_UnionFindProblems.cpp.obj: ../LeetCode_UnionFin
 CMakeFiles/Practice.dir/LeetCode_UnionFindProblems.cpp.obj: ../LeetCode_UnionFindProblems.hpp
 
 CMakeFiles/Practice.dir/LintCode.cpp.obj: ../LintCode.cpp
-CMakeFiles/Practice.dir/LintCode.cpp.obj: ../LintCode.hpp
-CMakeFiles/Practice.dir/LintCode.cpp.obj: ../Tree.hpp
 

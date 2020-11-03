@@ -1,69 +1,64 @@
 #ifndef TREE_HPP
 #define TREE_HPP
+#include <stack>
 // Tree Node
-template <typename T>
 struct TreeNode
 {
-    T val;
+    int val;
     TreeNode *left;
     TreeNode *right;
     TreeNode() : val(0), left(nullptr), right(nullptr) {}
-    TreeNode(const T &v) : val(v), left(nullptr), right(nullptr) {}
+    TreeNode(const int v) : val(v), left(nullptr), right(nullptr) {}
 };
 
-
-/*
-void preorderMorrisTraversal(TreeNode<int>* root) {
-    TreeNode<int>* cur = root;
-    TreeNode<int>* prev = nullptr;
-    while(cur != nullptr) {
-        if(cur->left == nullptr) {
-            // access cur->val;
+// Morris Traversal
+std::vector<int> inorderMorrisTraversal(TreeNode* root) {
+    std::vector<int> res;
+    if(!root) { return {}; }
+    TreeNode* cur = root;
+    TreeNode* pre;
+    while(cur) {
+        if(!cur->left) {
+            res.push_back(cur->val);
             cur = cur->right;
         } else {
-            prev = cur->left;
-            while(prev->right != nullptr && prev != cur) {
-                prev = prev->right;
+            pre = cur->left;
+            while(pre->right && pre->right != cur) {
+                pre = pre->right;
             }
-            if(prev->right == nullptr) {
-                // Access cur->val;
-                prev->right = cur;
+            if(!pre->right) {
+                pre->right = cur;
                 cur = cur->left;
             } else {
-                prev->right = nullptr;
+                pre->right = nullptr;
+                res.push_back(cur->val);
                 cur = cur->right;
             }
         }
     }
+    return res;
 }
 
-void inordermorrisTraversal(TreeNode<int>* root) {
-    TreeNode<int>* cur = root;
-    TreeNode<int>* prev = nullptr;
-    while(cur != nullptr) {
-        if(cur->left == nullptr) {
-            // access cur->val;
-            cur = cur->right;
-        } else {
-            prev = cur->left;
-            while(prev->right != nullptr && prev != cur) {
-                prev = prev->right;
-            }
-            if(prev->right == nullptr) {
-                prev->right = cur;
-                cur = cur->left;
-            } else {
-                // Access cur->val;
-                prev->right = nullptr;
-                cur = cur->right;
-            }
+
+void inorderTraversal(TreeNode* root) {
+    TreeNode* p = root;
+    TreeNode* pre = nullptr;
+    std::stack<TreeNode*> st;
+    std::vector<int> res;
+    while(p != nullptr || !st.empty()) {
+        while(p) {
+            st.push(p);
+            p = p->left;
         }
+
+        p = st.top(); st.pop();
+
+        res.push_back(p->val);
+
+        pre = p; // The traversal methods that we can know its previous node.
+        p = p->right;
     }
 }
-*/
-
-
-
 
 
 

@@ -10,31 +10,6 @@
 #include "LinkList.hpp"
 namespace LeetCode {
 
-    
-/*
-Remove the minimum number of invalid parentheses in order to make the input string valid. 
-Return all possible results. Note: The input string may contain letters other than the 
-parentheses ( and ).
-
-Input: "()())()"
-Output: ["()()()", "(())()"]
-
-Input: "(a)())()"
-Output: ["(a)()()", "(a())()"]
-
-Input: ")("
-Output: [""]
-*/
-class _0301_RemoveInvalidParentheses {
-public:
-    std::vector<std::string> removeInvalidParentheses(const std::string& parentheses);
-private:
-    bool isValid(const std::string& s);
-    void DFS(const std::string& s, int start, int l, int r, std::vector<std::string>& ans);
-};
-
-
-
 /*
 Additive number is a string whose digits can form additive sequence.
 A valid additive sequence should contain at least three numbers. Except 
@@ -71,6 +46,8 @@ public:
 };
 
 /*
+完全是数据结构segment tree 或者Fenwick tree驱动的题目
+
 Given an integer array nums, find the sum of the elements between indices i and j (i ≤ j), inclusive.
 The update(i, val) function modifies nums by updating the element at index i to val.
 
@@ -88,10 +65,80 @@ class _0307_RangeSumQuery_Mutable {
 private:
     std::vector<int> data;
     int arrayLength;
+
+    class SegTreeArray {
+    private:
+        std::vector<int> tree;
+        void buildTree(std::vector<int>& arr, int treeIndex, int start, int end) {
+            if(start == end) {
+                tree[treeIndex] = arr[start];
+                return;
+            }
+            int mid = start + (end - start) / 2;
+            buildTree(arr, treeIndex * 2 + 1, start, mid);
+            buildTree(arr, treeIndex * 2 + 2, mid+1, end);
+
+            tree[treeIndex] = tree[treeIndex * 2 + 1] + tree[treeIndex * 2 + 2];
+        }
+        int query(int treeIndex, int start, int end, int i, int j) {
+            if(start > j || end < i) {
+                return 0;
+            }
+            if(i <= start && j >= end) {
+                return tree[treeIndex];
+            }
+            int mid = start + (end - start) / 2;
+            if(j <= mid) {
+                return query(treeIndex * 2 + 1, start, mid, i, j);
+            } else if(i > mid) {
+                return query(treeIndex * 2 + 2, mid+1, end, i, j);
+            } else {
+                int left = query(treeIndex * 2 + 1, start, mid, i, mid);
+                int right = query(treeIndex * 2 + 2, mid+1, end, mid+1, j);
+                return tree[treeIndex] = left + right;
+            }
+        }
+        void update(int treeIndex, int start, int end, int arrIdx, int val) {
+            if(start == end) {
+                tree[treeIndex] = val;
+                return;
+            }
+            int mid = start + (end - start) / 2;
+            if(arrIdx <= mid) {
+                update(treeIndex * 2 + 1, start, mid, arrIdx, val);
+            } else if(arrIdx > mid) {
+                update(treeIndex * 2 + 2, mid+1, end, arrIdx, val);
+            }
+            tree[treeIndex] = tree[treeIndex * 2 + 1] + tree[treeIndex * 2 + 2];
+        }
+    public:
+        SegTreeArray(std::vector<int>& arr) {
+            arrayLength = arr.size();
+            data.resize(arrayLength, 0);
+            buildTree(arr, 0, 0, arrayLength-1);
+        }
+
+        int query(int i, int j) {
+            return query(0, 0, arrayLength-1, i, j);
+        }
+
+        void update(int arrIdx, int val) {
+            update(0, 0, arrayLength - 1, arrIdx, val);
+        }
+
+    };
+
 public:
-    _0307_RangeSumQuery_Mutable(std::vector<int>& nums);
-    void update(int i, int val);
-    int sumRange(int i, int j);
+    SegTreeArray segTree;
+    _0307_RangeSumQuery_Mutable(std::vector<int>& nums): segTree(nums) {
+        
+    }
+    void update(int i, int val) {
+        segTree.update(i, val);
+    }
+    int sumRange(int i, int j) {
+        return segTree.query(i, j);
+    }
 };
 
 /*

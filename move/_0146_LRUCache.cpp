@@ -36,3 +36,70 @@ void LeetCode::_0146_LRUCache::put(int key, int value) {
     mCache.emplace_front(key, value);
     mMap[key] = mCache.begin();
 }
+
+
+class Solution {
+    struct Node {
+        int value;
+        Node* prev;
+        Node* next;
+        Node(int val) : value(val), prev(nullptr), next(nullptr) {}
+    };
+private:
+    int capacity;
+    int numOfNodes;
+    Node* head;
+    Node* tail;
+    std::unordered_map<int, Node*> map;
+public:
+    Solution(int cap):capacity(cap) {
+        numOfNodes = 0;
+        head = nullptr;
+        tail = head;
+    }
+    int get(int key) {
+        if(map.find(key) == map.end()) {
+            return -1;
+        } else {
+            Node* p = map[key];
+            p->prev->next = p->next;
+            p->next->prev = p->prev;
+            head->prev = p;
+            p->prev = nullptr;
+            p->next = head;
+            head = p;
+            return p->val;
+        }
+    }
+    void put(int key, int value) {
+        if(map.find(key) != nullptr) {
+            Node* p = map[key];
+            p->prev->next = p->next;
+            p->next->prev = p->prev;
+            head->prev = p;
+            p->prev = nullptr;
+            p->next = head;
+            head = p;
+        } else {
+            if(numOfNodes == capacity) {
+                Node* todel = tail;
+                tail = tail->prev;
+                tail->next = nullptr;
+                todel->prev = nullptr;
+                todel->next = nullptr;
+                delete todel;
+                --numOfNodes;
+            }
+            Node* p = new Node(value);
+            map[key] = p;
+            p->next = head;
+            if(head) {
+                head->prev = p;
+            } else {
+                tail = p;
+            }            
+            head = p;
+            ++numOfNodes;
+        }
+    }
+};
