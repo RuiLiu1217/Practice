@@ -78,7 +78,6 @@
         "bit": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled",
-    "python.pythonPath": "C:\\Users\\liuru\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe",
     "editor.tokenColorCustomizations": {
         "textMateRules": [
             {

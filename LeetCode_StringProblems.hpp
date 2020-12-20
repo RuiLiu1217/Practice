@@ -2295,6 +2295,52 @@ public:
             int maxScore(std::string s);
     };
 
+    /*
+    Given a string s, the power of the string is the maximum length of a 
+    non-empty substring that contains only one unique character.
+    Return the power of the string.
+    
+    Input: s = "leetcode"
+    Output: 2
+    Explanation: The substring "ee" is of length 2 with the character 'e' only.
+    
+    Input: s = "abbcccddddeeeeedcba"
+    Output: 5
+    Explanation: The substring "eeeee" is of length 5 with the character 'e' only.
+    
+    Input: s = "triplepillooooow"
+    Output: 5
+    
+    Input: s = "hooraaaaaaaaaaay"
+    Output: 11
+    
+    Input: s = "tourist"
+    Output: 1
+    
+    Constraints:  1 <= s.length <= 500
+    s contains only lowercase English letters.
+    */
+    class _1446_ConsecutiveCharacters {
+    public:
+        int maxPower(std::string s) {
+            if(s.empty()) {return 0;}
+            char c = s[0];
+            int count = 0;
+            int maxCount = INT_MIN;
+            for(int i = 0; i < s.size(); ++i) {
+                if(c == s[i]) {
+                    ++count;
+                } else {
+                    maxCount = std::max(count, maxCount);
+                    count = 1;
+                    c = s[i];
+                }
+            }
+            maxCount = std::max(count, maxCount);
+            return maxCount;
+        }
+    };
+
 /*
     Given a sentence text (A sentence is a string of space-separated words) in the following format:
 

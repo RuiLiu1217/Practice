@@ -117,8 +117,5 @@ public:
         mSet[yRoot].parent = xRoot;
         mSet[xRoot].size = mSet[xRoot].size + mSet[yRoot].size;
     }
-     
-   
 };
-
 #endif
