@@ -43,7 +43,44 @@ therefore no possible transformation.
 */
 class _0127_Wordladder {
 public:
-    int ladderLength(std::string beginWord, std::string endWord, std::vector<std::string>& wordList);
+    int ladderLength(std::string beginWord, std::string endWord, std::vector<std::string>& wordList) {
+      using Set = std::unordered_set<std::string>;
+      Set dict(begin(wordList), end(wordList));
+      Set head;
+      Set tail;
+      if(!dict.count(endWord)) {return 0;}
+      head.insert(beginWord);
+      tail.insert(endWord);
+      int ladder = 2;
+      while(!head.empty() && !tail.empty()) {
+        if(head.size() > tail.size()) {
+          std::swap(head, tail);
+        }
+
+        Set temp;
+        for(auto& it : head) {
+          auto word = it;
+          for(char& wi : word) {
+            const char t = wi;
+            for(char c = 'a'; c <= 'z'; ++c) {
+              if(c == t) {continue;}
+              wi = c;
+              if(tail.count(word)) {
+                return ladder;
+              }
+              if(dict.count(word)) {
+                temp.insert(word);
+                dict.erase(word);
+              }
+            }
+            wi = t;
+          }
+        }
+        ++ladder;
+        std::swap(temp, head);
+      }
+      return 0;
+    }
 };
 
 /*

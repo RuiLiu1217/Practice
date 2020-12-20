@@ -39,6 +39,55 @@ std::vector<int> inorderMorrisTraversal(TreeNode* root) {
     return res;
 }
 
+static TreeNode* getPredecessor(TreeNode* curr) {
+    TreeNode* pre = curr;
+    if(n->left != nullptr) {
+        pre = pre->left;
+        while(pre->right != nullptr && pre->right != curr) {
+            pre = pre->right;
+        }
+    }
+}
+void updatePointer(const TreeNode* curr,const TreeNode* prev, TreeNode*& first, TreeNode*& second) {
+    if(prev != nullptr) {
+        if(first == nullptr && curr->val < prev->val) {
+            first = prev;
+        } else if(first && second == nullptr && curr->val > first->val) {
+            second = prev;
+        }
+    }
+    prev = curr;    
+}
+
+std::vector<int> inorderMorrisTraversal(TreeNode* root) {
+    std::vector<int> res;
+    TreeNode* curr = root;
+
+    TreeNode* prev = nullptr;
+    TreeNode* first = nullptr;
+    TreeNode* second = nullptr;
+
+    while(curr != nullptr) {
+        if(curr->left == nullptr) {
+            updatePointer(curr, prev, first, second);
+            
+            curr = curr->right;
+        } else {
+            TreeNode* predecessor = getPredecessor(curr);
+
+            if(predecessor->right == nullptr) {
+                predecessor->right = curr;
+                curr = curr->left;
+            } else if(predecessor->right == curr) {
+                updatePointer(curr, prev, first, second);
+
+                predecessor->right = nullptr;
+                curr = curr->right;
+            }
+        }
+    }
+}
+
 
 void inorderTraversal(TreeNode* root) {
     TreeNode* p = root;
