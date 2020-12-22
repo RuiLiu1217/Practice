@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LintCode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_ArrayProblems.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_BinarySearchProblem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_GraphProblems.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_LinkListProblems.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_SlidingWindowProblems.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_StringProblems.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_MathProblems.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_DynamicProgrammingProblems.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_DesignDrivenProblems.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_GreedyAlgorithmProblems.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_BacktracingProblems.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_BitOperationProblems.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_TreeProblems.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_RecursiveProblems.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_HashProblems.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_BFS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_DFS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_UnionFindProblems.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\HeaderFiles.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LintCode.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_ArrayProblems.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_BinarySearchProblem.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_GraphProblems.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_LinkListProblems.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_SlidingWindowProblems.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_StringProblems.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_MathProblems.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_DynamicProgrammingProblems.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_DesignDrivenProblems.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_GreedyAlgorithmProblems.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_BacktracingProblems.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_BitOperationProblems.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_TreeProblems.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_RecursiveProblems.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_HashProblems.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_BFS.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_DFS.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\LeetCode_UnionFindProblems.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{42C638FD-666F-3B1C-AE9B-0E153C9662CD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{638AF56A-ED7B-3947-9FC0-210ACC9FF6D4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

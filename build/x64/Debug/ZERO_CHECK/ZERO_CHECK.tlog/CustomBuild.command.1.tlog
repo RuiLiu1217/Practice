@@ -1,0 +1,10 @@
+^C:\USERS\LIURU\ONEDRIVE\DOCUMENTS\GITHUB\PRACTICE\BUILD\CMAKEFILES\BAF03DEAAA5585DAE3805BF782C8F0F1\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/liuru/OneDrive/Documents/GitHub/Practice -BC:/Users/liuru/OneDrive/Documents/GitHub/Practice/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/liuru/OneDrive/Documents/GitHub/Practice/build/Practice.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

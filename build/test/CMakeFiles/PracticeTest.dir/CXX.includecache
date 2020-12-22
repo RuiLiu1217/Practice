@@ -374,7 +374,7 @@ bitset
 cstdint
 -
 
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_ArrayProblems.hpp
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_BFS.hpp
 HeaderFiles.hpp
 C:/Users/liuru/OneDrive/Documents/GitHub/Practice/HeaderFiles.hpp
 
@@ -386,15 +386,19 @@ unordered_map
 unordered_set
 -
 
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_StringProblems.hpp
+HeaderFiles.hpp
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/HeaderFiles.hpp
+
 C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_TreeProblems.hpp
 HeaderFiles.hpp
 C:/Users/liuru/OneDrive/Documents/GitHub/Practice/HeaderFiles.hpp
 
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_ArrayProblemTests.cpp
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_BFSTests.cpp
 gtest/gtest.h
 -
-../LeetCode_ArrayProblems.hpp
-C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_ArrayProblems.hpp
+../LeetCode_BFS.hpp
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_BFS.hpp
 vector
 -
 
@@ -403,4 +407,16 @@ gtest/gtest.h
 C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/gtest/gtest.h
 ../LeetCode_DFS.hpp
 C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_DFS.hpp
+
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_StringProblemTests.cpp
+gtest/gtest.h
+-
+../LeetCode_StringProblems.hpp
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_StringProblems.hpp
+
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/test/LeetCode_TreeProblemTests.cpp
+gtest/gtest.h
+-
+../LeetCode_TreeProblems.hpp
+C:/Users/liuru/OneDrive/Documents/GitHub/Practice/LeetCode_TreeProblems.hpp
 

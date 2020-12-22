@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LintCodeTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LeetCode_GraphProblemsTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LeetCode_ArrayProblemTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LeetCode_BinarySearchProblemTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LeetCode_LinkListProblemTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LeetCode_SlidingWindowProblemTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LeetCode_StringProblemTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LeetCode_MathProblemTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LeetCode_DynamicProgrammingProblemTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LeetCode_DesignDrivenProblemsTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LeetCode_GreedyAlgorithmProblemTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LeetCode_BacktracingProblemTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LeetCode_BitOperationProblemTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LeetCode_TreeProblemTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LeetCode_RecursiveProblemTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LeetCode_HashProblemTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LeetCode_BFSTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LeetCode_DFSTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\LeetCode_UnionFindProblemTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\liuru\OneDrive\Documents\GitHub\Practice\test\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{638AF56A-ED7B-3947-9FC0-210ACC9FF6D4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

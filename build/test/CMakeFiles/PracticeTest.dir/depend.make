@@ -45,6 +45,7 @@ test/CMakeFiles/PracticeTest.dir/LeetCode_BFSTests.cpp.obj: ../googletest/google
 test/CMakeFiles/PracticeTest.dir/LeetCode_BFSTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-port.h
 test/CMakeFiles/PracticeTest.dir/LeetCode_BFSTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-string.h
 test/CMakeFiles/PracticeTest.dir/LeetCode_BFSTests.cpp.obj: ../googletest/googletest/include/gtest/internal/gtest-type-util.h
+test/CMakeFiles/PracticeTest.dir/LeetCode_BFSTests.cpp.obj: ../HeaderFiles.hpp
 test/CMakeFiles/PracticeTest.dir/LeetCode_BFSTests.cpp.obj: ../LeetCode_BFS.hpp
 test/CMakeFiles/PracticeTest.dir/LeetCode_BFSTests.cpp.obj: ../test/LeetCode_BFSTests.cpp
 

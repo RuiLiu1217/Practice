@@ -225,7 +225,7 @@ void LC::_0031_NextPermutation::nextPermutation(std::vector<int>& nums) {
         return;
     }
     int firstSmall = -1;
-    for(int i = nums.size()-2; i >= 0; --i) {
+    for(auto i = nums.size()-2; i >= 0; --i) {
         if(nums[i] < nums[i+1]) {
             firstSmall = i;
             break;
@@ -238,7 +238,7 @@ void LC::_0031_NextPermutation::nextPermutation(std::vector<int>& nums) {
     }
 
     int firstLarge = -1;
-    for(int i = nums.size() - 1; i >= firstSmall; --i) {
+    for(auto i = nums.size() - 1; i >= firstSmall; --i) {
         if(nums[i] > nums[firstSmall]) {
             firstLarge = i;
             break;

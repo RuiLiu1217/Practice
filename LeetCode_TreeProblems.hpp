@@ -1862,7 +1862,7 @@ private:
         tilt += std::abs(l - r);
         return root->val + l + r;
     }
-}
+};
 
 /*
 Given two non-empty binary trees s and t, check whether tree t has exactly 
