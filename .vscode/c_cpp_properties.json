@@ -1,7 +1,7 @@
 {
     "configurations": [
         {
-            "name": "Win32_Desktop",
+            "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**"
             ],
@@ -10,20 +10,23 @@
                 "UNICODE",
                 "_UNICODE"
             ],
-            // "compilerPath": "C:\\mingw64\\mingw64\\bin\\g++.exe",
-            "compilerPath": "C:\\Program Files\\LLVM\\bin\\clang++.exe"
-            "cStandard": "c11",
+            "windowsSdkVersion": "10.0.18362.0",
+            "compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.28.29333/bin/Hostx64/x64/cl.exe",
+            "cStandard": "c17",
             "cppStandard": "c++17",
-            "intelliSenseMode": "gcc-x64",
+            "intelliSenseMode": "msvc-x64",
+            "compileCommands": "${workspaceFolder}/build/compile_commands.json",
+            "compilerArgs": [],
+            "intelliSenseModeIsExplicit": true,
+            "cStandardIsExplicit": true,
+            "cppStandardIsExplicit": true,
+            "compilerPathIsExplicit": true,
             "browse": {
                 "path": [
-                    "${workspaceFolder}"
+                    "${workspaceFolder}/**"
                 ],
-                "limitSymbolsToIncludedHeaders": true,
-                "databaseFilename": ""
-            },
-            "compileCommands": "${workspaceFolder}/build/compile_commands.json",
-            "configurationProvider": "ms-vscode.cmake-tools"
+                "limitSymbolsToIncludedHeaders": true
+            }
         }
     ],
     "version": 4

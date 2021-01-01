@@ -1,6 +1,5 @@
 #ifndef GRAPH_HPP
 #define GRAPH_HPP
-
 #include <vector>
 #include <unordered_set>
 #include <stack>

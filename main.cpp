@@ -17,7 +17,5 @@ int main(int argc, char* argv[]) {
     }
     double result = calculator(s);
     std::cout<< s << " = " << result;
-    
-    
     return 0;
 }
