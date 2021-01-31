@@ -97,4 +97,81 @@ bool LC::_0839_SimilarStringGroups::areSimilar(const std::string& a, const std::
 }
 
 
+int LC::_1579_RemoveMaxNumberOfEdgesToKeepGraphFullyTraversable::maxNumEdgesToRemove(int n, std::vector<std::vector<int>>& edges) {
+    class UnionFind {
+public:
+    std::vector<int> parent;
+    std::vector<int> rank;
+    UnionFind(const UnionFind& rgh) {
+        parent = rgh.parent;
+        rank = rgh.rank;
+    }
+    UnionFind(int n) {
+        for(int i = 0; i < n; ++i) {
+            parent.push_back(i);
+            rank.push_back(1);
+        }
+    }
+    int find(int i) {
+        if(parent[i] != i) {
+            parent[i] = find(parent[i]);
+        }
+        return parent[i];
+    }
+    
+    bool uni(int a, int b) {
+        int pa = find(a);
+        int pb = find(b);
+        if(pa == pb) {
+            return false;
+        }
+        
+        if(rank[pa] > rank[pb]) {
+            parent[pb] = pa;
+            ++rank[pb];
+        } else {
+            parent[pa] = pb;
+            ++rank[pa];
+        }
+        return true;
+    }
+};
+    UnionFind uf(n);
+    int e1 = 0;
+    int e2 = 0;
+    int count = 0;
+    for(auto& edge : edges) {
+        if(edge[0] == 3) { // for both Alice and Bob
+            if(uf.uni(edge[1] - 1, edge[2] - 1)) {
+                ++e1;
+                ++e2;
+            } else {
+                ++count;
+            }
+        }
+    }
+    
+    UnionFind uf0(uf);
+    for(auto& edge : edges) {
+        if(edge[0] == 1) { // for alice
+            if(uf.uni(edge[1] - 1, edge[2] - 1)) {
+                ++e1;
+            } else {
+                ++count;
+            }
+        }
+    }
+    
+    for(auto& edge : edges) {
+        if(edge[0] == 2) {
+            if(uf0.uni(edge[1] - 1, edge[2] - 1)) {
+                ++e2;
+            } else {
+                ++count;
+            }
+        }
+    }
+    
+    return e1 == n-1 && e2 == n-1 ? count : -1;
 
+}

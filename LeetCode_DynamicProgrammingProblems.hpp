@@ -1245,5 +1245,138 @@ public:
     }
 };
 
+/*
+You are given a rows x cols matrix grid. Initially, you are located at the top-left corner (0, 0), and in each step, you can only move right or down in the matrix.
+
+Among all possible paths starting from the top-left corner (0, 0) and ending in the bottom-right corner (rows - 1, cols - 1), find the path with the maximum non-negative product. The product of a path is the product of all integers in the grid cells visited along the path.
+
+Return the maximum non-negative product modulo 109 + 7. If the maximum product is negative return -1.
+
+Notice that the modulo is performed after getting the maximum product.
+
+ 
+
+Example 1:
+
+Input: grid = [[-1,-2,-3],
+               [-2,-3,-3],
+               [-3,-3,-2]]
+Output: -1
+Explanation: It's not possible to get non-negative product in the path from (0, 0) to (2, 2), so return -1.
+Example 2:
+
+Input: grid = [[1,-2,1],
+               [1,-2,1],
+               [3,-4,1]]
+Output: 8
+Explanation: Maximum non-negative product is in bold (1 * 1 * -2 * -4 * 1 = 8).
+Example 3:
+
+Input: grid = [[1, 3],
+               [0,-4]]
+Output: 0
+Explanation: Maximum non-negative product is in bold (1 * 0 * -4 = 0).
+Example 4:
+
+Input: grid = [[ 1, 4,4,0],
+               [-2, 0,0,1],
+               [ 1,-1,1,1]]
+Output: 2
+Explanation: Maximum non-negative product is in bold (1 * -2 * 1 * -1 * 1 * 1 = 2).
+ 
+
+Constraints:
+
+1 <= rows, cols <= 15
+-4 <= grid[i][j] <= 4
+*/
+class _1594_MaximumNonNegativeProductInAMatrix {
+public:
+    int maxProductPath(std::vector<std::vector<int>>& grid) {
+        constexpr int MOD = 1e9 + 7;
+        std::vector<std::vector<long long>> DPmin(grid.size(), std::vector<long long>(grid[0].size(), 0));
+        std::vector<std::vector<long long>> DPmax(grid.size(), std::vector<long long>(grid[0].size(), 0));
+        DPmin[0][0] = DPmax[0][0] = grid[0][0];
+        for(int j = 1; j < grid[0].size(); ++j) {
+            DPmin[0][j] = DPmin[0][j-1] * grid[0][j];
+            DPmax[0][j] = DPmax[0][j-1] * grid[0][j];
+        }
+        
+        for(int i = 1; i < grid.size(); ++i) {
+            DPmin[i][0] = DPmin[i-1][0] * grid[i][0];
+            DPmax[i][0] = DPmax[i-1][0] * grid[i][0];
+        }
+        
+        for(int i = 1; i < grid.size(); ++i) {
+            for(int j = 1; j < grid[i].size(); ++j) {
+                if(grid[i][j] > 0) {
+                    DPmin[i][j] = std::min({DPmin[i-1][j], DPmin[i][j-1], DPmax[i-1][j], DPmax[i][j-1]}) * grid[i][j];
+                    DPmax[i][j] = std::max({DPmin[i-1][j], DPmin[i][j-1], DPmax[i-1][j], DPmax[i][j-1]}) * grid[i][j];
+                } else {
+                    DPmax[i][j] = std::min({DPmin[i-1][j], DPmin[i][j-1], DPmax[i-1][j], DPmax[i][j-1]}) * grid[i][j];
+                    DPmin[i][j] = std::max({DPmin[i-1][j], DPmin[i][j-1], DPmax[i-1][j], DPmax[i][j-1]}) * grid[i][j];
+                }
+            }
+        }
+        long long maxV = DPmax.back().back() % MOD;
+        return maxV >= 0? maxV : -1;
+    }
+};
+
+/*
+1641. Count Sorted Vowel Strings
+Given an integer n, return the number of strings of length n that consist only of vowels (a, e, i, o, u) and are lexicographically sorted.
+
+A string s is lexicographically sorted if for all valid i, s[i] is the same as or comes before s[i+1] in the alphabet.
+
+ 
+
+Example 1:
+
+Input: n = 1
+Output: 5
+Explanation: The 5 sorted strings that consist of vowels only are ["a","e","i","o","u"].
+Example 2:
+
+Input: n = 2
+Output: 15
+Explanation: The 15 sorted strings that consist of vowels only are
+["aa","ae","ai","ao","au","ee","ei","eo","eu","ii","io","iu","oo","ou","uu"].
+Note that "ea" is not a valid string since 'e' comes after 'a' in the alphabet.
+Example 3:
+
+Input: n = 33
+Output: 66045
+ 
+
+Constraints:
+
+1 <= n <= 50 
+*/
+class _1641_CountSortedVowelStrings{
+public:
+    int countVowelStrings(int n) {
+        std::vector<std::vector<int>> DP(5, std::vector<int>(n+1, 0));
+        
+        DP[0][1] = 1;
+        DP[1][1] = 1;
+        DP[2][1] = 1;
+        DP[3][1] = 1;
+        DP[4][1] = 1;
+        
+        for(int len = 2; len <= n; ++len) {
+            for(int ch = 0; ch < 5; ++ch) {
+                for(int tt = ch; tt < 5; ++tt) {
+                    DP[ch][len] += DP[tt][len-1];
+                }
+            }
+        }
+        int res = DP[0][n] + DP[1][n] + DP[2][n] + DP[3][n] + DP[4][n];
+        
+        return res;        
+    }
+};
+
+
 }
 #endif
